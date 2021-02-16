@@ -1,0 +1,153 @@
+
+└───src
+    ├───base
+    │       _animations.scss
+    │       _code-highlighting.scss
+    │       _content.scss
+    │       _docons.scss
+    │       _focus.scss
+    │       _font.scss
+    │       _generic.scss
+    │       _global.scss
+    │       _index.scss
+    │       _initial.scss
+    │       _site.scss
+    │       _theme-colors.scss
+    │       
+    ├───components
+    │       _alert.scss
+    │       _autocomplete.scss
+    │       _bracket.scss
+    │       _breadcrumbs.scss
+    │       _card.scss
+    │       _cloud-shell.scss
+    │       _date-countdown-timer.scss
+    │       _details.scss
+    │       _divider-line.scss
+    │       _expandable.scss
+    │       _facepile.scss
+    │       _footer.scss
+    │       _index.scss
+    │       _media-card.scss
+    │       _media.scss
+    │       _metadata.scss
+    │       _modal-page-actions.scss
+    │       _modal.scss
+    │       _nav-bar.scss
+    │       _nav-box.scss
+    │       _not-found-graphic.scss
+    │       _pagination.scss
+    │       _star-rating.scss
+    │       _tabs.scss
+    │       _theme-selector.scss
+    │       _thumb-rating.scss
+    │       _toast.scss
+    │       _tree.scss
+    │       
+    ├───elements
+    │       _bar-link.scss
+    │       _bookend-container.scss
+    │       _box.scss
+    │       _button.scss
+    │       _checkbox-button.scss
+    │       _checkbox.scss
+    │       _completable.scss
+    │       _container.scss
+    │       _dropdown.scss
+    │       _durable-image.scss
+    │       _external-indicator.scss
+    │       _form.scss
+    │       _heading-anchor.scss
+    │       _hr.scss
+    │       _icon.scss
+    │       _image.scss
+    │       _index.scss
+    │       _loader.scss
+    │       _meter.scss
+    │       _progress.scss
+    │       _protocol-table.scss
+    │       _quote.scss
+    │       _radio.scss
+    │       _skeleton.scss
+    │       _stretched-link.scss
+    │       _svg.scss
+    │       _table.scss
+    │       _tag.scss
+    │       _title.scss
+    │       _uhf-container.scss
+    │       _xp-tag.scss
+    │       
+    ├───guide
+    │       _color-showcase.scss
+    │       _index.scss
+    │       _menu.scss
+    │       _mixins.scss
+    │       
+    ├───helpers
+    │       _animations.scss
+    │       _border.scss
+    │       _colors.scss
+    │       _depth.scss
+    │       _display.scss
+    │       _flex.scss
+    │       _index.scss
+    │       _misc.scss
+    │       _overlay.scss
+    │       _position.scss
+    │       _spacing.scss
+    │       _truncation.scss
+    │       _typography.scss
+    │       _width.scss
+    │       
+    ├───layout
+    │       _auth-status.scss
+    │       _columns.scss
+    │       _grid.scss
+    │       _hero.scss
+    │       _index.scss
+    │       _level.scss
+    │       _section.scss
+    │       _universal.scss
+    │       
+    ├───legacy-components
+    │       _action-panel.scss
+    │       _api-search.scss
+    │       _azure-oauth.scss
+    │       _bilingual.scss
+    │       _c-progress.scss
+    │       _checkbox-toggle.scss
+    │       _cols.scss
+    │       _content-header.scss
+    │       _doc-outline.scss
+    │       _dotnet-online.scss
+    │       _hub-cards.scss
+    │       _index.scss
+    │       _lightbox.scss
+    │       _markdown-extensions.scss
+    │       _math-jax.scss
+    │       _moniker-picker.scss
+    │       _page-frame.scss
+    │       _page-header.scss
+    │       _profiles.scss
+    │       _quiz.scss
+    │       _resources-footer.scss
+    │       _rest-tryit.scss
+    │       _schema-crumbs.scss
+    │       _tab-group.scss
+    │       
+    ├───page-mixins
+    │       _conceptual.scss
+    │       _reference.scss
+    │       
+    └───utilities
+            _color-system.scss
+            _controls.scss
+            _derived-colors.scss
+            _derived-variables.scss
+            _docons.scss
+            _functions.scss
+            _index.scss
+            _initial-variables.scss
+            _mixins.scss
+            _theme.scss
+            

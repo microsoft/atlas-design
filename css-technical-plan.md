@@ -6,58 +6,66 @@
 
 ## Task list
 
-- fill out all Open Source related files (group task / PM task?)
-  - update project README.md
-  - write initial setup steps (dev)
-  - write steps for inclusion in a project
-  - update css folder README.md
-  - review and update CODE_OF_CONDUCT.md (group task / PM task?)
-- prerequisite work
+👨‍💻 Constitutes a developer task
+🆗 Okay
+🆕 The product of recent discussions
+🆒 Nice to have
+💭 Pondering, not ready, but input welcome
+🔷 Solidified
+⚜ Group or PM task
+
+- fill out all Open Source related files ⚜
+  - update project README.md ⚜
+  - write initial setup steps 👨‍💻
+  - write steps for inclusion in a project 👨‍💻
+  - update css folder README.md 👨‍💻
+  - review and update CODE_OF_CONDUCT.md (group task / PM task?) ⚜
+- add monorepo related files 👨‍💻
   - add top level index file
   - add top level package.json and init monorepo
-  - implment changelog
-  - [changesets](https://github.com/atlassian/changesets)
+- implment changesets [changesets](https://github.com/atlassian/changesets) 👨‍💻
 - implement tokens (each direct sub list item is a dev task)
-  - color tokens
+  - color tokens 👨‍💻
     - convert tokens to hsla
     - raw colors in palette.scss
     - themed colors in color-themes.scss
-  - spacing tokens
-  - typography, font-size tokens
-  - depth/shadow tokens
-  - write tokens readme
-- implement code formatting and linting
-  - airbnb style guide in combo with prettier and stylelint
+  - spacing tokens 👨‍💻
+  - typography, font-size tokens 👨‍💻
+  - depth/shadow tokens 👨‍💻
+  - write tokens readme 👨‍💻
+- implement code formatting and linting 👨‍💻
   - requirements:
     - code format on save
-    - fast
+    - fast via cli
     - pre-push hook w/husky
-- devops setup
-  - github actions on pull_request open
-    - lint
-    - changeasets
-    - version checks?
-- after tokens: publish verison 0.0.2 via npm
-- implment mixins folder
+  - proposed combination: prettier and stylelint combo, favoring airbnb stylelint presets
+- implment mixins folder 👨‍💻
   - catalog shared and shareable mixins from docs-ui
   - split into files and add to mixins
 - implement Core folder (each sub item is a dev task)
-  - resets (normalize and minireset + custom?)
-  - create css custom properties for theme colors
-  - implement font stack
-  - implement focus (focus-visible)
+  - resets (normalize and minireset + custom?) 👨‍💻
+  - create css custom properties for theme colors 👨‍💻
+  - implement font stack 👨‍💻
+  - implement focus styling (focus-visible) 💭 👨‍💻
+  - implement a css build for prototyping 💭 👨‍💻
+- devops setup
+  - github actions on pull_request open 👨‍💻
+    - lint (to ensure prepush cannot be avoided and files are in sync)
+  - tag and publish on pr to specific branch? 💭
 - implement Atomics folder (each sub item is a dev task)
-  - spacing atomic classes
-  - depth atomic classes
-  - typography atomic classes
-  - color atomic classes
-- create components folder
-  - create components folder readme
-  - we won't be implementing any components as part of this feature
-- plugins (top level folder)
-  - add package
+  - spacing atomic classes 👨‍💻
+  - depth atomic classes 👨‍💻
+  - typography atomic classes 👨‍💻
+  - color atomic classes 👨‍💻
+- create components folder 👨‍💻
+  - create components folder readme and index file
+  - Will we be implementing any components as part of this feature 💭
+    - columns ?
+- plugins (top level folder) 👨‍💻
+  - how are plugins structured? 💭
+  - add package.json
   - implment post css plugin
-  - implment theme fallback plugin
+  - move theme fallback plugin 👨‍💻
 
 ## Folders in /css
 
