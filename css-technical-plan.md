@@ -1,37 +1,54 @@
 # Atlas (CSS) tech plan
 
+## Links
+
+- [Current version of tokens](https://www.figma.com/proto/03HGueCJEx4tyZd3Rhfw5B/DevRel-Design-System?node-id=268%3A343&viewport=1143%2C-507%2C0.08135364204645157&scaling=scale-down-width)
+
 ## Task list
 
-- update project README.md (group task / PM task?)
-- update css folder README.md
-- review and update CODE_OF_CONDUCT.md (group task / PM task?)
-- implement tokens
-  - colors
+- fill out all Open Source related files (group task / PM task?)
+  - update project README.md
+  - update css folder README.md
+  - review and update CODE_OF_CONDUCT.md (group task / PM task?)
+- implement tokens (each direct sub list item is a dev task)
+  - prerequisite work
+    - [changesets](https://github.com/atlassian/changesets)
+    - add top level index file
+    - write tokens readme
+    - implment changelog
+  - color tokens
+    - convert tokens to hsla
     - raw colors in palette.scss
     - themed colors in color-themes.scss
-  - spacing
-  - typography, font-size.scss
-  - depth
-- fill out all Open Source related files
+  - spacing tokens
+  - typography, font-size tokens
+  - depth/shadow tokens
 - implement code formatting and linting
 - devops setup
   - github actions on pull_request open
     - lint
-    - changealog?
+    - changeasets
     - version checks?
-
-### Questions to solve later
-
-- How to expose both tokens as well as plain css.
-- Bundle size stats from the very beginning?
-
-### Build Related
-
-- CLI or scss.
-- Is build perf a major issue?
-  - If not, what about ts-node?
-  - If so, what about just js.
-- Post CSS plugin for IE
+- after tokens: publish verison 0.0.2 via npm
+- implment mixins folder
+  - catalog shared and shareable mixins from docs-ui
+  - split into files and add to mixins
+- implement Core folder (each sub item is a dev task)
+  - resets (normalize and minireset + custom?)
+  - create css custom properties for theme colors
+  - implement font stack
+  - implement focus (focus-visible)
+- implement Atomics folder (each sub item is a dev task)
+  - spacing atomic classes
+  - depth atomic classes
+  - typography atomic classes
+  - color atomic classes
+- create components folder
+  - create components folder readme
+  - we won't be implementing any components as part of this feature
+- plugins
+  - implment post css plugin
+  - implment theme fallback plugin
 
 ## Src
 
