@@ -8,14 +8,16 @@
 
 - fill out all Open Source related files (group task / PM task?)
   - update project README.md
+  - write initial setup steps (dev)
+  - write steps for inclusion in a project
   - update css folder README.md
   - review and update CODE_OF_CONDUCT.md (group task / PM task?)
+- prerequisite work
+  - add top level index file
+  - add top level package.json and init monorepo
+  - implment changelog
+  - [changesets](https://github.com/atlassian/changesets)
 - implement tokens (each direct sub list item is a dev task)
-  - prerequisite work
-    - [changesets](https://github.com/atlassian/changesets)
-    - add top level index file
-    - write tokens readme
-    - implment changelog
   - color tokens
     - convert tokens to hsla
     - raw colors in palette.scss
@@ -23,7 +25,13 @@
   - spacing tokens
   - typography, font-size tokens
   - depth/shadow tokens
+  - write tokens readme
 - implement code formatting and linting
+  - airbnb style guide in combo with prettier and stylelint
+  - requirements:
+    - code format on save
+    - fast
+    - pre-push hook w/husky
 - devops setup
   - github actions on pull_request open
     - lint
@@ -51,7 +59,11 @@
   - implment post css plugin
   - implment theme fallback plugin
 
-## Src
+## Folders in /css
+
+The majority of this work will be contained within the /css folder.
+
+### Src
 
 Each folder has an index file and a README that explains the nature of the folder. See below.
 
@@ -67,20 +79,20 @@ css
     └───components
 ```
 
-### Tokens
+#### Tokens
 
 - No output
 - Shared variables
 - Colors
 - Typography
 
-### Mixins
+#### Mixins
 
 - No output
 - Depends on tokens
 - Contains shared mixins and functions
 
-### Core
+#### Core
 
 - output producing
 - reset (normalize / minireset)
@@ -89,7 +101,7 @@ css
 - theming
 - no classes, except theme
 
-### Atomics
+#### Atomics
 
 - single classes that have a very targeted effect
 - generally 1 effect - 1 css property
@@ -97,7 +109,7 @@ css
 - naming should match property names and values as much as possible
 - standardize on `has` or impose new prefix
 
-### Components
+#### Components
 
 - file names should match the class of the component
 - top level classes per file: 1
