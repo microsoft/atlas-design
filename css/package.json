@@ -1,21 +1,21 @@
 {
-  "name": "@microsoft/atlas-css",
-  "version": "0.0.1",
-  "description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/microsoft/atlas-design"
-  },
-  "keywords": [
-    "microsoft",
-    "atlas",
-    "design-system",
-    "css",
-    "scss"
-  ],
-  "author": "Microsoft Corporation",
-  "license": "MIT"
+	"name": "@microsoft/atlas-css",
+	"version": "0.0.2",
+	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/atlas-design"
+	},
+	"keywords": [
+		"microsoft",
+		"atlas",
+		"design-system",
+		"css",
+		"scss"
+	],
+	"author": "Microsoft Corporation",
+	"license": "MIT"
 }

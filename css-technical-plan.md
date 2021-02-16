@@ -46,7 +46,8 @@
 - create components folder
   - create components folder readme
   - we won't be implementing any components as part of this feature
-- plugins
+- plugins (top level folder)
+  - add package
   - implment post css plugin
   - implment theme fallback plugin
 

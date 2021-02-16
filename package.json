@@ -1,0 +1,32 @@
+{
+	"name": "atlas-design",
+	"version": "0.0.1",
+	"description": "The Atlas Design System used by Microsoft's Developer Relations.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/microsoft/atlas-design.git"
+	},
+	"keywords": [
+		"atlas",
+		"design",
+		"css",
+		"monorepo",
+		"microsoft"
+	],
+	"workspaces": [
+		"./css/"
+	],
+	"author": "",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/microsoft/atlas-design/issues"
+	},
+	"homepage": "https://github.com/microsoft/atlas-design#readme",
+	"devDependencies": {
+		"@changesets/cli": "^2.14.1"
+	}
+}
