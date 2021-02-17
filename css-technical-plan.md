@@ -3,67 +3,75 @@
 ## Links
 
 - [Current version of tokens](https://www.figma.com/proto/03HGueCJEx4tyZd3Rhfw5B/DevRel-Design-System?node-id=268%3A343&viewport=1143%2C-507%2C0.08135364204645157&scaling=scale-down-width)
+- [Colors](https://www.figma.com/file/6ZQIcp2AS8022uU96v0xx4/ATLAS---COLOR?node-id=0%3A1)
 
 ## Task list
 
 👨‍💻 Constitutes a developer task
-🆗 Okay
-🆕 The product of recent discussions
-🆒 Nice to have
 💭 Pondering, not ready, but input welcome
-🔷 Solidified
 ⚜ Group or PM task
 
 - fill out all Open Source related files ⚜
   - update project README.md ⚜
-  - write initial setup steps 👨‍💻
-  - write steps for inclusion in a project 👨‍💻
-  - update css folder README.md 👨‍💻
-  - review and update CODE_OF_CONDUCT.md (group task / PM task?) ⚜
-- add monorepo related files 👨‍💻
-  - add top level index file
+  - 👨‍💻 write initial setup steps
+  - 👨‍💻 write steps for inclusion in a project
+  - 👨‍💻 update css folder README.md
+  - ⚜ review and update CODE_OF_CONDUCT.md (group task / PM task?)
+- 👨‍💻 add monorepo related files
+  - add top level index file scss in /css
   - add top level package.json and init monorepo
-- implment changesets [changesets](https://github.com/atlassian/changesets) 👨‍💻
-- implement tokens (each direct sub list item is a dev task)
-  - color tokens 👨‍💻
-    - convert tokens to hsla
+- 👨‍💻 implment changesets [changesets](https://github.com/atlassian/changesets)
+- 👨‍💻 implement tokens (each direct sub list item is a dev task)
+  - color tokens
+    - convert tokens to hsla (pending dropping IE theming confirmation)
     - raw colors in palette.scss
     - themed colors in color-themes.scss
-  - spacing tokens 👨‍💻
-  - typography, font-size tokens 👨‍💻
-  - depth/shadow tokens 👨‍💻
-  - write tokens readme 👨‍💻
-- implement code formatting and linting 👨‍💻
+  - 👨‍💻 spacing tokens
+  - 👨‍💻 typography, font-size tokens
+  - 👨‍💻 depth/shadow tokens
+  - 👨‍💻 write tokens readme
+- 👨‍💻 implement code formatting and linting
   - requirements:
     - code format on save
     - fast via cli
-    - pre-push hook w/husky
+    - pre-commit hook w/husky
   - proposed combination: prettier and stylelint combo, favoring airbnb stylelint presets
-- implment mixins folder 👨‍💻
+- 👨‍💻 implment mixins folder
+  - first move media query mixins
+  - wait until we need a mixin before moving something else
   - catalog shared and shareable mixins from docs-ui
-  - split into files and add to mixins
 - implement Core folder (each sub item is a dev task)
-  - resets (normalize and minireset + custom?) 👨‍💻
-  - create css custom properties for theme colors 👨‍💻
-  - implement font stack 👨‍💻
-  - implement focus styling (focus-visible) 💭 👨‍💻
-  - implement a css build for prototyping 💭 👨‍💻
+  - 👨‍💻 resets (normalize and minireset + custom?)
+  - 👨‍💻 create css custom properties for theme colors
+  - 👨‍💻 implement font stack
+    - no font face rules
+    - just native font family (from github / bulma)
+    - this will be overridden downstream
+  - 👨‍💻 implement focus styling (focus-visible) 💭
+    - escape hatch, which can toggle :focus-visible, rather than the polyfill (.focus-visible)
+  - 👨‍💻 implement a css build for prototyping 💭
+    - should include a font face?
 - devops setup
-  - github actions on pull_request open 👨‍💻
+  - 👨‍💻 github actions on pull_request open
     - lint (to ensure prepush cannot be avoided and files are in sync)
-  - tag and publish on pr to specific branch? 💭
+  - 👨‍💻 release workflow 💭
+    - tag and publish on pr to specific branch?
 - implement Atomics folder (each sub item is a dev task)
-  - spacing atomic classes 👨‍💻
-  - depth atomic classes 👨‍💻
-  - typography atomic classes 👨‍💻
-  - color atomic classes 👨‍💻
-- create components folder 👨‍💻
+  - 👨‍💻 spacing atomic classes
+  - 👨‍💻 depth atomic classes
+  - 👨‍💻 typography atomic classes
+  - 👨‍💻 color atomic classes
+  - 💭 standardize on has
+- create components folder
   - create components folder readme and index file
   - Will we be implementing any components as part of this feature 💭
-    - columns ?
-- plugins (top level folder) 👨‍💻
+    - 👨‍💻 columns
+    - 👨‍💻 nav-bar?
+- 👨‍💻 plugins (top level folder)
+  - this folder contains postcss plugins
   - how are plugins structured? 💭
-  - add package.json
+  - each plugin is a package
+  - all live in packages folder
   - implment post css plugin
   - move theme fallback plugin 👨‍💻
 
