@@ -133,9 +133,10 @@ css
 - file names should match the class of the component
 - top level classes per file: 1
 
-## Resources
+## Resources and links
 
 - Token interop
   - [5t3ph/a11y-color-tokens: Generate accessible UI colors from your base color tokens](https://github.com/5t3ph/a11y-color-tokens)
   - [Theo](https://github.com/salesforce-ux/theo)
   - [Diez](https://github.com/diez/diez)
+  - [scss-to-json](https://www.npmjs.com/package/scss-to-json)
