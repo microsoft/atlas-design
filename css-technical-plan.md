@@ -26,7 +26,7 @@
     - convert tokens to hsla (pending dropping IE theming confirmation)
     - raw colors in palette.scss
     - themed colors in color-themes.scss
-  - 👨‍💻 spacing tokens
+  - 👨‍💻 spacing tokens 🌟🌟🌟Here is where you left off.🌟⭐⭐
   - 👨‍💻 typography, font-size tokens
   - 👨‍💻 depth/shadow tokens
   - 👨‍💻 write tokens readme
@@ -40,7 +40,7 @@
   - first move media query mixins
   - wait until we need a mixin before moving something else
   - catalog shared and shareable mixins from docs-ui
-- implement Core folder (each sub item is a dev task)
+- implement Core folder (each sub item is a dev task) 🌟🌟🌟Here is where you left off.🌟⭐⭐
   - 👨‍💻 resets (normalize and minireset + custom?)
   - 👨‍💻 create css custom properties for theme colors
   - 👨‍💻 implement font stack
@@ -119,6 +119,7 @@ css
 
 #### Atomics
 
+- output producing
 - single classes that have a very targeted effect
 - generally 1 effect - 1 css property
   - with the exception outline color and backgrounds (for focus)
@@ -127,5 +128,6 @@ css
 
 #### Components
 
+- output producing
 - file names should match the class of the component
 - top level classes per file: 1
