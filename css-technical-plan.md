@@ -29,6 +29,7 @@
   - 👨‍💻 spacing tokens 🌟🌟🌟Here is where you left off.🌟⭐⭐
   - 👨‍💻 typography, font-size tokens
   - 👨‍💻 depth/shadow tokens
+  - 👨‍💻 z-index tokens
   - 👨‍💻 write tokens readme
 - 👨‍💻 implement code formatting and linting
   - requirements:
