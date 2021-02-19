@@ -36,6 +36,7 @@
   - 👨‍💻 write tokens readme
   - 👨‍💻🌌 audit misc tokens and add if necessary
     - text-direction, letter spacing, transition duration,
+  - 👨‍💻🌌 ensure tokens are also consumable as json
 - 👨‍💻 implement code formatting and linting
   - requirements:
     - code format on save
