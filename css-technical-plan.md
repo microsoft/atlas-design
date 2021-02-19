@@ -10,6 +10,7 @@
 👨‍💻 Constitutes a developer task
 💭 Pondering, not ready, but input welcome
 ⚜ Group or PM task
+🌌 Work item needs to be made
 
 - fill out all Open Source related files ⚜
   - update project README.md ⚜
@@ -21,8 +22,8 @@
   - add top level index file scss in /css
   - add top level package.json and init monorepo
 - 👨‍💻 implment changesets [changesets](https://github.com/atlassian/changesets)
-- 👨‍💻 implement tokens (each direct sub list item is a dev task)
-  - color tokens
+- implement tokens (each direct sub list item is a dev task)
+  - 👨‍💻 color tokens
     - convert tokens to hsla (pending dropping IE theming confirmation)
     - raw colors in palette.scss
     - themed colors in color-themes.scss
@@ -33,6 +34,8 @@
   - 👨‍💻 depth/shadow tokens
   - 👨‍💻 z-index tokens
   - 👨‍💻 write tokens readme
+  - 👨‍💻🌌 audit misc tokens and add if necessary
+    - text-direction, letter spacing, transition duration,
 - 👨‍💻 implement code formatting and linting
   - requirements:
     - code format on save
@@ -73,6 +76,7 @@
   - Will we be implementing any components as part of this feature 💭
     - 👨‍💻 columns
     - 👨‍💻 nav-bar?
+    - 👨‍💻 container?
     - 💭 list of current components, create queue for review of current?
     - 💭 what will we need to build the site?
 - 👨‍💻 plugins (top level folder)

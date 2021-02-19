@@ -109,7 +109,7 @@
     │       _section.scss
     │       _universal.scss
     │       
-    ├───legacy-components
+        ├───legacy-components
     │       _action-panel.scss
     │       _api-search.scss
     │       _azure-oauth.scss
