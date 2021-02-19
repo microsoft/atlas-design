@@ -59,6 +59,9 @@
   - 👨‍💻 implement a css build for prototyping 💭
     - should include a font face?
 - devops setup
+  - branch policies
+    - can we get a design and dev to both approve
+    - protect main from pushes
   - 💭 number of required approvers for a PR?
   - 👨‍💻 github actions on pull_request open
     - lint (to ensure prepush cannot be avoided and files are in sync)
