@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.0.4
+
+### Patch Changes
+
+- This is the thing that Chad asked about jokingly. What a jokester.
+
 ## 0.0.3
 
 ### Patch Changes

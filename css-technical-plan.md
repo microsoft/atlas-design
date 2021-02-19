@@ -22,6 +22,8 @@
   - add top level index file scss in /css
   - add top level package.json and init monorepo
 - 👨‍💻 implment changesets [changesets](https://github.com/atlassian/changesets)
+  - consider whether or not we should try to introduce some validation
+  - write directions for how to use this
 - implement tokens (each direct sub list item is a dev task)
   - 👨‍💻 color tokens
     - convert tokens to hsla (pending dropping IE theming confirmation)
