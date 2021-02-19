@@ -36,9 +36,9 @@
   - 👨‍💻 depth/shadow tokens
   - 👨‍💻 z-index tokens
   - 👨‍💻 write tokens readme
-  - 👨‍💻🌌 audit misc tokens and add if necessary
+  - 👨‍💻 audit misc tokens and add if necessary
     - text-direction, letter spacing, transition duration,
-  - 👨‍💻🌌 ensure tokens are also consumable as json
+  - 👨‍💻 ensure tokens are also consumable as json
 - 👨‍💻 implement code formatting and linting
   - requirements:
     - code format on save
@@ -49,7 +49,7 @@
   - first move media query mixins
   - wait until we need a mixin before moving something else
   - catalog shared and shareable mixins from docs-ui
-- implement Core folder (each sub item is a dev task) 🌟🌟🌟Here is where you left off.🌟⭐⭐
+- implement Core folder (each sub item is a dev task)
   - 👨‍💻 resets (normalize and minireset + custom?)
   - 👨‍💻 create css custom properties for theme colors
   - 👨‍💻 implement font stack
@@ -59,15 +59,14 @@
   - 👨‍💻 implement focus styling (focus-visible) 💭
     - escape hatch, which can toggle :focus-visible, rather than the polyfill (.focus-visible)
   - 👨‍💻 implement a css build for prototyping 💭
-    - should include a font face?
 - devops setup
   - branch policies
     - can we get a design and dev to both approve
-    - protect main from pushes
-  - 💭 number of required approvers for a PR?
+    - ✔ protect main from pushes ✔
+  - ✔ number of required approvers for a PR? 2
   - 👨‍💻 github actions on pull_request open
     - lint (to ensure prepush cannot be avoided and files are in sync)
-  - 👨‍💻💭 release workflow
+  - 👨‍💻💭⏲ release workflow [will do later]
     - tag and publish on pr to specific branch?
 - implement Atomics folder (each sub item is a dev task)
   - 👨‍💻 spacing atomic classes
@@ -75,12 +74,12 @@
   - 👨‍💻 typography atomic classes
     - This task will require some careful consideration of the existing class helpers in docs-ui, especially if we standardize on has-
   - 👨‍💻 color atomic classes
-  - 💭 standardize on `has` (or `at`? or `atlas`?), with customizable prefix with `!default`.
-  - 💭 flex atomics
-  - 💭 grid atomics
+  - 👨‍💻 standardize on `has`
+  - 👨‍💻 flex atomics
+  - 👨‍💻 grid atomics
 - create components folder
   - create components folder readme and index file
-  - Will we be implementing any components as part of this feature 💭
+  - 💭 Will we be implementing any components as part of this feature
     - 👨‍💻 columns
     - 👨‍💻 nav-bar?
     - 👨‍💻 container?
@@ -88,11 +87,11 @@
     - 💭 what will we need to build the site?
 - 👨‍💻 plugins (top level folder)
   - this folder contains postcss plugins
-  - how are plugins structured? 💭
+  - how are plugins structured?
   - each plugin is a package
   - all live in packages folder
   - implment post css plugin
-  - move theme fallback plugin 👨‍💻
+  - 👨‍💻 move theme fallback plugin
 
 ## Folders in /css
 
