@@ -157,3 +157,4 @@ css
   - [Theo](https://github.com/salesforce-ux/theo)
   - [Diez](https://github.com/diez/diez)
   - [scss-to-json](https://www.npmjs.com/package/scss-to-json)
+- [NPM 7 workspaces](https://github.com/npm/rfcs/blob/latest/implemented/0026-workspaces.md)
