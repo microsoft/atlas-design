@@ -26,7 +26,9 @@
     - convert tokens to hsla (pending dropping IE theming confirmation)
     - raw colors in palette.scss
     - themed colors in color-themes.scss
-  - 👨‍💻 spacing tokens 🌟🌟🌟Here is where you left off.🌟⭐⭐
+  - 👨‍💻 spacing tokens
+    - 💭 Since docs-ui has spacing atomics already, which are derived from variables this issue is the most dangerous
+    - 💭 Will likely require an organized migration of class in docs-ui for those that will generate atomics.
   - 👨‍💻 typography, font-size tokens
   - 👨‍💻 depth/shadow tokens
   - 👨‍💻 z-index tokens
@@ -61,13 +63,18 @@
   - 👨‍💻 spacing atomic classes
   - 👨‍💻 depth atomic classes
   - 👨‍💻 typography atomic classes
+    - This task will require some careful consideration of the existing class helpers in docs-ui, especially if we standardize on has-
   - 👨‍💻 color atomic classes
-  - 💭 standardize on has
+  - 💭 standardize on `has` (or `at`? or `atlas`?), with customizable prefix with `!default`.
+  - 💭 flex atomics
+  - 💭 grid atomics
 - create components folder
   - create components folder readme and index file
   - Will we be implementing any components as part of this feature 💭
     - 👨‍💻 columns
     - 👨‍💻 nav-bar?
+    - 💭 list of current components, create queue for review of current?
+    - 💭 what will we need to build the site?
 - 👨‍💻 plugins (top level folder)
   - this folder contains postcss plugins
   - how are plugins structured? 💭
