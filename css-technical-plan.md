@@ -59,9 +59,10 @@
   - 👨‍💻 implement a css build for prototyping 💭
     - should include a font face?
 - devops setup
+  - 💭 number of required approvers for a PR?
   - 👨‍💻 github actions on pull_request open
     - lint (to ensure prepush cannot be avoided and files are in sync)
-  - 👨‍💻 release workflow 💭
+  - 👨‍💻💭 release workflow
     - tag and publish on pr to specific branch?
 - implement Atomics folder (each sub item is a dev task)
   - 👨‍💻 spacing atomic classes
