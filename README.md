@@ -16,6 +16,27 @@ As the maintainer of this project, please make a few updates:
 - If contributing, please read about using [changesets](https://github.com/atlassian/changesets) and [semantic versioning bump types](https://semver.org/).
 - From a terminal, run `npm install`.
 
+## Using Atlas CSS
+
+The styles backing the Atlas Design system are discussed in greater detail in the [atlas-css readme](./css/README.md).
+
+### Install Atlas CSS in your project
+
+Use NPM or Yarn to add `@microsoft/atlas-css` to your project.
+
+```sh
+# install with NPM
+npm install --save @microsoft/atlas-css
+# or install with Yarn
+yarn add --save @microsoft/atlas-css
+```
+
+You may access any file within the `/css` folder using the following UNPKG url. Just add the path to the file, relative to the at the end:
+
+```http
+https://unpkg.com/browse/@microsoft/atlas-css@0.0.1/
+```
+
 ## Contributing
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
