@@ -21,6 +21,9 @@
 		"css",
 		"scss"
 	],
+	"devDependencies": {
+		"@changesets/cli": "^2.14.1"
+	},
 	"author": "Microsoft Corporation",
 	"license": "MIT"
 }
