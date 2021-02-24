@@ -3,7 +3,9 @@
 	"version": "0.2.0",
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "stylelint ./src/**/*.scss",
+		"pretty-quick": "pretty-quick --staged --pattern \"**/*.scss\""
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -21,5 +23,24 @@
 		"scss"
 	],
 	"author": "Microsoft Corporation",
-	"license": "MIT"
+	"license": "MIT",
+	"devDependencies": {
+		"prettier": "^2.2.1",
+		"pretty-quick": "3.0.2",
+		"stylelint": "^13.11.0",
+		"stylelint-prettier": "^1.1.2",
+		"stylelint-config-standard": "^20.0.0",
+		"stylelint-config-prettier": "^8.0.2",
+		"stylelint-config-airbnb": "^0.0.0",
+		"stylelint-scss": "^3.19.0",
+		"stylelint-order": "^4.1.0"
+	},
+	"prettier": {
+		"useTabs": true,
+		"singleQuote": true,
+		"printWidth": 100,
+		"trailingComma": "none",
+		"arrowParens": "avoid",
+		"endOfLine": "auto"
+	}
 }

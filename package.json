@@ -5,8 +5,13 @@
 	"private": true,
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint-css": "yarn workspace @microsoft/atlas-css lint",
+		"pretty-quick": "yarn workspace @microsoft/atlas-css pretty-quick"
 	},
+	"nohoist": [
+		"./@microsoft/atlas-css"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/microsoft/atlas-design"
@@ -22,7 +27,22 @@
 		"scss"
 	],
 	"devDependencies": {
-		"@changesets/cli": "^2.14.1"
+		"@changesets/cli": "^2.14.1",
+		"husky": "4.3.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "yarn pretty-quick",
+			"pre-push": "yarn lint-css"
+		}
+	},
+	"prettier": {
+		"useTabs": true,
+		"singleQuote": true,
+		"printWidth": 100,
+		"trailingComma": "none",
+		"arrowParens": "avoid",
+		"endOfLine": "auto"
 	},
 	"author": "Microsoft Corporation",
 	"license": "MIT"
