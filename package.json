@@ -7,7 +7,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint-css": "yarn workspace @microsoft/atlas-css lint",
-		"pretty-quick-css": "yarn workspace @microsoft/atlas-css pretty-quick"
+		"pretty-quick-css": "yarn workspace @microsoft/atlas-css pretty-quick",
+		"prettier": "prettier --write \"**/*.{scss,ts,js,json,yml,md}\"",
+		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug"
 	},
 	"nohoist": [
 		"./@microsoft/atlas-css"
@@ -28,7 +30,8 @@
 	],
 	"devDependencies": {
 		"@changesets/cli": "^2.14.1",
-		"husky": "4.3.0"
+		"husky": "4.3.0",
+		"prettier": "^2.2.1"
 	},
 	"husky": {
 		"hooks": {
