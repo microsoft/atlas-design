@@ -1,0 +1,35 @@
+{
+	"name": "stylelint-config-atlas",
+	"version": "1.0.0",
+	"description": "Shareable config for stylelint",
+	"homepage": "https://github.com/microsoft/atlas-design",
+	"keywords": [
+		"stylelint",
+		"stylelint-config",
+		"atlas"
+	],
+	"author": "stylelint",
+	"license": "MIT",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"dependencies": {
+		"stylelint-scss": "^3.19.0",
+		"stylelint-order": "^4.1.0"
+	},
+	"devDependencies": {
+		"stylelint": "^13.11.0"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"prettier": {
+		"useTabs": true,
+		"singleQuote": true,
+		"printWidth": 100,
+		"trailingComma": "none",
+		"arrowParens": "avoid",
+		"endOfLine": "auto"
+	}
+}
