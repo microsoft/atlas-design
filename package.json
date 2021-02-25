@@ -10,7 +10,7 @@
 		"lint:fix": "yarn lint --fix",
 		"prettier": "prettier --write \"**/*.{scss,ts,js,json,yml,md}\"",
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
-		"pretty-quick": "pretty-quick --staged --pattern \"**/*.scss\""
+		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\""
 	},
 	"nohoist": [
 		"./@microsoft/atlas-css"
@@ -39,7 +39,7 @@
 	"husky": {
 		"hooks": {
 			"pre-commit": "yarn pretty-quick",
-			"pre-push": "yarn lint-css"
+			"pre-push": "yarn lint"
 		}
 	},
 	"prettier": {
