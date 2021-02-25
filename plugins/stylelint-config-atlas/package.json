@@ -1,12 +1,13 @@
 {
-	"name": "stylelint-config-atlas",
+	"name": "@microsoft/stylelint-config-atlas",
 	"version": "1.0.0",
 	"description": "Shareable config for stylelint",
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"keywords": [
 		"stylelint",
 		"stylelint-config",
-		"atlas"
+		"atlas",
+		"atlas-css"
 	],
 	"author": "stylelint",
 	"license": "MIT",
