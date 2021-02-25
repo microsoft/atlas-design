@@ -4,8 +4,7 @@
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"lint": "stylelint ./src/**/*.scss",
-		"pretty-quick": "pretty-quick --staged --pattern \"**/*.scss\""
+		"lint": "stylelint ./src/**/*.scss"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -26,7 +25,6 @@
 	"license": "MIT",
 	"devDependencies": {
 		"prettier": "^2.2.1",
-		"pretty-quick": "3.0.2",
 		"stylelint": "^13.11.0",
 		"stylelint-prettier": "^1.1.2",
 		"stylelint-config-standard": "^20.0.0",
