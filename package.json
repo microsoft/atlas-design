@@ -19,7 +19,8 @@
 		"url": "https://github.com/microsoft/atlas-design"
 	},
 	"workspaces": [
-		"css"
+		"css",
+		"plugins/*"
 	],
 	"keywords": [
 		"microsoft",

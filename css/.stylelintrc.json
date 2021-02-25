@@ -1,8 +1,3 @@
 {
-	"extends": ["stylelint-config-airbnb", "stylelint-config-prettier"],
-	"rules": {
-		"indentation": "tab",
-		"declaration-property-value-blacklist": null,
-		"declaration-property-value-disallowed-list": { "/^border/": ["none"] }
-	}
+	"extends": ["stylelint-config-atlas", "stylelint-config-prettier"]
 }

@@ -31,9 +31,8 @@
 		"stylelint-prettier": "^1.1.2",
 		"stylelint-config-standard": "^20.0.0",
 		"stylelint-config-prettier": "^8.0.2",
-		"stylelint-config-airbnb": "^0.0.0",
-		"stylelint-scss": "^3.19.0",
-		"stylelint-order": "^4.1.0"
+		"stylelint-config-atlas": "1.0.0",
+		"stylelint-config-airbnb": "0.0.0"
 	},
 	"prettier": {
 		"useTabs": true,
