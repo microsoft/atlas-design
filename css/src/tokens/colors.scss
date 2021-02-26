@@ -1,0 +1,192 @@
+$text: var(--theme-text);
+$text-subtle: var(--theme-text-subtle);
+$text-invert: var(--theme-text-invert);
+$text-glow-high-contrast: var(--theme-text-glow-high-contrast);
+$box-shadow-color-light: var(--theme-box-shadow-light);
+$box-shadow-color-medium: var(--theme-box-shadow-medium);
+$box-shadow-color-heavy: var(--theme-box-shadow-heavy);
+$box-shadow-color-extra-heavy: var(--theme-box-shadow-extra-heavy);
+
+$body-background: var(--theme-body-background);
+$body-background-medium: var(--theme-body-background-medium);
+$body-background-dark: var(--theme-body-background-dark);
+
+$overlay: var(--theme-overlay);
+$overlay-invert: var(--theme-overlay-invert);
+$overlay-static: $palette-black-opacity-50;
+$border: var(--theme-border);
+
+$table-header: var(--theme-table-header);
+$table-row-header: var(--theme-table-row-header);
+$table-border-dark: var(--theme-table-border-dark);
+
+$facepile-red: var(--theme-facepile-red);
+$facepile-teal: var(--theme-facepile-teal);
+$facepile-blue: var(--theme-facepile-blue);
+
+$default-hover: var(--theme-hover-base);
+$default-hover-invert: var(--theme-hover-invert);
+$border-white-high-contrast: var(--theme-border-white-high-contrast);
+$border-yellow-high-contrast: var(--theme-border-yellow-high-contrast);
+$code-highlight-background: var(--theme-code-highlight-background);
+$visited: var(--theme-visited);
+
+$score-low-off: var(--theme-score-low-off);
+$score-low: var(--theme-score-low);
+$score-medium-off: var(--theme-score-medium-off);
+$score-medium: var(--theme-score-medium);
+$score-high-off: var(--theme-score-high-off);
+$score-high: var(--theme-score-high);
+
+$primary: var(--theme-primary-base);
+$primary-background: var(--theme-primary-background);
+$primary-background-glow-high-contrast: var(--theme-primary-background-glow-high-contrast);
+$primary-dark: var(--theme-primary-dark);
+$primary-hover: var(--theme-primary-hover);
+$primary-active: var(--theme-primary-active);
+$primary-invert: var(--theme-primary-invert);
+$primary-box-shadow: var(--theme-primary-box-shadow);
+
+$secondary: var(--theme-secondary-base);
+$secondary-background: var(--theme-secondary-background);
+$secondary-background-glow-high-contrast: var(--theme-secondary-background-glow-high-contrast);
+$secondary-dark: var(--theme-secondary-dark);
+$secondary-hover: var(--theme-secondary-hover);
+$secondary-active: var(--theme-secondary-active);
+$secondary-invert: var(--theme-secondary-invert);
+$secondary-box-shadow: var(--theme-secondary-box-shadow);
+
+$tertiary: var(--theme-tertiary-base);
+$tertiary-background: var(--theme-tertiary-background);
+$tertiary-background-glow-high-contrast: var(--theme-tertiary-background-glow-high-contrast);
+$tertiary-dark: var(--theme-tertiary-dark);
+$tertiary-hover: var(--theme-tertiary-hover);
+$tertiary-active: var(--theme-tertiary-active);
+$tertiary-invert: var(--theme-tertiary-invert);
+$tertiary-box-shadow: var(--theme-tertiary-box-shadow);
+
+$success: var(--theme-success-base);
+$success-background: var(--theme-success-background);
+$success-background-glow-high-contrast: var(--theme-success-background-glow-high-contrast);
+$success-dark: var(--theme-success-dark);
+$success-hover: var(--theme-success-hover);
+$success-active: var(--theme-success-active);
+$success-invert: var(--theme-success-invert);
+$success-box-shadow: var(--theme-success-box-shadow);
+
+$info: var(--theme-info-base);
+$info-background: var(--theme-info-background);
+$info-background-glow-high-contrast: var(--theme-info-background-glow-high-contrast);
+$info-dark: var(--theme-info-dark);
+$info-hover: var(--theme-info-hover);
+$info-active: var(--theme-info-active);
+$info-invert: var(--theme-info-invert);
+$info-box-shadow: var(--theme-info-box-shadow);
+$inline-code: var(--theme-inline-code);
+
+$warning: var(--theme-warning-base);
+$warning-background: var(--theme-warning-background);
+$warning-background-glow-high-contrast: var(--theme-warning-background-glow-high-contrast);
+$warning-dark: var(--theme-warning-dark);
+$warning-hover: var(--theme-warning-hover);
+$warning-active: var(--theme-warning-active);
+$warning-invert: var(--theme-warning-invert);
+$warning-box-shadow: var(--theme-warning-box-shadow);
+
+$danger: var(--theme-danger-base);
+$danger-background: var(--theme-danger-background);
+$danger-background-glow-high-contrast: var(--theme-danger-background-glow-high-contrast);
+$danger-dark: var(--theme-danger-dark);
+$danger-hover: var(--theme-danger-hover);
+$danger-active: var(--theme-danger-active);
+$danger-invert: var(--theme-danger-invert);
+$danger-box-shadow: var(--theme-danger-box-shadow);
+
+$framework-colors: (
+	'primary': (
+		$primary,
+		$primary-background,
+		$primary-dark,
+		$primary-hover,
+		$primary-active,
+		$primary-invert,
+		$primary-box-shadow,
+		$primary-background-glow-high-contrast
+	),
+	'secondary': (
+		$secondary,
+		$secondary-background,
+		$secondary-dark,
+		$secondary-hover,
+		$secondary-active,
+		$secondary-invert,
+		$secondary-box-shadow,
+		$secondary-background-glow-high-contrast
+	),
+	'tertiary': (
+		$tertiary,
+		$tertiary-background,
+		$tertiary-dark,
+		$tertiary-hover,
+		$tertiary-active,
+		$tertiary-invert,
+		$tertiary-box-shadow,
+		$tertiary-background-glow-high-contrast
+	),
+	'success': (
+		$success,
+		$success-background,
+		$success-dark,
+		$success-hover,
+		$success-active,
+		$success-invert,
+		$success-box-shadow,
+		$success-background-glow-high-contrast
+	),
+	'info': (
+		$info,
+		$info-background,
+		$info-dark,
+		$info-hover,
+		$info-active,
+		$info-invert,
+		$info-box-shadow,
+		$info-background-glow-high-contrast
+	),
+	'warning': (
+		$warning,
+		$warning-background,
+		$warning-dark,
+		$warning-hover,
+		$warning-active,
+		$warning-invert,
+		$warning-box-shadow,
+		$warning-background-glow-high-contrast
+	),
+	'danger': (
+		$danger,
+		$danger-background,
+		$danger-dark,
+		$danger-hover,
+		$danger-active,
+		$danger-invert,
+		$danger-box-shadow,
+		$danger-background-glow-high-contrast
+	)
+) !default;
+
+// Combined framework and brand colors for the array used in all the loops
+
+$colors: $framework-colors;
+
+// example implementation of a color loop
+
+// @each $name, $color-set in $framework-colors {
+// 	$base: nth($color-set, $effect-index-base);
+// 	$background: nth($color-set, $effect-index-background);
+// 	$heavy: nth($color-set, $effect-index-dark);
+// 	$hover: nth($color-set, $effect-index-hover);
+// 	$active: nth($color-set, $effect-index-active);
+// 	$invert: nth($color-set, $effect-index-invert);
+// 	$box-shadow: nth($color-set, $effect-index-box-shadow);
+//}
