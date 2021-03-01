@@ -71,8 +71,7 @@ $palette-blue-10: hsla(205, 70%, 91%, 1) !default; // #D7EAF8
 $palette-blue-20: hsla(206, 71%, 77%, 1) !default; // #9CCBEE
 $palette-blue-30: hsla(206, 70%, 68%, 1) !default; // #75B6E7
 $palette-blue-40: hsla(206, 100%, 50%, 1) !default; // #278CDA
-// !! some strangeness regarding conversion to hsla !!
-$palette-blue-50: hsla(206, 100%, 41%, 1) !default; // #0078D4
+$palette-blue-50: hsla(206, 100%, 41.6%, 1) !default; // #0078D4 // lightness 41.6%
 $palette-blue-60: hsla(206, 100%, 35%, 1) !default; // #0065B3
 $palette-blue-70: hsla(206, 100%, 30%, 1) !default; // #00579A
 $palette-blue-80: hsla(206, 100%, 23%, 1) !default; // #004173

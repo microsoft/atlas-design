@@ -1,6 +1,7 @@
 {
 	"name": "@microsoft/atlas-css",
 	"version": "0.2.0",
+	"main": "./src/index.scss",
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
