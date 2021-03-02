@@ -12,9 +12,8 @@ As the maintainer of this project, please make a few updates:
 
 ## Development
 
-- Ensure you are using NodeJS 15+ and npm 7+.
 - If contributing, please read about using [changesets](https://github.com/atlassian/changesets) and [semantic versioning bump types](https://semver.org/).
-- From a terminal, run `npm install`.
+- From a terminal, run `yarn install`.
 
 ## Using Atlas CSS
 
