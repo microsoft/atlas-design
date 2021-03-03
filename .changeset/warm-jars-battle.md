@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Adding shadow
+Adding tokens for box shadow.
