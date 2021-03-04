@@ -1,0 +1,77 @@
+// Responsiveness
+
+@mixin from($device) {
+	@media screen and (min-width: $device) {
+		@content;
+	}
+}
+
+@mixin until($device) {
+	@media screen and (max-width: $device - 1px),
+		screen and (min-resolution: 120dpi) and (max-width: $device - 0.1px) {
+		@content;
+	}
+}
+
+// Orientation
+
+@mixin orientation-portrait {
+	@media screen and (max-aspect-ratio: 1/1),
+		screen and (min-resolution: 120dpi) and (max-aspect-ratio: 1/1) {
+		@content;
+	}
+}
+
+@mixin orientation-landscape {
+	@media screen and (min-aspect-ratio: 1/1),
+		screen and (min-resolution: 120dpi) and (min-aspect-ratio: 1/1) {
+		@content;
+	}
+}
+
+@mixin orientation-square {
+	@media screen and (aspect-ratio: 1/1),
+		screen and (min-resolution: 120dpi) and (aspect-ratio: 1/1) {
+		@content;
+	}
+}
+
+// Mobile-first media queries
+
+@mixin small-only {
+	@media screen and (max-width: $breakpoint-medium - 1),
+		screen and (min-resolution: 120dpi) and (min-width: $breakpoint-small) and (max-width: $breakpoint-medium - 0.1px) {
+		@content;
+	}
+}
+
+@mixin small {
+	@media screen and (min-width: $breakpoint-small), print {
+		@content;
+	}
+}
+
+@mixin medium {
+	@media screen and (min-width: $breakpoint-medium), print {
+		@content;
+	}
+}
+
+@mixin touch {
+	@media screen and (max-width: $desktop - 1px),
+		screen and (min-resolution: 120dpi) and (max-width: $desktop - 0.1px) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media screen and (min-width: $breakpoint-large) {
+		@content;
+	}
+}
+
+@mixin massive {
+	@media screen and (min-width: $breakpoint-massive) {
+		@content;
+	}
+}
