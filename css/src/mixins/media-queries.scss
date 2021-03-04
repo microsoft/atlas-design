@@ -57,13 +57,6 @@
 	}
 }
 
-@mixin touch {
-	@media screen and (max-width: $desktop - 1px),
-		screen and (min-resolution: 120dpi) and (max-width: $desktop - 0.1px) {
-		@content;
-	}
-}
-
 @mixin large {
 	@media screen and (min-width: $breakpoint-large) {
 		@content;
