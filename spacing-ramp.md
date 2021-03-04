@@ -46,13 +46,13 @@
 
 # Migration Proposal
 
-- After adding spacing tokens to atlas-css, test the new tokens in docs-ui with low impact classes/components.
+- After adding spacing tokens to atlas-css, test the new tokens in docs-ui with low impact classes/components:
   - style-guide .hr margin
   - .hr margin
   - .details-summary padding
   - marketing .details-summary padding
 
-- Test higher impact classes/classes with arithmetic
+- Test higher impact classes/classes with arithmetic:
   - .is-overlayed-large margin
   - .footerContainer margin
   - .footer-layout padding
@@ -70,12 +70,12 @@
 
 # Atomic Class Implementation
 
-- Migrate current spacing helpers to atlas-css
-- Update $spacing-sizes with new key/value pairs
-- In the loops that create `has-margin-size`, `has-padding-size`, etc, add new classes for layout
+- Migrate current spacing helpers to atlas-css.
+- Update $spacing-sizes with new key/value pairs.
+- In the loops that create `has-margin-size`, `has-padding-size`, etc, add new classes for layout:
   - `has-layout-margin-size`, `has-layout-padding-size`, `has-layout-margin-size-tablet`, `has-layout-margin-size-mobile`, etc.
   - `has-layout-margin-top-size`, etc
   - `has-content-layout-margin-*`, etc 
-- Verify that there are no visual changes
-- Replace current class usage with new layout classes when applicable
-- Depreciate current _spacing.scss_ in docs-ui
+- Verify that there are no visual changes.
+- Replace current class usage with new layout classes where applicable.
+- Depreciate current _spacing.scss_ in docs-ui.
