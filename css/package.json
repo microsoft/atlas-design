@@ -24,6 +24,10 @@
 	],
 	"author": "Microsoft Corporation",
 	"license": "MIT",
+	"dependencies": {
+		"minireset.css": "^0.0.7",
+		"normalize.css": "^8.0.1"
+	},
 	"devDependencies": {
 		"prettier": "^2.2.1",
 		"stylelint": "^13.11.0",

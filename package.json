@@ -12,17 +12,19 @@
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
 		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\""
 	},
-	"nohoist": [
-		"./@microsoft/atlas-css"
-	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/microsoft/atlas-design"
 	},
-	"workspaces": [
-		"css",
-		"plugins/*"
-	],
+	"workspaces": {
+		"packages": [
+			"css",
+			"plugins/*"
+		]
+	},
+	"installConfig": {
+		"pnp": false
+	},
 	"keywords": [
 		"microsoft",
 		"atlas",
