@@ -1,6 +1,7 @@
 {
 	"name": "@microsoft/stylelint-config-atlas",
 	"version": "1.0.0",
+	"private": true,
 	"description": "Shareable config for stylelint",
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"keywords": [
