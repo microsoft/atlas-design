@@ -8,6 +8,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "yarn workspace @microsoft/atlas-css lint",
 		"lint:fix": "yarn lint --fix",
+		"build:css": "yarn workspace @microsoft/atlas-css build",
 		"prettier": "prettier --write \"**/*.{scss,ts,js,json,yml,md}\"",
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
 		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\""

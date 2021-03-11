@@ -2,11 +2,11 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
     branches: [CI_TEST]
 
@@ -29,6 +29,6 @@ jobs:
       - name: Find CSS Folder
         run: |
           cd "${{github.workspace}}/css"
-          ls
-         
-      # yarn changeset publish --otp=${{secrets.NPM_TOKEN}}
+          yarn install;
+          yarn build:css
+          yarn changeset publish --otp=${{secrets.NPM_TOKEN}}
