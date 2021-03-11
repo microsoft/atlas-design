@@ -29,7 +29,7 @@
 	"dependencies": {
 		"minireset.css": "^0.0.7",
 		"normalize.css": "^8.0.1",
-		"parcel": "^2.0.0-beta.1",
+		"parcel": "^2.0.0-nightly.615",
 		"@parcel/transformer-sass": "^2.0.0-alpha.3",
 		"sass": "^1.32.8"
 	},
