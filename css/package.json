@@ -7,7 +7,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "stylelint ./src/**/*.scss",
-		"build": "parcel build ./src/index.scss -d ./dist"
+		"build": "parcel build ./src/index.scss --dist-dir ./dist"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -29,7 +29,7 @@
 	"dependencies": {
 		"minireset.css": "^0.0.7",
 		"normalize.css": "^8.0.1",
-		"parcel": "2.0.0-beta.1",
+		"parcel@next": "",
 		"sass": "^1.32.8"
 	},
 	"devDependencies": {
