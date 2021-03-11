@@ -1,13 +1,13 @@
 {
 	"name": "@microsoft/atlas-css",
 	"version": "0.3.0",
-	"main": "/dist/index.css",
-	"source": "/src/index.scss",
+	"main": "dist/index.css",
+	"source": "src/index.scss",
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "stylelint ./src/**/*.scss",
-		"build": "parcel build ./src/index.scss --out-dir ./dist"
+		"build": "parcel build src/index.scss --dist-dir dist"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -16,9 +16,6 @@
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
-	},
-	"resolutions": {
-		"@babel/preset-env": "7.13.8"
 	},
 	"keywords": [
 		"microsoft",
@@ -31,23 +28,15 @@
 	"license": "MIT",
 	"dependencies": {
 		"minireset.css": "^0.0.7",
-		"normalize.css": "^8.0.1",
-		"parcel": "^1.12.3",
-		"sass": "^1.32.8"
+		"normalize.css": "^8.0.1"
 	},
 	"devDependencies": {
+		"parcel": "next",
 		"@microsoft/stylelint-config-atlas": "2.0.0",
 		"prettier": "^2.2.1",
+		"sass": "^1.32.8",
 		"stylelint": "^13.11.0",
 		"stylelint-config-prettier": "^8.0.2",
 		"stylelint-prettier": "^1.1.2"
-	},
-	"prettier": {
-		"useTabs": true,
-		"singleQuote": true,
-		"printWidth": 100,
-		"trailingComma": "none",
-		"arrowParens": "avoid",
-		"endOfLine": "auto"
 	}
 }
