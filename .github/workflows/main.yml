@@ -29,6 +29,7 @@ jobs:
       - name: Build and publish
         run: |
           cd "${{github.workspace}}";
+          yarn install;
           echo 'Creating Dist Folder';
           mkdir ./css/dist;
           echo 'Building CSS';
