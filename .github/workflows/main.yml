@@ -30,7 +30,7 @@ jobs:
         run: |
           cd "${{github.workspace}}";
           echo 'Creating Dist Folder';
-          mkdir /css/dist;
+          mkdir ./css/dist;
           echo 'Building CSS';
           yarn build:css;
           yarn changeset publish --otp=${{secrets.NPM_TOKEN}};
