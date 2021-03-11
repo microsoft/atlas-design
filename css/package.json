@@ -17,6 +17,9 @@
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
+	"resolutions": {
+		"@babel/preset-env": "7.13.8"
+	},
 	"keywords": [
 		"microsoft",
 		"atlas",
