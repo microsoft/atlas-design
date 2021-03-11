@@ -1,0 +1,21 @@
+// Typography
+$font-size-9: 0.75rem !default; // 12px
+$font-size-8: 0.875rem !default; // 14px
+$font-size-7: 1rem !default; // 16px
+$font-size-6: 1.125rem !default; // 18px
+$font-size-5: 1.25rem !default; // 20px
+$font-size-4: 1.5rem !default; // 24px
+$font-size-3: 1.75rem !default; // 28px
+$font-size-2: 2.125rem !default; // 34px
+$font-size-1: 2.5rem !default; // 40px
+$font-size-0: 3.375rem !default; // 54px
+
+// Base
+$font-size-small: $font-size-8 !default;
+$font-size-medium: $font-size-7 !default;
+$font-size-large: $font-size-4 !default;
+$font-size-extra-large: $font-size-1 !default;
+$font-size-extra-extra-large: $font-size-0 !default;
+
+// Heading Sizes
+$font-heading-sizes: $font-size-1 $font-size-2 $font-size-3 $font-size-4 $font-size-5 $font-size-6 !default;
