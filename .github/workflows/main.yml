@@ -28,7 +28,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build and publish
         run: |
-          cd "${{github.workspace}}"
-          yarn install --unsafe-perm=true --allow-root;
-          yarn build:css
-          yarn changeset publish --otp=${{secrets.NPM_TOKEN}}
+          cd "${{github.workspace}}";
+          echo 'Creating Dist Folder';
+          mkdir /css/dist;
+          echo 'Building CSS';
+          yarn build:css;
+          yarn changeset publish --otp=${{secrets.NPM_TOKEN}};
