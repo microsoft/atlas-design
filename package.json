@@ -45,9 +45,6 @@
 			"pre-push": "yarn lint"
 		}
 	},
-	"resolutions": {
-		"@babel/preset-env": "7.13.8"
-	},
 	"prettier": {
 		"useTabs": true,
 		"singleQuote": true,

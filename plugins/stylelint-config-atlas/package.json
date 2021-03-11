@@ -24,13 +24,5 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"prettier": {
-		"useTabs": true,
-		"singleQuote": true,
-		"printWidth": 100,
-		"trailingComma": "none",
-		"arrowParens": "avoid",
-		"endOfLine": "auto"
 	}
 }

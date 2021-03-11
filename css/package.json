@@ -17,9 +17,6 @@
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
-	"resolutions": {
-		"@babel/preset-env": "7.13.8"
-	},
 	"keywords": [
 		"microsoft",
 		"atlas",
@@ -41,13 +38,5 @@
 		"stylelint": "^13.11.0",
 		"stylelint-config-prettier": "^8.0.2",
 		"stylelint-prettier": "^1.1.2"
-	},
-	"prettier": {
-		"useTabs": true,
-		"singleQuote": true,
-		"printWidth": 100,
-		"trailingComma": "none",
-		"arrowParens": "avoid",
-		"endOfLine": "auto"
 	}
 }
