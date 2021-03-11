@@ -29,6 +29,6 @@ jobs:
       - name: Build and publish
         run: |
           cd "${{github.workspace}}"
-          yarn install;
+          yarn install --unsafe-perm=true --allow-root;
           yarn build:css
           yarn changeset publish --otp=${{secrets.NPM_TOKEN}}
