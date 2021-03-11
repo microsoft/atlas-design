@@ -1,5 +1,5 @@
 ---
-'@microsoft/atlas-css': patch
+'@microsoft/atlas-css': minor
 ---
 
-Adding Typography Token
+Add typography tokens
