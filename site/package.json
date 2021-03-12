@@ -1,0 +1,14 @@
+{
+	"name": "@microsoft/atlas-site",
+	"version": "0.0.1",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"start": "parcel src/*.md --no-cache",
+		"build": "parcel build src/*.md --no-cache"
+	},
+	"devDependencies": {
+		"parcel": "next",
+		"@microsoft/parcel-transformer-markdown-html": "^2.0.0-alpha.3.1"
+	}
+}
