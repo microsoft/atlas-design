@@ -4,7 +4,7 @@ description: Demonstrating the capabilities of markdown using Parcel 2
 template: standard
 ---
 
-# Colors
+# Color
 
 This is some content!
 

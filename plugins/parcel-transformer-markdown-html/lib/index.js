@@ -54,10 +54,12 @@ module.exports = new Transformer({
 
 		if (attributes.template) {
 			// load our configuration file to point us to the templates
-			const templateLocation = path.resolve(
-				config.contents.templatePath,
-				`${attributes.template}.html`
+			const toTemplates = path.resolve(
+				config.filePath.replace('.scaffoldrc', ''),
+				config.contents.templatePath
 			);
+			const templateLocation = path.resolve(toTemplates, `${attributes.template}.html`);
+
 			const template = await options.inputFS.readFile(templateLocation, 'utf-8');
 
 			asset.addIncludedFile({
