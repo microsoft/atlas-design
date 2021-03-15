@@ -4,8 +4,8 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"start": "parcel src/*.md --no-cache",
-		"build": "parcel build src/*.md --no-cache"
+		"start": "parcel src/*.md --port 1111 --open",
+		"build": "parcel build src/*.md"
 	},
 	"devDependencies": {
 		"parcel": "next",
