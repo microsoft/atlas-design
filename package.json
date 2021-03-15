@@ -8,7 +8,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "yarn workspace @microsoft/atlas-css lint",
 		"lint:fix": "yarn lint --fix",
-		"start": "npm-run-all --parallel serve:*",
+		"start": "yarn serve:site",
 		"serve:site": "yarn workspace @microsoft/atlas-site start",
 		"serve:css": "yarn workspace @microsoft/atlas-css start",
 		"build:css": "yarn workspace @microsoft/atlas-css build",

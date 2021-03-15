@@ -10,30 +10,23 @@ const markedParse = promisify(marked.parse);
 
 module.exports = new Transformer({
 	async loadConfig({ config }) {
-		let configFile = await config.getConfig(['.scaffoldrc']);
+		const configFile = await config.getConfig(['.scaffoldrc']);
 
-		if (configFile) {
-			if (!configFile.contents.templatePath) {
-				throw new Error(
-					`Your ".scaffoldrc" should contain a json structure with "templatePath" property pointing to the folder containing html layouts. Your config: ${JSON.stringify(
-						configFile.contents.templatePath
-					)}`
-				);
-			}
-
-			configFile.contents.toTemplates = path.join(
-				config.filePath.replace('.scaffoldrc', ''),
-				config.contents.templatePath
+		if (!configFile) {
+			throw new Error(
+				`Plugin 'parcel-transformer-markdown-html' requires an ".scaffoldrc" files to be specified.`
 			);
-
-			config.setResult(configFile);
-
-			return;
 		}
 
-		throw new Error(
-			`Plugin 'parcel-transformer-markdown-html' requires an ".scaffoldrc" files to be specified.`
-		);
+		if (!configFile.contents.templatePath) {
+			throw new Error(
+				`Your ".scaffoldrc" should contain a json structure with "templatePath" property pointing to the folder containing html layouts. Your config: ${JSON.stringify(
+					configFile.contents.templatePath
+				)}`
+			);
+		}
+
+		config.setResult(configFile);
 	},
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset
@@ -61,11 +54,10 @@ module.exports = new Transformer({
 
 		if (attributes.template) {
 			// load our configuration file to point us to the templates
-			const templateLocation = path.join(
-				config.contents.toTemplates,
+			const templateLocation = path.resolve(
+				config.contents.templatePath,
 				`${attributes.template}.html`
 			);
-
 			const template = await options.inputFS.readFile(templateLocation, 'utf-8');
 
 			asset.addIncludedFile({
