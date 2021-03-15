@@ -14,9 +14,12 @@ module.exports = new Transformer({
 		let configFile = await config.getConfig(['.scaffoldrc']);
 
 		if (configFile) {
-			let isJavascript = path.extname(configFile.filePath) === '.js';
-			if (isJavascript) {
-				config.shouldInvalidateOnStartup();
+			if (!configFile.contents.templatePath) {
+				throw new Error(
+					`Your ".scaffoldrc" should contain a json structure with "templatePath" property pointing to the folder containing html layouts. Your config: ${JSON.stringify(
+						configFile.contents.templatePath
+					)}`
+				);
 			}
 
 			configFile.contents.toTemplates = path.join(
@@ -25,19 +28,13 @@ module.exports = new Transformer({
 			);
 
 			config.setResult(configFile);
+
+			return;
 		}
 
-		if (!configFile) {
-			throw new Error(
-				`Plugin 'parcel-transformer-markdown-html' requires an ".scaffoldrc" files to be specified.`
-			);
-		} else if (!configFile.contents.templatePath) {
-			throw new Error(
-				`Your ".scaffoldrc" should contain a json structure with "templatePath" property pointing to the folder containing html layouts. Your config: ${JSON.stringify(
-					configFile.contents.templatePath
-				)}`
-			);
-		}
+		throw new Error(
+			`Plugin 'parcel-transformer-markdown-html' requires an ".scaffoldrc" files to be specified.`
+		);
 	},
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset

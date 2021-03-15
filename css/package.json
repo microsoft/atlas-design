@@ -8,7 +8,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "stylelint ./src/**/*.scss",
 		"start": "parcel src/index.scss --port 8888",
-		"build": "parcel build src/index.scss --no-cache --log-level=verbose"
+		"build": "parcel build src/index.scss --no-cache"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
