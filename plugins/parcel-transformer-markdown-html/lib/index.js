@@ -6,7 +6,6 @@ const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
 const mustache = require('mustache');
 const path = require('path');
-
 const markedParse = promisify(marked.parse);
 
 module.exports = new Transformer({
