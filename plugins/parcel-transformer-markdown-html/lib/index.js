@@ -5,19 +5,47 @@ const marked = require('marked');
 const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
 const mustache = require('mustache');
+const path = require('path');
 
 const markedParse = promisify(marked.parse);
 
 module.exports = new Transformer({
+	async loadConfig({ config }) {
+		let configFile = await config.getConfig(['.scaffoldrc']);
+
+		if (configFile) {
+			let isJavascript = path.extname(configFile.filePath) === '.js';
+			if (isJavascript) {
+				config.shouldInvalidateOnStartup();
+			}
+
+			configFile.contents.toTemplates = path.join(
+				config.filePath.replace('.scaffoldrc', ''),
+				config.contents.templatePath
+			);
+
+			config.setResult(configFile);
+		}
+
+		if (!configFile) {
+			throw new Error(
+				`Plugin 'parcel-transformer-markdown-html' requires an ".scaffoldrc" files to be specified.`
+			);
+		} else if (!configFile.contents.templatePath) {
+			throw new Error(
+				`Your ".scaffoldrc" should contain a json structure with "templatePath" property pointing to the folder containing html layouts. Your config: ${JSON.stringify(
+					configFile.contents.templatePath
+				)}`
+			);
+		}
+	},
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset
-		resolve, // https://v2.parceljs.org/plugin-system/transformer/#ResolveFn
-		options // https://v2.parceljs.org/plugin-system/api/#PluginOptions
-		// config, // https://v2.parceljs.org/plugin-system/api/#ConfigResult
+		options, // https://v2.parceljs.org/plugin-system/api/#PluginOptions
+		config // https://v2.parceljs.org/plugin-system/api/#ConfigResult
 		// logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
 	}) {
 		asset.type = 'html';
-
 		const code = await asset.getCode();
 		const { body, attributes } = frontMatter(code);
 
@@ -36,8 +64,14 @@ module.exports = new Transformer({
 		});
 
 		if (attributes.template) {
-			const templateLocation = await resolve(asset.filePath, attributes.template); // consider `layout/${attributes.template}`
+			// load our configuration file to point us to the templates
+			const templateLocation = path.join(
+				config.contents.toTemplates,
+				`${attributes.template}.html`
+			);
+
 			const template = await options.inputFS.readFile(templateLocation, 'utf-8');
+
 			asset.addIncludedFile({
 				filePath: templateLocation
 			});

@@ -1,7 +1,7 @@
 ---
 title: Home Page
 description: Demonstrating the capabilities of markdown using Parcel 2
-template: ./.scaffold/standard.html
+template: standard
 ---
 
 # Home
