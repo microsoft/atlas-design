@@ -203,7 +203,8 @@ module.exports = {
 					'if',
 					'mixin',
 					'return',
-					'warn'
+					'warn',
+					'extend'
 				]
 			}
 		],

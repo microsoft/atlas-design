@@ -1,0 +1,52 @@
+@use 'sass:map';
+
+$root-theme: 'light' !default;
+$print-theme: 'light' !default;
+
+@if map.has-key($themes, $root-theme) != true {
+	@error "Cannot build themes because $root-theme (#{$root-theme}) is set to a theme that does not exist in $themes map.";
+}
+
+@if map.has-key($themes, $print-theme) != true {
+	@error "Cannot build themes because $print-theme (#{$print-theme}) is set to a theme that does not exist in $themes map.";
+}
+
+@each $key, $value in $themes {
+	// Set the default theme
+	@if $key == $root-theme {
+		:root {
+			@each $colorName, $colorVal in map.get($themes, $key) {
+				--theme-#{$colorName}: #{$colorVal};
+			}
+		}
+	}
+
+	@if $key == $print-theme {
+		.theme-#{$key} {
+			@each $colorName, $colorVal in map.get($themes, $key) {
+				--theme-#{$colorName}: #{$colorVal};
+			}
+		}
+	} @else {
+		// Set the rest of the themes, exclude them from print styling.
+		@media not print {
+			.theme-#{$key} {
+				@each $colorName, $colorVal in map-get($themes, $key) {
+					--theme-#{$colorName}: #{$colorVal};
+				}
+			}
+		}
+	}
+}
+
+%theme-base-styles {
+	outline-color: $text;
+	background-color: $body-background;
+	color: $text;
+}
+
+@each $key, $value in $themes {
+	.theme-#{$key} {
+		@extend %theme-base-styles;
+	}
+}
