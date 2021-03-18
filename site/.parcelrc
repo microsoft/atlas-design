@@ -1,6 +1,7 @@
 {
   "extends": "@parcel/config-default",
   "transformers": {
-    "*.md": ["@microsoft/parcel-transformer-markdown-html"]
+    "*.md": ["@microsoft/parcel-transformer-markdown-html"],
+	"*.navigation.json": ["@microsoft/parcel-transformer-navigation-json"]
   }
 }

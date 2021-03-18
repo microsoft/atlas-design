@@ -58,9 +58,13 @@ module.exports = new Transformer({
 				config.filePath.replace('.scaffoldrc', ''),
 				config.contents.templatePath
 			);
+			const tocPath = config.contents.tocPath || '';
 			const templateLocation = path.resolve(basePath, `${attributes.template}.html`);
 
 			const template = await options.inputFS.readFile(templateLocation, 'utf-8');
+			const tocPages = tocPath
+				? await options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
+				: null;
 
 			asset.addIncludedFile({
 				filePath: templateLocation
@@ -69,6 +73,7 @@ module.exports = new Transformer({
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
+					toc: { name: 'TOC', pages: tocPages },
 					...attributes
 				})
 			);

@@ -1,0 +1,21 @@
+{
+	"name": "@microsoft/parcel-transformer-navigation-json",
+	"version": "2.0.0-alpha.3.1",
+	"license": "MIT",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/atlas-design"
+	},
+	"main": "lib/index.js",
+	"engines": {
+		"node": ">= 13.0.0",
+		"parcel": "^2.0.0-beta.1"
+	},
+	"dependencies": {
+		"glob": "^7.1.6",
+		"@parcel/plugin": "2.0.0-beta.1",
+		"@parcel/utils": "2.0.0-beta.1",
+		"front-matter": "^4.0.2"
+	}
+}
