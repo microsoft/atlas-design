@@ -68,8 +68,6 @@ async function createToc(subDir) {
 			isDirectory
 		};
 
-		console.log(entry);
-
 		if (entry.isDirectory) {
 			entry.children = await createToc(srcPath);
 		}

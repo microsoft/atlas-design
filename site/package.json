@@ -4,9 +4,7 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"prebuild": "node toc.js",
-		"prestart": "node toc.js",
-		"start": "parcel src/**/*.md --port 1111 --open --no-cache",
+		"start": "parcel src/**/*.md --port 1111 --no-cache --log-level verbose",
 		"build": "parcel build src/**/*.md",
 		"toc": "parcel src/**/*.navigation.json --log-level verbose --no-cache"
 	},

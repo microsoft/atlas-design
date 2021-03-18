@@ -8,7 +8,9 @@
 		<meta property="og:title" content="{{title}}" />
 		<meta property="og:type" content="website" />
 		<meta name="color-scheme" content="light dark" />
-		<link rel="stylesheet" href="~/src/scaffold/index.scss"
+		<link rel="stylesheet" href="~/src/scaffold/index.scss">
+		<script id="toc" type="application/json" src="~/src/scaffold/toc.navigation.json"></script>
+
 	</head>
 	<body>
 		<header
@@ -32,6 +34,10 @@
 						<a href="{{{href}}}">{{name}}</a>
 					{{/children.0}}
 				{{/pages}}
+				{{#names}}
+					{{.}}
+				{{/names}}
+				{{ignore.scaffold}}
 			{{/toc}}
 		</aside>
 	</body>

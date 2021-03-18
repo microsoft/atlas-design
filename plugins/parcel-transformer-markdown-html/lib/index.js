@@ -1,6 +1,6 @@
 // @ts-check
 const { Transformer } = require('@parcel/plugin');
-const { promisify } = require('@parcel/utils');
+const { promisify, createDependencyLocation } = require('@parcel/utils');
 const marked = require('marked');
 const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
@@ -31,8 +31,8 @@ module.exports = new Transformer({
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset
 		options, // https://v2.parceljs.org/plugin-system/api/#PluginOptions
-		config // https://v2.parceljs.org/plugin-system/api/#ConfigResult
-		// logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
+		config, // https://v2.parceljs.org/plugin-system/api/#ConfigResult
+		logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
 	}) {
 		asset.type = 'html';
 		const code = await asset.getCode();
@@ -58,22 +58,36 @@ module.exports = new Transformer({
 				config.filePath.replace('.scaffoldrc', ''),
 				config.contents.templatePath
 			);
-			const tocPath = config.contents.tocPath || '';
+
+			const tocPath = path.resolve(basePath, 'toc.navigation.json');
+			const toc = asset.addURLDependency('~/src/scaffold/toc.navigation.json', {
+				isEntry: true,
+				isInline: true
+			});
+			const toc1 = await options.inputFS.readFile(tocPath, 'utf-8');
+
+			// // Log out the things!
+			logger.verbose({
+				message: JSON.stringify({
+					tocPath,
+					toc,
+					toc1
+				}),
+				filePath: asset.filePath
+			});
+
 			const templateLocation = path.resolve(basePath, `${attributes.template}.html`);
 
 			const template = await options.inputFS.readFile(templateLocation, 'utf-8');
-			const tocPages = tocPath
-				? await options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
-				: null;
 
-			asset.addIncludedFile({
+			await asset.addIncludedFile({
 				filePath: templateLocation
 			});
 
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
-					toc: { name: 'TOC', pages: tocPages },
+					toc: { name: 'TOC', pages: {} },
 					...attributes
 				})
 			);
