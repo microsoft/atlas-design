@@ -1,0 +1,33 @@
+// Radius
+$radius-small: 2px !default;
+$radius: 4px !default;
+$radius-large: 6px !default;
+$radius-rounded: 290486px !default;
+
+// Direction
+$user-text-direction: ltr !default;
+$content-text-direction: ltr !default;
+
+$user-left: if($user-text-direction == rtl, right, left);
+$user-right: if($user-text-direction == rtl, left, right);
+
+$content-left: if($content-text-direction == rtl, right, left);
+$content-right: if($content-text-direction == rtl, left, right);
+
+$user-translate-x-direction: if($user-text-direction == rtl, -1, 1);
+$content-translate-x-direction: if($content-text-direction == rtl, -1, 1);
+
+// Animation related property values
+$input-timing-function: cubic-bezier(0.4, 0, 0.23, 1) !default;
+$input-transition-duration: 200ms;
+$nav-bar-transition-duration: 86ms !default;
+
+// Focus related variables
+$focus-width: 0.125rem !default;
+$focus-style: dashed !default;
+$focus-outline-offset: 0.125rem !default;
+
+// Layout
+$column-gap: 0.75rem !default;
+$large-column-gap: 1.5rem !default;
+$reading-max-width: 75ch;
