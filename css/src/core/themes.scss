@@ -3,12 +3,40 @@
 $root-theme: 'light' !default;
 $print-theme: 'light' !default;
 
+// Ensure that the root theme exists
 @if map.has-key($themes, $root-theme) != true {
 	@error "Cannot build themes because $root-theme (#{$root-theme}) is set to a theme that does not exist in $themes map.";
 }
 
+// Ensure that the print theme exists
 @if map.has-key($themes, $print-theme) != true {
 	@error "Cannot build themes because $print-theme (#{$print-theme}) is set to a theme that does not exist in $themes map.";
+}
+
+$theme-names: map.keys($themes);
+
+// Validation: ensure that all values in the root theme are in the other themes too
+@each $root-color-name, $val in map.get($themes, $root-theme) {
+	@each $theme-name in $theme-names {
+		@if $theme-name != $root-theme {
+			@if map.has-key(map.get($themes, $theme-name), $root-color-name) != true {
+				@error '#{$root-color-name} from #{$root-theme} does not exist in theme: #{$theme-name}.';
+			}
+		}
+	}
+}
+
+// Validation: ensure all properties in non-root themes exist root
+@each $theme-name in $theme-names {
+	$theme: map.get($themes, $theme-name);
+	@if $theme-name != $root-theme {
+		$root: map.get($themes, $root-theme);
+		@each $color-name, $val in $theme {
+			@if map.has-key($root, $color-name) != true {
+				@error '#{$color-name} from #{$theme-name} does not exist in theme: #{$theme-name}.';
+			}
+		}
+	}
 }
 
 @each $key, $value in $themes {
