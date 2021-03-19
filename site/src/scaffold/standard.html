@@ -5,10 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>{{title}} | Atlas Design | Microsoft</title>
-		<meta property="og:title" content="{{title}} | Atlas Design | Microsoft" />
+		<meta property="og:title" content="{{title}}" />
 		<meta property="og:type" content="website" />
 		<meta name="color-scheme" content="light dark" />
-		<link rel="stylesheet" href="~/src/scaffold/index.scss"
+		<link rel="stylesheet" href="~/src/scaffold/index.scss">
+		<link id="toc-data" rel="preload" href="~/src/scaffold/toc.navigation.json" as="fetch">
 	</head>
 	<body>
 		<header
@@ -16,7 +17,28 @@
 		>
 			Atlas Design
 		</header>
-
-		{{{ body }}}
+		<div>{{{ body }}}</div>
+		<aside id="aside" style="padding: 1rem;">
+			{{#toc}}
+				{{#pages}}
+					{{#isDirectory}}
+						<p>{{name}}</p>
+						<div style="border: 1px solid aliceblue; margin-inline-start: 1rem;">
+							{{#children}}
+								<a style="margin-top: 1rem" href="{{{href}}}">{{name}}</a>
+							{{/children}}
+						</div>
+					{{/isDirectory}}
+					{{^children.0}}
+						<a href="{{{href}}}">{{name}}</a>
+					{{/children.0}}
+				{{/pages}}
+				{{#names}}
+					{{.}}
+				{{/names}}
+				{{ignore.scaffold}}
+			{{/toc}}
+		</aside>
+		<script src="~/src/scaffold/index.ts"></script>
 	</body>
 </html>

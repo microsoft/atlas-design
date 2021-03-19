@@ -1,6 +1,6 @@
 // @ts-check
 const { Transformer } = require('@parcel/plugin');
-const { promisify } = require('@parcel/utils');
+const { promisify, createDependencyLocation } = require('@parcel/utils');
 const marked = require('marked');
 const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
@@ -31,8 +31,8 @@ module.exports = new Transformer({
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset
 		options, // https://v2.parceljs.org/plugin-system/api/#PluginOptions
-		config // https://v2.parceljs.org/plugin-system/api/#ConfigResult
-		// logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
+		config, // https://v2.parceljs.org/plugin-system/api/#ConfigResult
+		logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
 	}) {
 		asset.type = 'html';
 		const code = await asset.getCode();
@@ -58,17 +58,19 @@ module.exports = new Transformer({
 				config.filePath.replace('.scaffoldrc', ''),
 				config.contents.templatePath
 			);
+
 			const templateLocation = path.resolve(basePath, `${attributes.template}.html`);
 
 			const template = await options.inputFS.readFile(templateLocation, 'utf-8');
 
-			asset.addIncludedFile({
+			await asset.addIncludedFile({
 				filePath: templateLocation
 			});
 
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
+					toc: { name: 'TOC', pages: {} },
 					...attributes
 				})
 			);

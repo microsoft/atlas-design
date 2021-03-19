@@ -1,3 +1,4 @@
 {
-	"templatePath": "src/scaffold/"
+	"templatePath": "src/scaffold/",
+	"tocPath": "src/scaffold/toc.json"
 }

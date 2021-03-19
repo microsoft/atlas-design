@@ -1,0 +1,9 @@
+{
+	"dir": "../",
+	"ignore": { "scaffold": true },
+	"names": {
+		"index.md": "[hide]",
+		"tokens": "Tokens!",
+		"tokens\\colors.md": "Shoot!"
+	}
+}
