@@ -45,6 +45,11 @@ jobs:
           mkdir ./css/dist;
           yarn build:css;
 
+      # Run build for website
+      - name: Build build site
+        run: |
+          yarn build:site;
+
       # If the version has been incremented (with `yarn changeset version`), publish package
       - name: Publish on version increment
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
