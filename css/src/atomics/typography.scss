@@ -1,5 +1,4 @@
 // Heading sizes
-
 .heading-h1 {
 	font-size: $font-size-1 !important;
 }
@@ -25,7 +24,6 @@
 }
 
 // Non-heading sizes
-
 .font-size-xxl {
 	font-size: $font-size-0 !important;
 }
@@ -54,8 +52,28 @@
 	font-size: $font-size-9 !important;
 }
 
-// Case
+// Weight
+.font-weight-light {
+	font-weight: $weight-light !important;
+}
 
+.font-weight-semilight {
+	font-weight: $weight-semilight !important;
+}
+
+.font-weight-normal {
+	font-weight: $weight-normal !important;
+}
+
+.font-weight-semibold {
+	font-weight: $weight-semibold !important;
+}
+
+.font-weight-bold {
+	font-weight: $weight-bold !important;
+}
+
+// Case
 .capitalized {
 	text-transform: capitalize !important;
 }
@@ -82,4 +100,13 @@
 
 .undecorated {
 	text-decoration: none;
+}
+
+.normal {
+	font-style: normal;
+}
+
+//Letter Spacing
+.letter-spacing-wide {
+	letter-spacing: $letter-spacing-wide;
 }
