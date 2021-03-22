@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>{{title}} | Atlas Design | Microsoft</title>
-		<meta property="og:title" content="{{title}} | Atlas Design | Microsoft" />
+		<meta property="og:title" content="{{title}}" />
 		<meta property="og:type" content="website" />
 		<meta name="color-scheme" content="light dark" />
 		<link rel="stylesheet" href="~/src/scaffold/index.scss"
@@ -16,7 +16,25 @@
 		>
 			Atlas Design
 		</header>
-
-		{{{ body }}}
+		<div>{{{ body }}}</div>
+		<aside style="padding: 1rem;">
+			{{#toc}}
+				{{#pages}}
+					{{^isHidden}}
+						{{#isDirectory}}
+							<p>{{name}}</p>
+							<div style="border: 1px solid aliceblue; margin-inline-start: 1rem;">
+								{{#children}}
+									<a style="margin-top: 1rem" href="{{{href}}}">{{name}}</a>
+								{{/children}}
+							</div>
+						{{/isDirectory}}
+						{{^children.0}}
+							<a href="{{{href}}}">{{name}}</a>
+						{{/children.0}}
+					{{/isHidden}}
+				{{/pages}}
+			{{/toc}}
+		</aside>
 	</body>
 </html>

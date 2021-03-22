@@ -4,3 +4,4 @@ dist
 .cache
 .parcel-cache
 *.log
+toc.json

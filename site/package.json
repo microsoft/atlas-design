@@ -4,12 +4,17 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"start": "parcel src/**/*.md --port 1111 --open",
-		"build": "parcel build src/**/*.md"
+		"prebuild": "node toc.js",
+		"prestart": "node toc.js",
+		"start": "parcel src/**/*.md --port 1111 --open --no-cache",
+		"build": "parcel build src/**/*.md",
+		"toc": "node toc.js"
 	},
 	"devDependencies": {
 		"@microsoft/atlas-css": "^0.3.0",
 		"parcel": "next",
-		"@microsoft/parcel-transformer-markdown-html": "^2.0.0-alpha.3.1"
+		"@microsoft/parcel-transformer-markdown-html": "^2.0.0-alpha.3.1",
+		"fs-extra": "^9.1.0",
+		"front-matter": "^4.0.2"
 	}
 }
