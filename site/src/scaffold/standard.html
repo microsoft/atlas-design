@@ -19,7 +19,7 @@
 		<div>{{{ body }}}</div>
 		<aside style="padding: 1rem;">
 			{{#toc}}
-				{{#pages}}
+				{{#entries}}
 					{{^isHidden}}
 						{{#isDirectory}}
 							<p>{{name}}</p>
@@ -33,7 +33,7 @@
 							<a href="{{{href}}}">{{name}}</a>
 						{{/children.0}}
 					{{/isHidden}}
-				{{/pages}}
+				{{/entries}}
 			{{/toc}}
 		</aside>
 	</body>

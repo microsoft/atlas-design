@@ -62,7 +62,7 @@ module.exports = new Transformer({
 			const templateLocation = path.resolve(basePath, `${attributes.template}.html`);
 
 			const template = await options.inputFS.readFile(templateLocation, 'utf-8');
-			const tocPages = tocPath
+			const tocEntries = tocPath
 				? await options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
 				: null;
 
@@ -73,7 +73,7 @@ module.exports = new Transformer({
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
-					toc: { name: 'TOC', pages: tocPages },
+					toc: { name: 'TOC', entries: tocEntries },
 					...attributes
 				})
 			);
