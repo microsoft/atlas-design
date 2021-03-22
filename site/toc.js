@@ -89,8 +89,8 @@ async function createToc(subDir) {
 			isDirectory = (await fs.stat(location)).isDirectory();
 		}
 
-		// Only add markdown files and directories, except scaffold
-		if (parsed.name === 'scaffold' || (!isDirectory && !isMarkdown)) {
+		// Only add markdown files and directories, except ignored files
+		if (parsed.name in settings.ignore || (!isDirectory && !isMarkdown)) {
 			continue;
 		}
 
