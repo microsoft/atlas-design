@@ -24,12 +24,12 @@
 							<p>{{name}}</p>
 							<div style="border: 1px solid aliceblue; margin-inline-start: 1rem;">
 								{{#children}}
-									<a style="margin-top: 1rem" href="{{{}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+									<a style="margin-top: 1rem" href="{{filePath}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 								{{/children}}
 							</div>
 						{{/isDirectory}}
 						{{^children.0}}
-							<a href="{{{filePath}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+							<a href="{{filePath}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 						{{/children.0}}
 				{{/entries}}
 			{{/toc}}
