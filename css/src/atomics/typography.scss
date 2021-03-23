@@ -1,58 +1,57 @@
 // Heading sizes
-.heading-h1 {
+
+.font-size-h1 {
 	font-size: $font-size-1 !important;
 }
 
-.heading-h2 {
+.font-size-h2 {
 	font-size: $font-size-2 !important;
 }
 
-.heading-h3 {
+.font-size-h3 {
 	font-size: $font-size-3 !important;
 }
 
-.heading-h4 {
+.font-size-h4 {
 	font-size: $font-size-4 !important;
 }
 
-.heading-h5 {
+.font-size-h5 {
 	font-size: $font-size-5 !important;
 }
 
-.heading-h6 {
+.font-size-h6 {
 	font-size: $font-size-6 !important;
 }
 
 // Non-heading sizes
+
 .font-size-xxl {
 	font-size: $font-size-0 !important;
 }
 
 .font-size-xl {
-	font-size: $font-size-1 !important;
-}
-
-.font-size-l {
 	font-size: $font-size-2 !important;
 }
 
+.font-size-l {
+	font-size: $font-size-4 !important;
+}
+
 .font-size-m {
-	font-size: $font-size-3 !important;
+	font-size: $font-size-6 !important;
 }
 
 .font-size-s {
-	font-size: $font-size-5 !important;
+	font-size: $font-size-8 !important;
 }
 
 .font-size-xs {
-	font-size: $font-size-7 !important;
-}
-
-.font-size-xxs {
 	font-size: $font-size-9 !important;
 }
 
 // Weight
+
 .font-weight-light {
 	font-weight: $weight-light !important;
 }
@@ -74,39 +73,17 @@
 }
 
 // Case
-.capitalized {
-	text-transform: capitalize !important;
-}
 
-.lowercase {
-	text-transform: lowercase !important;
-}
-
-.uppercase {
-	text-transform: uppercase !important;
-}
-
-.italic {
+.font-style-italic {
 	font-style: italic !important;
 }
 
-.underlined {
+.text-decoration-underline {
 	text-decoration: underline;
 }
 
-.underlined-dotted {
-	border-bottom: 1px dotted;
-}
-
-.undecorated {
-	text-decoration: none;
-}
-
-.normal {
-	font-style: normal;
-}
-
 //Letter Spacing
+
 .letter-spacing-wide {
 	letter-spacing: $letter-spacing-wide;
 }
