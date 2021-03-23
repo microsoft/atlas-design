@@ -35,7 +35,7 @@ https://unpkg.com/browse/@microsoft/atlas-css@<version>/ # Use this pattern on y
 
 ## Contributing
 
-While this project is open source, it's primary purpose is to serve Microsoft web properties through a css-only implementation of a design system. We do love contributions to both our documentation (`/site` folder) and our framework (`/css`).
+While this project is open source, its primary purpose is to serve Microsoft web properties through a css-only implementation of a design system. We do love contributions to both our documentation (`/site` folder) and our framework (`/css`).
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
