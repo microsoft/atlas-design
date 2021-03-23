@@ -20,19 +20,17 @@
 		<aside style="padding: 1rem;">
 			{{#toc}}
 				{{#entries}}
-					{{^isHidden}}
 						{{#isDirectory}}
 							<p>{{name}}</p>
 							<div style="border: 1px solid aliceblue; margin-inline-start: 1rem;">
 								{{#children}}
-									<a style="margin-top: 1rem" href="{{{href}}}">{{name}}</a>
+									<a style="margin-top: 1rem" href="{{{}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 								{{/children}}
 							</div>
 						{{/isDirectory}}
 						{{^children.0}}
-							<a href="{{{href}}}">{{name}}</a>
+							<a href="{{{filePath}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 						{{/children.0}}
-					{{/isHidden}}
 				{{/entries}}
 			{{/toc}}
 		</aside>

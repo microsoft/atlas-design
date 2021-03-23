@@ -66,9 +66,13 @@ module.exports = new Transformer({
 				? await options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
 				: null;
 
-			asset.addIncludedFile({
-				filePath: templateLocation
-			});
+			// asset.addIncludedFile({
+			// 	filePath: tocEntries
+			// });
+
+			// asset.addIncludedFile({
+			// 	filePath: templateLocation
+			// });
 
 			asset.setCode(
 				mustache.render(template, {
