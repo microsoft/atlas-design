@@ -101,7 +101,6 @@ async function createToc(subDir) {
 		const entry = {
 			name: name,
 			href: srcPath,
-			filePath: path.join('~/src', srcPath),
 			isDirectory,
 			isHidden: name === '[hide]'
 		};
