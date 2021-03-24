@@ -34,8 +34,7 @@
 	},
 	"devDependencies": {
 		"parcel": "next",
-		"scss-to-json": "^2.0.0",
-		"sass-json-export": "^2.0.1",
+		"postcss-scss": "^3.0.5",
 		"@microsoft/stylelint-config-atlas": "2.0.0",
 		"prettier": "^2.2.1",
 		"sass": "^1.32.8",
