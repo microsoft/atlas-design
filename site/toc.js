@@ -4,6 +4,7 @@ const fs = require('fs-extra');
 const frontMatter = require('front-matter');
 
 const siteDir = path.join(process.cwd(), '/src/');
+console.log(siteDir);
 
 const settings = normalizePaths({
 	/**
