@@ -16,10 +16,8 @@
 	background-size: cover;
 }
 
-.background-images-top-left-right-hide-left-mobile {
-	@include mobile {
-		background-position: 0 -9999px, top right !important;
-	}
+.background-images-top-left-right-hide-left {
+	background-position: 0 -9999px, top right !important;
 }
 
 .background-images-top-left-right-hide-right-tablet {
@@ -28,8 +26,6 @@
 	}
 }
 
-.background-image-none-mobile {
-	@include mobile {
-		background-image: none !important;
-	}
+.background-image-none {
+	background-image: none !important;
 }
