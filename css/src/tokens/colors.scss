@@ -179,6 +179,17 @@ $framework-colors: (
 
 $colors: $framework-colors;
 
+// Color indexes, for use in color loops.
+
+$effect-index-base: 1;
+$effect-index-background: 2;
+$effect-index-dark: 3;
+$effect-index-hover: 4;
+$effect-index-active: 5;
+$effect-index-invert: 6;
+$effect-index-box-shadow: 7;
+$effect-index-background-glow-high-contrast: 8;
+
 // example implementation of a color loop
 
 // @each $name, $color-set in $framework-colors {

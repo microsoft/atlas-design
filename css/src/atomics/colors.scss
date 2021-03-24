@@ -1,0 +1,145 @@
+// Framework colors
+
+@each $name, $color-set in $colors {
+	$base: nth($color-set, $effect-index-base);
+	$background: nth($color-set, $effect-index-background);
+	$dark: nth($color-set, $effect-index-dark);
+	$hover: nth($color-set, $effect-index-hover);
+	$active: nth($color-set, $effect-index-active);
+	$invert: nth($color-set, $effect-index-invert);
+
+	.text-color-#{$name} {
+		color: $base !important;
+	}
+
+	a.text-color-#{$name} {
+		&:hover,
+		&.focus-visible {
+			color: $hover !important;
+		}
+
+		&:active {
+			color: $active !important;
+		}
+	}
+
+	.text-color-#{$name}-invert {
+		color: $invert !important;
+	}
+
+	.background-color-#{$name} {
+		outline-color: $invert;
+		background-color: $base !important;
+	}
+
+	.background-color-#{$name}-tablet {
+		@include tablet {
+			outline-color: $invert;
+			background-color: $base !important;
+		}
+	}
+
+	.background-color-#{$name}-invert {
+		outline-color: $base;
+		background-color: $invert !important;
+	}
+
+	.background-color-#{$name}-light {
+		outline-color: $dark;
+		background-color: $background !important;
+	}
+
+	.background-color-#{$name}-dark {
+		outline-color: $background;
+		background-color: $dark !important;
+	}
+}
+
+.text-color {
+	color: $text !important;
+}
+
+.current-color {
+	color: currentColor !important;
+}
+
+.background-color-body {
+	outline-color: $text;
+	background-color: $body-background !important;
+}
+
+.background-color-body-tablet {
+	@include tablet {
+		outline-color: $text;
+		background-color: $body-background !important;
+	}
+}
+
+.background-color-body-medium {
+	outline-color: $text;
+	background-color: $body-background-medium !important;
+}
+
+.background-color-body-medium-tablet {
+	@include tablet {
+		outline-color: $text;
+		background-color: $body-background-medium !important;
+	}
+}
+
+.background-color-body-dark {
+	outline-color: $text;
+	background-color: $body-background-dark !important;
+}
+
+.background-color-body-dark-tablet {
+	@include tablet {
+		outline-color: $text;
+		background-color: $body-background-dark !important;
+	}
+}
+
+.background-color-overlay {
+	outline-color: $overlay-invert;
+	background-color: $overlay !important;
+}
+
+.background-color-alternating-grey {
+	border-top: 1px solid $border-white-high-contrast;
+
+	&:nth-of-type(even) {
+		outline-color: $text;
+		background-color: $body-background-medium;
+	}
+
+	&:nth-of-type(odd) {
+		outline-color: $text;
+		background-color: $body-background-dark;
+	}
+}
+
+.background-color-alternating-grey-reversed {
+	border-top: 1px solid $border-white-high-contrast;
+
+	&:nth-of-type(even) {
+		outline-color: $text;
+		background-color: $body-background-dark;
+	}
+
+	&:nth-of-type(odd) {
+		outline-color: $text;
+		background-color: $body-background-medium;
+	}
+}
+
+.fill-current-color {
+	fill: currentColor !important;
+}
+
+.outline-color-text {
+	outline-color: $text !important;
+}
+
+.stroke-current-color {
+	stroke: currentColor !important;
+}
