@@ -6,9 +6,10 @@
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"lint": "stylelint ./src/**/*.scss",
+		"lint": "stylelint \"./src/**/*.scss\"",
 		"start": "parcel watch src/index.scss",
-		"build": "parcel build src/index.scss --no-cache"
+		"build": "parcel build src/index.scss --no-cache",
+		"tokens": "node ./interop.js"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -33,6 +34,8 @@
 	},
 	"devDependencies": {
 		"parcel": "next",
+		"scss-to-json": "^2.0.0",
+		"sass-json-export": "^2.0.1",
 		"@microsoft/stylelint-config-atlas": "2.0.0",
 		"prettier": "^2.2.1",
 		"sass": "^1.32.8",

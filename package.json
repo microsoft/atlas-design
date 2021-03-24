@@ -11,6 +11,7 @@
 		"start": "yarn serve:site",
 		"serve:site": "yarn workspace @microsoft/atlas-site start",
 		"serve:css": "yarn workspace @microsoft/atlas-css start",
+		"build:tokens": "yarn workspace @microsoft/atlas-css tokens",
 		"build:css": "yarn workspace @microsoft/atlas-css build",
 		"build:site": "yarn workspace @microsoft/atlas-site build",
 		"toc": "yarn workspace @microsoft/atlas-site toc",
