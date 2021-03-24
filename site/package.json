@@ -6,8 +6,8 @@
 	"scripts": {
 		"prebuild": "node toc.js",
 		"prestart": "node toc.js",
-		"start": "parcel './src/**/*.md' --port 1111 --open --no-cache",
-		"build": "parcel build './src/**/*.md'  --no-cache",
+		"start": "parcel \"./src/**/*.md\" --port 1111 --open --no-cache --log-level=verbose",
+		"build": "parcel build \"./src/**/*.md\" --no-cache",
 		"toc": "node toc.js"
 	},
 	"devDependencies": {
