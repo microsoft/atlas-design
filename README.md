@@ -1,21 +1,15 @@
-# Project
+# Atlas Design
 
 [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml)
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
-
-As the maintainer of this project, please make a few updates:
-
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+Welcome to the Atlas Design project! This repository holds the source code backing appearance of docs.microsoft.com and Microsoft Learn.
 
 ## Development
 
-- If contributing, please read about using [changesets](https://github.com/atlassian/changesets) and [semantic versioning bump types](https://semver.org/).
-- From a terminal, run `yarn install`.
+- If contributing code, please read about using [changesets](https://github.com/atlassian/changesets) and [semantic versioning bump types](https://semver.org/).
+- Clone the repostory.
+- Ensure Yarn is installed (`npm i -g yarn`).
+- From the root directory, run `yarn install`.
 
 ## Using Atlas CSS
 
@@ -32,13 +26,16 @@ npm install --save @microsoft/atlas-css
 yarn add --save @microsoft/atlas-css
 ```
 
-You may access any file within the `/css` folder using the following UNPKG url. Just add the path to the file, relative to the at the end:
+You may access any file within the `/css` folder using the following UNPKG url. Just add the path to the file, relative to the at the end.
 
-```http
-https://unpkg.com/browse/@microsoft/atlas-css@0.0.1/
+```sh
+https://unpkg.com/browse/@microsoft/atlas-css/ # Will redirect to latest version
+https://unpkg.com/browse/@microsoft/atlas-css@<version>/ # Use this pattern on your page
 ```
 
 ## Contributing
+
+While this project is open source, its primary purpose is to serve Microsoft web properties through a css-only implementation of a design system. We do love contributions to both our documentation (`/site` folder) and our framework (`/css`).
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
