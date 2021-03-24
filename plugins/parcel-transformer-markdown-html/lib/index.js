@@ -61,10 +61,12 @@ module.exports = new Transformer({
 			const tocPath = config.contents.tocPath || '';
 			const templateLocation = path.resolve(basePath, `${attributes.template}.html`);
 
-			const template = await options.inputFS.readFile(templateLocation, 'utf-8');
-			const tocEntries = tocPath
-				? await options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
-				: null;
+			const [template, tocEntries] = await Promise.all([
+				options.inputFS.readFile(templateLocation, 'utf-8'),
+				tocPath
+					? options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
+					: Promise.resolve(null)
+			]);
 
 			asset.addIncludedFile({
 				filePath: tocEntries
