@@ -1,0 +1,45 @@
+.background-image-center {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.background-image-right-top {
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-size: auto;
+}
+
+.background-image-right-bottom {
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: cover;
+}
+
+.background-images-top-left-right-hide-left {
+	background-position: 0 -9999px, top right !important;
+}
+
+.background-images-top-left-right-hide-right-tablet {
+	@include tablet {
+		background-position: top left, 0 -9999px !important;
+	}
+}
+
+.background-image-none {
+	background-image: none !important;
+}
+
+.has-body-background-mobile-massive {
+	@include massive1 {
+		outline-color: $text;
+		background-color: $body-background !important;
+	}
+}
+
+.has-body-background-mobile-test {
+	@include hello {
+		outline-color: $text;
+		background-color: $body-background !important;
+	}
+}

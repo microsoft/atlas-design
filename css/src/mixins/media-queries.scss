@@ -68,3 +68,15 @@
 		@content;
 	}
 }
+
+@mixin massive1 {
+	@media screen and (min-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin hello {
+	@media screen and (min-width: $brea) {
+		@content;
+	}
+}
