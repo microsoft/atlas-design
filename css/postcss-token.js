@@ -4,13 +4,30 @@ const path = require('path');
 // https://postcss.org/api/
 function plugin() {
 	return async root => {
+		// const json = root.toJSON();
+		const json = {};
 		const things = [];
-		root.walkRules(rule =>
-			rule.walkDecls(decl => {
-				things.push(decl);
-			})
-		);
-		fs.writeFile(path.join(process.cwd(), 'token.json'), things.join('!!!!!'));
+		// console.log(root);
+
+		/**
+		 * @typedef {object} PostCSSNode
+		 *  @property raws {any};
+		 *  @property type {string};
+		 *  @property source {any};
+		 *  @property prop {string};
+		 *  @property value {string};
+		 *  @property inputs {any}[];
+		 */
+
+		root.walkDecls(node => {
+			// console.log(JSON.stringify(node.value));
+			if (node.prop.indexOf('$') === 0) {
+				json[node.prop] = node.value.replace('!default', '').trim();
+			}
+		});
+
+		// console.log(JSON.stringify(json));
+		fs.writeFile(path.join(process.cwd(), 'token.json'), JSON.stringify(json));
 	};
 }
 

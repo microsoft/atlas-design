@@ -12,6 +12,7 @@
 		"serve:site": "yarn workspace @microsoft/atlas-site start",
 		"serve:css": "yarn workspace @microsoft/atlas-css start",
 		"build:tokens": "yarn workspace @microsoft/atlas-css tokens",
+		"build:tokens2": "yarn workspace @microsoft/atlas-css tokens2",
 		"build:css": "yarn workspace @microsoft/atlas-css build",
 		"build:site": "yarn workspace @microsoft/atlas-site build",
 		"toc": "yarn workspace @microsoft/atlas-site toc",
@@ -43,6 +44,8 @@
 	"devDependencies": {
 		"@changesets/cli": "^2.14.1",
 		"husky": "4.3.0",
+		"postcss": "^8.2.8",
+		"postcss-cli": "^8.3.1",
 		"prettier": "^2.2.1",
 		"pretty-quick": "3.0.2"
 	},

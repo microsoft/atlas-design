@@ -27,3 +27,17 @@ fs.readFile('filePath', (err, css) => {
 		console.log(result);
 	});
 });
+
+// This might be preferable https://www.oddbird.net/herman/docs/configuration#sass-jsonfile
+
+// const themeFallback = require('./build/postcss-plugin-theme-fallback');
+// const autoprefixer = require('autoprefixer');
+
+// module.exports = {
+// 	plugins: [
+// 		themeFallback(),
+// 		autoprefixer({
+// 			browserlist: ['> 1%', 'last 2 versions', 'not ie < 11']
+// 		})
+// 	]
+// };

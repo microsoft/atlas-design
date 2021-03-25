@@ -9,7 +9,8 @@
 		"lint": "stylelint \"./src/**/*.scss\"",
 		"start": "parcel watch src/index.scss",
 		"build": "parcel build src/index.scss --no-cache",
-		"tokens": "node ./interop.js"
+		"tokens": "node ./interop.js",
+		"tokens2": "postcss \"./src/tokens/palette.scss\" --config \"./\""
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
