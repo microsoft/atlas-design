@@ -1,18 +1,3 @@
-// Responsiveness
-
-@mixin from($device) {
-	@media screen and (min-width: $device) {
-		@content;
-	}
-}
-
-@mixin until($device) {
-	@media screen and (max-width: $device - 1px),
-		screen and (min-resolution: 120dpi) and (max-width: $device - 0.1px) {
-		@content;
-	}
-}
-
 // Orientation
 
 @mixin orientation-portrait {
@@ -36,35 +21,22 @@
 	}
 }
 
-// Mobile-first media queries
+// Mobile-first screen size media queries
 
-@mixin small-only {
-	@media screen and (max-width: $breakpoint-medium - 1),
-		screen and (min-resolution: 120dpi) and (min-width: $breakpoint-small) and (max-width: $breakpoint-medium - 0.1px) {
+@mixin tablet {
+	@media screen and (min-width: $breakpoint-tablet), print {
 		@content;
 	}
 }
 
-@mixin small {
-	@media screen and (min-width: $breakpoint-small), print {
+@mixin desktop {
+	@media screen and (min-width: $breakpoint-desktop) {
 		@content;
 	}
 }
 
-@mixin medium {
-	@media screen and (min-width: $breakpoint-medium), print {
-		@content;
-	}
-}
-
-@mixin large {
-	@media screen and (min-width: $breakpoint-large) {
-		@content;
-	}
-}
-
-@mixin massive {
-	@media screen and (min-width: $breakpoint-massive) {
+@mixin widescreen {
+	@media screen and (min-width: $breakpoint-widescreen) {
 		@content;
 	}
 }
