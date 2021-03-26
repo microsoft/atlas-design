@@ -1,0 +1,24 @@
+html,
+body {
+	font-family: $normal-font-stack;
+	-webkit-font-smoothing: antialiased;
+	font-weight: $weight-normal;
+	text-rendering: optimizeLegibility;
+}
+
+kbd,
+pre,
+samp {
+	font-family: $monospace-font-stack !important;
+	-moz-osx-font-smoothing: auto;
+	-webkit-font-smoothing: auto;
+}
+
+code {
+	direction: ltr;
+	font-family: $monospace-font-stack;
+}
+
+a > code {
+	font-family: $normal-font-stack;
+}
