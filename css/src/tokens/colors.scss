@@ -181,23 +181,23 @@ $colors: $framework-colors;
 
 // Color indexes, for use in color loops.
 
-$effect-index-base: 1;
-$effect-index-background: 2;
-$effect-index-dark: 3;
-$effect-index-hover: 4;
-$effect-index-active: 5;
-$effect-index-invert: 6;
-$effect-index-box-shadow: 7;
-$effect-index-background-glow-high-contrast: 8;
+$color-index-base: 1;
+$color-index-background: 2;
+$color-index-dark: 3;
+$color-index-hover: 4;
+$color-index-active: 5;
+$color-index-invert: 6;
+$color-index-box-shadow: 7;
+$color-index-background-glow-high-contrast: 8;
 
 // example implementation of a color loop
 
 // @each $name, $color-set in $framework-colors {
-// 	$base: nth($color-set, $effect-index-base);
-// 	$background: nth($color-set, $effect-index-background);
-// 	$heavy: nth($color-set, $effect-index-dark);
-// 	$hover: nth($color-set, $effect-index-hover);
-// 	$active: nth($color-set, $effect-index-active);
-// 	$invert: nth($color-set, $effect-index-invert);
-// 	$box-shadow: nth($color-set, $effect-index-box-shadow);
+// 	$base: nth($color-set, $color-index-base);
+// 	$background: nth($color-set, $color-index-background);
+// 	$heavy: nth($color-set, $color-index-dark);
+// 	$hover: nth($color-set, $color-index-hover);
+// 	$active: nth($color-set, $color-index-active);
+// 	$invert: nth($color-set, $color-index-invert);
+// 	$box-shadow: nth($color-set, $color-index-box-shadow);
 //}

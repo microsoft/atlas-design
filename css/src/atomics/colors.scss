@@ -8,11 +8,11 @@
 	$active: nth($color-set, $effect-index-active);
 	$invert: nth($color-set, $effect-index-invert);
 
-	.text-color-#{$name} {
+	.color-#{$name} {
 		color: $base !important;
 	}
 
-	a.text-color-#{$name} {
+	a.color-#{$name} {
 		&:hover,
 		&.focus-visible {
 			color: $hover !important;
@@ -23,7 +23,7 @@
 		}
 	}
 
-	.text-color-#{$name}-invert {
+	.color-#{$name}-invert {
 		color: $invert !important;
 	}
 
