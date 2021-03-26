@@ -64,7 +64,6 @@ $flex-atomics: (
 	@each $value in map.get($flex-atomics, $key) {
 		.#{$key}-#{$value} {
 			#{$key}: $value !important;
-			@debug 'Should create: #{$key}-#{$value}';
 		}
 	}
 }
