@@ -1,423 +1,70 @@
-//Align content
-
-.align-content-flex-start {
-	align-content: flex-start !important;
-}
-
-.align-content-flex-end {
-	align-content: flex-end !important;
-}
-
-.align-content-center {
-	align-content: center !important;
-}
-
-.align-content-space-between {
-	align-content: space-between !important;
-}
-
-.align-content-space-around {
-	align-content: space-around !important;
-}
-
-.align-content-stretch {
-	align-content: stretch !important;
-}
-
-// Align Self
-
-.align-self-flex-start {
-	align-self: flex-start !important;
-}
-.align-self-flex-end {
-	align-self: flex-end !important;
-}
-.align-self-center {
-	align-self: center !important;
-}
-.align-self-baseline {
-	align-self: baseline !important;
-}
-.align-self-stretch {
-	align-self: stretch !important;
-}
-
-// Align Items
-
-.align-items-stretch {
-	align-items: stretch !important;
-}
-
-.align-items-flex-start {
-	align-items: flex-start !important;
-}
-
-.align-items-flex-end {
-	align-items: flex-end !important;
-}
-
-.align-items-center {
-	align-items: center !important;
-}
-
-.align-items-baseline {
-	align-items: baseline !important;
-}
-
-//Flex Direction
-
-.flex-direction-row {
-	flex-direction: row !important;
-}
-
-.flex-direction-row-reverse {
-	flex-direction: row-reverse !important;
-}
-
-.flex-direction-column {
-	flex-direction: column !important;
-}
-
-.flex-direction-column-reverse {
-	flex-direction: column-reverse !important;
-}
-
-// Flex Grow
-
-.flex-grow-zero {
-	flex-grow: 0 !important;
-}
-
-.flex-grow-one {
-	flex-grow: 1 !important;
-}
-
-//Flex wrap
-
-.flex-wrap-nowrap {
-	flex-wrap: nowrap !important;
-}
-
-.flex-wrap-wrap {
-	flex-wrap: wrap !important;
-}
-
-.flex-wrap-wrap-reverse {
-	flex-wrap: wrap-reverse !important;
-}
-
-//Flex Shrink
-
-.flex-shrink-zero {
-	flex-shrink: 0 !important;
-}
-
-.flex-shrink-one {
-	flex-shrink: 1 !important;
-}
-
-//Justify Content
-
-.justify-content-start {
-	justify-content: flex-start !important;
-}
-
-.justify-content-center {
-	justify-content: center !important;
-}
-
-.justify-content-space-between {
-	justify-content: space-between !important;
-}
-
-.justify-content-end {
-	justify-content: flex-end !important;
-}
-
-.justify-content-space-around {
-	justify-content: space-around !important;
-}
-
-.justify-content-space-evenly {
-	justify-content: space-evenly !important;
-}
-
-//Responsive Classes used in docs-ui
-
-.align-items-center-tablet {
-	@include tablet {
-		align-items: center !important;
-	}
-}
-
-.justify-content-center-tablet {
-	@include tablet {
-		justify-content: center !important;
-	}
-}
-
-.justify-content-end-tablet {
-	@include tablet {
-		justify-content: flex-end !important;
-	}
-}
-
-.justify-content-end-desktop {
-	@include desktop {
-		justify-content: flex-end !important;
-	}
-}
-
-// Other suggested Useful responsive classes for tablet
-
-.align-content-flex-start-tablet {
-	@include tablet {
-		align-content: flex-start !important;
-	}
-}
-
-.align-content-flex-end-tablet {
-	@include tablet {
-		align-content: flex-end !important;
-	}
-}
-
-.align-content-center-tablet {
-	@include tablet {
-		align-content: center !important;
-	}
-}
-
-.align-content-stretch-tablet {
-	@include tablet {
-		align-content: stretch !important;
-	}
-}
-
-.align-items-stretch-tablet-tablet {
-	@include tablet {
-		align-items: stretch !important;
-	}
-}
-
-.align-items-flex-start-tablet {
-	@include tablet {
-		align-items: flex-start !important;
-	}
-}
-
-.align-items-flex-end-tablet {
-	@include tablet {
-		align-items: flex-end !important;
-	}
-}
-
-.align-items-baseline-tablet {
-	@include tablet {
-		align-items: baseline !important;
-	}
-}
-
-.align-self-flex-start-tablet {
-	@include tablet {
-		align-self: flex-start !important;
-	}
-}
-.align-self-flex-end-tablet {
-	@include tablet {
-		align-self: flex-end !important;
-	}
-}
-
-.align-self-center-tablet {
-	@include tablet {
-		align-self: center !important;
-	}
-}
-
-.align-self-baseline-tablet {
-	@include tablet {
-		align-self: baseline !important;
-	}
-}
-
-.align-self-stretch-tablet {
-	@include tablet {
-		align-self: stretch !important;
-	}
-}
-
-.flex-direction-row-tablet {
-	@include tablet {
-		flex-direction: row !important;
-	}
-}
-
-.flex-direction-row-reverse-tablet {
-	@include tablet {
-		flex-direction: row-reverse !important;
-	}
-}
-
-.flex-direction-column-tablet {
-	@include tablet {
-		flex-direction: column !important;
-	}
-}
-
-.flex-direction-column-reverse-tablet {
-	@include tablet {
-		flex-direction: column-reverse !important;
-	}
-}
-
-.justify-content-start-tablet {
-	@include tablet {
-		justify-content: flex-start !important;
-	}
-}
-
-.justify-content-space-between-tablet {
-	@include tablet {
-		justify-content: space-between !important;
-	}
-}
-
-.justify-content-space-around-tablet {
-	@include tablet {
-		justify-content: space-around !important;
-	}
-}
-
-.justify-content-space-evenly-tablet {
-	@include tablet {
-		justify-content: space-evenly !important;
-	}
-}
-
-// Other suggested Useful responsive classes for Desktop
-
-.align-content-flex-start-desktop {
-	@include desktop {
-		align-content: flex-start !important;
-	}
-}
-
-.align-content-flex-end-desktop {
-	@include desktop {
-		align-content: flex-end !important;
-	}
-}
-
-.align-content-center-desktop {
-	@include desktop {
-		align-content: center !important;
-	}
-}
-
-.align-content-stretch-desktop {
-	@include desktop {
-		align-content: stretch !important;
-	}
-}
-
-.align-items-stretch-tablet-desktop {
-	@include desktop {
-		align-items: stretch !important;
-	}
-}
-
-.align-items-flex-start-desktop {
-	@include desktop {
-		align-items: flex-start !important;
-	}
-}
-
-.align-items-flex-end-desktop {
-	@include desktop {
-		align-items: flex-end !important;
-	}
-}
-
-.align-items-baseline-desktop {
-	@include desktop {
-		align-items: baseline !important;
-	}
-}
-
-.align-self-flex-start-desktop {
-	@include desktop {
-		align-self: flex-start !important;
-	}
-}
-.align-self-flex-end-desktop {
-	@include desktop {
-		align-self: flex-end !important;
-	}
-}
-
-.align-self-center-desktop {
-	@include desktop {
-		align-self: center !important;
-	}
-}
-
-.align-self-baseline-desktop {
-	@include desktop {
-		align-self: baseline !important;
-	}
-}
-
-.align-self-stretch-desktop {
-	@include desktop {
-		align-self: stretch !important;
-	}
-}
-
-.flex-direction-row-desktop {
-	@include desktop {
-		flex-direction: row !important;
-	}
-}
-
-.flex-direction-row-reverse-desktop {
-	@include desktop {
-		flex-direction: row-reverse !important;
-	}
-}
-
-.flex-direction-column-desktop {
-	@include desktop {
-		flex-direction: column !important;
-	}
-}
-
-.flex-direction-column-reverse-desktop {
-	@include desktop {
-		flex-direction: column-reverse !important;
-	}
-}
-
-.justify-content-start-desktop {
-	@include desktop {
-		justify-content: flex-start !important;
-	}
-}
-
-.justify-content-space-between-desktop {
-	@include desktop {
-		justify-content: space-between !important;
-	}
-}
-
-.justify-content-space-around-desktop {
-	@include desktop {
-		justify-content: space-around !important;
-	}
-}
-
-.justify-content-space-evenly-desktop {
-	@include desktop {
-		justify-content: space-evenly !important;
+@use 'sass:map';
+
+$flex-atomics: (
+	'justify-content': (
+		flex-start,
+		flex-end,
+		center,
+		space-around,
+		space-between,
+		space-evenly
+	),
+	'align-items': (
+		flex-start,
+		flex-end,
+		center,
+		baseline,
+		stretch
+	),
+	'align-content': (
+		flex-start,
+		flex-end,
+		center,
+		space-around,
+		space-between,
+		stretch
+	),
+	'align-self': (
+		flex-start,
+		flex-end,
+		center,
+		baseline,
+		stretch
+	),
+	'flex-direction': (
+		column,
+		column-reverse,
+		row,
+		row-reverse
+	),
+	'flex-wrap': (
+		wrap,
+		nowrap,
+		wrap-reverse
+	),
+	'flex-shrink': (
+		0,
+		1,
+		2,
+		3,
+		4,
+		5
+	),
+	'flex-grow': (
+		0,
+		1,
+		2,
+		3,
+		4,
+		5
+	)
+) !default;
+
+@each $key in map.keys($flex-atomics) {
+	@each $value in map.get($flex-atomics, $key) {
+		.#{$key}-#{$value} {
+			#{$key}: $value !important;
+			@debug 'Should create: #{$key}-#{$value}';
+		}
 	}
 }
