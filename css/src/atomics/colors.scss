@@ -71,19 +71,19 @@
 
 // Text color
 
-.text-color {
+.color-text {
 	color: $text !important;
 }
 
-.text-color-subtle {
+.color-text-subtle {
 	color: $text-subtle !important;
 }
 
-.text-color-overlay-invert {
+.color-text-overlay-invert {
 	color: $overlay-invert;
 }
 
-.current-color {
+.color-current-color {
 	color: currentColor !important;
 }
 
