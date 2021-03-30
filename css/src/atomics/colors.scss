@@ -153,26 +153,26 @@
 	}
 }
 
-.background-color-body-dark {
+.background-color-body-heavy {
 	outline-color: $text;
-	background-color: $body-background-dark !important;
+	background-color: $body-background-heavy !important;
 }
 
-.background-color-body-dark-tablet {
+.background-color-body-heavy-tablet {
 	@include tablet {
 		outline-color: $text;
 		background-color: $body-background-dark !important;
 	}
 }
 
-.background-color-body-dark-desktop {
+.background-color-body-heavy-desktop {
 	@include desktop {
 		outline-color: $text;
 		background-color: $body-background-dark !important;
 	}
 }
 
-.background-color-body-dark-widescreen {
+.background-color-body-heavy-widescreen {
 	@include widescreen {
 		outline-color: $text;
 		background-color: $body-background-dark !important;
@@ -210,4 +210,24 @@
 		outline-color: $text;
 		background-color: $body-background-medium;
 	}
+}
+
+.background-color-body-white {
+	background-color: $body-background-white;
+}
+
+.background-color-body-light {
+	background-color: $body-background-light;
+}
+
+.background-color-body-light-alt {
+	background-color: $body-background-light-alt;
+}
+
+.background-color-body-dark {
+	background-color: $body-background-dark;
+}
+
+.background-color-body-dark-alt {
+	background-color: $body-background-dark-alt;
 }
