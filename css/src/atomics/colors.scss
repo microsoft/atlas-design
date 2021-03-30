@@ -161,21 +161,21 @@
 .background-color-body-heavy-tablet {
 	@include tablet {
 		outline-color: $text;
-		background-color: $body-background-dark !important;
+		background-color: $body-background-heavy !important;
 	}
 }
 
 .background-color-body-heavy-desktop {
 	@include desktop {
 		outline-color: $text;
-		background-color: $body-background-dark !important;
+		background-color: $body-background-heavy !important;
 	}
 }
 
 .background-color-body-heavy-widescreen {
 	@include widescreen {
 		outline-color: $text;
-		background-color: $body-background-dark !important;
+		background-color: $body-background-heavy !important;
 	}
 }
 
