@@ -76,5 +76,11 @@ $theme-names: map.keys($themes);
 @each $key, $value in $themes {
 	.theme-#{$key} {
 		@extend %theme-base-styles;
+
+		@if $key == $root-theme {
+			color-scheme: light;
+		} @else {
+			color-scheme: dark;
+		}
 	}
 }
