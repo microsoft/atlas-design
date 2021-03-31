@@ -101,78 +101,78 @@
 
 // Background color
 
-.background-color-main {
+.background-color-body {
 	outline-color: $text;
 	background-color: $body-background !important;
 }
 
-.background-color-main-tablet {
+.background-color-body-tablet {
 	@include tablet {
 		outline-color: $text;
 		background-color: $body-background !important;
 	}
 }
 
-.background-color-main-desktop {
+.background-color-body-desktop {
 	@include desktop {
 		outline-color: $text;
 		background-color: $body-background !important;
 	}
 }
 
-.background-color-main-widescreen {
+.background-color-body-widescreen {
 	@include widescreen {
 		outline-color: $text;
 		background-color: $body-background !important;
 	}
 }
 
-.background-color-main-medium {
+.background-color-body-medium {
 	outline-color: $text;
 	background-color: $body-background-medium !important;
 }
 
-.background-color-main-medium-tablet {
+.background-color-body-medium-tablet {
 	@include tablet {
 		outline-color: $text;
 		background-color: $body-background-medium !important;
 	}
 }
 
-.background-color-main-medium-desktop {
+.background-color-body-medium-desktop {
 	@include desktop {
 		outline-color: $text;
 		background-color: $body-background-medium !important;
 	}
 }
 
-.background-color-main-medium-widescreen {
+.background-color-body-medium-widescreen {
 	@include widescreen {
 		outline-color: $text;
 		background-color: $body-background-medium !important;
 	}
 }
 
-.background-color-main-dark {
+.background-color-body-dark {
 	outline-color: $text;
 	background-color: $body-background-dark !important;
 }
 
-.background-color-main-dark-tablet {
+.background-color-body-dark-tablet {
 	@include tablet {
 		outline-color: $text;
 		background-color: $body-background-dark !important;
 	}
 }
 
-.background-color-main-dark-desktop {
+.background-color-body-dark-desktop {
 	@include desktop {
 		outline-color: $text;
 		background-color: $body-background-dark !important;
 	}
 }
 
-.background-color-main-dark-widescreen {
+.background-color-body-dark-widescreen {
 	@include widescreen {
 		outline-color: $text;
 		background-color: $body-background-dark !important;
