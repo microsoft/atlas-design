@@ -38,24 +38,15 @@ $flex-atomics: (
 	),
 	'flex-wrap': (
 		wrap,
-		nowrap,
 		wrap-reverse
 	),
 	'flex-shrink': (
 		0,
-		1,
-		2,
-		3,
-		4,
-		5
+		1
 	),
 	'flex-grow': (
 		0,
-		1,
-		2,
-		3,
-		4,
-		5
+		1
 	)
 ) !default;
 
