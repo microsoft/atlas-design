@@ -101,82 +101,94 @@
 
 // Background color
 
-.background-color-body {
+.background-color-main {
 	outline-color: $text;
 	background-color: $body-background !important;
 }
 
-.background-color-body-tablet {
+.background-color-main-tablet {
 	@include tablet {
 		outline-color: $text;
 		background-color: $body-background !important;
 	}
 }
 
-.background-color-body-desktop {
+.background-color-main-desktop {
 	@include desktop {
 		outline-color: $text;
 		background-color: $body-background !important;
 	}
 }
 
-.background-color-body-widescreen {
+.background-color-main-widescreen {
 	@include widescreen {
 		outline-color: $text;
 		background-color: $body-background !important;
 	}
 }
 
-.background-color-body-medium {
+.background-color-main-medium {
 	outline-color: $text;
 	background-color: $body-background-medium !important;
 }
 
-.background-color-body-medium-tablet {
+.background-color-main-medium-tablet {
 	@include tablet {
 		outline-color: $text;
 		background-color: $body-background-medium !important;
 	}
 }
 
-.background-color-body-medium-desktop {
+.background-color-main-medium-desktop {
 	@include desktop {
 		outline-color: $text;
 		background-color: $body-background-medium !important;
 	}
 }
 
-.background-color-body-medium-widescreen {
+.background-color-main-medium-widescreen {
 	@include widescreen {
 		outline-color: $text;
 		background-color: $body-background-medium !important;
 	}
 }
 
-.background-color-body-heavy {
+.background-color-main-dark {
 	outline-color: $text;
-	background-color: $body-background-heavy !important;
+	background-color: $body-background-dark !important;
 }
 
-.background-color-body-heavy-tablet {
+.background-color-main-dark-tablet {
 	@include tablet {
 		outline-color: $text;
-		background-color: $body-background-heavy !important;
+		background-color: $body-background-dark !important;
 	}
 }
 
-.background-color-body-heavy-desktop {
+.background-color-main-dark-desktop {
 	@include desktop {
 		outline-color: $text;
-		background-color: $body-background-heavy !important;
+		background-color: $body-background-dark !important;
 	}
 }
 
-.background-color-body-heavy-widescreen {
+.background-color-main-dark-widescreen {
 	@include widescreen {
 		outline-color: $text;
-		background-color: $body-background-heavy !important;
+		background-color: $body-background-dark !important;
 	}
+}
+
+.background-color-alternate {
+	background-color: $body-background-alt !important;
+}
+
+.background-color-alternate-medium {
+	background-color: $body-background-alt-medium !important;
+}
+
+.background-color-alternate-light {
+	background-color: $body-background-alt-light !important;
 }
 
 .background-color-overlay {
@@ -210,24 +222,4 @@
 		outline-color: $text;
 		background-color: $body-background-medium;
 	}
-}
-
-.background-color-body-white {
-	background-color: $body-background-white;
-}
-
-.background-color-body-light {
-	background-color: $body-background-light;
-}
-
-.background-color-body-light-alt {
-	background-color: $body-background-light-alt;
-}
-
-.background-color-body-dark {
-	background-color: $body-background-dark;
-}
-
-.background-color-body-dark-alt {
-	background-color: $body-background-dark-alt;
 }
