@@ -1,5 +1,5 @@
 ---
-'@microsoft/atlas-css': minor
+'@microsoft/atlas-css': patch
 ---
 
 Add component folder
