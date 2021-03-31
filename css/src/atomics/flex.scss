@@ -1,0 +1,59 @@
+@use 'sass:map';
+
+$flex-atomics: (
+	'justify-content': (
+		flex-start,
+		flex-end,
+		center,
+		space-around,
+		space-between,
+		space-evenly
+	),
+	'align-items': (
+		flex-start,
+		flex-end,
+		center,
+		baseline,
+		stretch
+	),
+	'align-content': (
+		flex-start,
+		flex-end,
+		center,
+		space-around,
+		space-between,
+		stretch
+	),
+	'align-self': (
+		flex-start,
+		flex-end,
+		center,
+		baseline,
+		stretch
+	),
+	'flex-direction': (
+		column,
+		column-reverse,
+		row-reverse
+	),
+	'flex-wrap': (
+		wrap,
+		wrap-reverse
+	),
+	'flex-shrink': (
+		0,
+		1
+	),
+	'flex-grow': (
+		0,
+		1
+	)
+) !default;
+
+@each $key in map.keys($flex-atomics) {
+	@each $value in map.get($flex-atomics, $key) {
+		.#{$key}-#{$value} {
+			#{$key}: $value !important;
+		}
+	}
+}
