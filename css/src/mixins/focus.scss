@@ -1,0 +1,10 @@
+@mixin focus() {
+	outline-color: inherit;
+	outline-offset: $focus-outline-offset;
+	outline-style: $focus-style;
+	outline-width: $focus-width;
+}
+
+%focus {
+	@include focus();
+}
