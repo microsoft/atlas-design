@@ -10,7 +10,7 @@
 	.has-default-focus {
 		.is-focused,
 		.focus-visible {
-			@include focus();
+			@extend %focus;
 
 			&.has-inner-focus {
 				outline-color: currentColor;
@@ -19,8 +19,8 @@
 		}
 	}
 } @else {
-	*:focus-visible {
-		@include focus();
+	.has-default-focus *:focus-visible {
+		@extend %focus;
 
 		&.has-inner-focus {
 			outline-color: currentColor;
