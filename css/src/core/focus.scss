@@ -13,8 +13,8 @@
 			@include focus();
 
 			&.has-inner-focus {
-				outline-offset: -$focus-outline-offset;
 				outline-color: currentColor;
+				outline-offset: -$focus-outline-offset;
 			}
 		}
 	}
@@ -23,8 +23,8 @@
 		@include focus();
 
 		&.has-inner-focus {
-			outline-offset: -$focus-outline-offset;
 			outline-color: currentColor;
+			outline-offset: -$focus-outline-offset;
 		}
 	}
 }
