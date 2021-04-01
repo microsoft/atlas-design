@@ -31,8 +31,8 @@ module.exports = new Transformer({
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset
 		options, // https://v2.parceljs.org/plugin-system/api/#PluginOptions
-		config // https://v2.parceljs.org/plugin-system/api/#ConfigResult
-		// logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
+		config, // https://v2.parceljs.org/plugin-system/api/#ConfigResult
+		logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
 	}) {
 		asset.type = 'html';
 		const code = await asset.getCode();
@@ -68,6 +68,21 @@ module.exports = new Transformer({
 					: Promise.resolve(null)
 			]);
 
+			let tokens;
+			// we've specified a tokens file to load from @atlas-tokens
+			if (attributes.token) {
+				try {
+					const jsm = require(`@microsoft/atlas-tokens/dist/${attributes.token}.js`);
+					tokens = jsm.default;
+				} catch (err) {
+					logger.warn({
+						message: `There was an error trying to require token file: "${attributes.token}. Did you specify the correct token name in your template? `,
+						filePath: asset.filePath,
+						language: asset.type
+					});
+				}
+			}
+
 			asset.addIncludedFile({
 				filePath: tocEntries
 			});
@@ -80,6 +95,7 @@ module.exports = new Transformer({
 				mustache.render(template, {
 					body: parsedCode,
 					toc: { name: 'TOC', entries: tocEntries },
+					tokens: tokens || null,
 					...attributes
 				})
 			);

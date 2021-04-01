@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>{{title}} | Atlas Design | Microsoft</title>
+		<meta property="og:title" content="{{title}}" />
+		<meta property="og:type" content="website" />
+		<meta name="color-scheme" content="light dark" />
+		<link rel="stylesheet" href="~/src/scaffold/index.scss"
+	</head>
+	<body>
+		<header
+			style="border-bottom: 2px solid aliceblue; font-family: 'Brush Script MT'; font-size: 2rem"
+		>
+			Atlas Design
+		</header>
+		<main>
+			{{{ body }}}
+			{{#tokens}}
+				<p style="font-size: 1rem; color: aliceblue">True</p>
+			{{/tokens}}
+			{{#tokens.list}}
+				<p>{{name}}: {{value}} {{unit}}</p>
+				<pre><code>{{raw}}</code></pre>
+			{{/tokens.list}}
+		</main>
+		<aside style="padding: 1rem;">
+			{{#toc}}
+			{{#entries}}
+						{{#isDirectory}}
+							<p>{{name}}</p>
+							<div style="border: 1px solid aliceblue; margin-inline-start: 1rem;">
+								{{#children}}
+									<a style="margin-top: 1rem" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+								{{/children}}
+							</div>
+						{{/isDirectory}}
+						{{^children.0}}
+							<a href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+						{{/children.0}}
+				{{/entries}}
+			{{/toc}}
+		</aside>
+	</body>
+</html>
