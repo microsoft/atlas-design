@@ -1,4 +1,4 @@
-@if ($focus-visible-polyfill) {
+@if ($focus-visible-use-polyfill) {
 	.js-focus-visible .has-default-focus *:focus:not(.focus-visible) {
 		outline: none;
 	}
