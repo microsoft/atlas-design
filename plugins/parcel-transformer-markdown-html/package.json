@@ -18,6 +18,7 @@
 		"marked": "^2.0.1",
 		"highlight.js": "^10.6.0",
 		"front-matter": "^4.0.2",
-		"mustache": "^4.1.0"
+		"mustache": "^4.1.0",
+		"@microsoft/atlas-tokens": "0.0.1"
 	}
 }

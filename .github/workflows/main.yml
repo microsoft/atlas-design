@@ -45,8 +45,13 @@ jobs:
           mkdir ./css/dist;
           yarn build:css;
 
+      # Run build for tokens
+      - name: Build tokens
+        run: |
+          yarn build:tokens
+
       # Run build for website
-      - name: Build build site
+      - name: Build site
         run: |
           yarn build:site;
 

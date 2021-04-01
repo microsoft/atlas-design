@@ -16,7 +16,8 @@
 		"toc": "yarn workspace @microsoft/atlas-site toc",
 		"prettier": "prettier --write \"**/*.{scss,ts,js,json,yml,md}\"",
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
-		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\""
+		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\"",
+		"build:tokens": "yarn workspace @microsoft/atlas-tokens build"
 	},
 	"repository": {
 		"type": "git",
