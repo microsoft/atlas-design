@@ -78,3 +78,9 @@ $theme-names: map.keys($themes);
 		@extend %theme-base-styles;
 	}
 }
+
+@each $key, $value in $schemes {
+	.theme-#{$key} {
+		color-scheme: #{$value};
+	}
+}
