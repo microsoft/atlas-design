@@ -1,0 +1,30 @@
+@if ($focus-visible-use-polyfill) {
+	.js-focus-visible .has-default-focus *:focus:not(.focus-visible) {
+		outline: none;
+	}
+
+	.focus-visible.has-inner-focus {
+		outline-offset: -$focus-outline-offset;
+	}
+
+	.has-default-focus {
+		.is-focused,
+		.focus-visible {
+			@extend %focus;
+
+			&.has-inner-focus {
+				outline-color: currentColor;
+				outline-offset: -$focus-outline-offset;
+			}
+		}
+	}
+} @else {
+	.has-default-focus *:focus-visible {
+		@extend %focus;
+
+		&.has-inner-focus {
+			outline-color: currentColor;
+			outline-offset: -$focus-outline-offset;
+		}
+	}
+}
