@@ -45,7 +45,7 @@ export function thisAllowsJSDocTypesToBeImported() {}
 /**
  * @typedef SassMapRule
  * @property {'SassMap'} type
- * @property {{[key: string]: value}} value
+ * @property {{[key: string]: any}} value
  * @property {string[]} [sources]
  * @property {RuleDeclaration[]} [declarations]
  */
@@ -69,17 +69,4 @@ export function thisAllowsJSDocTypesToBeImported() {}
 
 /**
  * @typedef {{ vars: { global: import('./types').SassRule[]}}} SassConvertRendered
- */
-
-/**
- * @typedef AtlasRule
- * @property {string} name
- * @property {string} parent
- * @property {any} value
- * @property {string} type
- * @property {boolean} default
- * @property {string} raw
- * @property {string} filePath
- * @property {string} [separator]
- * @property {string} [unit]
  */

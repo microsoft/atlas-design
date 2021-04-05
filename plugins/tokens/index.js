@@ -1,97 +1,124 @@
 const sassExtract = require('sass-extract');
-const glob = require('fast-glob');
 const fs = require('fs-extra');
 const path = require('path');
-const { getFinalFilePart, convertSassVariable } = require('./conversion');
+const { convertSassVariable } = require('./conversion');
+const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
 
-const distFolder = path.join(process.cwd(), '/dist');
+createTokens();
 
-createTokens(distFolder);
-
-/**
- * @param {string} distFolder Path to which tokens are written
- */
-async function createTokens(distFolder) {
-	// Global variables play better when we just import a single index file
+async function createTokens() {
 	const indexFile = require.resolve('@microsoft/atlas-css/src/tokens/index.scss');
-	await fs.ensureDir(distFolder);
 
-	sassExtract
-		.render({
-			file: indexFile
-		})
-		.then(async (/** @type {import('./types').SassConvertRendered }} */ rendered) => {
-			const tokens = collectTokenSources(rendered);
-			writeVariables(rendered, tokens);
+	/** @type {import('./types').SassConvertRendered }} **/
+	const rendered = await sassExtract.render({
+		file: indexFile
+	});
 
-			Object.keys(tokens).map(token => {
-				const outfileStem = path.join(distFolder, token);
-				const json = JSON.stringify(tokens[token]);
-				// writing json output
-				fs.writeJSON(outfileStem + '.json', json);
-				fs.writeFile(outfileStem + '.js', writeJsToken(json));
-			});
-		})
-		.catch((/** @type {any} */ err) => {
-			console.log(err);
-		});
-}
+	const collection = collectTokenSources(rendered);
 
-/**
- *
- * @param {import('./types').SassConvertRendered} rendered
- * @param { {[key:string]: any}} tokens
- */
-function writeVariables(rendered, tokens) {
 	for (const name in rendered.vars.global) {
 		const rule = rendered.vars.global[name];
-		addToTokens(tokens, convertSassVariable(rule, name));
+		// get the parent token's name
+		const parent = getTokenFromSource(rule);
+		// convert each rule to a simpler structure (recurses for maps and lists)
+		const converted = convertSassVariable(rule, name);
+		// add the converted token to the collection
+		collection[parent].tokens = { ...collection[parent].tokens, ...converted };
 	}
-}
 
-/**
- *
- * @param {*} tokens
- * @param {*} result
- */
-function addToTokens(tokens, result) {
-	if (!result) {
-		throw new Error('Could not add set of tokens.');
+	const outfileStem = path.join('./dist/', 'index');
+
+	try {
+		await fs.ensureDir('./dist');
+		await Promise.all([
+			fs.writeJSON(`${outfileStem}.json`, collection),
+			quicktypeJSON('AtlasTokens', JSON.stringify(collection), `${outfileStem}.d.ts`, 'typescript')
+		]);
+		console.log(`Tokens written to "${path.join(process.cwd(), '/dist/index.json')}".`);
+	} catch (err) {
+		throw new Error('Problem writing output: ', err);
 	}
-	if (!(result.parent in tokens)) {
-		throw new Error(`Missing parent property from token set: ${JSON.stringify(result)}`);
-	}
-	tokens[result.parent].map[result.name] = result;
-	tokens[result.parent].list.push(result);
 }
 
 /**
  *
  * @param {{ [key: string]: any}} rendered
- * @returns {{[key: string]: { map: {}, list: any[]}} }
+ * @returns {{[key: string]: { [key: string]: any} }}
  */
 function collectTokenSources(rendered) {
-	const parents = rendered.stats.includedFiles
-		.map((/** @type {string} */ file) => getFinalFilePart(file))
-		.filter((/** @type {string} */ x) => x !== 'index')
+	const collection = rendered.stats.includedFiles
+		.map((/** @type {string} */ file) => {
+			return { name: getFinalFilePart(file), location: getAtlasFilePath(file) };
+		})
+		.filter((/** @type {{ name: string; location: string; }} */ x) => x.name !== 'index')
 		.reduce((
-			/** @type {{ [x: string]: { map: {}; list: never[]; }; }} */ tokens,
-			/** @type {string | number} */ t
+			/** @type {{ [x: string]: any; }} */ all,
+			/** @type {{ name: string | number; }} */ source
 		) => {
-			tokens[t] = {
-				map: {},
-				list: []
+			all[source.name] = {
+				...source,
+				tokens: {}
 			};
-			return tokens;
+			return all;
 		}, {});
-	return parents;
+	return collection;
 }
 
 /**
- * @param {string} json
+ *
+ * @param {string} typeName The name of the global type
+ * @param {string} jsonString The JSON to parse
+ * @param {string} outfile Where to save the file
+ * @param {string} targetLanguage To which language to convert the types
+ * @returns promise
  */
-function writeJsToken(json) {
-	return `'use strict';
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = ${json};`;
+async function quicktypeJSON(typeName, jsonString, outfile, targetLanguage = 'typescript') {
+	const jsonInput = jsonInputForTargetLanguage(targetLanguage);
+
+	// We could add multiple samples for the same desired
+	// type, or many sources for other types. Here we're
+	// just making one type from one piece of sample JSON.
+	await jsonInput.addSource({
+		name: typeName,
+		samples: [jsonString]
+	});
+
+	const inputData = new InputData();
+	inputData.addInput(jsonInput);
+	const result = await quicktype({
+		outfile,
+		inputData,
+		lang: targetLanguage
+	});
+	return fs.writeFile(outfile, result.lines.join('\n'));
+}
+
+/**
+ * Rules returned by sass-convert sometimes contain the file source from which they're declared.
+ * @param {import('./types').SassRule} rule
+ * @returns string
+ */
+function getTokenFromSource(rule) {
+	if (rule.sources && rule.sources.length > 0) {
+		return getFinalFilePart(rule.sources[0]);
+	}
+	return 'other';
+}
+
+/**
+ * Slice off unwanted parts of a scss files file path.
+ * @param {string} filePath
+ * @returns string
+ */
+function getFinalFilePart(filePath) {
+	return filePath.slice(filePath.lastIndexOf('/') + 1).replace('.scss', '');
+}
+
+/**
+ * Get Atlas relative path from absolute file path returned by sass-convert.
+ * @param {string} path
+ * @returns string
+ */
+function getAtlasFilePath(path) {
+	return path.split('atlas-design')[1];
 }

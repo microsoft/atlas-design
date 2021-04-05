@@ -12,7 +12,8 @@
 	],
 	"author": "Microsoft Corporation",
 	"license": "MIT",
-	"main": "index.js",
+	"main": "/dist/index.json",
+	"types": "/dist/index.d.ts",
 	"files": [
 		"index.js"
 	],
