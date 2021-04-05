@@ -1,14 +1,16 @@
-//@ts-check
 const sassExtract = require('sass-extract');
 const glob = require('fast-glob');
 const fs = require('fs-extra');
 const path = require('path');
-const { getFinalFilePart, convertSassVariable } = require('./conversation');
+const { getFinalFilePart, convertSassVariable } = require('./conversion');
 
 const distFolder = path.join(process.cwd(), '/dist');
 
 createTokens(distFolder);
 
+/**
+ * @param {string} distFolder Path to which tokens are written
+ */
 async function createTokens(distFolder) {
 	// Global variables play better when we just import a single index file
 	const entries = await glob(['../../css/src/tokens/index.scss'], {});
@@ -19,13 +21,13 @@ async function createTokens(distFolder) {
 		);
 	}
 
-	await fs.mkdir(distFolder);
+	await fs.ensureDir(distFolder);
 
 	sassExtract
 		.render({
 			file: entries[0]
 		})
-		.then(async rendered => {
+		.then(async (/** @type {import('./types').SassConvertRendered }} */ rendered) => {
 			const tokens = collectTokenSources(rendered);
 			writeVariables(rendered, tokens);
 
@@ -37,7 +39,7 @@ async function createTokens(distFolder) {
 				fs.writeFile(outfileStem + '.js', writeJsToken(json));
 			});
 		})
-		.catch(err => {
+		.catch((/** @type {any} */ err) => {
 			console.log(err);
 		});
 }
@@ -77,9 +79,12 @@ function addToTokens(tokens, result) {
  */
 function collectTokenSources(rendered) {
 	const parents = rendered.stats.includedFiles
-		.map(file => getFinalFilePart(file))
-		.filter(x => x !== 'index')
-		.reduce((tokens, t) => {
+		.map((/** @type {string} */ file) => getFinalFilePart(file))
+		.filter((/** @type {string} */ x) => x !== 'index')
+		.reduce((
+			/** @type {{ [x: string]: { map: {}; list: never[]; }; }} */ tokens,
+			/** @type {string | number} */ t
+		) => {
 			tokens[t] = {
 				map: {},
 				list: []
@@ -89,6 +94,9 @@ function collectTokenSources(rendered) {
 	return parents;
 }
 
+/**
+ * @param {string} json
+ */
 function writeJsToken(json) {
 	return `'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
