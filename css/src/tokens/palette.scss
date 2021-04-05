@@ -8,18 +8,18 @@ Notes:
 
 // Monochrome
 
-$palette-grey-10: hsla(0, 0%, 98%, 1) !default; // #F2F2F2
-$palette-grey-20: hsla(0, 0%, 95%, 1) !default; // #F2F2F2
-$palette-grey-30: hsla(0, 0%, 90%, 1) !default; // #E6E6E6
-$palette-grey-40: hsla(0, 0%, 82%, 1) !default; // #D2D2D2
-$palette-grey-50: hsla(0, 0%, 74%, 1) !default; // #BCBCBC
-$palette-grey-60: hsla(0, 0%, 64%, 1) !default; // #A2A2A2
-$palette-grey-70: hsla(0, 0%, 56%, 1) !default; // #8E8E8E
-$palette-grey-80: hsla(0, 0%, 46%, 1) !default; // #757575
-$palette-grey-90: hsla(0, 0%, 31%, 1) !default; // #505050
-$palette-grey-100: hsla(0, 0%, 25%, 1) !default; // #404040
-$palette-grey-110: hsla(0, 0%, 18%, 1) !default; // #2F2F2F
-$palette-grey-120: hsla(0, 0%, 9%, 1) !default; // #171717
+$palette-grey-10: #fafafa !default;
+$palette-grey-20: #f2f2f2 !default;
+$palette-grey-30: #e6e6e6 !default;
+$palette-grey-40: #d2d2d2 !default;
+$palette-grey-50: #bcbcbc !default;
+$palette-grey-60: #a2a2a2 !default;
+$palette-grey-70: #8e8e8e !default;
+$palette-grey-80: #757575 !default;
+$palette-grey-90: #505050 !default;
+$palette-grey-100: #404040 !default;
+$palette-grey-110: #2f2f2f !default;
+$palette-grey-120: #171717 !default;
 
 // Black
 
@@ -67,118 +67,118 @@ $palette-white-opacity-18: hsla(0, 0%, 100%, 0.18) !default;
 
 // Blue
 
-$palette-blue-10: hsla(205, 70%, 91%, 1) !default; // #D7EAF8
-$palette-blue-20: hsla(206, 71%, 77%, 1) !default; // #9CCBEE
-$palette-blue-30: hsla(206, 70%, 68%, 1) !default; // #75B6E7
-$palette-blue-40: hsla(206, 100%, 50%, 1) !default; // #278CDA
-$palette-blue-50: hsla(206, 100%, 41.6%, 1) !default; // #0078D4 // lightness 41.6%
-$palette-blue-60: hsla(206, 100%, 35%, 1) !default; // #0065B3
-$palette-blue-70: hsla(206, 100%, 30%, 1) !default; // #00579A
-$palette-blue-80: hsla(206, 100%, 23%, 1) !default; // #004173
-$palette-blue-90: hsla(206, 100%, 15%, 1) !default; // #002B4D
-$palette-blue-100: hsla(208, 100%, 4%, 1) !default; // #000A13
+$palette-blue-10: #d7eaf8 !default;
+$palette-blue-20: #9ccbee !default;
+$palette-blue-30: #75b6e7 !default;
+$palette-blue-40: #278cda !default;
+$palette-blue-50: #0078d4 !default;
+$palette-blue-60: #0065b3 !default;
+$palette-blue-70: #00579a !default;
+$palette-blue-80: #004173 !default;
+$palette-blue-90: #002b4d !default;
+$palette-blue-100: #000a13 !default;
 
 $palette-blue-opacity-30: hsla(206, 100%, 35%, 0.3);
 $palette-blue-opacity-70: hsla(206, 100%, 35%, 0.7);
 
 // Navy
 
-$palette-navy-10: hsla(216, 31%, 90%, 1) !default; // #DFE5EE
-$palette-navy-20: hsla(218, 28%, 81%, 1) !default; // #C1CBDC
-$palette-navy-30: hsla(217, 26%, 72%, 1) !default; // #A4B2C9
-$palette-navy-40: hsla(217, 23%, 62%, 1) !default; // #899AB5
-$palette-navy-50: hsla(218, 20%, 53%, 1) !default; // #70819F
-$palette-navy-60: hsla(218, 26%, 39%, 1) !default; // #4A5D7E
-$palette-navy-70: hsla(217, 45%, 25%, 1) !default; // #243A5E
-$palette-navy-80: hsla(218, 58%, 19%, 1) !default; // #14294C
-$palette-navy-90: hsla(218, 74%, 9%, 1) !default; // #061329
-$palette-navy-100: hsla(206, 100%, 3%, 1) !default; // #000910
+$palette-navy-10: #dfe5ee !default;
+$palette-navy-20: #c1cbdc !default;
+$palette-navy-30: #a4b2c9 !default;
+$palette-navy-40: #899ab5 !default;
+$palette-navy-50: #70819f !default;
+$palette-navy-60: #4a5d7e !default;
+$palette-navy-70: #243a5e !default;
+$palette-navy-80: #14294c !default;
+$palette-navy-90: #061329 !default;
+$palette-navy-100: #000910 !default;
 
 $palette-navy-opacity-30: hsla(262, 46%, 17%, 0.3) !default;
 $palette-navy-opacity-70: hsla(262, 46%, 17%, 0.7) !default;
 
 // Turqoise
 
-$palette-turqoise-10: hsla(191, 100%, 96%, 1) !default; // #E9FBFF
-$palette-turqoise-20: hsla(189, 100%, 87%, 1) !default; // #BDF5FF
-$palette-turqoise-30: hsla(189, 100%, 74%, 1) !default; // #7BECFF
-$palette-turqoise-40: hsla(189, 100%, 66%, 1) !default; // #50E6FF
-$palette-turqoise-50: hsla(189, 60%, 53%, 1) !default; // #41B9CF
-$palette-turqoise-60: hsla(189, 52%, 41%, 1) !default; // #328E9F
-$palette-turqoise-70: hsla(189, 52%, 33%, 1) !default; // #28727F
-$palette-turqoise-80: hsla(189, 52%, 20%, 1) !default; // #19474F
-$palette-turqoise-90: hsla(189, 52%, 12%, 1) !default; // #0F2A2F
-$palette-turqoise-100: hsla(186, 50%, 4%, 1) !default; // #050E0F
+$palette-turqoise-10: #e9fbff !default;
+$palette-turqoise-20: #bdf5ff !default;
+$palette-turqoise-30: #7becff !default;
+$palette-turqoise-40: #50e6ff !default;
+$palette-turqoise-50: #41b9cf !default;
+$palette-turqoise-60: #328e9f !default;
+$palette-turqoise-70: #28727f !default;
+$palette-turqoise-80: #19474f !default;
+$palette-turqoise-90: #0f2a2f !default;
+$palette-turqoise-100: #050e0f !default;
 
 $palette-navy-opacity-30: hsla(189, 52%, 12%, 0.3) !default;
 $palette-navy-opacity-70: hsla(189, 52%, 12%, 0.7) !default;
 
 // Green
 
-$palette-green-10: hsla(115, 58%, 92%, 1) !default; // #dff6dd
-$palette-green-20: hsla(117, 36%, 75%, 1) !default; // #acd7aa
-$palette-green-30: hsla(119, 32%, 61%, 1) !default; // #7cbb7b
-$palette-green-40: hsla(120, 37%, 45%, 1) !default; // #489d48
-$palette-green-50: hsla(120, 54%, 35%, 1) !default; // #2a8b2a
-$palette-green-60: hsla(120, 77%, 27%, 1) !default; // #107c10
-$palette-green-70: hsla(125, 80%, 22%, 1) !default; // #0b6413
-$palette-green-80: hsla(135, 88%, 16%, 1) !default; // #054b16
-$palette-green-90: hsla(129, 83%, 11%, 1) !default; // #05350c
-$palette-green-100: hsla(106, 100%, 5%, 1) !default; // #061a00
+$palette-green-10: #dff6dd !default;
+$palette-green-20: #acd7aa !default;
+$palette-green-30: #7cbb7b !default;
+$palette-green-40: #489d48 !default;
+$palette-green-50: #2a8b2a !default;
+$palette-green-60: #107c10 !default;
+$palette-green-70: #0b6413 !default;
+$palette-green-80: #054b16 !default;
+$palette-green-90: #05350c !default;
+$palette-green-100: #061a00 !default;
 
 $palette-green-opacity-30: hsla(120, 37%, 45%, 0.3) !default;
 $palette-green-opacity-70: hsla(120, 37%, 45%, 0.7) !default;
 
 // Purple
 
-$palette-purple-10: hsla(277, 90%, 92%, 1) !default; // #efd9fd
-$palette-purple-20: hsla(275, 97%, 86%, 1) !default; // #e0b7fe
-$palette-purple-30: hsla(274, 100%, 81%, 1) !default; // #d59dff
-$palette-purple-40: hsla(268, 62%, 69%, 1) !default; // #ac7ee1
-$palette-purple-50: hsla(265, 53%, 63%, 1) !default; // #9970d3
-$palette-purple-60: hsla(262, 46%, 58%, 1) !default; // #8661c5
-$palette-purple-70: hsla(261, 33%, 43%, 1) !default; // #624991
-$palette-purple-80: hsla(259, 31%, 26%, 1) !default; // #3b2e58
-$palette-purple-90: hsla(251, 47%, 18%, 1) !default; // #201843
-$palette-purple-100: hsla(244, 100%, 9%, 1) !default; // #03002c
+$palette-purple-10: #efd9fd !default;
+$palette-purple-20: #e0b7fe !default;
+$palette-purple-30: #d59dff !default;
+$palette-purple-40: #ac7ee1 !default;
+$palette-purple-50: #9970d3 !default;
+$palette-purple-60: #8661c5 !default;
+$palette-purple-70: #624991 !default;
+$palette-purple-80: #3b2e58 !default;
+$palette-purple-90: #201843 !default;
+$palette-purple-100: #03002c !default;
 
 $palette-purple-opacity-30: hsla(251, 47%, 18%, 0.3) !default;
 $palette-purple-opacity-70: hsla(251, 47%, 18%, 0.7) !default;
 
 // Yellow
 
-$palette-yellow-10: hsla(47, 100%, 90%, 1) !default; // #fff4ce
-$palette-yellow-20: hsla(45, 100%, 81%, 1) !default; // #ffe79f
-$palette-yellow-30: hsla(44, 100%, 76%, 1) !default; // #ffdf84
-$palette-yellow-40: hsla(44, 100%, 62%, 1) !default; // #ffcb3f
-$palette-yellow-50: hsla(44, 100%, 50%, 1) !default; // #ffb900
-$palette-yellow-60: hsla(43, 99%, 41%, 1) !default; // #d19501
-$palette-yellow-70: hsla(41, 97%, 30%, 1) !default; // #966802
-$palette-yellow-80: hsla(38, 66%, 25%, 1) !default; // #6a4b16
-$palette-yellow-90: hsla(35, 70%, 18%, 1) !default; // #4f340e
-$palette-yellow-100: hsla(29, 88%, 9%, 1) !default; // #2d1703
+$palette-yellow-10: #fff4ce !default;
+$palette-yellow-20: #ffe79f !default;
+$palette-yellow-30: #ffdf84 !default;
+$palette-yellow-40: #ffcb3f !default;
+$palette-yellow-50: #ffb900 !default;
+$palette-yellow-60: #d19501 !default;
+$palette-yellow-70: #966802 !default;
+$palette-yellow-80: #6a4b16 !default;
+$palette-yellow-90: #4f340e !default;
+$palette-yellow-100: #2d1703 !default;
 
 $palette-yellow-opacity-30: hsla(44, 100%, 50%, 0.3) !default;
 $palette-yellow-opacity-70: hsla(44, 100%, 50%, 0.7) !default;
 
 // Red
 
-$palette-red-10: hsla(355, 85%, 95%, 1) !default; // #FDE7E9
-$palette-red-20: hsla(359, 54%, 78%, 1) !default; // #E5A7A8
-$palette-red-30: hsla(359, 51%, 65%, 1) !default; // #D4797A
-$palette-red-40: hsla(0, 50%, 54%, 1) !default; // #C54F4F
-$palette-red-50: hsla(0, 100%, 33%, 1) !default; // #B62626
-$palette-red-60: hsla(0, 100%, 33%, 1) !default; // #A80000
-$palette-red-70: hsla(0, 100%, 26%, 1) !default; // #870000
-$palette-red-80: hsla(359, 100%, 19%, 1) !default; // #630001
-$palette-red-90: hsla(359, 100%, 14%, 1) !default; // #470001
-$palette-red-100: hsla(359, 100%, 8%, 1) !default; // #290001
+$palette-red-10: #fde7e9 !default;
+$palette-red-20: #e5a7a8 !default;
+$palette-red-30: #d4797a !default;
+$palette-red-40: #c54f4f !default;
+$palette-red-50: #b62626 !default;
+$palette-red-60: #a80000 !default;
+$palette-red-70: #870000 !default;
+$palette-red-80: #630001 !default;
+$palette-red-90: #470001 !default;
+$palette-red-100: #290001 !default;
 
 $palette-red-opacity-30: hsla(0, 100%, 33%, 0.3) !default;
 $palette-red-opacity-70: hsla(0, 100%, 33%, 0.7) !default;
 
 // High Contrast
 
-$palette-yellow-high-contrast: hsla(60, 100%, 50%, 1) !default;
-$palette-yellow-high-contrast-hover: hsla(60, 100%, 60%, 1) !default;
-$palette-visited-high-contrast: hsla(106, 100%, 50%, 1) !default;
+$palette-yellow-high-contrast: #ff0 !default;
+$palette-yellow-high-contrast-hover: #ff3 !default;
+$palette-visited-high-contrast: #3cff00 !default;
