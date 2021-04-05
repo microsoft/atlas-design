@@ -5,20 +5,20 @@
  * @param {boolean} isSubProp Whether this item is a subproperty of a map.
  * @returns any
  */
-function convertSassVariable(rule, name, isSubProp = false) {
+function convertSassVariable(rule, name) {
 	switch (rule.type) {
 		case 'SassString':
-			return convertString(name, rule, isSubProp);
+			return convertString(rule, name);
 		case 'SassNumber':
-			return convertNumber(name, rule, isSubProp);
+			return convertNumber(rule, name);
 		case 'SassList':
-			return convertList(name, rule, isSubProp);
+			return convertList(rule, name);
 		case 'SassMap':
-			return convertMap(name, rule, isSubProp);
+			return convertMap(rule, name);
 		case 'SassColor':
-			return convertColor(name, rule, isSubProp);
+			return convertColor(rule, name);
 		case 'SassBoolean':
-			return convertBool(name, rule, isSubProp);
+			return convertBool(rule, name);
 		default:
 			throw new Error(`Unexpected Sass type encountered: ${JSON.stringify(rule)}`);
 	}
@@ -26,10 +26,10 @@ function convertSassVariable(rule, name, isSubProp = false) {
 
 /**
  * Converts to string rule into a token friendly object
- * @param {string} name The Sass variable Name
  * @param {import("./types").SassStringRule} rule
+ * @param {string} [name] The Sass variable Name
  */
-function convertString(name, rule) {
+function convertString(rule, name) {
 	if (!name) {
 		return rule.value;
 	}
@@ -41,7 +41,7 @@ function convertString(name, rule) {
  * @param {string} name The Sass variable Name
  * @param {import("./types").SassNumberRule} rule
  */
-function convertNumber(name, rule) {
+function convertNumber(rule, name) {
 	const value = `${rule.value}${rule.unit || ''}`;
 	if (!name) {
 		return value;
@@ -54,8 +54,8 @@ function convertNumber(name, rule) {
  * @param {string} name
  * @param {import("./types").SassListRule} rule
  */
-function convertList(name, rule) {
-	const value = rule.value.map(v => convertSassVariable(v, '', true));
+function convertList(rule, name) {
+	const value = rule.value.map(v => convertSassVariable(v, '', true)).join(`${rule.separator} `);
 	if (!name) {
 		return value;
 	}
@@ -68,22 +68,22 @@ function convertList(name, rule) {
  * @param {string} name
  * @param {import('./types').SassMapRule} rule
  */
-function convertMap(name, rule, isSubprop) {
+function convertMap(rule, name) {
 	const children = {};
 	for (const subprop in rule.value) {
-		children[subprop] = convertSassVariable(rule.value[subprop], '', true);
+		children[subprop] = convertSassVariable(rule.value[subprop]);
 	}
 	if (!name) {
 		return children;
 	}
-	return { ...children };
+	return { [name]: children };
 }
 
 /**
  * @param {string} name
  * @param {import("./types").SassColorRule} rule
  */
-function convertBool(name, rule, isSubprop = false) {
+function convertBool(rule, name) {
 	if (!name) {
 		return rule.value;
 	}
@@ -94,7 +94,7 @@ function convertBool(name, rule, isSubprop = false) {
  * @param {string} name
  * @param {import("./types").SassColorRule} rule
  */
-function convertColor(name, rule, isSubprop = false) {
+function convertColor(rule, name) {
 	if (!name) {
 		return rule.value;
 	}
