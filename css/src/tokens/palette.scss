@@ -9,111 +9,111 @@ Notes:
 // Monochrome
 
 $palette-grey-10: #fafafa !default;
-$palette-grey-20: #F2F2F2 !default;
-$palette-grey-30: #E6E6E6 !default;
-$palette-grey-40: #D2D2D2 !default;
-$palette-grey-50: #BCBCBC !default;
-$palette-grey-60: #A2A2A2 !default; 
-$palette-grey-70: #8E8E8E !default; 
-$palette-grey-80: #757575 !default; 
-$palette-grey-90: #505050 !default; 
+$palette-grey-20: #f2f2f2 !default;
+$palette-grey-30: #e6e6e6 !default;
+$palette-grey-40: #d2d2d2 !default;
+$palette-grey-50: #bcbcbc !default;
+$palette-grey-60: #a2a2a2 !default;
+$palette-grey-70: #8e8e8e !default;
+$palette-grey-80: #757575 !default;
+$palette-grey-90: #505050 !default;
 $palette-grey-100: #404040 !default;
-$palette-grey-110: #2F2F2F !default;
+$palette-grey-110: #2f2f2f !default;
 $palette-grey-120: #171717 !default;
 
 // Black
 
-$palette-black: #000000 !default;
+$palette-black: #000 !default;
 
-$palette-black-opacity-90: #000000E6 !default;
-$palette-black-opacity-80: #000000CC !default;
-$palette-black-opacity-70: #000000B3 !default;
-$palette-black-opacity-60: #00000099 !default;
+$palette-black-opacity-90: #000000e6 !default;
+$palette-black-opacity-80: #000c !default;
+$palette-black-opacity-70: #000000b3 !default;
+$palette-black-opacity-60: #0009 !default;
 $palette-black-opacity-50: #00000080 !default;
-$palette-black-opacity-40: #00000066 !default;
-$palette-black-opacity-30: #0000004D !default;
-$palette-black-opacity-20: #00000033 !default;
-$palette-black-opacity-10: #0000001A !default;
-$palette-black-opacity-0: #000000 !default;
+$palette-black-opacity-40: #0006 !default;
+$palette-black-opacity-30: #0000004d !default;
+$palette-black-opacity-20: #0003 !default;
+$palette-black-opacity-10: #0000001a !default;
+$palette-black-opacity-0: #000 !default;
 
 // White
 
-$palette-white:#FFFFFF !default;
+$palette-white: #fff !default;
 
-$palette-white-opacity-0: #ffffff00;
-$palette-white-opacity-10:#ffffff1A;
-$palette-white-opacity-20:#ffffff33;
-$palette-white-opacity-30: #ffffff4D;
-$palette-white-opacity-40: #ffffff66;
+$palette-white-opacity-0: #fff0;
+$palette-white-opacity-10: #ffffff1a;
+$palette-white-opacity-20: #fff3;
+$palette-white-opacity-30: #ffffff4d;
+$palette-white-opacity-40: #fff6;
 $palette-white-opacity-50: #ffffff80;
-$palette-white-opacity-60: #ffffff99;
-$palette-white-opacity-70: #ffffffB3;
-$palette-white-opacity-80: #ffffffCC;
-$palette-white-opacity-90: #ffffffE6;
+$palette-white-opacity-60: #fff9;
+$palette-white-opacity-70: #ffffffb3;
+$palette-white-opacity-80: #fffc;
+$palette-white-opacity-90: #ffffffe6;
 
 // Values used for shadows
 
-$palette-black-opacity-108: #0000001C !default;
+$palette-black-opacity-108: #0000001c !default;
 $palette-black-opacity-132: #00000021 !default;
 
 $palette-black-opacity-22: #00000038 !default;
-$palette-black-opacity-18: #0000002E !default;
+$palette-black-opacity-18: #0000002e !default;
 
-$palette-white-opacity-108: #ffffff1C !default;
+$palette-white-opacity-108: #ffffff1c !default;
 $palette-white-opacity-132: #ffffff21 !default;
 
 $palette-white-opacity-22: #ffffff38 !default;
-$palette-white-opacity-18: #ffffff2E !default;
+$palette-white-opacity-18: #ffffff2e !default;
 
 // Blue
 
-$palette-blue-10:#D7EAF8 !default;
-$palette-blue-20: #9CCBEE !default;
-$palette-blue-30: #75B6E7 !default;
-$palette-blue-40: #278CDA !default;
-$palette-blue-50: #0078D4 !default;
-$palette-blue-60: #0065B3 !default;
-$palette-blue-70: #00579A !default;
+$palette-blue-10: #d7eaf8 !default;
+$palette-blue-20: #9ccbee !default;
+$palette-blue-30: #75b6e7 !default;
+$palette-blue-40: #278cda !default;
+$palette-blue-50: #0078d4 !default;
+$palette-blue-60: #0065b3 !default;
+$palette-blue-70: #00579a !default;
 $palette-blue-80: #004173 !default;
-$palette-blue-90: #002B4D !default;
-$palette-blue-100: #000A13 !default;
+$palette-blue-90: #002b4d !default;
+$palette-blue-100: #000a13 !default;
 
-$palette-blue-opacity-30: #0065B34D ;
-$palette-blue-opacity-70: #0065B3B3 ;
+$palette-blue-opacity-30: #0065b34d;
+$palette-blue-opacity-70: #0065b3b3;
 
 // Navy
 
-$palette-navy-10: #DFE5EE !default;
-$palette-navy-20: #C1CBDC !default;
-$palette-navy-30: #A4B2C9 !default;
-$palette-navy-40: #899AB5 !default;
-$palette-navy-50: #70819F !default;
-$palette-navy-60: #4A5D7E !default;
-$palette-navy-70: #243A5E !default;
-$palette-navy-80: #14294C !default;
+$palette-navy-10: #dfe5ee !default;
+$palette-navy-20: #c1cbdc !default;
+$palette-navy-30: #a4b2c9 !default;
+$palette-navy-40: #899ab5 !default;
+$palette-navy-50: #70819f !default;
+$palette-navy-60: #4a5d7e !default;
+$palette-navy-70: #243a5e !default;
+$palette-navy-80: #14294c !default;
 $palette-navy-90: #061329 !default;
 $palette-navy-100: #000910 !default;
 
-$palette-navy-opacity-30:#26173F4D !default;
-$palette-navy-opacity-70: #26173FB3 !default;
+$palette-navy-opacity-30: #26173f4d !default;
+$palette-navy-opacity-70: #26173fb3 !default;
 
 // Turqoise
 
-$palette-turqoise-10: #E9FBFF !default;
-$palette-turqoise-20: #BDF5FF !default;
-$palette-turqoise-30: #7BECFF !default;
-$palette-turqoise-40: #50E6FF !default;
-$palette-turqoise-50: #41B9CF !default;
-$palette-turqoise-60: #328E9F !default;
-$palette-turqoise-70: #28727F !default;
-$palette-turqoise-80: #19474F !default;
-$palette-turqoise-90: #0F2A2F !default;
-$palette-turqoise-100: #050E0F !default;
+$palette-turqoise-10: #e9fbff !default;
+$palette-turqoise-20: #bdf5ff !default;
+$palette-turqoise-30: #7becff !default;
+$palette-turqoise-40: #50e6ff !default;
+$palette-turqoise-50: #41b9cf !default;
+$palette-turqoise-60: #328e9f !default;
+$palette-turqoise-70: #28727f !default;
+$palette-turqoise-80: #19474f !default;
+$palette-turqoise-90: #0f2a2f !default;
+$palette-turqoise-100: #050e0f !default;
 
-$palette-navy-opacity-30: #0F2A2F4D !default;
-$palette-navy-opacity-70: #0F2A2FB3 !default;
+$palette-navy-opacity-30: #0f2a2f4d !default;
+$palette-navy-opacity-70: #0f2a2fb3 !default;
 
-// Green 
+// Green
 
 $palette-green-10: #dff6dd !default;
 $palette-green-20: #acd7aa !default;
@@ -126,10 +126,10 @@ $palette-green-80: #054b16 !default;
 $palette-green-90: #05350c !default;
 $palette-green-100: #061a00 !default;
 
-$palette-green-opacity-30: 	#489D484D !default;
-$palette-green-opacity-70: 	#489D48B3 !default;
+$palette-green-opacity-30: #489d484d !default;
+$palette-green-opacity-70: #489d48b3 !default;
 
-// Purple 
+// Purple
 
 $palette-purple-10: #efd9fd !default;
 $palette-purple-20: #e0b7fe !default;
@@ -142,8 +142,8 @@ $palette-purple-80: #3b2e58 !default;
 $palette-purple-90: #201843 !default;
 $palette-purple-100: #03002c !default;
 
-$palette-purple-opacity-30: #2018434D !default;
-$palette-purple-opacity-70: #201843B3 !default;
+$palette-purple-opacity-30: #2018434d !default;
+$palette-purple-opacity-70: #201843b3 !default;
 
 // Yellow
 
@@ -158,27 +158,27 @@ $palette-yellow-80: #6a4b16 !default;
 $palette-yellow-90: #4f340e !default;
 $palette-yellow-100: #2d1703 !default;
 
-$palette-yellow-opacity-30: #ffbb004D !default;
-$palette-yellow-opacity-70: #ffbb00B3 !default;
+$palette-yellow-opacity-30: #ffbb004d !default;
+$palette-yellow-opacity-70: #ffbb00b3 !default;
 
 // Red COMPLETE
 
-$palette-red-10: #FDE7E9 !default;
-$palette-red-20: #E5A7A8 !default;
-$palette-red-30: #D4797A !default;
-$palette-red-40: #C54F4F !default;
-$palette-red-50: #B62626 !default;
-$palette-red-60: #A80000 !default;
+$palette-red-10: #fde7e9 !default;
+$palette-red-20: #e5a7a8 !default;
+$palette-red-30: #d4797a !default;
+$palette-red-40: #c54f4f !default;
+$palette-red-50: #b62626 !default;
+$palette-red-60: #a80000 !default;
 $palette-red-70: #870000 !default;
 $palette-red-80: #630001 !default;
 $palette-red-90: #470001 !default;
 $palette-red-100: #290001 !default;
 
-$palette-red-opacity-30: #a800004D !default;
-$palette-red-opacity-70: #a80000B3 !default;
+$palette-red-opacity-30: #a800004d !default;
+$palette-red-opacity-70: #a80000b3 !default;
 
 // High Contrast
 
-$palette-yellow-high-contrast: #FFFF00FF !default;
-$palette-yellow-high-contrast-hover: #FFFF33FF !default;
-$palette-visited-high-contrast:	#3CFF00FF !default;
+$palette-yellow-high-contrast: #ff0 !default;
+$palette-yellow-high-contrast-hover: #ff3 !default;
+$palette-visited-high-contrast: #3cff00ff !default;
