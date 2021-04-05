@@ -13,19 +13,12 @@ createTokens(distFolder);
  */
 async function createTokens(distFolder) {
 	// Global variables play better when we just import a single index file
-	const entries = await glob(['../../css/src/tokens/index.scss'], {});
-
-	if (entries.length !== 1) {
-		throw new Error(
-			`Error with entries. There should only be a single entry. Got ${entries.length}.`
-		);
-	}
-
+	const indexFile = require.resolve('@microsoft/atlas-css/src/tokens/index.scss');
 	await fs.ensureDir(distFolder);
 
 	sassExtract
 		.render({
-			file: entries[0]
+			file: indexFile
 		})
 		.then(async (/** @type {import('./types').SassConvertRendered }} */ rendered) => {
 			const tokens = collectTokenSources(rendered);
@@ -35,7 +28,7 @@ async function createTokens(distFolder) {
 				const outfileStem = path.join(distFolder, token);
 				const json = JSON.stringify(tokens[token]);
 				// writing json output
-				fs.writeFile(outfileStem + '.json', json);
+				fs.writeJSON(outfileStem + '.json', json);
 				fs.writeFile(outfileStem + '.js', writeJsToken(json));
 			});
 		})
