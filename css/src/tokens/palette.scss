@@ -23,7 +23,7 @@ $palette-grey-120: #171717 !default;
 
 // Black
 
-$palette-black: hsla(0, 0%, 0%, 1) !default; // #000000
+$palette-black: #000 !default;
 
 $palette-black-opacity-90: hsla(0, 0%, 0%, 0.9) !default;
 $palette-black-opacity-80: hsla(0, 0%, 0%, 0.8) !default;
@@ -38,7 +38,7 @@ $palette-black-opacity-0: hsla(0, 0%, 0%, 0) !default;
 
 // White
 
-$palette-white: hsla(0, 0%, 100%, 1) !default; // #FFFFFF
+$palette-white: #fff !default;
 
 $palette-white-opacity-0: hsla(0, 0%, 100%, 0);
 $palette-white-opacity-10: hsla(0, 0%, 100%, 0.1);
