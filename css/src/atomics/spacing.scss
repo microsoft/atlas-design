@@ -44,15 +44,15 @@ $layout-sizes: (
 	// .margin-inline-<value>
 	.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey} {
 		// Replace with margin-inline property when possible
-		margin-left: sizeValue($sizeKey, $sizeValue) !important;
 		margin-right: sizeValue($sizeKey, $sizeValue) !important;
+		margin-left: sizeValue($sizeKey, $sizeValue) !important;
 	}
 
 	// .padding-inline-<value>
 	.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey} {
 		// Replace with margin-inline property when possible
-		padding-left: sizeValue($sizeKey, $sizeValue) !important;
 		padding-right: sizeValue($sizeKey, $sizeValue) !important;
+		padding-left: sizeValue($sizeKey, $sizeValue) !important;
 	}
 
 	// .margin-block-<value>
@@ -102,14 +102,14 @@ $layout-sizes: (
 
 		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-tablet {
 			// Replace with margin-inline property when possible
-			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
 		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-tablet {
 			// Replace with margin-inline property when possible
-			padding-left: sizeValue($sizeKey, $sizeValue) !important;
 			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
 		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-tablet {
@@ -156,14 +156,14 @@ $layout-sizes: (
 
 		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-desktop {
 			// Replace with margin-inline property when possible
-			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
 		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-desktop {
 			// Replace with margin-inline property when possible
-			padding-left: sizeValue($sizeKey, $sizeValue) !important;
 			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
 		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-desktop {
@@ -210,14 +210,14 @@ $layout-sizes: (
 
 		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-widescreen {
 			// Replace with margin-inline property when possible
-			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
 		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-widescreen {
 			// Replace with margin-inline property when possible
-			padding-left: sizeValue($sizeKey, $sizeValue) !important;
 			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
 		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-widescreen {
