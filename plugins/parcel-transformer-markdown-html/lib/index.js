@@ -40,8 +40,9 @@ module.exports = new Transformer({
 
 		const parsedCode = await markedParse(body, {
 			renderer: new marked.Renderer(),
-			highlight: (code, lang) => {
-				return hljs.highlight(lang, code).value;
+			highlight: (code, language) => {
+				const elementExample = language == 'html' ? `<div class="example">${code}</div>` : '';
+				return `${elementExample} ${hljs.highlight(language, code).value}`;
 			},
 			pedantic: false,
 			gfm: true,
