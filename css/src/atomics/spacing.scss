@@ -127,11 +127,11 @@ $layout-sizes: (
 		@for $i from 1 through 4 {
 			$class-position: nth($class-positions, $i);
 			$user-position: nth($user-positions, $i);
-	
+
 			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-tablet {
 				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
 			}
-	
+
 			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-tablet {
 				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
 			}
@@ -181,11 +181,11 @@ $layout-sizes: (
 		@for $i from 1 through 4 {
 			$class-position: nth($class-positions, $i);
 			$user-position: nth($user-positions, $i);
-	
+
 			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-desktop {
 				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
 			}
-	
+
 			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-desktop {
 				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
 			}
@@ -235,11 +235,11 @@ $layout-sizes: (
 		@for $i from 1 through 4 {
 			$class-position: nth($class-positions, $i);
 			$user-position: nth($user-positions, $i);
-	
+
 			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-widescreen {
 				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
 			}
-	
+
 			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-widescreen {
 				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
 			}
