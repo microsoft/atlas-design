@@ -37,11 +37,28 @@ module.exports = new Transformer({
 		asset.type = 'html';
 		const code = await asset.getCode();
 		const { body, attributes } = frontMatter(code);
+		// marked.use({
+		// 	renderer: {
+		// 		code: (html, code) => {
+		// 			return `<div class="example">${code}</div><pre><code>${code}</code></pre>`;
+		// 		}
+
+		// 	}
+		// });
+
+		// const htmlRenderer = new marked.Renderer();
+		// htmlRenderer.html = function (code) {
+		// 	return `
+		// 		<div class="example">${code}</div>
+		// 		<pre><code>${code}</code></pre>`;
+		// };
 
 		const parsedCode = await markedParse(body, {
 			renderer: new marked.Renderer(),
-			highlight: (code, lang) => {
-				return hljs.highlight(lang, code).value;
+			highlight: (code, language) => {
+				let elementExample;
+				if (language == 'html') elementExample = `<div>${code}</div>`;
+				return `${elementExample} ${hljs.highlight(language, code).value}`;
 			},
 			pedantic: false,
 			gfm: true,

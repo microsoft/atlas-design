@@ -15,3 +15,9 @@ This is some more content.
 ```js
 let hello = 'world';
 ```
+
+```html
+<example>
+	<button class="is-primary">some sample</button>
+</example>
+```
