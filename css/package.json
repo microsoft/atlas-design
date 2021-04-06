@@ -8,7 +8,10 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "stylelint ./src/**/*.scss",
 		"start": "parcel watch src/index.scss",
-		"build": "parcel build src/index.scss --no-cache"
+		"build": "parcel build src/index.scss --no-cache",
+		"tokens": "node ./tokens/index.js",
+		"postinstall": "yarn run tokens",
+		"prepublish": "yarn run tokens"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -18,6 +21,11 @@
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
+	"files": [
+		"dist",
+		"src",
+		"tokens"
+	],
 	"keywords": [
 		"microsoft",
 		"atlas",
@@ -38,6 +46,10 @@
 		"sass": "^1.32.8",
 		"stylelint": "^13.11.0",
 		"stylelint-config-prettier": "^8.0.2",
-		"stylelint-prettier": "^1.1.2"
+		"stylelint-prettier": "^1.1.2",
+		"sass-extract": "^2.1.0",
+		"node-sass": "^4.14.0",
+		"fs-extra": "^9.1.0",
+		"quicktype-core": "^6.0.70"
 	}
 }
