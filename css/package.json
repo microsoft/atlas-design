@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-css",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"main": "dist/index.css",
 	"source": "src/index.scss",
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
@@ -33,7 +33,7 @@
 	},
 	"devDependencies": {
 		"parcel": "next",
-		"@microsoft/stylelint-config-atlas": "2.0.0",
+		"@microsoft/stylelint-config-atlas": "2.0.1",
 		"prettier": "^2.2.1",
 		"sass": "^1.32.8",
 		"stylelint": "^13.11.0",

@@ -1,5 +1,27 @@
 # @microsoft/atlas-css
 
+## 0.4.0
+
+### Minor Changes
+
+- db3c4b7: Add spacing tokens and classes
+- 020872c: Add typography tokens
+- 31df837: Add Flex Atomic
+- 0abb010: Add color atomic classes
+- 3c0a646: Add animations, direction, focus, layout, and radius tokens.
+- 19d2891: Add Shadow Atomic
+- 0a78aca: Adding scheme tokens
+- fa12e35: Add theme related custom property to /core.
+- 02a8241: "Add default focus styles"
+- 689c26f: Add Typography classes
+- a6911bb: Add font stack"
+
+### Patch Changes
+
+- fda50fd: Fix breakpoint names.
+- 2454cba: Changing Color pallette value from HSLA to Hex
+- 549c1a1: Add component folder
+
 ## 0.3.0
 
 ### Minor Changes
