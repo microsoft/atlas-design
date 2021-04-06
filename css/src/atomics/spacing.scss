@@ -1,0 +1,248 @@
+$marginKey: 'margin';
+$paddingKey: 'padding';
+$separator: '-';
+$inlineKey: 'inline';
+$blockKey: 'block';
+
+$class-positions: (('top', 'right', 'bottom', 'left'));
+
+$user-positions: (('top', $user-right, 'bottom', $user-left));
+
+$layout-sizes: (
+	('none', $layout-0),
+	('xs', $layout-1),
+	('s', $layout-2),
+	('m', $layout-3),
+	('l', $layout-4),
+	('xl', $layout-5),
+	('xxl', $layout-6),
+	('xxxl', $layout-7)
+);
+
+@function sizeValue($key, $value) {
+	@return if($key == 'none', 0, $value);
+}
+
+// Pattern: <cssproperty>-<value>-<screen>
+
+@each $size in $layout-sizes {
+	$sizeKey: nth($size, 1);
+	$sizeValue: nth($size, 2);
+
+	// .margin-<value>
+	.#{$marginKey}#{$separator}#{$sizeKey} {
+		margin: sizeValue($sizeKey, $sizeValue) !important;
+	}
+
+	// .padding-<value>
+	.#{$paddingKey}#{$separator}#{$sizeKey} {
+		padding: sizeValue($sizeKey, $sizeValue) !important;
+	}
+
+	// margin-inline and margin-block property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
+
+	// .margin-inline-<value>
+	.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey} {
+		// Replace with margin-inline property when possible
+		margin-right: sizeValue($sizeKey, $sizeValue) !important;
+		margin-left: sizeValue($sizeKey, $sizeValue) !important;
+	}
+
+	// .padding-inline-<value>
+	.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey} {
+		// Replace with margin-inline property when possible
+		padding-right: sizeValue($sizeKey, $sizeValue) !important;
+		padding-left: sizeValue($sizeKey, $sizeValue) !important;
+	}
+
+	// .margin-block-<value>
+	.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey} {
+		// Replace with margin-block property when possible
+		margin-top: sizeValue($sizeKey, $sizeValue) !important;
+		margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
+	}
+
+	// .padding-block-<value>
+	.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey} {
+		// Replace with margin-block property when possible
+		padding-top: sizeValue($sizeKey, $sizeValue) !important;
+		padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
+	}
+
+	@for $i from 1 through 4 {
+		$class-position: nth($class-positions, $i);
+		$user-position: nth($user-positions, $i);
+
+		// .margin-<side>-<value>
+		.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey} {
+			margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		// .padding-<side>-<value>
+		.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey} {
+			padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+		}
+	}
+}
+
+@include tablet {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
+		.#{$marginKey}#{$separator}#{$sizeKey}-tablet {
+			margin: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$sizeKey}-tablet {
+			padding: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		// margin-inline and margin-block property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
+
+		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-tablet {
+			// Replace with margin-inline property when possible
+			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-tablet {
+			// Replace with margin-inline property when possible
+			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-tablet {
+			// Replace with margin-block property when possible
+			margin-top: sizeValue($sizeKey, $sizeValue) !important;
+			margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-tablet {
+			// Replace with margin-block property when possible
+			padding-top: sizeValue($sizeKey, $sizeValue) !important;
+			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		@for $i from 1 through 4 {
+			$class-position: nth($class-positions, $i);
+			$user-position: nth($user-positions, $i);
+
+			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-tablet {
+				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+
+			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-tablet {
+				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+		}
+	}
+}
+
+@include desktop {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
+		.#{$marginKey}#{$separator}#{$sizeKey}-desktop {
+			margin: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$sizeKey}-desktop {
+			padding: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		// margin-inline and margin-block property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
+
+		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-desktop {
+			// Replace with margin-inline property when possible
+			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-desktop {
+			// Replace with margin-inline property when possible
+			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-desktop {
+			// Replace with margin-block property when possible
+			margin-top: sizeValue($sizeKey, $sizeValue) !important;
+			margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-desktop {
+			// Replace with margin-block property when possible
+			padding-top: sizeValue($sizeKey, $sizeValue) !important;
+			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		@for $i from 1 through 4 {
+			$class-position: nth($class-positions, $i);
+			$user-position: nth($user-positions, $i);
+
+			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-desktop {
+				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+
+			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-desktop {
+				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+		}
+	}
+}
+
+@include widescreen {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
+		.#{$marginKey}#{$separator}#{$sizeKey}-widescreen {
+			margin: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$sizeKey}-widescreen {
+			padding: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		// margin-inline and margin-block property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
+
+		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-widescreen {
+			// Replace with margin-inline property when possible
+			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-widescreen {
+			// Replace with margin-inline property when possible
+			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-widescreen {
+			// Replace with margin-block property when possible
+			margin-top: sizeValue($sizeKey, $sizeValue) !important;
+			margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-widescreen {
+			// Replace with margin-block property when possible
+			padding-top: sizeValue($sizeKey, $sizeValue) !important;
+			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		@for $i from 1 through 4 {
+			$class-position: nth($class-positions, $i);
+			$user-position: nth($user-positions, $i);
+
+			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-widescreen {
+				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+
+			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-widescreen {
+				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+		}
+	}
+}

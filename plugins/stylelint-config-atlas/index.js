@@ -238,6 +238,12 @@ module.exports = {
 				ignoreAtRules: ['if', 'else']
 			}
 		],
+		'function-name-case': [
+			'lower',
+			{
+				ignoreFunctions: ['sizeValue']
+			}
+		],
 		'scss/selector-no-redundant-nesting-selector': true,
 		'scss/at-import-no-partial-leading-underscore': true,
 		'scss/at-else-closing-brace-newline-after': 'always-last-in-chain',
