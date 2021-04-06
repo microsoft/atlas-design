@@ -17,7 +17,5 @@ let hello = 'world';
 ```
 
 ```html
-<example>
-	<button class="is-primary">some sample</button>
-</example>
+<button class="is-primary">Some Text</button>
 ```
