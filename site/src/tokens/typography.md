@@ -1,10 +1,11 @@
 ---
-title: Colors
+title: Typography
 description: Demonstrating the capabilities of markdown using Parcel 2
-template: standard
+template: token
+token: typography
 ---
 
-# Color
+# Typography
 
 This is some content!
 

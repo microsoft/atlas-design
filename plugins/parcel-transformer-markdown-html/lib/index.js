@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 const { Transformer } = require('@parcel/plugin');
 const { promisify } = require('@parcel/utils');
 const marked = require('marked');
@@ -7,6 +7,7 @@ const frontMatter = require('front-matter');
 const mustache = require('mustache');
 const path = require('path');
 const markedParse = promisify(marked.parse);
+const allTokens = require('@microsoft/atlas-css/dist/tokens.json');
 
 module.exports = new Transformer({
 	async loadConfig({ config }) {
@@ -31,8 +32,8 @@ module.exports = new Transformer({
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset
 		options, // https://v2.parceljs.org/plugin-system/api/#PluginOptions
-		config // https://v2.parceljs.org/plugin-system/api/#ConfigResult
-		// logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
+		config, // https://v2.parceljs.org/plugin-system/api/#ConfigResult
+		logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
 	}) {
 		asset.type = 'html';
 		const code = await asset.getCode();
@@ -68,6 +69,27 @@ module.exports = new Transformer({
 					? options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
 					: Promise.resolve(null)
 			]);
+			const tokenSet = attributes.token;
+			let tokens;
+			let cssTokenSource;
+			// we've specified a tokens file to load from @atlas-tokens
+			if (tokenSet) {
+				try {
+					tokens = Object.entries(allTokens[tokenSet].tokens).map(item => {
+						return {
+							name: item[0],
+							value: item[1]
+						};
+					});
+					cssTokenSource = allTokens[tokenSet].location;
+				} catch (err) {
+					logger.warn({
+						message: `There was an error trying to require token file: "${attributes.token}. Did you specify the correct token name in your template? `,
+						filePath: asset.filePath,
+						language: asset.type
+					});
+				}
+			}
 
 			asset.addIncludedFile({
 				filePath: tocEntries
@@ -81,7 +103,9 @@ module.exports = new Transformer({
 				mustache.render(template, {
 					body: parsedCode,
 					toc: { name: 'TOC', entries: tocEntries },
-					...attributes
+					...attributes,
+					tokens,
+					cssTokenSource
 				})
 			);
 		} else {
