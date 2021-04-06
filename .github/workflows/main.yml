@@ -42,7 +42,6 @@ jobs:
       # Run Dart Sass build
       - name: Build CSS
         run: |
-          mkdir ./css/dist;
           yarn build:css;
 
       # Run build for tokens and website
