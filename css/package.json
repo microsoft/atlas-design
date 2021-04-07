@@ -9,8 +9,8 @@
 		"lint": "stylelint ./src/**/*.scss",
 		"start": "parcel watch src/index.scss --no-autoinstall",
 		"build": "parcel build src/index.scss --no-cache --no-autoinstall",
-		"postbuild": "yarn run tokens",
-		"tokens": "node ./tokens/index.js"
+		"tokens": "node ./tokens/index.js",
+		"prepublish": "yarn run lint && yarn run build && yarn run tokens"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
