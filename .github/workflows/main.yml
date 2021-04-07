@@ -52,4 +52,6 @@ jobs:
       # If the version has been incremented (with `yarn changeset version`), publish package
       - name: Publish on version increment
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        run: yarn changeset publish --otp=${{secrets.NPM_TOKEN}};
+        run: yarn changeset publish --otp=$NPM_TOKEN
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
