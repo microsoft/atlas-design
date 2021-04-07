@@ -79,7 +79,7 @@ $theme-names: map.keys($themes);
 	}
 }
 
-@each $key, $value in $schemes {
+@each $key, $value in $color-schemes {
 	.theme-#{$key} {
 		color-scheme: #{$value};
 	}
