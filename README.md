@@ -1,6 +1,6 @@
 # Atlas Design
 
-[![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml)
+[![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml)
 
 Welcome to the Atlas Design project! This repository holds the source code backing appearance of docs.microsoft.com and Microsoft Learn.
 
