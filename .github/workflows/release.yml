@@ -23,13 +23,13 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            registry=https://registry.npmjs.org/:_authToken=$NPM_TOKEN
-            @microsoft/registry=https://registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            registry=https://registry.npmjs.org/
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
 
       - name: Install Dependencies
         run: yarn
@@ -39,4 +39,4 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
-        run: yarn changeset publish --otp=${{secrets.NPM_TOKEN}};
+        run: yarn changeset publish;
