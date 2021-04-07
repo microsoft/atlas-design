@@ -1,5 +1,11 @@
 # @microsoft/stylelint-config-atlas
 
+## 2.1.0
+
+### Minor Changes
+
+- 89c2c1e: Includes color-scheme in list of known css properties.
+
 ## 2.0.1
 
 ### Patch Changes
