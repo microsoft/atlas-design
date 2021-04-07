@@ -19,7 +19,8 @@
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
 		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\"",
 		"prestart": "yarn run build:tokens",
-		"prebuild:site": "yarn run build:tokens"
+		"prebuild:site": "yarn run build:tokens",
+		"release": "yarn changeset publish"
 	},
 	"repository": {
 		"type": "git",
