@@ -13,10 +13,13 @@
 		"serve:css": "yarn workspace @microsoft/atlas-css start",
 		"build:css": "yarn workspace @microsoft/atlas-css build",
 		"build:site": "yarn workspace @microsoft/atlas-site build",
+		"build:tokens": "yarn workspace @microsoft/atlas-css tokens",
 		"toc": "yarn workspace @microsoft/atlas-site toc",
 		"prettier": "prettier --write \"**/*.{scss,ts,js,json,yml,md}\"",
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
-		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\""
+		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\"",
+		"prestart": "yarn run build:tokens",
+		"prebuild:site": "yarn run build:tokens"
 	},
 	"repository": {
 		"type": "git",

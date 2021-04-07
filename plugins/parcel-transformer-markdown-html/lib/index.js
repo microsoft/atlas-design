@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 const { Transformer } = require('@parcel/plugin');
 const { promisify } = require('@parcel/utils');
 const marked = require('marked');
@@ -7,6 +7,7 @@ const frontMatter = require('front-matter');
 const mustache = require('mustache');
 const path = require('path');
 const markedParse = promisify(marked.parse);
+const allTokens = require('@microsoft/atlas-css/dist/tokens.json');
 
 module.exports = new Transformer({
 	async loadConfig({ config }) {
@@ -31,8 +32,8 @@ module.exports = new Transformer({
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset
 		options, // https://v2.parceljs.org/plugin-system/api/#PluginOptions
-		config // https://v2.parceljs.org/plugin-system/api/#ConfigResult
-		// logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
+		config, // https://v2.parceljs.org/plugin-system/api/#ConfigResult
+		logger // https://v2.parceljs.org/plugin-system/logging/#PluginLogger
 	}) {
 		asset.type = 'html';
 		const code = await asset.getCode();
@@ -42,7 +43,7 @@ module.exports = new Transformer({
 			renderer: new marked.Renderer(),
 			highlight: (code, language) => {
 				const elementExample = language == 'html' ? `<div class="example">${code}</div>` : '';
-				return `${elementExample} ${hljs.highlight(language, code).value}`;
+				return `${elementExample} ${hljs.highlight(code, { language }).value}`;
 			},
 			pedantic: false,
 			gfm: true,
@@ -54,34 +55,59 @@ module.exports = new Transformer({
 		});
 
 		if (attributes.template) {
-			// load our configuration file to point us to the templates
-			const basePath = path.resolve(
-				config.filePath.replace('.scaffoldrc', ''),
-				config.contents.templatePath
-			);
-			const tocPath = config.contents.tocPath || '';
-			const templateLocation = path.resolve(basePath, `${attributes.template}.html`);
+			const workingDir = process.cwd();
+			const templateDir = path.join(workingDir, config.contents.templatePath);
+			const templateFilename = path.join(templateDir, `${attributes.template}.html`);
+			const tocFilename = config.contents.tocPath
+				? path.join(workingDir, config.contents.tocPath)
+				: null;
+
+			logger.verbose({
+				message: `Resolved paths:\n${workingDir}\n${templateDir}\n${templateFilename}\n${tocFilename}`,
+				skipFormatting: true
+			});
 
 			const [template, tocEntries] = await Promise.all([
-				options.inputFS.readFile(templateLocation, 'utf-8'),
-				tocPath
-					? options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
+				options.inputFS.readFile(templateFilename, 'utf-8'),
+				tocFilename
+					? options.inputFS.readFile(tocFilename, 'utf-8').then(r => JSON.parse(r))
 					: Promise.resolve(null)
 			]);
+			const tokenSet = attributes.token;
+			let tokens;
+			let cssTokenSource;
+			// we've specified a tokens file to load from @atlas-tokens
+			if (tokenSet) {
+				try {
+					tokens = Object.entries(allTokens[tokenSet].tokens).map(item => {
+						return {
+							name: item[0],
+							value: item[1]
+						};
+					});
+					cssTokenSource = allTokens[tokenSet].location;
+				} catch (err) {
+					logger.warn({
+						message: `There was an error trying to require token file: "${attributes.token}. Did you specify the correct token name in your template? `,
+						filePath: asset.filePath,
+						language: asset.type
+					});
+				}
+			}
 
-			asset.addIncludedFile({
-				filePath: tocEntries
-			});
+			if (tocFilename) {
+				asset.addIncludedFile(tocFilename);
+			}
 
-			asset.addIncludedFile({
-				filePath: templateLocation
-			});
+			asset.addIncludedFile(templateFilename);
 
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
 					toc: { name: 'TOC', entries: tocEntries },
-					...attributes
+					...attributes,
+					tokens,
+					cssTokenSource
 				})
 			);
 		} else {

@@ -37,7 +37,7 @@ createToc().then(toc => {
  */
 function normalizePaths(settings) {
 	for (const key in settings.names) {
-		const normalized = path.normalize(key);
+		const normalized = path.posix.normalize(key);
 		const clone = JSON.parse(JSON.stringify(settings.names[key]));
 		delete settings.names[key];
 		settings.names[normalized] = clone;
@@ -66,7 +66,7 @@ async function createToc(subDir) {
 		/**
 		 * A path relative to the root of the articles folder.
 		 */
-		const srcPath = path.normalize(`${subDir}/${item}`);
+		const srcPath = path.posix.normalize(`${subDir}/${item}`);
 		/**
 		 * Parse the item's name
 		 */
@@ -101,7 +101,10 @@ async function createToc(subDir) {
 		 */
 		const entry = {
 			name: name,
-			href: srcPath,
+			// The TOC will be emitted as links in an html file in various directories
+			// Use a tilde path to ensure parcel can resolve the url
+			// https://v2.parceljs.org/features/module-resolution/#tilde-paths
+			href: `~/src${srcPath}`,
 			isDirectory,
 			isHidden: name === '[hide]'
 		};
