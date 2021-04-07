@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 0.5.0
+
+### Minor Changes
+
+- 89c2c1e: Implement a token build using sass-extract. Outputs tokens.json in the dist folder.
+- aa29142: Adds a prepublish script for css and tokens.
+
+### Patch Changes
+
+- 2d30074: Adding !default flag to focus-visible-use-polyfill.
+
 ## 0.4.0
 
 ### Minor Changes
