@@ -6,13 +6,14 @@
 	"scripts": {
 		"prebuild": "node toc.js",
 		"prestart": "node toc.js",
-		"start": "parcel \"./src/**/*.md\" --port 1111 --open --no-cache",
-		"build": "parcel build \"./src/**/*.md\" --no-cache",
+		"start": "parcel \"./src/**/*.md\" --port 1111 --open --no-cache --no-autoinstall",
+		"build": "parcel build \"./src/**/*.md\" --no-cache --no-autoinstall",
 		"toc": "node toc.js"
 	},
 	"devDependencies": {
 		"@microsoft/atlas-css": "^0.4.0",
-		"parcel": "next",
+		"parcel": "2.0.0-beta.2",
+		"@parcel/transformer-sass": "2.0.0-beta.2",
 		"@microsoft/parcel-transformer-markdown-html": "^2.0.0",
 		"fs-extra": "^9.1.0",
 		"front-matter": "^4.0.2"

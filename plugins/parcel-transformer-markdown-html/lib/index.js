@@ -43,7 +43,7 @@ module.exports = new Transformer({
 			renderer: new marked.Renderer(),
 			highlight: (code, language) => {
 				const elementExample = language == 'html' ? `<div class="example">${code}</div>` : '';
-				return `${elementExample} ${hljs.highlight(language, code).value}`;
+				return `${elementExample} ${hljs.highlight(code, { language }).value}`;
 			},
 			pedantic: false,
 			gfm: true,
@@ -55,18 +55,22 @@ module.exports = new Transformer({
 		});
 
 		if (attributes.template) {
-			// load our configuration file to point us to the templates
-			const basePath = path.resolve(
-				config.filePath.replace('.scaffoldrc', ''),
-				config.contents.templatePath
-			);
-			const tocPath = config.contents.tocPath || '';
-			const templateLocation = path.resolve(basePath, `${attributes.template}.html`);
+			const workingDir = process.cwd();
+			const templateDir = path.join(workingDir, config.contents.templatePath);
+			const templateFilename = path.join(templateDir, `${attributes.template}.html`);
+			const tocFilename = config.contents.tocPath
+				? path.join(workingDir, config.contents.tocPath)
+				: null;
+
+			logger.verbose({
+				message: `Resolved paths:\n${workingDir}\n${templateDir}\n${templateFilename}\n${tocFilename}`,
+				skipFormatting: true
+			});
 
 			const [template, tocEntries] = await Promise.all([
-				options.inputFS.readFile(templateLocation, 'utf-8'),
-				tocPath
-					? options.inputFS.readFile(tocPath, 'utf-8').then(r => JSON.parse(r))
+				options.inputFS.readFile(templateFilename, 'utf-8'),
+				tocFilename
+					? options.inputFS.readFile(tocFilename, 'utf-8').then(r => JSON.parse(r))
 					: Promise.resolve(null)
 			]);
 			const tokenSet = attributes.token;
@@ -91,13 +95,11 @@ module.exports = new Transformer({
 				}
 			}
 
-			asset.addIncludedFile({
-				filePath: tocEntries
-			});
+			if (tocFilename) {
+				asset.addIncludedFile(tocFilename);
+			}
 
-			asset.addIncludedFile({
-				filePath: templateLocation
-			});
+			asset.addIncludedFile(templateFilename);
 
 			asset.setCode(
 				mustache.render(template, {
