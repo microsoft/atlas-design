@@ -7,11 +7,10 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "stylelint ./src/**/*.scss",
-		"start": "parcel watch src/index.scss",
-		"build": "parcel build src/index.scss --no-cache",
-		"tokens": "node ./tokens/index.js",
-		"postinstall": "yarn run tokens",
-		"prepublish": "yarn run tokens"
+		"start": "parcel watch src/index.scss --no-autoinstall",
+		"build": "parcel build src/index.scss --no-cache --no-autoinstall",
+		"postbuild": "yarn run tokens",
+		"tokens": "node ./tokens/index.js"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -40,7 +39,8 @@
 		"normalize.css": "^8.0.1"
 	},
 	"devDependencies": {
-		"parcel": "next",
+		"parcel": "2.0.0-beta.2",
+		"@parcel/transformer-sass": "2.0.0-beta.2",
 		"@microsoft/stylelint-config-atlas": "2.0.1",
 		"prettier": "^2.2.1",
 		"sass": "^1.32.8",
