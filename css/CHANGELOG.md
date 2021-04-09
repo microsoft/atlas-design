@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.6.0
+
+### Minor Changes
+
+- b9a9896: Renaming animation token file
+
 ## 0.5.0
 
 ### Minor Changes
