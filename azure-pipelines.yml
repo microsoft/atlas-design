@@ -19,6 +19,9 @@ steps:
 - script: yarn
   displayName: yarn build:site
 
+- script: echo Building
+  displayName: Remove me
+
 - task: AzureFileCopy@4
   inputs:
     SourcePath: './dist'
