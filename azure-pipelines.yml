@@ -21,7 +21,7 @@ steps:
 
 - task: AzureFileCopy@4
   inputs:
-    SourcePath: './dist'
+    SourcePath: './site/dist'
     azureSubscription: 'MSFTDOCS - AtlasDesign Content Publisher'
     Destination: 'AzureBlob'
     storage: 'atlasdesignpublic'
