@@ -1,12 +1,12 @@
 ---
-title: Home Page
-description: Demonstrating the capabilities of markdown using Parcel 2
+title: Atlas Design | Microsoft
+description: The Atlas Design system for Developer Relations.
 template: standard
 ---
 
-# Home
+# Atlas Design
 
-This is some content!
+Welcome to the Atlas Design system.
 
 ## Header 2
 
