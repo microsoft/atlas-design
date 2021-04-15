@@ -2,7 +2,9 @@
 # https://aka.ms/yaml
 
 trigger:
-  - main
+  branches:
+    include:
+      - main
 
 pool:
   vmImage: windows-latest
@@ -16,6 +18,9 @@ steps:
 
   - script: yarn
     displayName: yarn build:site
+
+  - script: echo 'Test'
+    displayName: echo
 
   - task: AzureFileCopy@4
     displayName: Deploy main site
