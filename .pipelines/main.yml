@@ -22,7 +22,7 @@ steps:
   - task: AzureFileCopy@4
     displayName: Deploy site
     inputs:
-      sourcePath: $(System.DefaultWorkingDirectory)/site/dist
+      sourcePath: $(System.DefaultWorkingDirectory)/site/dist/**/*
       azureSubscription: 'MSFTDOCS - AtlasDesign Content Publisher'
       destination: azureBlob
       storage: atlasdesignpublic
