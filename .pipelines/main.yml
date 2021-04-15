@@ -2,9 +2,7 @@
 # https://aka.ms/yaml
 
 trigger:
-  branches:
-    include:
-      - main
+  - main
 
 pr: none
 
