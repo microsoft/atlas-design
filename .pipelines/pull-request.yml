@@ -1,0 +1,32 @@
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+name: Pull Request
+
+trigger: none
+
+pr:
+  autoCancel: true
+  drafts: true
+
+pool:
+  vmImage: windows-latest
+
+steps:
+  - script: yarn
+    displayName: Install
+
+  - script: yarn lint
+    displayName: Lint
+
+  - script: yarn build:site  --dist-dir "dist/pull-request/$(System.PullRequest.PullRequestId)" --public-url \"$(System.PullRequest.PullRequestId)" --public-url "/pull-request/$(System.PullRequest.PullRequestId)"
+    displayName: Build site
+
+  - task: AzureFileCopy@4
+    displayName: Deploy site
+    inputs:
+      sourcePath: $(System.DefaultWorkingDirectory)/site/dist/*
+      azureSubscription: 'MSFTDOCS - AtlasDesign Content Publisher'
+      destination: azureBlob
+      storage: atlasdesignpublic
+      containerName: $web
