@@ -19,7 +19,7 @@ steps:
   - script: yarn lint
     displayName: Lint
 
-  - script: yarn build:site  --dist-dir "dist/pull-request/$(System.PullRequest.PullRequestId)" --public-url \"$(System.PullRequest.PullRequestId)" --public-url "/pull-request/$(System.PullRequest.PullRequestId)"
+  - script: yarn build:site  --dist-dir "dist/pull-request/$(System.PullRequest.PullRequestNumber)" --public-url "/pull-request/$(System.PullRequest.PullRequestNumber)"
     displayName: Build site
 
   - task: AzureFileCopy@4
