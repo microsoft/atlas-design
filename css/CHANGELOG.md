@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.6.1
+
+### Patch Changes
+
+- 1611f76: Fix issue where body-background-dark had the incorrect value on dark theme.
+
 ## 0.6.0
 
 ### Minor Changes
