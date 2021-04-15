@@ -17,24 +17,23 @@
 		<main class="padding-s">
 			{{{ body }}}
 			
-			{# <p class="margin-top-l">{{cssTokenSource}}</p> #}
 			{{#tokens}}
 				<p>{{name}}: {{value}}</p>
 			{{/tokens}}
 		</main>
-		<aside style="padding: 1rem;">
+		<aside class="padding-s">
 			{{#toc}}
-			{{#entries}}
+				{{#entries}}
 						{{#isDirectory}}
 							<p>{{name}}</p>
-							<div style="border: 1px solid aliceblue; margin-inline-start: 1rem;">
+							<div class="margin-top-m">
 								{{#children}}
-									<a style="margin-top: 1rem" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+									<a class="color-primary margin-top-m" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 								{{/children}}
 							</div>
 						{{/isDirectory}}
 						{{^children.0}}
-							<a href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+							<a class="color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 						{{/children.0}}
 				{{/entries}}
 			{{/toc}}
