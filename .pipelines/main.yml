@@ -16,14 +16,11 @@ steps:
   - script: yarn lint
     displayName: Lint
 
-  - script: yarn
-    displayName: yarn build:site
-
-  - script: echo 'Test'
-    displayName: echo
+  - script: yarn build:site
+    displayName: Build site
 
   - task: AzureFileCopy@4
-    displayName: Deploy main site
+    displayName: Deploy site
     inputs:
       sourcePath: $(System.DefaultWorkingDirectory)/site/dist/
       azureSubscription: 'MSFTDOCS - AtlasDesign Content Publisher'
