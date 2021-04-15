@@ -6,6 +6,8 @@ trigger:
     include:
       - main
 
+pr: none
+
 pool:
   vmImage: windows-latest
 
