@@ -8,7 +8,7 @@ Firstly, in order to access these tokens, you must have installed atlas-css in y
 
 ### Get Scss from NPM
 
-Reference our tokens in Scss. Where `./` in the example is the path to your `node_modules` folder.
+Reference our tokens in Scss via the following examples, where `./` is the path to your `node_modules` folder.
 
 ```scss
 // Import by referencing node_modules
