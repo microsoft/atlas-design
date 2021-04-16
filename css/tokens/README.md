@@ -1,6 +1,6 @@
 # Atlas CSS Tokens
 
-A design tokens is a definition of a design-related variable, such as one that affects color, typography, or spacing. Design tokens must be shareable and fairly platform agnostic. Atlas's design tokens are written in Scss (buzzword: source of truth!), and though a [build process](.\tokens\index.js), translated and published into JSON so they can be more easily shared by solutions that do not use Scss.
+A design tokens is a definition of a design-related variable, such as one that affects color, typography, or spacing. Design tokens must be shareable and fairly platform agnostic. Atlas's design tokens are written in Scss (buzzword: source of truth!), and though a [build process](../tokens/index.js), translated and published into JSON so they can be more easily shared by solutions that do not use Scss.
 
 ## Access our design tokens
 
