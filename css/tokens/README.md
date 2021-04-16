@@ -19,7 +19,7 @@ Reference our tokens in Scss via the following examples, where `./` is the path 
 
 ### Get JSON from NPM
 
-In NodeJs, referencing our `node_modules` will also allow you access [JSON](http://unpkg.com/browse/@microsoft/atlas-css/dist/tokens.json), which lives at `/dist/tokens.json`.
+In NodeJs, referencing `node_modules` will also allow you to access the token [JSON](http://unpkg.com/browse/@microsoft/atlas-css/dist/tokens.json), which lives at `/dist/tokens.json`.
 
 You can also access the [TypeScript typings](https://unpkg.com/browse/@microsoft/atlas-css/dist/tokens.d.ts) in the same directory. Note the JSDoc comment in the example below.
 
