@@ -143,11 +143,11 @@
 
 	&:nth-of-type(even) {
 		outline-color: $text;
-		background-color: $body-background;
+		background-color: $body-background-medium;
 	}
 
 	&:nth-of-type(odd) {
 		outline-color: $text;
-		background-color: $body-background-medium;
+		background-color: $body-background;
 	}
 }
