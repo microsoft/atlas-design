@@ -1,4 +1,6 @@
-task-[work-item-number]
+Task: task-[work-item-number]
+
+Link: preview-[pull-request-number]
 
 [Explain the context of this pull request here]
 
