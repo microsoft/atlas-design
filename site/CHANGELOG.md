@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.1.1
+
+### Patch Changes
+
+- 7f1a57d: Minor content changes to site.
+
 ## 0.1.0
 
 ### Minor Changes
