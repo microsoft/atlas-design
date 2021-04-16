@@ -134,7 +134,7 @@
 
 	&:nth-of-type(odd) {
 		outline-color: $text;
-		background-color: $alternate-background;
+		background-color: $body-background-medium;
 	}
 }
 
