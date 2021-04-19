@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.7.0
+
+### Minor Changes
+
+- 71996af: Add element spacing tokens.
+
 ## 0.6.2
 
 ### Patch Changes
