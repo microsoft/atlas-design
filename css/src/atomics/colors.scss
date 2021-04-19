@@ -111,21 +111,12 @@
 	background-color: $body-background-medium !important;
 }
 
-.background-color-body-dark {
-	outline-color: $text;
-	background-color: $body-background-dark !important;
-}
-
 .background-color-alternate {
 	background-color: $alternate-background !important;
 }
 
 .background-color-alternate-medium {
 	background-color: $alternate-background-medium !important;
-}
-
-.background-color-alternate-light {
-	background-color: $alternate-background-light !important;
 }
 
 .background-color-overlay {
@@ -138,12 +129,12 @@
 
 	&:nth-of-type(even) {
 		outline-color: $text;
-		background-color: $body-background-medium;
+		background-color: $body-background;
 	}
 
 	&:nth-of-type(odd) {
 		outline-color: $text;
-		background-color: $body-background-dark;
+		background-color: $body-background-medium;
 	}
 }
 
@@ -152,11 +143,11 @@
 
 	&:nth-of-type(even) {
 		outline-color: $text;
-		background-color: $body-background-dark;
+		background-color: $body-background-medium;
 	}
 
 	&:nth-of-type(odd) {
 		outline-color: $text;
-		background-color: $body-background-medium;
+		background-color: $body-background;
 	}
 }
