@@ -15,20 +15,24 @@
 			Atlas Design
 		</header>
 
-		<main class="padding-s">{{{ body }}}</main>
-		<aside class="padding-s">
+		<main class="padding-s">
+			<div class="">
+				{{{ body }}}
+			</div>
+		</main>
+		<aside class="padding-s margin-top-xs">
 			{{#toc}}
 			{{#entries}}
 						{{#isDirectory}}
-							<p>{{name}}</p>
-							<div class="margin-top-m">
+							<div class="margin-top-s">
+								<p>{{name}}</p>
 								{{#children}}
-									<a class="color-primary margin-top-m" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+									<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 								{{/children}}
 							</div>
 						{{/isDirectory}}
 						{{^children.0}}
-							<a class="color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+							<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 						{{/children.0}}
 				{{/entries}}
 			{{/toc}}

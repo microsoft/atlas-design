@@ -15,7 +15,9 @@
 			Atlas Design
 		</header>
 		<main class="padding-s">
-			{{{ body }}}
+			<div class="markdown">
+				{{{ body }}}
+			</div>
 			
 			<div class="padding-block-m">
 				<a href="https://github.com/microsoft/atlas-design/tree/main{{cssTokenSource}}">View on Github</a>
@@ -27,15 +29,15 @@
 			{{#toc}}
 				{{#entries}}
 						{{#isDirectory}}
-							<p>{{name}}</p>
-							<div class="margin-top-m">
+							<div class="margin-top-s">
+								<p>{{name}}</p>
 								{{#children}}
-									<a class="color-primary margin-top-m" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+									<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 								{{/children}}
 							</div>
 						{{/isDirectory}}
 						{{^children.0}}
-							<a class="color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+							<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 						{{/children.0}}
 				{{/entries}}
 			{{/toc}}

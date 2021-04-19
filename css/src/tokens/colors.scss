@@ -18,6 +18,10 @@ $overlay-invert: var(--theme-overlay-invert);
 $overlay-static: $palette-black-opacity-50;
 $border: var(--theme-border);
 
+$code-header: var(--theme-code-header);
+$code-block: var(--theme-code-block);
+$inline-code: var(--theme-inline-code);
+
 $table-header: var(--theme-table-header);
 $table-row-header: var(--theme-table-row-header);
 $table-border-dark: var(--theme-table-border-dark);
@@ -84,7 +88,6 @@ $info-hover: var(--theme-info-hover);
 $info-active: var(--theme-info-active);
 $info-invert: var(--theme-info-invert);
 $info-box-shadow: var(--theme-info-box-shadow);
-$inline-code: var(--theme-inline-code);
 
 $warning: var(--theme-warning-base);
 $warning-background: var(--theme-warning-background);
