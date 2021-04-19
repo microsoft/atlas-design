@@ -1,5 +1,5 @@
 ---
-'@microsoft/atlas-css': patch
+'@microsoft/atlas-css': minor
 ---
 
-Add spacer tokens.
+Add element spacing tokens.
