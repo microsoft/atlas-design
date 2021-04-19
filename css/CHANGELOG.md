@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.6.2
+
+### Patch Changes
+
+- dcf0d05: Condensing available background colors to body, body-medium, alternate, and alternate medium.
+
 ## 0.6.1
 
 ### Patch Changes
