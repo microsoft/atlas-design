@@ -11,19 +11,21 @@
 		<link rel="stylesheet" href="~/src/scaffold/index.scss"
 	</head>
 	<body>
-		<header class="padding-block-xs padding-inline-s font-weight-bold" style="border-bottom: 1px solid var(--theme-border)">
+		<header id="header" class="padding-block-xs padding-inline-s font-weight-bold" style="border-bottom: 1px solid var(--theme-border)">
 			Atlas Design
 		</header>
-		<main class="padding-s">
-			{{{ body }}}
-			
-			<div class="padding-block-m">
-				<a href="https://github.com/microsoft/atlas-design/tree/main{{cssTokenSource}}">View on Github</a>
+		<main id="main" class="padding-s">
+			<div id="container">
+				{{{ body }}}
+				
+				<div class="padding-block-m">
+					<a href="https://github.com/microsoft/atlas-design/tree/main{{cssTokenSource}}">View on Github</a>
+				</div>
+				<pre><code>{{#tokens}}{{name}}: {{value}}
+	{{/tokens}}</code></pre>
 			</div>
-			<pre><code>{{#tokens}}{{name}}: {{value}}
-{{/tokens}}</code></pre>
 		</main>
-		<aside class="padding-s">
+		<aside id="aside" class="padding-s">
 			{{#toc}}
 				{{#entries}}
 						{{#isDirectory}}

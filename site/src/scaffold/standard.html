@@ -10,13 +10,17 @@
 		<meta name="color-scheme" content="light dark" />
 		<link rel="stylesheet" href="~/src/scaffold/index.scss">
 	</head>
-	<body>
-		<header class="padding-block-xs padding-inline-s font-weight-bold" style="border-bottom: 1px solid var(--theme-border)">
+	<body id="body" class="night-owl">
+		<header id="header" class="padding-block-xs padding-inline-s font-weight-bold" style="border-bottom: 1px solid var(--theme-border)">
 			Atlas Design
 		</header>
 
-		<main class="padding-s">{{{ body }}}</main>
-		<aside class="padding-s">
+		<main id="main" class="padding-s">
+			<div id="container" class="">
+				{{{ body }}}
+			</div>
+		</main>
+		<aside id="aside" class="padding-s">
 			{{#toc}}
 			{{#entries}}
 						{{#isDirectory}}
