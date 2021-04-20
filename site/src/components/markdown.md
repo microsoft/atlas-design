@@ -60,9 +60,9 @@ The markdown element provides bare element styling to lists, paragraphs and inli
 1. First list item
 2. Second list item
    - First level of nested list
-   1. Second level of nested list
-   2. third level of nested list
-      - And another one.
+     1. Second level of nested list
+     2. third level of nested list
+        - And another one.
    - Second level again
 3. Last one
 ```
