@@ -6,8 +6,81 @@ const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
 const mustache = require('mustache');
 const path = require('path');
-const markedParse = promisify(marked.parse);
 const allTokens = require('@microsoft/atlas-css/dist/tokens.json');
+
+const languageDisplayNames = {
+	html: 'HTML',
+	js: 'JavaScript',
+	javascript: 'JavaScript',
+	scss: 'SCSS',
+	sass: 'Sass',
+	md: 'Markdown',
+	markdown: 'Markdown'
+};
+
+/**
+ * @type {import('marked').RendererObject}
+ */
+const markedOptions = {
+	heading(text, level) {
+		const id = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+		return `<div class="markdown">
+			<h${level} id="${id}">
+			<a name="${id}" href="#${id}">
+				<span class="heading-anchor"></span>
+			</a>
+				${text}
+			</h${level}>
+		</div>`;
+	},
+	code(code, language) {
+		const elementExample = createExample(language, code);
+		const displayName =
+			language in languageDisplayNames ? languageDisplayNames[language] : language;
+		return `
+			${elementExample}
+			<div class="code-block">
+				<div class="code-block-header">
+					<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
+				</div>
+				<div class="code-block-body">
+					<pre><code>${hljs.highlight(code, { language }).value}</code></pre>
+				</div>
+			</div>
+		`;
+	},
+	paragraph(text) {
+		return `
+			<div class="markdown">
+				<p>${text}</p>
+			</div>`;
+	},
+	list(body, ordered, start) {
+		const element = ordered ? 'ol' : 'ul';
+		return `
+			<div class="markdown">
+				<${element}>
+					${body}
+				</${element}>
+			</div>
+			`;
+	}
+};
+
+marked.use({
+	renderer: markedOptions,
+	pedantic: false,
+	gfm: true,
+	breaks: false,
+	sanitize: false,
+	smartLists: true,
+	smartypants: false,
+	xhtml: false,
+	langPrefix: 'lang'
+});
+
+const markedPromise = promisify(marked);
 
 module.exports = new Transformer({
 	async loadConfig({ config }) {
@@ -39,20 +112,7 @@ module.exports = new Transformer({
 		const code = await asset.getCode();
 		const { body, attributes } = frontMatter(code);
 
-		const parsedCode = await markedParse(body, {
-			renderer: new marked.Renderer(),
-			highlight: (code, language) => {
-				const elementExample = language == 'html' ? `<div class="example">${code}</div>` : '';
-				return `${elementExample} ${hljs.highlight(code, { language }).value}`;
-			},
-			pedantic: false,
-			gfm: true,
-			breaks: false,
-			sanitize: false,
-			smartLists: true,
-			smartypants: false,
-			xhtml: false
-		});
+		const parsedCode = await markedPromise(body);
 
 		if (attributes.template) {
 			const workingDir = process.cwd();
@@ -117,3 +177,13 @@ module.exports = new Transformer({
 		return [asset];
 	}
 });
+
+function createExample(language, code) {
+	if (language.toLowerCase() === 'html') {
+		return `<div class="example padding-block-m">${code}</div>`;
+	}
+	if (language.toLowerCase() === 'markdown') {
+		return `<div class="example padding-block-m">${marked(code)}</div>`;
+	}
+	return '';
+}

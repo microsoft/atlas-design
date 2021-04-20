@@ -211,7 +211,7 @@ module.exports = {
 		'property-no-unknown': [
 			true,
 			{
-				ignoreProperties: ['contain', 'color-scheme']
+				ignoreProperties: ['contain', 'color-scheme', 'font-smooth']
 			}
 		],
 		'selector-max-id': 0,

@@ -1,0 +1,69 @@
+$code-font-size: $font-size-8 !default;
+$code-block-spacing: 1em !default;
+$code-header-min-height: 2em !default;
+$code-header-color: $text !default;
+$code-block-header-font-size: 0.8em !default;
+$code-header-body-line-height: 1.3571 !default;
+
+@mixin code-block {
+	pre {
+		box-sizing: border-box;
+		max-width: 100%;
+		margin: 0;
+		padding: $code-block-spacing;
+		border: 1px solid $border;
+		background-color: $code-block;
+		font-size: $code-font-size;
+		-moz-osx-font-smoothing: auto;
+		-webkit-font-smoothing: auto;
+		line-height: 1.3571;
+		white-space: pre;
+		word-spacing: normal;
+		overflow: auto;
+		word-break: normal;
+		word-wrap: normal;
+		tab-size: 4;
+		hyphens: none;
+		-webkit-overflow-scrolling: touch;
+
+		> code {
+			display: block;
+			position: relative;
+			padding: 0;
+			border: 0;
+			line-height: $code-header-body-line-height;
+
+			mark {
+				display: inline-block;
+				min-width: calc(100% + #{$code-block-spacing} + #{$code-block-spacing});
+				min-height: 18.9px; // Allow for highlighting of blank lines.
+				margin: 0 $code-block-spacing * -1;
+				padding: 0 $code-block-spacing;
+				color: $text;
+			}
+		}
+	}
+}
+
+.code-block {
+	.code-block-header {
+		display: flex;
+		align-items: center;
+		min-height: $code-header-min-height;
+		margin-top: $code-block-spacing;
+		border: 1px solid $border;
+		border-bottom: 0;
+		background-color: $code-header;
+		color: $code-header-color;
+		font-size: $code-block-header-font-size;
+
+		.code-block-header-language {
+			flex-grow: 1;
+			padding: 0.125em $code-block-spacing;
+		}
+	}
+
+	.code-block-body {
+		@include code-block();
+	}
+}
