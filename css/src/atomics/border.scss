@@ -1,0 +1,59 @@
+$border-positions: (('top', 'right', 'bottom', 'left'));
+$user-positions: (('top', $user-right, 'bottom', $user-left));
+
+.has-border {
+	border: $border-width solid $border !important;
+}
+
+.has-border-none {
+	border: none !important;
+
+	&-tablet {
+		@include tablet {
+			border: none !important;
+		}
+	}
+
+	&-desktop {
+		@include desktop {
+			border: none !important;
+		}
+	}
+
+	&-widescreen {
+		@include widescreen {
+			border: none !important;
+		}
+	}
+}
+
+// Rules for each side
+@for $i from 1 through 4 {
+	$border-position: nth($border-positions, $i);
+	$user-position: nth($user-positions, $i);
+
+	.has-border-#{$border-position} {
+		border-#{$user-position}: $border-width solid $border !important;
+	}
+
+	.has-border-#{$border-position}-none {
+		border: none !important;
+	}
+}
+
+.has-border-high-contrast {
+	border: $border-width solid $border-white-high-contrast;
+}
+
+.has-border-high-contrast-hover:hover {
+	border: $border-width solid $border-yellow-high-contrast;
+}
+
+// Border radius
+.has-border-radius {
+	border-radius: $border-radius !important;
+}
+
+.has-border-radius-large {
+	border-radius: $border-radius-large !important;
+}
