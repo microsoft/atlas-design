@@ -70,5 +70,5 @@ The markdown element provides bare element styling to lists, paragraphs and inli
 ## Inline elements
 
 ```markdown
-Markdown allows for use to write inline code like this: `<br>`. It also allows use to easily write links to other pages [such as the code-block page](~/src/components/code-block.md).
+Markdown allows for use to write inline code like this: `<br>`. It also allows use to easily write links to other pages [like this one](~/src/index.md).
 ```
