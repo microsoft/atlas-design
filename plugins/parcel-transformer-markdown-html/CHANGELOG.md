@@ -1,5 +1,18 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.1.0
+
+### Minor Changes
+
+- 62d8d0d: Provide custom marked renderer to prevent markdown styles from poluting code block examples. Update code block markup.
+
+### Patch Changes
+
+- Updated dependencies [62d8d0d]
+- Updated dependencies [71996af]
+- Updated dependencies [62d8d0d]
+  - @microsoft/atlas-css@0.7.0
+
 ## 2.0.2
 
 ### Patch Changes

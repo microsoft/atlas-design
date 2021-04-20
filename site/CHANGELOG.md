@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.2.0
+
+### Minor Changes
+
+- 62d8d0d: Add markdown styling, add new markdown page and new code block page. Update styling of table of contents.
+
 ## 0.1.1
 
 ### Patch Changes
