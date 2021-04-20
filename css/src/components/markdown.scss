@@ -2,6 +2,7 @@
 
 $markdown-paragraph-size: 1rem !default;
 $include-bare-code-styles: true !default;
+$list-top-spacing: 1rem !default;
 
 @if $include-bare-code-styles == true {
 	/*
@@ -37,55 +38,49 @@ $include-bare-code-styles: true !default;
 		overflow: hidden;
 	}
 
+	li {
+		margin-top: 0.5em;
+	}
+
 	ul,
 	ol {
-		margin: 1rem 0;
 		margin-#{$user-left}: 2.375rem;
 	}
 
-	ul > li {
+	ul {
+		list-style-type: disc;
+
+		ul {
+			list-style-type: circle;
+			margin: 0;
+			margin-#{$user-left}: 1.25rem;
+
+			ul {
+				list-style-type: square;
+			}
+		}
+
+		&:not(:first-child) {
+			margin: 1rem 0;
+		}
+	}
+
+	ol {
 		list-style-type: decimal;
-	}
 
-	ol > li {
-		list-style: disc outside none;
-	}
-
-	ul > li,
-	ol > li {
-		ul & {
-			list-style-type: circle;
-		}
-
-		ol & {
+		ol {
 			list-style-type: lower-alpha;
+			margin: 0;
+			margin-#{$user-left}: 1.25rem;
+
+			ol {
+				list-style-type: lower-roman;
+			}
 		}
 
-		ol > & {
-			list-style-type: decimal;
+		&:not(:first-child) {
+			margin: 1rem 0;
 		}
-
-		> ul > li {
-			list-style-type: circle;
-		}
-	}
-
-	ul ul {
-		margin: 0;
-		margin-#{$user-left}: 1.25rem;
-	}
-
-	ol ol {
-		margin: 0;
-		margin-#{$user-left}: 1.25rem;
-	}
-
-	ol ol ol > li {
-		list-style-type: lower-roman;
-	}
-
-	ul ul ul > li {
-		list-style-type: square;
 	}
 
 	h1 {
