@@ -1,0 +1,41 @@
+#body {
+	width: 100%;
+	height: 100%;
+
+	@include tablet {
+		display: grid;
+		grid-template-columns: 2fr 1fr 256px;
+		grid-template-rows: auto calc(100vh - 6rem);
+
+		grid-template-areas:
+			'header header header'
+			'main main aside';
+	}
+}
+
+#header,
+#main,
+#aside,
+#container {
+	border: 1px solid aliceblue;
+	outline: 3px solid magenta;
+	outline-offset: -13px;
+}
+
+#header {
+	grid-area: header;
+}
+
+#main {
+	grid-area: main;
+}
+
+#aside {
+	grid-area: aside;
+}
+
+#container {
+	max-width: 70ch;
+	padding: 1rem;
+	margin: auto;
+}
