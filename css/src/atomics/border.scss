@@ -6,23 +6,23 @@ $user-positions: (('top', $user-right, 'bottom', $user-left));
 }
 
 .has-border-none {
-	border: none !important;
+	border: 0 !important;
 
 	&-tablet {
 		@include tablet {
-			border: none !important;
+			border: 0 !important;
 		}
 	}
 
 	&-desktop {
 		@include desktop {
-			border: none !important;
+			border: 0 !important;
 		}
 	}
 
 	&-widescreen {
 		@include widescreen {
-			border: none !important;
+			border: 0 !important;
 		}
 	}
 }
@@ -37,7 +37,7 @@ $user-positions: (('top', $user-right, 'bottom', $user-left));
 	}
 
 	.has-border-#{$border-position}-none {
-		border: none !important;
+		border: 0 !important;
 	}
 }
 
