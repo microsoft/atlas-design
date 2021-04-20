@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.7.1
+
+### Patch Changes
+
+- 14cf4ef: Patch change to remove code block and move to design system site styles. Keeping at patch because we're not at v1 yet.
+
 ## 0.7.0
 
 ### Minor Changes
