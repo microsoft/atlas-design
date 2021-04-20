@@ -37,7 +37,7 @@ The markdown element provides bare element styling to lists, paragraphs and inli
 - Second list item
   - First level of nested list
     - Second level of nested list
-    - third level of nested list
+    - Second item
   - Second level again
 - Last one
 ```
@@ -49,7 +49,7 @@ The markdown element provides bare element styling to lists, paragraphs and inli
 2. Second list item
    1. First level of nested list
       1. Second level of nested list
-      1. third level of nested list
+   1. Second item
    1. Second level again
 3. Last one
 ```
@@ -61,7 +61,7 @@ The markdown element provides bare element styling to lists, paragraphs and inli
 2. Second list item
    - First level of nested list
      1. Second level of nested list
-     2. third level of nested list
+     2. Second item
         - And another one.
    - Second level again
 3. Last one
