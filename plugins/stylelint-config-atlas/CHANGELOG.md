@@ -1,5 +1,11 @@
 # @microsoft/stylelint-config-atlas
 
+## 3.0.0
+
+### Major Changes
+
+- 62d8d0d: Add new reserved word to list of acceptable unknown keywords.
+
 ## 2.1.0
 
 ### Minor Changes

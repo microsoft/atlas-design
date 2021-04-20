@@ -1,5 +1,13 @@
 # @microsoft/atlas-css
 
+## 0.7.0
+
+### Minor Changes
+
+- 62d8d0d: Add markdown element for bare article styles.
+- 71996af: Add element spacing tokens.
+- 62d8d0d: Add code block element.
+
 ## 0.6.2
 
 ### Patch Changes
