@@ -1,0 +1,25 @@
+$code-header-min-height: 2em !default;
+$code-header-color: $text !default;
+$code-block-header-font-size: 0.8em !default;
+
+.code-block {
+	.code-block-header {
+		display: flex;
+		align-items: center;
+		min-height: $code-header-min-height;
+		border: 1px solid $border;
+		border-bottom: 0;
+		background-color: $code-header;
+		color: $code-header-color;
+		font-size: $code-block-header-font-size;
+
+		.code-block-header-language {
+			flex-grow: 1;
+			padding: 0.125em $code-block-spacing;
+		}
+	}
+
+	.code-block-body {
+		@include code-block();
+	}
+}

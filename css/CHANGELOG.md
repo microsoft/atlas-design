@@ -6,7 +6,6 @@
 
 - 62d8d0d: Add markdown element for bare article styles.
 - 71996af: Add element spacing tokens.
-- 62d8d0d: Add code block element.
 
 ## 0.6.2
 
