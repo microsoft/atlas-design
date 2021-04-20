@@ -8,6 +8,12 @@ template: standard
 
 The markdown element provides bare element styling to lists, paragraphs and inline code.
 
+```html
+<div class="markdown">
+	<p>Inner elements will be styled.</p>
+</div>
+```
+
 ## Elements
 
 The the main title of this page provides an exampe of level one heading. The next five headers are examples of each subsequent heading size within Markdown.
