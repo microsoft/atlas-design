@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.7.2
+
+### Patch Changes
+
+- bcad59b: Update color values for success and info base to hit contrast requirements for dark theme.
+
 ## 0.7.1
 
 ### Patch Changes
