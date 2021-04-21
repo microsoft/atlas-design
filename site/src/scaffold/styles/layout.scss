@@ -29,7 +29,7 @@
 #aside,
 #footer {
 	overflow: hidden;
-	padding: $layout-2;
+	padding: $layout-1 $layout-2;
 }
 
 #header {
@@ -51,6 +51,7 @@
 
 #footer {
 	grid-area: footer;
+	background-color: $border;
 }
 
 .layout-container {
