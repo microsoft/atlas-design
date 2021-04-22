@@ -79,15 +79,15 @@
 }
 
 .text-decoration-underline {
-	text-decoration: underline;
+	text-decoration: underline !important;
 }
 
 .text-decoration-none {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 //Letter Spacing
 
 .letter-spacing-wide {
-	letter-spacing: $letter-spacing-wide;
+	letter-spacing: $letter-spacing-wide !important;
 }
