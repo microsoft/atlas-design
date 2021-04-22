@@ -1,59 +1,83 @@
-$border-positions: (('top', 'right', 'bottom', 'left'));
-$user-positions: (('top', $user-right, 'bottom', $user-left));
+$border-sides: ('top', 'right', 'bottom', 'left');
+$border-positions: ('top', $user-right, 'bottom', $user-left);
 
-.has-border {
+@mixin sides-rules($screen-size: '') {
+	@for $i from 1 through 4 {
+		$border-side: nth($border-sides, $i);
+		$border-position: nth($border-positions, $i);
+
+		@if ($screen-size == '') {
+			.border-#{$border-side} {
+				border-#{$border-position}: $border-width solid $border !important;
+			}
+
+			.border-#{$border-side}-none {
+				border: 0 !important;
+			}
+		} @else {
+			.border-#{$border-side}-#{$screen-size} {
+				border-#{$border-position}: $border-width solid $border !important;
+			}
+
+			.border-#{$border-side}-#{$screen-size}-none {
+				border: 0 !important;
+			}
+		}
+	}
+}
+
+.border {
 	border: $border-width solid $border !important;
 }
 
-.has-border-none {
+.border-none {
 	border: 0 !important;
-
-	&-tablet {
-		@include tablet {
-			border: 0 !important;
-		}
-	}
-
-	&-desktop {
-		@include desktop {
-			border: 0 !important;
-		}
-	}
-
-	&-widescreen {
-		@include widescreen {
-			border: 0 !important;
-		}
-	}
 }
 
 // Rules for each side
-@for $i from 1 through 4 {
-	$border-position: nth($border-positions, $i);
-	$user-position: nth($user-positions, $i);
+@include sides-rules;
 
-	.has-border-#{$border-position} {
-		border-#{$user-position}: $border-width solid $border !important;
-	}
-
-	.has-border-#{$border-position}-none {
+// Screen specific rules
+@include tablet {
+	.border-none-tablet {
 		border: 0 !important;
 	}
+
+	// Rules for each side
+	@include sides-rules('tablet');
 }
 
-.has-border-high-contrast {
+@include desktop {
+	.border-none-desktop {
+		border: 0 !important;
+	}
+
+	// Rules for each side
+	@include sides-rules('desktop');
+}
+
+@include widescreen {
+	.border-none-widescreen {
+		border: 0 !important;
+	}
+
+	// Rules for each side
+	@include sides-rules('widescreen');
+}
+
+// Modifiers
+.border-high-contrast {
 	border: $border-width solid $border-white-high-contrast;
 }
 
-.has-border-high-contrast-hover:hover {
+.border-high-contrast-hover:hover {
 	border: $border-width solid $border-yellow-high-contrast;
 }
 
-// Border radius
-.has-border-radius {
+.border-radius {
 	border-radius: $border-radius !important;
 }
 
-.has-border-radius-large {
+.border-radius-l {
 	border-radius: $border-radius-large !important;
 }

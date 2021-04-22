@@ -4,9 +4,9 @@ $separator: '-';
 $inlineKey: 'inline';
 $blockKey: 'block';
 
-$class-positions: (('top', 'right', 'bottom', 'left'));
+$class-positions: ('top', 'right', 'bottom', 'left');
 
-$user-positions: (('top', $user-right, 'bottom', $user-left));
+$user-positions: ('top', $user-right, 'bottom', $user-left);
 
 $layout-sizes: (
 	('none', $layout-0),
