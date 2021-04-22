@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.8.0
+
+### Minor Changes
+
+- 92ad4d1: Adding new hyperlink value to theme.
+
 ## 0.7.2
 
 ### Patch Changes

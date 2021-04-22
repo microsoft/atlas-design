@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.3.0
+
+### Minor Changes
+
+- 5d1b243: Update site layout on tablet and above.
+
 ## 0.2.1
 
 ### Patch Changes
