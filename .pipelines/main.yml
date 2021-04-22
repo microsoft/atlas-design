@@ -15,7 +15,7 @@ steps:
     inputs:
       versionSpec: '15.7.x'
 
-  - script: npm ci
+  - script: npm ci --no-optional --production=false --verbose || npm ci --no-optional --production=false --verbose
     displayName: Install
 
   - script: npm run lint
