@@ -10,37 +10,50 @@
 		<meta name="color-scheme" content="light dark" />
 		<link rel="stylesheet" href="~/src/scaffold/index.scss"
 	</head>
-	<body>
-		<header class="padding-block-xs padding-inline-s font-weight-bold" style="border-bottom: 1px solid var(--theme-border)">
-			Atlas Design
+	<body id="body">
+		<header id="header" class="padding-block-xs padding-inline-s font-weight-bold" style="border-bottom: 1px solid var(--theme-border)">
+			<a href="~/src/index.md" class="color-text text-decoration-none font-weight-bold">Atlas Design</a>
 		</header>
-		<main class="padding-s">
-			<div class="markdown">
+		<main id="main">
+			<div class="layout-container padding-top-s">
 				{{{ body }}}
-			</div>
-			
-			<div class="padding-block-m">
-				<a href="https://github.com/microsoft/atlas-design/tree/main{{cssTokenSource}}">View on Github</a>
-			</div>
-			<pre><code>{{#tokens}}{{name}}: {{value}}
+				
+				<div class="padding-block-m">
+					<a href="https://github.com/microsoft/atlas-design/tree/main{{cssTokenSource}}">View on Github</a>
+				</div>
+				<div class="code-block">
+					<div class="code-block-body">
+					<pre><code>{{#tokens}}{{name}}: {{value}}
 {{/tokens}}</code></pre>
+					</div>
+
+				</div>
+			</div>
 		</main>
-		<aside class="padding-s">
+		<nav id="nav" class="background-color-body-medium" style="border-right: 1px solid var(--theme-border)">
 			{{#toc}}
 				{{#entries}}
-						{{#isDirectory}}
-							<div class="margin-top-s">
-								<p>{{name}}</p>
-								{{#children}}
-									<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
-								{{/children}}
-							</div>
-						{{/isDirectory}}
-						{{^children.0}}
-							<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
-						{{/children.0}}
+					{{#isDirectory}}
+						<div class="margin-top-s">
+							<p>{{name}}</p>
+							{{#children}}
+								<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+							{{/children}}
+						</div>
+					{{/isDirectory}}
+					{{^children.0}}
+						<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+					{{/children.0}}
 				{{/entries}}
 			{{/toc}}
+		</nav>
+		<aside id="aside">
+			<div class="layout-container">
+			<!-- empty for now -->
+			</div>
 		</aside>
+		<footer id="footer">
+			<!-- empty for now -->
+		</footer>
 	</body>
 </html>

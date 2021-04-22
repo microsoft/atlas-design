@@ -1,0 +1,114 @@
+#body {
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+
+	@include tablet {
+		display: grid;
+		grid-template: auto 1fr auto auto / auto 1fr auto; // [ rows / columns ]
+
+		grid-template-areas:
+			'header header header'
+			'nav main .'
+			'nav aside .'
+			'footer footer footer';
+	}
+
+	@include widescreen {
+		grid-template-areas:
+			'header header header'
+			'nav main aside'
+			'footer footer footer';
+	}
+}
+
+#header,
+#main,
+#nav,
+#aside,
+#footer {
+	overflow: hidden;
+	padding: $layout-1 $layout-2;
+}
+
+#header {
+	grid-area: header;
+}
+
+#main {
+	grid-area: main;
+	min-height: 90vh;
+}
+
+#nav {
+	grid-area: nav;
+}
+
+#aside {
+	grid-area: aside;
+}
+
+#footer {
+	grid-area: footer;
+	background-color: $border;
+}
+
+.layout-container {
+	max-width: 70ch;
+	margin: auto;
+	@include tablet {
+		padding-inline: $layout-3;
+	}
+}
+
+// For debugging layout purposes only
+
+@mixin debug($content) {
+	position: relative;
+	&::after {
+		padding: 4px 8px;
+		border-radius: 1px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: red;
+		color: white;
+		font-size: 12px;
+		content: $content;
+	}
+}
+
+html.debug {
+	#header,
+	#main,
+	#nav,
+	#aside,
+	#footer {
+		border: 1px solid $border;
+	}
+
+	#header {
+		@include debug('header');
+	}
+
+	#main {
+		@include debug('main');
+	}
+
+	#nav {
+		@include debug('nav');
+	}
+
+	#aside {
+		@include debug('aside');
+	}
+
+	#footer {
+		@include debug('footer');
+	}
+
+	.content-container {
+		@include debug('reading-container');
+	}
+}

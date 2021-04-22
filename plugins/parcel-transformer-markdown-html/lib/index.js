@@ -40,7 +40,7 @@ const markedOptions = {
 			language in languageDisplayNames ? languageDisplayNames[language] : language;
 		return `
 			${elementExample}
-			<div class="code-block">
+			<div class="code-block margin-top-s">
 				<div class="code-block-header">
 					<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
 				</div>
