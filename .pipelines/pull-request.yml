@@ -18,7 +18,7 @@ steps:
     inputs:
       versionSpec: '15.7.x'
 
-  - script: npm install
+  - script: npm ci
     displayName: Install
 
   - script: npm run lint
