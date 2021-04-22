@@ -10,7 +10,12 @@ pool:
   vmImage: windows-latest
 
 steps:
-  - script: npm install
+  - task: NodeTool@0
+    displayName: Use node 15.7.x
+    inputs:
+      versionSpec: '15.7.x'
+
+  - script: npm ci
     displayName: Install
 
   - script: npm run lint
