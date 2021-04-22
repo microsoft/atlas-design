@@ -28,23 +28,23 @@ jobs:
       - uses: actions/checkout@v2
 
       # Monorepo installation
-      - name: Yarn install
-        run: yarn install;
+      - name: Npm install
+        run: npm install;
 
       # Run formatting check
       - name: Check formatting
-        run: yarn prettier-check;
+        run: npm run prettier-check;
 
       # Run lint
       - name: Run lint
-        run: yarn lint;
+        run: npm run lint;
 
       # Run Dart Sass build
       - name: Build CSS
         run: |
-          yarn build:css;
+          npm run build:css;
 
       # Run build for tokens and website
       - name: Build site
         run: |
-          yarn build:site;
+          npm run build:site;

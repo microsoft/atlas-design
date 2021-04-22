@@ -6,21 +6,21 @@
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"lint": "yarn workspace @microsoft/atlas-css lint",
-		"lint:fix": "yarn lint --fix",
-		"start": "yarn serve:site",
-		"serve:site": "yarn workspace @microsoft/atlas-site start",
-		"serve:css": "yarn workspace @microsoft/atlas-css start",
-		"build:css": "yarn workspace @microsoft/atlas-css build",
-		"build:site": "yarn workspace @microsoft/atlas-site build",
-		"build:tokens": "yarn workspace @microsoft/atlas-css tokens",
-		"toc": "yarn workspace @microsoft/atlas-site toc",
+		"lint": "npm run --prefix css lint",
+		"lint:fix": "npm run lint --fix",
+		"start": "npm run serve:site",
+		"serve:site": "npm run --prefix site start",
+		"serve:css": "npm run --prefix css start",
+		"build:css": "npm run --prefix css build",
+		"build:site": "npm run --prefix site build",
+		"build:tokens": "npm run --prefix css tokens",
+		"toc": "npm run --prefix site toc",
 		"prettier": "prettier --write \"**/*.{scss,ts,js,json,yml,md}\"",
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
 		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\"",
-		"prestart": "yarn run build:tokens",
-		"prebuild:site": "yarn run build:tokens",
-		"release": "yarn changeset publish"
+		"prestart": "npm run build:tokens",
+		"prebuild:site": "npm run build:tokens",
+		"release": "npm changeset publish"
 	},
 	"repository": {
 		"type": "git",
@@ -51,8 +51,8 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "yarn pretty-quick",
-			"pre-push": "yarn lint"
+			"pre-commit": "npm run pretty-quick",
+			"pre-push": "npm run lint"
 		}
 	},
 	"prettier": {

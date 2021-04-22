@@ -2,13 +2,11 @@
 
 Welcome to the Atlas CSS framework, the code backing the Atlas design system. This framework is built and maintained by the Developer Relations web team for use across Microsoft.
 
-Use NPM or Yarn to add `@microsoft/atlas-css` to your project.
+Use NPM to add `@microsoft/atlas-css` to your project.
 
 ```sh
 # install with NPM
 npm install --save @microsoft/atlas-css
-# or install with Yarn
-yarn add --save @microsoft/atlas-css
 ```
 
 Alternatively, you may access our scss directly for prototyping purposes at the following url:

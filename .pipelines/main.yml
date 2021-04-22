@@ -10,13 +10,13 @@ pool:
   vmImage: windows-latest
 
 steps:
-  - script: yarn
+  - script: npm install
     displayName: Install
 
-  - script: yarn lint
+  - script: npm run lint
     displayName: Lint
 
-  - script: yarn build:site
+  - script: npm run build:site
     displayName: Build site
 
   - task: AzureFileCopy@4
