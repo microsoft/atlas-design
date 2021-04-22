@@ -15,6 +15,9 @@ steps:
     inputs:
       versionSpec: '15.7.x'
 
+  - script: npm i node-gyp@7.1.0
+    displayName: Install node-gyp 7.1.0
+
   - script: npm ci
     displayName: Install
 
