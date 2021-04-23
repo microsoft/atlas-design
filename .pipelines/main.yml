@@ -15,6 +15,9 @@ steps:
     inputs:
       versionSpec: '15.7.x'
 
+  - script: npm i -g node-gyp@latest
+    displayName: Install latest version of node-gyp
+
   - script: npm ci --no-optional
     displayName: Install
 
