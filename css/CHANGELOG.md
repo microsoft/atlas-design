@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.8.1
+
+### Patch Changes
+
+- 39bb47a: Fix hyperlink variable css custom prop.
+
 ## 0.8.0
 
 ### Minor Changes
