@@ -18,18 +18,6 @@ steps:
     inputs:
       versionSpec: '15.7.x'
 
-  - script: npm config set python python2.7
-    displayName: Use Python 2.7
-
-  - script: npm install --global --production windows-build-tools --vs2017
-    displayName: Install Windows build tools for Visual Studio 2017
-
-  - script: npm config set msvs_version 2017 --global
-    displayName: Set Visual Studio to 2017
-
-  - script: npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MsBuild.exe"
-    displayName: Set Visual Studio msbuild path
-
   - script: npm ci --no-optional
     displayName: Install
 
