@@ -15,10 +15,10 @@ steps:
     inputs:
       versionSpec: '15.7.x'
 
-  - script: npm i -g node-gyp@7.1.0
-    displayName: Install node-gyp 7.1.0
+  - script: npm config set msvs_version 2017 --global
+    displayName: Set Visual Studio to 2017
 
-  - script: npm ci
+  - script: npm ci -no-optional
     displayName: Install
 
   - script: npm run lint
