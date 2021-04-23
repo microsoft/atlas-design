@@ -21,6 +21,9 @@ steps:
   - script: npm config set msvs_version 2017 --global
     displayName: Set Visual Studio to 2017
 
+  - script: npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe"
+    displayName: Set Visual Studio msbuild path
+
   - script: npm ci -no-optional
     displayName: Install
 
