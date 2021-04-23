@@ -18,12 +18,6 @@ steps:
   - script: npm -v
     displayName: Print npm version
 
-  - script: npm i -g node-gyp@latest
-    displayName: Install latest version of node-gyp
-
-  - script: npm install --global --production windows-build-tools
-    displayName: Install Windows build tools for Visual Studio
-
   - script: npm ci --no-optional
     displayName: Install
 
