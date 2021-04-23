@@ -46,7 +46,6 @@
 	"devDependencies": {
 		"@changesets/cli": "^2.14.1",
 		"husky": "4.3.0",
-		"node-gyp": "latest",
 		"prettier": "^2.2.1",
 		"pretty-quick": "3.0.2"
 	},

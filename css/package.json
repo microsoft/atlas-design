@@ -52,6 +52,7 @@
 		"node-sass": "^5.0.0",
 		"fs-extra": "^9.1.0",
 		"quicktype-core": "^6.0.70",
-		"rfs": "^9.0.3"
+		"rfs": "^9.0.3",
+		"node-gyp": "latest"
 	}
 }
