@@ -24,6 +24,9 @@ steps:
   - script: npm i -g node-gyp@latest
     displayName: Install latest version of node-gyp
 
+  - script: npm install --global --production windows-build-tools --vs2015
+    displayName: Install Windows build tools for Visual Studio 2015
+
   - script: npm config set msvs_version 2015 -g
     displayName: Use Visual Studio 2015
 
