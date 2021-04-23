@@ -15,6 +15,12 @@ steps:
     inputs:
       versionSpec: '15.7.x'
 
+  - script: echo 'Checking npm version' npm -v
+    displayName: Print npm version
+
+  - script: npm config set msvs_version 2015
+    displayName: Use Visual Studio 2015
+
   - script: npm i -g node-gyp@latest
     displayName: Install latest version of node-gyp
 
