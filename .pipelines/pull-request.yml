@@ -24,7 +24,7 @@ steps:
   - script: npm run lint
     displayName: Lint
 
-  - script: npm run build:site -- --out-dir "dist/pulls/$(System.PullRequest.PullRequestNumber)" -- --public-url "/pulls/$(System.PullRequest.PullRequestNumber)"
+  - script: npm run build:site -- --out-dir "dist/pulls/$(System.PullRequest.PullRequestNumber)" --public-url "/pulls/$(System.PullRequest.PullRequestNumber)"
     displayName: Build site
 
   - task: AzureFileCopy@4
