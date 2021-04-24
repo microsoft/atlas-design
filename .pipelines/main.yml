@@ -7,21 +7,13 @@ trigger:
 pr: none
 
 pool:
-  vmImage: windows-latest
+  vmImage: vs2017-win2016
 
 steps:
   - task: NodeTool@0
     displayName: Use node 15.7.x
     inputs:
       versionSpec: '15.7.x'
-
-  - script: npm -v
-    displayName: Print npm version
-
-  - task: VSBuild@1
-    inputs:
-      solution: '**\*.sln'
-      vsVersion: 17.0
 
   - script: npm ci --no-optional
     displayName: Install
