@@ -10,7 +10,7 @@ pr:
   drafts: true
 
 pool:
-  vmImage: vs2017-win2016
+  vmImage: windows-latest
 
 steps:
   - task: NodeTool@0
@@ -20,6 +20,11 @@ steps:
 
   - script: npm -v
     displayName: Print npm version
+
+  - task: VSBuild@1
+    inputs:
+      solution: '**\*.sln'
+      vsVersion: 17.0
 
   - script: npm ci --no-optional
     displayName: Install
