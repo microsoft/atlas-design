@@ -1,30 +1,9 @@
-$border-sides: ('top', 'right', 'bottom', 'left');
-$border-positions: ('top', $user-right, 'bottom', $user-left);
-
-@mixin sides-rules($screen-size: '') {
-	@for $i from 1 through 4 {
-		$border-side: nth($border-sides, $i);
-		$border-position: nth($border-positions, $i);
-
-		@if ($screen-size == '') {
-			.border-#{$border-side} {
-				border-#{$border-position}: $border-width solid $border !important;
-			}
-
-			.border-#{$border-side}-none {
-				border: 0 !important;
-			}
-		} @else {
-			.border-#{$border-side}-#{$screen-size} {
-				border-#{$border-position}: $border-width solid $border !important;
-			}
-
-			.border-#{$border-side}-#{$screen-size}-none {
-				border: 0 !important;
-			}
-		}
-	}
-}
+$borders-directions: (
+	'top': 'top',
+	'left': $user-left,
+	'bottom': 'bottom',
+	'right': $user-right
+);
 
 .border {
 	border: $border-width solid $border !important;
@@ -34,50 +13,73 @@ $border-positions: ('top', $user-right, 'bottom', $user-left);
 	border: 0 !important;
 }
 
-// Rules for each side
-@include sides-rules;
-
-// Screen specific rules
 @include tablet {
+	.border-tablet {
+		border: $border-width solid $border !important;
+	}
+
 	.border-none-tablet {
 		border: 0 !important;
 	}
-
-	// Rules for each side
-	@include sides-rules('tablet');
 }
 
 @include desktop {
-	.border-none-desktop {
-		border: 0 !important;
+	.border-desktop {
+		border: $border-width solid $border !important;
 	}
-
-	// Rules for each side
-	@include sides-rules('desktop');
 }
 
 @include widescreen {
-	.border-none-widescreen {
-		border: 0 !important;
+	.border-widescreen {
+		border: $border-width solid $border !important;
+	}
+}
+
+// Rules for each side
+@each $border-key, $direction in $borders-directions {
+	.border-#{$border-key} {
+		border-#{$direction}: $border-width solid $border !important;
 	}
 
-	// Rules for each side
-	@include sides-rules('widescreen');
+	.border-#{$border-key}-none {
+		border-#{$direction}: 0 !important;
+	}
+
+	@include tablet {
+		.border-#{$border-key}-tablet {
+			border-#{$direction}: $border-width solid $border !important;
+		}
+
+		.border-#{$border-key}-none-tablet {
+			border-#{$direction}: 0 !important;
+		}
+	}
+
+	@include desktop {
+		.border-#{$border-key}-desktop {
+			border-#{$direction}: $border-width solid $border !important;
+		}
+	}
+	@include widescreen {
+		.border-#{$border-key}-widescreen {
+			border-#{$direction}: $border-width solid $border !important;
+		}
+	}
 }
 
 // Modifiers
 .border-high-contrast {
 	border: $border-width solid $border-white-high-contrast;
-}
 
-.border-high-contrast-hover:hover {
-	border: $border-width solid $border-yellow-high-contrast;
+	&-hover:hover {
+		border: $border-width solid $border-yellow-high-contrast;
+	}
 }
 
 .border-radius {
 	border-radius: $border-radius !important;
-}
 
-.border-radius-l {
-	border-radius: $border-radius-large !important;
+	&-l {
+		border-radius: $border-radius-large !important;
+	}
 }
