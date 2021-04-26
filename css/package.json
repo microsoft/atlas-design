@@ -37,7 +37,8 @@
 	"license": "MIT",
 	"dependencies": {
 		"minireset.css": "^0.0.7",
-		"normalize.css": "^8.0.1"
+		"normalize.css": "^8.0.1",
+		"rfs": "^9.0.3"
 	},
 	"devDependencies": {
 		"parcel": "2.0.0-beta.2",
@@ -51,7 +52,6 @@
 		"sass-extract": "^2.1.0",
 		"node-sass": "^5.0.0",
 		"fs-extra": "^9.1.0",
-		"quicktype-core": "^6.0.70",
-		"rfs": "^9.0.3"
+		"quicktype-core": "^6.0.70"
 	}
 }
