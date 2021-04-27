@@ -6,3 +6,10 @@ $user-left: if($user-text-direction == rtl, right, left);
 $user-right: if($user-text-direction == rtl, left, right);
 
 $user-translate-x-direction: if($user-text-direction == rtl, -1, 1);
+
+$directions: (
+	'top': 'top',
+	'left': $user-left,
+	'bottom': 'bottom',
+	'right': $user-right
+);
