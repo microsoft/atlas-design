@@ -8,10 +8,10 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "stylelint ./src/**/*.scss",
 		"start": "parcel watch src/index.scss --no-autoinstall",
-		"build": "yarn run build:css && yarn run tokens",
+		"build": "npm run build:css && npm run tokens",
 		"build:css": "parcel build src/index.scss --no-cache --no-autoinstall",
 		"tokens": "node ./tokens/index.js",
-		"prepublish": "yarn run lint && yarn run build"
+		"prepublish": "npm run lint && npm run build"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -49,7 +49,7 @@
 		"stylelint-config-prettier": "^8.0.2",
 		"stylelint-prettier": "^1.1.2",
 		"sass-extract": "^2.1.0",
-		"node-sass": "^4.14.0",
+		"node-sass": "^5.0.0",
 		"fs-extra": "^9.1.0",
 		"quicktype-core": "^6.0.70",
 		"rfs": "^9.0.3"

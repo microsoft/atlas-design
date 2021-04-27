@@ -10,16 +10,21 @@ pr:
   drafts: true
 
 pool:
-  vmImage: windows-latest
+  vmImage: vs2017-win2016
 
 steps:
-  - script: yarn
+  - task: NodeTool@0
+    displayName: Use node 15.7.x
+    inputs:
+      versionSpec: '15.7.x'
+
+  - script: npm ci --no-optional
     displayName: Install
 
-  - script: yarn lint
+  - script: npm run lint
     displayName: Lint
 
-  - script: yarn build:site  --dist-dir "dist/pulls/$(System.PullRequest.PullRequestNumber)" --public-url "/pulls/$(System.PullRequest.PullRequestNumber)"
+  - script: npm run build:site -- -- --dist-dir "dist/pulls/$(System.PullRequest.PullRequestNumber)" --public-url "/pulls/$(System.PullRequest.PullRequestNumber)"
     displayName: Build site
 
   - task: AzureFileCopy@4
