@@ -7,3 +7,7 @@ template: standard
 # Atlas Design ✨
 
 Welcome to the Atlas Design system.
+
+```html
+<button>Example</button>
+```
