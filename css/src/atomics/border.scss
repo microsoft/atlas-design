@@ -3,7 +3,7 @@
 }
 
 .border-none {
-	border: 0 !important;
+	border: none !important;
 }
 
 @include tablet {
@@ -12,7 +12,7 @@
 	}
 
 	.border-none-tablet {
-		border: 0 !important;
+		border: none !important;
 	}
 }
 
