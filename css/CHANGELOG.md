@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 0.8.2
+
+### Patch Changes
+
+- 2ec32c2: Bugfix: rfs is a normal dependency.
+- d9631db: Update success green on dark theme.
+
 ## 0.8.1
 
 ### Patch Changes
