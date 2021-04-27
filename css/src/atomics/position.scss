@@ -1,0 +1,24 @@
+@each $item in $positions {
+	.position-#{$item} {
+		position: #{$item} !important;
+	}
+
+	.position-#{$item}-tablet {
+		@include tablet {
+			position: #{$item} !important;
+		}
+	}
+}
+
+$directions: (
+	'top': 'top',
+	'left': $user-left,
+	'bottom': 'bottom',
+	'right': $user-right
+);
+
+@each $side, $direction in $directions {
+	.#{$side}-zero {
+		#{$direction}: 0;
+	}
+}
