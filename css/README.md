@@ -2,6 +2,13 @@
 
 Welcome to the Atlas CSS framework, the code backing the Atlas design system. This framework is built and maintained by the Developer Relations web team for use across Microsoft.
 
+## Use atlas-css on Code Pen
+
+[Using CodePen as a sandbox](https://codepen.io/wibjorn/pen/JjEzrQN), you can try out the framework.
+
+## Installation
+
+
 Use NPM to add `@microsoft/atlas-css` to your project.
 
 ```sh
