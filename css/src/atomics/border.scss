@@ -6,16 +6,6 @@
 	border: none !important;
 }
 
-@include tablet {
-	.border-tablet {
-		border: $border-width solid $border !important;
-	}
-
-	.border-none-tablet {
-		border: none !important;
-	}
-}
-
 // Rules for each side
 @each $border-key, $direction in $directions {
 	.border-#{$border-key} {
@@ -25,8 +15,19 @@
 	.border-#{$border-key}-none {
 		border-#{$direction}: 0 !important;
 	}
+}
 
-	@include tablet {
+@include tablet {
+	.border-tablet {
+		border: $border-width solid $border !important;
+	}
+
+	.border-none-tablet {
+		border: none !important;
+	}
+
+	// Rules for each side
+	@each $border-key, $direction in $directions {
 		.border-#{$border-key}-tablet {
 			border-#{$direction}: $border-width solid $border !important;
 		}
