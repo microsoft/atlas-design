@@ -8,7 +8,6 @@ Welcome to the Atlas CSS framework, the code backing the Atlas design system. Th
 
 ## Installation
 
-
 Use NPM to add `@microsoft/atlas-css` to your project.
 
 ```sh
