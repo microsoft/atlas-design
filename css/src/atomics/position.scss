@@ -1,0 +1,17 @@
+@each $item in $positions {
+	.position-#{$item} {
+		position: #{$item} !important;
+	}
+
+	.position-#{$item}-tablet {
+		@include tablet {
+			position: #{$item} !important;
+		}
+	}
+}
+
+@each $side, $direction in $directions {
+	.#{$side}-0 {
+		#{$direction}: 0;
+	}
+}

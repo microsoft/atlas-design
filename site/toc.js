@@ -23,7 +23,9 @@ const settings = normalizePaths({
 	names: {
 		'/index.md': '[hide]',
 		'/tokens': 'Tokens',
-		'/components': 'Components'
+		'/components': 'Components',
+		'/atomics': 'Atomics',
+		'/atomics/position.md': 'Position'
 	}
 });
 
