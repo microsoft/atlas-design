@@ -6,11 +6,11 @@ template: standard
 
 # Position Atomics
 
-These classes can be used to help us place elements outside of the typical document flow. Side related can be used in conjunction with margin to space things more precisely.
+These classes can be used to help us place elements outside of the typical document flow. Side related classes can be used in conjunction with margin to space things more precisely.
 
 ## Example
 
-Here we place an element in the top bottom right corner of another element.
+Here we place an element in the bottom right corner of another element.
 
 ```html
 <div class="position-relative background-color-primary padding-xl">
