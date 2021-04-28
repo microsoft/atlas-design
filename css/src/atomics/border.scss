@@ -1,0 +1,56 @@
+.border {
+	border: $border-width solid $border !important;
+}
+
+.border-none {
+	border: none !important;
+}
+
+// Rules for each side
+@each $border-key, $direction in $directions {
+	.border-#{$border-key} {
+		border-#{$direction}: $border-width solid $border !important;
+	}
+
+	.border-#{$border-key}-none {
+		border-#{$direction}: 0 !important;
+	}
+}
+
+@include tablet {
+	.border-tablet {
+		border: $border-width solid $border !important;
+	}
+
+	.border-none-tablet {
+		border: none !important;
+	}
+
+	// Rules for each side
+	@each $border-key, $direction in $directions {
+		.border-#{$border-key}-tablet {
+			border-#{$direction}: $border-width solid $border !important;
+		}
+
+		.border-#{$border-key}-none-tablet {
+			border-#{$direction}: 0 !important;
+		}
+	}
+}
+
+// Modifiers
+.border-high-contrast {
+	border: $border-width solid $border-white-high-contrast;
+
+	&-hover:hover {
+		border: $border-width solid $border-yellow-high-contrast;
+	}
+}
+
+.border-radius {
+	border-radius: $border-radius !important;
+}
+
+.border-radius-l {
+	border-radius: $border-radius-large !important;
+}

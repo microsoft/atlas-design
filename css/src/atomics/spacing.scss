@@ -4,10 +4,6 @@ $separator: '-';
 $inlineKey: 'inline';
 $blockKey: 'block';
 
-$class-positions: (('top', 'right', 'bottom', 'left'));
-
-$user-positions: (('top', $user-right, 'bottom', $user-left));
-
 $layout-sizes: (
 	('none', $layout-0),
 	('xs', $layout-1),
@@ -69,18 +65,15 @@ $layout-sizes: (
 		padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 	}
 
-	@for $i from 1 through 4 {
-		$class-position: nth($class-positions, $i);
-		$user-position: nth($user-positions, $i);
-
+	@each $position-key, $direction in $directions {
 		// .margin-<side>-<value>
-		.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey} {
-			margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+		.#{$marginKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey} {
+			margin-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
 		// .padding-<side>-<value>
-		.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey} {
-			padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+		.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey} {
+			padding-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 }
@@ -124,16 +117,13 @@ $layout-sizes: (
 			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
-		@for $i from 1 through 4 {
-			$class-position: nth($class-positions, $i);
-			$user-position: nth($user-positions, $i);
-
-			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-tablet {
-				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+		@each $position-key, $direction in $directions {
+			.#{$marginKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-tablet {
+				margin-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 
-			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-tablet {
-				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-tablet {
+				padding-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 		}
 	}
@@ -178,16 +168,13 @@ $layout-sizes: (
 			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
-		@for $i from 1 through 4 {
-			$class-position: nth($class-positions, $i);
-			$user-position: nth($user-positions, $i);
-
-			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-desktop {
-				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+		@each $position-key, $direction in $directions {
+			.#{$marginKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-desktop {
+				margin-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 
-			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-desktop {
-				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-desktop {
+				padding-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 		}
 	}
@@ -232,16 +219,13 @@ $layout-sizes: (
 			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 
-		@for $i from 1 through 4 {
-			$class-position: nth($class-positions, $i);
-			$user-position: nth($user-positions, $i);
-
-			.#{$marginKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-widescreen {
-				margin-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+		@each $position-key, $direction in $directions {
+			.#{$marginKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-widescreen {
+				margin-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 
-			.#{$paddingKey}#{$separator}#{$class-position}#{$separator}#{$sizeKey}-widescreen {
-				padding-#{$user-position}: sizeValue($sizeKey, $sizeValue) !important;
+			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-widescreen {
+				padding-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 		}
 	}

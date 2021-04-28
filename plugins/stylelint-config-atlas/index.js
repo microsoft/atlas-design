@@ -16,7 +16,6 @@ module.exports = {
 		'scss/at-extend-no-missing-placeholder': true,
 		indentation: 'tab',
 		'declaration-property-value-blacklist': null,
-		'declaration-property-value-disallowed-list': { '/^border/': ['none'] },
 		'max-nesting-depth': 3,
 		'font-family-name-quotes': 'always-where-recommended',
 		'function-url-quotes': 'always',
