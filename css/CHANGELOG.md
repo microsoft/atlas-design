@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.9.0
+
+### Minor Changes
+
+- 5e65be7: Add border tokens and atomics.
+
 ## 0.8.2
 
 ### Patch Changes
