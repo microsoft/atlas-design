@@ -20,7 +20,7 @@
 		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\"",
 		"prestart": "npm run build:tokens",
 		"prebuild:site": "npm run build:tokens",
-		"release": "npm changeset publish"
+		"release": "npx changeset publish"
 	},
 	"repository": {
 		"type": "git",
