@@ -26,6 +26,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - uses: jitterbit/get-changed-files@v1
+        id: abc
+        with:
+          format: space-delimited
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Use Node.js 15.7.X
         uses: actions/setup-node@v2
@@ -53,3 +58,10 @@ jobs:
       - name: Build site
         run: |
           npm run build:site;
+
+      - name: Check output
+        run: |
+          echo "All:"
+          echo "${{ steps.abc.outputs.all }}"
+          echo "Added:"
+          echo "${{ steps.abc.outputs.added }}"
