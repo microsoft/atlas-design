@@ -9,11 +9,11 @@ template: standard
 Various classes can be used to apply/customize borders on elements.
 
 - `.border`: sets a 1px border on an element
-- `.border-none`: resets border to none
-- `.border-{direction}`: sets a 1px border for that user direction
-- `.border-{direction}-none`: resets border for that user direction
-- `.border-{direction}-{screensize}`: sets a 1px border for that user direction on specific screen size
-- `.border-{direction}-{screensize}-none`: resets border for that user direction on specific screen size
+- `.border-none`: resets border to `none`
+- `.border-{direction}`: sets a 1px border for spesific elemnt's side
+- `.border-{direction}-none`: resets border to `none` for spesific elemnt's side
+- `.border-{direction}-{screensize}`: sets a 1px border  for spesific elemnt's side on specific screen size
+- `.border-{direction}-{screensize}-none`: resets border to `none` for spesific elemnt's side on specific screen size
 
 Currently, the only `{screensize}` available is `tablet`.
 
