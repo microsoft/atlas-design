@@ -1,5 +1,5 @@
 @use 'sass:map';
-$include-flex-desktop: true;
+
 $flex-atomics: (
 	'justify-content': (
 		flex-start,
@@ -63,21 +63,6 @@ $flex-atomics: (
 		@each $value in map.get($flex-atomics, $key) {
 			.#{$key}-#{$value}-tablet {
 				#{$key}: $value !important;
-			}
-		}
-	}
-}
-
-@if $include-flex-desktop == true {
-	/*
-	* Within projects set the value to true to use flex responsive classes for desktop
-	*/
-	@include desktop {
-		@each $key in map.keys($flex-atomics) {
-			@each $value in map.get($flex-atomics, $key) {
-				.#{$key}-#{$value}-desktop {
-					#{$key}: $value !important;
-				}
 			}
 		}
 	}
