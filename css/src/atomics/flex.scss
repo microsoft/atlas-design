@@ -57,3 +57,13 @@ $flex-atomics: (
 		}
 	}
 }
+
+@include tablet {
+	@each $key in map.keys($flex-atomics) {
+		@each $value in map.get($flex-atomics, $key) {
+			.#{$key}-#{$value}-tablet {
+				#{$key}: $value !important;
+			}
+		}
+	}
+}
