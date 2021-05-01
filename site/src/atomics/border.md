@@ -13,7 +13,7 @@ Various classes can be used to apply/customize borders on elements.
 - `.border-{direction}`: sets a 1px border for specific element's side
 - `.border-{direction}-none`: resets border to `none` for specific element's side
 - `.border-{direction}-{screensize}`: sets a 1px border  for specific element's side on specific screen size
-- `.border-{direction}-{screensize}-none`: resets border to `none` for specific element;s side on specific screen size
+- `.border-{direction}-{screensize}-none`: resets border to `none` for specific element's side on specific screen size
 
 Currently, the only `{screensize}` available is `tablet`.
 
