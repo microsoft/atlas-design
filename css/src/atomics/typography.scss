@@ -1,12 +1,12 @@
-// Font stack
+// Font family
 
-.is-monospace {
+.font-family-monospace {
 	font-family: $monospace-font-stack !important;
 	-moz-osx-font-smoothing: auto;
 	-webkit-font-smoothing: auto;
 }
 
-.is-quote {
+.font-family-quote {
 	font-family: $quote-font-stack !important;
 }
 
