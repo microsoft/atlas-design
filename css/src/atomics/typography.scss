@@ -1,3 +1,15 @@
+// Font stack
+
+.is-monospace {
+	font-family: $monospace-font-stack !important;
+	-moz-osx-font-smoothing: auto;
+	-webkit-font-smoothing: auto;
+}
+
+.is-quote {
+	font-family: $quote-font-stack !important;
+}
+
 // Heading sizes
 
 .font-size-h0 {
