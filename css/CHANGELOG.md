@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 0.10.0
+
+### Minor Changes
+
+- c9dfa1f: Add flex responsive class
+- 00e85c4: Add position atomic classes.
+
+### Patch Changes
+
+- 2e1de30: Adding font-family helper classes.
+
 ## 0.9.0
 
 ### Minor Changes
