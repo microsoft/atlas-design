@@ -22,7 +22,7 @@ Currently, the only `{screensize}` available is `tablet`.
 Here is an example of simple `border` class usage:
 
 ```html
-<div class="padding-s border">
+<div class="border padding-s">
 	<p>Text block</p>
 </div>
 ```
@@ -30,24 +30,24 @@ Here is an example of simple `border` class usage:
 Here is an example of applying border to specific side of the element:
 
 ```html
-<div class="padding-s border-top">
+<div class="border-top padding-s">
 	<p>Border top</p>
 </div>
 
-<div class="padding-s border-right">
+<div class="border-right padding-s">
 	<p>Border right</p>
 </div>
 
-<div class="padding-s border-bottom">
-	<p>Border bottom</p>
+<div class="border-left padding-s">
+	<p>Border left</p>
 </div>
 
-<div class="padding-s border-left">
-	<p>Border left</p>
+<div class="border-bottom padding-s">
+	<p>Border bottom</p>
 </div>
 ```
 
-## Modifiers
+## Radius
 
 Additional classes to modify the border appearance.
 
@@ -61,11 +61,11 @@ Setting up border radius. Currently two classes are available:
 #### Example
 
 ```html
-<div class="padding-s border border-radius">
-	<p>Text block</p>
+<div class="border border-radius padding-s">
+	<p>Default radius</p>
 </div>
 
-<div class="padding-s margin-top-s border border-radius-l">
-	<p>Text block</p>
+<div class="border border-radius-l padding-s margin-top-s">
+	<p>Large radius</p>
 </div>
 ```
