@@ -6,20 +6,20 @@ template: standard
 
 # Border Atomics
 
-Various classes can be used to apply/customize borders on elements.
+Various classes can be used to apply borders to the elements.
 
-- `.border`: sets a 1px border on an element
-- `.border-none`: resets border to `none`
-- `.border-{direction}`: sets a 1px border for specific element's side
-- `.border-{direction}-none`: resets border to `none` for specific element's side
-- `.border-{direction}-{screensize}`: sets a 1px border  for specific element's side on specific screen size
-- `.border-{direction}-{screensize}-none`: resets border to `none` for specific element's side on specific screen size
+- `.border`: adds a border
+- `.border-none`: removes a border
+- `.border-{direction}`: sets the border for a specific side
+- `.border-{direction}-none`: removes the border on a specific side
+- `.border-{direction}-{screensize}`: sets the border for a specific side on a particular screen size
+- `.border-{direction}-{screensize}-none`: removes the border for a specific side on a particular screen size
 
 Currently, the only `{screensize}` available is `tablet`.
 
 ## Example
 
-Here is an example of simple `border` class usage:
+Here is an example of `border` class usage:
 
 ```html
 <div class="border padding-s">
@@ -46,10 +46,6 @@ Here is an example of applying border to specific side of the element:
 	<p>Border bottom</p>
 </div>
 ```
-
-## Radius
-
-Additional classes to modify the border appearance.
 
 ### Radius
 
