@@ -49,7 +49,7 @@ Here is an example of applying border to specific side of the element:
 
 ### Radius
 
-Setting up border radius. Currently two classes are available:
+Currently two classes are available to set border radius:
 
 - `.border-radius`
 - `.border-radius-l`
