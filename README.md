@@ -3,7 +3,18 @@
 [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml) [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml)
 [![npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)
 
-Welcome to the Atlas Design project! This repository holds the source code backing appearance of docs.microsoft.com and Microsoft Learn.
+Welcome to the Atlas Design project! This repository holds the source code backing the Atlas Design System. 
+
+## Our mission
+Atlas leads a consistent experience for our customers, improving quality assurance, and driving down development times across the DevRel web properties. This Design System serves designers, PMs, and developers across DevRel to build accessible, and high quality experiences at scale.
+
+
+## Process
+
+- [New patterns](https://dev.azure.com/azurecom/ACOM/_wiki/wikis/ACOM.wiki/3960/GitHub-Discussions-Process)
+- Design Contribution Guidelines
+- [Development Contribution Guidelines](https://dev.azure.com/azurecom/ACOM/_wiki/wikis/ACOM.wiki/3960/GitHub-Discussions-Process)
+
 
 ## Development
 
