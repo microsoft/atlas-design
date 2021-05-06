@@ -4,7 +4,7 @@ description: Typography related atomic css classes for the Atlas Design System
 template: standard
 ---
 
-# Typography atomics
+# Typography Atomics
 
 The typography scale is designed to for great readability across the platform. This page covers the various classes available to modify text.
 
