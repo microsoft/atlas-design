@@ -26,4 +26,4 @@ This post provides some contribution guidelines for CSS/Scss in Atlas.
 
 ## When updating existing Scss
 
-- try using [`npm link`](https://docs.npmjs.com/cli/v7/commands/npm-link) to view the impact on existing that import Atlas systems.
+- try using [`npm link`](https://docs.npmjs.com/cli/v7/commands/npm-link) to view the impact on existing systems that import Atlas.
