@@ -17,7 +17,7 @@ This post provides some contribution guidelines for CSS/Scss in Atlas.
   - include a preview link to PR version of the site for easier functional reviewing of your code. (`preview-<pr-number>` or `<origin>/pulls/<pr-number>/path/to/page/`).
 - avoid making breaking changes, unless you really, really have to.
 - if you don't know what might constitute a breaking change ask a team member or start a discussion.
-- checkout the readme of the folder you're working in. Each folder should have a readme detailing advice on the purpose the folder and guidelines for contributing.
+- checkout the readme of the folder you're working in. Each folder should have a readme detailing the purpose of the folder and guidelines for contributing.
 
 ## When writing new Scss
 
