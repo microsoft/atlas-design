@@ -4,11 +4,11 @@ description: Typography related atomic css classes for the Atlas Design System
 template: standard
 ---
 
-# Typography Atomics
+# Typography atomics
 
 The typography scale is designed to for great readability across the platform. This page covers the various classes available to modify text.
 
-## Font Size
+## Font size
 
 There are two avenues for modifying font sizes in Atlas.
 
@@ -50,7 +50,7 @@ There are 5 classes available to transform the font weight. There is 1 class to 
 <p class="font-style-italic">Italic text</p>
 ```
 
-## Font Family
+## Font family
 
 The font family can be transformed with the following classes.
 
@@ -59,7 +59,7 @@ The font family can be transformed with the following classes.
 <p class="font-family-quote">Font Family for block quotes</p>
 ```
 
-## Text Decoration
+## Text decoration
 
 Text can be decorated with the following classes.
 
@@ -68,7 +68,7 @@ Text can be decorated with the following classes.
 <p class="text-decoration-none">Text with decorations removed</p>
 ```
 
-## Letter Spacing
+## Letter spacing
 
 The following class is used to alter the letter spacing.
 
