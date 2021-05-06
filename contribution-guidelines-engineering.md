@@ -22,6 +22,7 @@ This post provides some contribution guidelines for CSS/Scss in Atlas.
 ## When writing new Scss
 
 - ensure signoff from the design systems team has been reached before you begin work.
+- not sure if signoff has been reached? Ask in a new/existing discussion!
 
 ## When updating existing Scss
 
