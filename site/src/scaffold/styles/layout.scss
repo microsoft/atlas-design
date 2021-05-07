@@ -62,6 +62,10 @@
 	}
 }
 
+.example {
+	padding: 1rem;
+}
+
 // For debugging layout purposes only
 
 @mixin debug($content) {
