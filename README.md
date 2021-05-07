@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml) [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml)
 [![npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)
+[![Site](https://dev.azure.com/ceapex/Engineering/_apis/build/status/microsoft.atlas-design?branchName=main)](https://dev.azure.com/ceapex/Engineering/_build/latest?definitionId=3602&branchName=main)
 
 Welcome to the Atlas Design project! This repository holds the source code backing appearance of docs.microsoft.com and Microsoft Learn.
 
