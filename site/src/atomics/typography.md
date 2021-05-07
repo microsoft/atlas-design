@@ -50,18 +50,9 @@ There are 5 classes available to transform the font weight. There is 1 class to 
 <p class="font-style-italic">Italic text</p>
 ```
 
-## Font family
+## Underlining Text
 
-The font family can be transformed with the following classes.
-
-```html
-<p class="font-family-monospace">Font Family Monospace</p>
-<p class="font-family-quote">Font Family for block quotes</p>
-```
-
-## Text decoration
-
-Text can be decorated with the following classes.
+Text can have underlining added or removed with the following classes.
 
 ```html
 <p class="text-decoration-underline">Text with underline</p>

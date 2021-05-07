@@ -63,9 +63,7 @@
 }
 
 .example {
-	p:not(:last-of-type) {
-		margin-bottom: 1rem;
-	}
+	padding: 0.5rem;
 }
 
 // For debugging layout purposes only
