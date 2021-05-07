@@ -6,15 +6,16 @@ template: standard
 
 # Typography Atomics
 
-The typography scale is designed to for great readability across the platform. This page covers the various classes available to modify text.
+The typography scale is designed for great readability across the platform. This page covers the various classes available to modify text.
 
-## Font size
+## Font sizes
 
 There are two avenues for modifying font sizes in Atlas.
 
 #### Heading sizes
 
 The following classes can be used to accurately adopt a heading's size (h1- h6).
+These sizes are tied to the default heading sizes renderer within the [markdown component](https://design.docs.microsoft.com/components/markdown.html).
 
 ```html
 <p class="font-size-h1">Heading 1</p>
