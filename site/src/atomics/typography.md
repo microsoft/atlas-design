@@ -8,9 +8,9 @@ template: standard
 
 The typography scale is designed for great readability across the platform. This page covers the various classes available to modify text.
 
-## Font sizes
+## Font size
 
-There are two avenues for modifying font sizes in Atlas.
+There are two avenues for modifying font size in Atlas.
 
 #### Heading sizes
 
