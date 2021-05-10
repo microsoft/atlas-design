@@ -6,14 +6,7 @@
 Welcome to the Atlas Design project! This repository holds the source code backing the Atlas Design System. 
 
 ## Our mission
-Atlas leads a consistent experience for our customers, improving quality assurance, and driving down development times across the DevRel web properties. This Design System serves designers, PMs, and developers across DevRel to build accessible, and high quality experiences at scale.
-
-
-## Process
-
-- [New patterns](https://dev.azure.com/azurecom/ACOM/_wiki/wikis/ACOM.wiki/3960/GitHub-Discussions-Process)
-- Design Contribution Guidelines
-- [Development Contribution Guidelines](https://dev.azure.com/azurecom/ACOM/_wiki/wikis/ACOM.wiki/3960/GitHub-Discussions-Process)
+The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and consistent experiences at scale across the DevRel web properties.
 
 
 ## Development
