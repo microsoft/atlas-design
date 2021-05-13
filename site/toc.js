@@ -26,9 +26,10 @@ const settings = normalizePaths({
 		'/components': 'Components',
 		'/atomics': 'Atomics',
 		'/atomics/border.md': 'Border',
+		'/atomics/display.md': 'Display',	
+		'/atomics/position.md': 'Position',	
 		'/atomics/spacing.md': 'Spacing',
-		'/atomics/typography.md': 'Typography',
-		'/atomics/position.md': 'Position'
+		'/atomics/typography.md': 'Typography'
 	}
 });
 
