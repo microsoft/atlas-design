@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.4.0
+
+### Minor Changes
+
+- 312ea3b: Add documentation for typography atomics.
+
+### Patch Changes
+
+- 6bd9a94: Update position documentation.
+
 ## 0.3.0
 
 ### Minor Changes
