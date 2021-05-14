@@ -40,10 +40,10 @@
 
 // Modifiers
 .border-high-contrast {
-	border: $border-width solid $border-white-high-contrast;
+	border: $border-width solid $border-white-high-contrast !important;
 
 	&-hover:hover {
-		border: $border-width solid $border-yellow-high-contrast;
+		border: $border-width solid $border-yellow-high-contrast !important;
 	}
 }
 
