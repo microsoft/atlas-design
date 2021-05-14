@@ -39,7 +39,7 @@ While CSS property values are straightfoward (they just match the CSS property),
    - Spacing and non-heading typography values follow this convention, as in `xs, s, m, l, xl, xxl` in `margin-top-xl`, and `font-size-m`.
    - Within a set of values that require units such as the one above, 0 is represented by the string `none`.
 4. Within a series of values that are all unitless numbers, those numbers are used directly, as in `flex-grow: 1;` being represented by `flex-grow-1`.
-5. When a shorthand property's value is multi-part we choose a reasonable default and omit the value completely .
+5. When a shorthand property's value is multi-part, we choose a reasonable default and omit the value completely.
    - In the case `border: 1px solid $border` the class becomes simply `.border`.
    - In this case further modification would still be available.
 
