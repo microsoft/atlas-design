@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 0.10.1
+
+### Patch Changes
+
+- 2c0e154: .border-high-contrast(-hover) needs !important.
+
 ## 0.10.0
 
 ### Minor Changes
