@@ -42,9 +42,9 @@ The following breakpoints are supported for each display value:
 
 ```html
 <div class="border">
-	<button class="button display-inline is-large border">Foo</button>
-	<button class="button display-inline is-large border">Bar</button>
-	<button class="button display-inline is-large border">Baz</button>
+	<button class="button display-inline border">Foo</button>
+	<button class="button display-inline border">Bar</button>
+	<button class="button display-inline border">Baz</button>
 </div>
 ```
 
@@ -52,9 +52,9 @@ The following breakpoints are supported for each display value:
 
 ```html
 <div class="border">
-	<button class="button display-inline-block is-large border">Foo</button>
-	<button class="button display-inline-block is-large border">Bar</button>
-	<button class="button display-inline-block is-large border">Baz</button>
+	<button class="button display-inline-block border">Foo</button>
+	<button class="button display-inline-block border">Bar</button>
+	<button class="button display-inline-block border">Baz</button>
 </div>
 ```
 
@@ -62,9 +62,9 @@ The following breakpoints are supported for each display value:
 
 ```html
 <div class="display-inline-flex border">
-	<button class="button is-large border">Foo</button>
-	<button class="button is-large border">Bar</button>
-	<button class="button is-large border">Baz</button>
+	<button class="button border">Foo</button>
+	<button class="button border">Bar</button>
+	<button class="button border">Baz</button>
 </div>
 ```
 
