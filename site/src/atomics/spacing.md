@@ -6,6 +6,98 @@ template: standard
 
 # Spacing Atomics
 
+These classes can be used to add spacing between elements.
+
+## Available sizes
+
+```Text
+`-none`
+`-xs`
+`-s`
+`-m`
+`-l`
+`-xl`
+`-xxl`
+`-xxxl`
+```
+
+## Margin and padding helpers
+
+For each of the spacing sizes, there are margin and padding helpers available:
+<br/><br/>
+
+| Size | Value         | Margin       | Padding       |
+| :--- | :------------ | :----------- | :------------ |
+| None | 0             | .margin-none | .padding-none |
+| XS   | 1rem / 16px   | .margin-xs   | .padding-xs   |
+| S    | 1.5rem / 24px | .margin-s    | .padding-s    |
+| M    | 2rem / 32px   | .margin-m    | .padding-m    |
+| L    | 3rem / 48px   | .margin-l    | .padding-l    |
+| XL   | 4rem / 64px   | .margin-xl   | .padding-xl   |
+| XXL  | 6rem / 96px   | .margin-xxl  | .padding-xxl  |
+| XXXL | 8rem / 128px  | .margin-xxxl | .padding-xxxl |
+
+### Margin Example
+
+```html
+<div class="border">
+	<div class="margin-xs border">Margin</div>
+	<div class="margin-s border">Margin</div>
+	<div class="margin-m border">Margin</div>
+	<div class="margin-l border">Margin</div>
+	<div class="margin-xl border">Margin</div>
+	<div class="margin-xxl border">Margin</div>
+	<div class="margin-xxxl border">Margin</div>
+</div>
+```
+
+### Padding Example
+
+```html
+<div class="border">
+	<div class="padding-xs border">Padding</div>
+	<div class="padding-s border">Padding</div>
+	<div class="padding-m border">Padding</div>
+	<div class="padding-l border">Padding</div>
+	<div class="padding-xl border">Padding</div>
+	<div class="padding-xxl border">Padding</div>
+	<div class="padding-xxxl border">Padding</div>
+</div>
+```
+
+## Device helpers
+
+For each of the spacing sizes, the following classes can be applied to desktop, tablet, and widescreen devices:
+<br/><br/>
+
+| Size       | Helper      | Margin               | Padding               |
+| :--------- | :---------- | :------------------- | :-------------------- |
+| Desktop    | -desktop    | .margin-none-desktop | .padding-none-desktop |
+| Tablet     | -tablet     | .margin-xs-tablet    | .padding-xs-tablet    |
+| Widescreen | -widescreen | .margin-s-widescreen | .padding-s-widescreen |
+
+## Position helpers
+
+For each of the spacing sizes, there are also classes for position variations adding `-top`, `-right`, `-bottom`, `-left` like this:
+<br/><br/>
+
+| Size   | Helper  | Margin              | Padding              |
+| :----- | :------ | :------------------ | :------------------- |
+| Top    | -top    | .margin-top-none    | .padding-top-none    |
+| Right  | -right  | .margin-right-none  | .padding-right-none  |
+| Bottom | -bottom | .margin-bottom-none | .padding-bottom-none |
+| Left   | -left   | .margin-left-none   | .padding-left-none   |
+
+## Example
+
+```html
+<div class="margin-top-xs margin-bottom-m padding-s border">Epiphany</div>
+<div class="margin-left-s margin-right-s margin-bottom-m padding-s border">Epiphany</div>
+<div class="margin-left-l margin-right-l padding-s border">Epiphany</div>
+```
+
+Available Classess
+
 ```atomics-filter
 .margin-xs
 .margin-s
@@ -455,4 +547,3 @@ template: standard
 .padding-right-xxl-widescreen
 .padding-right-xxxl-widescreen
 .padding-right-none-widescreen
-```
