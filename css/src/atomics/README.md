@@ -32,12 +32,16 @@ The first part of nearly every Atomic class represent the css property that it w
 While CSS property values are straightfoward (they just match the CSS property), the value property is not always as easy to guess. We have a few rules that help us figure out how to write values in class names.
 
 1. When the CSS value is a string (such as `flex-end` in `justify-content: flex-end`, or `grid` in `display-grid`) then we just use that string directly (meaning these classes become .border-style-solid`).
-2. In some cases, such as themed colors values, values are associated concepts (such as `primary`, blue on light theme, yellow on high contrast, in the class `.color-primary`).
+2. In some cases, such as themed colors values, values are associated concepts
+   - Such as `primary`, blue on light theme, yellow on high contrast, in the class `.color-primary`.
+   - Such as `semibold` in the class `font-weight-semibold`.
 3. When a number value with a particular unit is involved, that value is typically represented as a t-shirt size.
    - Spacing and non-heading typography values follow this convention, as in `xs, s, m, l, xl, xxl` in `margin-top-xl`, and `font-size-m`.
    - In this case, when is a css-value of 0 (which is unitless), that is typically represented by the string `none`.
 4. Within a series of values that are all unitless numbers, those numbers are used directly, as in `flex-grow: 1;` being represented by `flex-grow-1`.
-5. When a shorthand property's value multi-part (as in the case `border: 1px solid $border`) we choose a reasonable default and omit the value completely (and the class becomes simply `.border`).
+5. When a shorthand property's value is multi-part we choose a reasonable default and omit the value completely .
+   - In the case `border: 1px solid $border` the class becomes simply `.border`.
+   - In this case further modification would still be available
 
 ## Screen sizes
 
