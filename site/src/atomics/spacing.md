@@ -74,7 +74,7 @@ For each of the spacing sizes, there are also classes for position variations ad
 .margin-left-none   | .padding-left-none
 ```
 
-## Example
+### Example
 
 ```html
 <div class="margin-top-xs margin-bottom-m padding-s border">No left margin</div>
@@ -82,6 +82,7 @@ For each of the spacing sizes, there are also classes for position variations ad
 <div class="margin-left-l margin-right-l padding-s border">Large left margin</div>
 ```
 
+<<<<<<< HEAD
 Available Classess
 
 ```atomics-filter
@@ -533,3 +534,15 @@ Available Classess
 .padding-right-xxl-widescreen
 .padding-right-xxxl-widescreen
 .padding-right-none-widescreen
+=======
+## Inline/block
+
+Use `margin-inline` or `padding-inline` for adding both left and right spacing. Use `margin-block` or `padding-block` for adding both top and bottom spacing.
+
+### Example
+
+```html
+<div class="padding-inline-s border">Padding-inline</div>
+<div class="padding-block-s border">Padding-block</div>
+```
+>>>>>>> e8e5004... Add section for inline/block
