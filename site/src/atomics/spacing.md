@@ -8,28 +8,29 @@ template: standard
 
 Spacing Atomics can be used to add margin or padding on elements. They are especially helpful when composing layouts.
 
-## Pattern
+## Class Pattern
 
-- `<cssproperty>-<size>-<screensize>`
-- Properties: `margin, padding, <margin|padding>-<left|right|top|bottom>, <margin|padding>-inline, <margin|padding>-block`
-- Sizes: `none, xs, s, m, l, xl, xxl, xxxl`
+- `<css-property-name>-<size>-<screensize>`. For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md)
 
-## Margin and padding helpers
+### Accepted property names
 
-For each of the spacing sizes, there are margin and padding helpers available:
+- `margin`
+- `padding`
+- `<margin|padding>-<left|right|top|bottom>`
+- `<margin|padding>-inline`
+- `<margin|padding>-block`
 
-```text
-.margin-none | .padding-none
-.margin-xs   | .padding-xs
-.margin-s    | .padding-s
-.margin-m    | .padding-m
-.margin-l    | .padding-l
-.margin-xl   | .padding-xl
-.margin-xxl  | .padding-xxl
-.margin-xxxl | .padding-xxxl
-```
+### Accepted sizes
 
-### Margin Example
+- `none, xs, s, m, l, xl, xxl, xxxl`
+
+### Accepted screensizes
+
+- `tablet, desktop, widescreen`
+
+## Usages
+
+### Adding uniform spacing
 
 ```html
 <div class="margin-xs border">XS</div>
@@ -41,49 +42,26 @@ For each of the spacing sizes, there are margin and padding helpers available:
 <div class="margin-xxxl border">XXXL</div>
 ```
 
-### Padding Example
+### Adding spacing to a side
 
 ```html
-<div class="padding-xs border">XS</div>
-<div class="padding-s border">S</div>
-<div class="padding-m border">M</div>
-<div class="padding-l border">L</div>
-<div class="padding-xl border">LX</div>
-<div class="padding-xxl border">XXL</div>
-<div class="padding-xxxl border">XXXL</div>
+<div class="margin-left-s margin-bottom-m padding-s border">Small left margin</div>
+<div class="margin-right-l margin-bottom-m padding-s border">Large right margin</div>
+<div class="padding-inline-xl border">Padding-inline</div>
+<div class="padding-block-xxl border">Padding-block</div>
 ```
 
-## Device helpers
-
-For each of the spacing sizes, the following classes can be applied to desktop, tablet, and widescreen devices:
-
-```text
-.margin-none-desktop | .padding-none-desktop
-.margin-xs-tablet | .padding-xs-tablet
-.margin-s-widescreen | .padding-s-widescreen
-```
-
-## Position helpers
-
-For each of the spacing sizes, there are also classes for position variations adding `-top`, `-right`, `-bottom`, `-left` like this:
-
-```text
-.margin-top-none    | .padding-top-none
-.margin-right-none  | .padding-right-none
-.margin-bottom-none | .padding-bottom-none
-.margin-left-none   | .padding-left-none
-```
-
-### Example
+### Adding spacing on a particular screen size
 
 ```html
-<div class="margin-top-xs margin-bottom-m padding-s border">No left margin</div>
-<div class="margin-left-s margin-right-s margin-bottom-m padding-s border">Small left margin</div>
-<div class="margin-left-l margin-right-l padding-s border">Large left margin</div>
+<div
+	class="padding-left-s padding-left-l-tablet padding-left-xl-desktop padding-left-xxl-widescreen border"
+>
+	Padding at different screen sizes
+</div>
 ```
 
-<<<<<<< HEAD
-Available Classess
+Available Classes
 
 ```atomics-filter
 .margin-xs
@@ -534,15 +512,4 @@ Available Classess
 .padding-right-xxl-widescreen
 .padding-right-xxxl-widescreen
 .padding-right-none-widescreen
-=======
-## Inline/block
-
-Use `margin-inline` or `padding-inline` for adding both left and right spacing. Use `margin-block` or `padding-block` for adding both top and bottom spacing.
-
-### Example
-
-```html
-<div class="padding-inline-s border">Padding-inline</div>
-<div class="padding-block-s border">Padding-block</div>
 ```
->>>>>>> e8e5004... Add section for inline/block
