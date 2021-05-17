@@ -19,9 +19,20 @@ The following breakpoints are supported for each display value:
 ## Example
 
 ```html
-<div class="border">
-	<button class="button display-block border">Foo</button>
-	<button class="button display-block border">Bar</button>
-	<button class="button display-block border">Baz</button>
+<div class="display-block border">
+	<div>Foo</div>
+	<div>Foo</div>
+</div>
+<div class="display-flex-tablet border">
+	<div>Bar</div>
+	<div>Bar</div>
+</div>
+<div class="display-inline-desktop border">
+	<div>Baz</div>
+	<div>Baz</div>
+</div>
+<div class="display-inline-flex-widescreen border">
+	<div>Foo</div>
+	<div>Foo</div>
 </div>
 ```
