@@ -5,14 +5,14 @@ $inlineKey: 'inline';
 $blockKey: 'block';
 
 $layout-sizes: (
-	('none', $layout-0),
 	('xs', $layout-1),
 	('s', $layout-2),
 	('m', $layout-3),
 	('l', $layout-4),
 	('xl', $layout-5),
 	('xxl', $layout-6),
-	('xxxl', $layout-7)
+	('xxxl', $layout-7),
+	('none', $layout-0)
 );
 
 @function sizeValue($key, $value) {
@@ -52,8 +52,13 @@ $layout-sizes: (
 		margin-top: sizeValue($sizeKey, $sizeValue) !important;
 		margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
 	}
+}
 
-	@include tablet {
+@include tablet {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
 		.#{$marginKey}#{$separator}#{$sizeKey}-tablet {
 			margin: sizeValue($sizeKey, $sizeValue) !important;
 		}
@@ -78,8 +83,13 @@ $layout-sizes: (
 			margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
+}
 
-	@include desktop {
+@include desktop {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
 		.#{$marginKey}#{$separator}#{$sizeKey}-desktop {
 			margin: sizeValue($sizeKey, $sizeValue) !important;
 		}
@@ -104,8 +114,13 @@ $layout-sizes: (
 			margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
+}
 
-	@include widescreen {
+@include widescreen {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
 		.#{$marginKey}#{$separator}#{$sizeKey}-widescreen {
 			margin: sizeValue($sizeKey, $sizeValue) !important;
 		}
@@ -162,8 +177,13 @@ $layout-sizes: (
 		padding-top: sizeValue($sizeKey, $sizeValue) !important;
 		padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 	}
+}
 
-	@include tablet {
+@include tablet {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
 		.#{$paddingKey}#{$separator}#{$sizeKey}-tablet {
 			padding: sizeValue($sizeKey, $sizeValue) !important;
 		}
@@ -186,8 +206,13 @@ $layout-sizes: (
 			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
+}
 
-	@include desktop {
+@include desktop {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
 		.#{$paddingKey}#{$separator}#{$sizeKey}-desktop {
 			padding: sizeValue($sizeKey, $sizeValue) !important;
 		}
@@ -210,8 +235,13 @@ $layout-sizes: (
 			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
+}
 
-	@include widescreen {
+@include widescreen {
+	@each $size in $layout-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
 		.#{$paddingKey}#{$separator}#{$sizeKey}-widescreen {
 			padding: sizeValue($sizeKey, $sizeValue) !important;
 		}
