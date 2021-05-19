@@ -10,9 +10,9 @@ Spacing Atomics can be used to add margin or padding on elements. They are espec
 
 ## Class Pattern
 
-- `<css-property-name>-<size>-<screensize>`. For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md)
+- `<css-property-name>-<value>-<screensize>`. For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md)
 
-### Accepted property names
+Accepted property names
 
 - `margin`
 - `padding`
@@ -20,17 +20,17 @@ Spacing Atomics can be used to add margin or padding on elements. They are espec
 - `<margin|padding>-inline`
 - `<margin|padding>-block`
 
-### Accepted sizes
+Accepted values
 
 - `none, xs, s, m, l, xl, xxl, xxxl`
 
-### Accepted screensizes
+Accepted screensizes
 
 - `tablet, desktop, widescreen`
 
 ## Usages
 
-### Adding uniform spacing
+Adding uniform spacing
 
 ```html
 <div class="margin-xs border">XS</div>
@@ -42,7 +42,7 @@ Spacing Atomics can be used to add margin or padding on elements. They are espec
 <div class="margin-xxxl border">XXXL</div>
 ```
 
-### Adding spacing to a side
+Adding spacing to a side
 
 ```html
 <div class="margin-left-s margin-bottom-m padding-s border">Small left margin</div>
@@ -51,7 +51,7 @@ Spacing Atomics can be used to add margin or padding on elements. They are espec
 <div class="padding-block-xxl border">Padding-block</div>
 ```
 
-### Adding spacing on a particular screen size
+Adding spacing on a particular screen size
 
 ```html
 <div
