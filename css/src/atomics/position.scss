@@ -2,9 +2,11 @@
 	.position-#{$item} {
 		position: #{$item} !important;
 	}
+}
 
-	.position-#{$item}-tablet {
-		@include tablet {
+@include tablet {
+	@each $item in $positions {
+		.position-#{$item}-tablet {
 			position: #{$item} !important;
 		}
 	}
