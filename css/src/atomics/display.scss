@@ -2,21 +2,27 @@
 	.display-#{$item} {
 		display: #{$item} !important;
 	}
+}
 
-	.display-#{$item}-tablet {
-		@include tablet {
+@include tablet {
+	@each $item in $displays {
+		.display-#{$item}-tablet {
 			display: #{$item} !important;
 		}
 	}
+}
 
-	.display-#{$item}-desktop {
-		@include desktop {
+@include desktop {
+	@each $item in $displays {
+		.display-#{$item}-desktop {
 			display: #{$item} !important;
 		}
 	}
+}
 
-	.display-#{$item}-widescreen {
-		@include widescreen {
+@include widescreen {
+	@each $item in $displays {
+		.display-#{$item}-widescreen {
 			display: #{$item} !important;
 		}
 	}
