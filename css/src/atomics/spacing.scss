@@ -5,14 +5,14 @@ $inlineKey: 'inline';
 $blockKey: 'block';
 
 $layout-sizes: (
+	('none', $layout-0),
 	('xs', $layout-1),
 	('s', $layout-2),
 	('m', $layout-3),
 	('l', $layout-4),
 	('xl', $layout-5),
 	('xxl', $layout-6),
-	('xxxl', $layout-7),
-	('none', $layout-0)
+	('xxxl', $layout-7)
 );
 
 @function sizeValue($key, $value) {
