@@ -10,15 +10,18 @@ Spacing Atomics can be used to add margin or padding on elements. They are espec
 
 ## Class Pattern
 
-- `<css-property-name>-<value>-<screensize>`. For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md)
+`<css-property-name>-<value>-<screensize>`
+
+For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md).
+
+The following `<css-property-names>-<values>-<screensizes>` are supported.
 
 Accepted property names
 
-- `margin`
-- `padding`
-- `<margin|padding>-<left|right|top|bottom>`
-- `<margin|padding>-inline`
-- `<margin|padding>-block`
+- `margin`, `padding`
+- `margin|padding-inline`
+- `margin|padding-block`
+- `margin|padding-top|right|bottom|left`
 
 Accepted values
 
@@ -47,7 +50,14 @@ Adding spacing to a side
 ```html
 <div class="margin-left-s margin-bottom-m padding-s border">Small left margin</div>
 <div class="margin-right-l margin-bottom-m padding-s border">Large right margin</div>
+```
+
+Adding horizontal and vertical spacing
+
+```html
+<div class="margin-inline-xl border">Margin-inline</div>
 <div class="padding-inline-xl border">Padding-inline</div>
+<div class="margin-block-xxl border">Margin-block</div>
 <div class="padding-block-xxl border">Padding-block</div>
 ```
 
@@ -57,7 +67,7 @@ Adding spacing on a particular screen size
 <div
 	class="padding-left-s padding-left-l-tablet padding-left-xl-desktop padding-left-xxl-widescreen border"
 >
-	Padding at different screen sizes
+	Left padding
 </div>
 ```
 
