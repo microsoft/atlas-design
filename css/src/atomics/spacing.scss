@@ -11,7 +11,8 @@ $layout-sizes: (
 	('l', $layout-4),
 	('xl', $layout-5),
 	('xxl', $layout-6),
-	('xxxl', $layout-7)
+	('xxxl', $layout-7),
+	('none', $layout-0)
 );
 
 // Pattern: <cssproperty>-<value>-<screen>
@@ -67,28 +68,6 @@ $layout-sizes: (
 	}
 }
 
-.#{$marginKey}#{$separator}none {
-	margin: 0 !important;
-}
-
-@each $position-key, $direction in $directions {
-	.#{$marginKey}#{$separator}#{$position-key}#{$separator}none {
-		margin-#{$direction}: 0 !important;
-	}
-}
-
-.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}none {
-	// Replace with margin-inline property when possible
-	margin-right: 0 !important;
-	margin-left: 0 !important;
-}
-
-.#{$marginKey}#{$separator}#{$blockKey}#{$separator}none {
-	// Replace with margin-block property when possible
-	margin-top: 0 !important;
-	margin-bottom: 0 !important;
-}
-
 @include tablet {
 	@each $size in $layout-sizes {
 		$sizeKey: nth($size, 1);
@@ -130,28 +109,6 @@ $layout-sizes: (
 			margin-top: $sizeValue !important;
 			margin-bottom: $sizeValue !important;
 		}
-	}
-
-	.#{$marginKey}#{$separator}none#{$separator}tablet {
-		margin: 0 !important;
-	}
-
-	@each $position-key, $direction in $directions {
-		.#{$marginKey}#{$separator}#{$position-key}#{$separator}none#{$separator}tablet {
-			margin-#{$direction}: 0 !important;
-		}
-	}
-
-	.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}none#{$separator}tablet {
-		// Replace with margin-inline property when possible
-		margin-right: 0 !important;
-		margin-left: 0 !important;
-	}
-
-	.#{$marginKey}#{$separator}#{$blockKey}#{$separator}none#{$separator}tablet {
-		// Replace with margin-block property when possible
-		margin-top: 0 !important;
-		margin-bottom: 0 !important;
 	}
 }
 
@@ -197,28 +154,6 @@ $layout-sizes: (
 			margin-bottom: $sizeValue !important;
 		}
 	}
-
-	.#{$marginKey}#{$separator}none#{$separator}desktop {
-		margin: 0 !important;
-	}
-
-	@each $position-key, $direction in $directions {
-		.#{$marginKey}#{$separator}#{$position-key}#{$separator}none#{$separator}desktop {
-			margin-#{$direction}: 0 !important;
-		}
-	}
-
-	.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}none#{$separator}desktop {
-		// Replace with margin-inline property when possible
-		margin-right: 0 !important;
-		margin-left: 0 !important;
-	}
-
-	.#{$marginKey}#{$separator}#{$blockKey}#{$separator}none#{$separator}desktop {
-		// Replace with margin-block property when possible
-		margin-top: 0 !important;
-		margin-bottom: 0 !important;
-	}
 }
 
 @include widescreen {
@@ -262,28 +197,6 @@ $layout-sizes: (
 			margin-top: $sizeValue !important;
 			margin-bottom: $sizeValue !important;
 		}
-	}
-
-	.#{$marginKey}#{$separator}none#{$separator}widescreen {
-		margin: 0 !important;
-	}
-
-	@each $position-key, $direction in $directions {
-		.#{$marginKey}#{$separator}#{$position-key}#{$separator}none#{$separator}widescreen {
-			margin-#{$direction}: 0 !important;
-		}
-	}
-
-	.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}none#{$separator}widescreen {
-		// Replace with margin-inline property when possible
-		margin-right: 0 !important;
-		margin-left: 0 !important;
-	}
-
-	.#{$marginKey}#{$separator}#{$blockKey}#{$separator}none#{$separator}widescreen {
-		// Replace with margin-block property when possible
-		margin-top: 0 !important;
-		margin-bottom: 0 !important;
 	}
 }
 
@@ -338,28 +251,6 @@ $layout-sizes: (
 	}
 }
 
-.#{$paddingKey}#{$separator}none {
-	padding: 0 !important;
-}
-
-@each $position-key, $direction in $directions {
-	.#{$paddingKey}#{$separator}#{$position-key}#{$separator}none {
-		padding-#{$direction}: 0 !important;
-	}
-}
-
-.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}none {
-	// Replace with padding-inline property when possible
-	padding-right: 0 !important;
-	padding-left: 0 !important;
-}
-
-.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}none {
-	// Replace with padding-block property when possible
-	padding-top: 0 !important;
-	padding-bottom: 0 !important;
-}
-
 @include tablet {
 	@each $size in $layout-sizes {
 		$sizeKey: nth($size, 1);
@@ -401,28 +292,6 @@ $layout-sizes: (
 			padding-top: $sizeValue !important;
 			padding-bottom: $sizeValue !important;
 		}
-	}
-
-	.#{$paddingKey}#{$separator}none#{$separator}tablet {
-		padding: 0 !important;
-	}
-
-	@each $position-key, $direction in $directions {
-		.#{$paddingKey}#{$separator}#{$position-key}#{$separator}none#{$separator}tablet {
-			padding-#{$direction}: 0 !important;
-		}
-	}
-
-	.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}none#{$separator}tablet {
-		// Replace with padding-inline property when possible
-		padding-right: 0 !important;
-		padding-left: 0 !important;
-	}
-
-	.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}none#{$separator}tablet {
-		// Replace with padding-block property when possible
-		padding-top: 0 !important;
-		padding-bottom: 0 !important;
 	}
 }
 
@@ -468,28 +337,6 @@ $layout-sizes: (
 			padding-bottom: $sizeValue !important;
 		}
 	}
-
-	.#{$paddingKey}#{$separator}none#{$separator}desktop {
-		padding: 0 !important;
-	}
-
-	@each $position-key, $direction in $directions {
-		.#{$paddingKey}#{$separator}#{$position-key}#{$separator}none#{$separator}desktop {
-			padding-#{$direction}: 0 !important;
-		}
-	}
-
-	.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}none#{$separator}desktop {
-		// Replace with padding-inline property when possible
-		padding-right: 0 !important;
-		padding-left: 0 !important;
-	}
-
-	.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}none#{$separator}desktop {
-		// Replace with padding-block property when possible
-		padding-top: 0 !important;
-		padding-bottom: 0 !important;
-	}
 }
 
 @include widescreen {
@@ -533,27 +380,5 @@ $layout-sizes: (
 			padding-top: $sizeValue !important;
 			padding-bottom: $sizeValue !important;
 		}
-	}
-
-	.#{$paddingKey}#{$separator}none#{$separator}widescreen {
-		padding: 0 !important;
-	}
-
-	@each $position-key, $direction in $directions {
-		.#{$paddingKey}#{$separator}#{$position-key}#{$separator}none#{$separator}widescreen {
-			padding-#{$direction}: 0 !important;
-		}
-	}
-
-	.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}none#{$separator}widescreen {
-		// Replace with padding-inline property when possible
-		padding-right: 0 !important;
-		padding-left: 0 !important;
-	}
-
-	.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}none#{$separator}widescreen {
-		// Replace with padding-block property when possible
-		padding-top: 0 !important;
-		padding-bottom: 0 !important;
 	}
 }
