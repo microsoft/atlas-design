@@ -68,6 +68,7 @@ $layout-sizes: (
 		}
 	}
 }
+
 @include widescreen {
 	@each $property in $spacing-properties {
 		// iterates through margin, margin-inline, margin-block, etc
