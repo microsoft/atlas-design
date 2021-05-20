@@ -51,10 +51,6 @@
 @include tablet {
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
-		$background: nth($color-set, $color-index-background);
-		$dark: nth($color-set, $color-index-dark);
-		$hover: nth($color-set, $color-index-hover);
-		$active: nth($color-set, $color-index-active);
 		$invert: nth($color-set, $color-index-invert);
 
 		.background-color-#{$name}-tablet {
@@ -67,10 +63,6 @@
 @include desktop {
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
-		$background: nth($color-set, $color-index-background);
-		$dark: nth($color-set, $color-index-dark);
-		$hover: nth($color-set, $color-index-hover);
-		$active: nth($color-set, $color-index-active);
 		$invert: nth($color-set, $color-index-invert);
 
 		.background-color-#{$name}-desktop {
@@ -83,10 +75,6 @@
 @include widescreen {
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
-		$background: nth($color-set, $color-index-background);
-		$dark: nth($color-set, $color-index-dark);
-		$hover: nth($color-set, $color-index-hover);
-		$active: nth($color-set, $color-index-active);
 		$invert: nth($color-set, $color-index-invert);
 
 		.background-color-#{$name}-widescreen {
