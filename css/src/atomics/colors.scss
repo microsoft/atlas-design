@@ -60,30 +60,6 @@
 	}
 }
 
-@include desktop {
-	@each $name, $color-set in $colors {
-		$base: nth($color-set, $color-index-base);
-		$invert: nth($color-set, $color-index-invert);
-
-		.background-color-#{$name}-desktop {
-			outline-color: $invert;
-			background-color: $base !important;
-		}
-	}
-}
-
-@include widescreen {
-	@each $name, $color-set in $colors {
-		$base: nth($color-set, $color-index-base);
-		$invert: nth($color-set, $color-index-invert);
-
-		.background-color-#{$name}-widescreen {
-			outline-color: $invert;
-			background-color: $base !important;
-		}
-	}
-}
-
 // Text color
 
 .color-text {
