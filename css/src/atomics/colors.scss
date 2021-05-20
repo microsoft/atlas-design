@@ -32,27 +32,6 @@
 		background-color: $base !important;
 	}
 
-	.background-color-#{$name}-tablet {
-		@include tablet {
-			outline-color: $invert;
-			background-color: $base !important;
-		}
-	}
-
-	.background-color-#{$name}-desktop {
-		@include desktop {
-			outline-color: $invert;
-			background-color: $base !important;
-		}
-	}
-
-	.background-color-#{$name}-widescreen {
-		@include widescreen {
-			outline-color: $invert;
-			background-color: $base !important;
-		}
-	}
-
 	.background-color-#{$name}-invert {
 		outline-color: $base;
 		background-color: $invert !important;
@@ -66,6 +45,18 @@
 	.background-color-#{$name}-dark {
 		outline-color: $background;
 		background-color: $dark !important;
+	}
+}
+
+@include tablet {
+	@each $name, $color-set in $colors {
+		$base: nth($color-set, $color-index-base);
+		$invert: nth($color-set, $color-index-invert);
+
+		.background-color-#{$name}-tablet {
+			outline-color: $invert;
+			background-color: $base !important;
+		}
 	}
 }
 
