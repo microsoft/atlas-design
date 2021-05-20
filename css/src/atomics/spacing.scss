@@ -15,16 +15,24 @@ $layout-sizes: (
 	('none', $layout-0)
 );
 
+@function sizeValue($key, $value) {
+	@return if($key == 'none', 0, $value);
+}
+
 // Pattern: <cssproperty>-<value>-<screen>
 
-// margin
 @each $size in $layout-sizes {
 	$sizeKey: nth($size, 1);
 	$sizeValue: nth($size, 2);
 
 	// .margin-<value>
 	.#{$marginKey}#{$separator}#{$sizeKey} {
-		margin: $sizeValue !important;
+		margin: sizeValue($sizeKey, $sizeValue) !important;
+	}
+
+	// .padding-<value>
+	.#{$paddingKey}#{$separator}#{$sizeKey} {
+		padding: sizeValue($sizeKey, $sizeValue) !important;
 	}
 }
 
@@ -35,7 +43,12 @@ $layout-sizes: (
 
 		// .margin-<side>-<value>
 		.#{$marginKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey} {
-			margin-#{$direction}: $sizeValue !important;
+			margin-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		// .padding-<side>-<value>
+		.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey} {
+			padding-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 }
@@ -44,27 +57,36 @@ $layout-sizes: (
 	$sizeKey: nth($size, 1);
 	$sizeValue: nth($size, 2);
 
-	// margin-inline property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
+	// margin/padding-inline property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
 
 	// .margin-inline-<value>
 	.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey} {
 		// Replace with margin-inline property when possible
-		margin-right: $sizeValue !important;
-		margin-left: $sizeValue !important;
+		margin-right: sizeValue($sizeKey, $sizeValue) !important;
+		margin-left: sizeValue($sizeKey, $sizeValue) !important;
 	}
-}
 
-@each $size in $layout-sizes {
-	$sizeKey: nth($size, 1);
-	$sizeValue: nth($size, 2);
+	// .padding-inline-<value>
+	.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey} {
+		// Replace with padding-inline property when possible
+		padding-right: sizeValue($sizeKey, $sizeValue) !important;
+		padding-left: sizeValue($sizeKey, $sizeValue) !important;
+	}
 
-	// margin-block property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
+	// margin/padding-block property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
 
 	// .margin-block-<value>
 	.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey} {
 		// Replace with margin-block property when possible
-		margin-top: $sizeValue !important;
-		margin-bottom: $sizeValue !important;
+		margin-top: sizeValue($sizeKey, $sizeValue) !important;
+		margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
+	}
+
+	// .padding-block-<value>
+	.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey} {
+		// Replace with padding-block property when possible
+		padding-top: sizeValue($sizeKey, $sizeValue) !important;
+		padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 	}
 }
 
@@ -74,7 +96,11 @@ $layout-sizes: (
 		$sizeValue: nth($size, 2);
 
 		.#{$marginKey}#{$separator}#{$sizeKey}#{$separator}tablet {
-			margin: $sizeValue !important;
+			margin: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$sizeKey}#{$separator}tablet {
+			padding: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 
@@ -84,7 +110,11 @@ $layout-sizes: (
 			$sizeValue: nth($size, 2);
 
 			.#{$marginKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}#{$separator}tablet {
-				margin-#{$direction}: $sizeValue !important;
+				margin-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+
+			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}#{$separator}tablet {
+				padding-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 		}
 	}
@@ -95,19 +125,26 @@ $layout-sizes: (
 
 		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}#{$separator}tablet {
 			// Replace with margin-inline property when possible
-			margin-right: $sizeValue !important;
-			margin-left: $sizeValue !important;
+			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
-	}
 
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}#{$separator}tablet {
+			// Replace with padding-inline property when possible
+			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
 
 		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}#{$separator}tablet {
 			// Replace with margin-block property when possible
-			margin-top: $sizeValue !important;
-			margin-bottom: $sizeValue !important;
+			margin-top: sizeValue($sizeKey, $sizeValue) !important;
+			margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}#{$separator}tablet {
+			// Replace with padding-block property when possible
+			padding-top: sizeValue($sizeKey, $sizeValue) !important;
+			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 }
@@ -118,7 +155,11 @@ $layout-sizes: (
 		$sizeValue: nth($size, 2);
 
 		.#{$marginKey}#{$separator}#{$sizeKey}#{$separator}desktop {
-			margin: $sizeValue !important;
+			margin: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$sizeKey}#{$separator}desktop {
+			padding: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 
@@ -128,7 +169,11 @@ $layout-sizes: (
 			$sizeValue: nth($size, 2);
 
 			.#{$marginKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}#{$separator}desktop {
-				margin-#{$direction}: $sizeValue !important;
+				margin-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+
+			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}#{$separator}desktop {
+				padding-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 		}
 	}
@@ -139,19 +184,26 @@ $layout-sizes: (
 
 		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}#{$separator}desktop {
 			// Replace with margin-inline property when possible
-			margin-right: $sizeValue !important;
-			margin-left: $sizeValue !important;
+			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
-	}
 
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}#{$separator}desktop {
+			// Replace with padding-inline property when possible
+			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
 
 		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}#{$separator}desktop {
 			// Replace with margin-block property when possible
-			margin-top: $sizeValue !important;
-			margin-bottom: $sizeValue !important;
+			margin-top: sizeValue($sizeKey, $sizeValue) !important;
+			margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}#{$separator}desktop {
+			// Replace with padding-block property when possible
+			padding-top: sizeValue($sizeKey, $sizeValue) !important;
+			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 }
@@ -162,7 +214,11 @@ $layout-sizes: (
 		$sizeValue: nth($size, 2);
 
 		.#{$marginKey}#{$separator}#{$sizeKey}#{$separator}widescreen {
-			margin: $sizeValue !important;
+			margin: sizeValue($sizeKey, $sizeValue) !important;
+		}
+
+		.#{$paddingKey}#{$separator}#{$sizeKey}#{$separator}widescreen {
+			padding: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 
@@ -172,7 +228,11 @@ $layout-sizes: (
 			$sizeValue: nth($size, 2);
 
 			.#{$marginKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}#{$separator}widescreen {
-				margin-#{$direction}: $sizeValue !important;
+				margin-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
+			}
+
+			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}#{$separator}widescreen {
+				padding-#{$direction}: sizeValue($sizeKey, $sizeValue) !important;
 			}
 		}
 	}
@@ -183,202 +243,26 @@ $layout-sizes: (
 
 		.#{$marginKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}#{$separator}widescreen {
 			// Replace with margin-inline property when possible
-			margin-right: $sizeValue !important;
-			margin-left: $sizeValue !important;
+			margin-right: sizeValue($sizeKey, $sizeValue) !important;
+			margin-left: sizeValue($sizeKey, $sizeValue) !important;
 		}
-	}
 
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}#{$separator}widescreen {
+			// Replace with padding-inline property when possible
+			padding-right: sizeValue($sizeKey, $sizeValue) !important;
+			padding-left: sizeValue($sizeKey, $sizeValue) !important;
+		}
 
 		.#{$marginKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}#{$separator}widescreen {
 			// Replace with margin-block property when possible
-			margin-top: $sizeValue !important;
-			margin-bottom: $sizeValue !important;
+			margin-top: sizeValue($sizeKey, $sizeValue) !important;
+			margin-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
-	}
-}
 
-// padding
-@each $size in $layout-sizes {
-	$sizeKey: nth($size, 1);
-	$sizeValue: nth($size, 2);
-
-	// .padding-<value>
-	.#{$paddingKey}#{$separator}#{$sizeKey} {
-		padding: $sizeValue !important;
-	}
-}
-
-@each $position-key, $direction in $directions {
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		// .padding-<side>-<value>
-		.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey} {
-			padding-#{$direction}: $sizeValue !important;
-		}
-	}
-}
-
-@each $size in $layout-sizes {
-	$sizeKey: nth($size, 1);
-	$sizeValue: nth($size, 2);
-
-	// padding-inline property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
-
-	// .padding-inline-<value>
-	.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey} {
-		// Replace with margin-inline property when possible
-		padding-right: $sizeValue !important;
-		padding-left: $sizeValue !important;
-	}
-}
-
-@each $size in $layout-sizes {
-	$sizeKey: nth($size, 1);
-	$sizeValue: nth($size, 2);
-
-	// padding-block property isn't supported by IE, Edge, and Safari yet (as of Apr 2021)
-
-	// .padding-block-<value>
-	.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey} {
-		// Replace with padding-block property when possible
-		padding-top: $sizeValue !important;
-		padding-bottom: $sizeValue !important;
-	}
-}
-
-@include tablet {
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$sizeKey}-tablet {
-			padding: $sizeValue !important;
-		}
-	}
-
-	@each $position-key, $direction in $directions {
-		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
-
-			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-tablet {
-				padding-#{$direction}: $sizeValue !important;
-			}
-		}
-	}
-
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-tablet {
-			// Replace with padding-inline property when possible
-			padding-right: $sizeValue !important;
-			padding-left: $sizeValue !important;
-		}
-	}
-
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-tablet {
+		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}#{$separator}widescreen {
 			// Replace with padding-block property when possible
-			padding-top: $sizeValue !important;
-			padding-bottom: $sizeValue !important;
-		}
-	}
-}
-
-@include desktop {
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$sizeKey}-desktop {
-			padding: $sizeValue !important;
-		}
-	}
-
-	@each $position-key, $direction in $directions {
-		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
-
-			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-desktop {
-				padding-#{$direction}: $sizeValue !important;
-			}
-		}
-	}
-
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-desktop {
-			// Replace with padding-inline property when possible
-			padding-right: $sizeValue !important;
-			padding-left: $sizeValue !important;
-		}
-	}
-
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-desktop {
-			// Replace with padding-block property when possible
-			padding-top: $sizeValue !important;
-			padding-bottom: $sizeValue !important;
-		}
-	}
-}
-
-@include widescreen {
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$sizeKey}-widescreen {
-			padding: $sizeValue !important;
-		}
-	}
-
-	@each $position-key, $direction in $directions {
-		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
-
-			.#{$paddingKey}#{$separator}#{$position-key}#{$separator}#{$sizeKey}-widescreen {
-				padding-#{$direction}: $sizeValue !important;
-			}
-		}
-	}
-
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$inlineKey}#{$separator}#{$sizeKey}-widescreen {
-			// Replace with padding-inline property when possible
-			padding-right: $sizeValue !important;
-			padding-left: $sizeValue !important;
-		}
-	}
-
-	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
-
-		.#{$paddingKey}#{$separator}#{$blockKey}#{$separator}#{$sizeKey}-widescreen {
-			// Replace with padding-block property when possible
-			padding-top: $sizeValue !important;
-			padding-bottom: $sizeValue !important;
+			padding-top: sizeValue($sizeKey, $sizeValue) !important;
+			padding-bottom: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 }
