@@ -35,6 +35,8 @@ Accepted screensizes
 
 Adding uniform spacing
 
+Use `margin` with a size value to add spacing around an element.
+
 ```html
 <div class="margin-xs border">XS</div>
 <div class="margin-s border">X</div>
@@ -45,14 +47,9 @@ Adding uniform spacing
 <div class="margin-xxxl border">XXXL</div>
 ```
 
-Adding spacing to a side
-
-```html
-<div class="margin-left-s margin-bottom-m padding-s border">Small left margin</div>
-<div class="margin-right-l margin-bottom-m padding-s border">Large right margin</div>
-```
-
 Adding horizontal and vertical spacing
+
+Use `margin-inline` with a size value to apply both left and right spacing. Use `margin-block` for top and bottom spacing.
 
 ```html
 <div class="margin-inline-xl border">Margin-inline</div>
@@ -61,7 +58,18 @@ Adding horizontal and vertical spacing
 <div class="padding-block-xxl border">Padding-block</div>
 ```
 
+Adding spacing to a side
+
+Use `margin-left` with a size value to add left margin to an element.
+
+```html
+<div class="margin-left-s margin-bottom-m padding-s border">Small left margin</div>
+<div class="margin-right-l margin-bottom-m padding-s border">Large right margin</div>
+```
+
 Adding spacing on a particular screen size
+
+Pair a CSS property mentioned above with a screen size value to target a specific screen width.
 
 ```html
 <div
