@@ -6,7 +6,8 @@ template: standard
 
 # Display Atomics
 
-Display atomics are used to set the display behavior of an element. 
+Display atomics are used to set the display behavior of an element.
+
 ## Class Pattern
 
 `display-<value>-<screensize>`
