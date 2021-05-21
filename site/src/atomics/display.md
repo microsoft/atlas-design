@@ -6,17 +6,22 @@ template: standard
 
 # Display Atomics
 
-The following displays are covered: `block`, `flex`, `inline`, `inline-block`, `inline-flex`, `grid`, and `none`.
+Display atomics are used to set the display behavior of an element. 
+## Class Pattern
 
-The following breakpoints are supported for each display value:
+`display-<value>-<screensize>`
 
-```Text
-.display-{value}-tablet
-.display-{value}-desktop
-.display-{value}-widescreen
-```
+For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md).
 
-## Example
+Accepted values
+
+- `block`, `flex`, `inline`, `inline-block`, `inline-flex`, `grid`, `none`
+
+Accepted screensizes
+
+- `tablet, desktop, widescreen`
+
+## Usage
 
 ```html
 <div class="display-block border">
