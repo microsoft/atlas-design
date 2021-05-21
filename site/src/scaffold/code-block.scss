@@ -3,6 +3,25 @@ $code-header-color: $text !default;
 $code-block-header-font-size: 0.8em !default;
 
 .code-block {
+	position: relative;
+
+	.code-block-header-filter {
+		max-width: 12ch;
+		flex-shrink: 1;
+		border: none;
+		font-size: $font-size-9;
+		background: $body-background-medium;
+		margin-right: $spacer-3;
+		padding-inline: $spacer-2;
+		padding-block: $spacer-1;
+		// font-family: $monospace-font-stack;
+
+		&::placeholder {
+			color: $text-subtle;
+			font-size: $font-size-9;
+		}
+	}
+
 	.code-block-header {
 		display: flex;
 		align-items: center;

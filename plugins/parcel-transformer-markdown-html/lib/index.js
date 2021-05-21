@@ -15,8 +15,31 @@ const languageDisplayNames = {
 	scss: 'SCSS',
 	sass: 'Sass',
 	md: 'Markdown',
-	markdown: 'Markdown'
+	markdown: 'Markdown',
+	'atomics-filter': 'Atomics',
+	atomics: 'Atomics'
 };
+
+let filterIds = 0;
+
+function createFilterableCodeBlock(code, language, displayName) {
+	filterIds++;
+	return `
+	<div class="code-block margin-top-xs" style="min-height: 20vh">
+		
+		<div class="code-block-header">
+			<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
+			<input
+			class="code-block-header-filter align-self-center"
+			data-code-filter-input="${filterIds}"
+			placeholder="Filter ..."
+			type="search" />
+		</div>
+		<div class="code-block-body" style="max-height: 20vh; overflow-y: scroll;">
+			<pre><code data-code-filter-code="${filterIds}">${code}</code></pre>
+		</div>
+	</div>`;
+}
 
 /**
  * @type {import('marked').RendererObject}
@@ -38,6 +61,9 @@ const markedOptions = {
 		const elementExample = createExample(language, code);
 		const displayName =
 			language in languageDisplayNames ? languageDisplayNames[language] : language;
+		if (language === 'atomics-filter') {
+			return createFilterableCodeBlock(code, language, displayName);
+		}
 		return `
 			${elementExample}
 			<div class="code-block margin-top-s">
