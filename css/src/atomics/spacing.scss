@@ -21,15 +21,12 @@ $layout-sizes: (
 // Pattern: <cssproperty>-<value>-<screen>
 
 @each $property in $spacing-properties {
-	// iterates through margin, margin-inline, margin-block, etc
 	@each $size in $layout-sizes {
-		// iterates over values 'xs', 's', 'l' ... 'none'
 		$sizeKey: nth($size, 1);
 		$sizeValue: nth($size, 2);
 
 		// .<property>-<value>
 		.#{$property}#{$separator}#{$sizeKey} {
-			// margin-xs, margin-s, etc.
 			#{$property}: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
@@ -37,15 +34,11 @@ $layout-sizes: (
 
 @include tablet {
 	@each $property in $spacing-properties {
-		// iterates through margin, margin-inline, margin-block, etc
 		@each $size in $layout-sizes {
-			// iterates over values 'xs', 's', 'l' ... 'none'
 			$sizeKey: nth($size, 1);
 			$sizeValue: nth($size, 2);
 
-			// .<property>-<value>-tablet
 			.#{$property}#{$separator}#{$sizeKey}#{$separator}tablet {
-				// margin-xs-tablet, margin-s-tablet, etc.
 				#{$property}: $sizeValue !important;
 			}
 		}
@@ -54,15 +47,11 @@ $layout-sizes: (
 
 @include desktop {
 	@each $property in $spacing-properties {
-		// iterates through margin, margin-inline, margin-block, etc
 		@each $size in $layout-sizes {
-			// iterates over values 'xs', 's', 'l' ... 'none'
 			$sizeKey: nth($size, 1);
 			$sizeValue: nth($size, 2);
 
-			// .<property>-<value>-desktop
 			.#{$property}#{$separator}#{$sizeKey}#{$separator}desktop {
-				// margin-xs-desktop, margin-s-desktop, etc.
 				#{$property}: $sizeValue !important;
 			}
 		}
@@ -71,15 +60,11 @@ $layout-sizes: (
 
 @include widescreen {
 	@each $property in $spacing-properties {
-		// iterates through margin, margin-inline, margin-block, etc
 		@each $size in $layout-sizes {
-			// iterates over values 'xs', 's', 'l' ... 'none'
 			$sizeKey: nth($size, 1);
 			$sizeValue: nth($size, 2);
 
-			// .<property>-<value>-widescreen
 			.#{$property}#{$separator}#{$sizeKey}#{$separator}widescreen {
-				// margin-xs-widescreen, margin-s-widescreen, etc.
 				#{$property}: $sizeValue !important;
 			}
 		}
