@@ -4,13 +4,14 @@ $spacing-properties: 'margin', 'margin-inline', 'margin-block', 'margin-top', 'm
 	'padding-bottom', 'padding-left', 'padding-right' !default;
 
 $layout-sizes: (
-	('xs', $layout-1),
-	('s', $layout-2),
-	('m', $layout-3),
-	('l', $layout-4),
-	('xl', $layout-5),
-	('xxl', $layout-6),
-	('xxxl', $layout-7),
+	('xxs', $layout-1),
+	('xs', $layout-2),
+	('s', $layout-3),
+	('m', $layout-4),
+	('l', $layout-5),
+	('xl', $layout-6),
+	('xxl', $layout-7),
+	('xxxl', $layout-8),
 	('none', $layout-0)
 );
 
