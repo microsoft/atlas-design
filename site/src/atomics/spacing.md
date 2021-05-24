@@ -18,18 +18,15 @@ The following `<css-property-names>-<values>-<screensizes>` are supported.
 
 Accepted property names
 
-- `margin`, `padding`
-- `margin|padding-inline`
-- `margin|padding-block`
-- `margin|padding-top|right|bottom|left`
+`margin, padding, margin-inline, padding-inline, margin-block, padding-block, margin-top, padding-top, margin-right, padding-right, margin-bottom, padding-bottom, margin-left, padding-left`
 
 Accepted values
 
-- `none, xs, s, m, l, xl, xxl, xxxl`
+`none, xs, s, m, l, xl, xxl, xxxl`
 
 Accepted screensizes
 
-- `tablet, desktop, widescreen`
+`tablet, desktop, widescreen`
 
 ## Usages
 
@@ -49,18 +46,23 @@ Use `margin` with a size value to add spacing around an element.
 
 Adding horizontal and vertical spacing
 
-Use `margin-inline` with a size value to apply both left and right spacing. Use `margin-block` for top and bottom spacing.
+Use `margin-inline` with a size value to apply both left and right spacing.
 
 ```html
 <div class="margin-inline-xl border">Margin-inline</div>
 <div class="padding-inline-xl border">Padding-inline</div>
+```
+
+Use `margin-block` for top and bottom spacing.
+
+```html
 <div class="margin-block-xxl border">Margin-block</div>
 <div class="padding-block-xxl border">Padding-block</div>
 ```
 
 Adding spacing to a side
 
-Use `margin-left` with a size value to add left margin to an element.
+Use `margin-left` or `margin-right` with a size value to add left or right margin to an element.
 
 ```html
 <div class="margin-left-s margin-bottom-m padding-s border">Small left margin</div>
