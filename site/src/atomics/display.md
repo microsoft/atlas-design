@@ -16,11 +16,11 @@ For general information about the pattern, visit the [Atomics page](https://gith
 
 Accepted values
 
-- `block`, `flex`, `inline`, `inline-block`, `inline-flex`, `grid`, `none`
+`block`, `flex`, `inline`, `inline-block`, `inline-flex`, `grid`, `none`
 
 Accepted screensizes
 
-- `tablet, desktop, widescreen`
+`tablet`, `desktop`, `widescreen`
 
 ## Usage
 
@@ -29,14 +29,23 @@ Accepted screensizes
 	<div>Foo</div>
 	<div>Foo</div>
 </div>
+```
+
+```html
 <div class="display-flex-tablet border">
 	<div>Bar</div>
 	<div>Bar</div>
 </div>
+```
+
+```html
 <div class="display-inline-desktop border">
 	<div>Baz</div>
 	<div>Baz</div>
 </div>
+```
+
+```html
 <div class="display-inline-flex-widescreen border">
 	<div>Foo</div>
 	<div>Foo</div>
