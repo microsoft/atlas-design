@@ -16,11 +16,11 @@ For general information about the pattern, visit the [Atomics page](https://gith
 
 Accepted values
 
-`block`, `flex`, `inline`, `inline-block`, `inline-flex`, `grid`, `none`
+`block, flex, inline, inline-block, inline-flex, grid, none`
 
 Accepted screensizes
 
-`tablet`, `desktop`, `widescreen`
+`tablet, desktop, widescreen`
 
 ## Usage
 
