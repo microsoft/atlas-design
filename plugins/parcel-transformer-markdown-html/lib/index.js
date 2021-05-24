@@ -35,7 +35,7 @@ function createFilterableCodeBlock(code, language, displayName) {
 			placeholder="Filter ..."
 			type="search" />
 		</div>
-		<div class="code-block-body" style="max-height: 20vh; overflow-y: scroll;">
+		<div class="code-block-body" style="max-height: 30vh; overflow-y: scroll;">
 			<pre><code data-code-filter-code="${filterIds}">${code}</code></pre>
 		</div>
 	</div>`;
