@@ -29,7 +29,7 @@
 #aside,
 #footer {
 	overflow: hidden;
-	padding: $layout-1 $layout-2;
+	padding: $layout-2 $layout-3;
 }
 
 #header {
@@ -58,12 +58,14 @@
 	max-width: 70ch;
 	margin: auto;
 	@include tablet {
-		padding-inline: $layout-3;
+		//Replace with padding-inline when IE supported is dropped
+		padding-left: $layout-4;
+		padding-right: $layout-4;
 	}
 }
 
 .example {
-	padding: 1rem;
+	padding: $layout-2;
 }
 
 // For debugging layout purposes only
