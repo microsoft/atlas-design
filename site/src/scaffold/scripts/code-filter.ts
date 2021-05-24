@@ -22,7 +22,7 @@ export function handleCodeFilters() {
 
 			// If we haven't save the whole contents of the block, do so.
 			memory[id] = memory[id] || codeElt.textContent.split('\n');
-			// If set text content to things that match the given term
+			// Set text content to things that match the given term
 			let results = memory[id].filter(line => line.toLowerCase().includes(term));
 
 			// Show all if there's no value in the filter
