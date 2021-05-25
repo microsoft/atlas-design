@@ -14,25 +14,45 @@ Spacing Atomics can be used to add margin or padding on elements. They are espec
 
 For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md).
 
-The following `<css-property-names>-<values>-<screensizes>` are supported.
-
 Accepted property names
 
-`margin, padding, margin-inline, padding-inline, margin-block, padding-block, margin-top, padding-top, margin-right, padding-right, margin-bottom, padding-bottom, margin-left, padding-left`
+- `margin`
+- `padding`
+- `margin-inline`
+- `padding-inline`
+- `margin-block`
+- `padding-block`
+- `margin-top`
+- `padding-top`
+- `margin-right`
+- `padding-right`
+- `margin-bottom`
+- `padding-bottom`
+- `margin-left`
+- `padding-left`
 
 Accepted values
 
-`none, xs, s, m, l, xl, xxl, xxxl`
+- `none`
+- `xs`
+- `s`
+- `m`
+- `l`
+- `xl`
+- `xxl`
+- `xxxl`
 
 Accepted screensizes
 
-`tablet, desktop, widescreen`
+- `tablet`
+- `desktop`
+- `widescreen`
 
-## Usages
+## Usage
 
-**Adding uniform spacing**
+Adding uniform spacing
 
-Use `margin` with a size value to add spacing around an element.
+Use `margin` or `padding` with a size value to add spacing around an element.
 
 ```html
 <div class="margin-xs border">XS</div>
@@ -44,23 +64,23 @@ Use `margin` with a size value to add spacing around an element.
 <div class="margin-xxxl border">XXXL</div>
 ```
 
-**Adding horizontal and vertical spacing**
+Adding horizontal and vertical spacing
 
-Use `margin-inline` with a size value to apply both left and right spacing.
+Use `margin-inline` and `padding-inline` with a size value to apply both left and right spacing.
 
 ```html
 <div class="margin-inline-xl border">Margin-inline</div>
 <div class="padding-inline-xl border">Padding-inline</div>
 ```
 
-Use `margin-block` for top and bottom spacing.
+Use `margin-block` and `padding-block` for top and bottom spacing.
 
 ```html
 <div class="margin-block-xxl border">Margin-block</div>
 <div class="padding-block-xxl border">Padding-block</div>
 ```
 
-**Adding spacing to a side**
+Adding spacing to a side
 
 Use `margin-left` or `margin-right` with a size value to add left or right margin to an element.
 
@@ -69,7 +89,7 @@ Use `margin-left` or `margin-right` with a size value to add left or right margi
 <div class="margin-right-l margin-bottom-m padding-s border">Large right margin</div>
 ```
 
-**Adding spacing on a particular screen size**
+Adding spacing on a particular screen size
 
 Pair a CSS property mentioned above with a screen size value to target a specific screen width.
 
