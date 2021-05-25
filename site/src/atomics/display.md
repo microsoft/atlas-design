@@ -54,7 +54,7 @@ Accepted screensizes
 
 Available Classes
 
-```atomic-filter
+```atomics-filter
 display-block
 display-flex
 display-inline
