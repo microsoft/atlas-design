@@ -1,5 +1,20 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.2.0
+
+### Minor Changes
+
+- 8f3540a: Adds support for a filterable Atomics code block and input.
+
+### Patch Changes
+
+- Updated dependencies [c3ada0a]
+- Updated dependencies [b0dc574]
+- Updated dependencies [467d212]
+- Updated dependencies [f0faf47]
+- Updated dependencies [329557f]
+  - @microsoft/atlas-css@0.11.0
+
 ## 2.1.3
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @microsoft/atlas-css
 
+## 0.11.0
+
+### Minor Changes
+
+- c3ada0a: Add xxs size to spacing tokens and atomics.
+
+### Patch Changes
+
+- b0dc574: Adjust spacing output based on specificity.
+- 467d212: Updating colors atomics output order.
+- f0faf47: Update inline code color on dark and high contrast.
+- 329557f: Updating position and display atomics output order.
+
 ## 0.10.1
 
 ### Patch Changes
