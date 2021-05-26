@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.5.0
+
+### Minor Changes
+
+- 8f3540a: Adds support for a filterable Atomics code block and input.
+
 ## 0.4.0
 
 ### Minor Changes
