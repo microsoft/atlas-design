@@ -72,7 +72,7 @@ Currently two classes are available to set border radius:
 ```
 
 ```html
-<div class="border border-radius-l padding-s margin-top-s">
+<div class="border border-radius-l padding-s">
 	<p>Large radius</p>
 </div>
 ```
