@@ -1,3 +1,9 @@
+/* stylelint-disable selector-no-qualifying-type */
+
+/* stylelint-disable selector-max-compound-selectors */
+
+/* stylelint-disable no-descending-specificity */
+
 .table {
 	width: 100%;
 	font-size: $font-size-8;
@@ -28,8 +34,8 @@
 		line-height: 1.5;
 		vertical-align: top;
 
-		p:first-child {
-			margin-top: 0;
+		&:not([align]) {
+			text-align: $user-left;
 		}
 
 		&.nowrap {
@@ -38,10 +44,6 @@
 
 		&.is-narrow {
 			width: $table-cell-narrow-width;
-		}
-
-		&:not([align]) {
-			text-align: $user-left;
 		}
 	}
 
@@ -73,6 +75,15 @@
 		}
 	}
 
+	&.has-row-header-background {
+		td,
+		th {
+			&:first-child {
+				background-color: $table-row-header;
+			}
+		}
+	}
+
 	&.has-header-background {
 		thead th {
 			background-color: $table-header !important;
@@ -83,15 +94,6 @@
 			th,
 			td {
 				border-color: $table-border-dark !important;
-			}
-		}
-	}
-
-	&.has-row-header-background {
-		td,
-		th {
-			&:first-child {
-				background-color: $table-row-header;
 			}
 		}
 	}
