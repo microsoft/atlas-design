@@ -41,8 +41,8 @@
 		"rfs": "^9.0.3"
 	},
 	"devDependencies": {
-		"parcel": "2.0.0-beta.2",
-		"@parcel/transformer-sass": "2.0.0-beta.2",
+		"parcel": "2.0.0-beta.3.1",
+		"@parcel/transformer-sass": "2.0.0-beta.3.1",
 		"@microsoft/stylelint-config-atlas": "3.0.0",
 		"prettier": "^2.2.1",
 		"sass": "^1.32.8",

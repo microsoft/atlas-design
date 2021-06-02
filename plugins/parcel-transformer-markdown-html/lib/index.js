@@ -1,6 +1,5 @@
 // @ts-nocheck
 const { Transformer } = require('@parcel/plugin');
-const { promisify } = require('@parcel/utils');
 const marked = require('marked');
 const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
@@ -106,8 +105,6 @@ marked.use({
 	langPrefix: 'lang'
 });
 
-const markedPromise = promisify(marked);
-
 module.exports = new Transformer({
 	async loadConfig({ config }) {
 		const configFile = await config.getConfig(['.scaffoldrc']);
@@ -138,7 +135,7 @@ module.exports = new Transformer({
 		const code = await asset.getCode();
 		const { body, attributes } = frontMatter(code);
 
-		const parsedCode = await markedPromise(body);
+		const parsedCode = marked(body);
 
 		if (attributes.template) {
 			const workingDir = process.cwd();
