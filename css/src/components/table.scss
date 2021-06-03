@@ -54,13 +54,13 @@
 		}
 	}
 
-	&.table-striped {
+	&.is-striped {
 		tbody tr:nth-of-type(odd) {
 			background-color: $box-shadow-color-light;
 		}
 	}
 
-	&.min {
+	&.is-min {
 		width: unset;
 	}
 

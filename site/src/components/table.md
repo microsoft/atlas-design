@@ -57,17 +57,17 @@ These classes are available to style tables in different ways, feel free to mix 
 
 | Class                      | Usage                                               |
 | -------------------------- | --------------------------------------------------- |
-| `table-striped`            | Adds background color to every odd row              |
+| `is-striped`               | Adds background color to every odd row              |
 | `is-inner-borders`         | Adds inner borders to the table                     |
 | `is-header-background`     | Adds background color to the header row             |
 | `is-row-header-background` | Adds background color to the first cell of each row |
 | `is-stacked-mobile`        | Stacks table cells on mobile screen sizes.          |
-| `min`                      | Resets table's `width`                              |
+| `is-min`                   | Resets table's `width`                              |
 
-### `table-striped`
+### `is-striped`
 
 ```html
-<table class="table table-striped">
+<table class="table is-striped">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -224,10 +224,10 @@ These classes are available to style tables in different ways, feel free to mix 
 </table>
 ```
 
-### `min`
+### `is-min`
 
 ```html
-<table class="table min">
+<table class="table is-min">
 	<thead>
 		<tr>
 			<th>Heading row</th>
