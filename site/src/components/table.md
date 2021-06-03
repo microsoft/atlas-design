@@ -1,12 +1,12 @@
 ---
-title: Table  Atomics
-description: Border related atomic css classes for the Atlas Design System
+title: Table
+description: Table element and it's modifiers.
 template: standard
 ---
 
-# Table Atomics
+# Table
 
-The `table` class helps you style tables fast and easily. Just adding the supported modifiers you'll get a custom and responsive table.
+Table element helps organize content into rows and columns. `table` class adds basic styles to the tables fast and easily. Adding supported modifiers will get a custom and responsive look to the table.
 
 ## Usage
 
@@ -53,15 +53,16 @@ Here is an example of applying `table` class to the table element:
 
 ## Modifiers
 
-Extra classes are available to style tables in different ways, feel free to mix and match them!
+These classes are available to style tables in different ways, feel free to mix and match them!
 
-| class                       | usage                                               |
-| --------------------------- | --------------------------------------------------- |
-| `table-striped`             | Adds background color to every odd row              |
-| `has-inner-borders`         | Adds inner borders to the table                     |
-| `has-header-background`     | Adds background color to the header row             |
-| `has-row-header-background` | Adds background color to the first cell of each row |
-| `min`                       | Resets table's `width`                              |
+| Class                      | Usage                                               |
+| -------------------------- | --------------------------------------------------- |
+| `table-striped`            | Adds background color to every odd row              |
+| `is-inner-borders`         | Adds inner borders to the table                     |
+| `is-header-background`     | Adds background color to the header row             |
+| `is-row-header-background` | Adds background color to the first cell of each row |
+| `is-stacked-mobile`        | Stacks table cells on mobile screen sizes.          |
+| `min`                      | Resets table's `width`                              |
 
 ### `table-striped`
 
@@ -99,10 +100,10 @@ Extra classes are available to style tables in different ways, feel free to mix 
 </table>
 ```
 
-### `has-inner-borders`
+### `is-inner-borders`
 
 ```html
-<table class="table has-inner-borders">
+<table class="table is-inner-borders">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -130,10 +131,10 @@ Extra classes are available to style tables in different ways, feel free to mix 
 </table>
 ```
 
-### `has-header-background`
+### `is-header-background`
 
 ```html
-<table class="table has-header-background">
+<table class="table is-header-background">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -161,10 +162,41 @@ Extra classes are available to style tables in different ways, feel free to mix 
 </table>
 ```
 
-### `has-row-header-background`
+### `is-row-header-background`
 
 ```html
-<table class="table has-row-header-background">
+<table class="table is-row-header-background">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+### `is-stacked-mobile`
+
+```html
+<table class="table is-stacked-mobile">
 	<thead>
 		<tr>
 			<th>Heading row</th>

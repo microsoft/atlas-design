@@ -27,7 +27,6 @@ const settings = normalizePaths({
 		'/atomics': 'Atomics',
 		'/atomics/border.md': 'Border',
 		'/atomics/spacing.md': 'Spacing',
-		'/atomics/table.md': 'Table',
 		'/atomics/typography.md': 'Typography',
 		'/atomics/position.md': 'Position'
 	}

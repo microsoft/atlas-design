@@ -64,7 +64,7 @@
 		width: unset;
 	}
 
-	&.has-inner-borders {
+	&.is-inner-borders {
 		th,
 		td {
 			border-#{$user-right}: 1px solid $border;
@@ -75,7 +75,7 @@
 		}
 	}
 
-	&.has-row-header-background {
+	&.is-row-header-background {
 		td,
 		th {
 			&:first-child {
@@ -84,13 +84,13 @@
 		}
 	}
 
-	&.has-header-background {
+	&.is-header-background {
 		thead th {
 			background-color: $table-header !important;
 			color: $text;
 		}
 
-		&.has-inner-borders {
+		&.is-inner-borders {
 			th,
 			td {
 				border-color: $table-border-dark !important;
@@ -103,6 +103,26 @@
 	> thead:first-child {
 		> tr:first-child td {
 			border-top: 0;
+		}
+	}
+
+	&.is-stacked-mobile {
+		@include extremely-needed-mobile {
+			thead,
+			tfoot {
+				display: none;
+			}
+
+			td {
+				display: block;
+				width: 100%;
+				padding: $table-cell-padding-xxs 0;
+			}
+
+			td:not(:nth-child(1)) {
+				border-width: 0;
+				padding-top: 0;
+			}
 		}
 	}
 }
