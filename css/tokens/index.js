@@ -51,16 +51,19 @@ function collectTokenSources(rendered) {
 			return { name: getFinalFilePart(file), location: getAtlasFilePath(file) };
 		})
 		.filter((/** @type {{ name: string; location: string; }} */ x) => x.name !== 'index')
-		.reduce((
-			/** @type {{ [x: string]: any; }} */ all,
-			/** @type {{ name: string | number; }} */ source
-		) => {
-			all[source.name] = {
-				...source,
-				tokens: {}
-			};
-			return all;
-		}, {});
+		.reduce(
+			(
+				/** @type {{ [x: string]: any; }} */ all,
+				/** @type {{ name: string | number; }} */ source
+			) => {
+				all[source.name] = {
+					...source,
+					tokens: {}
+				};
+				return all;
+			},
+			{}
+		);
 	return collection;
 }
 
