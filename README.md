@@ -4,9 +4,10 @@
 [![npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)
 [![Site](https://dev.azure.com/ceapex/Engineering/_apis/build/status/microsoft.atlas-design?branchName=main)](https://dev.azure.com/ceapex/Engineering/_build/latest?definitionId=3602&branchName=main)
 
-Welcome to the Atlas Design project! This repository holds the source code backing the Atlas Design System. 
+Welcome to the Atlas Design project! This repository holds the source code backing the Atlas Design System.
 
 ## Our mission
+
 The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and consistent experiences at scale across the DevRel web properties.
 
 Looking for information about the Atlas CSS framework? Start at the [/css README](./css/README.md)!
