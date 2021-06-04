@@ -95,7 +95,7 @@ const markedOptions = {
 	table(header, body) {
 		return `
 			<div class="markdown">
-				<table class="table is-min border is-inner-borders is-header-background is-row-header-background margin-top-s">
+				<table class="table margin-top-s">
 					<thead>${header}</thead>
 					<tbody>${body}</tbody>
 				</table>
