@@ -1,5 +1,11 @@
 /* stylelint-disable no-descending-specificity */
 
+$table-cell-padding-xxs: $spacer-4;
+$table-cell-padding-xs: $spacer-5;
+
+$table-caption-size: $font-size-9;
+$table-caption-spacing: 0.125rem;
+
 .table {
 	width: 100%;
 	font-size: $font-size-8;
@@ -15,17 +21,12 @@
 		text-transform: uppercase;
 	}
 
-	thead th {
-		border-top: 0;
-		border-bottom: $table-border-width solid $border;
-	}
-
 	th,
 	td {
 		display: table-cell;
 		word-wrap: break-word;
 		padding: $table-cell-padding-xxs $table-cell-padding-xs;
-		border-top: $table-border-width solid $border;
+		border-top: 1px solid $border;
 		line-height: 1.5;
 		vertical-align: top;
 
@@ -34,7 +35,12 @@
 		}
 	}
 
-	&.is-stacked-mobile {
+	thead th {
+		border-top: 0;
+		border-bottom: 1px solid $border;
+	}
+
+	&.table-stacked-mobile {
 		@include extremely-needed-mobile {
 			thead,
 			tfoot {

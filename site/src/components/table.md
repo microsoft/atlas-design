@@ -53,10 +53,10 @@ Here is an example of applying `table` class to the table element:
 
 ## Modifiers
 
-_`is-stacked-mobile`_ - stacks table cells on mobile screen sizes.
+_`table-stacked-mobile`_ - stacks table cells on mobile screen sizes.
 
 ```html
-<table class="table is-stacked-mobile">
+<table class="table table-stacked-mobile">
 	<thead>
 		<tr>
 			<th>Heading row</th>
