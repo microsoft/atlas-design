@@ -4,6 +4,12 @@ $table-cell-padding-xs: $spacer-5 !default;
 $table-caption-size: $font-size-9 !default;
 $table-caption-spacing: 0.125rem !default;
 
+.table-wrapper {
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
 .table {
 	width: 100%;
 	font-size: $font-size-8;
