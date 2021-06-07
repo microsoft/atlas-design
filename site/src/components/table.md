@@ -51,6 +51,46 @@ Here is an example of applying `table` class to the table element:
 </table>
 ```
 
+For cases there are quite a lot of columns in the table - the `table-wrapper` class available, that should be applied to the table's parent element, to handle the overflow case:
+
+```html
+<div class="table-wrapper">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Heading row</th>
+				<th>Heading cell</th>
+				<th>Heading cell</th>
+				<th>Heading cell</th>
+				<th>Heading cell</th>
+				<th>Heading cell</th>
+				<th>Heading cell</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Row one</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+			</tr>
+			<tr>
+				<td>Row two</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+```
+
 ## Modifiers
 
 _`table-stacked-mobile`_ - stacks table cells on mobile screen sizes.
