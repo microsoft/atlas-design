@@ -26,7 +26,17 @@
 					<pre><code>{{#tokens}}{{name}}: {{value}}
 {{/tokens}}</code></pre>
 					</div>
-
+					{{#figmaEmbed}}
+					<div class="figma-embed-container padding-top-m">
+						<h2 class="font-size-h2 margin-bottom-m">Figma</h2>
+						<iframe
+							width="100%";
+							class="border"
+							height="450"
+							src="{{figmaEmbed}}"
+							allowfullscreen></iframe>
+						</div>
+					{{/figmaEmbed}}
 				</div>
 			</div>
 		</main>

@@ -141,6 +141,7 @@ module.exports = new Transformer({
 			const workingDir = process.cwd();
 			const templateDir = path.join(workingDir, config.contents.templatePath);
 			const templateFilename = path.join(templateDir, `${attributes.template}.html`);
+			const figmaEmbed = attributes.figmaEmbed;
 			const tocFilename = config.contents.tocPath
 				? path.join(workingDir, config.contents.tocPath)
 				: null;
@@ -190,7 +191,8 @@ module.exports = new Transformer({
 					toc: { name: 'TOC', entries: tocEntries },
 					...attributes,
 					tokens,
-					cssTokenSource
+					cssTokenSource,
+					figmaEmbed
 				})
 			);
 		} else {

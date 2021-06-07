@@ -17,7 +17,20 @@
 
 		<main id="main">
 			<div class="layout-container padding-top-s">
-				{{{ body }}}
+				<div class="body">
+					{{{ body }}}
+				</div>
+				{{#figmaEmbed}}
+				<div class="figma-embed-container padding-top-m">
+						<h2 class="font-size-h2 margin-bottom-m">Figma</h2>
+						<iframe
+							width="100%";
+							class="border"
+							height="450"
+							src="{{figmaEmbed}}"
+							allowfullscreen></iframe>
+					</div>
+				{{/figmaEmbed}}
 			</div>
 		</main>
 		<nav id="nav" class="background-color-body-medium" style="border-right: 1px solid var(--theme-border)">

@@ -2,6 +2,7 @@
 title: Markdown
 description: An element to render html generated from markdown.
 template: standard
+figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FfiMDOM9S3wiWTy9YiA3988%2FDesign-System-IA-Artifacts%3Fnode-id%3D23%253A435%26scaling%3Dmin-zoom
 ---
 
 # Markdown
