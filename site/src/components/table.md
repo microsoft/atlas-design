@@ -1,12 +1,12 @@
 ---
 title: Table
-description: Table element and it's modifiers.
+description: Table element and its modifiers.
 template: standard
 ---
 
 # Table
 
-Table element helps organize content into rows and columns. `table` class adds basic styles to the tables fast and easily. Adding supported modifiers will get a custom and responsive look to the table.
+The table element helps organize content into rows and columns. The `table` class adds basic styles to the tables fast and easily. Adding supported modifiers will get a custom and responsive look to the table.
 
 ## Usage
 
@@ -51,7 +51,7 @@ Here is an example of applying `table` class to the table element:
 </table>
 ```
 
-For cases there are quite a lot of columns in the table - the `table-wrapper` class available, that should be applied to the table's parent element, to handle the overflow case:
+For cases in which a table has many columns, the `table-wrapper` class is available to handle the overflow. This class should be applied to the table's parent element.
 
 ```html
 <div class="table-wrapper">
