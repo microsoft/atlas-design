@@ -155,13 +155,14 @@ module.exports = new Transformer({
 			const tocFilename = config.contents.tocPath
 				? path.join(workingDir, config.contents.tocPath)
 				: null;
+			let fileToImport, importFileParsedCode;
 
 			logger.verbose({
 				message: `Resolved paths:\n${workingDir}\n${templateDir}\n${templateFilename}\n${tocFilename}`,
 				skipFormatting: true
 			});
 
-			const [template, tocEntries] = await Promise.all([
+			let [template, tocEntries] = await Promise.all([
 				options.inputFS.readFile(templateFilename, 'utf-8'),
 				tocFilename
 					? options.inputFS.readFile(tocFilename, 'utf-8').then(r => JSON.parse(r))
@@ -195,6 +196,13 @@ module.exports = new Transformer({
 
 			asset.addIncludedFile(templateFilename);
 
+			if (attributes.import) {
+				fileToImport = await new Promise(resolve =>
+					resolve(options.inputFS.readFile(path.join(process.cwd(), attributes.import), 'utf-8'))
+				);
+				importFileParsedCode = marked(fileToImport);
+			}
+
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
@@ -202,7 +210,8 @@ module.exports = new Transformer({
 					...attributes,
 					tokens,
 					cssTokenSource,
-					figmaEmbed
+					figmaEmbed,
+					importFile: importFileParsedCode
 				})
 			);
 		} else {

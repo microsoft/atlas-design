@@ -25,6 +25,7 @@ const settings = normalizePaths({
 		'/tokens': 'Tokens',
 		'/components': 'Components',
 		'/atomics': 'Atomics',
+		'/atomics/overview.md': 'Overview',
 		'/atomics/border.md': 'Border',
 		'/atomics/spacing.md': 'Spacing',
 		'/atomics/typography.md': 'Typography',
@@ -114,8 +115,11 @@ async function createToc(subDir) {
 			isHidden: name === '[hide]'
 		};
 
-		if (entry.isDirectory) {
+		if (isDirectory) {
 			entry.children = await createToc(srcPath);
+			entry.children.sort(
+				(a, b) => b.href.includes('overview.md') - a.href.includes('overview.md')
+			);
 		}
 
 		scaffold.push(entry);
