@@ -41,8 +41,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		border-bottom: 1px solid $border;
 	}
 
-	th:not([align]),
-	td:not([align]) {
+	th:not([align]) {
 		text-align: $user-left;
 	}
 
