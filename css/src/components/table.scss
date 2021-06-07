@@ -1,10 +1,8 @@
-/* stylelint-disable no-descending-specificity */
+$table-cell-padding-xxs: $spacer-4 !default;
+$table-cell-padding-xs: $spacer-5 !default;
 
-$table-cell-padding-xxs: $spacer-4;
-$table-cell-padding-xs: $spacer-5;
-
-$table-caption-size: $font-size-9;
-$table-caption-spacing: 0.125rem;
+$table-caption-size: $font-size-9 !default;
+$table-caption-spacing: 0.125rem !default;
 
 .table {
 	width: 100%;
@@ -29,10 +27,6 @@ $table-caption-spacing: 0.125rem;
 		border-top: 1px solid $border;
 		line-height: 1.5;
 		vertical-align: top;
-
-		&:not([align]) {
-			text-align: $user-left;
-		}
 	}
 
 	thead th {
@@ -40,8 +34,13 @@ $table-caption-spacing: 0.125rem;
 		border-bottom: 1px solid $border;
 	}
 
+	th:not([align]),
+	td:not([align]) {
+		text-align: $user-left;
+	}
+
 	&.table-stacked-mobile {
-		@include extremely-needed-mobile {
+		@include discouraged-mobile {
 			thead,
 			tfoot {
 				display: none;

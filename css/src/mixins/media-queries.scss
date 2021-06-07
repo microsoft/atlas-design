@@ -46,7 +46,7 @@
  * Please be careful with using these classes. They don't follow the mobile-first approach but might be extremely useful in some use-cases.
  */
 
-@mixin extremely-needed-mobile {
+@mixin discouraged-mobile {
 	@media screen and (max-width: $breakpoint-tablet - 1px) {
 		@content;
 	}
