@@ -1,8 +1,9 @@
-$table-cell-padding-xxs: $spacer-4 !default;
-$table-cell-padding-xs: $spacer-5 !default;
+$table-cell-vertical-padding: $spacer-4 !default;
+$table-cell-horizontal-padding: $spacer-5 !default;
 
+$table-caption-padding: $spacer-6 !default;
 $table-caption-size: $font-size-9 !default;
-$table-caption-spacing: 0.125rem !default;
+$table-caption-spacing: $letter-spacing-medium !default;
 
 .table-wrapper {
 	overflow-x: auto;
@@ -17,7 +18,7 @@ $table-caption-spacing: 0.125rem !default;
 	table-layout: auto;
 
 	caption {
-		padding: $spacer-6;
+		padding: $table-caption-padding;
 		font-size: $table-caption-size;
 		font-weight: $weight-semibold;
 		letter-spacing: $table-caption-spacing;
@@ -29,7 +30,7 @@ $table-caption-spacing: 0.125rem !default;
 	td {
 		display: table-cell;
 		word-wrap: break-word;
-		padding: $table-cell-padding-xxs $table-cell-padding-xs;
+		padding: $table-cell-vertical-padding $table-cell-horizontal-padding;
 		border-top: 1px solid $border;
 		line-height: 1.5;
 		vertical-align: top;
@@ -55,7 +56,7 @@ $table-caption-spacing: 0.125rem !default;
 			td {
 				display: block;
 				width: 100%;
-				padding: $table-cell-padding-xxs 0;
+				padding: $table-cell-vertical-padding 0;
 			}
 
 			td:not(:nth-child(1)) {
