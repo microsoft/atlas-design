@@ -162,7 +162,7 @@ module.exports = new Transformer({
 				skipFormatting: true
 			});
 
-			let [template, tocEntries] = await Promise.all([
+			const [template, tocEntries] = await Promise.all([
 				options.inputFS.readFile(templateFilename, 'utf-8'),
 				tocFilename
 					? options.inputFS.readFile(tocFilename, 'utf-8').then(r => JSON.parse(r))
