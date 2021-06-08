@@ -5,8 +5,6 @@ $table-caption-padding: $spacer-6 !default;
 $table-caption-size: $font-size-9 !default;
 $table-caption-spacing: $letter-spacing-medium !default;
 
-$features-table: true !default;
-
 @if $features-table == true {
 	.table-wrapper {
 		overflow-x: auto;
