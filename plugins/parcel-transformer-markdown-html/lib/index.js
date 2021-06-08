@@ -90,6 +90,16 @@ const markedOptions = {
 				</${element}>
 			</div>
 			`;
+	},
+	table(header, body) {
+		return `
+			<div class="markdown table-wrapper margin-top-s">
+				<table class="table">
+					<thead>${header}</thead>
+					<tbody>${body}</tbody>
+				</table>
+			</div>
+		`;
 	}
 };
 

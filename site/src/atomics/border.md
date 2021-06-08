@@ -6,18 +6,21 @@ template: standard
 
 # Border Atomics
 
-Various classes can be used to apply borders to the elements.
+Various classes can be used to apply borders to the elements. Applying the `border` class to the element will add a 1px border to it.
 
-- `.border`: adds a border
-- `.border-none`: removes a border
-- `.border-{direction}`: sets the border for a specific side
-- `.border-{direction}-none`: removes the border on a specific side
-- `.border-{direction}-{screensize}`: sets the border for a specific side on a particular screen size
-- `.border-{direction}-{screensize}-none`: removes the border for a specific side on a particular screen size
+Mixing the `directions`, `visibility` and `screensize` values will give you more specificity.
 
-Currently, the only `{screensize}` available is `tablet`.
+| modifiers | direction                        | screensize | visibility |
+| --------- | -------------------------------- | ---------- | ---------- |
+| values    | `top`, `right`, `bottom`, `left` | `tablet`   | `none`     |
 
-## Example
+Should be applied in this order:
+
+```css
+border-{direction}-{screensize}-{visibility}
+```
+
+## Usage
 
 Here is an example of `border` class usage:
 
@@ -33,15 +36,21 @@ Here is an example of applying border to specific side of the element:
 <div class="border-top padding-s">
 	<p>Border top</p>
 </div>
+```
 
+```html
 <div class="border-right padding-s">
 	<p>Border right</p>
 </div>
+```
 
+```html
 <div class="border-left padding-s">
 	<p>Border left</p>
 </div>
+```
 
+```html
 <div class="border-bottom padding-s">
 	<p>Border bottom</p>
 </div>
@@ -51,17 +60,19 @@ Here is an example of applying border to specific side of the element:
 
 Currently two classes are available to set border radius:
 
-- `.border-radius`
-- `.border-radius-l`
-
-#### Example
+| class             | size      |
+| ----------------- | --------- |
+| `border-radius`   | `0.25rem` |
+| `border-radius-l` | `0.5rem`  |
 
 ```html
 <div class="border border-radius padding-s">
 	<p>Default radius</p>
 </div>
+```
 
-<div class="border border-radius-l padding-s margin-top-s">
+```html
+<div class="border border-radius-l padding-s">
 	<p>Large radius</p>
 </div>
 ```
