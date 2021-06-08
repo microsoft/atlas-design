@@ -115,7 +115,7 @@ async function createToc(subDir) {
 			isHidden: name === '[hide]'
 		};
 
-		if (isDirectory) {
+		if (entry.isDirectory) {
 			entry.children = await createToc(srcPath);
 			entry.children.sort(
 				(a, b) => b.href.includes('overview.md') - a.href.includes('overview.md')
