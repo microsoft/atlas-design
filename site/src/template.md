@@ -47,8 +47,20 @@ _Example. Table 2_
 Next block is a general usage example.
 
 ```html
-<div class="border padding-s">
-	<p>Text block</p>
+<div class="border-tablet padding-s">
+	<p>Border on tablet and up</p>
+</div>
+```
+
+### Responsive rules (H3)
+
+If there are screen-specific class variations are available they can be described in this section.
+
+_Example_
+
+```html
+<div class="border border-radius padding-s">
+	<p>Default radius</p>
 </div>
 ```
 
