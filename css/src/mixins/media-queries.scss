@@ -41,7 +41,7 @@
 	}
 }
 
-// Please avoid using this mixin if possible. It doesn't follow our the mobile-first approach to writing CSS.
+// Please avoid using this mixin if possible. It doesn't follow the mobile-first approach to writing CSS.
 @mixin discouraged-mobile {
 	@media screen and (max-width: $breakpoint-tablet - 1px) {
 		@content;
