@@ -145,7 +145,11 @@ module.exports = new Transformer({
 		const code = await asset.getCode();
 		const { body, attributes } = frontMatter(code);
 
-		const parsedCode = marked(body);
+		const parsedCode = attributes.import
+			? await options.inputFS
+					.readFile(path.join(process.cwd(), attributes.import), 'utf-8')
+					.then(content => marked(content))
+			: marked(body);
 
 		if (attributes.template) {
 			const workingDir = process.cwd();
@@ -155,7 +159,6 @@ module.exports = new Transformer({
 			const tocFilename = config.contents.tocPath
 				? path.join(workingDir, config.contents.tocPath)
 				: null;
-			let fileToImport, importFileParsedCode;
 
 			logger.verbose({
 				message: `Resolved paths:\n${workingDir}\n${templateDir}\n${templateFilename}\n${tocFilename}`,
@@ -196,13 +199,6 @@ module.exports = new Transformer({
 
 			asset.addIncludedFile(templateFilename);
 
-			if (attributes.import) {
-				fileToImport = await new Promise(resolve =>
-					resolve(options.inputFS.readFile(path.join(process.cwd(), attributes.import), 'utf-8'))
-				);
-				importFileParsedCode = marked(fileToImport);
-			}
-
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
@@ -210,8 +206,7 @@ module.exports = new Transformer({
 					...attributes,
 					tokens,
 					cssTokenSource,
-					figmaEmbed,
-					importFile: importFileParsedCode
+					figmaEmbed
 				})
 			);
 		} else {

@@ -18,12 +18,7 @@
 		<main id="main">
 			<div class="layout-container padding-top-s">
 				<div class="body">
-					{{#importFile}}
-						{{{ importFile }}}
-					{{/importFile}}
-					{{^importFile}}
-						{{{ body }}}
-					{{/importFile}}
+					{{{ body }}}
 				</div>
 				{{#figmaEmbed}}
 				<div class="figma-embed-container padding-top-m">
