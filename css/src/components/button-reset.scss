@@ -1,0 +1,8 @@
+.button-reset {
+	@include transparent-effects;
+
+	display: inline-block;
+	padding: 0;
+	border: 0;
+	cursor: pointer;
+}

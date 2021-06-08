@@ -1,0 +1,30 @@
+/*
+ * For use on <button> elements to emulate the appearance of standard <a> tags.
+*/
+
+.link-button {
+	@include transparent-effects;
+
+	display: inline-block;
+	padding: 0;
+	border: none;
+	color: $primary;
+	cursor: pointer;
+
+	&:active,
+	&.is-active {
+		text-decoration: underline !important;
+	}
+
+	&.focus-visible,
+	&.is-focused,
+	&:hover,
+	&.is-hovered {
+		color: $primary-hover;
+		text-decoration: underline !important;
+	}
+
+	&:visited {
+		color: $visited;
+	}
+}
