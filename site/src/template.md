@@ -19,7 +19,7 @@ The following spacing sizes are supported:
 - `l`
 - `none`
 
-Otherwise consider using tables tp organize information.
+Otherwise consider using tables to organize information.
 
 _Example. Table 1_
 
