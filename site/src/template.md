@@ -6,27 +6,29 @@ template: standard
 
 # Page title (H1)
 
-Here is the general description goes.
+The first thing is the general description.
 
-Next thing is the list of some general classes, or css style specific details. For example:
+Then the list of some general classes can be listed, if there are not many of them, or css style specific details
+
+_Example_
 
 The following spacing sizes are supported:
 
-- `xs`
 - `s`
 - `m`
 - `l`
-- `xl`
-- `xxl`
-- `xxxl`
 - `none`
 
-Another option is the table with css prop variations:
+Otherwise consider using tables tp organize information.
+
+_Example. Table 1_
 
 | cssproperty | value                                                   | screensize |
 | ----------- | ------------------------------------------------------- | ---------- |
 | `margin`    | `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl`, `none` | `tablet`   |
 | `padding`   | `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl`, `none` | `tablet`   |
+
+_Example. Table 2_
 
 | Size   | Value         | Margin example | Padding example |
 | ------ | ------------- | -------------- | --------------- |
@@ -42,7 +44,7 @@ Another option is the table with css prop variations:
 
 ## Usage (H2)
 
-Next block is a very general usage example.
+Next block is a general usage example.
 
 ```html
 <div class="border padding-s">
@@ -52,7 +54,7 @@ Next block is a very general usage example.
 
 if there are tokens variations available such as font weight in typography, or radius rules in border, the next section should be about them.
 
-### Radius (H3)
+### Modifier heading (H3)
 
 Currently two classes are available to set border radius:
 
