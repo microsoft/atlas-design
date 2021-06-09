@@ -24,7 +24,7 @@ let filterIds = 0;
 function createFilterableCodeBlock(code, language, displayName) {
 	filterIds++;
 	return `
-	<div class="code-block margin-top-xs">
+	<div class="code-block margin-top-xs" style="min-height: 30vh">
 		<div class="code-block-header">
 			<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
 			<input
