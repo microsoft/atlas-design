@@ -8,15 +8,7 @@ template: standard
 
 The first thing is the general description.
 
-Then the list of some general classes can be listed, if there are not many of them, or css style specific details
-
-_Example_
-
-The following spacing sizes are supported: `-s`, `-m`, `-l`, `-none`.
-
-Otherwise consider using a table to organize information.
-
-_Example_
+Consider using a table to organize information.
 
 | cssproperty | value                           | screensize |
 | ----------- | ------------------------------- | ---------- |
@@ -26,19 +18,15 @@ _Example_
 
 Provide a focused example that displays this atomic's usage.
 
-_Example_
-
 ```html
-<div class="border border-radius padding-s">
-	<p>Default radius</p>
+<div>
+  <button class="button">Click me</button>
 </div>
 ```
 
 ### Responsive rules
 
 If there are screen-specific class variations are available they can be described in this section.
-
-_Example_
 
 ```html
 <div class="border-tablet padding-s">
@@ -49,8 +37,6 @@ _Example_
 ### Modifier heading
 
 if there are tokens variations available such as font weight in typography, or radius rules in border, the next section(s) should be about them.
-
-_Example_
 
 ```html
 <div class="border border-radius padding-s">
