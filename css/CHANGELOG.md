@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 0.12.0
+
+### Minor Changes
+
+- 0772431: Add table component.
+
+### Patch Changes
+
+- 8a29033: Modify secondary background color so as not to conflict with -medium background on dark theme.
+- 1aa4634: Upgrade Parcel deps.
+
 ## 0.11.0
 
 ### Minor Changes
