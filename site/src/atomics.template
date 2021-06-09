@@ -12,12 +12,7 @@ Then the list of some general classes can be listed, if there are not many of th
 
 _Example_
 
-The following spacing sizes are supported:
-
-- `s`
-- `m`
-- `l`
-- `none`
+The following spacing sizes are supported: `-s`, `-m`, `-l`, `-none`.
 
 Otherwise consider using a table to organize information.
 
@@ -25,7 +20,7 @@ _Example_
 
 | cssproperty | value                           | screensize |
 | ----------- | ------------------------------- | ---------- |
-| `{name}`    | `{value}`, `{value}`, `{value}` | `{size}`   |
+| `<name>`    | `<value>`, `<value>`, `<value>` | `<size>`   |
 
 ## Usage
 
@@ -68,11 +63,11 @@ _Example_
 List of all available classes:
 
 ```atomics-filter
-.{name}-{value-1}
-.{name}-{value-2}
-.{name}-{value-3}
-.{name}-{value-1}-{screensize}
-.{name}-{value-2}-{screensize}
-.{name}-{value-3}-{screensize}
+.<name>-<value-1>
+.<name>-<value-2>
+.<name>-<value-3>
+.<name>-<value-1>-<screensize>
+.<name>-<value-2>-<screensize>
+.<name>-<value-3>-<screensize>
 [...etc]
 ```
