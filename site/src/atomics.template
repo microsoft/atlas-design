@@ -36,7 +36,7 @@ If there are screen-specific class variations are available they can be describe
 
 ### Modifier heading
 
-if there are tokens variations available such as font weight in typography, or radius rules in border, the next section(s) should be about them.
+If there are tokens variations available such as font weight in typography, or radius rules in border, the next section(s) should be about them.
 
 ```html
 <div class="border border-radius padding-s">
