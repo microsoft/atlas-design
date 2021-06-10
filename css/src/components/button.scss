@@ -36,6 +36,7 @@ $button-disabled-shadow: none !default;
 $button-disabled-opacity: 0.5 !default;
 
 $button-icon-spacing: 0.375em !default;
+$button-font-weight: $weight-semibold !default;
 
 @mixin button-small {
 	font-size: $button-small-font-size;
@@ -58,8 +59,9 @@ $button-icon-spacing: 0.375em !default;
 		border-width: $button-border-width;
 		border-radius: $button-border-radius;
 		border-color: $button-border-color;
-		background-color: $button-background-color;
+		background-color: $body-background;
 		color: $button-color;
+		font-weight: $button-font-weight;
 		text-align: center;
 		white-space: nowrap;
 		cursor: pointer;
@@ -85,14 +87,14 @@ $button-icon-spacing: 0.375em !default;
 		// States
 
 		&:hover,
-		&.button-hovered {
+		&.is-hovered {
 			border-color: $button-hover-border-color;
 			background-color: $button-hover-background-color;
 			color: $button-hover-color;
 		}
 
 		&.focus-visible,
-		&.button-focused {
+		&.is-focused {
 			border-color: $button-focus-border-color;
 			color: $button-focus-color;
 		}
@@ -102,44 +104,9 @@ $button-icon-spacing: 0.375em !default;
 		}
 
 		&:active,
-		&.button-active {
+		&.is-active {
 			border-color: $button-active-border-color;
 			color: $button-active-color;
-		}
-
-		@each $name, $color-set in $colors {
-			$base: nth($color-set, $color-index-base);
-			$dark: nth($color-set, $color-index-dark);
-			$hover: nth($color-set, $color-index-hover);
-			$active: nth($color-set, $color-index-active);
-			$invert: nth($color-set, $color-index-invert);
-
-			&.button-#{$name} {
-				border-color: $base;
-				background-color: $body-background;
-				color: $dark;
-
-				&:hover,
-				&.focus-visible {
-					border-color: $base;
-					background-color: $base;
-					color: $invert;
-				}
-
-				&.button-loading::after {
-					@include loader;
-
-					border-color: transparent transparent $base $base !important;
-				}
-
-				&.button-disabled,
-				&[disabled] {
-					border-color: $base;
-					background-color: transparent;
-					color: $base;
-					box-shadow: none;
-				}
-			}
 		}
 
 		// Sizes
@@ -180,115 +147,138 @@ $button-icon-spacing: 0.375em !default;
 				border-left-color: $text;
 			}
 		}
+
+		@each $name, $color-set in $colors {
+			$base: nth($color-set, $color-index-base);
+			$dark: nth($color-set, $color-index-dark);
+			$hover: nth($color-set, $color-index-hover);
+			$active: nth($color-set, $color-index-active);
+			$invert: nth($color-set, $color-index-invert);
+			$background: nth($color-set, $color-index-background);
+
+			&.button-#{$name} {
+				@if $name == 'warning' {
+					border-color: $dark;
+					color: $dark;
+				} @else {
+					border-color: $base;
+					color: $base;
+				}
+
+				&:hover,
+				&.is-hovered,
+				&.focus-visible,
+				&.is-focused {
+					background-color: $background;
+				}
+			}
+		}
+	}
+}
+
+.button.button-clear {
+	border-color: transparent;
+	background-color: transparent;
+	color: currentColor;
+
+	&.button-bordered {
+		border-color: currentColor;
 	}
 
-	// To ensure design fidelity, Atlas only enables one solid button by default.
-	$solid-button-colors: 'primary' !default;
+	&.is-hovered,
+	&:hover,
+	&:active {
+		background-color: $body-background-medium;
+	}
 
-	@each $name in $solid-button-colors {
-		$color-set: map.get($colors, $name);
+	&:visited {
+		color: currentColor;
+	}
 
+	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
-		$heavy: nth($color-set, $color-index-dark);
+		$dark: nth($color-set, $color-index-dark);
 		$hover: nth($color-set, $color-index-hover);
 		$active: nth($color-set, $color-index-active);
 		$invert: nth($color-set, $color-index-invert);
+		$background: nth($color-set, $color-index-background);
 
-		.button.button-#{$name}-solid {
+		&.button-#{$name} {
+			@if $name == 'warning' {
+				color: $dark !important;
+			} @else {
+				color: $base;
+			}
+
+			&:hover,
+			&.is-hovered,
+			&.focus-visible {
+				background-color: $background;
+				color: $base;
+			}
+
+			&.button-loading::after {
+				@include loader;
+
+				border-color: transparent transparent $base $base !important;
+			}
+
+			&.button-disabled,
+			&[disabled] {
+				background-color: transparent;
+				color: $base;
+				box-shadow: none;
+			}
+		}
+	}
+}
+
+.button.button-filled {
+	border-color: $alternate-background-medium;
+	background-color: $alternate-background-medium;
+	color: $text-invert;
+
+	&:hover,
+	&.is-hovered,
+	&.focus-visible,
+	&:active {
+		background-color: $alternate-background;
+	}
+
+	@each $name, $color-set in $colors {
+		$base: nth($color-set, $color-index-base);
+		$dark: nth($color-set, $color-index-dark);
+		$hover: nth($color-set, $color-index-hover);
+		$active: nth($color-set, $color-index-active);
+		$invert: nth($color-set, $color-index-invert);
+		$background: nth($color-set, $color-index-background);
+
+		&.button-#{$name} {
 			border-color: $base;
 			background-color: $base;
 			color: $invert;
 
 			&:hover,
-			&.is-hovered {
-				border-color: $border-yellow-high-contrast;
+			&.focus-visible,
+			&:active {
+				border-color: $hover;
 				background-color: $hover;
 				color: $invert;
 			}
 
-			&:visited {
-				color: $invert;
+			&.button-loading::after {
+				@include loader;
+
+				border-color: transparent transparent $base $base !important;
 			}
 
-			&.focus-visible,
-			&.is-focused {
-				border-color: $border-white-high-contrast;
-				color: $invert;
-			}
-
-			&:active,
-			&.is-active {
-				border-color: $border-white-high-contrast;
-				background-color: $active;
-				color: $invert;
-			}
-
-			&.is-disabled,
+			&.button-disabled,
 			&[disabled] {
-				border-color: $border-white-high-contrast;
-				background-color: $base;
+				border-color: $base;
+				background-color: transparent;
+				color: $base;
 				box-shadow: none;
 			}
-
-			&.is-loading::after {
-				border-color: transparent transparent $invert $invert !important;
-			}
-		}
-	}
-
-	.button.button-text {
-		border-color: transparent;
-		background-color: transparent;
-		color: $button-text-color;
-		text-decoration: underline;
-
-		&:hover,
-		&.button-hovered,
-		&.focus-visible,
-		&.button-focused {
-			background-color: $button-text-hover-background-color;
-			color: $button-text-hover-color;
-		}
-
-		&:visited {
-			color: $button-text-color;
-		}
-
-		&:active,
-		&.button-active {
-			background-color: $button-text-active-background-color;
-			color: $button-text-hover-color;
-		}
-
-		&.button-disabled,
-		&[disabled] {
-			border-color: transparent;
-			background-color: transparent;
-			box-shadow: none;
-		}
-	}
-
-	.button.button-transparent {
-		border-color: transparent;
-		background-color: transparent;
-		color: currentColor;
-
-		&.button-bordered {
-			border-color: currentColor;
-		}
-
-		&:hover {
-			border-color: currentColor;
-			background-color: transparentize(#fff, 0.95);
-		}
-
-		&:visited {
-			color: currentColor;
-		}
-
-		&:active {
-			border-color: currentColor;
-			background-color: transparentize(#fff, 0.9);
 		}
 	}
 }

@@ -7,11 +7,80 @@ figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.f
 
 # Button
 
-The button element within Atlas is a flexible and easily modified element. Built-in variations are available to modify its size, width, color, and state.
+Atlas provides three core button styles.
 
-```html
-<button class="button">Click me!</button>
-```
+1. Secondary (default)
+2. Primary
+3. Semantic Colors
+
+Each style is explained below, detailing how and where to use them.
+
+## Secondary
+
+All buttons, by default, are secondary buttons. There are three gradutating secondary styles.
+
+1. Outlined (Default)
+2. Clear
+3. Filled
+
+| Type     | Class                      | Default State                                         | Hover                                                            |
+| -------- | -------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------- |
+| Outlined | `.button`                  | <button class="button">Default</button>               | <button class="button is-hovered">Default</button>               |
+| Clear    | `.button` `.button-clear`  | <button class="button button-clear">Default</button>  | <button class="button button-clear is-hovered">Default</button>  |
+| Filled   | `.button` `.button-filled` | <button class="button button-filled">Default</button> | <button class="button button-filled is-hovered">Default</button> |
+
+## Primary
+
+A visual style used to highlight only the most important actions. To avoid confusing users, don't use more than more primary button within a section or view.
+
+| Type     | Class                      | Default State                                                        | Hover                                                                           |
+| -------- | -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Outlined | `.button`                  | <button class="button button-primary">Default</button>               | <button class="button button-primary is-hovered">Default</button>               |
+| Clear    | `.button` `.button-clear`  | <button class="button button-primary button-clear">Default</button>  | <button class="button button-primary button-clear is-hovered">Default</button>  |
+| Filled   | `.button` `.button-filled` | <button class="button button-primary button-filled">Default</button> | <button class="button button-primary button-filled is-hovered">Default</button> |
+
+## Semantic Colors
+
+Semantic colors denote standard value states (such as good, bad, or warning). Each color has the same basic meaning in all contexts. Our semantic color buttons are used infrequently.
+
+### Danger
+
+Danger buttons are red on most themes. They help reiterature that the intended action is important or potentially dangerous (e.g., deleting an item or transfering ownership).
+
+| Type     | Class                      | Default State                                                       | Hover                                                                          |
+| -------- | -------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Outlined | `.button`                  | <button class="button button-danger">Default</button>               | <button class="button button-danger is-hovered">Default</button>               |
+| Clear    | `.button` `.button-clear`  | <button class="button button-danger button-clear">Default</button>  | <button class="button button-danger button-clear is-hovered">Default</button>  |
+| Filled   | `.button` `.button-filled` | <button class="button button-danger button-filled">Default</button> | <button class="button button-danger button-filled is-hovered">Default</button> |
+
+### Success
+
+Success buttons are green on most themes. This color stands for a good, positive situation or for the successful completion of a task. Use the good/positive semantic color if ...
+
+- You need to highlight a good or positive status.
+- A message contains information about a process that was finalized wihtout any issues. Users need this information later on (for example, to copy values to another app).
+
+| Type     | Class                      | Default State                                                        | Hover                                                                           |
+| -------- | -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Outlined | `.button`                  | <button class="button button-success">Default</button>               | <button class="button button-success is-hovered">Default</button>               |
+| Clear    | `.button` `.button-clear`  | <button class="button button-success button-clear">Default</button>  | <button class="button button-success button-clear is-hovered">Default</button>  |
+| Filled   | `.button` `.button-filled` | <button class="button button-success button-filled">Default</button> | <button class="button button-success button-filled is-hovered">Default</button> |
+
+### Warning
+
+Warning buttons are yellow on most themes. This color indicates a critical situation or warning. Use this semantic color if ...
+
+- You want to highlight a critical status.
+- A minor problem has occcurred. The user can carry on working but might run into an error later on.
+- the current mode or page can be finalized, but doing so might lead to an error later on.
+- The user input was validated and a minor problem occurred. The user can continue without fixing the problem, but might lead to an error later on.
+- A message contains information about a warning.
+
+| Type     | Class                      | Default State                                                        | Hover                                                                           |
+| -------- | -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Outlined | `.button`                  | <button class="button button-warning">Default</button>               | <button class="button button-warning is-hovered">Default</button>               |
+| Clear    | `.button` `.button-clear`  | <button class="button button-warning button-clear">Default</button>  | <button class="button button-warning button-clear is-hovered">Default</button>  |
+| Filled   | `.button` `.button-filled` | <button class="button button-warning button-filled">Default</button> | <button class="button button-warning button-filled is-hovered">Default</button> |
 
 ## Usage
 
@@ -75,4 +144,25 @@ You may enable more solid button colors by overriding the `$solid-button-colors`
 
 ```scss
 $solid-button-colors: 'primary' 'danger' 'info' 'warning';
+```
+
+```html
+<div class="button">Button</div>
+<div class="button button-clear">Clear</div>
+<div class="button button-filled">Filled</div>
+<br />
+
+<div class="button button-primary">Button</div>
+<div class="button button-clear button-primary">Clear</div>
+<div class="button button-filled button-primary">Filled</div>
+<br />
+
+<div class="button button-danger">Button</div>
+<div class="button button-clear button-danger">Clear</div>
+<div class="button button-filled button-danger">Filled</div>
+<br />
+
+<div class="button button-success">Button</div>
+<div class="button button-clear button-success">Clear</div>
+<div class="button button-filled button-success">Filled</div>
 ```

@@ -32,7 +32,7 @@ $facepile-teal: var(--theme-facepile-teal);
 $facepile-blue: var(--theme-facepile-blue);
 
 $default-hover: var(--theme-hover-base);
-$default-hover-invert: var(--theme-hover-invert);
+$default-hover-invert: $body-background-medium;
 $border-white-high-contrast: var(--theme-border-white-high-contrast);
 $border-yellow-high-contrast: var(--theme-border-yellow-high-contrast);
 $code-highlight-background: var(--theme-code-highlight-background);
