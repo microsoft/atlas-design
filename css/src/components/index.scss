@@ -1,8 +1,6 @@
-@if $features-button == true {
-	@import './button.scss';
-}
-
+@import './button.scss';
 @import './button-reset.scss';
 @import './link-button.scss';
 @import './markdown.scss'; // must be ordered after code-block
+@import './icon.scss';
 @import './table.scss';
