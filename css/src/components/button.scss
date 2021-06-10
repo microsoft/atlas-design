@@ -129,12 +129,12 @@ $button-font-weight: $weight-semibold !default;
 			box-shadow: $button-disabled-shadow;
 		}
 
-		&.button-full-width {
+		&.button-block {
 			display: flex;
 			width: 100%;
 		}
 
-		&.button-loading {
+		&.is-loading {
 			color: transparent !important;
 			pointer-events: none;
 
@@ -170,6 +170,11 @@ $button-font-weight: $weight-semibold !default;
 				&.focus-visible,
 				&.is-focused {
 					background-color: $background;
+					color: $dark;
+				}
+
+				&.is-loading::after {
+					border-color: transparent transparent $base $base !important;
 				}
 			}
 		}
@@ -180,10 +185,6 @@ $button-font-weight: $weight-semibold !default;
 	border-color: transparent;
 	background-color: transparent;
 	color: currentColor;
-
-	&.button-bordered {
-		border-color: currentColor;
-	}
 
 	&.is-hovered,
 	&:hover,
@@ -204,22 +205,19 @@ $button-font-weight: $weight-semibold !default;
 		$background: nth($color-set, $color-index-background);
 
 		&.button-#{$name} {
+			color: $base;
 			@if $name == 'warning' {
-				color: $dark !important;
-			} @else {
-				color: $base;
+				color: $dark;
 			}
 
 			&:hover,
 			&.is-hovered,
 			&.focus-visible {
 				background-color: $background;
-				color: $base;
+				color: $dark;
 			}
 
-			&.button-loading::after {
-				@include loader;
-
+			&.is-loading::after {
 				border-color: transparent transparent $base $base !important;
 			}
 
@@ -245,6 +243,12 @@ $button-font-weight: $weight-semibold !default;
 		background-color: $alternate-background;
 	}
 
+	&.is-loading::after {
+		@include loader;
+
+		border-color: transparent transparent $text-invert $text-invert !important;
+	}
+
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
 		$dark: nth($color-set, $color-index-dark);
@@ -266,10 +270,10 @@ $button-font-weight: $weight-semibold !default;
 				color: $invert;
 			}
 
-			&.button-loading::after {
+			&.is-loading::after {
 				@include loader;
 
-				border-color: transparent transparent $base $base !important;
+				border-color: transparent transparent $invert $invert !important;
 			}
 
 			&.button-disabled,

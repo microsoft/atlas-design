@@ -82,10 +82,6 @@ Warning buttons are yellow on most themes. This color indicates a critical situa
 | Clear    | `.button` `.button-clear`  | <button class="button button-warning button-clear">Default</button>  | <button class="button button-warning button-clear is-hovered">Default</button>  |
 | Filled   | `.button` `.button-filled` | <button class="button button-warning button-filled">Default</button> | <button class="button button-warning button-filled is-hovered">Default</button> |
 
-## Usage
-
-Perhaps some design guidance 👀.
-
 ## Variations
 
 Although variations are discussed one at a time on this page, you are able to use any combination of them together!
@@ -100,69 +96,35 @@ Make a button smaller or bigger than the default.
 <button class="button button-large">Large</button>
 ```
 
-### Color
+### Block button
 
-Make a button match one of Atlas's theme-aware semantic colors.
-
-```html
-<button class="button button-primary">Primary</button>
-<button class="button button-success">Success</button>
-<button class="button button-warning">Warning</button>
-<button class="button button-info">Info</button>
-<button class="button button-danger">Danger</button>
-```
-
-### Full width
-
-Make a button go the distance.
+Make a button take up the full width of a container.
 
 ```html
-<button class="button button-full-width">Primary</button>
+<button class="button button-block">Block</button>
 ```
 
-### Loading
+### Loading buttons
 
 Ensure the user knows they need to wait for some event (like a fetch request) in order to interact with a button.
 
 ```html
-<button class="button button-primary button-loading">Primary</button>
-<button class="button button-success button-loading">Success</button>
-<button class="button button-warning button-loading">Warning</button>
-<button class="button button-info button-loading">Info</button>
-<button class="button button-danger button-loading">Danger</button>
-```
-
-## Solid Buttons
-
-To ensure design fidelity, Atlas only enables one solid button by default. Too may solid buttons can make a page look busy.
-
-```html
-<button class="button button-primary-solid">Primary</button>
-```
-
-You may enable more solid button colors by overriding the `$solid-button-colors` variable in your Sass:
-
-```scss
-$solid-button-colors: 'primary' 'danger' 'info' 'warning';
-```
-
-```html
-<div class="button">Button</div>
-<div class="button button-clear">Clear</div>
-<div class="button button-filled">Filled</div>
-<br />
-
-<div class="button button-primary">Button</div>
-<div class="button button-clear button-primary">Clear</div>
-<div class="button button-filled button-primary">Filled</div>
-<br />
-
-<div class="button button-danger">Button</div>
-<div class="button button-clear button-danger">Clear</div>
-<div class="button button-filled button-danger">Filled</div>
-<br />
-
-<div class="button button-success">Button</div>
-<div class="button button-clear button-success">Clear</div>
-<div class="button button-filled button-success">Filled</div>
+<button class="button is-loading">Primary</button>
+<button class="button button-primary is-loading">Primary</button>
+<button class="button button-success is-loading">Success</button>
+<button class="button button-warning is-loading">Warning</button>
+<button class="button button-info is-loading">Info</button>
+<button class="button button-danger is-loading">Danger</button>
+<button class="button button-clear is-loading">Primary</button>
+<button class="button button-clear button-primary is-loading">Primary</button>
+<button class="button button-clear button-success is-loading">Success</button>
+<button class="button button-clear button-warning is-loading">Warning</button>
+<button class="button button-clear button-info is-loading">Info</button>
+<button class="button button-clear button-danger is-loading">Danger</button>
+<button class="button button-filled is-loading">Primary</button>
+<button class="button button-filled button-primary is-loading">Primary</button>
+<button class="button button-filled button-success is-loading">Success</button>
+<button class="button button-filled button-warning is-loading">Warning</button>
+<button class="button button-filled button-info is-loading">Info</button>
+<button class="button button-filled button-danger is-loading">Danger</button>
 ```
