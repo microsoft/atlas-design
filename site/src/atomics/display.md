@@ -8,21 +8,13 @@ template: standard
 
 Display atomics are used to set the display behavior of an element.
 
-## Class Pattern
-
-`display-<value>-<screensize>`
-
-For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md).
-
-Accepted values
-
-`block, flex, inline, inline-block, inline-flex, grid, none`
-
-Accepted screensizes
-
-`tablet, desktop, widescreen`
+| cssproperty | value                                                                    | screensize                        |
+| ----------- | ------------------------------------------------------------------------ | --------------------------------- |
+| `display`   | `block`, `flex`, `inline`, `inline-block`, `inline-flex`, `grid`, `none` | `tablet`, `desktop`, `widescreen` |
 
 ## Usage
+
+Here is an example of display atomics being used.
 
 ```html
 <div class="display-block border">
@@ -30,6 +22,10 @@ Accepted screensizes
 	<div>Foo</div>
 </div>
 ```
+
+### Responsive rules
+
+Here are a few examples of display atomics being used for different screensizes.
 
 ```html
 <div class="display-flex-tablet border">
@@ -52,7 +48,9 @@ Accepted screensizes
 </div>
 ```
 
-Available Classes
+## Available classes
+
+List of all available classes:
 
 ```atomics-filter
 display-block
