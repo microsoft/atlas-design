@@ -26,7 +26,7 @@ Provide a focused example that displays this atomic's usage.
 
 ### Responsive rules
 
-If there are screen-specific class variations are available they can be described in this section.
+If there are screen-specific class variations available they can be described in this section.
 
 ```html
 <div class="border-tablet padding-s">
