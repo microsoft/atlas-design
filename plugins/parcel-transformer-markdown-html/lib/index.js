@@ -145,7 +145,11 @@ module.exports = new Transformer({
 		const code = await asset.getCode();
 		const { body, attributes } = frontMatter(code);
 
-		const parsedCode = marked(body);
+		const parsedCode = attributes.import
+			? await options.inputFS
+					.readFile(path.join(process.cwd(), attributes.import), 'utf-8')
+					.then(content => marked(content))
+			: marked(body);
 
 		if (attributes.template) {
 			const workingDir = process.cwd();
