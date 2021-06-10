@@ -1,5 +1,19 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.3.0
+
+### Minor Changes
+
+- 65129ae: Add ability to add figmaEmbed to yaml front matter.
+
+### Patch Changes
+
+- 1aa4634: Upgrade Parcel deps.
+- Updated dependencies [8a29033]
+- Updated dependencies [1aa4634]
+- Updated dependencies [0772431]
+  - @microsoft/atlas-css@0.12.0
+
 ## 2.2.0
 
 ### Minor Changes

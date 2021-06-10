@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-css",
-	"version": "0.11.0",
+	"version": "0.12.0",
 	"main": "dist/index.css",
 	"source": "src/index.scss",
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",

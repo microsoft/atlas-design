@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.5.1
+
+### Patch Changes
+
+- 1aa4634: Upgrade Parcel deps.
+- 65129ae: Add ability to add figmaEmbed to yaml front matter.
+
 ## 0.5.0
 
 ### Minor Changes
