@@ -10,7 +10,7 @@ html {
 
 	@include tablet {
 		display: grid;
-		grid-template: auto 1fr auto auto / auto 1fr auto; // [ rows / columns ]
+		grid-template: auto 1fr auto auto / 20rem 1fr auto; // [ rows / columns ]
 
 		grid-template-areas:
 			'header header header'
@@ -59,7 +59,7 @@ html {
 }
 
 .layout-container {
-	max-width: 70ch;
+	max-width: $reading-max-width;
 	margin: auto;
 	@include tablet {
 		//Replace with padding-inline when IE supported is dropped
