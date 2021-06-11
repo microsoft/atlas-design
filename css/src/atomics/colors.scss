@@ -93,20 +93,22 @@
 // Background color
 
 .background-color-body {
-	outline-color: $text;
+	outline-color: $text !important;
 	background-color: $body-background !important;
 }
 
 .background-color-body-medium {
-	outline-color: $text;
+	outline-color: $text !important;
 	background-color: $body-background-medium !important;
 }
 
 .background-color-alternate {
+	outline-color: $text-invert !important;
 	background-color: $alternate-background !important;
 }
 
 .background-color-alternate-medium {
+	outline-color: $text-invert !important;
 	background-color: $alternate-background-medium !important;
 }
 
@@ -117,6 +119,7 @@
 
 .background-color-alternating-grey {
 	border-top: 1px solid $border-white-high-contrast;
+	outline-color: $text !important;
 
 	&:nth-of-type(even) {
 		outline-color: $text;
@@ -131,6 +134,7 @@
 
 .background-color-alternating-grey-reversed {
 	border-top: 1px solid $border-white-high-contrast;
+	outline-color: $text !important;
 
 	&:nth-of-type(even) {
 		outline-color: $text;

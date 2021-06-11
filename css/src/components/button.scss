@@ -13,18 +13,9 @@ $button-border-radius: $radius-small;
 $button-padding-vertical: calc(0.375em - #{$button-border-width}) !default;
 $button-padding-horizontal: 0.75em !default;
 
-$button-extra-small-padding-vertical: calc(0.375em - #{$button-border-width}) !default;
-$button-extra-small-padding-horizontal: 1em !default;
-
 $button-hover-color: $text !default;
 $button-hover-border-color: $default-hover !default;
 $button-hover-background-color: $default-hover-invert !default;
-
-$button-focus-color: $text !default;
-$button-focus-border-color: $primary !default;
-
-$button-active-color: $text !default;
-$button-active-border-color: $text !default;
 
 $button-disabled-background-color: $body-background-medium !default;
 $button-disabled-shadow: none !default;
@@ -32,14 +23,6 @@ $button-disabled-opacity: 0.5 !default;
 
 $button-icon-spacing: 0.375em !default;
 $button-font-weight: $weight-semibold !default;
-
-@mixin button-small {
-	font-size: $button-small-font-size;
-}
-
-@mixin button-large {
-	font-size: $button-large-font-size;
-}
 
 @if $features-button {
 	.button {
@@ -79,19 +62,11 @@ $button-font-weight: $weight-semibold !default;
 			}
 		}
 
-		// States
-
 		&:hover,
 		&.is-hovered {
 			border-color: $button-hover-border-color;
 			background-color: $button-hover-background-color;
 			color: $button-hover-color;
-		}
-
-		&.focus-visible,
-		&.is-focused {
-			border-color: $button-focus-border-color;
-			color: $button-focus-color;
 		}
 
 		&:visited {
@@ -101,11 +76,11 @@ $button-font-weight: $weight-semibold !default;
 		// Sizes
 
 		&.button-small {
-			@include button-small;
+			font-size: $button-small-font-size;
 		}
 
 		&.button-large {
-			@include button-large;
+			font-size: $button-large-font-size;
 		}
 
 		// Modifiers
@@ -140,9 +115,6 @@ $button-font-weight: $weight-semibold !default;
 		@each $name, $color-set in $colors {
 			$base: nth($color-set, $color-index-base);
 			$dark: nth($color-set, $color-index-dark);
-			$hover: nth($color-set, $color-index-hover);
-			$active: nth($color-set, $color-index-active);
-			$invert: nth($color-set, $color-index-invert);
 			$background: nth($color-set, $color-index-background);
 
 			&.button-#{$name} {
@@ -155,9 +127,7 @@ $button-font-weight: $weight-semibold !default;
 				}
 
 				&:hover,
-				&.is-hovered,
-				&.focus-visible,
-				&.is-focused {
+				&.is-hovered {
 					background-color: $background;
 					color: $dark;
 				}
@@ -175,7 +145,11 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 .button.button-clear {
 	border-color: transparent;
 	background-color: transparent;
-	color: currentColor;
+
+	&,
+	&:visited {
+		color: currentColor;
+	}
 
 	&.is-hovered,
 	&:hover,
@@ -183,16 +157,9 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 		background-color: $button-clear-hover-background-color;
 	}
 
-	&:visited {
-		color: currentColor;
-	}
-
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
 		$dark: nth($color-set, $color-index-dark);
-		$hover: nth($color-set, $color-index-hover);
-		$active: nth($color-set, $color-index-active);
-		$invert: nth($color-set, $color-index-invert);
 		$background: nth($color-set, $color-index-background);
 
 		&.button-#{$name} {
@@ -202,8 +169,7 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 			}
 
 			&:hover,
-			&.is-hovered,
-			&.focus-visible {
+			&.is-hovered {
 				background-color: $background;
 				color: $dark;
 			}
@@ -232,9 +198,7 @@ $button-filled-text-color: $text-invert !default;
 	color: $button-filled-text-color;
 
 	&:hover,
-	&.is-hovered,
-	&.focus-visible,
-	&:active {
+	&.is-hovered {
 		background-color: $button-filled-background-color-hover;
 	}
 
@@ -246,7 +210,6 @@ $button-filled-text-color: $text-invert !default;
 
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
-		$dark: nth($color-set, $color-index-dark);
 		$hover: nth($color-set, $color-index-hover);
 		$active: nth($color-set, $color-index-active);
 		$invert: nth($color-set, $color-index-invert);
@@ -258,8 +221,7 @@ $button-filled-text-color: $text-invert !default;
 			color: $invert;
 
 			&:hover,
-			&.focus-visible,
-			&:active {
+			&.is-hovered {
 				border-color: $hover;
 				background-color: $hover;
 				color: $invert;
