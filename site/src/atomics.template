@@ -1,0 +1,59 @@
+---
+title: Title
+description: Description
+template: standard
+---
+
+# Page title
+
+The first thing is the general description.
+
+Consider using a table to organize information.
+
+| cssproperty | value                           | screensize |
+| ----------- | ------------------------------- | ---------- |
+| `<name>`    | `<value>`, `<value>`, `<value>` | `<size>`   |
+
+## Usage
+
+Provide a focused example that displays this atomic's usage.
+
+```html
+<div>
+  <button class="button">Click me</button>
+</div>
+```
+
+### Responsive rules
+
+If there are screen-specific class variations available they can be described in this section.
+
+```html
+<div class="border-tablet padding-s">
+	<p>Border on tablet and up</p>
+</div>
+```
+
+### Modifier heading
+
+If there are tokens variations available such as font weight in typography, or radius rules in border, the next section(s) should be about them.
+
+```html
+<div class="border border-radius padding-s">
+	<p>Default radius</p>
+</div>
+```
+
+## Available classes
+
+List of all available classes:
+
+```atomics-filter
+.<name>-<value-1>
+.<name>-<value-2>
+.<name>-<value-3>
+.<name>-<value-1>-<screensize>
+.<name>-<value-2>-<screensize>
+.<name>-<value-3>-<screensize>
+[...etc]
+```
