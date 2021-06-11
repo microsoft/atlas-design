@@ -10,7 +10,7 @@ html {
 
 	@include tablet {
 		display: grid;
-		grid-template: auto 1fr auto auto / 20rem 1fr auto; // [ rows / columns ]
+		grid-template: auto 1fr auto auto / 15rem 1fr auto; // [ rows / columns ]
 
 		grid-template-areas:
 			'header header header'
@@ -20,6 +20,8 @@ html {
 	}
 
 	@include widescreen {
+		grid-template: auto 1fr auto auto / 20rem 1fr auto; // [ rows / columns ]
+
 		grid-template-areas:
 			'header header header'
 			'nav main aside'
@@ -116,9 +118,5 @@ html.debug {
 
 	#footer {
 		@include debug('footer');
-	}
-
-	.content-container {
-		@include debug('reading-container');
 	}
 }
