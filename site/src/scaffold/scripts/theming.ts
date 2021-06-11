@@ -97,11 +97,11 @@ export function getPreferredTheme(prefersDarkTheme: boolean = false): ThemeType 
  */
 export function setTheme(appliedTheme: ThemeType) {
 	const previousTheme = currentTheme;
-	setGlobalThemeValue(appliedTheme);
-	setThemeClass(appliedTheme);
 	if (previousTheme === appliedTheme) {
 		return;
 	}
+	setGlobalThemeValue(appliedTheme);
+	setThemeClass(appliedTheme);
 }
 
 /**
