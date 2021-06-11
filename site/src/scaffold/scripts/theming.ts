@@ -75,12 +75,6 @@ export function storeTheme(theme: ThemeType) {
 }
 
 export function getPreferredTheme(prefersDarkTheme: boolean = false): ThemeType {
-	// For obsolete browsers theme should always be light
-	if (document.documentElement.classList.contains('obsolete-browser')) {
-		storeTheme('light');
-		return 'light';
-	}
-
 	// check for user selection
 	const theme = localStorage.getItem('theme');
 	if (/^light|dark|high-contrast$/.test(theme)) {
