@@ -11,8 +11,24 @@
 		<link rel="stylesheet" href="~/src/scaffold/index.scss">
 	</head>
 	<body id="body">
-		<header id="header" style="border-bottom: 1px solid var(--theme-border)">
-			<a href="~/src/index.md" class="color-text text-decoration-none font-weight-bold">Atlas Design</a>
+		<header id="header" class="border-bottom display-flex justify-content-space-between">
+			<a href="~/src/index.md" class="color-text text-decoration-none font-weight-bold">
+				<span class="margin-right-xxs icon">
+					<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect width="10" height="10" class="fill-current-color" />
+						<rect x="11" width="10" height="10" class="fill-current-color" />
+						<rect y="11" width="10" height="10" class="fill-current-color" />
+						<rect x="11" y="11" width="10" height="10" class="fill-current-color" />
+					</svg>
+				</span>
+				<span class="font-size-l">Atlas Design</span>
+			</a>
+			<button
+				aria-hidden="true"
+				class="button button-clear"
+				data-theme-cycle>
+					<span class="icon">🌓</span>
+			</button>
 		</header>
 
 		<main id="main">
