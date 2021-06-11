@@ -35,9 +35,9 @@ Here are a few examples of display atomics being used for different screensizes.
 ```
 
 ```html
-<div class="display-inline-desktop border">
-	<div>Baz</div>
-	<div>Baz</div>
+<div class="border">
+	<div class="display-inline-desktop">Baz</div>
+	<div class="display-inline-desktop">Baz</div>
 </div>
 ```
 
