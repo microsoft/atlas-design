@@ -1,5 +1,11 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.4.0
+
+### Minor Changes
+
+- c536351: Create Atomics overview page.
+
 ## 2.3.0
 
 ### Minor Changes
