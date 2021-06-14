@@ -37,11 +37,15 @@ All buttons, by default, are secondary buttons. There are three gradutating seco
 
 A visual style used to highlight only the most important actions. To avoid confusing users, don't use more than more primary button within a section or view.
 
-| Type     | Class                      | Default State                                                        | Hover                                                                           |
-| -------- | -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Outlined | `.button`                  | <button class="button button-primary">Default</button>               | <button class="button button-primary is-hovered">Default</button>               |
-| Clear    | `.button` `.button-clear`  | <button class="button button-primary button-clear">Default</button>  | <button class="button button-primary button-clear is-hovered">Default</button>  |
-| Filled   | `.button` `.button-filled` | <button class="button button-primary button-filled">Default</button> | <button class="button button-primary button-filled is-hovered">Default</button> |
+| Type     | Class                                          | Default State                                                        | Hover                                                                           |
+| -------- | ---------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Outlined | `.button`, `.button-primary`                   | <button class="button button-primary">Default</button>               | <button class="button button-primary is-hovered">Default</button>               |
+| Clear    | `.button`, `.button-primary`, `.button-clear`  | <button class="button button-primary button-clear">Default</button>  | <button class="button button-primary button-clear is-hovered">Default</button>  |
+| Filled   | `.button`, `.button-primary`, `.button-filled` | <button class="button button-primary button-filled">Default</button> | <button class="button button-primary button-filled is-hovered">Default</button> |
+
+```abut-html
+<div class="button button-primary">Click me!</button>
+```
 
 ## Semantic Colors
 
@@ -51,11 +55,15 @@ Semantic colors denote standard value states (such as good, bad, or warning). Ea
 
 Danger buttons are red on most themes. They help reiterature that the intended action is important or potentially dangerous (e.g., deleting an item or transfering ownership).
 
-| Type     | Class                      | Default State                                                       | Hover                                                                          |
-| -------- | -------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| Outlined | `.button`                  | <button class="button button-danger">Default</button>               | <button class="button button-danger is-hovered">Default</button>               |
-| Clear    | `.button` `.button-clear`  | <button class="button button-danger button-clear">Default</button>  | <button class="button button-danger button-clear is-hovered">Default</button>  |
-| Filled   | `.button` `.button-filled` | <button class="button button-danger button-filled">Default</button> | <button class="button button-danger button-filled is-hovered">Default</button> |
+| Type     | Class                                        | Default State                                                       | Hover                                                                          |
+| -------- | -------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Outlined | `.button`, `.button-danger`                  | <button class="button button-danger">Default</button>               | <button class="button button-danger is-hovered">Default</button>               |
+| Clear    | `.button`, `.button-danger`, `.button-clear` | <button class="button button-danger button-clear">Default</button>  | <button class="button button-danger button-clear is-hovered">Default</button>  |
+| Filled   | `.button` `.button-danger`, `.button-filled` | <button class="button button-danger button-filled">Default</button> | <button class="button button-danger button-filled is-hovered">Default</button> |
+
+```abut-html
+<div class="button button-danger">Click me!</button>
+```
 
 ### Success
 
@@ -64,11 +72,15 @@ Success buttons are green on most themes. This color stands for a good, positive
 - You need to highlight a good or positive status.
 - A message contains information about a process that was finalized wihtout any issues. Users need this information later on (for example, to copy values to another app).
 
-| Type     | Class                      | Default State                                                        | Hover                                                                           |
-| -------- | -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Outlined | `.button`                  | <button class="button button-success">Default</button>               | <button class="button button-success is-hovered">Default</button>               |
-| Clear    | `.button` `.button-clear`  | <button class="button button-success button-clear">Default</button>  | <button class="button button-success button-clear is-hovered">Default</button>  |
-| Filled   | `.button` `.button-filled` | <button class="button button-success button-filled">Default</button> | <button class="button button-success button-filled is-hovered">Default</button> |
+| Type     | Class                                         | Default State                                                        | Hover                                                                           |
+| -------- | --------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Outlined | `.button`, `.button-success`                  | <button class="button button-success">Default</button>               | <button class="button button-success is-hovered">Default</button>               |
+| Clear    | `.button`,`.button-success`, `.button-clear`  | <button class="button button-success button-clear">Default</button>  | <button class="button button-success button-clear is-hovered">Default</button>  |
+| Filled   | `.button`, `.button-success` `.button-filled` | <button class="button button-success button-filled">Default</button> | <button class="button button-success button-filled is-hovered">Default</button> |
+
+```abut-html
+<div class="button button-success">Click me!</button>
+```
 
 ### Warning
 
@@ -80,11 +92,15 @@ Warning buttons are yellow on most themes. This color indicates a critical situa
 - The user input was validated and a minor problem occurred. The user can continue without fixing the problem, but might lead to an error later on.
 - A message contains information about a warning.
 
-| Type     | Class                      | Default State                                                        | Hover                                                                           |
-| -------- | -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Outlined | `.button`                  | <button class="button button-warning">Default</button>               | <button class="button button-warning is-hovered">Default</button>               |
-| Clear    | `.button` `.button-clear`  | <button class="button button-warning button-clear">Default</button>  | <button class="button button-warning button-clear is-hovered">Default</button>  |
-| Filled   | `.button` `.button-filled` | <button class="button button-warning button-filled">Default</button> | <button class="button button-warning button-filled is-hovered">Default</button> |
+| Type     | Class                                           | Default State                                                        | Hover                                                                           |
+| -------- | ----------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Outlined | `.button`, `.button-warning`                    | <button class="button button-warning">Default</button>               | <button class="button button-warning is-hovered">Default</button>               |
+| Clear    | `.button`, `.button-warning`, `.button-clear`   | <button class="button button-warning button-clear">Default</button>  | <button class="button button-warning button-clear is-hovered">Default</button>  |
+| Filled   | `.button` , `.button-warning`, `.button-filled` | <button class="button button-warning button-filled">Default</button> | <button class="button button-warning button-filled is-hovered">Default</button> |
+
+```abut-html
+<div class="button button-warning">Click me!</button>
+```
 
 ## Variations
 
@@ -131,4 +147,14 @@ Ensure the user knows they need to wait for some event (like a fetch request) in
 <button class="button button-filled button-warning is-loading">Warning</button>
 <button class="button button-filled button-info is-loading">Info</button>
 <button class="button button-filled button-danger is-loading">Danger</button>
+```
+
+## Adaptive buttons
+
+The default clear button picks up the color the text set on a container. It is best used as an color-accessible button on a color not part of one of the Atlas themes.
+
+```html
+<div class="padding-l" style="color: red; background-color: black">
+	<button class="button button-clear">Click me!</button>
+</div>
 ```
