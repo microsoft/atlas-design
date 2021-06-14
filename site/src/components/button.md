@@ -53,7 +53,7 @@ Semantic colors denote standard value states (such as good, bad, or warning). Ea
 
 ### Danger
 
-Danger buttons are red on most themes. They help reiterature that the intended action is important or potentially dangerous (e.g., deleting an item or transfering ownership).
+Danger buttons are red on most themes. They help reiterature that the intended action is important or potentially dangerous (e.g., deleting an item or transferring ownership).
 
 | Type     | Class                                        | Default State                                                       | Hover                                                                          |
 | -------- | -------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -70,7 +70,7 @@ Danger buttons are red on most themes. They help reiterature that the intended a
 Success buttons are green on most themes. This color stands for a good, positive situation or for the successful completion of a task. Use the good/positive semantic color if ...
 
 - You need to highlight a good or positive status.
-- A message contains information about a process that was finalized wihtout any issues. Users need this information later on (for example, to copy values to another app).
+- A message contains information about a process that was finalized without any issues. Users need this information later on (for example, to copy values to another app).
 
 | Type     | Class                                         | Default State                                                        | Hover                                                                           |
 | -------- | --------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
@@ -88,7 +88,7 @@ Warning buttons are yellow on most themes. This color indicates a critical situa
 
 - You want to highlight a critical status.
 - A minor problem has occcurred. The user can carry on working but might run into an error later on.
-- the current mode or page can be finalized, but doing so might lead to an error later on.
+- The current mode or page can be finalized, but doing so might lead to an error later on.
 - The user input was validated and a minor problem occurred. The user can continue without fixing the problem, but might lead to an error later on.
 - A message contains information about a warning.
 
