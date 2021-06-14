@@ -8,45 +8,9 @@ template: standard
 
 Spacing Atomics can be used to add margin or padding on elements. They are especially helpful when composing layouts.
 
-## Class Pattern
-
-`<css-property-name>-<value>-<screensize>`
-
-For general information about the pattern, visit the [Atomics page](https://github.com/microsoft/atlas-design/blob/main/css/src/atomics/README.md).
-
-Accepted property names
-
-- `margin`
-- `padding`
-- `margin-inline`
-- `padding-inline`
-- `margin-block`
-- `padding-block`
-- `margin-top`
-- `padding-top`
-- `margin-right`
-- `padding-right`
-- `margin-bottom`
-- `padding-bottom`
-- `margin-left`
-- `padding-left`
-
-Accepted values
-
-- `none`
-- `xs`
-- `s`
-- `m`
-- `l`
-- `xl`
-- `xxl`
-- `xxxl`
-
-Accepted screensizes
-
-- `tablet`
-- `desktop`
-- `widescreen`
+| cssproperty                                                                                                                                                                                                            | value                                                   | screensize                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------- |
+| `margin`, `padding`, `margin-block`, `padding-block`,`margin-inline`, `padding-inline`, `margin-top`, `padding-top`, `margin-right`, `padding-right`, `margin-bottom`, `padding-bottom`, `margin-left`, `padding-left` | `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl`, `none` | `tablet`, `desktop`, `widescreen` |
 
 ## Usage
 
@@ -55,6 +19,7 @@ Adding uniform spacing
 Use `margin` or `padding` with a size value to add spacing around an element.
 
 ```html
+<div class="margin-xxs border">XXS</div>
 <div class="margin-xs border">XS</div>
 <div class="margin-s border">X</div>
 <div class="margin-m border">M</div>
@@ -89,9 +54,9 @@ Use `margin-left` or `margin-right` with a size value to add left or right margi
 <div class="margin-right-l margin-bottom-m padding-s border">Large right margin</div>
 ```
 
-Adding spacing on a particular screen size
+### Responsive rules
 
-Pair a CSS property mentioned above with a screen size value to target a specific screen width.
+Here is an example of left padding atomics with different screensizes. Resize the browser to see it in action.
 
 ```html
 <div
@@ -101,9 +66,10 @@ Pair a CSS property mentioned above with a screen size value to target a specifi
 </div>
 ```
 
-Available Classes
+## Available classes
 
 ```atomics-filter
+.margin-xxs
 .margin-xs
 .margin-s
 .margin-m
@@ -112,6 +78,7 @@ Available Classes
 .margin-xxl
 .margin-xxxl
 .margin-none
+.margin-inline-xxs
 .margin-inline-xs
 .margin-inline-s
 .margin-inline-m
@@ -120,6 +87,7 @@ Available Classes
 .margin-inline-xxl
 .margin-inline-xxxl
 .margin-inline-none
+.margin-block-xxs
 .margin-block-xs
 .margin-block-s
 .margin-block-m
@@ -128,6 +96,7 @@ Available Classes
 .margin-block-xxl
 .margin-block-xxxl
 .margin-block-none
+.margin-top-xxs
 .margin-top-xs
 .margin-top-s
 .margin-top-m
@@ -136,6 +105,7 @@ Available Classes
 .margin-top-xxl
 .margin-top-xxxl
 .margin-top-none
+.margin-bottom-xxs
 .margin-bottom-xs
 .margin-bottom-s
 .margin-bottom-m
@@ -144,6 +114,7 @@ Available Classes
 .margin-bottom-xxl
 .margin-bottom-xxxl
 .margin-bottom-none
+.margin-left-xxs
 .margin-left-xs
 .margin-left-s
 .margin-left-m
@@ -152,6 +123,7 @@ Available Classes
 .margin-left-xxl
 .margin-left-xxxl
 .margin-left-none
+.margin-right-xxs
 .margin-right-xs
 .margin-right-s
 .margin-right-m
@@ -160,6 +132,7 @@ Available Classes
 .margin-right-xxl
 .margin-right-xxxl
 .margin-right-none
+.padding-xxs
 .padding-xs
 .padding-s
 .padding-m
@@ -168,6 +141,7 @@ Available Classes
 .padding-xxl
 .padding-xxxl
 .padding-none
+.padding-inline-xxs
 .padding-inline-xs
 .padding-inline-s
 .padding-inline-m
@@ -176,6 +150,7 @@ Available Classes
 .padding-inline-xxl
 .padding-inline-xxxl
 .padding-inline-none
+.padding-block-xxs
 .padding-block-xs
 .padding-block-s
 .padding-block-m
@@ -184,6 +159,7 @@ Available Classes
 .padding-block-xxl
 .padding-block-xxxl
 .padding-block-none
+.padding-top-xxs
 .padding-top-xs
 .padding-top-s
 .padding-top-m
@@ -192,6 +168,7 @@ Available Classes
 .padding-top-xxl
 .padding-top-xxxl
 .padding-top-none
+.padding-bottom-xxs
 .padding-bottom-xs
 .padding-bottom-s
 .padding-bottom-m
@@ -200,6 +177,7 @@ Available Classes
 .padding-bottom-xxl
 .padding-bottom-xxxl
 .padding-bottom-none
+.padding-left-xxs
 .padding-left-xs
 .padding-left-s
 .padding-left-m
@@ -208,6 +186,7 @@ Available Classes
 .padding-left-xxl
 .padding-left-xxxl
 .padding-left-none
+.padding-right-xxs
 .padding-right-xs
 .padding-right-s
 .padding-right-m
@@ -216,6 +195,7 @@ Available Classes
 .padding-right-xxl
 .padding-right-xxxl
 .padding-right-none
+.margin-xxs-tablet
 .margin-xs-tablet
 .margin-s-tablet
 .margin-m-tablet
@@ -224,6 +204,7 @@ Available Classes
 .margin-xxl-tablet
 .margin-xxxl-tablet
 .margin-none-tablet
+.margin-inline-xxs-tablet
 .margin-inline-xs-tablet
 .margin-inline-s-tablet
 .margin-inline-m-tablet
@@ -232,6 +213,7 @@ Available Classes
 .margin-inline-xxl-tablet
 .margin-inline-xxxl-tablet
 .margin-inline-none-tablet
+.margin-block-xxs-tablet
 .margin-block-xs-tablet
 .margin-block-s-tablet
 .margin-block-m-tablet
@@ -240,6 +222,7 @@ Available Classes
 .margin-block-xxl-tablet
 .margin-block-xxxl-tablet
 .margin-block-none-tablet
+.margin-top-xxs-tablet
 .margin-top-xs-tablet
 .margin-top-s-tablet
 .margin-top-m-tablet
@@ -248,6 +231,7 @@ Available Classes
 .margin-top-xxl-tablet
 .margin-top-xxxl-tablet
 .margin-top-none-tablet
+.margin-bottom-xxs-tablet
 .margin-bottom-xs-tablet
 .margin-bottom-s-tablet
 .margin-bottom-m-tablet
@@ -256,6 +240,7 @@ Available Classes
 .margin-bottom-xxl-tablet
 .margin-bottom-xxxl-tablet
 .margin-bottom-none-tablet
+.margin-left-xxs-tablet
 .margin-left-xs-tablet
 .margin-left-s-tablet
 .margin-left-m-tablet
@@ -264,6 +249,7 @@ Available Classes
 .margin-left-xxl-tablet
 .margin-left-xxxl-tablet
 .margin-left-none-tablet
+.margin-right-xxs-tablet
 .margin-right-xs-tablet
 .margin-right-s-tablet
 .margin-right-m-tablet
@@ -272,6 +258,7 @@ Available Classes
 .margin-right-xxl-tablet
 .margin-right-xxxl-tablet
 .margin-right-none-tablet
+.padding-xxs-tablet
 .padding-xs-tablet
 .padding-s-tablet
 .padding-m-tablet
@@ -280,6 +267,7 @@ Available Classes
 .padding-xxl-tablet
 .padding-xxxl-tablet
 .padding-none-tablet
+.padding-inline-xxs-tablet
 .padding-inline-xs-tablet
 .padding-inline-s-tablet
 .padding-inline-m-tablet
@@ -288,6 +276,7 @@ Available Classes
 .padding-inline-xxl-tablet
 .padding-inline-xxxl-tablet
 .padding-inline-none-tablet
+.padding-block-xxs-tablet
 .padding-block-xs-tablet
 .padding-block-s-tablet
 .padding-block-m-tablet
@@ -296,6 +285,7 @@ Available Classes
 .padding-block-xxl-tablet
 .padding-block-xxxl-tablet
 .padding-block-none-tablet
+.padding-top-xxs-tablet
 .padding-top-xs-tablet
 .padding-top-s-tablet
 .padding-top-m-tablet
@@ -304,6 +294,7 @@ Available Classes
 .padding-top-xxl-tablet
 .padding-top-xxxl-tablet
 .padding-top-none-tablet
+.padding-bottom-xxs-tablet
 .padding-bottom-xs-tablet
 .padding-bottom-s-tablet
 .padding-bottom-m-tablet
@@ -312,6 +303,7 @@ Available Classes
 .padding-bottom-xxl-tablet
 .padding-bottom-xxxl-tablet
 .padding-bottom-none-tablet
+.padding-left-xxs-tablet
 .padding-left-xs-tablet
 .padding-left-s-tablet
 .padding-left-m-tablet
@@ -320,6 +312,7 @@ Available Classes
 .padding-left-xxl-tablet
 .padding-left-xxxl-tablet
 .padding-left-none-tablet
+.padding-right-xxs-tablet
 .padding-right-xs-tablet
 .padding-right-s-tablet
 .padding-right-m-tablet
@@ -328,6 +321,7 @@ Available Classes
 .padding-right-xxl-tablet
 .padding-right-xxxl-tablet
 .padding-right-none-tablet
+.margin-xxs-desktop
 .margin-xs-desktop
 .margin-s-desktop
 .margin-m-desktop
@@ -336,6 +330,7 @@ Available Classes
 .margin-xxl-desktop
 .margin-xxxl-desktop
 .margin-none-desktop
+.margin-inline-xxs-desktop
 .margin-inline-xs-desktop
 .margin-inline-s-desktop
 .margin-inline-m-desktop
@@ -344,6 +339,7 @@ Available Classes
 .margin-inline-xxl-desktop
 .margin-inline-xxxl-desktop
 .margin-inline-none-desktop
+.margin-block-xxs-desktop
 .margin-block-xs-desktop
 .margin-block-s-desktop
 .margin-block-m-desktop
@@ -352,6 +348,7 @@ Available Classes
 .margin-block-xxl-desktop
 .margin-block-xxxl-desktop
 .margin-block-none-desktop
+.margin-top-xxs-desktop
 .margin-top-xs-desktop
 .margin-top-s-desktop
 .margin-top-m-desktop
@@ -360,6 +357,7 @@ Available Classes
 .margin-top-xxl-desktop
 .margin-top-xxxl-desktop
 .margin-top-none-desktop
+.margin-bottom-xxs-desktop
 .margin-bottom-xs-desktop
 .margin-bottom-s-desktop
 .margin-bottom-m-desktop
@@ -368,6 +366,7 @@ Available Classes
 .margin-bottom-xxl-desktop
 .margin-bottom-xxxl-desktop
 .margin-bottom-none-desktop
+.margin-left-xxs-desktop
 .margin-left-xs-desktop
 .margin-left-s-desktop
 .margin-left-m-desktop
@@ -376,6 +375,7 @@ Available Classes
 .margin-left-xxl-desktop
 .margin-left-xxxl-desktop
 .margin-left-none-desktop
+.margin-right-xxs-desktop
 .margin-right-xs-desktop
 .margin-right-s-desktop
 .margin-right-m-desktop
@@ -384,6 +384,7 @@ Available Classes
 .margin-right-xxl-desktop
 .margin-right-xxxl-desktop
 .margin-right-none-desktop
+.padding-xxs-desktop
 .padding-xs-desktop
 .padding-s-desktop
 .padding-m-desktop
@@ -392,6 +393,7 @@ Available Classes
 .padding-xxl-desktop
 .padding-xxxl-desktop
 .padding-none-desktop
+.padding-inline-xxs-desktop
 .padding-inline-xs-desktop
 .padding-inline-s-desktop
 .padding-inline-m-desktop
@@ -400,6 +402,7 @@ Available Classes
 .padding-inline-xxl-desktop
 .padding-inline-xxxl-desktop
 .padding-inline-none-desktop
+.padding-block-xxs-desktop
 .padding-block-xs-desktop
 .padding-block-s-desktop
 .padding-block-m-desktop
@@ -408,6 +411,7 @@ Available Classes
 .padding-block-xxl-desktop
 .padding-block-xxxl-desktop
 .padding-block-none-desktop
+.padding-top-xxs-desktop
 .padding-top-xs-desktop
 .padding-top-s-desktop
 .padding-top-m-desktop
@@ -416,6 +420,7 @@ Available Classes
 .padding-top-xxl-desktop
 .padding-top-xxxl-desktop
 .padding-top-none-desktop
+.padding-bottom-xxs-desktop
 .padding-bottom-xs-desktop
 .padding-bottom-s-desktop
 .padding-bottom-m-desktop
@@ -424,6 +429,7 @@ Available Classes
 .padding-bottom-xxl-desktop
 .padding-bottom-xxxl-desktop
 .padding-bottom-none-desktop
+.padding-left-xxs-desktop
 .padding-left-xs-desktop
 .padding-left-s-desktop
 .padding-left-m-desktop
@@ -432,6 +438,7 @@ Available Classes
 .padding-left-xxl-desktop
 .padding-left-xxxl-desktop
 .padding-left-none-desktop
+.padding-right-xxs-desktop
 .padding-right-xs-desktop
 .padding-right-s-desktop
 .padding-right-m-desktop
@@ -440,6 +447,7 @@ Available Classes
 .padding-right-xxl-desktop
 .padding-right-xxxl-desktop
 .padding-right-none-desktop
+.margin-xxs-widescreen
 .margin-xs-widescreen
 .margin-s-widescreen
 .margin-m-widescreen
@@ -448,6 +456,7 @@ Available Classes
 .margin-xxl-widescreen
 .margin-xxxl-widescreen
 .margin-none-widescreen
+.margin-inline-xxs-widescreen
 .margin-inline-xs-widescreen
 .margin-inline-s-widescreen
 .margin-inline-m-widescreen
@@ -456,6 +465,7 @@ Available Classes
 .margin-inline-xxl-widescreen
 .margin-inline-xxxl-widescreen
 .margin-inline-none-widescreen
+.margin-block-xxs-widescreen
 .margin-block-xs-widescreen
 .margin-block-s-widescreen
 .margin-block-m-widescreen
@@ -464,6 +474,7 @@ Available Classes
 .margin-block-xxl-widescreen
 .margin-block-xxxl-widescreen
 .margin-block-none-widescreen
+.margin-top-xxs-widescreen
 .margin-top-xs-widescreen
 .margin-top-s-widescreen
 .margin-top-m-widescreen
@@ -472,6 +483,7 @@ Available Classes
 .margin-top-xxl-widescreen
 .margin-top-xxxl-widescreen
 .margin-top-none-widescreen
+.margin-bottom-xxs-widescreen
 .margin-bottom-xs-widescreen
 .margin-bottom-s-widescreen
 .margin-bottom-m-widescreen
@@ -480,6 +492,7 @@ Available Classes
 .margin-bottom-xxl-widescreen
 .margin-bottom-xxxl-widescreen
 .margin-bottom-none-widescreen
+.margin-left-xxs-widescreen
 .margin-left-xs-widescreen
 .margin-left-s-widescreen
 .margin-left-m-widescreen
@@ -488,6 +501,7 @@ Available Classes
 .margin-left-xxl-widescreen
 .margin-left-xxxl-widescreen
 .margin-left-none-widescreen
+.margin-right-xxs-widescreen
 .margin-right-xs-widescreen
 .margin-right-s-widescreen
 .margin-right-m-widescreen
@@ -496,6 +510,7 @@ Available Classes
 .margin-right-xxl-widescreen
 .margin-right-xxxl-widescreen
 .margin-right-none-widescreen
+.padding-xxs-widescreen
 .padding-xs-widescreen
 .padding-s-widescreen
 .padding-m-widescreen
@@ -504,6 +519,7 @@ Available Classes
 .padding-xxl-widescreen
 .padding-xxxl-widescreen
 .padding-none-widescreen
+.padding-inline-xxs-widescreen
 .padding-inline-xs-widescreen
 .padding-inline-s-widescreen
 .padding-inline-m-widescreen
@@ -512,6 +528,7 @@ Available Classes
 .padding-inline-xxl-widescreen
 .padding-inline-xxxl-widescreen
 .padding-inline-none-widescreen
+.padding-block-xxs-widescreen
 .padding-block-xs-widescreen
 .padding-block-s-widescreen
 .padding-block-m-widescreen
@@ -520,6 +537,7 @@ Available Classes
 .padding-block-xxl-widescreen
 .padding-block-xxxl-widescreen
 .padding-block-none-widescreen
+.padding-top-xxs-widescreen
 .padding-top-xs-widescreen
 .padding-top-s-widescreen
 .padding-top-m-widescreen
@@ -528,6 +546,7 @@ Available Classes
 .padding-top-xxl-widescreen
 .padding-top-xxxl-widescreen
 .padding-top-none-widescreen
+.padding-bottom-xxs-widescreen
 .padding-bottom-xs-widescreen
 .padding-bottom-s-widescreen
 .padding-bottom-m-widescreen
@@ -536,6 +555,7 @@ Available Classes
 .padding-bottom-xxl-widescreen
 .padding-bottom-xxxl-widescreen
 .padding-bottom-none-widescreen
+.padding-left-xxs-widescreen
 .padding-left-xs-widescreen
 .padding-left-s-widescreen
 .padding-left-m-widescreen
@@ -544,6 +564,7 @@ Available Classes
 .padding-left-xxl-widescreen
 .padding-left-xxxl-widescreen
 .padding-left-none-widescreen
+.padding-right-xxs-widescreen
 .padding-right-xs-widescreen
 .padding-right-s-widescreen
 .padding-right-m-widescreen
