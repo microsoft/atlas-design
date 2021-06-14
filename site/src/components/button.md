@@ -29,6 +29,10 @@ All buttons, by default, are secondary buttons. There are three gradutating seco
 | Clear    | `.button` `.button-clear`  | <button class="button button-clear">Default</button>  | <button class="button button-clear is-hovered">Default</button>  |
 | Filled   | `.button` `.button-filled` | <button class="button button-filled">Default</button> | <button class="button button-filled is-hovered">Default</button> |
 
+```abut-html
+<div class="button">Click me!</button>
+```
+
 ## Primary
 
 A visual style used to highlight only the most important actions. To avoid confusing users, don't use more than more primary button within a section or view.
