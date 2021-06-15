@@ -1,5 +1,14 @@
 # @microsoft/atlas-site
 
+## 0.6.0
+
+### Minor Changes
+
+- c536351: Create Atomics overview page.
+- f3336b7: Add initial version of theme switch to Atlas site.
+- 17d007f: Add documentation for Button component.
+- 3d906fb: Add documentation for display atomics.
+
 ## 0.5.1
 
 ### Patch Changes
