@@ -1,0 +1,20 @@
+$features-icon: true !default;
+$icon-dimensions: 1em !default;
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	&,
+	svg,
+	img {
+		width: $icon-dimensions;
+		height: $icon-dimensions;
+	}
+
+	&.icon-rounded {
+		padding: 0.6rem; // ensures icon is not cut off by rounded border
+		border-radius: 50%;
+	}
+}

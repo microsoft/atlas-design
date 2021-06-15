@@ -1,3 +1,7 @@
+html {
+	font-size: 16px;
+}
+
 #body {
 	width: 100%;
 	height: 100%;
@@ -6,7 +10,7 @@
 
 	@include tablet {
 		display: grid;
-		grid-template: auto 1fr auto auto / auto 1fr auto; // [ rows / columns ]
+		grid-template: auto 1fr auto auto / 15rem 1fr auto; // [ rows / columns ]
 
 		grid-template-areas:
 			'header header header'
@@ -16,6 +20,8 @@
 	}
 
 	@include widescreen {
+		grid-template: auto 1fr auto auto / 20rem 1fr auto; // [ rows / columns ]
+
 		grid-template-areas:
 			'header header header'
 			'nav main aside'
@@ -55,7 +61,7 @@
 }
 
 .layout-container {
-	max-width: 70ch;
+	max-width: $reading-max-width;
 	margin: auto;
 	@include tablet {
 		//Replace with padding-inline when IE supported is dropped
@@ -112,9 +118,5 @@ html.debug {
 
 	#footer {
 		@include debug('footer');
-	}
-
-	.content-container {
-		@include debug('reading-container');
 	}
 }

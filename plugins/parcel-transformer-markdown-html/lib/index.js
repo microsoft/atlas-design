@@ -16,7 +16,8 @@ const languageDisplayNames = {
 	md: 'Markdown',
 	markdown: 'Markdown',
 	'atomics-filter': 'Atomics',
-	atomics: 'Atomics'
+	atomics: 'Atomics',
+	'abut-html': 'HTML'
 };
 
 let filterIds = 0;
@@ -57,6 +58,11 @@ const markedOptions = {
 	},
 	code(code, language) {
 		const elementExample = createExample(language, code);
+		let spacing = 'margin-top-s';
+		if (language === 'abut-html') {
+			spacing = '';
+			language = 'html';
+		}
 		const displayName =
 			language in languageDisplayNames ? languageDisplayNames[language] : language;
 		if (language === 'atomics-filter') {
@@ -64,7 +70,7 @@ const markedOptions = {
 		}
 		return `
 			${elementExample}
-			<div class="code-block margin-top-s">
+			<div class="code-block ${spacing}">
 				<div class="code-block-header">
 					<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
 				</div>
@@ -92,7 +98,7 @@ const markedOptions = {
 	},
 	table(header, body) {
 		return `
-			<div class="markdown table-wrapper margin-top-s">
+			<div class="markdown border table-wrapper margin-top-s">
 				<table class="table">
 					<thead>${header}</thead>
 					<tbody>${body}</tbody>

@@ -1,0 +1,44 @@
+$control-radius: $radius !default;
+$control-radius-small: $radius-small !default;
+
+$control-font-size: $font-size-7 !default;
+$control-border-width: 1px !default;
+
+$control-padding-vertical: calc(0.375em - #{$control-border-width}) !default;
+$control-padding-horizontal: calc(0.625em - #{$control-border-width}) !default;
+
+%control {
+	display: inline-flex;
+	position: relative;
+	align-items: center;
+	justify-content: flex-start;
+	height: 2.25em;
+	padding-top: $control-padding-vertical;
+	padding-right: $control-padding-horizontal;
+	padding-bottom: $control-padding-vertical;
+	padding-left: $control-padding-horizontal;
+	border: $control-border-width solid transparent;
+	border-radius: $control-radius;
+	font-size: $control-font-size;
+	line-height: 1.5;
+	appearance: none;
+	box-shadow: none;
+	vertical-align: top;
+
+	&[disabled] {
+		cursor: not-allowed;
+	}
+}
+
+@mixin control {
+	@extend %control;
+}
+
+@mixin control-small {
+	border-radius: $control-radius-small;
+	font-size: $font-size-small;
+}
+
+@mixin control-large {
+	font-size: $font-size-large;
+}

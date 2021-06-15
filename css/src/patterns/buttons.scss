@@ -1,0 +1,87 @@
+/* stylelint-disable selector-max-specificity, max-nesting-depth */
+
+.buttons {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+
+	&.is-centered {
+		justify-content: center;
+	}
+
+	&.is-right {
+		justify-content: flex-end;
+	}
+
+	.button {
+		margin-bottom: 0.5rem;
+		margin-#{$user-right}: 0.5rem;
+
+		&:only-child,
+		&.is-fullwidth,
+		&.is-full-width {
+			margin-#{$user-right}: 0;
+		}
+
+		&.is-full-width-mobile,
+		&.is-fullwidth-mobile {
+			margin-#{$user-right}: 0;
+
+			@include tablet {
+				margin-#{$user-right}: 0.5rem;
+			}
+		}
+	}
+
+	&:last-child {
+		margin-bottom: -0.5rem;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+
+	&.has-addons,
+	&.addons {
+		.button {
+			&:not(:first-child) {
+				border-bottom-#{$user-left}-radius: 0;
+				border-top-#{$user-left}-radius: 0;
+			}
+
+			&:not(:last-child) {
+				border-bottom-#{$user-right}-radius: 0;
+				border-top-#{$user-right}-radius: 0;
+				margin-#{$user-right}: -1px;
+			}
+
+			&:last-child {
+				margin-#{$user-right}: 0;
+			}
+
+			&:hover,
+			&.is-hovered {
+				z-index: $zindex-hover;
+			}
+
+			&.focus-visible,
+			&.is-focused,
+			&:active,
+			&.is-active,
+			&.is-selected {
+				z-index: $zindex-focus;
+
+				&:hover {
+					z-index: $zindex-multi;
+				}
+			}
+
+			&.is-expanded {
+				flex-grow: 1;
+			}
+		}
+	}
+}
+
+/* stylelint-enable selector-max-specificity, max-nesting-depth */

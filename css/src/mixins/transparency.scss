@@ -1,0 +1,14 @@
+%transparent-effects {
+	outline-color: inherit;
+	background-color: transparent;
+	appearance: none;
+
+	&:not(:hover),
+	&:not(.focus-visible) {
+		background-color: transparent;
+	}
+}
+
+@mixin transparent-effects {
+	@extend %transparent-effects;
+}

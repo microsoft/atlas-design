@@ -1,0 +1,16 @@
+%loader {
+	display: block;
+	position: relative;
+	width: 1em;
+	height: 1em;
+	animation: spinAround 500ms infinite linear;
+	border: 2px solid $border;
+	border-radius: $radius-rounded;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	content: '';
+}
+
+@mixin loader {
+	@extend %loader;
+}
