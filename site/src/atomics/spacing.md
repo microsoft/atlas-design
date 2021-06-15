@@ -14,9 +14,7 @@ Spacing atomics can be used to add margin or padding on elements. They are espec
 
 ## Usage
 
-_Adding uniform spacing_
-
-Use `margin` or `padding` with a size value to add spacing around an element.
+Use `margin` or `padding` with a size value to add uniform spacing around an element.
 
 ```html
 <div class="margin-xxs border">XXS</div>
@@ -28,8 +26,6 @@ Use `margin` or `padding` with a size value to add spacing around an element.
 <div class="margin-xxl border">XXL</div>
 <div class="margin-xxxl border">XXXL</div>
 ```
-
-_Adding horizontal and vertical spacing_
 
 Use `margin-inline` and `padding-inline` with a size value to apply both left and right spacing.
 
@@ -45,9 +41,7 @@ Use `margin-block` and `padding-block` for top and bottom spacing.
 <div class="padding-block-xxl border">Padding-block</div>
 ```
 
-_Adding spacing to a side_
-
-Use `margin-left` or `margin-right` with a size value to add left or right margin to an element.
+Use `margin-<sides>` or `padding-<sides>` with a size value to add spacing to a particular side.
 
 ```html
 <div class="margin-left-s margin-bottom-m padding-s border">Small left margin</div>
@@ -56,7 +50,7 @@ Use `margin-left` or `margin-right` with a size value to add left or right margi
 
 ### Responsive rules
 
-Here is an example of left padding atomics with different screensizes. Resize the browser to see it in action.
+Appending a screen size to an atomic class can be used to apply responsive sizing.
 
 ```html
 <div
