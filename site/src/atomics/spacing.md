@@ -6,7 +6,7 @@ template: standard
 
 # Spacing Atomics
 
-Spacing Atomics can be used to add margin or padding on elements. They are especially helpful when composing layouts.
+Spacing atomics can be used to add margin or padding on elements. They are especially helpful when composing layouts.
 
 | cssproperty                                                                                                                                                                                                            | value                                                   | screensize                        |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------- |
@@ -14,7 +14,7 @@ Spacing Atomics can be used to add margin or padding on elements. They are espec
 
 ## Usage
 
-Adding uniform spacing
+_Adding uniform spacing_
 
 Use `margin` or `padding` with a size value to add spacing around an element.
 
@@ -29,7 +29,7 @@ Use `margin` or `padding` with a size value to add spacing around an element.
 <div class="margin-xxxl border">XXXL</div>
 ```
 
-Adding horizontal and vertical spacing
+_Adding horizontal and vertical spacing_
 
 Use `margin-inline` and `padding-inline` with a size value to apply both left and right spacing.
 
@@ -45,7 +45,7 @@ Use `margin-block` and `padding-block` for top and bottom spacing.
 <div class="padding-block-xxl border">Padding-block</div>
 ```
 
-Adding spacing to a side
+_Adding spacing to a side_
 
 Use `margin-left` or `margin-right` with a size value to add left or right margin to an element.
 
