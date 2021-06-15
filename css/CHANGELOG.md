@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 0.13.0
+
+### Minor Changes
+
+- 17d007f: Add Button component.
+
+### Patch Changes
+
+- 17d007f: Modify success:base and danger:base and danger:invert on dark theme.
+
 ## 0.12.0
 
 ### Minor Changes
