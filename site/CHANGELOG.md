@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.6.1
+
+### Patch Changes
+
+- d7eb16b: Add .htmlnanorc file and prevent SVG minification.
+
 ## 0.6.0
 
 ### Minor Changes
