@@ -65,17 +65,17 @@
 			{{#toc}}
 				{{#entries}}
 					{{#isDirectory}}
-						<div class="margin-top-s">
-							<p>{{name}}</p>
-							<div class="margin-left-xs">
+						<div class="margin-top-m">
+							<p class="font-weight-bold font-size-xl display-block margin-bottom-xxs">{{name}}</p>
+							<div>
 								{{#children}}
-									<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+									<a class="color-primary font-weight-semibold font-size-l display-block margin-bottom-xxs text-decoration-none" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 								{{/children}}
 							</div>
 						</div>
 					{{/isDirectory}}
 					{{^children.0}}
-						<a class="display-block color-primary" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+						<a class="color-primary font-weight-semibold font-size-l display-block margin-bottom-xxs text-decoration-none" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 					{{/children.0}}
 				{{/entries}}
 			{{/toc}}
