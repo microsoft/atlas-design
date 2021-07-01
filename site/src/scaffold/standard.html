@@ -8,6 +8,7 @@
 		<meta property="og:title" content="{{title}}" />
 		<meta property="og:type" content="website" />
 		<meta name="color-scheme" content="light dark" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-hashes' 'sha256-xcaKW0OyR0UBm0XPKdo2gWdgJW81zFPp1ovF7iW/x0c=' 'sha256-gyrAVcbmnI8a2UtMNEZq61n4Hd0+BbNaI7mhujFCsY0=' 'sha256-5lij/kYf1SCLu25NaZsAVsoxtnSyilNGmv0srOQE/NE='; connect-src 'self'; frame-src 'self' https://www.figma.com/">
 		<link rel="stylesheet" href="~/src/scaffold/index.scss">
 		<script type="module" src="~/src/scaffold/index.ts"></script>
 	</head>
@@ -54,7 +55,7 @@
 				{{/figmaEmbed}}
 			</div>
 		</main>
-		<nav id="nav" class="background-color-body-medium" style="border-right: 1px solid var(--theme-border)">
+		<nav id="nav" class="background-color-body-medium border-right">
 			{{#toc}}
 				{{#entries}}
 					{{#isDirectory}}
