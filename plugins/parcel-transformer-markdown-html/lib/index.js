@@ -25,7 +25,7 @@ let filterIds = 0;
 function createFilterableCodeBlock(code, language, displayName) {
 	filterIds++;
 	return `
-	<div class="code-block margin-top-xs" style="min-height: 30vh">
+	<div class="code-block margin-top-xs code-block-min-height">
 		<div class="code-block-header">
 			<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
 			<input
@@ -34,7 +34,7 @@ function createFilterableCodeBlock(code, language, displayName) {
 			placeholder="Filter ..."
 			type="search" />
 		</div>
-		<div class="code-block-body" style="max-height: 30vh; overflow-y: scroll;">
+		<div class="code-block-body code-bock-body-max-height">
 			<pre><code data-code-filter-code="${filterIds}">${code}</code></pre>
 		</div>
 	</div>`;
