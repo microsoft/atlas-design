@@ -5,10 +5,6 @@ $code-block-header-font-size: 0.8em !default;
 .code-block {
 	position: relative;
 
-	&.code-block-min-height {
-		min-height: 30vh;
-	}
-
 	.code-block-header-filter {
 		max-width: 12ch;
 		flex-shrink: 1;
@@ -43,10 +39,5 @@ $code-block-header-font-size: 0.8em !default;
 
 	.code-block-body {
 		@include code-block();
-
-		&.code-bock-body-max-height {
-			max-height: 30vh;
-			overflow-y: scroll;
-		}
 	}
 }
