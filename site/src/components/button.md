@@ -154,7 +154,7 @@ Ensure the user knows they need to wait for some event (like a fetch request) in
 The default clear button picks up the color the text set on a container. It is best used as an color-accessible button on a color not part of one of the Atlas themes.
 
 ```html
-<div class="padding-l" style="color: red; background-color: black">
+<div class="padding-l background-color-alternate color-danger-invert">
 	<button class="button button-clear">Click me!</button>
 </div>
 ```
