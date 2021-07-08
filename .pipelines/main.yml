@@ -32,3 +32,7 @@ steps:
       destination: azureBlob
       storage: atlasdesignpublic
       containerName: $web
+
+  - task: ComponentGovernanceComponentDetection@0
+    inputs:
+      alertWarningLevel: 'High'
