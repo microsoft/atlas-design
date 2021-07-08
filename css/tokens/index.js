@@ -32,7 +32,13 @@ async function createTokens() {
 		await fs.ensureDir(outfolder);
 		await Promise.all([
 			fs.writeJSON(`${outfileStem}.json`, collection),
-			quicktypeJSON('AtlasTokens', JSON.stringify(collection), `${outfileStem}.d.ts`, 'typescript')
+			quicktypeJSON('AtlasTokens', JSON.stringify(collection), `${outfileStem}.ts`, 'typescript'),
+			quicktypeJSON(
+				'AtlasTokens',
+				JSON.stringify(collection),
+				`${outfileStem}-ambient.d.ts`,
+				'typescript'
+			)
 		]);
 		console.log(`Tokens written to "${path.join(process.cwd(), '/dist/index.json')}".`);
 	} catch (err) {

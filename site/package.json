@@ -9,6 +9,7 @@
 		"start": "parcel \"./src/**/*.md\" --port 1111 --open --no-cache --no-autoinstall",
 		"build": "parcel build \"./src/**/*.md\" --no-cache --no-autoinstall",
 		"toc": "node toc.js",
+		"type-check": "tsc --noEmit",
 		"lint": "eslint . --ext .ts",
 		"lint-fix": "eslint . --ext .ts --fix"
 	},

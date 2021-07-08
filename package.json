@@ -6,6 +6,7 @@
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"type-check": "npm run build:css && npm run --prefix site type-check",
 		"lint": "npm run lint:css & npm run lint:site",
 		"lint:site": "npm run --prefix site lint",
 		"lint:css": "npm run --prefix css lint",
