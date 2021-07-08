@@ -10,6 +10,7 @@
 		"build": "parcel build \"./src/**/*.md\" --no-cache --no-autoinstall",
 		"toc": "node toc.js",
 		"type-check": "tsc --noEmit",
+		"prelint": "npm run type-check",
 		"lint": "eslint . --ext .ts",
 		"lint-fix": "eslint . --ext .ts --fix"
 	},
