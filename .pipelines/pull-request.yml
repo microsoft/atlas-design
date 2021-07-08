@@ -37,5 +37,6 @@ steps:
       containerName: $web
 
   - task: ComponentGovernanceComponentDetection@0
+    displayName: Component Governance Detection
     inputs:
       alertWarningLevel: 'High'
