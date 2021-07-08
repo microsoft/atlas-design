@@ -7,9 +7,11 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"type-check": "npm run build:css && npm run --prefix site type-check",
+		"prelint": "npm run build:tokens",
 		"lint": "npm run lint:css & npm run lint:site",
 		"lint:site": "npm run --prefix site lint",
 		"lint:css": "npm run --prefix css lint",
+		"prelint-fix": "npm run build:tokens",
 		"lint-fix": "npm run lint-fix:site & lint-fix:css",
 		"lint-fix:site": "npm run --prefix site lint-fix",
 		"lint-fix:css": "pm run --prefix css lint-fix",
