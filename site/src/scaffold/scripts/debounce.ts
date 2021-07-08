@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* ⬆ (Function.bind required for this implementation) */
+
 /**
  * Generic function for debouncing some type of event handler or function. Debounce = only perform an action after specific period of time after an event stream stops.
  * @param scheduler A scheduling function that determines when the handler will run.
@@ -10,15 +13,15 @@
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function debounceScheduler<T extends Function>(
-	scheduler: (fn: T, ...params: any[]) => number,
+	scheduler: (fn: T, ...params: unknown[]) => number,
 	clearScheduler: (number: number) => void,
 	handler: T,
-	timeout: number = 500
+	timeout = 500
 ): CancellableFunction {
 	let scheduleId = 0;
 	const caller = (...args: string[]) => {
 		clearScheduler(scheduleId);
-		scheduleId = scheduler.apply(null, [handler.bind(null, ...args), timeout]) as number;
+		scheduleId = scheduler.apply(null, [handler.bind(null, ...args), timeout]);
 	};
 
 	(caller as CancellableFunction).cancel = () => clearScheduler(scheduleId);
@@ -27,11 +30,14 @@ export function debounceScheduler<T extends Function>(
 }
 
 export const debounce = {
-	// eslint-disable-next-line @typescript-eslint/ban-types
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	timeout: debounceScheduler.bind(null, setTimeout, clearTimeout) as <T extends Function>(
 		handler: T,
 		timeout?: number
 	) => CancellableFunction,
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	animationFrame: debounceScheduler.bind(
 		null,
 		window.requestAnimationFrame,
@@ -42,5 +48,5 @@ export const debounce = {
 
 export interface CancellableFunction {
 	cancel: () => void;
-	(...args: any[]): void;
+	(...args: unknown[]): void;
 }

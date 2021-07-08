@@ -3,6 +3,7 @@ export const localStorage = {
 	setItem(key: string, value: string): void {
 		try {
 			window.localStorage.setItem(key, value);
+			/* eslint no-empty: "off" */
 		} catch (e) {}
 	},
 
@@ -17,20 +18,23 @@ export const localStorage = {
 	removeItem(key: string): void {
 		try {
 			window.localStorage.removeItem(key);
+			/* eslint no-empty: "off" */
 		} catch (e) {}
 	},
 
 	clear(): void {
 		try {
 			window.localStorage.clear();
+			/* eslint no-empty: "off" */
 		} catch (e) {}
 	}
-} as any as Storage;
+} as unknown as Storage;
 
 export const sessionStorage = {
 	setItem(key: string, value: string): void {
 		try {
 			window.sessionStorage.setItem(key, value);
+			// eslint-disable-line no-empty
 		} catch (e) {}
 	},
 	getItem(key: string): string | null {
@@ -43,6 +47,7 @@ export const sessionStorage = {
 	removeItem(key: string): void {
 		try {
 			window.sessionStorage.removeItem(key);
+			// eslint-disable-line no-empty
 		} catch (e) {}
 	}
-} as any as Storage;
+} as unknown as Storage;

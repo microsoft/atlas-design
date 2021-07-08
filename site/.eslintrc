@@ -1,0 +1,25 @@
+{
+	"root": true,
+	"env": {
+		"browser": true,
+		"node": false
+	},
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "security"],
+	"parserOptions": {
+		"project": ["./tsconfig.json"]
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:import/typescript",
+		"prettier",
+		"plugin:security/recommended"
+	],
+	"rules": {
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-explicit-any": "error"
+	}
+}
