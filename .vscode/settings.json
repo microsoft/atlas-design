@@ -7,5 +7,6 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"css.validate": false,
 	"less.validate": false,
-	"scss.validate": true
+	"scss.validate": true,
+	"eslint.workingDirectories": [{ "directory": "site", "changeProcessCWD": true }]
 }

@@ -8,10 +8,19 @@
 		"prestart": "node toc.js",
 		"start": "parcel \"./src/**/*.md\" --port 1111 --open --no-cache --no-autoinstall",
 		"build": "parcel build \"./src/**/*.md\" --no-cache --no-autoinstall",
-		"toc": "node toc.js"
+		"toc": "node toc.js",
+		"type-check": "tsc --noEmit",
+		"prelint": "npm run type-check",
+		"lint": "eslint . --ext .ts",
+		"lint-fix": "eslint . --ext .ts --fix"
 	},
 	"devDependencies": {
+		"eslint": "^7.30.0",
+		"@typescript-eslint/eslint-plugin": "^4.28.2",
+		"@typescript-eslint/parser": "^4.28.2",
+		"eslint-plugin-import": "^2.23.4",
 		"@microsoft/atlas-css": "^0.13.0",
+		"eslint-config-prettier": "^8.3.0",
 		"parcel": "2.0.0-beta.3.1",
 		"@parcel/transformer-sass": "2.0.0-beta.3.1",
 		"@microsoft/parcel-transformer-markdown-html": "^2.4.0",

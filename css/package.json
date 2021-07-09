@@ -7,6 +7,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "stylelint ./src/**/*.scss",
+		"lint-fix": "stylelint ./src/**/*.scss --fix",
 		"start": "parcel watch src/index.scss --no-autoinstall",
 		"build": "npm run build:css && npm run tokens",
 		"build:css": "parcel build src/index.scss --no-cache --no-autoinstall",
@@ -48,9 +49,10 @@
 		"sass": "^1.32.8",
 		"stylelint": "^13.11.0",
 		"stylelint-config-prettier": "^8.0.2",
+		"eslint-plugin-security": "^1.4.0",
 		"stylelint-prettier": "^1.1.2",
 		"sass-extract": "^2.1.0",
-		"node-sass": "^5.0.0",
+		"node-sass": "^4.14.0",
 		"fs-extra": "^9.1.0",
 		"quicktype-core": "^6.0.70"
 	}

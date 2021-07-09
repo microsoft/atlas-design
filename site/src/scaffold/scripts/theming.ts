@@ -7,10 +7,14 @@ import { atlasTokens } from './tokens';
  * The globally available descriptor of the current theme. It is updated each time setTheme is called.
  */
 export let currentTheme: ThemeType = 'light';
-
-// * Types
-
 export type ThemeType = keyof ThemeTypeMap;
+
+function isTheme(value: string): value is ThemeType {
+	if (value === 'light' || value === 'dark' || value === 'high-contrast') {
+		return true;
+	}
+	return false;
+}
 
 /**
  * Simple string name for each theme.
@@ -20,7 +24,7 @@ export const themes = Object.keys(atlasTokens.themes.tokens.$themes);
  * Data structure for easy access to theme names and css classes.
  */
 export const themeInfo = themes.reduce((themeInfo, themeName) => {
-	themeInfo[themeName] = {
+	themeInfo[themeName as keyof ThemeTypeMap] = {
 		documentClass: `theme-${themeName}`,
 		name: themeName
 	};
@@ -30,7 +34,7 @@ export const themeInfo = themes.reduce((themeInfo, themeName) => {
  * CSS classes related to theming.
  * Used to remove all classes before adding them next one.
  */
-export const cssClasses = themes.map(theme => themeInfo[theme].documentClass);
+export const cssClasses = themes.map(theme => themeInfo[theme as keyof ThemeTypeMap].documentClass);
 export interface ThemeTypeInfo {
 	documentClass: string;
 	name: string;
@@ -50,6 +54,7 @@ export interface ThemeTypeMap {
 export function cycleKeys(current: keyof ThemeTypeMap): keyof ThemeTypeMap {
 	const i = themes.findIndex(item => item === current) || 0;
 	const next = i < 2 ? i + 1 : 0;
+	// eslint-disable-next-line security/detect-object-injection
 	return themes[next] as keyof ThemeTypeMap;
 }
 
@@ -63,7 +68,10 @@ export function setThemeClass(appliedTheme: ThemeType) {
 		htmlClassList.remove(docClass);
 	}
 
-	htmlClassList.add(themeInfo[appliedTheme].documentClass);
+	if (isTheme(appliedTheme)) {
+		// eslint-disable-next-line security/detect-object-injection
+		htmlClassList.add(themeInfo[appliedTheme].documentClass);
+	}
 }
 
 export function setGlobalThemeValue(appliedTheme: ThemeType) {
@@ -74,9 +82,9 @@ export function storeTheme(theme: ThemeType) {
 	localStorage.setItem('theme', theme);
 }
 
-export function getPreferredTheme(prefersDarkTheme: boolean = false): ThemeType {
+export function getPreferredTheme(prefersDarkTheme = false): ThemeType {
 	// check for user selection
-	const theme = localStorage.getItem('theme');
+	const theme = localStorage.getItem('theme') as string;
 	if (/^light|dark|high-contrast$/.test(theme)) {
 		return theme as ThemeType;
 	}
@@ -107,7 +115,7 @@ export function setTheme(appliedTheme: ThemeType) {
 /**
  * Initialize Theme related functionality
  */
-export async function initTheme() {
+export function initTheme() {
 	const theme = getInitialTheme();
 	setTheme(theme);
 	initThemeControls();
