@@ -1,5 +1,13 @@
 # @microsoft/atlas-site
 
+## 0.7.0
+
+### Minor Changes
+
+- 05fceca: Add documentation for spacing.
+- e1bd4ae: Added a CSP to both standard and token pages.
+- 2efa7b5: Add eslint to /site scripts as well as tsc --noEmit type checking.
+
 ## 0.6.1
 
 ### Patch Changes
