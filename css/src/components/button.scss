@@ -84,7 +84,7 @@ $button-font-weight: $weight-semibold !default;
 
 	// Modifiers
 
-	&.button-disabled,
+	&.is-disabled,
 	&[disabled] {
 		border-color: currentColor;
 		background-color: $button-disabled-background-color;
