@@ -11,9 +11,9 @@ pool:
 
 steps:
   - task: NodeTool@0
-    displayName: Use node 16.2.x
+    displayName: Use node 16.3.x
     inputs:
-      versionSpec: '16.2.x'
+      versionSpec: '16.3.x'
 
   - script: npm ci --no-optional
     displayName: Install
