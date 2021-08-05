@@ -1,30 +1,38 @@
-const sassExtract = require('sass-extract');
 const fs = require('fs-extra');
 const path = require('path');
-const { convertSassVariable } = require('./conversion');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
+const { exporter } = require('sass-export');
 
 createTokens();
 
 async function createTokens() {
-	const indexFile = require.resolve('../src/tokens/index.scss');
+	const options = {
+		inputFiles: [
+			require.resolve('../src/tokens/features.scss'),
+			require.resolve('../src/tokens/palette.scss'),
+			require.resolve('../src/tokens/animation.scss'),
+			require.resolve('../src/tokens/border.scss'),
+			require.resolve('../src/tokens/breakpoints.scss'),
+			require.resolve('../src/tokens/display.scss'),
+			require.resolve('../src/tokens/colors.scss'),
+			require.resolve('../src/tokens/direction.scss'),
+			require.resolve('../src/tokens/focus.scss'),
+			require.resolve('../src/tokens/font-stack.scss'),
+			require.resolve('../src/tokens/layout.scss'),
+			require.resolve('../src/tokens/position.scss'),
+			require.resolve('../src/tokens/radius.scss'),
+			require.resolve('../src/tokens/schemes.scss'),
+			require.resolve('../src/tokens/shadow.scss'),
+			require.resolve('../src/tokens/spacing.scss'),
+			require.resolve('../src/tokens/themes.scss'),
+			require.resolve('../src/tokens/typography.scss'),
+			require.resolve('../src/tokens/z-index.scss')
+		]
+	};
 
-	/** @type {import('./types').SassConvertRendered }} **/
-	const rendered = await sassExtract.render({
-		file: indexFile
-	});
+	const exportedTokens = exporter(options).getStructured();
+	const collection = collectTokens(exportedTokens);
 
-	const collection = collectTokenSources(rendered);
-
-	for (const name in rendered.vars.global) {
-		const rule = rendered.vars.global[name];
-		// get the parent token's name
-		const parent = getTokenFromSource(rule);
-		// convert each rule to a simpler structure (recurses for maps and lists)
-		const converted = convertSassVariable(rule, name);
-		// add the converted token to the collection
-		collection[parent].tokens = { ...collection[parent].tokens, ...converted };
-	}
 	const outfolder = './dist';
 	const outfileStem = path.join(outfolder, 'tokens');
 
@@ -34,7 +42,7 @@ async function createTokens() {
 			fs.writeJSON(`${outfileStem}.json`, collection),
 			quicktypeJSON('AtlasTokens', JSON.stringify(collection), `${outfileStem}.ts`, 'typescript')
 		]);
-		console.log(`Tokens written to "${path.join(process.cwd(), '/dist/index.json')}".`);
+		console.log(`Tokens written to "${path.join(process.cwd(), `/dist/${outfileStem}.json`)}".`);
 	} catch (err) {
 		throw new Error(`Problem writing output: ${err}`);
 	}
@@ -42,29 +50,62 @@ async function createTokens() {
 
 /**
  *
- * @param {{ [key: string]: any}} rendered
- * @returns {{[key: string]: { [key: string]: any} }}
+ * @param { import('./types').SassExportTokens } tokens
+ * @returns { import('./types').SassExportCollection }
  */
-function collectTokenSources(rendered) {
-	const collection = rendered.stats.includedFiles
-		.map((/** @type {string} */ file) => {
-			return { name: getFinalFilePart(file), location: getAtlasFilePath(file) };
-		})
-		.filter((/** @type {{ name: string; location: string; }} */ x) => x.name !== 'index')
-		.reduce(
+function collectTokens(tokens) {
+	/** @type {{ [key: string]: import('./types').SassExportCollectionItem }} */
+	const collection = {};
+	for (const [parent, tokenValues] of Object.entries(tokens)) {
+		//Currently using sass-export-section annotations in the token files for grouping.
+		//Files without annotations will appear in variables array.
+		if (parent === 'variables') continue;
+
+		const collectedValues = tokenValues.reduce(
 			(
-				/** @type {{ [x: string]: any; }} */ all,
-				/** @type {{ name: string | number; }} */ source
+				/** @type {{ [x: string]: {name: string, location: string, tokens: { [t: string]: any }} }} */ all,
+				/** @type {import('./types').SassExportTokenItem} */ current
 			) => {
-				all[source.name] = {
-					...source,
-					tokens: {}
+				const tokenName = current.name;
+
+				/** @type {string | import('./types').SassExportTokenNestedItem} */
+				const values = current.mapValue
+					? { ...getNestedTokens(current) }[tokenName]
+					: current.compiledValue;
+
+				all[parent] = {
+					...all[parent],
+					[tokenName]: values
 				};
 				return all;
 			},
 			{}
 		);
+		collection[parent] = {
+			name: parent,
+			location: `/css/src/tokens/${parent}.scss`,
+			tokens: collectedValues[parent]
+		};
+	}
 	return collection;
+}
+
+/**
+ *
+ * @param { import('./types').SassExportTokenItem } child
+ * @returns {{ [key: string]: import('./types').SassExportTokenNestedItem}}
+ */
+function getNestedTokens(child) {
+	if (!child.mapValue) {
+		const { name, compiledValue, value } = child;
+		return { [name]: compiledValue ? compiledValue : value };
+	}
+	/** @type {{ [key: string]: import('./types').SassExportTokenNestedItem }} */
+	const childMap = {};
+	child.mapValue.forEach(subChild => {
+		childMap[child.name] = { ...childMap[child.name], ...getNestedTokens(subChild) };
+	});
+	return childMap;
 }
 
 /**
@@ -93,34 +134,4 @@ async function quicktypeJSON(typeName, jsonString, outfile, targetLanguage = 'ty
 		lang: targetLanguage
 	});
 	return fs.writeFile(outfile, result.lines.join('\n'));
-}
-
-/**
- * Rules returned by sass-convert sometimes contain the file source from which they're declared.
- * @param {import('./types').SassRule} rule
- * @returns string
- */
-function getTokenFromSource(rule) {
-	if (rule.sources && rule.sources.length > 0) {
-		return getFinalFilePart(rule.sources[0]);
-	}
-	return 'other';
-}
-
-/**
- * Slice off unwanted parts of a scss files file path.
- * @param {string} filePath
- * @returns string
- */
-function getFinalFilePart(filePath) {
-	return filePath.slice(filePath.lastIndexOf('/') + 1).replace('.scss', '');
-}
-
-/**
- * Get Atlas relative path from absolute file path returned by sass-convert.
- * @param {string} path
- * @returns string
- */
-function getAtlasFilePath(path) {
-	return path.split('atlas-design')[1];
 }

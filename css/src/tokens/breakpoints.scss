@@ -1,3 +1,6 @@
+/**
+ * @sass-export-section="breakpoints"
+ */
 // The horizontal gap tied to containers
 $container-gap: 64px !default;
 
@@ -5,3 +8,4 @@ $container-gap: 64px !default;
 $breakpoint-tablet: 768px !default;
 $breakpoint-desktop: 1088px !default;
 $breakpoint-widescreen: 1472px !default;
+//@end-sass-export-section

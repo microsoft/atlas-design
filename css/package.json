@@ -51,9 +51,8 @@
 		"stylelint-config-prettier": "^8.0.2",
 		"eslint-plugin-security": "^1.4.0",
 		"stylelint-prettier": "^1.1.2",
-		"sass-extract": "^2.1.0",
-		"node-sass": "^4.14.0",
 		"fs-extra": "^9.1.0",
-		"quicktype-core": "^6.0.70"
+		"quicktype-core": "^6.0.70",
+		"sass-export": "^2.1.0"
 	}
 }

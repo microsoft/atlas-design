@@ -1,3 +1,6 @@
+/**
+ * @sass-export-section="colors"
+ */
 $text: var(--theme-text);
 $text-subtle: var(--theme-text-subtle);
 $text-invert: var(--theme-text-invert);
@@ -183,8 +186,6 @@ $framework-colors: (
 
 // Combined framework and brand colors for the array used in all the loops
 
-$colors: $framework-colors;
-
 // Color indexes, for use in color loops.
 
 $color-index-base: 1;
@@ -207,3 +208,5 @@ $color-index-background-glow-high-contrast: 8;
 // 	$invert: nth($color-set, $color-index-invert);
 // 	$box-shadow: nth($color-set, $color-index-box-shadow);
 //}
+
+//@end-sass-export-section

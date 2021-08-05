@@ -1,3 +1,6 @@
+/**
+ * @sass-export-section="z-index"
+ */
 // Element states
 $zindex-active: 1;
 $zindex-hover: 2;
@@ -13,4 +16,5 @@ $zindex-modal: 1050;
 $zindex-popover: 1060;
 $zindex-tooltip: 1070;
 
-$z-index-stretched-link: 1 !default;
+$zindex-stretched-link: 1 !default;
+//@end-sass-export-section

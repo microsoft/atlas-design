@@ -1,3 +1,6 @@
+/**
+ * @sass-export-section="themes"
+ */
 $themes: (
 	'light': (
 		'text': $palette-grey-120,
@@ -285,3 +288,4 @@ $themes: (
 		'facepile-blue': $palette-blue-30
 	)
 ) !default;
+//@end-sass-export-section

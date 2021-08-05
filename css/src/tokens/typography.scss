@@ -1,3 +1,6 @@
+/**
+ * @sass-export-section="typography"
+ */
 // Typography
 $font-size-9: 0.75rem !default; // 12px
 $font-size-8: 0.875rem !default; // 14px
@@ -20,3 +23,4 @@ $weight-bold: 700;
 // Letter spacing
 $letter-spacing-medium: 0.125rem;
 $letter-spacing-wide: 0.225rem;
+//@end-sass-export-section
