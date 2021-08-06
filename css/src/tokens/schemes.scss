@@ -1,9 +1,11 @@
-/* 
- * This object's keys should match themes and values will set the color-scheme CSS property for the corresponding theme.
- */
 /**
  * @sass-export-section="schemes"
  */
+
+/* 
+ * This object's keys should match themes and values will set the color-scheme CSS property for the corresponding theme.
+ */
+
 $color-schemes: (
 	'light': 'light',
 	'dark': 'dark',

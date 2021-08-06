@@ -11,6 +11,19 @@ async function createTokens() {
 	const ignore = ['./src/tokens/index.scss'];
 	const filePaths = await glob(include, { ignore });
 
+	filePaths.forEach(path => {
+		try {
+			fs.readFile(path, 'utf8', function read(err, result) {
+				if (err) throw err;
+				if (!result.includes('@sass-export-section')) {
+					console.log(`Warning: ${path} is missing @sass-export-section annotations.`);
+				}
+			});
+		} catch (err) {
+			throw new Error(`Problem reading token files: ${err}`);
+		}
+	});
+
 	const options = {
 		inputFiles: [require.resolve('../src/tokens/palette.scss'), ...filePaths]
 	};
