@@ -1,6 +1,6 @@
 // Framework colors
 
-@each $name, $color-set in $framework-colors {
+@each $name, $color-set in $colors {
 	$base: nth($color-set, $color-index-base);
 	$background: nth($color-set, $color-index-background);
 	$dark: nth($color-set, $color-index-dark);
@@ -49,7 +49,7 @@
 }
 
 @include tablet {
-	@each $name, $color-set in $framework-colors {
+	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
 		$invert: nth($color-set, $color-index-invert);
 
