@@ -2,32 +2,17 @@ const fs = require('fs-extra');
 const path = require('path');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
 const { exporter } = require('sass-export');
+const glob = require('fast-glob');
 
 createTokens();
 
 async function createTokens() {
+	const include = './src/tokens/*.scss';
+	const ignore = ['./src/tokens/index.scss'];
+	const filePaths = await glob(include, { ignore });
+
 	const options = {
-		inputFiles: [
-			require.resolve('../src/tokens/features.scss'),
-			require.resolve('../src/tokens/palette.scss'),
-			require.resolve('../src/tokens/animation.scss'),
-			require.resolve('../src/tokens/border.scss'),
-			require.resolve('../src/tokens/breakpoints.scss'),
-			require.resolve('../src/tokens/display.scss'),
-			require.resolve('../src/tokens/colors.scss'),
-			require.resolve('../src/tokens/direction.scss'),
-			require.resolve('../src/tokens/focus.scss'),
-			require.resolve('../src/tokens/font-stack.scss'),
-			require.resolve('../src/tokens/layout.scss'),
-			require.resolve('../src/tokens/position.scss'),
-			require.resolve('../src/tokens/radius.scss'),
-			require.resolve('../src/tokens/schemes.scss'),
-			require.resolve('../src/tokens/shadow.scss'),
-			require.resolve('../src/tokens/spacing.scss'),
-			require.resolve('../src/tokens/themes.scss'),
-			require.resolve('../src/tokens/typography.scss'),
-			require.resolve('../src/tokens/z-index.scss')
-		]
+		inputFiles: [require.resolve('../src/tokens/palette.scss'), ...filePaths]
 	};
 
 	const exportedTokens = exporter(options).getStructured();
