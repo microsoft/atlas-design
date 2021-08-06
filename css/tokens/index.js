@@ -50,7 +50,7 @@ async function createTokens() {
 
 /**
  *
- * @param { import('./types').SassExportTokens } tokens
+ * @param { import('./types').SassExportTokens } tokens raw token data by group
  * @returns { import('./types').SassExportCollection }
  */
 function collectTokens(tokens) {
@@ -58,12 +58,12 @@ function collectTokens(tokens) {
 	const collection = {};
 	for (const [parent, tokenValues] of Object.entries(tokens)) {
 		//Currently using sass-export-section annotations in the token files for grouping.
-		//Files without annotations will appear in variables array.
+		//Tokens without annotations will be combined in the variables array.
 		if (parent === 'variables') continue;
 
 		const collectedValues = tokenValues.reduce(
 			(
-				/** @type {{ [x: string]: {name: string, location: string, tokens: { [t: string]: any }} }} */ all,
+				/** @type {{ [x: string]: {name: string, location: string, tokens: { [t: string]: import('./types').SassExportTokenItem}} }} */ all,
 				/** @type {import('./types').SassExportTokenItem} */ current
 			) => {
 				const tokenName = current.name;
