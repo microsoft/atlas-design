@@ -14,7 +14,9 @@ async function createTokens() {
 	filePaths.forEach(path => {
 		try {
 			fs.readFile(path, 'utf8', function read(err, result) {
-				if (err) throw err;
+				if (err) {
+					throw err;
+				}
 				if (!result.includes('@sass-export-section')) {
 					console.log(`Warning: ${path} is missing @sass-export-section annotations.`);
 				}
