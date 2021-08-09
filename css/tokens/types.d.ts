@@ -5,7 +5,7 @@ export interface SassExportCollectionItem {
 }
 
 export interface SassExportCollection {
-	[name]: SassExportCollectionItem;
+	[name: string]: SassExportCollectionItem;
 }
 
 export interface SassExportTokenItem {
@@ -16,7 +16,7 @@ export interface SassExportTokenItem {
 }
 
 export interface SassExportTokenNestedItem {
-	[name]: string | { [nestedName: string]: any };
+	[name]: string | { [nestedName: string]: SassExportTokenItem };
 }
 
 export interface SassExportTokens {

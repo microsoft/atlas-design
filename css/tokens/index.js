@@ -2,36 +2,22 @@ const fs = require('fs-extra');
 const path = require('path');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
 const { exporter } = require('sass-export');
-const glob = require('fast-glob');
 
 createTokens();
 
 async function createTokens() {
-	const include = './src/tokens/*.scss';
-	const ignore = ['./src/tokens/index.scss'];
-	const filePaths = await glob(include, { ignore });
+	const filePathStem = path.join(process.cwd(), './src/tokens');
+	const indexPath = path.resolve(filePathStem, 'index.scss');
 
-	filePaths.forEach(path => {
-		try {
-			fs.readFile(path, 'utf8', function read(err, result) {
-				if (err) {
-					throw err;
-				}
-				if (!result.includes('@sass-export-section')) {
-					console.log(`Warning: ${path} is missing @sass-export-section annotations.`);
-				}
-			});
-		} catch (err) {
-			throw new Error(`Problem reading token files: ${err}`);
-		}
-	});
+	const filePaths = await getInputFilesFromIndex(filePathStem, indexPath);
+	checkFileComments(filePaths);
 
 	const options = {
-		inputFiles: [require.resolve('../src/tokens/palette.scss'), ...filePaths]
+		inputFiles: filePaths
 	};
 
 	const exportedTokens = exporter(options).getStructured();
-	const collection = collectTokens(exportedTokens);
+	const collection = getSortedOrder(collectTokens(exportedTokens));
 
 	const outfolder = './dist';
 	const outfileStem = path.join(outfolder, 'tokens');
@@ -50,11 +36,66 @@ async function createTokens() {
 
 /**
  *
- * @param { import('./types').SassExportTokens } tokens raw token data by group
- * @returns { import('./types').SassExportCollection }
+ * @param {string} filePathStem tokens directory path
+ * @param {string} indexPath tokens index file path
+ * @returns {Promise<string[]>}
+ */
+async function getInputFilesFromIndex(filePathStem, indexPath) {
+	/** @type {string[]} */
+	const filePaths = [];
+	try {
+		const indexFile = (await fs.readFile(indexPath)).toString();
+		const lines = indexFile.split('\n').reduce((arr, line) => {
+			if (line.includes('@import')) {
+				const filePath = line.replace('@import', '').replaceAll(`'`, '').replace(';', '').trim();
+				arr.push(path.join(filePathStem, filePath));
+			}
+			return arr;
+		}, filePaths);
+		return lines;
+	} catch (err) {
+		throw err;
+	}
+}
+
+/**
+ *
+ * @param {import('./types').SassExportCollection} collection collection of grouped tokens to be sorted
+ * @returns {import('./types').SassExportCollection}
+ */
+function getSortedOrder(collection) {
+	return Object.fromEntries(Object.entries(collection).sort());
+}
+
+/**
+ *
+ * @param {string[]} paths token file paths
+ */
+// Print a warning if a token file lacks the required sass-export-section comments.
+function checkFileComments(paths) {
+	paths.forEach(path => {
+		try {
+			fs.readFile(path, 'utf8', function read(err, result) {
+				if (err) {
+					throw err;
+				}
+				if (!result.includes('@sass-export-section')) {
+					console.log(`Warning: ${path} is missing @sass-export-section annotations.`);
+				}
+			});
+		} catch (err) {
+			throw new Error(`Problem reading token files: ${err}`);
+		}
+	});
+}
+
+/**
+ *
+ * @param {import('./types').SassExportTokens} tokens raw token data by group
+ * @returns {import('./types').SassExportCollection}
  */
 function collectTokens(tokens) {
-	/** @type {{ [key: string]: import('./types').SassExportCollectionItem }} */
+	/** @type {import('./types').SassExportCollection} */
 	const collection = {};
 	for (const [parent, tokenValues] of Object.entries(tokens)) {
 		//Currently using sass-export-section annotations in the token files for grouping.
@@ -63,7 +104,7 @@ function collectTokens(tokens) {
 
 		const collectedValues = tokenValues.reduce(
 			(
-				/** @type {{ [x: string]: {name: string, location: string, tokens: { [t: string]: import('./types').SassExportTokenItem}} }} */ all,
+				/** @type {import('./types').SassExportCollection } */ all,
 				/** @type {import('./types').SassExportTokenItem} */ current
 			) => {
 				const tokenName = current.name;
@@ -92,15 +133,15 @@ function collectTokens(tokens) {
 
 /**
  *
- * @param { import('./types').SassExportTokenItem } child
- * @returns {{ [key: string]: import('./types').SassExportTokenNestedItem}}
+ * @param {import('./types').SassExportTokenItem} child
+ * @returns {{[key: string]: import('./types').SassExportTokenNestedItem}}
  */
 function getNestedTokens(child) {
 	if (!child.mapValue) {
 		const { name, compiledValue, value } = child;
 		return { [name]: compiledValue ? compiledValue : value };
 	}
-	/** @type {{ [key: string]: import('./types').SassExportTokenNestedItem }} */
+	/** @type {{[key: string]: import('./types').SassExportTokenNestedItem}} */
 	const childMap = {};
 	child.mapValue.forEach(subChild => {
 		childMap[child.name] = { ...childMap[child.name], ...getNestedTokens(subChild) };
