@@ -60,15 +60,6 @@ async function getInputFilesFromIndex(filePathStem, indexPath) {
 
 /**
  *
- * @param {import('./types').SassExportCollection} collection collection of grouped tokens to be sorted
- * @returns {import('./types').SassExportCollection}
- */
-function getSortedOrder(collection) {
-	return Object.fromEntries(Object.entries(collection).sort());
-}
-
-/**
- *
  * @param {string[]} paths token file paths
  */
 // Print a warning if a token file lacks the required sass-export-section comments.
@@ -91,6 +82,15 @@ function checkFileComments(paths) {
 
 /**
  *
+ * @param {import('./types').SassExportCollection} collection collection of grouped tokens to be sorted
+ * @returns {import('./types').SassExportCollection}
+ */
+function getSortedOrder(collection) {
+	return Object.fromEntries(Object.entries(collection).sort());
+}
+
+/**
+ *
  * @param {import('./types').SassExportTokens} tokens raw token data by group
  * @returns {import('./types').SassExportCollection}
  */
@@ -104,7 +104,7 @@ function collectTokens(tokens) {
 
 		const collectedValues = tokenValues.reduce(
 			(
-				/** @type {import('./types').SassExportCollection } */ all,
+				/** @type {import('./types').SassExportCollection} */ all,
 				/** @type {import('./types').SassExportTokenItem} */ current
 			) => {
 				const tokenName = current.name;
@@ -112,8 +112,7 @@ function collectTokens(tokens) {
 				/** @type {string | import('./types').SassExportTokenNestedItem} */
 				const values = current.mapValue
 					? { ...getNestedTokens(current) }[tokenName]
-					: current.compiledValue;
-
+					: convertBoolean(current.compiledValue);
 				all[parent] = {
 					...all[parent],
 					[tokenName]: values
@@ -139,7 +138,9 @@ function collectTokens(tokens) {
 function getNestedTokens(child) {
 	if (!child.mapValue) {
 		const { name, compiledValue, value } = child;
-		return { [name]: compiledValue ? compiledValue : value };
+		return {
+			[name]: compiledValue ? convertBoolean(compiledValue) : convertBoolean(value)
+		};
 	}
 	/** @type {{[key: string]: import('./types').SassExportTokenNestedItem}} */
 	const childMap = {};
@@ -147,6 +148,17 @@ function getNestedTokens(child) {
 		childMap[child.name] = { ...childMap[child.name], ...getNestedTokens(subChild) };
 	});
 	return childMap;
+}
+
+/**
+ *
+ * @param {string} string
+ * @returns {boolean | string}
+ */
+function convertBoolean(string) {
+	if (string === 'true') return true;
+	if (string === 'false') return false;
+	return string.replaceAll(' ,  ', ', ');
 }
 
 /**
