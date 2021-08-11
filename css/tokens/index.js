@@ -101,7 +101,9 @@ function collectTokens(tokens) {
 	for (const [parent, tokenValues] of Object.entries(tokens)) {
 		//Currently using sass-export-section annotations in the token files for grouping.
 		//Tokens without annotations will be combined in the variables array.
-		if (parent === 'variables') continue;
+		if (parent === 'variables') {
+			continue;
+		}
 
 		const collectedValues = tokenValues.reduce(
 			(
