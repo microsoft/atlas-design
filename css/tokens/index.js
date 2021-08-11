@@ -97,6 +97,7 @@ function getSortedOrder(collection) {
 function collectTokens(tokens) {
 	/** @type {import('./types').SassExportCollection} */
 	const collection = {};
+	/** @type {import('./types').SassExportCollection} */
 	for (const [parent, tokenValues] of Object.entries(tokens)) {
 		//Currently using sass-export-section annotations in the token files for grouping.
 		//Tokens without annotations will be combined in the variables array.
@@ -126,7 +127,10 @@ function collectTokens(tokens) {
 			location: `/css/src/tokens/${parent}.scss`,
 			tokens: collectedValues[parent]
 		};
+
+		collection.allTokens = { ...collection.allTokens, ...collectedValues[parent] };
 	}
+
 	return collection;
 }
 
@@ -141,6 +145,7 @@ function getNestedTokens(child, parent) {
 		const { name, compiledValue, value } = child;
 		let newCompiledValue;
 
+		//For nested maps, the compiled value for each key is retrieved by parsing the parent's compiledValue string.
 		if (!compiledValue) {
 			newCompiledValue = parent?.compiledValue
 				.replace(/^\(/, '')
