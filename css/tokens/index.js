@@ -154,15 +154,15 @@ function getNestedTokens(child, parent) {
 
 			const map = newCompiledValue?.map(val => {
 				const token = val.replaceAll(' ', '').replaceAll('"', '').split(':');
-				return [token[0], convertBoolean(token[1])];
+				return { [token[0]]: convertBoolean(token[1]) };
 			});
 
 			newCompiledValue = map?.filter(val => {
-				return val[0] === name;
+				return Object.keys(val).includes(name);
 			});
 		}
 
-		newCompiledValue = newCompiledValue ? newCompiledValue[0][1] : convertBoolean(value);
+		newCompiledValue = newCompiledValue ? newCompiledValue[0][name] : convertBoolean(value);
 		return {
 			[name]: compiledValue ? convertBoolean(compiledValue) : newCompiledValue
 		};
