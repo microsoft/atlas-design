@@ -137,41 +137,66 @@ function collectTokens(tokens) {
 /**
  *
  * @param {import('./types').SassExportTokenItem} child
- * @param {import('./types').SassExportTokenItem} [parent]
  * @returns {{[key: string]: string | boolean | import('./types').SassExportTokenNestedItem}}
  */
-function getNestedTokens(child, parent) {
-	if (!child.mapValue) {
-		const { name, compiledValue, value } = child;
-		let newCompiledValue;
-		/** @type {{[key: string]: import('./types').SassExportTokenNestedItem}} */
-		const collection = {};
+function getNestedTokens(child) {
+	const { name, compiledValue, mapValue } = child;
+	/** @type {{[key: string]: string | boolean | import('./types').SassExportTokenNestedItem}} */
+	let newCompiledValue = {};
+	/** @type {{[name: string]: import('./types').SassExportTokenNestedItem}} */
+	const collection = {};
+	let nested = containsMapValue(child);
 
-		//For nested maps, the compiled value for each key is retrieved by parsing the parent's compiledValue string.
-		if (!compiledValue) {
-			newCompiledValue = parent?.compiledValue
-				.replace(/^\(/, '')
-				.replace(/\)$/, '')
-				.split(/\,(?![^(]*\))/)
-				.reduce((collection, val) => {
-					const [key, value] = val.replaceAll(' ', '').replaceAll('"', '').split(':');
-					collection[key] = convertBoolean(value);
-					return collection;
-				}, collection);
-		}
-
-		newCompiledValue = newCompiledValue ? newCompiledValue[name] : convertBoolean(value);
-		return {
-			[name]: compiledValue ? convertBoolean(compiledValue) : newCompiledValue
-		};
+	if (!nested) {
+		newCompiledValue = parseCompiledValue(compiledValue, name, collection);
 	}
 
-	/** @type {{[key: string]: import('./types').SassExportTokenNestedItem}} */
-	const childMap = {};
-	child.mapValue.forEach(subChild => {
-		childMap[child.name] = { ...childMap[child.name], ...getNestedTokens(subChild, child) };
-	});
-	return childMap;
+	if (mapValue && nested) {
+		for (const child of mapValue) {
+			parseCompiledValue(child.compiledValue, child.name, collection);
+		}
+		newCompiledValue = collection;
+	}
+	return { [name]: nested ? newCompiledValue : newCompiledValue[name] };
+}
+
+/**
+ *
+ * @param {import('./types').SassExportTokenItem} child
+ * @returns {boolean}
+ */
+function containsMapValue(child) {
+	if (child.mapValue && child.mapValue[0].mapValue) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ *
+ * @param {string} compiledValue
+ * @param {string} name
+ * @param {{[name: string]: import('./types').SassExportTokenNestedItem}} collection
+ * @returns {{[key: string]: string | boolean | import('./types').SassExportTokenNestedItem}}
+ */
+function parseCompiledValue(compiledValue, name, collection) {
+	let parsedValue = compiledValue
+		.replace(/^\(/, '')
+		.replace(/\((?![^-]*: )/, '')
+		.replace(/\)$/, '')
+		.replaceAll(/\){2,}/g, ')')
+		.split(/\,(?![^"]*\))/);
+
+	return parsedValue.reduce((subCollection, val) => {
+		const [subKey, value] = val.replaceAll(' ', '').replaceAll('"', '').split(':');
+
+		subCollection[name] = {
+			...subCollection[name],
+			[subKey]: convertBoolean(value.replace(/^\(/, ''))
+		};
+
+		return subCollection;
+	}, collection);
 }
 
 /**
