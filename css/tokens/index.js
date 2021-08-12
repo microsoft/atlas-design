@@ -12,6 +12,7 @@ async function createTokens() {
 	const filePaths = await getInputFilesFromIndex(filePathStem, indexPath);
 	checkFileComments(filePaths);
 
+	/** @type {{inputFiles: string[]}} */
 	const options = {
 		inputFiles: filePaths
 	};
@@ -59,25 +60,22 @@ async function getInputFilesFromIndex(filePathStem, indexPath) {
 }
 
 /**
- *
+ * Print a warning if a token file lacks the required sass-export-section comments.
  * @param {string[]} paths token file paths
  */
-// Print a warning if a token file lacks the required sass-export-section comments.
 function checkFileComments(paths) {
-	paths.forEach(path => {
+	const promises = paths.map(async path => {
 		try {
-			fs.readFile(path, 'utf8', function read(err, result) {
-				if (err) {
-					throw err;
-				}
-				if (!result.includes('@sass-export-section')) {
-					console.log(`Warning: ${path} is missing @sass-export-section annotations.`);
-				}
-			});
+			const result = await fs.readFile(path, 'utf8');
+			if (!result.includes('@sass-export-section')) {
+				console.log(`Warning: ${path} is missing @sass-export-section annotations.`);
+			}
 		} catch (err) {
 			throw new Error(`Problem reading token files: ${err}`);
 		}
 	});
+
+	return Promise.all(promises);
 }
 
 /**
@@ -115,7 +113,7 @@ function collectTokens(tokens) {
 				/** @type {string | import('./types').SassExportTokenNestedItem} */
 				const values = current.mapValue
 					? { ...getNestedTokens(current) }[tokenName]
-					: convertBoolean(current.compiledValue);
+					: convertBoolean(current.compiledValue.replaceAll(' ,  ', ', '));
 				all[parent] = {
 					...all[parent],
 					[tokenName]: values
@@ -146,25 +144,23 @@ function getNestedTokens(child, parent) {
 	if (!child.mapValue) {
 		const { name, compiledValue, value } = child;
 		let newCompiledValue;
+		/** @type {{[key: string]: import('./types').SassExportTokenNestedItem}} */
+		const collection = {};
 
 		//For nested maps, the compiled value for each key is retrieved by parsing the parent's compiledValue string.
 		if (!compiledValue) {
 			newCompiledValue = parent?.compiledValue
 				.replace(/^\(/, '')
 				.replace(/\)$/, '')
-				.split(/\,(?![^(]*\))/);
-
-			const map = newCompiledValue?.map(val => {
-				const token = val.replaceAll(' ', '').replaceAll('"', '').split(':');
-				return { [token[0]]: convertBoolean(token[1]) };
-			});
-
-			newCompiledValue = map?.filter(val => {
-				return Object.keys(val).includes(name);
-			});
+				.split(/\,(?![^(]*\))/)
+				.reduce((collection, val) => {
+					const [key, value] = val.replaceAll(' ', '').replaceAll('"', '').split(':');
+					collection[key] = convertBoolean(value);
+					return collection;
+				}, collection);
 		}
 
-		newCompiledValue = newCompiledValue ? newCompiledValue[0][name] : convertBoolean(value);
+		newCompiledValue = newCompiledValue ? newCompiledValue[name] : convertBoolean(value);
 		return {
 			[name]: compiledValue ? convertBoolean(compiledValue) : newCompiledValue
 		};
@@ -184,9 +180,13 @@ function getNestedTokens(child, parent) {
  * @returns {boolean | string}
  */
 function convertBoolean(string) {
-	if (string === 'true') return true;
-	if (string === 'false') return false;
-	return string.replaceAll(' ,  ', ', ');
+	if (string === 'true') {
+		return true;
+	}
+	if (string === 'false') {
+		return false;
+	}
+	return string;
 }
 
 /**
