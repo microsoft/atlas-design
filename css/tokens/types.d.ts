@@ -8,6 +8,10 @@ export interface SassExportCollection {
 	[name: string]: SassExportCollectionItem;
 }
 
+export interface SassExportNestedCollection {
+	[key: string]: string | boolean | SassExportTokenNestedItem;
+}
+
 export interface SassExportTokenItem {
 	name: string;
 	value: string;

@@ -36,7 +36,7 @@ async function createTokens() {
 }
 
 /**
- *
+ * Read the token index file's content and generate a list of import paths in its respective order
  * @param {string} filePathStem tokens directory path
  * @param {string} indexPath tokens index file path
  * @returns {Promise<string[]>}
@@ -79,7 +79,7 @@ function checkFileComments(paths) {
 }
 
 /**
- *
+ * Sort the grouped tokens alphabetically
  * @param {import('./types').SassExportCollection} collection collection of grouped tokens to be sorted
  * @returns {import('./types').SassExportCollection}
  */
@@ -88,14 +88,13 @@ function getSortedOrder(collection) {
 }
 
 /**
- *
+ * Condense the raw data from sass-export into simple objects
  * @param {import('./types').SassExportTokens} tokens raw token data by group
  * @returns {import('./types').SassExportCollection}
  */
 function collectTokens(tokens) {
 	/** @type {import('./types').SassExportCollection} */
 	const collection = {};
-	/** @type {import('./types').SassExportCollection} */
 	for (const [parent, tokenValues] of Object.entries(tokens)) {
 		//Currently using sass-export-section annotations in the token files for grouping.
 		//Tokens without annotations will be combined in the variables array.
@@ -127,57 +126,59 @@ function collectTokens(tokens) {
 			location: `/css/src/tokens/${parent}.scss`,
 			tokens: collectedValues[parent]
 		};
-
-		collection.allTokens = { ...collection.allTokens, ...collectedValues[parent] };
 	}
 
 	return collection;
 }
 
 /**
- *
- * @param {import('./types').SassExportTokenItem} child
- * @returns {{[key: string]: string | boolean | import('./types').SassExportTokenNestedItem}}
+ * Aggregate nested values when token value is a Sass map
+ * @param {import('./types').SassExportTokenItem} tokenItem
+ * @returns {import('./types').SassExportNestedCollection}
  */
-function getNestedTokens(child) {
-	const { name, compiledValue, mapValue } = child;
-	/** @type {{[key: string]: string | boolean | import('./types').SassExportTokenNestedItem}} */
+function getNestedTokens(tokenItem) {
+	/* NOTE: sass-export seems to have trouble parsing maps that have more two levels. */
+	const { name, compiledValue, mapValue } = tokenItem;
+
+	/** @type {import('./types').SassExportNestedCollection} */
 	let newCompiledValue = {};
-	/** @type {{[name: string]: import('./types').SassExportTokenNestedItem}} */
-	const collection = {};
-	let nested = containsMapValue(child);
+
+	let nested = containsMapValue(tokenItem);
 
 	if (!nested) {
-		newCompiledValue = parseCompiledValue(compiledValue, name, collection);
+		parseCompiledValue(compiledValue, name, newCompiledValue);
 	}
 
 	if (mapValue && nested) {
 		for (const child of mapValue) {
-			parseCompiledValue(child.compiledValue, child.name, collection);
+			parseCompiledValue(child.compiledValue, child.name, newCompiledValue);
 		}
-		newCompiledValue = collection;
 	}
 	return { [name]: nested ? newCompiledValue : newCompiledValue[name] };
 }
 
 /**
- *
- * @param {import('./types').SassExportTokenItem} child
+ * Return a boolean if the token item has nested maps
+ * @param {import('./types').SassExportTokenItem} tokenItem
  * @returns {boolean}
  */
-function containsMapValue(child) {
-	if (child.mapValue && child.mapValue[0].mapValue) {
-		return true;
+function containsMapValue(tokenItem) {
+	if (tokenItem.mapValue) {
+		for (const values of tokenItem.mapValue) {
+			if (values.hasOwnProperty('mapValue')) {
+				return true;
+			}
+		}
 	}
 	return false;
 }
 
 /**
- *
+ * Return an object of tokens by parsing the token item's compiled value string
  * @param {string} compiledValue
  * @param {string} name
  * @param {{[name: string]: import('./types').SassExportTokenNestedItem}} collection
- * @returns {{[key: string]: string | boolean | import('./types').SassExportTokenNestedItem}}
+ * @returns {import('./types').SassExportNestedCollection}
  */
 function parseCompiledValue(compiledValue, name, collection) {
 	let parsedValue = compiledValue
@@ -200,7 +201,7 @@ function parseCompiledValue(compiledValue, name, collection) {
 }
 
 /**
- *
+ * Convert boolean string to a boolean value
  * @param {string} str
  * @returns {boolean | string}
  */
