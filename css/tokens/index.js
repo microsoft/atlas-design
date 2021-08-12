@@ -176,17 +176,17 @@ function getNestedTokens(child, parent) {
 
 /**
  *
- * @param {string} string
+ * @param {string} str
  * @returns {boolean | string}
  */
-function convertBoolean(string) {
-	if (string === 'true') {
+function convertBoolean(str) {
+	if (str === 'true') {
 		return true;
 	}
-	if (string === 'false') {
+	if (str === 'false') {
 		return false;
 	}
-	return string;
+	return str;
 }
 
 /**
