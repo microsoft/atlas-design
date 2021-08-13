@@ -15,7 +15,7 @@ Looking for information about the Atlas CSS framework? Start at the [/css README
 ## Development
 
 - Ensure [git](https://git-scm.com/) is installed.
-- Ensure that have downloaded and installed a version of [NodeJS](https://nodejs.org/en/download/releases/) that supports monorepos. It's currently recommended you download version 15.7.0 with NPM at a greater version than 7.4.3.
+- Ensure that have downloaded and installed a version of [NodeJS](https://nodejs.org/en/download/releases/) that supports monorepos. It's currently recommended you download NodeJS version 16.6.\* and use with NPM at a greater version than 7.19.1.
 - Alternatively, you can install NPM with NVM: [mac](https://github.com/nvm-sh/nvm) | [windows](https://github.com/coreybutler/nvm-windows).
 - If contributing code, please read about using [changesets](https://github.com/atlassian/changesets) and [semantic versioning bump types](https://semver.org/).
 - Clone the repostory.
