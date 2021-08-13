@@ -133,17 +133,18 @@ function collectTokens(tokens) {
 
 /**
  * Aggregate nested values when token value is a Sass map
+ * Note, this currently only targets two levels of nesting.
+ * Sass-export seems to have trouble parsing maps that have more two levels.
  * @param {import('./types').SassExportTokenItem} tokenItem
  * @returns {import('./types').SassExportNestedCollection}
  */
 function getNestedTokens(tokenItem) {
-	/* NOTE: sass-export seems to have trouble parsing maps that have more two levels. */
 	const { name, compiledValue, mapValue } = tokenItem;
 
 	/** @type {import('./types').SassExportNestedCollection} */
-	let newCompiledValue = {};
+	const newCompiledValue = {};
 
-	let nested = containsMapValue(tokenItem);
+	const nested = containsMapValue(tokenItem);
 
 	if (!nested) {
 		parseCompiledValue(compiledValue, name, newCompiledValue);
@@ -181,7 +182,7 @@ function containsMapValue(tokenItem) {
  * @returns {import('./types').SassExportNestedCollection}
  */
 function parseCompiledValue(compiledValue, name, collection) {
-	let parsedValue = compiledValue
+	const parsedValue = compiledValue
 		.replace(/^\(/, '')
 		.replace(/\((?![^-]*: )/, '')
 		.replace(/\)$/, '')
