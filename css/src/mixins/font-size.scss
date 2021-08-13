@@ -1,0 +1,57 @@
+@use 'sass:math';
+
+// Remove the units from a value
+@function strip-units($number) {
+	@return math.div($number, ($number * 0 + 1));
+}
+
+@function get-scaled-vw($size, $scaling-factor: 0.6, $breakpoint: $breakpoint-widescreen) {
+	// @debug 'Parameters: original:#{$original},  $scaling-factor:#{ $scaling-factor}, $breakpoint:#{$breakpoint}';
+
+	// Math.div will soon not support division with units, strip units from values.
+	$unitless-original: strip-units($size); // 3.5rem h1
+	$unitless-breakpoint: strip-units($breakpoint); // 1478px widescreen
+	$unitless-document-font-size: strip-units($document-font-size); // 16px
+	$unitless-breakpoint-widescreen: math.div(
+		$unitless-breakpoint,
+		$unitless-document-font-size
+	); // 92rem
+	// @debug 'Unitless: $unitless-original:#{$unitless-original},  $unitless-$breakpoint:#{$unitless-breakpoint}, $unitless-document-font-size:#{$unitless-document-font-size}, $unitless-breakpoint-widescreen:#{$unitless-breakpoint-widescreen}';
+
+	$px: $unitless-original * $unitless-document-font-size; // 56px
+	$numerator: $px * ($unitless-document-font-size * $scaling-factor); // 56px * (16 * .6) 56* 9 // 504
+	$denom: $unitless-breakpoint-widescreen; // 92rem
+	// @debug 'Outputs: $px:#{$px}, $numerator:#{$numerator}, $denom:#{$denom}';
+
+	$target: math.div($numerator, $denom);
+	// @debug '$target:#{$target + vw}';
+
+	@return $target + vw;
+}
+
+@function get-min(
+	$rem-size: 1rem,
+	$scaling-factor: 0.6,
+	$smallest-allowed-px: $document-font-size
+) {
+	// Avoid non-compatible
+	$scaled-px: strip-units($rem-size) * $scaling-factor * strip-units($document-font-size);
+	$smallest-allowed: strip-units($smallest-allowed-px);
+	$adjusted: math.max($scaled-px, $smallest-allowed);
+	$adjusted-rem: math.div($adjusted, strip-units($document-font-size));
+	@return #{$adjusted-rem}rem;
+}
+
+// Output a font-size rule that uses clamp()
+@mixin responsive-font-size($size: 1rem, $scaling-factor: 0.6, $is-heading: true) {
+	// scale the font size down by applying the scaling factor
+	// but not below the $document-font-size.
+	$min: #{get-min($size, $scaling-factor)};
+	$target: #{get-scaled-vw($size)};
+
+	font-size: clamp(#{$min}, #{$target}, #{$size});
+}
+
+// 2.5rem * x = 1472
+// 2.5rem * 0.6 * x = 480;
+// difference = 992
