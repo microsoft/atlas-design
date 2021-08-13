@@ -1,3 +1,6 @@
+/**
+ * @sass-export-section="colors"
+ */
 $text: var(--theme-text);
 $text-subtle: var(--theme-text-subtle);
 $text-invert: var(--theme-text-invert);
@@ -108,7 +111,7 @@ $danger-active: var(--theme-danger-active);
 $danger-invert: var(--theme-danger-invert);
 $danger-box-shadow: var(--theme-danger-box-shadow);
 
-$framework-colors: (
+$colors: (
 	'primary': (
 		$primary,
 		$primary-background,
@@ -183,8 +186,6 @@ $framework-colors: (
 
 // Combined framework and brand colors for the array used in all the loops
 
-$colors: $framework-colors;
-
 // Color indexes, for use in color loops.
 
 $color-index-base: 1;
@@ -198,7 +199,7 @@ $color-index-background-glow-high-contrast: 8;
 
 // example implementation of a color loop
 
-// @each $name, $color-set in $framework-colors {
+// @each $name, $color-set in $colors {
 // 	$base: nth($color-set, $color-index-base);
 // 	$background: nth($color-set, $color-index-background);
 // 	$heavy: nth($color-set, $color-index-dark);
@@ -207,3 +208,5 @@ $color-index-background-glow-high-contrast: 8;
 // 	$invert: nth($color-set, $color-index-invert);
 // 	$box-shadow: nth($color-set, $color-index-box-shadow);
 //}
+
+//@end-sass-export-section

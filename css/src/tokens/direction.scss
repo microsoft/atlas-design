@@ -1,5 +1,7 @@
+/**
+ * @sass-export-section="direction"
+ */
 // Direction
-
 $user-text-direction: ltr !default;
 
 $user-left: if($user-text-direction == rtl, right, left);
@@ -13,3 +15,4 @@ $directions: (
 	'bottom': 'bottom',
 	'left': $user-left
 );
+//@end-sass-export-section

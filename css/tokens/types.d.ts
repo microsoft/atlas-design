@@ -1,78 +1,35 @@
-export type SassType =
-	| 'SassList'
-	| 'SassString'
-	| 'SassNumber'
-	| 'SassColor'
-	| 'SassObject'
-	| 'SassBoolean';
-
-export type SassRule =
-	| SassStringRule
-	| SassNumberRule
-	| SassColorRule
-	| SassListRule
-	| SassMapRule
-	| SassBooleanRule;
-
-export interface RuleDeclaration {
-	expression: string;
-	flag: { default: boolean; global: boolean };
-	in: string;
-	position: { line: number; column: string };
+export interface SassExportCollectionItem {
+	name: string;
+	location: string;
+	tokens: string | SassExportTokenItem;
 }
 
-export interface SassStringRule {
-	type: 'SassString';
+export interface SassExportCollection {
+	[name: string]: SassExportCollectionItem;
+}
+
+export interface SassExportNestedCollection {
+	[key: string]: string | boolean | SassExportTokenNestedItem;
+}
+
+export interface SassExportOptions {
+	inputFiles?: any;
+	includePaths?: string[];
+	format?: string;
+	type?: string;
+}
+
+export interface SassExportTokenItem {
+	name: string;
 	value: string;
-	sources?: string[];
-	declarations?: ?RuleDeclaration[];
+	compiledValue: string;
+	mapValue?: SassExportTokenItem[];
 }
 
-export interface SassNumberRule {
-	type: 'SassNumber';
-	value: number;
-	unit?: string;
-	sources?: string[];
-	[declarations]: RuleDeclaration[];
+export interface SassExportTokenNestedItem {
+	[name]: string | { [nestedName: string]: SassExportTokenItem };
 }
 
-export interface SassListRule {
-	type: 'SassList';
-	value: SassRule[];
-	separator: ',';
-	sources?: string[];
-	declarations?: RuleDeclaration[];
-}
-
-export interface SassMapRule {
-	type: 'SassMap';
-	value: { [key: string]: any };
-	sources?: string[];
-	declarations?: RuleDeclaration[];
-}
-
-export interface SassColorRule {
-	type: 'SassColor';
-	value: SassColorValue;
-	sources?: string[];
-	declarations?: RuleDeclaration[];
-}
-
-export interface SassBooleanRule {
-	type: 'SassBoolean';
-	value: boolean;
-	sources?: string[];
-	declarations?: RuleDeclaration[];
-}
-
-export interface SassColorValue {
-	r: number;
-	g: number;
-	b: number;
-	a: number;
-	hex: string;
-}
-
-export interface SassConvertRendered {
-	vars: { global: SassRule[] };
+export interface SassExportTokens {
+	[token]: SassExportTokenItem[];
 }

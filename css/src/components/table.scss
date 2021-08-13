@@ -5,64 +5,62 @@ $table-caption-padding: $spacer-6 !default;
 $table-caption-size: $font-size-9 !default;
 $table-caption-spacing: $letter-spacing-medium !default;
 
-@if $features-table == true {
-	.table-wrapper {
-		overflow-x: auto;
-		overflow-y: hidden;
-		-webkit-overflow-scrolling: touch;
+.table-wrapper {
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
+.table {
+	width: 100%;
+	font-size: $font-size-8;
+	border-collapse: collapse;
+	table-layout: auto;
+
+	caption {
+		padding: $table-caption-padding;
+		font-size: $table-caption-size;
+		font-weight: $weight-semibold;
+		letter-spacing: $table-caption-spacing;
+		text-align: $user-right;
+		text-transform: uppercase;
 	}
 
-	.table {
-		width: 100%;
-		font-size: $font-size-8;
-		border-collapse: collapse;
-		table-layout: auto;
+	th,
+	td {
+		display: table-cell;
+		word-wrap: break-word;
+		padding: $table-cell-vertical-padding $table-cell-horizontal-padding;
+		border-top: 1px solid $border;
+		line-height: 1.5;
+		vertical-align: top;
+	}
 
-		caption {
-			padding: $table-caption-padding;
-			font-size: $table-caption-size;
-			font-weight: $weight-semibold;
-			letter-spacing: $table-caption-spacing;
-			text-align: $user-right;
-			text-transform: uppercase;
-		}
+	thead th {
+		border-top: 0;
+		border-bottom: 1px solid $border;
+	}
 
-		th,
-		td {
-			display: table-cell;
-			word-wrap: break-word;
-			padding: $table-cell-vertical-padding $table-cell-horizontal-padding;
-			border-top: 1px solid $border;
-			line-height: 1.5;
-			vertical-align: top;
-		}
+	th:not([align]) {
+		text-align: $user-left;
+	}
 
-		thead th {
-			border-top: 0;
-			border-bottom: 1px solid $border;
-		}
+	&.table-stacked-mobile {
+		@include discouraged-mobile {
+			thead,
+			tfoot {
+				display: none;
+			}
 
-		th:not([align]) {
-			text-align: $user-left;
-		}
+			td {
+				display: block;
+				width: 100%;
+				padding: $table-cell-vertical-padding 0;
+			}
 
-		&.table-stacked-mobile {
-			@include discouraged-mobile {
-				thead,
-				tfoot {
-					display: none;
-				}
-
-				td {
-					display: block;
-					width: 100%;
-					padding: $table-cell-vertical-padding 0;
-				}
-
-				td:not(:nth-child(1)) {
-					padding-top: 0;
-					border-width: 0;
-				}
+			td:not(:nth-child(1)) {
+				padding-top: 0;
+				border-width: 0;
 			}
 		}
 	}
