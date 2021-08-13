@@ -160,6 +160,7 @@ function getNestedTokens(tokenItem) {
 
 /**
  * Return a boolean if the token item has nested maps
+ * Note, this currently only targets two levels of nesting.
  * @param {import('./types').SassExportTokenItem} tokenItem
  * @returns {boolean}
  */
