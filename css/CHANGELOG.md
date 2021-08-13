@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 1.0.0
+
+### Major Changes
+
+- 9b277cb: Upgrade to Node 16.6 and replace sass-extract with sass-export.
+
 ## 0.13.0
 
 ### Minor Changes
