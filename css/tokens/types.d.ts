@@ -12,6 +12,13 @@ export interface SassExportNestedCollection {
 	[key: string]: string | boolean | SassExportTokenNestedItem;
 }
 
+export interface SassExportOptions {
+	inputFiles?: any;
+	includePaths?: string[];
+	format?: string;
+	type?: string;
+}
+
 export interface SassExportTokenItem {
 	name: string;
 	value: string;

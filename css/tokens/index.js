@@ -12,7 +12,7 @@ async function createTokens() {
 	const filePaths = await getInputFilesFromIndex(filePathStem, indexPath);
 	checkFileComments(filePaths);
 
-	/** @type {{inputFiles: string[]}} */
+	/** @type {import('./types').SassExportOptions} */
 	const options = {
 		inputFiles: filePaths
 	};
