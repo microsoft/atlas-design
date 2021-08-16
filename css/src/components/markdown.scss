@@ -15,7 +15,9 @@ $list-top-spacing: 1rem !default;
 }
 
 .markdown {
+	// @include responsive-font-size($markdown-paragraph-size, 0.875rem); // experiment only
 	font-size: $markdown-paragraph-size;
+	line-height: 1.6;
 
 	// Inline code
 	:not(a):not(pre) > code {
@@ -118,7 +120,7 @@ $list-top-spacing: 1rem !default;
 	}
 
 	h5 {
-		@include responsive-font-size($font-size-5);
+		@include responsive-font-size($font-size-5, 1rem);
 
 		margin-top: 2.25rem;
 		margin-bottom: 0.375rem;
@@ -126,7 +128,7 @@ $list-top-spacing: 1rem !default;
 	}
 
 	h6 {
-		@include responsive-font-size($font-size-6);
+		@include responsive-font-size($font-size-6, 1rem);
 
 		margin-top: 2.25rem;
 		margin-bottom: 0.375rem;

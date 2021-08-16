@@ -27,7 +27,7 @@ The markdown element provides bare element styling to lists, paragraphs and inli
 
 ##### Headings (level 5)
 
-##### Headings (level 6)
+###### Headings (level 6)
 ```
 
 ## Unordered list

@@ -1,25 +1,42 @@
 @use 'sass:math';
 
+/*
+ * A note on how to test changes made to this function.
+ * 1. Uncomment the @debug lines to see your changes applied during build.
+ * 2. Scaling should be relatively fluid from the maximum (the $size provided at the widescreen breakpoint),
+ *	  to the minimum. There should be no very noticeable jumps.
+ * 3. The math here is largely arbitrary.
+ * 4. Should the difference between the max and min values increase drastically, you'll need to test with OS font size enlarged and zoomed.
+ * 5. The markdown CSS component is a good place to test the headings.
+*/
+
+$font-size-scaling-factor: 0.75 !default;
+
 // Remove the units from a value
 @function strip-units($number) {
 	@return math.div($number, ($number * 0 + 1));
 }
 
-@function get-scaled-vw($size, $scaling-factor: 0.6, $breakpoint: $breakpoint-widescreen) {
+@function get-scaled-vw(
+	$size,
+	$breakpoint: $breakpoint-widescreen,
+	$smallest-allowed-px: $document-font-size
+) {
 	// @debug 'Parameters: original:#{$original},  $scaling-factor:#{ $scaling-factor}, $breakpoint:#{$breakpoint}';
 
 	// Math.div will soon not support division with units, strip units from values.
 	$unitless-original: strip-units($size); // 3.5rem h1
 	$unitless-breakpoint: strip-units($breakpoint); // 1478px widescreen
-	$unitless-document-font-size: strip-units($document-font-size); // 16px
+	$unitless-document-font-size: strip-units($smallest-allowed-px); // 16px
 	$unitless-breakpoint-widescreen: math.div(
 		$unitless-breakpoint,
 		$unitless-document-font-size
 	); // 92rem
+
 	// @debug 'Unitless: $unitless-original:#{$unitless-original},  $unitless-$breakpoint:#{$unitless-breakpoint}, $unitless-document-font-size:#{$unitless-document-font-size}, $unitless-breakpoint-widescreen:#{$unitless-breakpoint-widescreen}';
 
 	$px: $unitless-original * $unitless-document-font-size; // 56px
-	$numerator: $px * ($unitless-document-font-size * $scaling-factor); // 56px * (16 * .6) 56* 9 // 504
+	$numerator: $px * ($unitless-document-font-size * $font-size-scaling-factor); // 56px * (16 * .6) 56* 9 // 504
 	$denom: $unitless-breakpoint-widescreen; // 92rem
 	// @debug 'Outputs: $px:#{$px}, $numerator:#{$numerator}, $denom:#{$denom}';
 
@@ -35,23 +52,29 @@
 	$smallest-allowed-px: $document-font-size
 ) {
 	// Avoid non-compatible
-	$scaled-px: strip-units($rem-size) * $scaling-factor * strip-units($document-font-size);
+	$scaled-px: strip-units($rem-size) * $font-size-scaling-factor * strip-units($document-font-size);
 	$smallest-allowed: strip-units($smallest-allowed-px);
 	$adjusted: math.max($scaled-px, $smallest-allowed);
 	$adjusted-rem: math.div($adjusted, strip-units($document-font-size));
 	@return #{$adjusted-rem}rem;
 }
 
-// Output a font-size rule that uses clamp()
-@mixin responsive-font-size($size: 1rem, $scaling-factor: 0.6, $is-heading: true) {
-	// scale the font size down by applying the scaling factor
-	// but not below the $document-font-size.
-	$min: #{get-min($size, $scaling-factor)};
-	$target: #{get-scaled-vw($size)};
+/*
+ * Outputs a font-size rule that uses clamp.
+ * First parameter is the the font-size at the widescreen breakpoint.
+ * Second (optional) parameter is minimum value to scale down to.
+ * If the second param is omitted, a scaling value ($font-size-scaling-factor)
+ * is applied to the first parameter to get the lowest boundary
+ */
+@mixin responsive-font-size($max-rem, $min-rem: '') {
+	// scale the font size down by applying the scaling factor but not below the $document-font-size.
+	$smallest-allowed-px: $max-rem * $font-size-scaling-factor;
+	@if $min-rem != '' {
+		$smallest-allowed-px: strip-units($min-rem) * $document-font-size;
+	}
 
-	font-size: clamp(#{$min}, #{$target}, #{$size});
+	$min: if($min-rem != '', $min-rem, $smallest-allowed-px);
+	$target: #{get-scaled-vw($max-rem)};
+
+	font-size: clamp(#{$min}, #{$target}, #{$max-rem});
 }
-
-// 2.5rem * x = 1472
-// 2.5rem * 0.6 * x = 480;
-// difference = 992
