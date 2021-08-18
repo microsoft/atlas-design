@@ -22,7 +22,7 @@ $font-size-scaling-factor: 0.75 !default;
 	$breakpoint: $breakpoint-widescreen,
 	$smallest-allowed-px: $document-font-size
 ) {
-	// @debug 'Parameters: original:#{$original},  $scaling-factor:#{ $scaling-factor}, $breakpoint:#{$breakpoint}';
+	// @debug 'Parameters: $size:#{$size}, $breakpoint:#{$breakpoint}, $smallest-allowed-px:#{$smallest-allowed-px} ';
 
 	// Math.div will soon not support division with units, strip units from values.
 	$unitless-original: strip-units($size); // 3.5rem h1
