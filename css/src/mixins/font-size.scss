@@ -1,15 +1,5 @@
 @use 'sass:math';
 
-/*
- * A note on how to test changes made to this function.
- * 1. Uncomment the @debug lines to see your changes applied during build.
- * 2. Scaling should be relatively fluid from the maximum (the $size provided at the widescreen breakpoint),
- *	  to the minimum. There should be no very noticeable jumps.
- * 3. The math here is largely arbitrary.
- * 4. Should the difference between the max and min values increase drastically, you'll need to test with OS font size enlarged and zoomed.
- * 5. The markdown CSS component is a good place to test the headings.
-*/
-
 $font-size-scaling-factor: 0.75 !default;
 
 // Remove the units from a value
