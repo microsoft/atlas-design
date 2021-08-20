@@ -1,0 +1,29 @@
+@use 'sass:math';
+
+$font-size-scaling-factor: 0.75 !default;
+
+// Remove the units from a value
+@function strip-units($number) {
+	@return math.div($number, ($number * 0 + 1));
+}
+@mixin responsive-font-size(
+	// font-size to stop scaling at
+	$end-rem,
+	// font-size to start scaling from
+	$start-rem: max($end-rem * $font-size-scaling-factor, 1rem),
+	// viewport width to stop scaling at
+	$end-width: $breakpoint-desktop,
+	// viewport width to start scaling from
+	$start-width: 480px
+) {
+	$m: math.div(
+			strip-units($end-rem) - strip-units($start-rem),
+			strip-units($end-width) - strip-units($start-width)
+		) * strip-units($document-font-size);
+
+	$y: strip-units($start-rem) * strip-units($document-font-size);
+	$x: strip-units($start-width);
+	$b: $y - $m * $x;
+
+	font-size: clamp(#{$start-rem}, #{$b}px + #{$m * 100}vw, #{$end-rem});
+}
