@@ -16,65 +16,24 @@ $font-size-scaling-factor: 0.75 !default;
 @function strip-units($number) {
 	@return math.div($number, ($number * 0 + 1));
 }
-
-@function get-scaled-vw(
-	$size,
-	$breakpoint: $breakpoint-widescreen,
-	$smallest-allowed-px: $document-font-size
+@mixin responsive-font-size(
+	// font-size to stop scaling at
+	$end-rem,
+	// font-size to start scaling from
+	$start-rem: max($end-rem * $font-size-scaling-factor, 1rem),
+	// viewport width to stop scaling at
+	$end-width: $breakpoint-desktop,
+	// viewport width to start scaling from
+	$start-width: 480px
 ) {
-	// @debug 'Parameters: $size:#{$size}, $breakpoint:#{$breakpoint}, $smallest-allowed-px:#{$smallest-allowed-px} ';
+	$m: math.div(
+			strip-units($end-rem) - strip-units($start-rem),
+			strip-units($end-width) - strip-units($start-width)
+		) * strip-units($document-font-size);
 
-	// Math.div will soon not support division with units, strip units from values.
-	$unitless-original: strip-units($size); // 3.5rem h1
-	$unitless-breakpoint: strip-units($breakpoint); // 1478px widescreen
-	$unitless-document-font-size: strip-units($smallest-allowed-px); // 16px
-	$unitless-breakpoint-widescreen: math.div(
-		$unitless-breakpoint,
-		$unitless-document-font-size
-	); // 92rem
+	$y: strip-units($start-rem) * strip-units($document-font-size);
+	$x: strip-units($start-width);
+	$b: $y - $m * $x;
 
-	// @debug 'Unitless: $unitless-original:#{$unitless-original},  $unitless-$breakpoint:#{$unitless-breakpoint}, $unitless-document-font-size:#{$unitless-document-font-size}, $unitless-breakpoint-widescreen:#{$unitless-breakpoint-widescreen}';
-
-	$px: $unitless-original * $unitless-document-font-size; // 56px
-	$numerator: $px * ($unitless-document-font-size * $font-size-scaling-factor); // 56px * (16 * .6) 56* 9 // 504
-	$denom: $unitless-breakpoint-widescreen; // 92rem
-	// @debug 'Outputs: $px:#{$px}, $numerator:#{$numerator}, $denom:#{$denom}';
-
-	$target: math.div($numerator, $denom);
-	// @debug '$target:#{$target + vw}';
-
-	@return $target + vw;
-}
-
-@function get-min(
-	$rem-size: 1rem,
-	$scaling-factor: 0.6,
-	$smallest-allowed-px: $document-font-size
-) {
-	// Avoid non-compatible
-	$scaled-px: strip-units($rem-size) * $font-size-scaling-factor * strip-units($document-font-size);
-	$smallest-allowed: strip-units($smallest-allowed-px);
-	$adjusted: math.max($scaled-px, $smallest-allowed);
-	$adjusted-rem: math.div($adjusted, strip-units($document-font-size));
-	@return #{$adjusted-rem}rem;
-}
-
-/*
- * Outputs a font-size rule that uses clamp.
- * First parameter is the the font-size at the widescreen breakpoint.
- * Second (optional) parameter is minimum value to scale down to.
- * If the second param is omitted, a scaling value ($font-size-scaling-factor)
- * is applied to the first parameter to get the lowest boundary
- */
-@mixin responsive-font-size($max-rem, $min-rem: '') {
-	// scale the font size down by applying the scaling factor but not below the $document-font-size.
-	$smallest-allowed-px: $max-rem * $font-size-scaling-factor;
-	@if $min-rem != '' {
-		$smallest-allowed-px: strip-units($min-rem) * $document-font-size;
-	}
-
-	$min: if($min-rem != '', $min-rem, $smallest-allowed-px);
-	$target: #{get-scaled-vw($max-rem)};
-
-	font-size: clamp(#{$min}, #{$target}, #{$max-rem});
+	font-size: clamp(#{$start-rem}, #{$b}px + #{$m * 100}vw, #{$end-rem});
 }
