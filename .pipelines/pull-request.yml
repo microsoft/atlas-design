@@ -18,6 +18,9 @@ steps:
     inputs:
       versionSpec: '16.6.x'
 
+  - script: View NPM Version
+    displayName: npm -v
+
   - script: npm ci --no-optional
     displayName: Install
 
