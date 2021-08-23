@@ -4,7 +4,7 @@ description: An element to render html generated from markdown.
 template: standard
 ---
 
-# Markdown1
+# Markdown
 
 The markdown element provides bare element styling to lists, paragraphs and inline code. This element is most often used to render the content section of a page.
 
