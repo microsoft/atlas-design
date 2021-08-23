@@ -1,5 +1,7 @@
 @use 'sass:math';
 
+/* stylelint-disable */
+
 $font-size-scaling-factor: 0.75 !default;
 
 // Remove the units from a value
@@ -27,3 +29,4 @@ $font-size-scaling-factor: 0.75 !default;
 
 	font-size: clamp(#{$start-rem}, #{$b}px + #{$m * 100}vw, #{$end-rem});
 }
+/* stylelint-enable */
