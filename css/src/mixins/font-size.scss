@@ -11,6 +11,8 @@ $font-size-scaling-factor: 0.75 !default;
 @mixin responsive-font-size(
 	// font-size to stop scaling at
 	$end-rem,
+	// whether to include !important
+	$important: false,
 	// font-size to start scaling from
 	$start-rem: max($end-rem * $font-size-scaling-factor, 1rem),
 	// viewport width to stop scaling at
@@ -26,7 +28,8 @@ $font-size-scaling-factor: 0.75 !default;
 	$y: strip-units($start-rem) * strip-units($document-font-size);
 	$x: strip-units($start-width);
 	$b: $y - $m * $x;
+	$importantValue: if($important, !important, '');
 
-	font-size: clamp(#{$start-rem}, #{$b}px + #{$m * 100}vw, #{$end-rem});
+	font-size: clamp(#{$start-rem}, #{$b}px + #{$m * 100}vw, #{$end-rem}) #{$importantValue};
 }
 /* stylelint-enable */
