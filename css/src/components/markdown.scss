@@ -120,7 +120,7 @@ $list-top-spacing: 1rem !default;
 	}
 
 	h5 {
-		@include responsive-font-size($font-size-5, 1.1rem);
+		@include responsive-font-size($font-size-5, false, 1.1rem);
 
 		margin-top: 2.25rem;
 		margin-bottom: 0.375rem;
@@ -128,7 +128,7 @@ $list-top-spacing: 1rem !default;
 	}
 
 	h6 {
-		@include responsive-font-size($font-size-6, 1.05rem);
+		@include responsive-font-size($font-size-6, false, 1.05rem);
 
 		margin-top: 2.25rem;
 		margin-bottom: 0.375rem;
