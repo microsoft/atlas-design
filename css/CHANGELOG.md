@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 1.0.1
+
+### Patch Changes
+
+- 9c7f501: Responsive font size rule generator can include important.
+- a67a553: Ignore stylelint within responsive font size function.
+
 ## 1.0.0
 
 ### Major Changes
