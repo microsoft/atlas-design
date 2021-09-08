@@ -19,7 +19,7 @@ Use `margin` or `padding` with a size value to add uniform spacing around an ele
 ```html
 <div class="margin-xxs border">XXS</div>
 <div class="margin-xs border">XS</div>
-<div class="margin-s border">X</div>
+<div class="margin-s border">S</div>
 <div class="margin-m border">M</div>
 <div class="margin-l border">L</div>
 <div class="margin-xl border">XL</div>
