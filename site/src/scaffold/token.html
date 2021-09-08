@@ -59,15 +59,20 @@
 {{/tokens}}</code></pre>
 					</div>
 					{{#figmaEmbed}}
-					<div class="figma-embed-container padding-top-md">
-						<h2 class="font-size-h2 margin-bottom-md">Figma</h2>
-						<iframe
-							width="100%";
-							class="border"
-							height="450"
-							src="{{figmaEmbed}}"
-							allowfullscreen></iframe>
-						</div>
+						<div class="figma-embed-container padding-top-m">
+							<div class="display-flex justify-content-space-between">
+								<h2 class="font-size-h2 margin-bottom-m">Figma</h2>
+								<button 
+									id="expand-figma-embed"
+									class="button button-clear"
+									aria-label="Make Figma Embed Fullscreen">Fullscreen</button>
+							</div>
+							<iframe
+								width="100%";
+								class="border"
+								height="450"
+								src="{{figmaEmbed}}"
+								allowfullscreen></iframe>
 					{{/figmaEmbed}}
 				</div>
 			</div>
