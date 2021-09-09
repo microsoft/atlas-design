@@ -150,60 +150,78 @@ module.exports = new Transformer({
 		const code = await asset.getCode();
 		const { body, attributes } = frontMatter(code);
 
-		const parsedCode = attributes.import
+		// If an import attribute has been specified, pulls in a plain markdown file.
+		// Note: component template does not support 'import'
+		let parsedCode = attributes.import
 			? await options.inputFS
 					.readFile(path.join(process.cwd(), attributes.import), 'utf-8')
 					.then(content => marked(content))
-			: marked(body);
+			: null;
 
-		if (attributes.template) {
-			const workingDir = process.cwd();
-			const templateDir = path.join(workingDir, config.contents.templatePath);
-			const templateFilename = path.join(templateDir, `${attributes.template}.html`);
-			const figmaEmbed = attributes.figmaEmbed;
-			const tocFilename = config.contents.tocPath
-				? path.join(workingDir, config.contents.tocPath)
-				: null;
+		// no template attribute specified, just process markdown and complete file
+		// note: error instead?
+		if (!attributes.template) {
+			parsedCode = marked(body);
+			asset.setCode(parsedCode);
+			return [asset];
+		}
 
-			logger.verbose({
-				message: `Resolved paths:\n${workingDir}\n${templateDir}\n${templateFilename}\n${tocFilename}`,
-				skipFormatting: true
-			});
+		if (!parsedCode) {
+			parsedCode = processTemplateMarkdown(attributes.template, body);
+		}
 
-			const [template, tocEntries] = await Promise.all([
-				options.inputFS.readFile(templateFilename, 'utf-8'),
-				tocFilename
-					? options.inputFS.readFile(tocFilename, 'utf-8').then(r => JSON.parse(r))
-					: Promise.resolve(null)
-			]);
-			const tokenSet = attributes.token;
-			let tokens;
-			let cssTokenSource;
-			// we've specified a tokens file to load from @atlas-tokens
-			if (tokenSet) {
-				try {
-					tokens = Object.entries(allTokens[tokenSet].tokens).map(item => {
-						return {
-							name: item[0],
-							value: item[1]
-						};
-					});
-					cssTokenSource = allTokens[tokenSet].location;
-				} catch (err) {
-					logger.warn({
-						message: `There was an error trying to require token file: "${attributes.token}. Did you specify the correct token name in your template? `,
-						filePath: asset.filePath,
-						language: asset.type
-					});
-				}
+		const workingDir = process.cwd();
+		const templateDir = path.join(workingDir, config.contents.templatePath);
+		const templateFilename = path.join(templateDir, `${attributes.template}.html`);
+		const figmaEmbed = attributes.figmaEmbed;
+		const tocFilename = config.contents.tocPath
+			? path.join(workingDir, config.contents.tocPath)
+			: null;
+
+		logger.verbose({
+			message: `Resolved paths:\n${workingDir}\n${templateDir}\n${templateFilename}\n${tocFilename}`,
+			skipFormatting: true
+		});
+
+		const [template, tocEntries] = await Promise.all([
+			options.inputFS.readFile(templateFilename, 'utf-8'),
+			tocFilename
+				? options.inputFS.readFile(tocFilename, 'utf-8').then(r => JSON.parse(r))
+				: Promise.resolve(null)
+		]);
+		const tokenSet = attributes.token;
+		let tokens;
+		let cssTokenSource;
+		// we've specified a tokens file to load from @atlas-tokens
+		if (tokenSet) {
+			try {
+				tokens = Object.entries(allTokens[tokenSet].tokens).map(item => {
+					return {
+						name: item[0],
+						value: item[1]
+					};
+				});
+				cssTokenSource = allTokens[tokenSet].location;
+			} catch (err) {
+				logger.warn({
+					message: `There was an error trying to require token file: "${attributes.token}. Did you specify the correct token name in your template? `,
+					filePath: asset.filePath,
+					language: asset.type
+				});
 			}
+		}
 
-			if (tocFilename) {
-				asset.addIncludedFile(tocFilename);
-			}
+		if (tocFilename) {
+			asset.addIncludedFile(tocFilename);
+		}
 
-			asset.addIncludedFile(templateFilename);
+		asset.addIncludedFile(templateFilename);
 
+		updateStandardAsset(template, tocEntries, tokens, cssTokenSource, figmaEmbed);
+
+		return [asset];
+
+		function updateStandardAsset(template, tocEntries, tokens, cssTokenSource, figmaEmbed) {
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
@@ -214,15 +232,14 @@ module.exports = new Transformer({
 					figmaEmbed
 				})
 			);
-		} else {
-			asset.setCode(parsedCode);
 		}
-
-		return [asset];
 	}
 });
 
 function createExample(language, code) {
+	if (!language) {
+		throw new Error(code);
+	}
 	if (language.toLowerCase() === 'html') {
 		return `<div class="example padding-block-m">${code}</div>`;
 	}
@@ -230,4 +247,61 @@ function createExample(language, code) {
 		return `<div class="example padding-block-m">${marked(code)}</div>`;
 	}
 	return '';
+}
+
+function processTemplateMarkdown(template, markdownString) {
+	switch (template) {
+		case 'component':
+			const [overview, usage, reference] = createComponentSections(markdownString);
+			const body = `
+				${overview}
+				<div class="tabs margin-top-m">
+					<div class="tab-list font-size-h3" role="tablist">
+						<div class="tab-parent is-active">
+							<button class="tab-control" data-tab-control-group="component" role="tab" aria-controls="usage-section">Usage</button>
+						</div>
+						<div class="tab-parent">
+							<button class="tab-control" data-tab-control-group="component" role="tab" aria-controls="reference-section">Reference</button>
+						</div>
+					</div>
+				</div>
+				<div id="usage-section" role="tabpanel" data-tab-section-group="component" data-tab-content="usage-section">
+					${usage}
+				</div>
+				<div id="reference-section" role="tabpanel" data-tab-section-group="component" data-tab-content="reference-section" hidden>
+					${reference}
+				</div>
+			`;
+			return body;
+		case 'standard':
+		case 'token':
+			return marked(markdownString);
+		default:
+			throw new Error(`Invalid template name "${template}" specified.`);
+	}
+}
+const componentSectionMatchers = ['## Usage', '## Reference'];
+function createComponentSections(markdownString) {
+	const positions = [
+		{
+			start: 0,
+			end: 0
+		}
+	];
+
+	for (const [i, matcher] of componentSectionMatchers.entries()) {
+		const currentIndex = markdownString.indexOf(matcher);
+
+		const previousEnd = currentIndex - 1;
+
+		positions[i].end = previousEnd;
+		positions[i + 1] = {
+			start: currentIndex + matcher.length,
+			end: markdownString.length
+		};
+	}
+
+	return positions.map(position => {
+		return marked(markdownString.slice(position.start, position.end));
+	});
 }

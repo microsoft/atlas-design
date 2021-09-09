@@ -1,3 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable security/detect-possible-timing-attacks */
+/* eslint-disable security/detect-object-injection */
+export interface InputArgs {
+	[name: string]: string | boolean | number | null | undefined | string[];
+}
+
 /**
  * Parses the query string into a map object.
  * Handles x-www-form-urlencoded query strings. See https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1

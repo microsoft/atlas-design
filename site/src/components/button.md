@@ -1,7 +1,7 @@
 ---
 title: Button
 description: Buttons the Atlas Design System
-template: standard
+template: component
 figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FMCSf9XuplN2zG0sCcqJJyq%2F%25F0%259F%259A%25A7-Buttons%3Fpage-id%3D205%253A610%26node-id%3D364%253A852%26viewport%3D1342%252C2000%252C0.5%26scaling%3Dmin-zoom
 ---
 
@@ -13,9 +13,17 @@ Atlas provides three core button styles.
 2. Primary
 3. Semantic Colors
 
-Each style is explained below, detailing how and where to use them.
+<button class="button">Click me</button>
 
-## Secondary
+## Usage
+
+### Colors
+
+<button class="button button-primary">Default</button>
+
+## Reference
+
+### Secondary
 
 All buttons, by default, are secondary buttons. There are three gradutating secondary styles.
 
@@ -33,7 +41,7 @@ All buttons, by default, are secondary buttons. There are three gradutating seco
 <div class="button">Click me!</button>
 ```
 
-## Primary
+### Primary
 
 A visual style used to highlight only the most important actions. To avoid confusing users, don't use more than more primary button within a section or view.
 
@@ -47,11 +55,11 @@ A visual style used to highlight only the most important actions. To avoid confu
 <div class="button button-primary">Click me!</button>
 ```
 
-## Semantic Colors
+### Semantic Colors
 
 Semantic colors denote standard value states (such as good, bad, or warning). Each color has the same basic meaning in all contexts. Our semantic color buttons are used infrequently.
 
-### Danger
+#### Danger
 
 Danger buttons are red on most themes. They help reiterature that the intended action is important or potentially dangerous (e.g., deleting an item or transferring ownership).
 
@@ -65,7 +73,7 @@ Danger buttons are red on most themes. They help reiterature that the intended a
 <div class="button button-danger">Click me!</button>
 ```
 
-### Success
+#### Success
 
 Success buttons are green on most themes. This color stands for a good, positive situation or for the successful completion of a task. Use the good/positive semantic color if ...
 
@@ -82,7 +90,7 @@ Success buttons are green on most themes. This color stands for a good, positive
 <div class="button button-success">Click me!</button>
 ```
 
-### Warning
+#### Warning
 
 Warning buttons are yellow on most themes. This color indicates a critical situation or warning. Use this semantic color if ...
 
@@ -102,7 +110,7 @@ Warning buttons are yellow on most themes. This color indicates a critical situa
 <div class="button button-warning">Click me!</button>
 ```
 
-## Variations
+### Variations
 
 Although variations are discussed one at a time on this page, you are able to use any combination of them together!
 
@@ -116,7 +124,7 @@ Make a button smaller or bigger than the default.
 <button class="button button-large">Large</button>
 ```
 
-### Block button
+#### Block button
 
 Make a button take up the full width of a container.
 
@@ -124,7 +132,7 @@ Make a button take up the full width of a container.
 <button class="button button-block">Block</button>
 ```
 
-### Loading buttons
+#### Loading buttons
 
 Ensure the user knows they need to wait for some event (like a fetch request) in order to interact with a button.
 
@@ -149,7 +157,7 @@ Ensure the user knows they need to wait for some event (like a fetch request) in
 <button class="button button-filled button-danger is-loading">Danger</button>
 ```
 
-## Adaptive buttons
+### Adaptive buttons
 
 The default clear button picks up the color the text set on a container. It is best used as an color-accessible button on a color not part of one of the Atlas themes.
 
