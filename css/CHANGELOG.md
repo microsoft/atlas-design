@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 1.1.0
+
+### Minor Changes
+
+- 8950443: Add sticky to positions. Makes class .position-sticky available.
+
+### Patch Changes
+
+- 3d1df51: Move the .buttons component to components folder.
+
 ## 1.0.1
 
 ### Patch Changes
