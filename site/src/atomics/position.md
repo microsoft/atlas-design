@@ -14,6 +14,7 @@ These classes can be used to help us place elements outside of the typical docum
 .position-fixed
 .position-relative
 .position-absolute
+.position-sticky
 
 .position-fixed-tablet
 .position-relative-tablet
