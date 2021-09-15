@@ -146,3 +146,21 @@
 		background-color: $body-background;
 	}
 }
+
+// Static colors - do not change with theme
+
+.color-white-static {
+	color: $white-static !important;
+}
+
+.color-black-static {
+	color: $black-static !important;
+}
+
+.background-color-white-static {
+	background-color: $white-static !important;
+}
+
+.background-color-black-static {
+	background-color: $black-static !important;
+}
