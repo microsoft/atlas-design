@@ -51,6 +51,18 @@
 	border-radius: $border-radius !important;
 }
 
+.border-radius-tablet {
+	@include tablet {
+		border-radius: $border-radius !important;
+	}
+}
+
 .border-radius-l {
 	border-radius: $border-radius-large !important;
+}
+
+.border-radius-l-tablet {
+	@include tablet {
+		border-radius: $border-radius !important;
+	}
 }
