@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 1.2.0
+
+### Minor Changes
+
+- 54ff1db: Add black and white static color classes for text and background.
+
 ## 1.1.0
 
 ### Minor Changes
