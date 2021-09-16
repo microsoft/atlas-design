@@ -38,6 +38,27 @@
 	}
 }
 
+@include desktop {
+	.border-desktop {
+		border: $border-width solid $border !important;
+	}
+
+	.border-none-desktop {
+		border: none !important;
+	}
+
+	// Rules for each side
+	@each $border-key, $direction in $directions {
+		.border-#{$border-key}-desktop {
+			border-#{$direction}: $border-width solid $border !important;
+		}
+
+		.border-#{$border-key}-none-desktop {
+			border-#{$direction}: 0 !important;
+		}
+	}
+}
+
 // Modifiers
 .border-high-contrast {
 	border: $border-width solid $border-white-high-contrast !important;
@@ -46,6 +67,8 @@
 		border: $border-width solid $border-yellow-high-contrast !important;
 	}
 }
+
+// Border radius Atmoics
 
 .border-radius {
 	border-radius: $border-radius !important;
@@ -57,12 +80,24 @@
 	}
 }
 
+.border-radius-desktop {
+	@include desktop {
+		border-radius: $border-radius !important;
+	}
+}
+
 .border-radius-l {
 	border-radius: $border-radius-large !important;
 }
 
 .border-radius-l-tablet {
 	@include tablet {
+		border-radius: $border-radius !important;
+	}
+}
+
+.border-radius-l-desktop {
+	@include desktop {
 		border-radius: $border-radius !important;
 	}
 }

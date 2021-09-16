@@ -60,10 +60,14 @@ Here is an example of applying border to specific side of the element:
 
 Currently two classes are available to set border radius:
 
-| class             | size      |
-| ----------------- | --------- |
-| `border-radius`   | `0.25rem` |
-| `border-radius-l` | `0.5rem`  |
+| modifiers | direction                        | screensize | visibility |
+| --------- | -------------------------------- | ---------- | ---------- |
+| values    | `top`, `right`, `bottom`, `left` | `tablet`   | `none`     |
+
+| class             | size      | screensize          |
+| ----------------- | --------- | ------------------- |
+| `border-radius`   | `0.25rem` | `tablet`, `desktop` |
+| `border-radius-l` | `0.5rem`  | `tablet`, `desktop` |
 
 ```html
 <div class="border border-radius padding-s">
@@ -75,4 +79,28 @@ Currently two classes are available to set border radius:
 <div class="border border-radius-l padding-s">
 	<p>Large radius</p>
 </div>
+```
+
+```atomics-filter
+.border
+.border-tablet
+.border-desktop
+.border-top
+.border-right
+.border-bottom
+.border-left
+.border-top-tablet
+.border-right-tablet
+.border-bottom-tablet
+.border-left-tablet
+.border-top-desktop
+.border-right-desktop
+.border-bottom-desktop
+.border-left-desktop
+.border-radius
+.border-radius-tablet
+.border-radius-desktop
+.border-radius-l
+.border-radius-l-tablet
+.border-radius-l-desktop
 ```
