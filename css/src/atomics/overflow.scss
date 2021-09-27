@@ -1,0 +1,15 @@
+$overflow-values: hidden, scroll;
+
+@each $value in $overflow-values {
+	.overflow-#{$value} {
+		overflow: $value;
+	}
+
+	.overflow-x-#{$value} {
+		overflow-x: $value;
+	}
+
+	.overflow-y-#{$value} {
+		overflow-y: $value;
+	}
+}
