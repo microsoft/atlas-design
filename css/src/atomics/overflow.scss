@@ -1,4 +1,4 @@
-$overflow-values: hidden, scroll;
+$overflow-values: auto hidden;
 
 @each $value in $overflow-values {
 	.overflow-#{$value} {
@@ -11,5 +11,19 @@ $overflow-values: hidden, scroll;
 
 	.overflow-y-#{$value} {
 		overflow-y: $value;
+	}
+
+	@include tablet {
+		.overflow-#{$value}-tablet {
+			overflow: $value;
+		}
+
+		.overflow-x-#{$value}-tablet {
+			overflow-x: $value;
+		}
+
+		.overflow-y-#{$value}-tablet {
+			overflow-y: $value;
+		}
 	}
 }

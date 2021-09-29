@@ -8,9 +8,9 @@ template: standard
 
 At times, you'll need to determine the overflow behavior of an element. Atlas provides several classes to do this.
 
-| cssproperty                            | value              | screensize |
-| -------------------------------------- | ------------------ | ---------- |
-| `overflow`, `overflow-x`, `overflow-y` | `scroll`, `hidden` | N/A        |
+| cssproperty                            | value            | screensize |
+| -------------------------------------- | ---------------- | ---------- |
+| `overflow`, `overflow-x`, `overflow-y` | `auto`, `hidden` | N/A        |
 
 ## Usage
 
@@ -20,7 +20,7 @@ As an examplem we'll use a parent element's border radius in combination with `.
 <div class="overflow-hidden border-radius-l">
 	<div class="background-color-primary padding-xl">
 		<p class="color-primary-invert font-size-xl">
-			This boxes borders are rounded because we gave the parent container overflow-hidden
+			This box's borders are rounded because we gave the parent container overflow-hidden
 		</p>
 	</div>
 </div>
@@ -28,12 +28,15 @@ As an examplem we'll use a parent element's border radius in combination with `.
 
 ### Scolling
 
-You can force the appearance of either horizontal or vertical scollbars with `.overflow-x-scroll` and `.overflow-y-scroll`.
+You can force the appearance of either horizontal or vertical scollbars with `.overflow-x-auto` and `.overflow-y-auto`.
 
 ```html
-<div class="overflow-x-scroll">
+<div class="overflow-x-auto">
 	<div class="background-color-success padding-xl">
-		<p class="color-success-invert font-size-xl">This container has a horizontal scrollbar.</p>
+		<p class="color-success-invert font-size-xl">
+			This container has a horizontal scrollbar.
+			----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+		</p>
 	</div>
 </div>
 ```
@@ -44,9 +47,9 @@ List of all available classes:
 
 ```atomics-filter
 .overflow-hidden
-.overflow-scroll
+.overflow-auto
 .overflow-x-hidden
-.overflow-x-scroll
+.overflow-x-auto
 .overflow-y-hidden
-.overflow-y-scroll
+.overflow-y-auto
 ```
