@@ -6,7 +6,7 @@
 
 	.focus-visible.has-inner-focus,
 	.focus-visible.inner-focus {
-		outline-offset: -$focus-outline-offset;
+		outline-offset: -$focus-width;
 	}
 
 	.has-default-focus,
@@ -29,7 +29,7 @@
 		&.has-inner-focus,
 		&.inner-focus {
 			outline-color: currentColor;
-			outline-offset: -$focus-outline-offset;
+			outline-offset: -$focus-width;
 		}
 	}
 }
