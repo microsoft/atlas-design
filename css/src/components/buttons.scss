@@ -6,10 +6,12 @@
 	align-items: center;
 	justify-content: flex-start;
 
+	&.buttons-centered,
 	&.is-centered {
 		justify-content: center;
 	}
 
+	&.buttons-right,
 	&.is-right {
 		justify-content: flex-end;
 	}
@@ -42,6 +44,7 @@
 		margin-bottom: 1rem;
 	}
 
+	&.buttons-addons,
 	&.has-addons,
 	&.addons {
 		.button {
