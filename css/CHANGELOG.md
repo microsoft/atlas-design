@@ -1,5 +1,17 @@
 # @microsoft/atlas-css
 
+## 1.3.0
+
+### Minor Changes
+
+- 62b4864: Add explicit combination for .button.button-clear and .border, which allows for flexible button colors by using currentColor.
+
+### Patch Changes
+
+- 1998f3f: Ensure inner focus outline offset matches outline width.
+- 4dad0be: Update .buttons subclasses to follow component naming conventions.
+- e9c3ca9: Normalized scss imports
+
 ## 1.2.0
 
 ### Minor Changes
