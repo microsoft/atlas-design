@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.8.0
+
+### Minor Changes
+
+- 62b4864: Add explicit combination for .button.button-clear and .border, which allows for flexible button colors by using currentColor.
+
 ## 0.7.0
 
 ### Minor Changes
