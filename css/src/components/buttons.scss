@@ -6,11 +6,11 @@
 	align-items: center;
 	justify-content: flex-start;
 
-	&.is-centered {
+	&.buttons-centered {
 		justify-content: center;
 	}
 
-	&.is-right {
+	&.buttons-right {
 		justify-content: flex-end;
 	}
 
@@ -42,8 +42,7 @@
 		margin-bottom: 1rem;
 	}
 
-	&.has-addons,
-	&.addons {
+	&.buttons-addons {
 		.button {
 			&:not(:first-child) {
 				border-bottom-#{$user-left}-radius: 0;
