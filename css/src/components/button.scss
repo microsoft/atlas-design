@@ -144,6 +144,12 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 	border-color: transparent;
 	background-color: transparent;
 
+	&.border {
+		// an allowed hack to make for flexible outlined buttons
+		// does not support loading states
+		border-color: currentColor !important;
+	}
+
 	&,
 	&:visited {
 		color: currentColor;
@@ -170,10 +176,6 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 			&.is-hovered {
 				background-color: $background;
 				color: $dark;
-			}
-
-			&.is-loading::after {
-				border-color: transparent transparent $base $base !important;
 			}
 
 			&.button-disabled,
