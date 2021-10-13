@@ -28,7 +28,7 @@ The most common use case for this is within a button.
 The icon elements sizing is `em` based, so it should scale with automatically.
 
 ```html
-<button class="button button-large">
+<button class="button button-lg">
 	<span>A large button</span>
 	<span class="icon border"></span>
 </button>
@@ -36,7 +36,7 @@ The icon elements sizing is `em` based, so it should scale with automatically.
 	<span>Default button</span>
 	<span class="icon border"></span>
 </button>
-<button class="button button-small">
+<button class="button button-sm">
 	<span>A small button</span>
 	<span class="icon border"></span>
 </button>
