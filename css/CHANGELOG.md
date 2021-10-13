@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 2.0.0
+
+### Major Changes
+
+- 0f8102a: Adjust nomenclature pattern for sizes in Atomics and Button component. s -> sm, m -> md, l -> lg.
+
+### Patch Changes
+
+- 085fdbe: Update dependencies.
+
 ## 1.3.0
 
 ### Minor Changes

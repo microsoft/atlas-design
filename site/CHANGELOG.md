@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.9.0
+
+### Minor Changes
+
+- 5254181: Update with guidance on naming components and atomic sizes.
+
+### Patch Changes
+
+- 085fdbe: Update dependencies.
+
 ## 0.8.0
 
 ### Minor Changes
