@@ -1,7 +1,7 @@
 {
 	"name": "@microsoft/parcel-resolver-dotcss-packages",
 	"description": "Allows for the inclusion of normalize.css and minireset.css via npm packages.",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"main": "index.js",
 	"engines": {
 		"parcel": "^2"
