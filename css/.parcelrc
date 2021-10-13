@@ -1,7 +1,7 @@
 {
 	"extends": "@parcel/config-default",
 	"resolvers": [
-		"@microsoft/parcel-resolver-dotcss-static",
+		"@microsoft/parcel-resolver-dotcss-packages",
 		"@parcel/resolver-default"
 	]
 }
