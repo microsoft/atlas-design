@@ -1,5 +1,5 @@
 $control-radius: $radius !default;
-$control-radius-small: $radius-small !default;
+$control-radius-sm: $radius-sm !default;
 
 $control-font-size: $font-size-7 !default;
 $control-border-width: 1px !default;
@@ -34,11 +34,11 @@ $control-padding-horizontal: calc(0.625em - #{$control-border-width}) !default;
 	@extend %control;
 }
 
-@mixin control-small {
-	border-radius: $control-radius-small;
-	font-size: $font-size-small;
+@mixin control-sm {
+	border-radius: $control-radius-sm;
+	font-size: $font-size-sm;
 }
 
-@mixin control-large {
-	font-size: $font-size-large;
+@mixin control-lg {
+	font-size: $font-size-lg;
 }

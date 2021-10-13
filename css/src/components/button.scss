@@ -3,12 +3,12 @@
 $button-color: $text !default;
 $button-background-color: $body-background !default;
 
-$button-large-font-size: $font-size-6 !default;
-$button-small-font-size: $font-size-8 !default;
+$button-lg-font-size: $font-size-6 !default;
+$button-sm-font-size: $font-size-8 !default;
 
 $button-border-color: $text-subtle !default;
 $button-border-width: $control-border-width !default;
-$button-border-radius: $radius-small;
+$button-border-radius: $radius-sm;
 
 $button-padding-vertical: calc(0.375em - #{$button-border-width}) !default;
 $button-padding-horizontal: 0.75em !default;
@@ -74,12 +74,12 @@ $button-font-weight: $weight-semibold !default;
 
 	// Sizes
 
-	&.button-small {
-		font-size: $button-small-font-size;
+	&.button-sm {
+		font-size: $button-sm-font-size;
 	}
 
-	&.button-large {
-		font-size: $button-large-font-size;
+	&.button-lg {
+		font-size: $button-lg-font-size;
 	}
 
 	// Modifiers

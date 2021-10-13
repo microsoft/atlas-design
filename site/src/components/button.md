@@ -30,7 +30,7 @@ All buttons, by default, are secondary buttons. There are three gradutating seco
 | Filled   | `.button` `.button-filled` | <button class="button button-filled">Default</button> | <button class="button button-filled is-hovered">Default</button> |
 
 ```abut-html
-<div class="button">Click me!</button>
+<button class="button">Click me!</button>
 ```
 
 ## Primary
@@ -44,7 +44,7 @@ A visual style used to highlight only the most important actions. To avoid confu
 | Filled   | `.button`, `.button-primary`, `.button-filled` | <button class="button button-primary button-filled">Default</button> | <button class="button button-primary button-filled is-hovered">Default</button> |
 
 ```abut-html
-<div class="button button-primary">Click me!</button>
+<button class="button button-primary">Click me!</button>
 ```
 
 ## Semantic Colors
@@ -62,7 +62,7 @@ Danger buttons are red on most themes. They help reiterature that the intended a
 | Filled   | `.button` `.button-danger`, `.button-filled` | <button class="button button-danger button-filled">Default</button> | <button class="button button-danger button-filled is-hovered">Default</button> |
 
 ```abut-html
-<div class="button button-danger">Click me!</button>
+<button class="button button-danger">Click me!</button>
 ```
 
 ### Success
@@ -79,7 +79,7 @@ Success buttons are green on most themes. This color stands for a good, positive
 | Filled   | `.button`, `.button-success` `.button-filled` | <button class="button button-success button-filled">Default</button> | <button class="button button-success button-filled is-hovered">Default</button> |
 
 ```abut-html
-<div class="button button-success">Click me!</button>
+<button class="button button-success">Click me!</button>
 ```
 
 ### Warning
@@ -99,7 +99,7 @@ Warning buttons are yellow on most themes. This color indicates a critical situa
 | Filled   | `.button` , `.button-warning`, `.button-filled` | <button class="button button-warning button-filled">Default</button> | <button class="button button-warning button-filled is-hovered">Default</button> |
 
 ```abut-html
-<div class="button button-warning">Click me!</button>
+<button class="button button-warning">Click me!</button>
 ```
 
 ## Variations
@@ -111,9 +111,9 @@ Although variations are discussed one at a time on this page, you are able to us
 Make a button smaller or bigger than the default.
 
 ```html
-<button class="button button-small">Small</button>
+<button class="button button-sm">Small</button>
 <button class="button">Default</button>
-<button class="button button-large">Large</button>
+<button class="button button-lg">Large</button>
 ```
 
 ### Block button
