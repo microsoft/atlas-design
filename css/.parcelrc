@@ -3,10 +3,5 @@
 	"resolvers": [
 		"@microsoft/parcel-resolver-dotcss-packages",
 		"@parcel/resolver-default"
-	],
-	"transformers": {
-		"*.md": [
-			"@microsoft/parcel-transformer-markdown-html"
-		]
-	}
+	]
 }

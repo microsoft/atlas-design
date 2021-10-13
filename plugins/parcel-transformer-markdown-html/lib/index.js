@@ -122,23 +122,24 @@ marked.use({
 
 module.exports = new Transformer({
 	async loadConfig({ config }) {
-		const configFile = await config.getConfig(['.scaffoldrc']);
+		const result = await config.getConfig(['.scaffoldrc']);
 
-		if (!configFile) {
+		if (!result.contents) {
 			throw new Error(
-				`Plugin 'parcel-transformer-markdown-html' requires an ".scaffoldrc" files to be specified.`
+				`Plugin 'parcel-transformer-markdown-html' requires an ".scaffoldrc" files to be specified. ${filePath}`
 			);
 		}
 
-		if (!configFile.contents.templatePath) {
+		if (!result.contents.templatePath) {
 			throw new Error(
 				`Your ".scaffoldrc" should contain a json structure with "templatePath" property pointing to the folder containing html layouts. Your config: ${JSON.stringify(
-					configFile.contents.templatePath
+					contents
 				)}`
 			);
 		}
 
-		config.setResult(configFile);
+		config.setResult(result);
+		return result;
 	},
 	async transform({
 		asset, // https://v2.parceljs.org/plugin-system/transformer/#MutableAsset
@@ -199,10 +200,10 @@ module.exports = new Transformer({
 			}
 
 			if (tocFilename) {
-				asset.addIncludedFile(tocFilename);
+				asset.invalidateOnFileChange(tocFilename);
 			}
 
-			asset.addIncludedFile(templateFilename);
+			asset.invalidateOnFileChange(templateFilename);
 
 			asset.setCode(
 				mustache.render(template, {
