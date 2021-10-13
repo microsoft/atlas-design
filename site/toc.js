@@ -26,6 +26,7 @@ const settings = normalizePaths({
 		'/components': 'Components',
 		'/atomics': 'Atomics',
 		'/atomics/overview.md': 'Overview',
+		'/components/overview.md': 'Overview',
 		'/atomics/border.md': 'Border',
 		'/atomics/display.md': 'Display',
 		'/atomics/position.md': 'Position',
