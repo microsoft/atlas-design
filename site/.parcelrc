@@ -1,6 +1,12 @@
 {
-  "extends": "@parcel/config-default",
-  "transformers": {
-    "*.md": ["@microsoft/parcel-transformer-markdown-html"]
-  }
+	"extends": "@parcel/config-default",
+	"resolvers": [
+		"@microsoft/parcel-resolver-dotcss-static",
+		"@parcel/resolver-default"
+	],
+	"transformers": {
+		"*.md": [
+			"@microsoft/parcel-transformer-markdown-html"
+		]
+	}
 }

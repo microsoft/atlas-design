@@ -1,0 +1,17 @@
+{
+	"name": "@microsoft/parcel-resolver-dotcss-static",
+	"description": "Allows for the inclusion of normalize.css and minireset.css via npm packages.",
+	"version": "0.0.1",
+	"main": "index.js",
+	"engines": {
+		"parcel": "^2"
+	},
+	"dependencies": {
+		"@parcel/plugin": "^2.0.0"
+	},
+	"keywords": [
+		"parcel",
+		"plugin",
+		"resolver"
+	]
+}
