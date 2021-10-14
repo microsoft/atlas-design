@@ -8,9 +8,9 @@ template: standard
 
 Spacing atomics can be used to add margin or padding on elements. They are especially helpful when composing layouts.
 
-| cssproperty                                                                                                                                                                                                            | value                                                   | screensize                        |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------- |
-| `margin`, `padding`, `margin-block`, `padding-block`,`margin-inline`, `padding-inline`, `margin-top`, `padding-top`, `margin-right`, `padding-right`, `margin-bottom`, `padding-bottom`, `margin-left`, `padding-left` | `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl`, `none` | `tablet`, `desktop`, `widescreen` |
+| cssproperty                                                                                                                                                                                                            | value                                                      | screensize                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------- |
+| `margin`, `padding`, `margin-block`, `padding-block`,`margin-inline`, `padding-inline`, `margin-top`, `padding-top`, `margin-right`, `padding-right`, `margin-bottom`, `padding-bottom`, `margin-left`, `padding-left` | `xxs`, `xs`, `sm`, `md`, `lg`, `xl`, `xxl`, `xxxl`, `none` | `tablet`, `desktop`, `widescreen` |
 
 ## Usage
 
@@ -19,9 +19,9 @@ Use `margin` or `padding` with a size value to add uniform spacing around an ele
 ```html
 <div class="margin-xxs border">XXS</div>
 <div class="margin-xs border">XS</div>
-<div class="margin-sm border">S</div>
-<div class="margin-md border">M</div>
-<div class="margin-lg border">L</div>
+<div class="margin-sm border">SM</div>
+<div class="margin-md border">MD</div>
+<div class="margin-lg border">LG</div>
 <div class="margin-xl border">XL</div>
 <div class="margin-xxl border">XXL</div>
 <div class="margin-xxxl border">XXXL</div>
@@ -65,126 +65,126 @@ Appending a screen size to an atomic class can be used to apply responsive sizin
 ```atomics-filter
 .margin-xxs
 .margin-xs
-.margin-s
-.margin-m
-.margin-l
+.margin-sm
+.margin-md
+.margin-lg
 .margin-xl
 .margin-xxl
 .margin-xxxl
 .margin-none
 .margin-inline-xxs
 .margin-inline-xs
-.margin-inline-s
-.margin-inline-m
-.margin-inline-l
+.margin-inline-sm
+.margin-inline-md
+.margin-inline-lg
 .margin-inline-xl
 .margin-inline-xxl
 .margin-inline-xxxl
 .margin-inline-none
 .margin-block-xxs
 .margin-block-xs
-.margin-block-s
-.margin-block-m
-.margin-block-l
+.margin-block-sm
+.margin-block-md
+.margin-block-lg
 .margin-block-xl
 .margin-block-xxl
 .margin-block-xxxl
 .margin-block-none
 .margin-top-xxs
 .margin-top-xs
-.margin-top-s
-.margin-top-m
-.margin-top-l
+.margin-top-sm
+.margin-top-md
+.margin-top-lg
 .margin-top-xl
 .margin-top-xxl
 .margin-top-xxxl
 .margin-top-none
 .margin-bottom-xxs
 .margin-bottom-xs
-.margin-bottom-s
-.margin-bottom-m
-.margin-bottom-l
+.margin-bottom-sm
+.margin-bottom-md
+.margin-bottom-lg
 .margin-bottom-xl
 .margin-bottom-xxl
 .margin-bottom-xxxl
 .margin-bottom-none
 .margin-left-xxs
 .margin-left-xs
-.margin-left-s
-.margin-left-m
-.margin-left-l
+.margin-left-sm
+.margin-left-md
+.margin-left-lg
 .margin-left-xl
 .margin-left-xxl
 .margin-left-xxxl
 .margin-left-none
 .margin-right-xxs
 .margin-right-xs
-.margin-right-s
-.margin-right-m
-.margin-right-l
+.margin-right-sm
+.margin-right-md
+.margin-right-lg
 .margin-right-xl
 .margin-right-xxl
 .margin-right-xxxl
 .margin-right-none
 .padding-xxs
 .padding-xs
-.padding-s
-.padding-m
-.padding-l
+.padding-sm
+.padding-md
+.padding-lg
 .padding-xl
 .padding-xxl
 .padding-xxxl
 .padding-none
 .padding-inline-xxs
 .padding-inline-xs
-.padding-inline-s
-.padding-inline-m
-.padding-inline-l
+.padding-inline-sm
+.padding-inline-md
+.padding-inline-lg
 .padding-inline-xl
 .padding-inline-xxl
 .padding-inline-xxxl
 .padding-inline-none
 .padding-block-xxs
 .padding-block-xs
-.padding-block-s
-.padding-block-m
-.padding-block-l
+.padding-block-sm
+.padding-block-md
+.padding-block-lg
 .padding-block-xl
 .padding-block-xxl
 .padding-block-xxxl
 .padding-block-none
 .padding-top-xxs
 .padding-top-xs
-.padding-top-s
-.padding-top-m
-.padding-top-l
+.padding-top-sm
+.padding-top-md
+.padding-top-lg
 .padding-top-xl
 .padding-top-xxl
 .padding-top-xxxl
 .padding-top-none
 .padding-bottom-xxs
 .padding-bottom-xs
-.padding-bottom-s
-.padding-bottom-m
-.padding-bottom-l
+.padding-bottom-sm
+.padding-bottom-md
+.padding-bottom-lg
 .padding-bottom-xl
 .padding-bottom-xxl
 .padding-bottom-xxxl
 .padding-bottom-none
 .padding-left-xxs
 .padding-left-xs
-.padding-left-s
-.padding-left-m
-.padding-left-l
+.padding-left-sm
+.padding-left-md
+.padding-left-lg
 .padding-left-xl
 .padding-left-xxl
 .padding-left-xxxl
 .padding-left-none
 .padding-right-xxs
 .padding-right-xs
-.padding-right-s
-.padding-right-m
-.padding-right-l
+.padding-right-sm
+.padding-right-md
+.padding-right-lg
 .padding-right-xl
 .padding-right-xxl
 .padding-right-xxxl
