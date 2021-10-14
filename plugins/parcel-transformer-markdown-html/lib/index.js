@@ -58,7 +58,7 @@ const markedOptions = {
 	},
 	code(code, language) {
 		const elementExample = createExample(language, code);
-		let spacing = 'margin-top-s';
+		let spacing = 'margin-top-sm';
 		if (language === 'abut-html') {
 			spacing = '';
 			language = 'html';
@@ -98,7 +98,7 @@ const markedOptions = {
 	},
 	table(header, body) {
 		return `
-			<div class="markdown border table-wrapper margin-top-s">
+			<div class="markdown border table-wrapper margin-top-sm">
 				<table class="table">
 					<thead>${header}</thead>
 					<tbody>${body}</tbody>
@@ -225,10 +225,10 @@ module.exports = new Transformer({
 
 function createExample(language, code) {
 	if (language.toLowerCase() === 'html') {
-		return `<div class="example padding-block-m">${code}</div>`;
+		return `<div class="example padding-block-md">${code}</div>`;
 	}
 	if (language.toLowerCase() === 'markdown') {
-		return `<div class="example padding-block-m">${marked(code)}</div>`;
+		return `<div class="example padding-block-md">${marked(code)}</div>`;
 	}
 	return '';
 }

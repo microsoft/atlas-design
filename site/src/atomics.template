@@ -29,7 +29,7 @@ Provide a focused example that displays this atomic's usage.
 If there are screen-specific class variations available they can be described in this section.
 
 ```html
-<div class="border-tablet padding-s">
+<div class="border-tablet padding-sm">
 	<p>Border on tablet and up</p>
 </div>
 ```
@@ -39,7 +39,7 @@ If there are screen-specific class variations available they can be described in
 If there are tokens variations available such as font weight in typography, or radius rules in border, the next section(s) should be about them.
 
 ```html
-<div class="border border-radius padding-s">
+<div class="border border-radius padding-sm">
 	<p>Default radius</p>
 </div>
 ```
