@@ -32,6 +32,8 @@ Here we place an element in the bottom right corner of another element.
 
 ```html
 <div class="position-relative background-color-primary padding-xl">
-	<span class="position-absolute bottom-0 right-0 color-primary-invert margin-s"> Absolutely </span>
+	<span class="position-absolute bottom-0 right-0 color-primary-invert margin-sm">
+		Absolutely
+	</span>
 </div>
 ```
