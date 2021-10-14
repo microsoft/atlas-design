@@ -36,7 +36,7 @@ While CSS property values are straightfoward (they just match the CSS property),
    - Such as `primary` in the class `.color-primary`. (The `primary` is blue on light theme and yellow on high contrast theme.)
    - Such as `semibold` in the class `font-weight-semibold`.
 3. When a number value with a particular unit is involved, that value is typically represented as an at-least-two-letter-t-shirt size.
-   - Spacing and non-heading typography values follow this convention, as in `xs, sm, md, lg, xl, xxl` in `margin-top-xl`, and `font-size-m`.
+   - Spacing and non-heading typography values follow this convention, as in `xs, sm, md, lg, xl, xxl` in `margin-top-xl`, and `font-size-md`.
    - Within a set of values that require units such as the one above, 0 is represented by the string `none`.
 4. Within a series of values that are all unitless numbers, those numbers are used directly, as in `flex-grow: 1;` being represented by `flex-grow-1`.
 5. When a shorthand property's value is multi-part, we choose a reasonable default and omit the value completely.
