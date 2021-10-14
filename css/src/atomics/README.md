@@ -7,9 +7,9 @@ Welcome to Atomics ⚛! These are small, single purpose, CSS classes that can be
 Most of our classes fall into one of several categories. Those that affect ...
 
 - display (ex. `.display-inline-flex`)
-- spacing (ex. `.margin-inline-l`);
+- spacing (ex. `.margin-inline-lg`);
 - color (ex. `.color-primary`)
-- typography (ex. `.font-size-m`);
+- typography (ex. `.font-size-md`);
 - flex properties (ex. `.justify-content-center`)
 - and more ...
 
