@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.9.1
+
+### Patch Changes
+
+- 23b2052: Update spacing classes across documentation.
+
 ## 0.9.0
 
 ### Minor Changes
