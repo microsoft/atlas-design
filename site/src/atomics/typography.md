@@ -32,9 +32,9 @@ The following classes targets text that are not headings.
 
 ```html
 <p class="font-size-xl">Extra large text</p>
-<p class="font-size-l">Large text</p>
-<p class="font-size-m">Medium text</p>
-<p class="font-size-s">Small text</p>
+<p class="font-size-lg">Large text</p>
+<p class="font-size-md">Medium text</p>
+<p class="font-size-sm">Small text</p>
 <p class="font-size-xs">Extra small text</p>
 ```
 
