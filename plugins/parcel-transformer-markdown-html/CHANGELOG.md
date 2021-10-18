@@ -1,5 +1,13 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.4.3
+
+### Patch Changes
+
+- 23b2052: Update spacing classes across documentation.
+- Updated dependencies [65749fb]
+  - @microsoft/atlas-css@3.0.0
+
 ## 2.4.2
 
 ### Patch Changes

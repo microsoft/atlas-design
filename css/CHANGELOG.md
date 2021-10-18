@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.0.0
+
+### Major Changes
+
+- 65749fb: Update font-size atomics to two letter t-shirt size convention.
+
 ## 2.0.0
 
 ### Major Changes
