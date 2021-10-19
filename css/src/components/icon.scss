@@ -12,9 +12,4 @@ $icon-dimensions: 1em !default;
 		width: $icon-dimensions;
 		height: $icon-dimensions;
 	}
-
-	&.icon-rounded {
-		padding: 0.6rem; // ensures icon is not cut off by rounded border
-		border-radius: 50%;
-	}
 }
