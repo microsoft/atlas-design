@@ -91,8 +91,6 @@ Additionally `-lg` may be added for a thicker border.
 
 The color of a border can be modified using the following classes.
 
-Mixing the `directions`, `visibility` and `screensize` values will give you more specificity.
-
 | modifiers | color name                                        | screensize |
 | --------- | ------------------------------------------------- | ---------- |
 | colors    | `primary`, `danger`, `warning`, `success`, `info` | n/a        |
