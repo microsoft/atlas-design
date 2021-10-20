@@ -76,3 +76,29 @@ Currently two classes are available to set border radius:
 	<p>Large radius</p>
 </div>
 ```
+
+### Size
+
+Additionally `-lg` may be added for a thicker board.
+
+```html
+<div class="border-lg padding-sm">
+	<p>Large border</p>
+</div>
+```
+
+### Colors
+
+The color of a border can be modified using the following classes.
+
+Mixing the `directions`, `visibility` and `screensize` values will give you more specificity.
+
+| modifiers | direction                                         | screensize |
+| --------- | ------------------------------------------------- | ---------- |
+| colors    | `primary`, `danger`, `warning`, `success`, `info` | n/a        |
+
+```html
+<div class="border-color-info border-left-lg padding-block-md border-radius">
+	<p class="margin-inline-md">Custom Color</p>
+</div>
+```

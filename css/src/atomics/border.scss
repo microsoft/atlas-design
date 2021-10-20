@@ -66,3 +66,13 @@
 .border-radius-lg {
 	border-radius: $border-radius-lg !important;
 }
+
+// Colors
+
+@each $name, $color-set in $colors {
+	$base: nth($color-set, $color-index-base);
+
+	.border-color-#{$name} {
+		border-color: $base !important;
+	}
+}
