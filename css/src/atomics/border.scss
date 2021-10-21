@@ -2,14 +2,23 @@
 	border: $border-width solid $border !important;
 }
 
+.border-lg {
+	border: $border-width-lg solid $border !important;
+}
+
 .border-none {
 	border: none !important;
 }
 
 // Rules for each side
+
 @each $border-key, $direction in $directions {
 	.border-#{$border-key} {
 		border-#{$direction}: $border-width solid $border !important;
+	}
+
+	.border-#{$border-key}-lg {
+		border-#{$direction}: $border-width-lg solid $border !important;
 	}
 
 	.border-#{$border-key}-none {
@@ -22,14 +31,23 @@
 		border: $border-width solid $border !important;
 	}
 
+	.border-lg-tablet {
+		border: $border-width-lg solid $border !important;
+	}
+
 	.border-none-tablet {
 		border: none !important;
 	}
 
 	// Rules for each side
+
 	@each $border-key, $direction in $directions {
 		.border-#{$border-key}-tablet {
 			border-#{$direction}: $border-width solid $border !important;
+		}
+
+		.border-#{$border-key}-lg-tablet {
+			border-#{$direction}: $border-width-lg solid $border !important;
 		}
 
 		.border-#{$border-key}-none-tablet {
@@ -38,14 +56,7 @@
 	}
 }
 
-// Modifiers
-.border-high-contrast {
-	border: $border-width solid $border-white-high-contrast !important;
-
-	&-hover:hover {
-		border: $border-width solid $border-yellow-high-contrast !important;
-	}
-}
+// Radius
 
 .border-radius {
 	border-radius: $border-radius !important;
@@ -53,4 +64,22 @@
 
 .border-radius-lg {
 	border-radius: $border-radius-lg !important;
+}
+
+// Colors
+
+@each $name, $color-set in $colors {
+	$base: nth($color-set, $color-index-base);
+
+	.border-color-#{$name} {
+		border-color: $base !important;
+	}
+}
+
+.border-high-contrast {
+	border: $border-width solid $border-white-high-contrast !important;
+
+	&-hover:hover {
+		border: $border-width solid $border-yellow-high-contrast !important;
+	}
 }
