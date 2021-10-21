@@ -85,6 +85,9 @@ Additionally `-lg` may be added for a thicker border.
 <div class="border-lg padding-sm">
 	<p>Large border</p>
 </div>
+<div class="border-lg-tablet padding-sm margin-top-xs">
+	<p>Large border</p>
+</div>
 ```
 
 ### Colors
