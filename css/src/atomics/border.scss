@@ -17,12 +17,12 @@
 		border-#{$direction}: $border-width solid $border !important;
 	}
 
-	.border-#{$border-key}-none {
-		border-#{$direction}: 0 !important;
-	}
-
 	.border-#{$border-key}-lg {
 		border-#{$direction}: $border-width-lg solid $border !important;
+	}
+
+	.border-#{$border-key}-none {
+		border-#{$direction}: 0 !important;
 	}
 }
 
@@ -31,12 +31,12 @@
 		border: $border-width solid $border !important;
 	}
 
-	.border-none-tablet {
-		border: none !important;
-	}
-
 	.border-lg-tablet {
 		border: $border-width-lg solid $border !important;
+	}
+
+	.border-none-tablet {
+		border: none !important;
 	}
 
 	// Rules for each side
@@ -46,12 +46,12 @@
 			border-#{$direction}: $border-width solid $border !important;
 		}
 
-		.border-#{$border-key}-none-tablet {
-			border-#{$direction}: 0 !important;
-		}
-
 		.border-#{$border-key}-lg-tablet {
 			border-#{$direction}: $border-width-lg solid $border !important;
+		}
+
+		.border-#{$border-key}-none-tablet {
+			border-#{$direction}: 0 !important;
 		}
 	}
 }
