@@ -1,6 +1,10 @@
+$gap-size: 1.5rem;
+
 html {
 	font-size: $document-font-size;
 }
+
+$size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 
 #body {
 	width: 100%;
@@ -10,49 +14,55 @@ html {
 
 	@include tablet {
 		display: grid;
-		grid-template: auto 1fr auto auto / 15rem 1fr auto; // [ rows / columns ]
-
+		grid-template: auto 1fr auto auto / $size-bar-width 1fr; // [ rows / columns ]
 		grid-template-areas:
-			'header header header'
-			'nav main .'
-			'nav aside .'
-			'footer footer footer';
+			'header header'
+			'nav main'
+			'nav aside'
+			'footer footer';
 	}
 
-	@include widescreen {
-		grid-template: auto 1fr auto auto / 20rem 1fr auto; // [ rows / columns ]
+	@include desktop {
+		display: grid;
+		grid-template: auto 1fr auto auto / $size-bar-width 1fr $size-bar-width; // [ rows / columns ]
 
 		grid-template-areas:
 			'header header header'
 			'nav main aside'
 			'footer footer footer';
 	}
+
+	@include widescreen {
+		grid-template: auto 1fr auto auto / auto $size-bar-width #{$breakpoint-widescreen - $size-bar-width * 2} $size-bar-width auto; // [ rows / columns ]
+
+		grid-template-areas:
+			'header header header header header'
+			'. nav main aside .'
+			'footer footer footer footer footer';
+	}
 }
 
 #header,
-#main,
 #nav,
 #aside,
 #footer {
 	overflow: hidden;
-	padding: $layout-2 $layout-3;
+	padding-block: $layout-2;
+	padding-inline: $gap-size;
 }
 
 #header {
 	grid-area: header;
 }
 
-#main {
-	grid-area: main;
-	min-height: 90vh;
-}
-
 #nav {
 	grid-area: nav;
+	padding-inline-end: 0;
 }
 
 #aside {
 	grid-area: aside;
+	padding-inline-start: 0;
 }
 
 #footer {
@@ -60,14 +70,39 @@ html {
 	background-color: $border;
 }
 
-.layout-container {
-	max-width: $reading-max-width;
-	margin: auto;
-	@include tablet {
-		//Replace with padding-inline when IE supported is dropped
-		padding-left: $layout-4;
-		padding-right: $layout-4;
+// Inside #main
+
+#main {
+	display: grid;
+	grid-area: main;
+	min-height: 90vh;
+	padding: $layout-3;
+	gap: $layout-3;
+	grid-template: auto 1fr / 9fr 1fr;
+	grid-template-areas:
+		'breadcrumbs actions'
+		'article article';
+
+	@include desktop {
+		grid-template: auto 1fr / 7fr 3fr;
+		grid-template-areas:
+			'breadcrumbs actions'
+			'article article';
 	}
+}
+
+#breadcrumbs {
+	grid-area: breadcrumbs;
+}
+
+#actions {
+	grid-area: actions;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#article {
+	grid-area: article;
 }
 
 .example {
@@ -94,10 +129,14 @@ html {
 html.debug {
 	#header,
 	#main,
+	#body,
 	#nav,
 	#aside,
-	#footer {
-		border: 1px solid $border;
+	#footer,
+	#breadcrumbs,
+	#actions,
+	#article {
+		outline: 1px solid $border;
 	}
 
 	#header {
@@ -108,8 +147,27 @@ html.debug {
 		@include debug('main');
 	}
 
+	#breadcrumbs {
+		@include debug('breadcrumbs');
+	}
+
+	#actions {
+		@include debug('actions');
+	}
+
+	#body {
+		@include debug('body');
+	}
+
+	#article {
+		@include debug('article');
+	}
+
 	#nav {
 		@include debug('nav');
+		// to animate the placement of the navigation
+		// transform: translate(calc(-100% + 2rem), 0);
+		// transition: transform 200ms linear;
 	}
 
 	#aside {

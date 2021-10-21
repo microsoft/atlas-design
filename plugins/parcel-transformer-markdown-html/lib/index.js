@@ -6,6 +6,8 @@ const frontMatter = require('front-matter');
 const mustache = require('mustache');
 const path = require('path');
 const allTokens = require('@microsoft/atlas-css/dist/tokens.json');
+const { renderBreadcrumbsMarkup } = require('./breadcrumbs');
+const { buildGithubLink } = require('./github-link');
 
 const languageDisplayNames = {
 	html: 'HTML',
@@ -204,11 +206,13 @@ module.exports = new Transformer({
 			}
 
 			asset.invalidateOnFileChange(templateFilename);
-
+			const githubLink = buildGithubLink(asset.filePath);
 			asset.setCode(
 				mustache.render(template, {
 					body: parsedCode,
+					githubLink,
 					toc: { name: 'TOC', entries: tocEntries },
+					breadcrumbs: renderBreadcrumbsMarkup(tocEntries, asset.filePath),
 					...attributes,
 					tokens,
 					cssTokenSource,

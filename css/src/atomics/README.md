@@ -29,7 +29,7 @@ The first part of nearly every Atomic class represent the css property that it w
 
 ## Values
 
-While CSS property values are straightfoward (they just match the CSS property), the value property is not always as easy to guess. We have a few rules that help us figure out how to write values in class names.
+While CSS properties are straightfoward (they just match the CSS), the value property is not always as easy to guess. We have a few rules that help us figure out how to write values in class names.
 
 1. When the CSS value is a string (such as `flex-end` in `justify-content: flex-end`, or `grid` in `display: grid;`) then we just use that string directly (meaning these classes become `.justify-content-flex-end` and `.display-grid`).
 2. In some cases, such as themed colors values, values are associated concepts.
@@ -49,6 +49,6 @@ Screen sizes are represented by one of the following strings:
 
 - `tablet`, representing screens tablet and larger.
 - `desktop`, representing screen desktop width and larger.
-- `widescreen`, representing very wide screens to inifinity.
+- `widescreen`, representing very wide screens to infinity.
 
 Use a mobile first approach when using Atomics, including the universally applicable class (i.e. the one that does not have a screensize at the end), and when necessary overwrite its values on larger screens.

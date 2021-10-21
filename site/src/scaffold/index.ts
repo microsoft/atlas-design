@@ -3,3 +3,5 @@ import { initTheme } from './scripts/theming';
 
 initTheme();
 handleCodeFilters();
+
+// document.documentElement.classList.add('debug');
