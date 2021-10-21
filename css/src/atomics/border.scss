@@ -11,6 +11,7 @@
 }
 
 // Rules for each side
+
 @each $border-key, $direction in $directions {
 	.border-#{$border-key} {
 		border-#{$direction}: $border-width solid $border !important;
@@ -34,7 +35,12 @@
 		border: none !important;
 	}
 
+	.border-lg-tablet {
+		border: $border-width-lg solid $border !important;
+	}
+
 	// Rules for each side
+
 	@each $border-key, $direction in $directions {
 		.border-#{$border-key}-tablet {
 			border-#{$direction}: $border-width solid $border !important;
@@ -50,14 +56,7 @@
 	}
 }
 
-// Modifiers
-.border-high-contrast {
-	border: $border-width solid $border-white-high-contrast !important;
-
-	&-hover:hover {
-		border: $border-width solid $border-yellow-high-contrast !important;
-	}
-}
+// Radius
 
 .border-radius {
 	border-radius: $border-radius !important;
@@ -74,5 +73,13 @@
 
 	.border-color-#{$name} {
 		border-color: $base !important;
+	}
+}
+
+.border-high-contrast {
+	border: $border-width solid $border-white-high-contrast !important;
+
+	&-hover:hover {
+		border: $border-width solid $border-yellow-high-contrast !important;
 	}
 }
