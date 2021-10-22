@@ -46,7 +46,6 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 #nav,
 #aside,
 #footer {
-	overflow: hidden;
 	padding-block: $layout-2;
 	padding-inline: $gap-size;
 }
