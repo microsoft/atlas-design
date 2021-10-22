@@ -1,10 +1,10 @@
 # Atlas CSS Tokens
 
-A design tokens is a definition of a design-related variable, such as one that affects color, typography, or spacing. Design tokens must be shareable and fairly platform agnostic. Atlas's design tokens are written in Scss (buzzword: source of truth!), and though a [build process](../tokens/index.js), translated and published into JSON so they can be more easily shared by solutions that do not use Scss.
+A design tokens is a definition of a design-related variable, such as one that affects color, typography, or spacing. Design tokens must be shareable and fairly platform agnostic. Atlas's design tokens are written in Scss (buzzword: source of truth!), and though a [build process](https://github.com/microsoft/atlas-design/blob/main/css/tokens/index.js), translated and published into JSON so they can be more easily shared by solutions that do not use Scss.
 
 ## Access our design tokens
 
-Firstly, in order to access these tokens, you must have installed atlas-css in your project. [See installation steps]('../../../README.md). Once this is complete, you'll need to decide whether you want to reference them in Scss or JSON.
+Firstly, in order to access these tokens, you must have installed atlas-css in your project. [See installation steps]('https://github.com/microsoft/atlas-design'). Once this is complete, you'll need to decide whether you want to reference them in Scss or JSON.
 
 ### Get Scss from NPM
 
