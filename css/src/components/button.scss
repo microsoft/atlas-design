@@ -41,8 +41,8 @@ $button-font-weight: $weight-semibold !default;
 	font-weight: $button-font-weight;
 	text-decoration: none;
 	text-align: center;
-	white-space: nowrap;
 	cursor: pointer;
+	height: auto;
 
 	strong {
 		color: inherit;
