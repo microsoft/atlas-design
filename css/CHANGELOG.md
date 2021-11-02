@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 3.1.0
+
+### Minor Changes
+
+- 783d23a: Add a -lg modifier on border. Add ability to modify standard border color with semantic colors.
+
+### Patch Changes
+
+- 6a0de3b: .button has text-decoration none to ensure no underline on anchor elements.
+- 7455111: update .button to remove white-space: nowrap and add height: auto to ensure text wrap
+
 ## 3.0.0
 
 ### Major Changes

@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.10.0
+
+### Minor Changes
+
+- f26be99: Generate breadcrumbs from table of contents, refine site layout.
+- 783d23a: Add a -lg modifier on border. Add ability to modify standard border color with semantic colors.
+
 ## 0.9.1
 
 ### Patch Changes
