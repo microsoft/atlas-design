@@ -4,8 +4,8 @@
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"lint": "stylelint ./src/**/*.scss",
-		"lint-fix": "stylelint ./src/**/*.scss --fix",
+		"lint": "stylelint \"./src/**/*.scss\"",
+		"lint-fix": "stylelint \"./src/**/*.scss --fix\"",
 		"start": "parcel watch src/index.scss --no-autoinstall",
 		"build": "npm run build:css && npm run tokens",
 		"build:css": "parcel build src/index.scss --no-cache --no-autoinstall",

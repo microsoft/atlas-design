@@ -29,7 +29,6 @@ $button-font-weight: $weight-semibold !default;
 	@include unselectable;
 
 	justify-content: center;
-	height: auto;
 	padding-top: $button-padding-vertical;
 	padding-#{$user-left}: $button-padding-horizontal;
 	padding-#{$user-right}: $button-padding-horizontal;
@@ -39,6 +38,7 @@ $button-font-weight: $weight-semibold !default;
 	border-color: $button-border-color;
 	background-color: $button-background-color;
 	color: $button-color;
+	height: auto;
 	font-weight: $button-font-weight;
 	text-align: center;
 	text-decoration: none;
