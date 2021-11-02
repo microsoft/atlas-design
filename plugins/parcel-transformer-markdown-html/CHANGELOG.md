@@ -1,5 +1,18 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.5.0
+
+### Minor Changes
+
+- f26be99: Generate breadcrumbs from table of contents, refine site layout.
+
+### Patch Changes
+
+- Updated dependencies [6a0de3b]
+- Updated dependencies [7455111]
+- Updated dependencies [783d23a]
+  - @microsoft/atlas-css@3.1.0
+
 ## 2.4.3
 
 ### Patch Changes
