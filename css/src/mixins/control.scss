@@ -12,7 +12,7 @@ $control-padding-horizontal: calc(0.625em - #{$control-border-width}) !default;
 	position: relative;
 	align-items: center;
 	justify-content: flex-start;
-	height: 2.25em;
+	min-height: 2.25em;
 	padding-top: $control-padding-vertical;
 	padding-right: $control-padding-horizontal;
 	padding-bottom: $control-padding-vertical;
