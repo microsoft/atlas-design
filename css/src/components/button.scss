@@ -29,7 +29,6 @@ $button-font-weight: $weight-semibold !default;
 	@include unselectable;
 
 	justify-content: center;
-	height: auto;
 	padding-top: $button-padding-vertical;
 	padding-bottom: $button-padding-vertical;
 	border-width: $button-border-width;
