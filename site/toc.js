@@ -24,15 +24,19 @@ const settings = normalizePaths({
 		'/index.md': '[hide]',
 		'/tokens': 'Tokens',
 		'/components': 'Components',
+		'/atomics/conventions/': 'Conventions for Atomics',
+		'/atomics/conventions/another-level/': 'Another level deeper',
+		'/atomics/conventions/another-level/bc-test-2.md': 'A fourth level here with a long name',
+		'/atomics/conventions/breadcrumbs-test.md': 'A third level here with another name',
 		'/atomics': 'Atomics',
-		'/atomics/overview.md': 'Overview',
-		'/components/overview.md': 'Overview',
-		'/tokens/overview.md': 'Overview',
-		'/atomics/border.md': 'Border',
-		'/atomics/display.md': 'Display',
-		'/atomics/position.md': 'Position',
-		'/atomics/spacing.md': 'Spacing',
-		'/atomics/typography.md': 'Typography'
+		'/atomics/overview.md': 'Overview of Atomics in Atlas',
+		'/components/overview.md': 'Overview of Components in Atlas',
+		'/tokens/overview.md': 'Overview of Tokens in Atlas',
+		'/atomics/border.md': 'Border Atomics CSS Classes in Atlas',
+		'/atomics/display.md': 'Display Atomics in Atlas',
+		'/atomics/position.md': 'Position Atomics CSS Classes in Atlas',
+		'/atomics/spacing.md': 'Spacing Atomics CSS Classes in Atlas',
+		'/atomics/typography.md': 'Atomics CSS Classes in Atlas'
 	}
 });
 

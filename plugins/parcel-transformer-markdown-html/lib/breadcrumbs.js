@@ -93,7 +93,8 @@ function renderBreadcrumbs(breadcrumbs) {
 
 			return breadcrumb.isFinal
 				? ``
-				: `<li 
+				: `<li  hidden
+						data-breadcrumb-list-item
 						class="breadcrumbs-item" 
 						itemprop="itemListElement"
 						itemscope=""
@@ -104,7 +105,7 @@ function renderBreadcrumbs(breadcrumbs) {
 		})
 		.join('');
 
-	return `<div id="breadcrumbs"><ul class="breadcrumbs">${itemMarkup}</ul></div>`;
+	return `<div id="breadcrumbs" data-breadcrumb-container><ul class="breadcrumbs" data-breadcrumb-list>${itemMarkup}</ul></div>`;
 }
 
 module.exports.renderBreadcrumbsMarkup = renderBreadcrumbsMarkup;
