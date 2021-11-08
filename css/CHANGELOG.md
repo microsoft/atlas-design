@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.1.1
+
+### Patch Changes
+
+- 54ea0dd: add min-height to control & remove height auto from .button to fix icon button height
+
 ## 3.1.0
 
 ### Minor Changes
