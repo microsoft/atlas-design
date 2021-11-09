@@ -93,19 +93,20 @@ function renderBreadcrumbs(breadcrumbs) {
 
 			return breadcrumb.isFinal
 				? ``
-				: `<li  hidden
+				: `<li  
 						data-breadcrumb-list-item
 						class="breadcrumbs-item" 
 						itemprop="itemListElement"
 						itemscope=""
-						itemtype="http://schema.org/ListItem">
+						itemtype="http://schema.org/ListItem"
+						hidden>
 						<a itemprop="item" href=${breadcrumb.href}><span itemprop="name">${breadcrumb.name}</span></a>
 						<meta itemprop="position" content="${index + 1}">
 					</li>`;
 		})
 		.join('');
 
-	return `<div id="breadcrumbs" data-breadcrumb-container><ul class="breadcrumbs" data-breadcrumb-list>${itemMarkup}</ul></div>`;
+	return `<div id="breadcrumbs" data-breadcrumb-container hidden><ul class="breadcrumbs" data-breadcrumb-list>${itemMarkup}</ul></div>`;
 }
 
 module.exports.renderBreadcrumbsMarkup = renderBreadcrumbsMarkup;
