@@ -10,7 +10,7 @@ pr:
   drafts: true
 
 pool:
-  vmImage: ubuntu-20.04
+  vmImage: windows-2022
 
 steps:
   - task: NodeTool@0
