@@ -24,7 +24,7 @@ function initBreadcrumbs() {
 
 	let cancellableFunc: CancellableFunction;
 	window.addEventListener('resize', () => {
-		hideBreadcrumbs(breadcrumbContainer, breadcrumbItems);
+		resetBreadcrumbs(breadcrumbContainer, breadcrumbItems);
 		if (cancellableFunc) {
 			cancellableFunc.cancel();
 		}
@@ -41,9 +41,10 @@ function handleBreadcrumbResize(
 	breadcrumbItems: HTMLElement[],
 	overflowMenu: HTMLElement
 ) {
+	// The overflow menu should be visible when we do our measuring
+	// In the case we need to show it, we don't want it popping results to two lines.
+	overflowMenu.hidden = false;
 	const stats = getNumberOfVisibleElements(breadcrumbContainer, breadcrumbListItemSelector);
-
-	overflowMenu.hidden = stats.hide === 0;
 
 	// Produce a number we can use in a reverse for loop
 	const stopShowingAt = breadcrumbItems.length - stats.show;
@@ -58,10 +59,13 @@ function handleBreadcrumbResize(
 	}
 	// Show the container, now that we've sorted that out
 	// handleLineClampClasses(breadcrumbContainer, 'add');
+	handleLineClampClasses(breadcrumbContainer, 'add'); // 🌟 does not work
 	breadcrumbContainer.hidden = false;
+	overflowMenu.hidden = stats.hide === 0;
 }
 
-function hideBreadcrumbs(breadcrumbContainer: HTMLElement, breadcrumbItems: HTMLElement[]) {
+function resetBreadcrumbs(breadcrumbContainer: HTMLElement, breadcrumbItems: HTMLElement[]) {
+	handleLineClampClasses(breadcrumbContainer, 'remove'); // 🌟 does not work
 	breadcrumbContainer.hidden = true;
 	for (const li of breadcrumbItems) {
 		li.hidden = true;
