@@ -106,7 +106,52 @@ function renderBreadcrumbs(breadcrumbs) {
 		})
 		.join('');
 
-	return `<div id="breadcrumbs" data-breadcrumb-container hidden><ul class="breadcrumbs" data-breadcrumb-list>${itemMarkup}</ul></div>`;
+	const overflowItemMarkup = breadcrumbs
+		.map((breadcrumb, index, all) => {
+			if (breadcrumb.href === '~/src/index.md') {
+				breadcrumb.name = 'Atlas';
+			}
+			if (index === all.length - 1) {
+				breadcrumb.isFinal = true;
+			}
+			// Try to 'gracefully' handle directories by redirecting them to an 'overview' file
+			// For future consideration consider aria hiding duplicates
+			if (breadcrumb.isDirectory && breadcrumb.children?.length) {
+				const name = breadcrumb.name;
+				const overview = breadcrumb.children.find(c => c.href.includes('overview'));
+				if (overview) {
+					overview.name = name;
+					breadcrumb = overview;
+				}
+			}
+
+			return breadcrumb.isFinal
+				? ``
+				: `<li class="breadcrumbs-item"><a href=${breadcrumb.href}><span>${breadcrumb.name}</span></a></li>`;
+		})
+		.join('');
+
+	const overflow =
+		breadcrumbs.length > 0
+			? `
+		<details class="popover breadcrumbs-overflow" data-popover-details data-breadcrumb-overflow>
+			<summary class="popover-summary border-none" data-popover-summary>
+				<span class="icon color-primary">
+					<svg class="fill-current-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M256 896q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm768 0q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm768 0q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10z"/></svg>
+				</span>			
+			</summary>
+			<div class="popover-content" data-popover-content>
+				<ul>
+					${overflowItemMarkup}
+				</ul>
+			</div>
+		</details>
+	`
+			: '';
+
+	return `<div id="breadcrumbs" class="display-flex align-items-center" data-breadcrumb-container hidden>
+		${overflow}
+		<ul class="breadcrumbs display-inline-block padding-inline-xxs flex-grow-1" data-breadcrumb-list>${itemMarkup}</ul></div>`;
 }
 
 module.exports.renderBreadcrumbsMarkup = renderBreadcrumbsMarkup;

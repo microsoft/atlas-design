@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { handleCodeFilters } from './scripts/code-filter';
+import { CancellableFunction, debounce } from './scripts/debounce';
 import { initTheme } from './scripts/theming';
 
 const breadcrumbContainerSelector = '[data-breadcrumb-container]';
 const breadcrumbListItemSelector = '[data-breadcrumb-list-item]';
+const breadcrumbOverflowSelector = '[data-breadcrumb-overflow]';
 
 initTheme();
 handleCodeFilters();
@@ -16,8 +18,32 @@ function initBreadcrumbs() {
 	const breadcrumbItems = Array.from(
 		document.querySelectorAll(breadcrumbListItemSelector)
 	) as HTMLLIElement[];
+	const breadcrumbOverflow = document.querySelector(breadcrumbOverflowSelector) as HTMLElement;
 
+	handleBreadcrumbResize(breadcrumbContainer, breadcrumbItems, breadcrumbOverflow);
+
+	let cancellableFunc: CancellableFunction;
+	window.addEventListener('resize', () => {
+		hideBreadcrumbs(breadcrumbContainer, breadcrumbItems);
+		if (cancellableFunc) {
+			cancellableFunc.cancel();
+		}
+		cancellableFunc = debounce.timeout(
+			() => handleBreadcrumbResize(breadcrumbContainer, breadcrumbItems, breadcrumbOverflow),
+			200
+		);
+		cancellableFunc();
+	});
+}
+
+function handleBreadcrumbResize(
+	breadcrumbContainer: HTMLElement,
+	breadcrumbItems: HTMLElement[],
+	overflowMenu: HTMLElement
+) {
 	const stats = getNumberOfVisibleElements(breadcrumbContainer, breadcrumbListItemSelector);
+
+	overflowMenu.hidden = stats.hide === 0;
 
 	// Produce a number we can use in a reverse for loop
 	const stopShowingAt = breadcrumbItems.length - stats.show;
@@ -33,6 +59,13 @@ function initBreadcrumbs() {
 	// Show the container, now that we've sorted that out
 	// handleLineClampClasses(breadcrumbContainer, 'add');
 	breadcrumbContainer.hidden = false;
+}
+
+function hideBreadcrumbs(breadcrumbContainer: HTMLElement, breadcrumbItems: HTMLElement[]) {
+	breadcrumbContainer.hidden = true;
+	for (const li of breadcrumbItems) {
+		li.hidden = true;
+	}
 }
 
 function getNumberOfVisibleElements(

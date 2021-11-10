@@ -1,0 +1,18 @@
+.popover {
+	display: inline-block;
+	position: relative;
+}
+
+.popover-summary {
+	@extend .button;
+}
+
+.popover-content {
+	position: absolute;
+	margin-top: $spacer-3;
+	border: 1px solid $border;
+	background-color: $body-background;
+	padding: $spacer-6;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow-heavy;
+}
