@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Add .truncated-<n> classes to components.
+Add .line-clamp-<n> classes to Atomics.
