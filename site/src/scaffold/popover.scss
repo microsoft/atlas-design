@@ -1,10 +1,33 @@
+// place on a .details element
 .popover {
 	display: inline-block;
 	position: relative;
+
+	// Remove marker added by the display: list-item browser default
+	> summary {
+		list-style: none;
+	}
+	// Remove marker added by details polyfill
+	> summary::before {
+		display: none;
+	}
+	// Remove marker added by Chrome
+	> summary::-webkit-details-marker {
+		display: none;
+	}
 }
 
-.popover-summary {
-	@extend .button;
+.popover[open] > summary::before {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: $zindex-popover - 1;
+	display: block;
+	cursor: default;
+	content: ' ';
+	background: transparent;
 }
 
 .popover-content {
@@ -12,7 +35,7 @@
 	margin-top: $spacer-3;
 	border: 1px solid $border;
 	background-color: $body-background;
-	padding: $spacer-6;
 	border-radius: $border-radius;
 	box-shadow: $box-shadow-heavy;
+	z-index: $zindex-popover;
 }
