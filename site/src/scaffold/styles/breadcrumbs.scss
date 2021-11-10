@@ -16,7 +16,7 @@ $breadcrumb-padding-vertical: 0.375em !default;
 		}
 
 		&:not(.breadcrumbs-item-slashless):after,
-		.breadcrumbs-overflow ~ &:first-of-type::before {
+		.breadcrumbs-overflow:not([hidden]) ~ &:first-of-type::before {
 			content: '\00200B/';
 		}
 
