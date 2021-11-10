@@ -102,9 +102,11 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 
 #article {
 	grid-area: article;
+	max-width: 100%;
 }
 
 .example {
+	max-width: 100%;
 	padding: $layout-2;
 }
 
