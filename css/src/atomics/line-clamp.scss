@@ -6,7 +6,7 @@
 }
 
 @mixin line-clamp($lines: 1) {
-	@extend line-clamp;
+	@extend %line-clamp;
 	-webkit-line-clamp: $lines !important;
 }
 
