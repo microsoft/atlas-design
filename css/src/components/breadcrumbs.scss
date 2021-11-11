@@ -1,0 +1,51 @@
+$breadcrumb-font-size: $document-font-size !default;
+$breadcrumb-spacing-horizontal-start: 0.5em !default;
+$breadcrumb-spacing-horizontal-end: 0.25em !default;
+$breadcrumb-padding-vertical: 0.375em !default;
+$breadcrumb-separator: '\00200B/' !default;
+$breadcrumb-color: $hyperlink !default;
+
+.breadcrumbs {
+	font-size: $breadcrumb-font-size;
+
+	.breadcrumb-overflow {
+		font-size: inherit;
+	}
+
+	.breadcrumbs-item {
+		display: inline-block;
+		padding-block: $breadcrumb-padding-vertical;
+
+		&:not(.breadcrumbs-item-linkless) {
+			color: $breadcrumb-color;
+		}
+
+		&:not(:hover),
+		a:not(:hover) {
+			text-decoration: none;
+		}
+
+		&::after,
+		&::before {
+			display: inline-block;
+			margin-inline-start: $breadcrumb-spacing-horizontal-start;
+			margin-inline-end: $breadcrumb-spacing-horizontal-end;
+			color: $text-subtle;
+		}
+
+		&:not(.breadcrumbs-slashless)::after {
+			color: $text-subtle;
+			content: $breadcrumb-separator;
+		}
+
+		.breadcrumbs-overflow {
+			margin-inline-start: 0;
+		}
+	}
+
+	/* stylelint-disable-next-line selector-max-specificity */
+	.breadcrumbs-overflow:not([hidden]):not(.breadcrumbs-slashless) + .breadcrumbs-item::before {
+		content: $breadcrumb-separator;
+		margin-inline: $breadcrumb-spacing-horizontal-start;
+	}
+}
