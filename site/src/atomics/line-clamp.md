@@ -58,4 +58,4 @@ Use this component on the element that requires truncation - not on a parent ele
 
 ## Additional information
 
-If the text does not exceed `<n>` lines, then no ellipsis will be shown, but the element will still have `overflow-hidden`. For the reason, be wary of placing popovers or other relative/absolutel positioned elements inside truncated text.
+If the text does not exceed `<n>` lines, then no ellipsis will be shown, but the element will still have `overflow-hidden`. For the reason, be wary of placing popovers or other relative/absolutely positioned elements inside truncated text.
