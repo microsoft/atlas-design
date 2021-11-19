@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 3.2.0
+
+### Minor Changes
+
+- a0536cc: Update widescreen breakpoint to 1800px.
+- 0ecbae0: Add .line-clamp-<n> classes to Atomics.
+
+### Patch Changes
+
+- bbe6f20: Updating the box-shadow dark and hc themes colors values to match the light theme
+
 ## 3.1.1
 
 ### Patch Changes
