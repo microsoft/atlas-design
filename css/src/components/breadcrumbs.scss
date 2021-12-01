@@ -1,0 +1,30 @@
+$breadcrumb-font-size: $font-size-8 !default;
+$breadcrumb-spacing-horizontal: 0.25em !default;
+$breadcrumb-spacing-vertical: 0.375em !default;
+$breadcrumb-separator: '\00200B/' !default;
+
+.breadcrumbs {
+	font-size: $breadcrumb-font-size;
+	list-style: none;
+
+	.breadcrumb-item {
+		display: inline;
+
+		@include desktop {
+			display: inline-block;
+			padding-block: $breadcrumb-spacing-vertical;
+		}
+
+		&::after,
+		&::before {
+			display: inline-block;
+			margin-inline: $breadcrumb-spacing-horizontal;
+			color: $text-subtle;
+		}
+
+		&:not(.breadcrumb-slashless)::after {
+			color: $text-subtle;
+			content: $breadcrumb-separator;
+		}
+	}
+}
