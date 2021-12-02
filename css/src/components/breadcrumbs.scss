@@ -6,7 +6,7 @@ $breadcrumb-separator: '\00200B/' !default;
 .breadcrumbs {
 	font-size: $breadcrumb-font-size;
 
-	.breadcrumb-item {
+	.breadcrumbs-item {
 		display: inline;
 
 		@include desktop {
@@ -14,13 +14,9 @@ $breadcrumb-separator: '\00200B/' !default;
 			padding-block: $breadcrumb-spacing-vertical;
 		}
 
-		&::after {
+		&:not(.breadcrumbs-item-slashless)::after {
 			display: inline-block;
 			margin-inline: $breadcrumb-spacing-horizontal;
-			color: $text-subtle;
-		}
-
-		&:not(.breadcrumb-slashless)::after {
 			color: $text-subtle;
 			content: $breadcrumb-separator;
 		}

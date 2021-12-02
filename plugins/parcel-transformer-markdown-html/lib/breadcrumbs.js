@@ -94,7 +94,7 @@ function renderBreadcrumbs(breadcrumbs) {
 			return breadcrumb.isFinal
 				? ``
 				: `<li 
-						class="breadcrumb-item" 
+						class="breadcrumbs-item" 
 						itemprop="itemListElement"
 						itemscope=""
 						itemtype="http://schema.org/ListItem">

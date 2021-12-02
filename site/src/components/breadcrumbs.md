@@ -12,48 +12,28 @@ Use breadcrumbs to show navigation from the current location to less specific lo
 ```html
 <nav>
 	<ol class="breadcrumbs">
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Domain</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Kingdom</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Phylum</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Class</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Order</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Family</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Genus</a>
 		</li>
-		<li class="breadcrumb-item">
-			<a href="#">Species</a>
-		</li>
-	</ol>
-</nav>
-```
-
-## Removing slashes
-
-You can use `.breadcrumb-slashless` on any `.breadcrumb-item` to prevent a slash to be rendered.
-
-```html
-<nav>
-	<ol class="breadcrumbs">
-		<li class="breadcrumb-item">
-			<a href="#">Family</a>
-		</li>
-		<li class="breadcrumb-item">
-			<a href="#">Genus</a>
-		</li>
-		<li class="breadcrumb-item breadcrumb-slashless">
+		<li class="breadcrumbs-item">
 			<a href="#">Species</a>
 		</li>
 	</ol>
@@ -62,18 +42,18 @@ You can use `.breadcrumb-slashless` on any `.breadcrumb-item` to prevent a slash
 
 ## Representing the current location
 
-Note that the final item representing the current page is omitted in the default example. If for some reason it must be included add `.breadcrumb-slashless` to the final item along with `aria-current="page"` attribute and wrap it into `span` instead of an `anchor` tag.
+The final item representing the current page is omitted in the default example. If for some reason it must be included add `.breadcrumbs-item-slashless` to the final item to remove slash along with `aria-current="page"` attribute and wrap it into `span` instead of an `anchor` tag.
 
 ```html
 <nav>
 	<ol class="breadcrumbs">
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Family</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Genus</a>
 		</li>
-		<li class="breadcrumb-item breadcrumb-slashless" aria-current="page">
+		<li class="breadcrumbs-item breadcrumbs-item-slashless" aria-current="page">
 			<span>Species</span>
 		</li>
 	</ol>
@@ -87,28 +67,28 @@ By default `.breadcrumbs` are just slightly smaller than the document's font siz
 ```html
 <nav>
 	<ol class="breadcrumbs font-size-xl">
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Domain</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Kingdom</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Phylum</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Class</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Order</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Family</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Genus</a>
 		</li>
-		<li class="breadcrumb-item">
+		<li class="breadcrumbs-item">
 			<a href="#">Species</a>
 		</li>
 	</ol>
