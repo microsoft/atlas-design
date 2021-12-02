@@ -62,7 +62,7 @@ You can use `.breadcrumb-slashless` on any `.breadcrumb-item` to prevent a slash
 
 ## Representing the current location
 
-Note that the final item representing the current page is omitted in the default example. If for some reason it must be included add `.breadcrumb-slashless` to the final item and wrap it into `span` instead of an `anchor` tag.
+Note that the final item representing the current page is omitted in the default example. If for some reason it must be included add `.breadcrumb-slashless` to the final item along with `aria-current="page"` attribute and wrap it into `span` instead of an `anchor` tag.
 
 ```html
 <nav>
@@ -73,7 +73,7 @@ Note that the final item representing the current page is omitted in the default
 		<li class="breadcrumb-item">
 			<a href="#">Genus</a>
 		</li>
-		<li class="breadcrumb-item breadcrumb-slashless">
+		<li class="breadcrumb-item breadcrumb-slashless" aria-current="page">
 			<span>Species</span>
 		</li>
 	</ol>
