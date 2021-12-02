@@ -7,12 +7,8 @@ $breadcrumb-separator: '\00200B/' !default;
 	font-size: $breadcrumb-font-size;
 
 	.breadcrumbs-item {
-		display: inline;
-
-		@include desktop {
-			display: inline-block;
-			padding-block: $breadcrumb-spacing-vertical;
-		}
+		display: inline-block;
+		padding-block: $breadcrumb-spacing-vertical;
 
 		&:not(.breadcrumbs-item-slashless)::after {
 			display: inline-block;
