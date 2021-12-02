@@ -5,7 +5,6 @@ $breadcrumb-separator: '\00200B/' !default;
 
 .breadcrumbs {
 	font-size: $breadcrumb-font-size;
-	list-style: none;
 
 	.breadcrumb-item {
 		display: inline;
@@ -15,8 +14,7 @@ $breadcrumb-separator: '\00200B/' !default;
 			padding-block: $breadcrumb-spacing-vertical;
 		}
 
-		&::after,
-		&::before {
+		&::after {
 			display: inline-block;
 			margin-inline: $breadcrumb-spacing-horizontal;
 			color: $text-subtle;

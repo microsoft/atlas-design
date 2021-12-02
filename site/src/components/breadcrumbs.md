@@ -7,7 +7,7 @@ figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.f
 
 # Breadcrumbs
 
-Use breadcrumbs to show navigation from the current location to less specific locations. Note that the final item is not presented.
+Use breadcrumbs to show navigation from the current location to less specific locations. Note that the final item representing the current page is not presented.
 
 ```html
 <nav>
@@ -62,7 +62,7 @@ You can use `.breadcrumb-slashless` on any `.breadcrumb-item` to prevent a slash
 
 ## Representing the current location
 
-Note that the final item is omitted in the default example. If for some reason it must be included add `.breadcrumb-slashless` to the final item and wrap it into `span` instead of an `anchor` tag.
+Note that the final item representing the current page is omitted in the default example. If for some reason it must be included add `.breadcrumb-slashless` to the final item and wrap it into `span` instead of an `anchor` tag.
 
 ```html
 <nav>

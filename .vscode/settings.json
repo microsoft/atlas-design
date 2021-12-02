@@ -8,16 +8,5 @@
 	"css.validate": false,
 	"less.validate": false,
 	"scss.validate": true,
-	"eslint.workingDirectories": [
-		{
-			"directory": "site",
-			"changeProcessCWD": true
-		}
-	],
-	"markdownlint.config": {
-		"MD028": false,
-		"MD025": {
-			"front_matter_title": ""
-		}
-	}
+	"eslint.workingDirectories": [{ "directory": "site", "changeProcessCWD": true }]
 }
