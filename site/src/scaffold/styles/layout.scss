@@ -90,11 +90,13 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 	}
 }
 
-#breadcrumbs {
+#breadcrumbs-holder {
 	grid-area: breadcrumbs;
+	display: flex;
+	align-items: center;
 }
 
-#actions {
+#actions-holder {
 	grid-area: actions;
 	display: flex;
 	justify-content: flex-end;
@@ -132,8 +134,8 @@ html.debug {
 	#nav,
 	#aside,
 	#footer,
-	#breadcrumbs,
-	#actions,
+	#breadcrumbs-holder,
+	#actions-holder,
 	#article {
 		outline: 1px solid $border;
 	}
@@ -146,12 +148,12 @@ html.debug {
 		@include debug('main');
 	}
 
-	#breadcrumbs {
-		@include debug('breadcrumbs');
+	#breadcrumbs-holder {
+		@include debug('breadcrumbs-holder');
 	}
 
-	#actions {
-		@include debug('actions');
+	#actions-holder {
+		@include debug('actions-holder');
 	}
 
 	#body {

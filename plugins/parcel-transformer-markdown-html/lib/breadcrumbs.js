@@ -104,7 +104,7 @@ function renderBreadcrumbs(breadcrumbs) {
 		})
 		.join('');
 
-	return `<div id="breadcrumbs"><ul class="breadcrumbs">${itemMarkup}</ul></div>`;
+	return `<div id="breadcrumbs-holder"><ol class="breadcrumbs">${itemMarkup}</ol></div>`;
 }
 
 module.exports.renderBreadcrumbsMarkup = renderBreadcrumbsMarkup;
