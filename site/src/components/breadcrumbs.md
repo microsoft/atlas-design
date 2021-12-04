@@ -2,7 +2,7 @@
 title: Breadcrumbs
 description: The Breadcrumb component in the Atlas Design System
 template: standard
-figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FNWYugObOGcAOlekKyjkEkT%2F%25E2%25AD%2590%25EF%25B8%258F-Atlas---Page-Templating%3Fnode-id%3D204%253A1220
+figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F1xPKoajeYtL7JPQ4ZoENkr%2F%25F0%259F%258C%259E-Atlas-Design-UI-Kit-(Team-Guidance)%3Fnode-id%3D0%253A1
 ---
 
 # Breadcrumbs
