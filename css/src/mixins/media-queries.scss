@@ -50,7 +50,6 @@
 
 @mixin print {
 	@media print {
-	  @content;
+		@content;
 	}
-  }
-  
+}
