@@ -1,0 +1,36 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder */
+.popover {
+	display: inline-block;
+	position: relative;
+
+	.popover-summary {
+		@extend .button;
+
+		min-height: unset;
+	}
+
+	.popover-content {
+		position: absolute;
+		min-width: 150px;
+		margin-top: $spacer-3;
+		padding: $spacer-6;
+		border: 1px solid $border;
+		border-radius: $border-radius;
+		background-color: $body-background;
+		box-shadow: $box-shadow-heavy;
+		z-index: $zindex-popover;
+
+		&.popover-content-align-left {
+			left: 0;
+		}
+
+		&.popover-content-align-right {
+			right: 0;
+		}
+
+		&.popover-content-align-center {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}

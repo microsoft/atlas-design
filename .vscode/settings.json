@@ -8,5 +8,10 @@
 	"css.validate": false,
 	"less.validate": false,
 	"scss.validate": true,
-	"eslint.workingDirectories": [{ "directory": "site", "changeProcessCWD": true }]
+	"eslint.workingDirectories": [
+		{
+			"directory": "site",
+			"changeProcessCWD": true
+		}
+	]
 }
