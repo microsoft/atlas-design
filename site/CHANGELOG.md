@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.11.0
+
+### Minor Changes
+
+- f1e9851: Add breadcrumb component and relevant documentation
+
 ## 0.10.0
 
 ### Minor Changes
