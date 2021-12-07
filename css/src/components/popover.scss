@@ -1,12 +1,11 @@
-/* stylelint-disable scss/at-extend-no-missing-placeholder */
 .popover {
 	display: inline-block;
 	position: relative;
 
 	.popover-summary {
-		@extend .button;
-
-		min-height: unset;
+		color: $hyperlink;
+		list-style: none;
+		cursor: pointer;
 	}
 
 	.popover-content {
@@ -19,16 +18,16 @@
 		background-color: $body-background;
 		box-shadow: $box-shadow-heavy;
 		z-index: $zindex-popover;
+	}
 
-		&.popover-content-align-left {
-			left: 0;
-		}
-
-		&.popover-content-align-right {
+	&.popover-right {
+		.popover-content {
 			right: 0;
 		}
+	}
 
-		&.popover-content-align-center {
+	&.popover-center {
+		.popover-content {
 			left: 50%;
 			transform: translateX(-50%);
 		}
