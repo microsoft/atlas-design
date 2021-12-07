@@ -47,3 +47,9 @@
 		@content;
 	}
 }
+
+@mixin print {
+	@media print {
+		@content;
+	}
+}
