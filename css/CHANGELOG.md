@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.3.0
+
+### Minor Changes
+
+- 4582928: Add print media query mixin.
+- f1e9851: Add breadcrumb component and relevant documentation
+
 ## 3.2.0
 
 ### Minor Changes
