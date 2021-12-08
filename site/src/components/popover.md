@@ -6,7 +6,7 @@ template: standard
 
 # Popover
 
-The popover component allows content to be placed in the popup that appears after clicking on a button. Popover is based on top of the [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#customizing_the_disclosure_widget) HTML component.
+The popover component allows content to be placed in the popup that appears after clicking on a button. Popover is build on top of the [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#customizing_the_disclosure_widget) HTML component.
 
 ```html
 <details class="popover">
@@ -30,7 +30,9 @@ The popover component allows content to be placed in the popup that appears afte
 </details>
 ```
 
-You can also use the `.button` class in combination with `.popover-summary` to get the button look.
+## Styling the trigger
+
+You can apply almost any classes in combination with the `.popover-summary` element to achieve the look you need. The following example applies `.button`.
 
 ```html
 <details class="popover">

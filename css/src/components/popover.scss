@@ -1,3 +1,8 @@
+$popover-background-color: $body-background !default;
+$popover-border: $border-width solid $border-white-high-contrast !default;
+$popover-shadow: $box-shadow-heavy !default;
+$popover-width: 224px !default;
+
 .popover {
 	display: inline-block;
 	position: relative;
@@ -10,13 +15,13 @@
 
 	.popover-content {
 		position: absolute;
-		min-width: 150px;
+		min-width: $popover-width;
 		margin-top: $spacer-3;
-		padding: $spacer-6;
-		border: 1px solid $border;
+		padding: $spacer-5;
+		border: $popover-border;
 		border-radius: $border-radius;
-		background-color: $body-background;
-		box-shadow: $box-shadow-heavy;
+		background-color: $popover-background-color;
+		box-shadow: $popover-shadow;
 		z-index: $zindex-popover;
 	}
 
