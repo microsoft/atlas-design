@@ -10,7 +10,7 @@ The popover component allows content to be placed in the popup that appears afte
 
 ```html
 <details class="popover">
-	<summary class="popover-summary link-button">Click for details</summary>
+	<summary class="link-button">Click for details</summary>
 	<div class="popover-content">
 		<p class="margin-bottom-xs">It can be a paragraph of text.</p>
 		<p class="margin-bottom-xxs">Or a list:</p>
@@ -32,11 +32,11 @@ The popover component allows content to be placed in the popup that appears afte
 
 ## Styling the trigger
 
-You can apply almost any classes in combination with the `.popover-summary` element to achieve the look you need. The following example applies `.button`.
+You can apply almost any classes on the `summary` element to achieve the look you need. The following example applies `.button`.
 
 ```html
 <details class="popover">
-	<summary class="popover-summary button border">
+	<summary class="button border">
 		<span class="icon color-primary">
 			<svg class="fill-current-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
 				<path
@@ -57,17 +57,17 @@ Popover is left aligned by default, but also can be centered or right aligned. A
 
 ```html
 <details class="popover margin-xxs">
-	<summary class="popover-summary button color-text">Popover aligned to the left</summary>
+	<summary class="button">Popover aligned to the left</summary>
 	<div class="popover-content">Popover content.</div>
 </details>
 
 <details class="popover popover-center margin-xxs">
-	<summary class="popover-summary button color-text">Popover centered</summary>
+	<summary class="button">Popover centered</summary>
 	<div class="popover-content">Popover content.</div>
 </details>
 
 <details class="popover popover-right margin-xxs">
-	<summary class="popover-summary button color-text">Popover aligned to the right</summary>
+	<summary class="button">Popover aligned to the right</summary>
 	<div class="popover-content">Popover content.</div>
 </details>
 ```
