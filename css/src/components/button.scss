@@ -43,6 +43,10 @@ $button-font-weight: $weight-semibold !default;
 	padding-#{$user-left}: $button-padding-horizontal;
 	padding-#{$user-right}: $button-padding-horizontal;
 
+	&:hover {
+		text-decoration: none;
+	}
+
 	strong {
 		color: inherit;
 	}
