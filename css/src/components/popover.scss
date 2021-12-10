@@ -1,5 +1,6 @@
 $popover-background-color: $body-background !default;
 $popover-border: $border-width solid $border-white-high-contrast !default;
+$popover-border-radius: $border-radius !default;
 $popover-shadow: $box-shadow-heavy !default;
 $popover-width: 224px !default;
 
@@ -8,20 +9,19 @@ $popover-width: 224px !default;
 	position: relative;
 
 	.popover-summary {
-		color: $hyperlink;
 		list-style: none;
-		cursor: pointer;
 	}
 
 	.popover-content {
 		position: absolute;
-		min-width: $popover-width;
+		width: $popover-width;
 		margin-top: $spacer-3;
 		padding: $spacer-5;
 		border: $popover-border;
-		border-radius: $border-radius;
+		border-radius: $popover-border-radius;
 		background-color: $popover-background-color;
 		box-shadow: $popover-shadow;
+		overflow: hidden;
 		z-index: $zindex-popover;
 	}
 

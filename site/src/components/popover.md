@@ -10,7 +10,7 @@ The popover component allows content to be placed in the popup that appears afte
 
 ```html
 <details class="popover">
-	<summary class="popover-summary">Click for details</summary>
+	<summary class="popover-summary link-button">Click for details</summary>
 	<div class="popover-content">
 		<p class="margin-bottom-xs">It can be a paragraph of text.</p>
 		<p class="margin-bottom-xxs">Or a list:</p>
