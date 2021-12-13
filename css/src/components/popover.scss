@@ -1,0 +1,40 @@
+$popover-background-color: $body-background !default;
+$popover-border: $border-width solid $border-white-high-contrast !default;
+$popover-border-radius: $border-radius !default;
+$popover-shadow: $box-shadow-heavy !default;
+$popover-width: 224px !default;
+
+.popover {
+	display: inline-block;
+	position: relative;
+
+	summary {
+		list-style: none;
+	}
+
+	.popover-content {
+		position: absolute;
+		width: $popover-width;
+		margin-top: $spacer-3;
+		padding: $spacer-5;
+		border: $popover-border;
+		border-radius: $popover-border-radius;
+		background-color: $popover-background-color;
+		box-shadow: $popover-shadow;
+		overflow: hidden;
+		z-index: $zindex-popover;
+	}
+
+	&.popover-right {
+		.popover-content {
+			right: 0;
+		}
+	}
+
+	&.popover-center {
+		.popover-content {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}
