@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.11.1
+
+### Patch Changes
+
+- b81276d: Updating the footer's background color.
+
 ## 0.11.0
 
 ### Minor Changes

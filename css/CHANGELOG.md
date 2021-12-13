@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.4.0
+
+### Minor Changes
+
+- 8f87caa: Add popover component and relevant documentation
+
 ## 3.3.0
 
 ### Minor Changes
