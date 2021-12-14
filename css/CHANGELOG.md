@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.5.0
+
+### Minor Changes
+
+- a180785: Extend font size atomics with tablet-specific classes
+
 ## 3.4.0
 
 ### Minor Changes

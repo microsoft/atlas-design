@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.12.0
+
+### Minor Changes
+
+- a180785: Extend font size atomics with tablet-specific classes
+
 ## 0.11.1
 
 ### Patch Changes
