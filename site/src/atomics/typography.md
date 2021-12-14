@@ -12,7 +12,7 @@ The typography scale is designed for great readability across the platform. This
 
 There are two avenues for modifying font size in Atlas.
 
-#### Heading sizes
+## Heading sizes
 
 The following classes can be used to accurately adopt a heading's size (h1- h6).
 These sizes are tied to the default heading sizes renderer within the [markdown component](https://design.docs.microsoft.com/components/markdown.html).
@@ -36,6 +36,15 @@ The following classes targets text that are not headings.
 <p class="font-size-md">Medium text</p>
 <p class="font-size-sm">Small text</p>
 <p class="font-size-xs">Extra small text</p>
+```
+
+### Tablet sizes
+
+Appending `-tablet` to a font-size class will make that class applicable to tablet screen size and above. In this way, you may apply mobile-first font sizes, then apply a more fitting font-size for larger screens.
+
+```html
+<p class="font-size-h2 font-size-h1-tablet">Heading level two on mobile, level one on tablet</p>
+<p class="font-size-md font-size-lg-tablet">Medium on mobile, large on tablet</p>
 ```
 
 ## Font weight and italics

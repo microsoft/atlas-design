@@ -40,6 +40,36 @@
 	font-size: $font-size-6 !important;
 }
 
+@include tablet {
+	.font-size-h0-tablet {
+		font-size: $font-size-0 !important;
+	}
+
+	.font-size-h1-tablet {
+		font-size: $font-size-1 !important;
+	}
+
+	.font-size-h2-tablet {
+		font-size: $font-size-2 !important;
+	}
+
+	.font-size-h3-tablet {
+		font-size: $font-size-3 !important;
+	}
+
+	.font-size-h4-tablet {
+		font-size: $font-size-4 !important;
+	}
+
+	.font-size-h5-tablet {
+		font-size: $font-size-5 !important;
+	}
+
+	.font-size-h6-tablet {
+		font-size: $font-size-6 !important;
+	}
+}
+
 // Non-heading sizes
 
 .font-size-xl {
@@ -60,6 +90,30 @@
 
 .font-size-xs {
 	font-size: $font-size-9 !important;
+}
+
+// Non-heading sizes
+
+@include tablet {
+	.font-size-xl-tablet {
+		font-size: $font-size-5 !important;
+	}
+
+	.font-size-lg-tablet {
+		font-size: $font-size-6 !important;
+	}
+
+	.font-size-md-tablet {
+		font-size: $font-size-7 !important;
+	}
+
+	.font-size-sm-tablet {
+		font-size: $font-size-8 !important;
+	}
+
+	.font-size-xs-tablet {
+		font-size: $font-size-9 !important;
+	}
 }
 
 // Weight
