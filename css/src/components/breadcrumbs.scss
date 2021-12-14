@@ -1,5 +1,5 @@
 $breadcrumb-font-size: $font-size-8 !default;
-$breadcrumb-spacing-horizontal: 0.25em !default;
+$breadcrumb-spacing-horizontal: 0.375em !default;
 $breadcrumb-spacing-vertical: 0.375em !default;
 $breadcrumb-separator: '\00200B/' !default;
 
@@ -12,7 +12,7 @@ $breadcrumb-separator: '\00200B/' !default;
 
 		&:not(.breadcrumbs-item-slashless)::after {
 			display: inline-block;
-			margin-inline: $breadcrumb-spacing-horizontal;
+			margin-inline-end: $breadcrumb-spacing-horizontal;
 			color: $text-subtle;
 			content: $breadcrumb-separator;
 		}
