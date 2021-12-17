@@ -2,6 +2,10 @@
 	border: $border-width solid $border !important;
 }
 
+.border-md {
+	border: $border-width-md solid $border !important;
+}
+
 .border-lg {
 	border: $border-width-lg solid $border !important;
 }
@@ -12,9 +16,13 @@
 
 // Rules for each side
 
-@each $border-key, $direction in $directions {
+@each $border-key, $direction in $logical-directions {
 	.border-#{$border-key} {
 		border-#{$direction}: $border-width solid $border !important;
+	}
+
+	.border-#{$border-key}-md {
+		border-#{$direction}: $border-width-md solid $border !important;
 	}
 
 	.border-#{$border-key}-lg {
@@ -31,6 +39,10 @@
 		border: $border-width solid $border !important;
 	}
 
+	.border-md-tablet {
+		border: $border-width-md solid $border !important;
+	}
+
 	.border-lg-tablet {
 		border: $border-width-lg solid $border !important;
 	}
@@ -41,9 +53,13 @@
 
 	// Rules for each side
 
-	@each $border-key, $direction in $directions {
+	@each $border-key, $direction in $logical-directions {
 		.border-#{$border-key}-tablet {
 			border-#{$direction}: $border-width solid $border !important;
+		}
+
+		.border-#{$border-key}-md-tablet {
+			border-#{$direction}: $border-width-md solid $border !important;
 		}
 
 		.border-#{$border-key}-lg-tablet {
