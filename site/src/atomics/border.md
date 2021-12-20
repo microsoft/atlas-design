@@ -79,14 +79,20 @@ Currently two classes are available to set border radius:
 
 ### Size
 
-Additionally `-lg` may be added for a thicker border.
+Additionally `-md` and `-lg` may be added for a thicker border.
 
 ```html
-<div class="border-lg padding-sm">
+<div class="border-md padding-sm">
+	<p>Medium border</p>
+</div>
+<div class="border-md-tablet padding-sm margin-top-xs">
+	<p>Medium border on tablet+</p>
+</div>
+<div class="border-lg padding-sm margin-top-xs">
 	<p>Large border</p>
 </div>
 <div class="border-lg-tablet padding-sm margin-top-xs">
-	<p>Large border</p>
+	<p>Large border on tablet+</p>
 </div>
 ```
 

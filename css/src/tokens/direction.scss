@@ -16,3 +16,10 @@ $directions: (
 	'left': $user-left
 );
 //@end-sass-export-section
+
+$logical-directions: (
+	'top': 'block-start',
+	'right': 'inline-end',
+	'bottom': 'block-end',
+	'left': 'inline-start'
+);
