@@ -1,5 +1,7 @@
-$table-cell-vertical-padding: $spacer-4 !default;
-$table-cell-horizontal-padding: $spacer-5 !default;
+$table-cell-vertical-padding: $spacer-5 !default;
+$table-cell-horizontal-padding: $spacer-6 !default;
+$table-cell-padding-compact: $spacer-3 !default;
+$table-cell-padding-loose: $spacer-8 !default;
 
 $table-caption-padding: $spacer-6 !default;
 $table-caption-size: $font-size-9 !default;
@@ -13,6 +15,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 
 .table {
 	width: 100%;
+	border: 1px solid $table-border-dark;
 	font-size: $font-size-8;
 	border-collapse: collapse;
 	table-layout: auto;
@@ -31,14 +34,14 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		display: table-cell;
 		word-wrap: break-word;
 		padding: $table-cell-vertical-padding $table-cell-horizontal-padding;
-		border-top: 1px solid $border;
+		border-top: 1px solid $table-border-dark;
 		line-height: 1.5;
 		vertical-align: top;
 	}
 
 	thead th {
 		border-top: 0;
-		border-bottom: 1px solid $border;
+		border-bottom: 1px solid $table-border-dark;
 	}
 
 	th:not([align]) {
@@ -62,6 +65,61 @@ $table-caption-spacing: $letter-spacing-medium !default;
 				padding-block-start: 0;
 				border-width: 0;
 			}
+		}
+	}
+
+	&.table-simple {
+		border: none;
+	}
+
+	&.table-borderless {
+		border: none;
+
+		th,
+		td {
+			border: none;
+		}
+	}
+
+	&.table-complex {
+		thead tr,
+		tfoot tr {
+			background-color: $table-header;
+		}
+
+		th,
+		td {
+			border: 1px solid $table-border-dark;
+		}
+	}
+
+	&.table-striped {
+		tbody tr:nth-of-type(even) {
+			background-color: $table-row;
+		}
+	}
+
+	&.table-sm {
+		th,
+		td {
+			padding: $table-cell-padding-compact;
+		}
+	}
+
+	&.table-lg {
+		th,
+		td {
+			padding: $table-cell-padding-loose;
+		}
+	}
+
+	&.table-width-reset {
+		width: auto;
+	}
+
+	&.table-interactive {
+		tbody tr:hover {
+			background-color: $table-row;
 		}
 	}
 }

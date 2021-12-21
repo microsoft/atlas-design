@@ -2,6 +2,7 @@
 title: Table
 description: Table element and its modifiers.
 template: standard
+figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F1xPKoajeYtL7JPQ4ZoENkr%2F%25F0%259F%258C%259E-Atlas-Design-UI-Kit-(Team-Guidance)%3Fnode-id%3D195%253A3262
 ---
 
 # Table
@@ -93,10 +94,266 @@ For cases in which a table has many columns, the `table-wrapper` class is availa
 
 ## Modifiers
 
+_`table-simple`_ - simple table style only shows horizontal cell borders and no table border.
+
+```html
+<table class="table table-simple">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+_`table-complex`_ - complex table style is a completely bordered cell layout with a heavy stylized header row.
+
+```html
+<table class="table table-complex">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+_`table-borderless`_ - removes all table cell borders.
+
+```html
+<table class="table table-borderless">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+_`table-striped`_ - adds background color to every even row.
+
+```html
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row four</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row five</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+_`table-sm`_/_`table-lg`_ - makes table more or less condensed than the default.
+
+```html
+<table class="table table-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+```html
+<table class="table table-lg">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+_`table-width-reset`_ - resets table's width to take only the space needed vs the full available width.
+
+```html
+<table class="table table-width-reset">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
 _`table-stacked-mobile`_ - stacks table cells on mobile screen sizes.
 
 ```html
 <table class="table table-stacked-mobile">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+_`table-interactive`_ - adds the mouse hover affect to the table's row.
+
+```html
+<table class="table table-interactive">
 	<thead>
 		<tr>
 			<th>Heading row</th>
