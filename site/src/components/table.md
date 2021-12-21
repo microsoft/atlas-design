@@ -350,7 +350,7 @@ _`table-stacked-mobile`_ - stacks table cells on mobile screen sizes.
 </table>
 ```
 
-_`table-interactive`_ - adds the mouse hover affect to the table's row.
+_`table-interactive`_ - adds the mouse hover effect to the table's row.
 
 ```html
 <table class="table table-interactive">
