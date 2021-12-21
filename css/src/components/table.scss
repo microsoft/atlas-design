@@ -15,10 +15,13 @@ $table-caption-spacing: $letter-spacing-medium !default;
 
 .table {
 	width: 100%;
-	border: 1px solid $table-border-dark;
 	font-size: $font-size-8;
 	border-collapse: collapse;
 	table-layout: auto;
+
+	&:not(.table-simple) {
+		border: 1px solid $table-border-dark;
+	}
 
 	caption {
 		padding: $table-caption-padding;
@@ -68,10 +71,6 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		}
 	}
 
-	&.table-simple {
-		border: none;
-	}
-
 	&.table-borderless {
 		border: none;
 
@@ -110,16 +109,6 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		th,
 		td {
 			padding: $table-cell-padding-loose;
-		}
-	}
-
-	&.table-width-reset {
-		width: auto;
-	}
-
-	&.table-interactive {
-		tbody tr:hover {
-			background-color: $table-row;
 		}
 	}
 }

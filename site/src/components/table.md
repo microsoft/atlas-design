@@ -36,11 +36,6 @@ Here is an example of applying `table` class to the table element:
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
-		<tr>
-			<td>Row three</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
 	</tbody>
 	<tfoot>
 		<tr>
@@ -94,7 +89,9 @@ For cases in which a table has many columns, the `table-wrapper` class is availa
 
 ## Modifiers
 
-_`table-simple`_ - simple table style only shows horizontal cell borders and no table border.
+### Simple
+
+_`table-simple`_ gives table has only horizontal cell borders.
 
 ```html
 <table class="table table-simple">
@@ -116,14 +113,11 @@ _`table-simple`_ - simple table style only shows horizontal cell borders and no 
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
-		<tr>
-			<td>Row three</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
 	</tbody>
 </table>
 ```
+
+### Complex
 
 _`table-complex`_ - complex table style is a completely bordered cell layout with a heavy stylized header row.
 
@@ -147,16 +141,13 @@ _`table-complex`_ - complex table style is a completely bordered cell layout wit
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
-		<tr>
-			<td>Row three</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
 	</tbody>
 </table>
 ```
 
-_`table-borderless`_ - removes all table cell borders.
+### Borderless
+
+_`table-borderless`_ removes all table cell borders.
 
 ```html
 <table class="table table-borderless">
@@ -178,16 +169,13 @@ _`table-borderless`_ - removes all table cell borders.
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
-		<tr>
-			<td>Row three</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
 	</tbody>
 </table>
 ```
 
-_`table-striped`_ - adds background color to every even row.
+### Striped
+
+_`table-striped`_ adds background color to every even row.
 
 ```html
 <table class="table table-striped">
@@ -228,7 +216,9 @@ _`table-striped`_ - adds background color to every even row.
 </table>
 ```
 
-_`table-sm`_/_`table-lg`_ - makes table more or less condensed than the default.
+### Size
+
+_`table-sm`_/_`table-lg`_ makes table more or less condensed than the default.
 
 ```html
 <table class="table table-sm">
@@ -250,17 +240,10 @@ _`table-sm`_/_`table-lg`_ - makes table more or less condensed than the default.
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
-		<tr>
-			<td>Row three</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
 	</tbody>
 </table>
-```
 
-```html
-<table class="table table-lg">
+<table class="table table-lg margin-top-lg">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -279,81 +262,16 @@ _`table-sm`_/_`table-lg`_ - makes table more or less condensed than the default.
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
-		<tr>
-			<td>Row three</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
 	</tbody>
 </table>
 ```
 
-_`table-width-reset`_ - resets table's width to take only the space needed vs the full available width.
+### Stacked on mobile
 
-```html
-<table class="table table-width-reset">
-	<thead>
-		<tr>
-			<th>Heading row</th>
-			<th>Heading cell</th>
-			<th>Heading cell</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Row one</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-		<tr>
-			<td>Row two</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-		<tr>
-			<td>Row three</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-	</tbody>
-</table>
-```
-
-_`table-stacked-mobile`_ - stacks table cells on mobile screen sizes.
+_`table-stacked-mobile`_ stacks table cells on mobile screen sizes.
 
 ```html
 <table class="table table-stacked-mobile">
-	<thead>
-		<tr>
-			<th>Heading row</th>
-			<th>Heading cell</th>
-			<th>Heading cell</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Row one</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-		<tr>
-			<td>Row two</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-		<tr>
-			<td>Row three</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-	</tbody>
-</table>
-```
-
-_`table-interactive`_ - adds the mouse hover effect to the table's row.
-
-```html
-<table class="table table-interactive">
 	<thead>
 		<tr>
 			<th>Heading row</th>
