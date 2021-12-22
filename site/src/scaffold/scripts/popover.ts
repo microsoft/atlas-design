@@ -1,33 +1,37 @@
-export function initPopover(container: Element) {
-	const popovers = container.querySelectorAll('details');
-
-	if (popovers.length === 0) {
-		return;
-	}
-
-	popovers.forEach(p =>
-		p.addEventListener('keydown', event => {
-			if (event.key === 'Escape') {
-				if (p.hasAttribute('open')) {
-					p.removeAttribute('open');
-				}
-				p.focus();
-			}
-		})
-	);
-
+export function initPopover(container: HTMLElement) {
 	container.addEventListener('click', event => {
+		const popovers: HTMLDetailsElement[] = Array.from(
+			container.querySelectorAll('details.popover')
+		);
+
+		if (popovers.length === 0) {
+			return;
+		}
+
+		popovers.forEach(p =>
+			p.addEventListener('keydown', event => {
+				if (event.key === 'Escape') {
+					closePopover(p);
+				}
+			})
+		);
+
 		const targetPopover =
-			event.target instanceof Element && (event.target.closest('details') as HTMLDetailsElement)
-				? (event.target.closest('details') as HTMLDetailsElement)
+			event.target instanceof HTMLElement &&
+			(event.target.closest('details.popover') as HTMLDetailsElement)
+				? (event.target.closest('details.popover') as HTMLDetailsElement)
 				: null;
 
-		const otherPopovers = Array.from(popovers).filter(el => el !== targetPopover);
+		const otherPopovers = popovers.filter(el => el !== targetPopover);
 
 		otherPopovers.forEach(p => {
-			if (p.hasAttribute('open')) {
-				p.removeAttribute('open');
-			}
+			closePopover(p);
 		});
 	});
+}
+
+function closePopover(popover: HTMLDetailsElement) {
+	if (popover.hasAttribute('open')) {
+		popover.removeAttribute('open');
+	}
 }
