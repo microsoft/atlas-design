@@ -36,6 +36,11 @@ Here is an example of applying `table` class to the table element:
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
 	</tbody>
 	<tfoot>
 		<tr>
@@ -89,12 +94,13 @@ For cases in which a table has many columns, the `table-wrapper` class is availa
 
 ## Modifiers
 
+All modifier classes should be applied in conjunction with the `.table` class.
+
 ### Simple
 
 _`table-simple`_ gives table has only horizontal cell borders.
 
-```html
-<table class="table table-simple">
+<table class="table table-simple margin-top-sm">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -113,16 +119,19 @@ _`table-simple`_ gives table has only horizontal cell borders.
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
 	</tbody>
 </table>
-```
 
 ### Complex
 
 _`table-complex`_ - complex table style is a completely bordered cell layout with a heavy stylized header row.
 
-```html
-<table class="table table-complex">
+<table class="table table-complex margin-top-sm">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -141,16 +150,19 @@ _`table-complex`_ - complex table style is a completely bordered cell layout wit
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
 	</tbody>
 </table>
-```
 
 ### Borderless
 
 _`table-borderless`_ removes all table cell borders.
 
-```html
-<table class="table table-borderless">
+<table class="table table-borderless margin-top-sm">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -169,16 +181,19 @@ _`table-borderless`_ removes all table cell borders.
 			<td>Cell</td>
 			<td>Cell</td>
 		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
 	</tbody>
 </table>
-```
 
 ### Striped
 
 _`table-striped`_ adds background color to every even row.
 
-```html
-<table class="table table-striped">
+<table class="table table-striped margin-top-sm">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -214,64 +229,12 @@ _`table-striped`_ adds background color to every even row.
 		</tr>
 	</tbody>
 </table>
-```
 
 ### Size
 
 _`table-sm`_/_`table-lg`_ makes table more or less condensed than the default.
 
-```html
-<table class="table table-sm">
-	<thead>
-		<tr>
-			<th>Heading row</th>
-			<th>Heading cell</th>
-			<th>Heading cell</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Row one</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-		<tr>
-			<td>Row two</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-	</tbody>
-</table>
-
-<table class="table table-lg margin-top-lg">
-	<thead>
-		<tr>
-			<th>Heading row</th>
-			<th>Heading cell</th>
-			<th>Heading cell</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Row one</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-		<tr>
-			<td>Row two</td>
-			<td>Cell</td>
-			<td>Cell</td>
-		</tr>
-	</tbody>
-</table>
-```
-
-### Stacked on mobile
-
-_`table-stacked-mobile`_ stacks table cells on mobile screen sizes.
-
-```html
-<table class="table table-stacked-mobile">
+<table class="table table-sm margin-top-sm">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -297,4 +260,61 @@ _`table-stacked-mobile`_ stacks table cells on mobile screen sizes.
 		</tr>
 	</tbody>
 </table>
-```
+
+<table class="table table-lg margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+
+### Stacked on mobile
+
+_`table-stacked-mobile`_ stacks table cells on mobile screen sizes.
+
+<table class="table table-stacked-mobile margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
