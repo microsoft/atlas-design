@@ -108,6 +108,14 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 
 .example {
 	padding: $layout-2;
+
+	& .example-height {
+		height: 50px;
+
+		div {
+			width: 100%;
+		}
+	}
 }
 
 // For debugging layout purposes only

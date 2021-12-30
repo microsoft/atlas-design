@@ -30,10 +30,11 @@ const settings = normalizePaths({
 		'/tokens/overview.md': 'Overview',
 		'/atomics/border.md': 'Border',
 		'/atomics/display.md': 'Display',
+		'/atomics/flex.md': 'Flex',
 		'/atomics/position.md': 'Position',
+		'/atomics/shadow.md': 'Shadow',
 		'/atomics/spacing.md': 'Spacing',
-		'/atomics/typography.md': 'Typography',
-		'/atomics/shadow.md': 'Shadow'
+		'/atomics/typography.md': 'Typography'
 	}
 });
 
