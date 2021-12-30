@@ -14,9 +14,9 @@ Flex atomics are used to modify the layout of elements using flexbox and grid pr
 
 The flex-drection property sets the main axis and direction of items within a flexbox container. The default flex direction is `row`, which places items in a line in the same way as the text direction on the main axis.
 
-- `row-reverse`: items are placed in opposite way as the text direction.
-- `column`: items are stacked in same way as the text direction on the cross axis.
-- `column-reverse`: items are stacked in opposite way as the text direction on the cross axis.
+- `flex-direction-row-reverse`: items are placed in opposite way as the text direction.
+- `flex-direction-column`: items are stacked in same way as the text direction on the cross axis.
+- `flex-direction-column-reverse`: items are stacked in opposite way as the text direction on the cross axis.
 
 ```html
 <div class="display-flex border border-bottom-none">
@@ -120,7 +120,7 @@ The align-self property overrides a flex or grid item's `align-items` value for 
 	<div class="border-left border-bottom padding-inline-xs align-self-baseline">
 		align-self-baseline
 	</div>
-	<div class="border-left padding-inline-xs align-self-stretch ">align-self-stretch</div>
+	<div class="border-left padding-inline-xs align-self-stretch">align-self-stretch</div>
 </div>
 ```
 
@@ -197,11 +197,11 @@ The flex-grow property determines how much of available space is assigned to an 
 
 ```html
 <div class="display-flex border margin-bottom-xs">
-	<div class="border-right padding-right-xs flex-grow-0 " style="width: 50px;">flex-grow-0</div>
+	<div class="border-right padding-right-xs flex-grow-0" style="width: 50px;">flex-grow-0</div>
 	<div class="flex-grow-0" style="width: 50px;">flex-grow-0</div>
 </div>
 <div class="display-flex border">
-	<div class="border-right flex-grow-1 " style="width: 250px;">flex-grow-1</div>
+	<div class="border-right flex-grow-1" style="width: 250px;">flex-grow-1</div>
 	<div class="flex-grow-1" style="width: 250px;">flex-grow-1</div>
 </div>
 ```
@@ -216,20 +216,20 @@ The flex-shrink property reduces the size of an item to fit its flex container.
 ```html
 <div class="display-flex border margin-bottom-xs">
 	<div class="border-right padding-right-xxl flex-shrink-0">flex-shrink-0</div>
-	<div class="border-right padding-right-xxl flex-shrink-0 ">flex-shrink-0</div>
-	<div class="border-right padding-right-xxl flex-shrink-0 ">flex-shrink-0</div>
-	<div class="border-right padding-right-xxl flex-shrink-0 ">flex-shrink-0</div>
-	<div class="border-right-none padding-right-xxl flex-shrink-0 ">flex-shrink-0</div>
+	<div class="border-right padding-right-xxl flex-shrink-0">flex-shrink-0</div>
+	<div class="border-right padding-right-xxl flex-shrink-0">flex-shrink-0</div>
+	<div class="border-right padding-right-xxl flex-shrink-0">flex-shrink-0</div>
+	<div class="border-right-none padding-right-xxl flex-shrink-0">flex-shrink-0</div>
 	<div class="padding-right-xxl flex-shrink-0 ">flex-shrink-0</div>
 	<div class="border padding-right-xxl flex-shrink-0 ">flex-shrink-0</div>
 </div>
 <div class="display-flex border">
-	<div class="border-right padding-right-xxl flex-shrink-1 ">flex-shrink-1</div>
-	<div class="border-right padding-right-xxl flex-shrink-1 ">flex-shrink-1</div>
-	<div class="border-right padding-right-xxl flex-shrink-1 ">flex-shrink-1</div>
-	<div class="border-right padding-right-xxl flex-shrink-1 ">flex-shrink-1</div>
-	<div class="border-right padding-right-xxl flex-shrink-1 ">flex-shrink-1</div>
-	<div class="border-right padding-right-xxl flex-shrink-1 ">flex-shrink-1</div>
+	<div class="border-right padding-right-xxl flex-shrink-1">flex-shrink-1</div>
+	<div class="border-right padding-right-xxl flex-shrink-1">flex-shrink-1</div>
+	<div class="border-right padding-right-xxl flex-shrink-1">flex-shrink-1</div>
+	<div class="border-right padding-right-xxl flex-shrink-1">flex-shrink-1</div>
+	<div class="border-right padding-right-xxl flex-shrink-1">flex-shrink-1</div>
+	<div class="border-right padding-right-xxl flex-shrink-1">flex-shrink-1</div>
 	<div class="flex-shrink-1">flex-shrink-1</div>
 </div>
 ```
