@@ -197,12 +197,12 @@ The flex-grow property determines how much of available space is assigned to an 
 
 ```html
 <div class="display-flex border margin-bottom-xs">
-	<div class="border-right padding-right-xs flex-grow-0" style="width: 50px;">flex-grow-0</div>
-	<div class="flex-grow-0" style="width: 50px;">flex-grow-0</div>
+	<div class="border-right padding-right-xs flex-grow-0">flex-grow-0</div>
+	<div class="flex-grow-0">flex-grow-0</div>
 </div>
 <div class="display-flex border">
-	<div class="border-right flex-grow-1" style="width: 250px;">flex-grow-1</div>
-	<div class="flex-grow-1" style="width: 250px;">flex-grow-1</div>
+	<div class="border-right flex-grow-1">flex-grow-1</div>
+	<div class="flex-grow-1">flex-grow-1</div>
 </div>
 ```
 
@@ -220,8 +220,8 @@ The flex-shrink property reduces the size of an item to fit its flex container.
 	<div class="border-right padding-right-xxl flex-shrink-0">flex-shrink-0</div>
 	<div class="border-right padding-right-xxl flex-shrink-0">flex-shrink-0</div>
 	<div class="border-right-none padding-right-xxl flex-shrink-0">flex-shrink-0</div>
-	<div class="padding-right-xxl flex-shrink-0 ">flex-shrink-0</div>
-	<div class="border padding-right-xxl flex-shrink-0 ">flex-shrink-0</div>
+	<div class="padding-right-xxl flex-shrink-0">flex-shrink-0</div>
+	<div class="border padding-right-xxl flex-shrink-0">flex-shrink-0</div>
 </div>
 <div class="display-flex border">
 	<div class="border-right padding-right-xxl flex-shrink-1">flex-shrink-1</div>
