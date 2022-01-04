@@ -27,7 +27,7 @@ jobs:
 
       # https://github.com/changesets/action
       - name: Publish on version increment
-        uses: changesets/action@master
+        uses: changesets/action@v1
         with:
           publish: npx changeset publish
         env:
