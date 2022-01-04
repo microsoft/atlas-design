@@ -1,5 +1,15 @@
 # @microsoft/stylelint-config-atlas
 
+## 4.0.0
+
+### Major Changes
+
+- 9b49c14: Upgrade to next major version of stylelint. Include posthtml-scss customSyntax.
+
+### Patch Changes
+
+- 9b49c14: Update dependencies.
+
 ## 3.0.0
 
 ### Major Changes
