@@ -32,11 +32,13 @@ $flex-atomics: (
 		stretch
 	),
 	'flex-direction': (
+		row,
 		column,
 		column-reverse,
 		row-reverse
 	),
 	'flex-wrap': (
+		nowrap,
 		wrap,
 		wrap-reverse
 	),
