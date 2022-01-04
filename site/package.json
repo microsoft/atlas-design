@@ -15,16 +15,16 @@
 		"lint-fix": "eslint . --ext .ts --fix"
 	},
 	"devDependencies": {
-		"eslint": "^7.30.0",
-		"@typescript-eslint/eslint-plugin": "^4.28.2",
-		"@typescript-eslint/parser": "^4.28.2",
-		"eslint-plugin-import": "^2.23.4",
+		"eslint": "^8.6.0",
+		"@typescript-eslint/eslint-plugin": "^5.9.0",
+		"@typescript-eslint/parser": "^5.9.0",
+		"eslint-plugin-import": "^2.25.4",
 		"@microsoft/atlas-css": "^3.5.0",
 		"eslint-config-prettier": "^8.3.0",
-		"parcel": "2.0.0",
-		"@parcel/transformer-sass": "2.0.0",
+		"parcel": "^2.0.1",
+		"@parcel/transformer-sass": "^2.0.1",
 		"@microsoft/parcel-transformer-markdown-html": "^2.5.0",
-		"fs-extra": "^9.1.0",
+		"fs-extra": "^10.0.0",
 		"front-matter": "^4.0.2"
 	}
 }

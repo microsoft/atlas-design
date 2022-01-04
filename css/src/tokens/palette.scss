@@ -28,45 +28,45 @@ $palette-grey-120: #171717 !default;
 
 $palette-black: #000 !default;
 
-$palette-black-opacity-90: hsla(0, 0%, 0%, 0.9) !default;
-$palette-black-opacity-80: hsla(0, 0%, 0%, 0.8) !default;
-$palette-black-opacity-70: hsla(0, 0%, 0%, 0.7) !default;
-$palette-black-opacity-60: hsla(0, 0%, 0%, 0.6) !default;
-$palette-black-opacity-50: hsla(0, 0%, 0%, 0.5) !default;
-$palette-black-opacity-40: hsla(0, 0%, 0%, 0.4) !default;
-$palette-black-opacity-30: hsla(0, 0%, 0%, 0.3) !default;
-$palette-black-opacity-20: hsla(0, 0%, 0%, 0.2) !default;
-$palette-black-opacity-10: hsla(0, 0%, 0%, 0.1) !default;
-$palette-black-opacity-0: hsla(0, 0%, 0%, 0) !default;
+$palette-black-opacity-90: hsl(0deg 0% 0% / 90%) !default;
+$palette-black-opacity-80: hsl(0deg 0% 0% / 80%) !default;
+$palette-black-opacity-70: hsl(0deg 0% 0% / 70%) !default;
+$palette-black-opacity-60: hsl(0deg 0% 0% / 60%) !default;
+$palette-black-opacity-50: hsl(0deg 0% 0% / 50%) !default;
+$palette-black-opacity-40: hsl(0deg 0% 0% / 40%) !default;
+$palette-black-opacity-30: hsl(0deg 0% 0% / 30%) !default;
+$palette-black-opacity-20: hsl(0deg 0% 0% / 20%) !default;
+$palette-black-opacity-10: hsl(0deg 0% 0% / 10%) !default;
+$palette-black-opacity-0: hsl(0deg 0% 0% / 0%) !default;
 
 // White
 
 $palette-white: #fff !default;
 
-$palette-white-opacity-0: hsla(0, 0%, 100%, 0);
-$palette-white-opacity-10: hsla(0, 0%, 100%, 0.1);
-$palette-white-opacity-20: hsla(0, 0%, 100%, 0.2);
-$palette-white-opacity-30: hsla(0, 0%, 100%, 0.3);
-$palette-white-opacity-40: hsla(0, 0%, 100%, 0.4);
-$palette-white-opacity-50: hsla(0, 0%, 100%, 0.5);
-$palette-white-opacity-60: hsla(0, 0%, 100%, 0.6);
-$palette-white-opacity-70: hsla(0, 0%, 100%, 0.7);
-$palette-white-opacity-80: hsla(0, 0%, 100%, 0.8);
-$palette-white-opacity-90: hsla(0, 0%, 100%, 0.9);
+$palette-white-opacity-0: hsl(0deg 0% 100% / 0%);
+$palette-white-opacity-10: hsl(0deg 0% 100% / 10%);
+$palette-white-opacity-20: hsl(0deg 0% 100% / 20%);
+$palette-white-opacity-30: hsl(0deg 0% 100% / 30%);
+$palette-white-opacity-40: hsl(0deg 0% 100% / 40%);
+$palette-white-opacity-50: hsl(0deg 0% 100% / 50%);
+$palette-white-opacity-60: hsl(0deg 0% 100% / 60%);
+$palette-white-opacity-70: hsl(0deg 0% 100% / 70%);
+$palette-white-opacity-80: hsl(0deg 0% 100% / 80%);
+$palette-white-opacity-90: hsl(0deg 0% 100% / 90%);
 
 // Values used for shadows
 
-$palette-black-opacity-108: hsla(0, 0%, 0%, 0.11) !default;
-$palette-black-opacity-132: hsla(0, 0%, 0%, 0.13) !default;
+$palette-black-opacity-108: hsl(0deg 0% 0% / 11%) !default;
+$palette-black-opacity-132: hsl(0deg 0% 0% / 13%) !default;
 
-$palette-black-opacity-22: hsla(0, 0%, 0%, 0.22) !default;
-$palette-black-opacity-18: hsla(0, 0%, 0%, 0.18) !default;
+$palette-black-opacity-22: hsl(0deg 0% 0% / 22%) !default;
+$palette-black-opacity-18: hsl(0deg 0% 0% / 18%) !default;
 
-$palette-white-opacity-108: hsla(0, 0%, 100%, 0.11) !default;
-$palette-white-opacity-132: hsla(0, 0%, 100%, 0.13) !default;
+$palette-white-opacity-108: hsl(0deg 0% 100% / 11%) !default;
+$palette-white-opacity-132: hsl(0deg 0% 100% / 13%) !default;
 
-$palette-white-opacity-22: hsla(0, 0%, 100%, 0.22) !default;
-$palette-white-opacity-18: hsla(0, 0%, 100%, 0.18) !default;
+$palette-white-opacity-22: hsl(0deg 0% 100% / 22%) !default;
+$palette-white-opacity-18: hsl(0deg 0% 100% / 18%) !default;
 
 // Blue
 
@@ -81,8 +81,8 @@ $palette-blue-80: #004173 !default;
 $palette-blue-90: #002b4d !default;
 $palette-blue-100: #000a13 !default;
 
-$palette-blue-opacity-30: hsla(206, 100%, 35%, 0.3);
-$palette-blue-opacity-70: hsla(206, 100%, 35%, 0.7);
+$palette-blue-opacity-30: hsl(206deg 100% 35% / 30%);
+$palette-blue-opacity-70: hsl(206deg 100% 35% / 70%);
 
 // Navy
 
@@ -97,8 +97,8 @@ $palette-navy-80: #14294c !default;
 $palette-navy-90: #061329 !default;
 $palette-navy-100: #000910 !default;
 
-$palette-navy-opacity-30: hsla(262, 46%, 17%, 0.3) !default;
-$palette-navy-opacity-70: hsla(262, 46%, 17%, 0.7) !default;
+$palette-navy-opacity-30: hsl(262deg 46% 17% / 30%) !default;
+$palette-navy-opacity-70: hsl(262deg 46% 17% / 70%) !default;
 
 // Turqoise
 
@@ -113,8 +113,8 @@ $palette-turqoise-80: #19474f !default;
 $palette-turqoise-90: #0f2a2f !default;
 $palette-turqoise-100: #050e0f !default;
 
-$palette-navy-opacity-30: hsla(189, 52%, 12%, 0.3) !default;
-$palette-navy-opacity-70: hsla(189, 52%, 12%, 0.7) !default;
+$palette-navy-opacity-30: hsl(189deg 52% 12% / 30%) !default;
+$palette-navy-opacity-70: hsl(189deg 52% 12% / 70%) !default;
 
 // Green
 
@@ -129,8 +129,8 @@ $palette-green-80: #054b16 !default;
 $palette-green-90: #05350c !default;
 $palette-green-100: #061a00 !default;
 
-$palette-green-opacity-30: hsla(120, 37%, 45%, 0.3) !default;
-$palette-green-opacity-70: hsla(120, 37%, 45%, 0.7) !default;
+$palette-green-opacity-30: hsl(120deg 37% 45% / 30%) !default;
+$palette-green-opacity-70: hsl(120deg 37% 45% / 70%) !default;
 
 // Purple
 
@@ -145,8 +145,8 @@ $palette-purple-80: #3b2e58 !default;
 $palette-purple-90: #201843 !default;
 $palette-purple-100: #03002c !default;
 
-$palette-purple-opacity-30: hsla(251, 47%, 18%, 0.3) !default;
-$palette-purple-opacity-70: hsla(251, 47%, 18%, 0.7) !default;
+$palette-purple-opacity-30: hsl(251deg 47% 18% / 30%) !default;
+$palette-purple-opacity-70: hsl(251deg 47% 18% / 70%) !default;
 
 // Yellow
 
@@ -161,8 +161,8 @@ $palette-yellow-80: #6a4b16 !default;
 $palette-yellow-90: #4f340e !default;
 $palette-yellow-100: #2d1703 !default;
 
-$palette-yellow-opacity-30: hsla(44, 100%, 50%, 0.3) !default;
-$palette-yellow-opacity-70: hsla(44, 100%, 50%, 0.7) !default;
+$palette-yellow-opacity-30: hsl(44deg 100% 50% / 30%) !default;
+$palette-yellow-opacity-70: hsl(44deg 100% 50% / 70%) !default;
 
 // Red
 
@@ -177,8 +177,8 @@ $palette-red-80: #630001 !default;
 $palette-red-90: #470001 !default;
 $palette-red-100: #290001 !default;
 
-$palette-red-opacity-30: hsla(0, 100%, 33%, 0.3) !default;
-$palette-red-opacity-70: hsla(0, 100%, 33%, 0.7) !default;
+$palette-red-opacity-30: hsl(0deg 100% 33% / 30%) !default;
+$palette-red-opacity-70: hsl(0deg 100% 33% / 70%) !default;
 
 // High Contrast
 
