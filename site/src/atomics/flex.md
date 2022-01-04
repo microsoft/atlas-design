@@ -33,9 +33,7 @@ The following example uses a combination of mobile-first flex atomics to achieve
 	>
 		<h2 class="font-size-h2">Hesiod</h2>
 	</div>
-	<div
-		class="padding-xs padding-md-tablet display-flex flex-shrink-1 flex-grow-1 align-items-center"
-	>
+	<div class="padding-md display-flex flex-shrink-1 flex-grow-1 align-items-center">
 		<p class="font-size-lg">
 			"Atlas through hard constraint upholds the wide heaven with unwearying head and arms, standing
 			at the borders of the earth before the clear-voiced Hesperides (Ladies of the West); for this
