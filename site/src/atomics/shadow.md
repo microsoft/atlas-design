@@ -14,10 +14,20 @@ Here are examples of shadow atomics, ranging from `none` for no shadow to `extra
 
 ```html
 <div class="display-block border padding-sm">
-	<div class="box-shadow-none margin-bottom-xs font-size-lg">box-shadow-none</div>
-	<div class="box-shadow-light margin-block-md font-size-lg">box-shadow-light</div>
-	<div class="box-shadow-medium margin-block-md font-size-lg">box-shadow-medium</div>
-	<div class="box-shadow-heavy margin-block-md font-size-lg">box-shadow-heavy</div>
-	<div class="box-shadow-extra-heavy margin-block-md font-size-lg">box-shadow-extra-heavy</div>
+	<div class="box-shadow-none padding-md margin-bottom-md font-size-lg border-radius">
+		box-shadow-none
+	</div>
+	<div class="box-shadow-light padding-md margin-bottom-md font-size-lg border-radius">
+		box-shadow-light
+	</div>
+	<div class="box-shadow-medium padding-md margin-bottom-md font-size-lg border-radius">
+		box-shadow-medium
+	</div>
+	<div class="box-shadow-heavy padding-md margin-bottom-md font-size-lg border-radius">
+		box-shadow-heavy
+	</div>
+	<div class="box-shadow-extra-heavy padding-md margin-bottom-md font-size-lg border-radius">
+		box-shadow-extra-heavy
+	</div>
 </div>
 ```
