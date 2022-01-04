@@ -32,7 +32,8 @@ const settings = normalizePaths({
 		'/atomics/display.md': 'Display',
 		'/atomics/position.md': 'Position',
 		'/atomics/spacing.md': 'Spacing',
-		'/atomics/typography.md': 'Typography'
+		'/atomics/typography.md': 'Typography',
+		'/atomics/shadow.md': 'Shadow'
 	}
 });
 
