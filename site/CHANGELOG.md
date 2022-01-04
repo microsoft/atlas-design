@@ -1,5 +1,17 @@
 # @microsoft/atlas-site
 
+## 0.13.0
+
+### Minor Changes
+
+- ed0b3f0: Add documentation for shadow atomics.
+- 4558b41: Include new md option for specifying border. Update border token values.
+
+### Patch Changes
+
+- f62359a: Remove atlas dotcss resolver for css dependencies with .css in the name of the npm package. Instead include those dependencies directly as scss files.
+- 9b49c14: Update dependencies.
+
 ## 0.12.0
 
 ### Minor Changes

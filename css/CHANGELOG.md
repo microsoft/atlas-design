@@ -1,5 +1,19 @@
 # @microsoft/atlas-css
 
+## 3.6.0
+
+### Minor Changes
+
+- 775bfd7: Add flex-wrap-nowrap and flex-wrap-nowrap-tablet Atomics.
+- 775bfd7: Add flex-direction-row(-tablet) to Atomics to allow for screensize specific layout shifts with flex Atomics only.
+- 4558b41: Include new md option for specifying border. Update border token values.
+- b766e38: Added .object-fit-contain and .object-position-top in new image-related Atomics file (/src/atomics/image.scss)
+
+### Patch Changes
+
+- f62359a: Remove atlas dotcss resolver for css dependencies with .css in the name of the npm package. Instead include those dependencies directly as scss files.
+- 9b49c14: Update dependencies.
+
 ## 3.5.0
 
 ### Minor Changes
