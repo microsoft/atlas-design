@@ -34,7 +34,7 @@ The following example uses a combination of mobile-first flex atomics to achieve
 		<h1 class="font-size-h1">Hesiod</h1>
 	</div>
 	<div
-		class="padding-xxs padding-md-tablet display-flex flex-shrink-1 flex-grow-1 align-items-center"
+		class="padding-xs padding-md-tablet display-flex flex-shrink-1 flex-grow-1 align-items-center"
 	>
 		<p class="font-size-lg">
 			"Atlas through hard constraint upholds the wide heaven with unwearying head and arms, standing
