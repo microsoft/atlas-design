@@ -29,9 +29,9 @@ The following example uses a combination of mobile-first flex atomics to achieve
 	class="background-color-body-medium border border-radius-lg display-flex flex-direction-row"
 >
 	<div
-		class="background-color-info color-info-invert padding-md-tablet border-radius-lg display-flex align-items-center flex-shrink-0 flex-grow-0 "
+		class="background-color-info color-info-invert padding-xxs padding-md-tablet border-radius-lg display-flex align-items-center flex-shrink-0 flex-grow-0 "
 	>
-		<h1 class="font-size-h1">Hesiod</h1>
+		<h1 class="font-size-h2 font-size-h1-tablet">Hesiod</h1>
 	</div>
 	<div
 		class="padding-xs padding-md-tablet display-flex flex-shrink-1 flex-grow-1 align-items-center"
