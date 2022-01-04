@@ -1,7 +1,11 @@
+// stylelint-disable-next-line keyframes-name-pattern
 @keyframes spinAround {
+	// make it stop
+
 	from {
 		transform: rotate(0deg);
 	}
+
 	to {
 		transform: rotate(359deg);
 	}

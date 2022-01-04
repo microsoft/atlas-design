@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/stylelint-config-atlas",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"private": true,
 	"description": "Shareable config for stylelint",
 	"homepage": "https://github.com/microsoft/atlas-design",
@@ -17,9 +17,11 @@
 		"index.js"
 	],
 	"dependencies": {
+		"postcss-scss": "^4.0.2",
 		"stylelint-scss": "^4.1.0",
 		"stylelint-order": "^5.0.0",
 		"stylelint-config-standard": "^24.0.0",
+		"stylelint-config-recommended-scss": "^5.0.2",
 		"stylelint": "^14.2.0"
 	},
 	"scripts": {

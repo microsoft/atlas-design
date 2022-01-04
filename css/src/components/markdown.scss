@@ -9,6 +9,7 @@ $list-top-spacing: 1rem !default;
 	* Within projects that desire bare-code styling, you may set the above variable to true and <pre><code>
 	* Elements within .markdown will be styled.
 	*/
+
 	.markdown {
 		@include code-block;
 	}
@@ -20,6 +21,7 @@ $list-top-spacing: 1rem !default;
 	line-height: 1.6;
 
 	// Inline code
+
 	:not(a):not(pre) > code {
 		padding: 0.1em 0.2em;
 		border-radius: 3px;

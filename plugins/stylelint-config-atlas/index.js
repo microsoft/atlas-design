@@ -2,11 +2,12 @@
 
 module.exports = {
 	plugins: ['stylelint-scss', 'stylelint-order'],
-	extends: ['stylelint-config-standard'],
+	extends: ['stylelint-config-standard', 'stylelint-config-recommended-scss'],
+	customSyntax: 'postcss-scss',
 	rules: {
 		'number-leading-zero': 'never',
 		'selector-list-comma-newline-after': 'always',
-		'rule-empty-line-before': ['always', { ignore: ['after-comment'] }],
+		'rule-empty-line-before': ['always', { except: ['first-nested'] }],
 		'comment-empty-line-before': ['always', { except: ['first-nested'] }],
 		'block-opening-brace-space-before': 'always',
 		'declaration-colon-space-after': 'always',
@@ -15,7 +16,6 @@ module.exports = {
 		'scss/dollar-variable-pattern': '^_?[a-z]+[\\w-]*$',
 		'scss/at-extend-no-missing-placeholder': true,
 		indentation: 'tab',
-		'declaration-property-value-blacklist': null,
 		'max-nesting-depth': 3,
 		'font-family-name-quotes': 'always-where-recommended',
 		'function-url-quotes': 'always',
@@ -249,6 +249,9 @@ module.exports = {
 		'scss/at-else-closing-brace-space-after': 'always-intermediate',
 		'scss/at-else-empty-line-before': 'never',
 		'scss/at-if-closing-brace-newline-after': 'always-last-in-chain',
-		'scss/at-if-closing-brace-space-after': 'always-intermediate'
+		'scss/at-if-closing-brace-space-after': 'always-intermediate',
+		'scss/at-import-partial-extension': 'always',
+		'scss/operator-no-unspaced': null,
+		'scss/no-global-function-names': null
 	}
 };

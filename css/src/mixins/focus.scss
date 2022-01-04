@@ -1,3 +1,4 @@
+// stylelint-disable declaration-block-no-redundant-longhand-properties
 @mixin focus() {
 	outline-color: inherit;
 	outline-offset: $focus-outline-offset;

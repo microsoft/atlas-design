@@ -37,7 +37,7 @@
 	"devDependencies": {
 		"parcel": "^2.0.1",
 		"@parcel/transformer-sass": "^2.0.1",
-		"@microsoft/stylelint-config-atlas": "3.0.0",
+		"@microsoft/stylelint-config-atlas": "3.0.1",
 		"prettier": "^2.5.1",
 		"sass": "^1.45.2",
 		"stylelint": "^14.2.0",

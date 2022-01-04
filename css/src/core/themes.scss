@@ -44,6 +44,7 @@ $theme-names: map.keys($themes);
 	@if $key == $root-theme {
 		:root {
 			@each $colorName, $colorVal in map.get($themes, $key) {
+				// stylelint-disable-next-line custom-property-pattern
 				--theme-#{$colorName}: #{$colorVal};
 			}
 		}
@@ -52,6 +53,7 @@ $theme-names: map.keys($themes);
 	@if $key == $print-theme {
 		.theme-#{$key} {
 			@each $colorName, $colorVal in map.get($themes, $key) {
+				// stylelint-disable-next-line custom-property-pattern
 				--theme-#{$colorName}: #{$colorVal};
 			}
 		}
@@ -60,6 +62,7 @@ $theme-names: map.keys($themes);
 		@media not print {
 			.theme-#{$key} {
 				@each $colorName, $colorVal in map-get($themes, $key) {
+					// stylelint-disable-next-line custom-property-pattern
 					--theme-#{$colorName}: #{$colorVal};
 				}
 			}
