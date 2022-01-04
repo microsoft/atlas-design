@@ -26,14 +26,14 @@ The following example uses a combination of mobile-first flex atomics to achieve
 ```html
 <article
 	id="example-layout"
-	class="margin-top-md background-color-body-medium border border-radius-lg display-flex flex-direction-row"
+	class="background-color-body-medium border border-radius-lg display-flex flex-direction-row"
 >
 	<div
-		class="flex-shrink-0 flex-grow-0 background-color-info color-info-invert padding-md border-radius-lg"
+		class="background-color-info color-info-invert padding-md-tablet border-radius-lg display-flex align-items-center flex-shrink-0 flex-grow-0 "
 	>
 		<h1 class="font-size-h1">Hesiod</h1>
 	</div>
-	<div class="flex-shrink-1 flex-grow-1 padding-md display-flex align-items-center">
+	<div class="padding-md display-flex flex-shrink-1 flex-grow-1 align-items-center">
 		<p class="font-size-lg">
 			"Atlas through hard constraint upholds the wide heaven with unwearying head and arms, standing
 			at the borders of the earth before the clear-voiced Hesperides (Ladies of the West); for this
