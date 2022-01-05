@@ -8,9 +8,9 @@ template: standard
 
 At times, you'll need to determine the overflow behavior of an element. Atlas provides several classes to do this.
 
-| cssproperty                            | value            | screensize |
-| -------------------------------------- | ---------------- | ---------- |
-| `overflow`, `overflow-x`, `overflow-y` | `auto`, `hidden` | N/A        |
+| cssproperty                            | value    | screensize |
+| -------------------------------------- | -------- | ---------- |
+| `overflow`, `overflow-x`, `overflow-y` | `hidden` | N/A        |
 
 ## Usage
 
