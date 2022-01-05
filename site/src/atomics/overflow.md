@@ -26,30 +26,15 @@ As an examplem we'll use a parent element's border radius in combination with `.
 </div>
 ```
 
-### Scolling
-
-You can force the appearance of either horizontal or vertical scollbars with `.overflow-x-auto` and `.overflow-y-auto`.
-
-```html
-<div class="overflow-x-auto">
-	<div class="background-color-success padding-xl">
-		<p class="color-success-invert font-size-xl">
-			This container has a horizontal scrollbar.
-			----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-		</p>
-	</div>
-</div>
-```
-
 ## Available classes
 
 List of all available classes:
 
 ```atomics-filter
 .overflow-hidden
-.overflow-auto
 .overflow-x-hidden
-.overflow-x-auto
 .overflow-y-hidden
-.overflow-y-auto
+.overflow-hidden-tablet
+.overflow-x-hidden-tablet
+.overflow-y-hidden-tablet
 ```
