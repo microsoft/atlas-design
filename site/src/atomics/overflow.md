@@ -8,9 +8,9 @@ template: standard
 
 At times, you'll need to determine the overflow behavior of an element. Atlas provides several classes to do this.
 
-| cssproperty                            | value    | screensize |
-| -------------------------------------- | -------- | ---------- |
-| `overflow`, `overflow-x`, `overflow-y` | `hidden` | N/A        |
+| cssproperty | value    | screensize |
+| ----------- | -------- | ---------- |
+| `overflow`  | `hidden` | `tablet`   |
 
 ## Usage
 
@@ -24,17 +24,4 @@ As an examplem we'll use a parent element's border radius in combination with `.
 		</p>
 	</div>
 </div>
-```
-
-## Available classes
-
-List of all available classes:
-
-```atomics-filter
-.overflow-hidden
-.overflow-x-hidden
-.overflow-y-hidden
-.overflow-hidden-tablet
-.overflow-x-hidden-tablet
-.overflow-y-hidden-tablet
 ```
