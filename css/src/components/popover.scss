@@ -11,7 +11,7 @@ $popover-width: 224px !default;
 	summary {
 		list-style: none;
 
-		&::marker {
+		&::-webkit-details-marker {
 			display: none;
 		}
 	}
