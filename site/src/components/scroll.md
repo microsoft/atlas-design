@@ -25,8 +25,8 @@ Force an elements overflow to be horizontally scrollable by using `.scroll-horiz
 
 Force an elements overflow to be horizontally scrollable by using `.scroll-vertical`. Note that this will only occur if the elements height is constrained.
 
-<div class="scroll-vertical example background-color-success max-height-30vh margin-top-md">
-	<p class="color-success-invert font-size-h1 margin-bottom">
+<div class="scroll-vertical max-height-30vh example background-color-success margin-top-md padding-xl">
+	<p class="color-success-invert font-size-xl margin-bottom">
 		This container has a vertical scrollbar if its height is constrained.
 		<pre class="color-success-invert">
 		|
