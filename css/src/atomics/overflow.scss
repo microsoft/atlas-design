@@ -1,25 +1,25 @@
 .overflow-hidden {
-	overflow: $value;
+	overflow: hidden;
 }
 
 .overflow-x-hidden {
-	overflow-x: $value;
+	overflow-x: hidden;
 }
 
 .overflow-y-hidden {
-	overflow-y: $value;
+	overflow-y: hidden;
 }
 
 @include tablet {
 	.overflow-hidden-tablet {
-		overflow: $value;
+		overflow: hidden;
 	}
 
 	.overflow-x-hidden-tablet {
-		overflow-x: $value;
+		overflow-x: hidden;
 	}
 
 	.overflow-y-hidden-tablet {
-		overflow-y: $value;
+		overflow-y: hidden;
 	}
 }
