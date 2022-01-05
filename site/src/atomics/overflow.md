@@ -14,7 +14,7 @@ At times, you'll need to determine the overflow behavior of an element. Atlas pr
 
 ## Usage
 
-As an example we'll use a parent element's border radius in combination with `.overflow-hidden` to ensure a child element's background is clipped. This is primarily useful with images nested deeploy in content, but here we'll use a background color for ease.
+As an example we'll use a parent element's border radius in combination with `.overflow-hidden` to ensure a child element's background is clipped. This is primarily with images deeply nested in content, but here we'll use a background color for ease.
 
 ```html
 <div class="overflow-hidden border-radius-lg">
