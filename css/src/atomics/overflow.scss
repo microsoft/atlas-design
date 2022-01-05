@@ -1,0 +1,9 @@
+.overflow-hidden {
+	overflow: hidden;
+}
+
+@include tablet {
+	.overflow-hidden-tablet {
+		overflow: hidden;
+	}
+}
