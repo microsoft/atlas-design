@@ -1,29 +1,25 @@
-$overflow-values: auto hidden;
+.overflow-hidden {
+	overflow: $value;
+}
 
-@each $value in $overflow-values {
-	.overflow-#{$value} {
+.overflow-x-hidden {
+	overflow-x: $value;
+}
+
+.overflow-y-hidden {
+	overflow-y: $value;
+}
+
+@include tablet {
+	.overflow-hidden-tablet {
 		overflow: $value;
 	}
 
-	.overflow-x-#{$value} {
+	.overflow-x-hidden-tablet {
 		overflow-x: $value;
 	}
 
-	.overflow-y-#{$value} {
+	.overflow-y-hidden-tablet {
 		overflow-y: $value;
-	}
-
-	@include tablet {
-		.overflow-#{$value}-tablet {
-			overflow: $value;
-		}
-
-		.overflow-x-#{$value}-tablet {
-			overflow-x: $value;
-		}
-
-		.overflow-y-#{$value}-tablet {
-			overflow-y: $value;
-		}
 	}
 }
