@@ -104,6 +104,7 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 
 #article {
 	grid-area: article;
+	overflow: hidden;
 }
 
 .example {
