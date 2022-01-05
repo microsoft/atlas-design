@@ -10,6 +10,10 @@ $popover-width: 224px !default;
 
 	summary {
 		list-style: none;
+
+		&::marker {
+			display: none;
+		}
 	}
 
 	.popover-content {
