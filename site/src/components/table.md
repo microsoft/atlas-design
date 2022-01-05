@@ -54,8 +54,7 @@ Here is an example of applying `table` class to the table element:
 
 For cases in which a table has many columns, the `table-wrapper` class is available to handle the overflow. This class should be applied to the table's parent element.
 
-```html
-<div class="table-wrapper">
+<div class="table-wrapper margin-top-sm">
 	<table class="table">
 		<thead>
 			<tr>
@@ -87,10 +86,18 @@ For cases in which a table has many columns, the `table-wrapper` class is availa
 				<td>Cell</td>
 				<td>Cell</td>
 			</tr>
+			<tr>
+				<td>Row three</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
-```
 
 ## Modifiers
 

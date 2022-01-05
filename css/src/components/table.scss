@@ -61,12 +61,15 @@ $table-caption-spacing: $letter-spacing-medium !default;
 			td {
 				display: block;
 				width: 100%;
-				padding: $table-cell-vertical-padding 0;
 			}
 
 			td:not(:nth-child(1)) {
 				padding-block-start: 0;
 				border-width: 0;
+			}
+
+			tbody > tr:nth-child(1) td {
+				border-top: none;
 			}
 		}
 	}
