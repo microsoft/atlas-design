@@ -70,6 +70,8 @@ $theme-names: map.keys($themes);
 	}
 }
 
+// End validation
+
 %theme-base-styles {
 	outline-color: $text;
 	background-color: $body-background;

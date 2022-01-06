@@ -60,6 +60,21 @@ The final item representing the current page is omitted in the default example. 
 </nav>
 ```
 
+## An initial slash
+
+Some situations may require the inclusion of a slash previous the first breadcrumb item. If this is the case, you can achieve this with `.breadcrumbs.breadcrumbs-initial-slash`.
+
+<nav class="margin-top-md">
+	<ol class="breadcrumbs breadcrumbs-initial-slash">
+		<li class="breadcrumbs-item">
+			<a href="#">Genus</a>
+		</li>
+		<li class="breadcrumbs-item breadcrumbs-item-slashless" aria-current="page">
+			<span>Species</span>
+		</li>
+	</ol>
+</nav>
+
 ## Size modification with Atomics
 
 By default `.breadcrumbs` are just slightly smaller than the document's font size. However, you may use [font size atomics](~/src/atomics/typography.md) to easily change the size of all the breadcrumbs. See example below, where `font-size-xl` is applied the the `.breadcrumbs` element.
