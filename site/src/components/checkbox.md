@@ -69,8 +69,8 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 </label>
 
 <label class="checkbox">
-	<input type="checkbox" checked />
-	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+	<input type="checkbox" />
+	<span class="checkbox-check is-checked" role="presentation" aria-hidden="true"></span>
 	<span class="checkbox-text" aria-hidden="true">Checkbox 2</span>
 </label>
 ```
@@ -85,6 +85,15 @@ For secondary checkboxes, `.is-secondary` can be used with `.checkbox` to change
 <label class="checkbox is-secondary">
 	<input type="checkbox" checked />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+	<span class="checkbox-text" aria-hidden="true">Checked</span>
+</label>
+```
+
+`is-checked` can be used with `.checkbox-check` to create the appearance of a checkbox with a checked state, without having a clickable `.checkbox` input element.
+
+```html
+<label class="checkbox">
+	<span class="checkbox-check is-checked" role="presentation" aria-hidden="true"></span>
 	<span class="checkbox-text" aria-hidden="true">Checked</span>
 </label>
 ```

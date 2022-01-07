@@ -78,7 +78,6 @@ $checkbox-spacing: $spacer-3;
 		}
 
 		&:checked + .checkbox-check {
-			border-color: $primary;
 			background-color: $primary;
 
 			&::before {
@@ -108,11 +107,12 @@ $checkbox-spacing: $spacer-3;
 	}
 
 	.checkbox-check.is-checked {
-		border-color: $primary;
 		background-color: $primary;
 
 		&::before {
 			@include checkmark;
+
+			border-color: $primary-invert;
 		}
 	}
 }
