@@ -1,0 +1,118 @@
+/* stylelint-disable selector-max-specificity, selector-no-qualifying-type */
+
+$checkbox-border-radius: $radius-sm !default;
+$checkbox-border-color: $text !default;
+$checkbox-check-hover-color: $secondary !default;
+$checkbox-icon-size: 0.875rem !default;
+$checkbox-size: 1.25rem !default;
+$checkbox-size-small: 0.875rem !default;
+$checkbox-icon-size: 1rem !default;
+$checkbox-icon-size-small: 0.625rem !default;
+$checkbox-timing-function: $input-timing-function !default;
+$checkbox-duration: $input-transition-duration !default;
+$checkbox-spacing: $spacer-3;
+
+.checkbox {
+	display: flex;
+	position: relative;
+	align-items: center;
+	line-height: 1.25;
+	cursor: pointer;
+
+	+ .checkbox {
+		margin-top: $checkbox-spacing;
+		margin-left: 0;
+	}
+
+	.checkbox-check {
+		display: flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: $checkbox-size;
+		height: $checkbox-size;
+		transition-duration: $checkbox-duration;
+		transition-property: background, border, border-color;
+		transition-timing-function: $checkbox-timing-function;
+		border: 1px solid $checkbox-border-color;
+		border-radius: $checkbox-border-radius;
+
+		&:not(:last-child) {
+			margin-#{$user-right}: 0.5rem;
+		}
+
+		&::before {
+			font-size: $checkbox-icon-size;
+			content: '\0020';
+		}
+	}
+
+	&:hover {
+		.checkbox-check::before {
+			@include checkmark;
+		}
+	}
+
+	&.is-small {
+		.checkbox-check {
+			width: $checkbox-size-small;
+			height: $checkbox-size-small;
+
+			&::before {
+				top: 2px !important;
+				width: calc($checkbox-icon-size-small / 2) !important;
+				height: $checkbox-icon-size-small !important;
+			}
+		}
+
+		.checkbox-text {
+			font-size: $checkbox-size-small;
+		}
+	}
+
+	input[type='checkbox'] {
+		@include visually-hidden();
+
+		&:focus-visible + .checkbox-check {
+			@extend %focus;
+		}
+
+		&:checked + .checkbox-check {
+			border-color: $primary;
+			background-color: $primary;
+
+			&::before {
+				@include checkmark;
+
+				border-color: $primary-invert;
+			}
+		}
+
+		&[disabled] + .checkbox-check {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+	}
+
+	&.is-secondary {
+		input[type='checkbox'] {
+			&:checked + .checkbox-check {
+				border-color: $secondary;
+				background-color: $secondary;
+
+				&::before {
+					color: $secondary-invert;
+				}
+			}
+		}
+	}
+
+	.checkbox-check.is-checked {
+		border-color: $primary;
+		background-color: $primary;
+
+		&::before {
+			@include checkmark;
+		}
+	}
+}
