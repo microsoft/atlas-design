@@ -33,3 +33,5 @@ If a list is displaying list styles when you don't want it to, reset it with the
 	<li>Third item</li>
 </ol>
 ```
+
+**Accessibility note:** In WebKit, setting a list's style to none like this will cause that list to no longer be exposed as a list to assistive technologies such as screen readers. [This is intended behavior](https://twitter.com/cookiecrook/status/1337226933822603270), meant to prevent extra clutter in screen reader announcements, and should not be overridden in most cases. However, if you're certain that your list needs to be announced as a list, you can restore list announcements by also applying `role="list"` to the list element.
