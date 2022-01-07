@@ -1,4 +1,4 @@
-/* stylelint-disable selector-max-specificity, selector-no-qualifying-type */
+/* stylelint-disable selector-max-specificity, max-nesting-depth, selector-no-qualifying-type */
 
 $checkbox-border-radius: $radius-sm !default;
 $checkbox-border-color: $text !default;
@@ -53,7 +53,7 @@ $checkbox-spacing: $spacer-3;
 		}
 	}
 
-	&.is-small {
+	&.checkbox-sm {
 		.checkbox-check {
 			width: $checkbox-size-small;
 			height: $checkbox-size-small;

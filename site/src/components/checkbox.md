@@ -91,10 +91,10 @@ For secondary checkboxes, `.is-secondary` can be used with `.checkbox` to change
 
 ### Size
 
-`.is-small` is used with `.checkbox` to display a smaller checkbox.
+`.checkbox-sm` is used with `.checkbox` to display a smaller checkbox.
 
 ```html
-<label class="checkbox is-small">
+<label class="checkbox checkbox-sm">
 	<input type="checkbox" checked />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 	<span class="checkbox-text" aria-hidden="true">Checked</span>
