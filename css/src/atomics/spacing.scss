@@ -1,7 +1,20 @@
 $separator: '-' !default;
-$spacing-properties: 'margin', 'margin-inline', 'margin-block', 'margin-top', 'margin-bottom',
-	'margin-left', 'margin-right', 'padding', 'padding-inline', 'padding-block', 'padding-top',
-	'padding-bottom', 'padding-left', 'padding-right' !default;
+$logical-spacing-properties: (
+	('margin', 'margin'),
+	('margin-inline', 'margin-inline'),
+	('margin-block', 'margin-block'),
+	('margin-top', 'margin-block-start'),
+	('margin-bottom', 'margin-block-end'),
+	('margin-left', 'margin-inline-start'),
+	('margin-right', 'margin-inline-end'),
+	('padding', 'padding'),
+	('padding-inline', 'padding-inline'),
+	('padding-block', 'padding-block'),
+	('padding-top', 'padding-block-start'),
+	('padding-bottom', 'padding-block-end'),
+	('padding-left', 'padding-inline-start'),
+	('padding-right', 'padding-inline-end')
+) !default;
 
 $layout-sizes: (
 	('xxs', $layout-1),
@@ -21,52 +34,64 @@ $layout-sizes: (
 
 // Pattern: <cssproperty>-<value>-<screen>
 
-@each $property in $spacing-properties {
+@each $property in $logical-spacing-properties {
+	$classicProp: nth($property, 1);
+	$logicalProp: nth($property, 2);
+
 	@each $size in $layout-sizes {
 		$sizeKey: nth($size, 1);
 		$sizeValue: nth($size, 2);
 
 		// .<property>-<value>
-		.#{$property}#{$separator}#{$sizeKey} {
-			#{$property}: sizeValue($sizeKey, $sizeValue) !important;
+		.#{$classicProp}#{$separator}#{$sizeKey} {
+			#{$logicalProp}: sizeValue($sizeKey, $sizeValue) !important;
 		}
 	}
 }
 
 @include tablet {
-	@each $property in $spacing-properties {
+	@each $property in $logical-spacing-properties {
+		$classicProp: nth($property, 1);
+		$logicalProp: nth($property, 2);
+
 		@each $size in $layout-sizes {
 			$sizeKey: nth($size, 1);
 			$sizeValue: nth($size, 2);
 
-			.#{$property}#{$separator}#{$sizeKey}#{$separator}tablet {
-				#{$property}: $sizeValue !important;
+			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}tablet {
+				#{$logicalProp}: $sizeValue !important;
 			}
 		}
 	}
 }
 
 @include desktop {
-	@each $property in $spacing-properties {
+	@each $property in $logical-spacing-properties {
+		$classicProp: nth($property, 1);
+		$logicalProp: nth($property, 2);
+
 		@each $size in $layout-sizes {
 			$sizeKey: nth($size, 1);
 			$sizeValue: nth($size, 2);
 
-			.#{$property}#{$separator}#{$sizeKey}#{$separator}desktop {
-				#{$property}: $sizeValue !important;
+			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}desktop {
+				#{$logicalProp}: $sizeValue !important;
 			}
 		}
 	}
 }
 
 @include widescreen {
-	@each $property in $spacing-properties {
+	@each $property in $logical-spacing-properties {
+		$classicProp: nth($property, 1);
+		$logicalProp: nth($property, 2);
+
 		@each $size in $layout-sizes {
 			$sizeKey: nth($size, 1);
 			$sizeValue: nth($size, 2);
 
-			.#{$property}#{$separator}#{$sizeKey}#{$separator}widescreen {
-				#{$property}: $sizeValue !important;
+			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}widescreen {
+				#{$logicalProp}: $sizeValue !important;
 			}
 		}
 	}

@@ -6,7 +6,7 @@ template: standard
 
 # Spacing Atomics
 
-Spacing atomics can be used to add margin or padding on elements. They are especially helpful when composing layouts.
+Spacing atomics can be used to add margin or padding on elements. They are especially helpful when composing layouts. Note that while traditional names have been kept for property values, in their declarations these classes use css logical properties whenever possible. This means that while the class name may be `.margin-left-sm`, the rule is in fact `.margin-left-<size> { margin-inline-start: <size> !important; }`. We do this to achieve great multidirectional support that requires no extra mental overhead for developers. [Read me about logical props on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).
 
 | cssproperty                                                                                                                                                                                                            | value                                                      | screensize                        |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------- |
