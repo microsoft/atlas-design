@@ -4,6 +4,7 @@ $code-block-header-font-size: 0.8em !default;
 
 .code-block {
 	position: relative;
+	overflow-x: auto;
 
 	.code-block-header-filter {
 		max-width: 12ch;

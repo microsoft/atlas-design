@@ -3,6 +3,12 @@ $breadcrumb-spacing-horizontal: 0.25em !default;
 $breadcrumb-spacing-vertical: 0.375em !default;
 $breadcrumb-separator: '\00200B/' !default;
 
+%breadcrumbs-slash {
+	display: inline-block;
+	color: $text-subtle;
+	content: $breadcrumb-separator;
+}
+
 .breadcrumbs {
 	font-size: $breadcrumb-font-size;
 
@@ -11,10 +17,21 @@ $breadcrumb-separator: '\00200B/' !default;
 		padding-block: $breadcrumb-spacing-vertical;
 
 		&:not(.breadcrumbs-item-slashless)::after {
-			display: inline-block;
+			@extend %breadcrumbs-slash;
+
 			margin-inline: $breadcrumb-spacing-horizontal;
-			color: $text-subtle;
-			content: $breadcrumb-separator;
 		}
 	}
+
+	// stylelint-disable selector-max-specificity
+
+	&.breadcrumbs-initial-slash {
+		.breadcrumbs-item:first-child::before,
+		.breadcrumbs-item[hidden] + .breadcrumbs-item::before {
+			@extend %breadcrumbs-slash;
+
+			margin-inline: 0.0625em $breadcrumb-spacing-horizontal;
+		}
+	}
+	// stylelint-enable
 }
