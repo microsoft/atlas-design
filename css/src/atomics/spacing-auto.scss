@@ -1,0 +1,34 @@
+$auto-spacing-properties: 'margin-inline', 'margin-left', 'margin-right' !default;
+$separator: '-';
+
+@each $property in $auto-spacing-properties {
+	// .<property>-auto
+	.#{$property}#{$separator}auto {
+		#{$property}: auto !important;
+	}
+}
+
+// .<property>-auto-<screensize>
+@each $property in $auto-spacing-properties {
+	@include tablet {
+		.#{$property}#{$separator}auto#{$separator}tablet {
+			#{$property}: auto !important;
+		}
+	}
+}
+
+@each $property in $auto-spacing-properties {
+	@include desktop {
+		.#{$property}#{$separator}auto#{$separator}desktop {
+			#{$property}: auto !important;
+		}
+	}
+}
+
+@each $property in $auto-spacing-properties {
+	@include widescreen {
+		.#{$property}#{$separator}auto#{$separator}widescreen {
+			#{$property}: auto !important;
+		}
+	}
+}

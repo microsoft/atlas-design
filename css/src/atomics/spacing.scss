@@ -1,4 +1,4 @@
-$separator: '-';
+$separator: '-' !default;
 $spacing-properties: 'margin', 'margin-inline', 'margin-block', 'margin-top', 'margin-bottom',
 	'margin-left', 'margin-right', 'padding', 'padding-inline', 'padding-block', 'padding-top',
 	'padding-bottom', 'padding-left', 'padding-right' !default;
