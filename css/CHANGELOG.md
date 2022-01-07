@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 3.7.0
+
+### Minor Changes
+
+- b11b25d: Add horizontal spacing atomics that target margin: auto. Ex. .margin-inline-auto, .margin-left-auto-tablet.
+- 744945d: Add overflow related Atomic classes.
+- 6b6cf9d: Add .list-style-none atomic class for reseting lists.
+- 4b6dc4a: Update breadcrumbs component to allow for an optional initial slash.
+- 744945d: Add .scroll-<vertical|horizontal> components and relevant documentation.
+
 ## 3.6.0
 
 ### Minor Changes

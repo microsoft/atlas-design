@@ -1,5 +1,21 @@
 # @microsoft/atlas-site
 
+## 0.14.0
+
+### Minor Changes
+
+- 744945d: Add documentation of overflow related Atomic classes.
+- b11b25d: Add horizontal spacing atomics that target margin: auto. Ex. .margin-inline-auto, .margin-left-auto-tablet.
+- 0f78ac7: Add documentation for flex atomics.
+- 6b6cf9d: Add .list-style-none atomic class for reseting lists.
+- 4b6dc4a: Update breadcrumbs component to allow for an optional initial slash.
+- 744945d: Add .scroll-<vertical|horizontal> components and relevant documentation.
+- 4b6dc4a: Document the article header pattern.
+
+### Patch Changes
+
+- 95dccef: Add accessibility guidance for .list-style-none
+
 ## 0.13.0
 
 ### Minor Changes
