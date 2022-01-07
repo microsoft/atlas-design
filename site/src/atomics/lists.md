@@ -14,7 +14,7 @@ This page details any Atomics css classes that target list styles.
 
 ## Usage
 
-If a list style has not been reset it with the `.list-style-none` class.
+If a list is displaying list styles when you don't want it to, reset it with the `.list-style-none` class.
 
 ```html
 <p class="font-weight-bold font-size-lg margin-bottom-sm">The following list is not reset.</p>
