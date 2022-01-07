@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.14.1
+
+### Patch Changes
+
+- f257d65: Add an aria-label to GitHub link
+
 ## 0.14.0
 
 ### Minor Changes
