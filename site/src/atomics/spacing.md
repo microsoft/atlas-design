@@ -11,6 +11,7 @@ Spacing atomics can be used to add margin or padding on elements. They are espec
 | cssproperty                                                                                                                                                                                                            | value                                                      | screensize                        |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------- |
 | `margin`, `padding`, `margin-block`, `padding-block`,`margin-inline`, `padding-inline`, `margin-top`, `padding-top`, `margin-right`, `padding-right`, `margin-bottom`, `padding-bottom`, `margin-left`, `padding-left` | `xxs`, `xs`, `sm`, `md`, `lg`, `xl`, `xxl`, `xxxl`, `none` | `tablet`, `desktop`, `widescreen` |
+| `margin-inline` `margin-right`, `margin-left`                                                                                                                                                                          | `auto`                                                     | `tablet`, `desktop`, `widescreen` |
 
 ## Usage
 
@@ -60,9 +61,24 @@ Appending a screen size to an atomic class can be used to apply responsive sizin
 </div>
 ```
 
+### The auto value
+
+Because the `auto` value is inapplicable to padding, and less useful when used with top, bottom, and block margin properties, it has a much smaller subset of properties: `margin-left`, `margin-right`, and `margin-inline`. You can still use responsive rules just like any other spacing atomic.
+
+```html
+<div class="display-flex flex-direction-column">
+	<div class="margin-left-auto margin-bottom-md padding-sm border">Auto left margin</div>
+	<div class="margin-right-auto margin-bottom-md padding-sm border">Auto right margin</div>
+	<div class="margin-inline-auto margin-bottom-md padding-sm border">Auto side margin</div>
+</div>
+```
+
 ## Available classes
 
 ```atomics-filter
+.margin-left-auto
+.margin-right-auto
+.margin-inline-auto
 .margin-xxs
 .margin-xs
 .margin-sm
@@ -567,4 +583,13 @@ Appending a screen size to an atomic class can be used to apply responsive sizin
 .padding-right-xxl-widescreen
 .padding-right-xxxl-widescreen
 .padding-right-none-widescreen
+.margin-left-auto-tablet
+.margin-right-auto-tablet
+.margin-inline-auto-tablet
+.margin-left-auto-desktop
+.margin-right-auto-desktop
+.margin-inline-auto-desktop
+.margin-left-auto-widescreen
+.margin-right-auto-widescreen
+.margin-inline-auto-widescreen
 ```
