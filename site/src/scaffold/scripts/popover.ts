@@ -41,16 +41,13 @@ export function initPopovers(container: HTMLElement) {
 					return;
 				}
 
-				if (!(targetPopover && targetPopover.contains(event.target))) {
+				if (!targetPopover?.contains(event.target)) {
 					closePopovers(allPopovers);
 				}
 			};
 
 			const blurHandler = () => {
-				if (
-					((document.activeElement && document.activeElement.nodeName) || '').toLowerCase() ===
-					'iframe'
-				) {
+				if ((document.activeElement?.nodeName || '').toLowerCase() === 'iframe') {
 					closePopovers(allPopovers);
 				}
 			};
