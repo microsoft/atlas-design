@@ -59,7 +59,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 			}
 
 			td:not(:nth-child(1)) {
-				padding-top: 0;
+				padding-block-start: 0;
 				border-width: 0;
 			}
 		}
