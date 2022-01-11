@@ -1,34 +1,51 @@
-$auto-spacing-properties: 'margin-inline', 'margin-left', 'margin-right' !default;
+$auto-spacing-properties: (
+	('margin-inline', 'margin-inline'),
+	('margin-left', 'margin-inline-start'),
+	('margin-right', 'margin-inline-end')
+) !default;
+
 $separator: '-';
 
 @each $property in $auto-spacing-properties {
+	$classicProp: nth($property, 1);
+	$logicalProp: nth($property, 2);
+
 	// .<property>-auto
-	.#{$property}#{$separator}auto {
-		#{$property}: auto !important;
+	.#{$classicProp}#{$separator}auto {
+		#{$logicalProp}: auto !important;
 	}
 }
 
 // .<property>-auto-<screensize>
 @each $property in $auto-spacing-properties {
+	$classicProp: nth($property, 1);
+	$logicalProp: nth($property, 2);
+
 	@include tablet {
-		.#{$property}#{$separator}auto#{$separator}tablet {
-			#{$property}: auto !important;
+		.#{$classicProp}#{$separator}auto#{$separator}tablet {
+			#{$logicalProp}: auto !important;
 		}
 	}
 }
 
 @each $property in $auto-spacing-properties {
+	$classicProp: nth($property, 1);
+	$logicalProp: nth($property, 2);
+
 	@include desktop {
-		.#{$property}#{$separator}auto#{$separator}desktop {
-			#{$property}: auto !important;
+		.#{$classicProp}#{$separator}auto#{$separator}desktop {
+			#{$logicalProp}: auto !important;
 		}
 	}
 }
 
 @each $property in $auto-spacing-properties {
+	$classicProp: nth($property, 1);
+	$logicalProp: nth($property, 2);
+
 	@include widescreen {
-		.#{$property}#{$separator}auto#{$separator}widescreen {
-			#{$property}: auto !important;
+		.#{$classicProp}#{$separator}auto#{$separator}widescreen {
+			#{$logicalProp}: auto !important;
 		}
 	}
 }
