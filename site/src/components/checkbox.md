@@ -79,10 +79,10 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 
 ### Styles
 
-For secondary checkboxes, `.is-secondary` can be used with `.checkbox` to change the checkbox background color.
+`.checkbox-muted` can be used with `.checkbox` to change the checkbox background color.
 
 ```html
-<label class="checkbox is-secondary">
+<label class="checkbox checkbox-muted">
 	<input type="checkbox" checked />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 	<span class="checkbox-text" aria-hidden="true">Checked</span>

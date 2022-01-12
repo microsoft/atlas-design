@@ -1,11 +1,11 @@
 @mixin checkmark {
 	display: block;
 	position: absolute;
-	top: 1px;
+	top: 0.2em;
 	width: calc($checkbox-icon-size / 2);
 	height: $checkbox-icon-size;
 	transform: rotate(45deg);
 	border: solid $text-subtle;
-	border-width: 0 1px 1px 0;
+	border-width: 0 1.25px 1.25px 0;
 	content: '';
 }

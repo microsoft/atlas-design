@@ -3,11 +3,10 @@
 $checkbox-border-radius: $radius-sm !default;
 $checkbox-border-color: $text !default;
 $checkbox-check-hover-color: $secondary !default;
-$checkbox-icon-size: 0.875rem !default;
-$checkbox-size: 1.25rem !default;
-$checkbox-size-small: 0.875rem !default;
-$checkbox-icon-size: 1rem !default;
-$checkbox-icon-size-small: 0.625rem !default;
+$checkbox-icon-size: 0.875em !default;
+$checkbox-size: 1.25em !default;
+$checkbox-size-small: 0.875em !default;
+$checkbox-icon-size-small: 0.625em !default;
 $checkbox-timing-function: $input-timing-function !default;
 $checkbox-duration: $input-transition-duration !default;
 $checkbox-spacing: $spacer-3;
@@ -54,12 +53,14 @@ $checkbox-spacing: $spacer-3;
 	}
 
 	&.checkbox-sm {
+		font-size: $font-size-7;
+
 		.checkbox-check {
-			width: $checkbox-size-small;
-			height: $checkbox-size-small;
+			width: $checkbox-size-small !important;
+			height: $checkbox-size-small !important;
 
 			&::before {
-				top: 2px !important;
+				top: 0.2857em !important;
 				width: calc($checkbox-icon-size-small / 2) !important;
 				height: $checkbox-icon-size-small !important;
 			}
@@ -78,6 +79,7 @@ $checkbox-spacing: $spacer-3;
 		}
 
 		&:checked + .checkbox-check {
+			border-color: $primary;
 			background-color: $primary;
 
 			&::before {
@@ -93,20 +95,21 @@ $checkbox-spacing: $spacer-3;
 		}
 	}
 
-	&.is-secondary {
+	&.checkbox-muted {
 		input[type='checkbox'] {
 			&:checked + .checkbox-check {
-				border-color: $secondary;
-				background-color: $secondary;
+				border-color: $text-subtle;
+				background-color: $text-subtle;
 
 				&::before {
-					color: $secondary-invert;
+					border-color: $text-invert;
 				}
 			}
 		}
 	}
 
 	.checkbox-check.is-checked {
+		border-color: $primary;
 		background-color: $primary;
 
 		&::before {
