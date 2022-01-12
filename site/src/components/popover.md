@@ -53,21 +53,21 @@ You can apply almost any classes on the `summary` element to achieve the look yo
 
 ## Alignments
 
-Popover is left aligned by default, but also can be centered or right aligned relatively to the summary's width. Apply any of the corresponding classes to the `popover` element: `popover-right`, `popover-center`.
+Popover is left aligned by default, but also can be centered or right aligned relatively to the `summary`'s width. Apply any of the corresponding classes to the `popover` element: `popover-right`, `popover-center`.
 
 ```html
 <details class="popover margin-xxs">
 	<summary class="button">Popover aligned to the left</summary>
-	<div class="popover-content">Popover content.</div>
+	<div class="popover-content border">Popover content.</div>
 </details>
 
 <details class="popover popover-center margin-xxs">
 	<summary class="button">Popover centered</summary>
-	<div class="popover-content">Popover content.</div>
+	<div class="popover-content border">Popover content.</div>
 </details>
 
 <details class="popover popover-right margin-xxs">
 	<summary class="button">Popover aligned to the right</summary>
-	<div class="popover-content">Popover content.</div>
+	<div class="popover-content border">Popover content.</div>
 </details>
 ```
