@@ -1,72 +1,52 @@
 export function initPopovers(container: HTMLElement) {
 	container.addEventListener('click', (event: Event) => {
-		let targetPopover: HTMLDetailsElement | null;
-		targetPopover =
-			event.target instanceof Element &&
-			(event.target.closest('details.popover') as HTMLDetailsElement)
-				? (event.target.closest('details.popover') as HTMLDetailsElement)
-				: null;
+		const targetPopover =
+			(event.target instanceof Element &&
+				(event.target.closest('details.popover') as HTMLDetailsElement)) ||
+			(event.target instanceof Element &&
+				(event.target.shadowRoot?.activeElement?.closest('details.popover') as HTMLDetailsElement));
 
-		if (!targetPopover) {
-			targetPopover =
-				event.target instanceof Element &&
-				event.target.shadowRoot &&
-				event.target.shadowRoot.activeElement &&
-				(event.target.shadowRoot.activeElement.closest('details.popover') as HTMLDetailsElement)
-					? (event.target.shadowRoot.activeElement.closest('details.popover') as HTMLDetailsElement)
-					: null;
-		}
-
-		if (!targetPopover) {
+		if (!targetPopover || targetPopover.open) {
 			return;
 		}
 
-		const allPopovers: HTMLDetailsElement[] = Array.from(
-			container.querySelectorAll('details.popover')
-		);
+		const keyHandler = (event: KeyboardEvent) => {
+			if (event.key === 'Escape') {
+				closePopovers();
+			}
+		};
 
-		if (!targetPopover.open) {
-			const keyHandler = (event: KeyboardEvent) => {
-				if (event.key === 'Escape') {
-					closePopovers();
-				}
-			};
+		const checkTarget = (event: Event) => {
+			if (!(event.target instanceof Element)) {
+				return;
+			}
 
-			const clickHandler = (event: Event) => {
-				if (!(event.target instanceof Element)) {
-					return;
-				}
+			if (!targetPopover?.contains(event.target)) {
+				closePopovers();
+			}
+		};
 
-				if (!targetPopover?.contains(event.target)) {
-					targetPopover ? closePopovers([targetPopover]) : closePopovers();
-				}
-			};
+		const blurHandler = () => {
+			if (document.activeElement?.nodeName?.toLowerCase() === 'iframe') {
+				closePopovers();
+			}
+		};
 
-			const blurHandler = () => {
-				if ((document.activeElement?.nodeName || '').toLowerCase() === 'iframe') {
-					closePopovers();
-				}
-			};
+		const closePopovers = () => {
+			container.removeEventListener('focus', checkTarget, true);
+			container.removeEventListener('click', checkTarget);
+			container.removeEventListener('touchstart', checkTarget);
+			container.removeEventListener('keydown', keyHandler);
+			window.removeEventListener('blur', blurHandler);
+			if (targetPopover?.open) {
+				targetPopover.removeAttribute('open');
+			}
+		};
 
-			const closePopovers = (popovers: HTMLDetailsElement[] = allPopovers) => {
-				container.removeEventListener('focus', clickHandler, true);
-				container.removeEventListener('click', clickHandler);
-				container.removeEventListener('touchstart', clickHandler);
-				container.removeEventListener('keydown', keyHandler);
-				window.removeEventListener('blur', blurHandler);
-
-				for (const popover of popovers) {
-					if (popover.open) {
-						popover.removeAttribute('open');
-					}
-				}
-			};
-
-			container.addEventListener('focus', clickHandler, true);
-			container.addEventListener('click', clickHandler);
-			container.addEventListener('touchstart', clickHandler);
-			container.addEventListener('keydown', keyHandler);
-			window.addEventListener('blur', blurHandler);
-		}
+		container.addEventListener('focus', checkTarget, true);
+		container.addEventListener('click', checkTarget);
+		container.addEventListener('touchstart', checkTarget);
+		container.addEventListener('keydown', keyHandler);
+		window.addEventListener('blur', blurHandler);
 	});
 }
