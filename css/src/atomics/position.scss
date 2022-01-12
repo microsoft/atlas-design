@@ -12,8 +12,8 @@
 	}
 }
 
-@each $side, $direction in $directions {
+@each $side, $direction in $logical-directions {
 	.#{$side}-0 {
-		#{$direction}: 0;
+		inset-#{$direction}: 0;
 	}
 }
