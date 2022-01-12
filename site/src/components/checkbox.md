@@ -69,8 +69,8 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 </label>
 
 <label class="checkbox">
-	<input type="checkbox" />
-	<span class="checkbox-check is-checked" role="presentation" aria-hidden="true"></span>
+	<input type="checkbox" checked />
+	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 	<span class="checkbox-text" aria-hidden="true">Checkbox 2</span>
 </label>
 ```
