@@ -6,7 +6,7 @@ template: standard
 
 # Position Atomics
 
-These classes can be used to help us place elements outside of the typical document flow. Side related classes can be used in conjunction with margin to space things more precisely.
+These classes can be used to help us place elements outside of the typical document flow. Side related classes can be used in conjunction with margin to space things more precisely. Direction related classes use CSS logical properties instead of the traditional values. This means that while the class may read `.top-0` (in reference to `top: 0;`), its rule will actually contain `inset-block-start: 0;` for better multi-directional support on modern browsers.
 
 ## Available classes
 

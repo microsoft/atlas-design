@@ -19,7 +19,7 @@ $popover-width: 224px !default;
 	.popover-content {
 		position: absolute;
 		width: $popover-width;
-		margin-top: $spacer-3;
+		margin-block-start: $spacer-3;
 		padding: $spacer-5;
 		border: $popover-border;
 		border-radius: $popover-border-radius;
