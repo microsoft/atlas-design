@@ -10,6 +10,10 @@ $popover-width: 224px !default;
 
 	summary {
 		list-style: none;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
 	}
 
 	.popover-content {
@@ -21,7 +25,6 @@ $popover-width: 224px !default;
 		border-radius: $popover-border-radius;
 		background-color: $popover-background-color;
 		box-shadow: $popover-shadow;
-		overflow: hidden;
 		z-index: $zindex-popover;
 	}
 
