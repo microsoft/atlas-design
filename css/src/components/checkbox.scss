@@ -5,10 +5,8 @@ $checkbox-border-color: $text !default;
 $checkbox-color: $primary !default;
 $checkbox-check-color: $primary-invert !default;
 $checkbox-check-hover-color: $text-subtle !default;
-$checkbox-size: 1.25em !default;
-$checkbox-size-small: 1em !default;
-$checkbox-icon-size: 0.85em !default;
-$checkbox-icon-size-small: 0.7142em !default;
+$checkbox-size: 1em !default;
+$checkbox-icon-size: 0.8em !default;
 $checkbox-timing-function: $input-timing-function !default;
 $checkbox-duration: $input-transition-duration !default;
 $checkbox-spacing: $spacer-3;
@@ -17,6 +15,7 @@ $checkbox-spacing: $spacer-3;
 	display: flex;
 	position: relative;
 	align-items: center;
+	font-size: $font-size-5;
 	line-height: 1.25;
 	cursor: pointer;
 
@@ -48,6 +47,10 @@ $checkbox-spacing: $spacer-3;
 		}
 	}
 
+	.checkbox-text {
+		font-size: $font-size-7;
+	}
+
 	&:hover {
 		.checkbox-check::before {
 			@include checkmark;
@@ -58,13 +61,8 @@ $checkbox-spacing: $spacer-3;
 		font-size: $font-size-8;
 
 		.checkbox-check {
-			width: $checkbox-size-small !important;
-			height: $checkbox-size-small !important;
-
 			&::before {
-				top: 0.2857em !important;
-				width: calc($checkbox-icon-size-small / 2) !important;
-				height: $checkbox-icon-size-small !important;
+				top: 0.4em !important;
 			}
 		}
 	}

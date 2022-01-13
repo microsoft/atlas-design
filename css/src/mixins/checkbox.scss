@@ -1,8 +1,8 @@
 @mixin checkmark {
 	display: block;
 	position: absolute;
-	top: 0.2em;
-	width: calc($checkbox-icon-size / 2);
+	top: 0.12em;
+	width: 0.35em;
 	height: $checkbox-icon-size;
 	transform: rotate(45deg);
 	border: solid $checkbox-check-hover-color;
