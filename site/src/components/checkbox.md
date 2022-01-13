@@ -62,7 +62,7 @@ A selectable menu list from which an user can make one or more selections.
 Here is an example of a group of checkboxes. Default spacing is added between each `.checkbox` when there is more than one checkbox.
 
 ```html
-<label class="checkbox">
+<label class="checkbox margin-bottom-xxs">
 	<input type="checkbox" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 	<span class="checkbox-text" aria-hidden="true">Checkbox 1</span>

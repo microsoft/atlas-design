@@ -1,28 +1,34 @@
 /* stylelint-disable selector-max-specificity, max-nesting-depth, selector-no-qualifying-type */
 
 $checkbox-border-radius: $radius-sm !default;
-$checkbox-border-color: $text !default;
+$checkbox-unchecked-border-color: $text !default;
 $checkbox-color: $primary !default;
 $checkbox-check-color: $primary-invert !default;
 $checkbox-check-hover-color: $text-subtle !default;
-$checkbox-size: 1em !default;
-$checkbox-icon-size: 0.8em !default;
+$checkbox-size: 1.25em !default;
+$checkbox-icon-size: 0.875em !default;
 $checkbox-timing-function: $input-timing-function !default;
 $checkbox-duration: $input-transition-duration !default;
 $checkbox-spacing: $spacer-3;
+
+@mixin checkmark {
+	display: block;
+	position: absolute;
+	top: 0.2em;
+	width: 0.35em;
+	height: $checkbox-icon-size;
+	transform: rotate(45deg);
+	border: solid $checkbox-check-hover-color;
+	border-width: 0 0.078em 0.078em 0;
+	content: '';
+}
 
 .checkbox {
 	display: flex;
 	position: relative;
 	align-items: center;
-	font-size: $font-size-5;
 	line-height: 1.25;
 	cursor: pointer;
-
-	+ .checkbox {
-		margin-top: $checkbox-spacing;
-		margin-left: 0;
-	}
 
 	.checkbox-check {
 		display: flex;
@@ -34,21 +40,17 @@ $checkbox-spacing: $spacer-3;
 		transition-duration: $checkbox-duration;
 		transition-property: background, border, border-color;
 		transition-timing-function: $checkbox-timing-function;
-		border: 1px solid $checkbox-border-color;
+		border: 0.078em solid $checkbox-unchecked-border-color;
 		border-radius: $checkbox-border-radius;
 
 		&:not(:last-child) {
-			margin-#{$user-right}: 0.5rem;
+			margin-inline-end: 0.5rem;
 		}
 
 		&::before {
 			font-size: $checkbox-icon-size;
 			content: '\0020';
 		}
-	}
-
-	.checkbox-text {
-		font-size: $font-size-7;
 	}
 
 	&:hover {
@@ -59,12 +61,6 @@ $checkbox-spacing: $spacer-3;
 
 	&.checkbox-sm {
 		font-size: $font-size-8;
-
-		.checkbox-check {
-			&::before {
-				top: 0.4em !important;
-			}
-		}
 	}
 
 	input[type='checkbox'] {
