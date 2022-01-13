@@ -5,7 +5,7 @@
 	width: calc($checkbox-icon-size / 2);
 	height: $checkbox-icon-size;
 	transform: rotate(45deg);
-	border: solid $text-subtle;
+	border: solid $checkbox-check-hover-color;
 	border-width: 0 1.25px 1.25px 0;
 	content: '';
 }
