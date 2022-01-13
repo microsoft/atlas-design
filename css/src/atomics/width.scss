@@ -12,24 +12,24 @@ $widths: 100, 150, 200, 250, 300, 350, 400, 450, 500 !default;
 	}
 }
 
-@each $width in $widths {
-	@include tablet {
+@include tablet {
+	@each $width in $widths {
 		.width-#{$width}-tablet {
 			width: #{$width}px !important;
 		}
 	}
 }
 
-@each $width in $widths {
-	@include desktop {
+@include desktop {
+	@each $width in $widths {
 		.width-#{$width}-desktop {
 			width: #{$width}px !important;
 		}
 	}
 }
 
-@each $width in $widths {
-	@include widescreen {
+@include widescreen {
+	@each $width in $widths {
 		.width-#{$width}-widescreen {
 			width: #{$width}px !important;
 		}
@@ -44,24 +44,24 @@ $widths: 100, 150, 200, 250, 300, 350, 400, 450, 500 !default;
 	}
 }
 
-@each $width in $widths {
-	@include tablet {
+@include tablet {
+	@each $width in $widths {
 		.max-width-#{$width}-tablet {
 			max-width: #{$width}px !important;
 		}
 	}
 }
 
-@each $width in $widths {
-	@include desktop {
+@include desktop {
+	@each $width in $widths {
 		.max-width-#{$width}-desktop {
 			max-width: #{$width}px !important;
 		}
 	}
 }
 
-@each $width in $widths {
-	@include widescreen {
+@include widescreen {
+	@each $width in $widths {
 		.max-width-#{$width}-widescreen {
 			max-width: #{$width}px !important;
 		}
@@ -76,24 +76,24 @@ $widths: 100, 150, 200, 250, 300, 350, 400, 450, 500 !default;
 	}
 }
 
-@each $width in $widths {
-	@include tablet {
+@include tablet {
+	@each $width in $widths {
 		.min-width-#{$width}-tablet {
 			min-width: #{$width}px !important;
 		}
 	}
 }
 
-@each $width in $widths {
-	@include desktop {
+@include desktop {
+	@each $width in $widths {
 		.min-width-#{$width}-desktop {
 			min-width: #{$width}px !important;
 		}
 	}
 }
 
-@each $width in $widths {
-	@include widescreen {
+@include widescreen {
+	@each $width in $widths {
 		.min-width-#{$width}-widescreen {
 			min-width: #{$width}px !important;
 		}
