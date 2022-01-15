@@ -6,7 +6,7 @@ $checkbox-color: $primary !default;
 $checkbox-check-color: $primary-invert !default;
 $checkbox-check-hover-color: $text-subtle !default;
 $checkbox-size: 1.25em !default;
-$checkbox-icon-size: 0.875em !default;
+$checkbox-icon-size: 0.75em !default;
 $checkbox-timing-function: $input-timing-function !default;
 $checkbox-duration: $input-transition-duration !default;
 $checkbox-spacing: $spacer-3;
@@ -14,8 +14,8 @@ $checkbox-spacing: $spacer-3;
 @mixin checkmark {
 	display: block;
 	position: absolute;
-	top: 0.2em;
-	width: 0.35em;
+	top: 0.1875em;
+	width: 0.3125em;
 	height: $checkbox-icon-size;
 	transform: rotate(45deg);
 	border: solid $checkbox-check-hover-color;
@@ -48,7 +48,6 @@ $checkbox-spacing: $spacer-3;
 		}
 
 		&::before {
-			font-size: $checkbox-icon-size;
 			content: '\0020';
 		}
 	}
