@@ -1,5 +1,14 @@
 # @microsoft/atlas-css
 
+## 3.8.0
+
+### Minor Changes
+
+- fe35d1b: Use logical properties under the hood in spacing Atomics.
+- f631ec0: Direction related position atomics (i.e right-0, top-0, etc) use logical properties under the hood.
+- 2e5a68a: update core folder to include a bare-elements.scss file for styling bare elements. Include chromium bugfix for <details> box sizing lack of inheritance.
+- a42f4b7: Convert existing components to use logical properties.
+
 ## 3.7.0
 
 ### Minor Changes
