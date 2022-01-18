@@ -1,5 +1,14 @@
 # @microsoft/atlas-site
 
+## 0.15.0
+
+### Minor Changes
+
+- fe35d1b: Use logical properties under the hood in spacing Atomics.
+- 324a1ff: Add feature to allow Figma embed to be fullscreened.
+- f631ec0: Direction related position atomics (i.e right-0, top-0, etc) use logical properties under the hood.
+- 21fe2ea: Adding event listeners to popover.
+
 ## 0.14.1
 
 ### Patch Changes
