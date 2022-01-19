@@ -71,3 +71,26 @@ Popover is left aligned by default, but also can be centered or right aligned re
 	<div class="popover-content border">Popover content.</div>
 </details>
 ```
+
+## Closing popover
+
+An additional way to collapse the popover is to add the `data-close` attribute to the link/button in the content.
+
+```html
+<details class="popover margin-xxs">
+	<summary class="button">Popover</summary>
+	<div class="popover-content border">
+		<ul>
+			<li class="margin-bottom-xxs">
+				<a href="#">Link</a>
+			</li>
+			<li class="margin-bottom-xxs">
+				<a href="#">Link</a>
+			</li>
+			<li>
+				<a href="#" data-close>Closing link</a>
+			</li>
+		</ul>
+	</div>
+</details>
+```

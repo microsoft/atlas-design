@@ -28,6 +28,10 @@ export function initPopovers(container: HTMLElement) {
 				if (!targetPopover?.contains(event.target)) {
 					closePopovers();
 				}
+
+				if (event.type === 'click' && event.target.hasAttribute('data-close')) {
+					closePopovers();
+				}
 			};
 
 			const blurHandler = () => {
