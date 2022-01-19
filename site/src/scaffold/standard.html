@@ -13,8 +13,31 @@
 		<script type="module" src="~/src/scaffold/index.ts"></script>
 	</head>
 	<body id="body">
-		<header id="header" class="border-bottom display-flex justify-content-space-between align-items-center">
-			<a href="~/src/index.md" class="color-text text-decoration-none font-weight-bold">
+		<header id="header" class="border-bottom align-items-center">
+			<button type="button" area-haspopup="true" area-expanded="true" id="navbar-toggle" class="display-none-desktop">☰</button>
+
+			<nav id="nav-mobile" class="sidebar background-color-body">
+			<div class="padding-left-sm">
+			{{#toc}}
+				{{#entries}}
+					{{#isDirectory}}
+						<div class="margin-top-xs">
+							<p class="font-weight-semibold">{{name}}</p>
+							<div class="margin-left-xs">
+								{{#children}}
+									<a class="display-block margin-top-xxs" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+								{{/children}}
+							</div>
+						</div>
+					{{/isDirectory}}
+					{{^children.0}}
+						<a class="display-block margin-top-xs" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+					{{/children.0}}
+				{{/entries}}
+			{{/toc}}
+			</div>
+		</nav>
+			<a href="~/src/index.md" class="color-text text-decoration-none font-weight-bold margin-left-xs">
 				<span class="margin-right-xxs icon">
 					<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<rect width="10" height="10" class="fill-current-color" />
@@ -26,6 +49,26 @@
 				<span class="font-size-xl">Atlas Design</span>
 			</a>
 		</header>
+
+		<nav id="nav">
+			{{#toc}}
+				{{#entries}}
+					{{#isDirectory}}
+						<div class="margin-top-xs">
+							<p class="font-weight-semibold">{{name}}</p>
+							<div class="margin-left-xs">
+								{{#children}}
+									<a class="display-block margin-top-xxs" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+								{{/children}}
+							</div>
+						</div>
+					{{/isDirectory}}
+					{{^children.0}}
+						<a class="display-block margin-top-xs" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+					{{/children.0}}
+				{{/entries}}
+			{{/toc}}
+		</nav>		
 
 		<main id="main">
 			{{{breadcrumbs}}}
@@ -76,26 +119,6 @@
 				{{/figmaEmbed}}
 			</div>
 		</main>
-
-		<nav id="nav">
-			{{#toc}}
-				{{#entries}}
-					{{#isDirectory}}
-						<div class="margin-top-xs">
-							<p class="font-weight-semibold">{{name}}</p>
-							<div class="margin-left-xs">
-								{{#children}}
-									<a class="display-block margin-top-xxs" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
-								{{/children}}
-							</div>
-						</div>
-					{{/isDirectory}}
-					{{^children.0}}
-						<a class="display-block margin-top-xs" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
-					{{/children.0}}
-				{{/entries}}
-			{{/toc}}
-		</nav>
 
 		<aside id="aside">
 			<!-- empty for now -->

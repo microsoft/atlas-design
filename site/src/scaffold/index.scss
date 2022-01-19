@@ -3,3 +3,56 @@
 @import './styles/height.scss';
 @import './styles/overflow.scss';
 @import './code-block.scss';
+
+@include tablet {
+	#nav-mobile {
+		position: fixed;
+		margin-top: 1em;
+		left: 0;
+		height: 100%;
+		width: 250px;
+	}
+	.sidebar.open {
+		animation-name: showSidebar;
+		transform: translate(0, 0);
+		animation-duration: 1s;
+	}
+	.sidebar {
+		transform: translate(-280px, 0);
+	}
+}
+
+@include desktop {
+	#nav-mobile {
+		display: none;
+	}
+	.sidebar.open {
+		transform: translate(0, 0);
+	}
+	.sidebar {
+		transform: translate(0, 0);
+	}
+}
+
+@include widescreen {
+	#nav-mobile {
+		display: none;
+	}
+	.sidebar.open {
+		transform: translate(0, 0);
+	}
+	.sidebar {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes showSidebar {
+	0% {
+		opacity: 0;
+		transform: translate(-280px, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+}

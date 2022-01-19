@@ -17,8 +17,8 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 		grid-template: auto 1fr auto auto / $size-bar-width 1fr; // [ rows / columns ]
 		grid-template-areas:
 			'header header'
-			'nav main'
-			'nav aside'
+			'main main'
+			'aside aside'
 			'footer footer';
 	}
 
@@ -37,7 +37,7 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 
 		grid-template-areas:
 			'header header header header header'
-			'. nav main aside .'
+			'nav main main aside .'
 			'footer footer footer footer footer';
 	}
 }
@@ -52,6 +52,9 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 
 #header {
 	grid-area: header;
+	position: sticky;
+	top: 0;
+	z-index: 2;
 }
 
 #nav {
