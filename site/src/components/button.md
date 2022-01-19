@@ -35,7 +35,7 @@ All buttons, by default, are secondary buttons. There are three gradutating seco
 
 ## Primary
 
-A visual style used to highlight only the most important actions. To avoid confusing users, don't use more than more primary button within a section or view.
+A visual style used to highlight only the most important actions. To avoid confusing users, don't use more than one primary button within a section or view. Note that the clear variant of primary buttons must be used on a very light background or it will not pass constrast requirements. If you run into this issue, try using [`link-button`](~/src/components/link-button.md), which defaults to a slightly darker blue for this very reason.
 
 | Type     | Class                                          | Default State                                                        | Hover                                                                           |
 | -------- | ---------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
