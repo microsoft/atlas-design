@@ -58,16 +58,16 @@ Popover is left aligned by default, but also can be centered or right aligned re
 ```html
 <details class="popover margin-xxs">
 	<summary class="button">Popover aligned to the left</summary>
-	<div class="popover-content border">Popover content.</div>
+	<div class="popover-content">Popover content.</div>
 </details>
 
 <details class="popover popover-center margin-xxs">
 	<summary class="button">Popover centered</summary>
-	<div class="popover-content border">Popover content.</div>
+	<div class="popover-content">Popover content.</div>
 </details>
 
 <details class="popover popover-right margin-xxs">
 	<summary class="button">Popover aligned to the right</summary>
-	<div class="popover-content border">Popover content.</div>
+	<div class="popover-content">Popover content.</div>
 </details>
 ```
