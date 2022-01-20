@@ -42,7 +42,7 @@ Set the `width` of an element.
 
 ### Responsive rules
 
-Certain widths are too large for most mobile screens, so they are only available on larger screensizes. However, all helpers can be applied to any screensize.
+Certain widths are too large for many mobile screens, so they are only available on larger screensizes. However, all helpers can be applied to any screensize.
 
 ```html
 <div
