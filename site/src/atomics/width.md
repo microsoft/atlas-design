@@ -63,8 +63,6 @@ List of all available classes:
 .width-250
 .width-300
 .width-350
-.width-400
-.width-450
 .width-100-tablet
 .width-150-tablet
 .width-200-tablet
