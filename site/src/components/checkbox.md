@@ -7,7 +7,7 @@ figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.f
 
 # Checkbox
 
-A selectable menu list from which an user can make one or more selections.
+A checkbox is a square box that allows you to select the displayed option when activated. It is usually associated with form submissions.
 
 <div class="table-wrapper margin-top-xs">
 	<table class="table">
@@ -22,14 +22,14 @@ A selectable menu list from which an user can make one or more selections.
 			<tr>
 				<td>Unchecked</td>
 				<td>
-					<label class="checkbox">
+					<label class="checkbox font-size-md">
 						<input type="checkbox" />
 						<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 						<span class="checkbox-text" aria-hidden="true">Default</span>
 					</label>
 				</td>
 				<td>
-					<label class="checkbox">
+					<label class="checkbox font-size-md">
 						<input type="checkbox" disabled />
 						<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 						<span class="checkbox-text" aria-hidden="true">Disabled</span>
@@ -39,14 +39,14 @@ A selectable menu list from which an user can make one or more selections.
 			<tr>
 				<td>Checked</td>
 				<td>
-					<label class="checkbox">
+					<label class="checkbox font-size-md">
 						<input type="checkbox" checked />
 						<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 						<span class="checkbox-text" aria-hidden="true">Default</span>
 					</label>
 				</td>
 				<td>
-					<label class="checkbox">
+					<label class="checkbox font-size-md">
 						<input type="checkbox" disabled checked />
 						<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 						<span class="checkbox-text" aria-hidden="true">Disabled</span>

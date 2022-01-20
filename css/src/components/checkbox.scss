@@ -19,7 +19,7 @@ $checkbox-spacing: $spacer-3;
 	height: $checkbox-icon-size;
 	transform: rotate(45deg);
 	border: solid $checkbox-check-hover-color;
-	border-width: 0 0.078em 0.078em 0;
+	border-width: 0 0.0625em 0.0625em 0;
 	content: '';
 }
 
@@ -40,7 +40,7 @@ $checkbox-spacing: $spacer-3;
 		transition-duration: $checkbox-duration;
 		transition-property: background, border, border-color;
 		transition-timing-function: $checkbox-timing-function;
-		border: 0.078em solid $checkbox-unchecked-border-color;
+		border: 0.0625em solid $checkbox-unchecked-border-color;
 		border-radius: $checkbox-border-radius;
 
 		&:not(:last-child) {
@@ -52,10 +52,8 @@ $checkbox-spacing: $spacer-3;
 		}
 	}
 
-	&:hover {
-		.checkbox-check::before {
-			@include checkmark;
-		}
+	.checkbox-check:hover::before {
+		@include checkmark;
 	}
 
 	&.checkbox-sm {
