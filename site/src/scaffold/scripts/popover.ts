@@ -29,7 +29,7 @@ export function initPopovers(container: HTMLElement) {
 					closePopovers();
 				}
 
-				if (event.type === 'click' && event.target.hasAttribute('data-close')) {
+				if (event.type === 'click' && event.target.hasAttribute('data-popover-close')) {
 					closePopovers();
 				}
 			};
