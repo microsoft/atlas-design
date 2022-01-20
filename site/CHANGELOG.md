@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.16.0
+
+### Minor Changes
+
+- 6ef8090: add link button documentation and a reference to it in .button docs
+
+### Patch Changes
+
+- ffe7c88: Add small border to .popover-content, equivalent to .border class.
+
 ## 0.15.0
 
 ### Minor Changes

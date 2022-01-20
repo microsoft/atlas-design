@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.8.1
+
+### Patch Changes
+
+- ffe7c88: Add small border to .popover-content, equivalent to .border class.
+
 ## 3.8.0
 
 ### Minor Changes
