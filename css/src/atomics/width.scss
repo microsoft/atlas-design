@@ -1,7 +1,7 @@
 @use 'sass:list';
 
-$universal-widths: 100, 150, 200, 250, 300, 350 !default;
-$tablet-plus-widths: 400, 450 !default;
+$universal-widths: auto 100, 150, 200, 250, 300, 350 !default;
+$tablet-plus-widths: 400, 450, unset !default;
 $all-widths: list.join($universal-widths, $tablet-plus-widths);
 
 // widths
