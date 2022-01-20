@@ -1,19 +1,19 @@
-$widths: 100, 150, 200, 250, 300, 350, 400, 450, 500 !default;
-// do we need a maximum for globally applicable widths?
-// i.e. .width-500 on a 414px wide screen would be a problem
-// do we need min and max? They are used sometimes.
-// But we're definitely generating more of every category of atomic than we need.
+@use 'sass:list';
+
+$universal-widths: 100, 150, 200, 250, 300, 350 !default;
+$tablet-plus-widths: 400, 450 !default;
+$all-widths: list.join($universal-widths, $tablet-plus-widths);
 
 // widths
 
-@each $width in $widths {
+@each $width in $universal-widths {
 	.width-#{$width} {
 		width: #{$width}px !important;
 	}
 }
 
 @include tablet {
-	@each $width in $widths {
+	@each $width in $all-widths {
 		.width-#{$width}-tablet {
 			width: #{$width}px !important;
 		}
@@ -21,7 +21,7 @@ $widths: 100, 150, 200, 250, 300, 350, 400, 450, 500 !default;
 }
 
 @include desktop {
-	@each $width in $widths {
+	@each $width in $all-widths {
 		.width-#{$width}-desktop {
 			width: #{$width}px !important;
 		}
@@ -29,73 +29,9 @@ $widths: 100, 150, 200, 250, 300, 350, 400, 450, 500 !default;
 }
 
 @include widescreen {
-	@each $width in $widths {
+	@each $width in $all-widths {
 		.width-#{$width}-widescreen {
 			width: #{$width}px !important;
-		}
-	}
-}
-
-// max-widths
-
-@each $width in $widths {
-	.max-width-#{$width} {
-		max-width: #{$width}px !important;
-	}
-}
-
-@include tablet {
-	@each $width in $widths {
-		.max-width-#{$width}-tablet {
-			max-width: #{$width}px !important;
-		}
-	}
-}
-
-@include desktop {
-	@each $width in $widths {
-		.max-width-#{$width}-desktop {
-			max-width: #{$width}px !important;
-		}
-	}
-}
-
-@include widescreen {
-	@each $width in $widths {
-		.max-width-#{$width}-widescreen {
-			max-width: #{$width}px !important;
-		}
-	}
-}
-
-// min-widths
-
-@each $width in $widths {
-	.min-width-#{$width} {
-		min-width: #{$width}px !important;
-	}
-}
-
-@include tablet {
-	@each $width in $widths {
-		.min-width-#{$width}-tablet {
-			min-width: #{$width}px !important;
-		}
-	}
-}
-
-@include desktop {
-	@each $width in $widths {
-		.min-width-#{$width}-desktop {
-			min-width: #{$width}px !important;
-		}
-	}
-}
-
-@include widescreen {
-	@each $width in $widths {
-		.min-width-#{$width}-widescreen {
-			min-width: #{$width}px !important;
 		}
 	}
 }
