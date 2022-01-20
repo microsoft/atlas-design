@@ -1,5 +1,5 @@
 // https://bugs.chromium.org/p/chromium/issues/detail?id=589475&q=details%20box-sizing&can=2
 
-:is(details > *) {
+details > * {
 	box-sizing: border-box;
 }
