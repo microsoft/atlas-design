@@ -1,37 +1,41 @@
 @use 'sass:list';
 
-$universal-widths: auto 100, 150, 200, 250, 300, 350 !default;
-$tablet-plus-widths: 400, 450, unset !default;
-$all-widths: list.join($universal-widths, $tablet-plus-widths);
+$universal-widths: auto, 100, 150, 200, 250, 300, 350 !default;
+$mobile-incompatible-widths: 400, 450, unset !default;
+$all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 
 // widths
 
 @each $width in $universal-widths {
+	$unit: if($width != auto, 'px', '');
 	.width-#{$width} {
-		width: #{$width}px !important;
+		width: #{$width}#{$unit} !important;
 	}
 }
 
 @include tablet {
 	@each $width in $all-widths {
+		$unit: if($width != auto and $width != unset, 'px', '');
 		.width-#{$width}-tablet {
-			width: #{$width}px !important;
+			width: #{$width}#{$unit} !important;
 		}
 	}
 }
 
 @include desktop {
 	@each $width in $all-widths {
+		$unit: if($width != auto and $width != unset, 'px', '');
 		.width-#{$width}-desktop {
-			width: #{$width}px !important;
+			width: #{$width}#{$unit} !important;
 		}
 	}
 }
 
 @include widescreen {
 	@each $width in $all-widths {
+		$unit: if($width != auto and $width != unset, 'px', '');
 		.width-#{$width}-widescreen {
-			width: #{$width}px !important;
+			width: #{$width}#{$unit} !important;
 		}
 	}
 }
