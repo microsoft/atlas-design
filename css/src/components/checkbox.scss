@@ -44,7 +44,7 @@ $checkbox-spacing: $spacer-3 !default;
 		transition-duration: $checkbox-duration;
 		transition-property: background, border, border-color;
 		transition-timing-function: $checkbox-timing-function;
-		border: $checkbox-check-border-width solid $checkbox-unchecked-border-color;
+		border: $checkbox-check-width solid $checkbox-unchecked-border-color;
 		border-radius: $checkbox-border-radius;
 
 		&:not(:last-child) {
