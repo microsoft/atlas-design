@@ -38,6 +38,17 @@ Set the `width` of an element.
 <div class="width-350 border padding-sm font-weight-semibold">
 	<p>350</p>
 </div>
+<div class="display-flex align-items-center padding-sm color-danger font-size-sm">
+	<div class="flex-grow-1 margin-right-xs border-color-danger border-top"></div>
+	<p>The following are only applied above the tablet breakpoint</p>
+	<div class="flex-grow-1 margin-left-xs border-color-danger border-top"></div>
+</div>
+<div class="width-400-tablet border padding-sm font-weight-semibold">
+	<p>400</p>
+</div>
+<div class="width-450-tablet border padding-sm font-weight-semibold">
+	<p>450</p>
+</div>
 ```
 
 ### Responsive rules
