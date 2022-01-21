@@ -52,7 +52,7 @@ $checkbox-spacing: $spacer-3;
 		}
 	}
 
-	.checkbox-check:hover::before {
+	&:hover .checkbox-check::before {
 		@include checkmark;
 	}
 
