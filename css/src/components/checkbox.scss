@@ -7,10 +7,10 @@ $checkbox-color: $primary !default;
 $checkbox-check-color: $primary-invert !default;
 $checkbox-check-hover-color: $text-subtle !default;
 $checkbox-size: 1.25em !default;
-$checkbox-icon-size: 0.75em !default;
+$checkbox-check-height: 0.75em !default;
 $checkbox-check-top: 0.1875em !default;
 $checkbox-check-width: 0.3125em !default;
-$checkbox-checkmark-thickness: 0.0625em !default;
+$checkbox-check-thickness: 0.0625em !default;
 $checkbox-timing-function: $input-timing-function !default;
 $checkbox-duration: $input-transition-duration !default;
 $checkbox-spacing: $spacer-3 !default;
@@ -20,10 +20,10 @@ $checkbox-spacing: $spacer-3 !default;
 	position: absolute;
 	top: $checkbox-check-top;
 	width: $checkbox-check-width;
-	height: $checkbox-icon-size;
+	height: $checkbox-check-height;
 	transform: rotate(45deg);
 	border: solid $checkbox-check-hover-color;
-	border-width: 0 $checkbox-checkmark-thickness $checkbox-checkmark-thickness 0;
+	border-width: 0 $checkbox-check-thickness $checkbox-check-thickness 0;
 	content: '';
 }
 
