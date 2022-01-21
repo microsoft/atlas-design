@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.8.2
+
+### Patch Changes
+
+- 43b3463: Update bare-element styling on details > \* to be more specific. Previous details box sizing fix was not being applied.
+
 ## 3.8.1
 
 ### Patch Changes

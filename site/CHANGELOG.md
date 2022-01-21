@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.16.1
+
+### Patch Changes
+
+- 9c5ec09: Add data-popover-close attribute to allow an additional closing method to the popover.
+
 ## 0.16.0
 
 ### Minor Changes
