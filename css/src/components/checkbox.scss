@@ -1,25 +1,29 @@
 /* stylelint-disable selector-max-specificity, max-nesting-depth, selector-no-qualifying-type */
 
 $checkbox-border-radius: $radius-sm !default;
+$checkbox-border-width: 0.0625em !default;
 $checkbox-unchecked-border-color: $text !default;
 $checkbox-color: $primary !default;
 $checkbox-check-color: $primary-invert !default;
 $checkbox-check-hover-color: $text-subtle !default;
 $checkbox-size: 1.25em !default;
 $checkbox-icon-size: 0.75em !default;
+$checkbox-check-top: 0.1875em !default;
+$checkbox-check-width: 0.3125em !default;
+$checkbox-checkmark-thickness: 0.0625em !default;
 $checkbox-timing-function: $input-timing-function !default;
 $checkbox-duration: $input-transition-duration !default;
-$checkbox-spacing: $spacer-3;
+$checkbox-spacing: $spacer-3 !default;
 
 @mixin checkmark {
 	display: block;
 	position: absolute;
-	top: 0.1875em;
-	width: 0.3125em;
+	top: $checkbox-check-top;
+	width: $checkbox-check-width;
 	height: $checkbox-icon-size;
 	transform: rotate(45deg);
 	border: solid $checkbox-check-hover-color;
-	border-width: 0 0.0625em 0.0625em 0;
+	border-width: 0 $checkbox-checkmark-thickness $checkbox-checkmark-thickness 0;
 	content: '';
 }
 
@@ -40,7 +44,7 @@ $checkbox-spacing: $spacer-3;
 		transition-duration: $checkbox-duration;
 		transition-property: background, border, border-color;
 		transition-timing-function: $checkbox-timing-function;
-		border: 0.0625em solid $checkbox-unchecked-border-color;
+		border: $checkbox-check-border-width solid $checkbox-unchecked-border-color;
 		border-radius: $checkbox-border-radius;
 
 		&:not(:last-child) {
