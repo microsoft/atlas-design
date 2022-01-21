@@ -20,6 +20,9 @@ Values are in pixels. Keep in mind that the `min-width` and `max-width` properti
 Set the `width` of an element.
 
 ```html
+<div class="width-auto border padding-sm font-weight-semibold">
+	<p>Auto</p>
+</div>
 <div class="width-100 border padding-sm font-weight-semibold">
 	<p>100</p>
 </div>
