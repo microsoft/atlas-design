@@ -10,10 +10,10 @@ Need to specifiy a specific width for an element? You've come to the right place
 
 Values are in pixels. Keep in mind that the `min-width` and `max-width` properties override the standard `width` property. If you aren't using the Atlas core folder as a base for you styles, these classes work best when [you're setting `box-sizing` to be `border-box` in some way](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing).
 
-| cssproperty                                      | value (px)                                       | screensize                                         |
-| ------------------------------------------------ | ------------------------------------------------ | -------------------------------------------------- |
-| `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350` | all screensizes, `tablet`, `desktop`, `widescreen` |
-| `width` (available on tablet screens and larger) | `400`, `450`, `unset`                            | `tablet`, `desktop`, `widescreen`                  |
+| cssproperty                                      | value (px)                                       | screensize                            |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------- |
+| `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350` | all screensizes, `tablet`, `desktop`, |
+| `width` (available on tablet screens and larger) | `400`, `450`, `unset`                            | `tablet`, `desktop`,                  |
 
 ## Usage
 
@@ -59,7 +59,7 @@ Set the `width` of an element.
 Certain widths are too large for many mobile screens, so they are only available on larger screensizes. However, all helpers can be applied to any screensize.
 
 ```html
-<div class="width-250 width-300-tablet width-350-desktop width-450-widescreen border padding-sm">
+<div class="width-250 width-300-tablet width-400-desktop border padding-sm">
 	<p>250 ➡ 300 ➡ 350 ➡ 450</p>
 </div>
 ```
@@ -106,14 +106,4 @@ List of all available classes:
 .width-400-desktop
 .width-450-desktop
 .width-unset-desktop
-.width-auto-widescreen
-.width-100-widescreen
-.width-150-widescreen
-.width-200-widescreen
-.width-250-widescreen
-.width-300-widescreen
-.width-350-widescreen
-.width-400-widescreen
-.width-450-widescreen
-.width-unset-widescreen
 ```

@@ -30,12 +30,3 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 		}
 	}
 }
-
-@include widescreen {
-	@each $width in $all-widths {
-		$unit: if($width != auto and $width != unset, 'px', '');
-		.width-#{$width}-widescreen {
-			width: #{$width}#{$unit} !important;
-		}
-	}
-}
