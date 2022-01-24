@@ -8,12 +8,12 @@ template: standard
 
 Need to specifiy a specific width for an element? You've come to the right place! These classes should be used sparingly, and only used after testing heavily at all screen widths (starting with mobile). That said, if you need to specify and min, max or normal width, they can be a useful tool in the utility belt.
 
-Values are in pixels. Keep in mind that the `min-width` and `max-width` properties override the standard `width` property. If you aren't using the Atlas core folder as a base for you styles, these classes work best when [you're setting `box-sizing` to be `border-box` in some way](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing).
+Values are in pixels. Keep in mind that the `min-width` and `max-width` properties override the standard `width` property. If you aren't using the Atlas core folder as a base for you styles, these classes work best when [you're setting `box-sizing` to be `border-box` in some way](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing). Values represent pixel unless otherwise specified.
 
-| cssproperty                                      | value (px)                                       | screensize                            |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------- |
-| `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350` | all screensizes, `tablet`, `desktop`, |
-| `width` (available on tablet screens and larger) | `400`, `450`, `unset`                            | `tablet`, `desktop`,                  |
+| cssproperty                                      | value                                                           | screensize                            |
+| ------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------- |
+| `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350`. `full` (100%) | all screensizes, `tablet`, `desktop`, |
+| `width` (available on tablet screens and larger) | `400`, `450`, `unset`                                           | `tablet`, `desktop`,                  |
 
 ## Usage
 
@@ -60,7 +60,7 @@ Certain widths are too large for many mobile screens, so they are only available
 
 ```html
 <div class="width-250 width-300-tablet width-400-desktop border padding-sm">
-	<p>250 ➡ 300 ➡ 350 ➡ 450</p>
+	<p>250 ➡ 300 ➡ 400</p>
 </div>
 ```
 
@@ -79,6 +79,7 @@ Another possible pattern may be that a container needs to be constrained on smal
 List of all available classes:
 
 ```atomics-filter
+.width-full
 .width-auto
 .width-100
 .width-150
@@ -86,6 +87,7 @@ List of all available classes:
 .width-250
 .width-300
 .width-350
+.width-full-tablet
 .width-auto-tablet
 .width-100-tablet
 .width-150-tablet
@@ -96,6 +98,7 @@ List of all available classes:
 .width-400-tablet
 .width-450-tablet
 .width-unset-tablet
+.width-full-desktop
 .width-auto-desktop
 .width-100-desktop
 .width-150-desktop
