@@ -35,11 +35,13 @@ While CSS properties are straightfoward (they just match the CSS), the value pro
 2. In some cases, such as themed colors values, values are associated concepts.
    - Such as `primary` in the class `.color-primary`. (The `primary` is blue on light theme and yellow on high contrast theme.)
    - Such as `semibold` in the class `font-weight-semibold`.
-3. When a number value with a particular unit is involved, that value is typically represented as an at-least-two-letter-t-shirt size.
+3. When a value refers to a pixel value is involved we will just write out the number.
+   - Some width based classes use this approach. `width-100` means `width: 100px`.
+4. When a em/rem value is involved, that value is typically represented as an at-least-two-letter-t-shirt size.
    - Spacing and non-heading typography values follow this convention, as in `xs, sm, md, lg, xl, xxl` in `margin-top-xl`, and `font-size-md`.
    - Within a set of values that require units such as the one above, 0 is represented by the string `none`.
-4. Within a series of values that are all unitless numbers, those numbers are used directly, as in `flex-grow: 1;` being represented by `flex-grow-1`.
-5. When a shorthand property's value is multi-part, we choose a reasonable default and omit the value completely.
+5. Within a series of values that are all unitless numbers, those numbers are used directly, as in `flex-grow: 1;` being represented by `flex-grow-1`.
+6. When a shorthand property's value is multi-part, we choose a reasonable default and omit the value completely.
    - In the case `border: 1px solid $border` the class becomes simply `.border`.
    - In this case further modification would still be available.
 
