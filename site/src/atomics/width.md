@@ -8,7 +8,7 @@ template: standard
 
 Need to specifiy a specific width for an element? You've come to the right place! These classes should be used sparingly, and only used after testing heavily at all screen widths (starting with mobile). That said, if you need to specify and min, max or normal width, they can be a useful tool in the utility belt.
 
-Values are in pixels. Keep in mind that the `min-width` and `max-width` properties override the standard `width` property. If you aren't using the Atlas core folder as a base for your styles, these classes work best when [you're setting `box-sizing` to be `border-box` in some way](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing). Values represent pixel unless otherwise specified.
+Values are in pixels. Keep in mind that the `min-width` and `max-width` properties override the standard `width` property. If you aren't using the Atlas core folder as a base for your styles, these classes work best when [you're setting `box-sizing` to be `border-box` in some way](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing). Values represent pixel unless they are a string or otherwise specified.
 
 | cssproperty                                      | value                                                    | screensize                            |
 | ------------------------------------------------ | -------------------------------------------------------- | ------------------------------------- |
