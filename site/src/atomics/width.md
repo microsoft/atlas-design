@@ -8,12 +8,12 @@ template: standard
 
 Need to specifiy a specific width for an element? You've come to the right place! These classes should be used sparingly, and only used after testing heavily at all screen widths (starting with mobile). That said, if you need to specify and min, max or normal width, they can be a useful tool in the utility belt.
 
-Values are in pixels. Keep in mind that the `min-width` and `max-width` properties override the standard `width` property. If you aren't using the Atlas core folder as a base for you styles, these classes work best when [you're setting `box-sizing` to be `border-box` in some way](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing). Values represent pixel unless otherwise specified.
+Values are in pixels. Keep in mind that the `min-width` and `max-width` properties override the standard `width` property. If you aren't using the Atlas core folder as a base for your styles, these classes work best when [you're setting `box-sizing` to be `border-box` in some way](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing). Values represent pixel unless otherwise specified.
 
-| cssproperty                                      | value                                                           | screensize                            |
-| ------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------- |
-| `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350`. `full` (100%) | all screensizes, `tablet`, `desktop`, |
-| `width` (available on tablet screens and larger) | `400`, `450`, `unset`                                           | `tablet`, `desktop`,                  |
+| cssproperty                                      | value                                                    | screensize                            |
+| ------------------------------------------------ | -------------------------------------------------------- | ------------------------------------- |
+| `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`. `full` (100%) | all screensizes, `tablet`, `desktop`, |
+| `width` (available on tablet screens and larger) | `350`, `400`, `450`, `unset`                             | `tablet`, `desktop`,                  |
 
 ## Usage
 
