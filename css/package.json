@@ -35,8 +35,8 @@
 	"author": "Microsoft Corporation",
 	"license": "MIT",
 	"devDependencies": {
-		"parcel": "^2.0.1",
-		"@parcel/transformer-sass": "^2.0.1",
+		"parcel": "^2.2.1",
+		"@parcel/transformer-sass": "^2.2.1",
 		"@microsoft/stylelint-config-atlas": "4.0.0",
 		"prettier": "^2.5.1",
 		"sass": "^1.45.2",
