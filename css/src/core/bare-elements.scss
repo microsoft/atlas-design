@@ -1,5 +1,6 @@
 // https://bugs.chromium.org/p/chromium/issues/detail?id=589475&q=details%20box-sizing&can=2
 
+details,
 details > * {
-	box-sizing: border-box;
+	box-sizing: border-box !important;
 }
