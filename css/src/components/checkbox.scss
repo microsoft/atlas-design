@@ -1,0 +1,114 @@
+/* stylelint-disable selector-max-specificity, max-nesting-depth, selector-no-qualifying-type */
+
+$checkbox-border-radius: $radius-sm !default;
+$checkbox-border-width: 0.0625em !default;
+$checkbox-unchecked-border-color: $text !default;
+$checkbox-color: $primary !default;
+$checkbox-check-color: $primary-invert !default;
+$checkbox-check-hover-color: $text-subtle !default;
+$checkbox-size: 1.25em !default;
+$checkbox-check-height: 0.75em !default;
+$checkbox-check-top: 0.125em !default;
+$checkbox-check-width: 0.3125em !default;
+$checkbox-check-thickness: 0.0625em !default;
+$checkbox-timing-function: $input-timing-function !default;
+$checkbox-duration: $input-transition-duration !default;
+$checkbox-spacing: $spacer-3 !default;
+
+@mixin checkmark {
+	display: block;
+	position: absolute;
+	inset-block-start: $checkbox-check-top;
+	width: $checkbox-check-width;
+	height: $checkbox-check-height;
+	transform: rotate(45deg);
+	border: solid $checkbox-check-hover-color;
+	border-width: 0 $checkbox-check-thickness $checkbox-check-thickness 0;
+	content: '';
+}
+
+.checkbox {
+	display: flex;
+	position: relative;
+	align-items: center;
+	line-height: 1.25;
+	cursor: pointer;
+
+	.checkbox-check {
+		display: flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: $checkbox-size;
+		height: $checkbox-size;
+		transition-duration: $checkbox-duration;
+		transition-property: background, border, border-color;
+		transition-timing-function: $checkbox-timing-function;
+		border: $checkbox-border-width solid $checkbox-unchecked-border-color;
+		border-radius: $checkbox-border-radius;
+
+		&:not(:last-child) {
+			margin-inline-end: 0.5rem;
+		}
+
+		&::before {
+			content: '\0020';
+		}
+	}
+
+	&:hover .checkbox-check::before {
+		@include checkmark;
+	}
+
+	&.checkbox-sm {
+		font-size: $font-size-8;
+	}
+
+	input[type='checkbox'] {
+		@include visually-hidden();
+
+		&:focus-visible + .checkbox-check {
+			@extend %focus;
+		}
+
+		&:checked + .checkbox-check {
+			border-color: $checkbox-color;
+			background-color: $checkbox-color;
+
+			&::before {
+				@include checkmark;
+
+				border-color: $checkbox-check-color;
+			}
+		}
+
+		&[disabled] + .checkbox-check {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+	}
+
+	&.checkbox-muted {
+		input[type='checkbox'] {
+			&:checked + .checkbox-check {
+				border-color: $text-subtle;
+				background-color: $text-subtle;
+
+				&::before {
+					border-color: $text-invert;
+				}
+			}
+		}
+	}
+
+	.checkbox-check.is-checked {
+		border-color: $checkbox-color;
+		background-color: $checkbox-color;
+
+		&::before {
+			@include checkmark;
+
+			border-color: $checkbox-check-color;
+		}
+	}
+}
