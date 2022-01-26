@@ -8,7 +8,7 @@ $checkbox-check-color: $primary-invert !default;
 $checkbox-check-hover-color: $text-subtle !default;
 $checkbox-size: 1.25em !default;
 $checkbox-check-height: 0.75em !default;
-$checkbox-check-top: 0.1875em !default;
+$checkbox-check-top: 0.125em !default;
 $checkbox-check-width: 0.3125em !default;
 $checkbox-check-thickness: 0.0625em !default;
 $checkbox-timing-function: $input-timing-function !default;
@@ -18,7 +18,7 @@ $checkbox-spacing: $spacer-3 !default;
 @mixin checkmark {
 	display: block;
 	position: absolute;
-	top: $checkbox-check-top;
+	inset-block-start: $checkbox-check-top;
 	width: $checkbox-check-width;
 	height: $checkbox-check-height;
 	transform: rotate(45deg);
