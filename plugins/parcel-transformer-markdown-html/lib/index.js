@@ -1,6 +1,6 @@
 // @ts-nocheck
 const { Transformer } = require('@parcel/plugin');
-const marked = require('marked');
+const { marked } = require('marked');
 const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
 const mustache = require('mustache');
