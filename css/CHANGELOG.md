@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 3.9.0
+
+### Minor Changes
+
+- 2e4d5fb: Add checkbox component.
+- 21a6973: Add width Atomic classes and relevant documentation.
+
+### Patch Changes
+
+- 6ab0c3e: Details bare element box-sizing bugfix.
+
 ## 3.8.2
 
 ### Patch Changes
