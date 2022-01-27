@@ -42,34 +42,31 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		vertical-align: top;
 	}
 
-	thead th {
-		border-top: 0;
-		border-bottom: 1px solid $table-border-dark;
-	}
-
 	th:not([align]) {
 		text-align: $user-left;
 	}
 
 	&.table-stacked-mobile {
 		@include discouraged-mobile {
-			thead,
-			tfoot {
-				display: none;
-			}
-
+			th,
 			td {
 				display: block;
 				width: 100%;
 			}
 
+			th:not(:nth-child(1)),
 			td:not(:nth-child(1)) {
 				padding-block-start: 0;
 				border-width: 0;
 			}
 
-			tbody > tr:nth-child(1) td {
+			thead tr:nth-child(1) th,
+			tbody tr:nth-child(1) td {
 				border-top: none;
+			}
+
+			thead tr > th:last-child {
+				border-bottom: 1px solid $table-border-dark;
 			}
 		}
 	}

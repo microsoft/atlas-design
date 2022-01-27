@@ -324,4 +324,11 @@ _`table-stacked-mobile`_ stacks table cells on mobile screen sizes.
 			<td>Cell</td>
 		</tr>
 	</tbody>
+	<tfoot>
+		<tr>
+			<th>Footer row</th>
+			<th>Footer cell</th>
+			<th>Footer cell</th>
+		</tr>
+	</tfoot>
 </table>
