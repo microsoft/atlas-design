@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.17.0
+
+### Minor Changes
+
+- 2e4d5fb: Add checkbox component.
+- 21a6973: Add width Atomic classes and relevant documentation.
+
+### Patch Changes
+
+- 9e17017: Add figma design file to the popover page.
+
 ## 0.16.1
 
 ### Patch Changes
