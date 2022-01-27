@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Add width, min-width, and max-width based Atomic classes and relevant documentation.
+Add width Atomic classes and relevant documentation.
