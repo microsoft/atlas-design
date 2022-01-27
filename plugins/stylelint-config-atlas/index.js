@@ -252,6 +252,12 @@ module.exports = {
 		'scss/at-if-closing-brace-space-after': 'always-intermediate',
 		'scss/at-import-partial-extension': 'always',
 		'scss/operator-no-unspaced': null,
-		'scss/no-global-function-names': null
+		'scss/no-global-function-names': null,
+		'value-keyword-case': [
+			'lower',
+			{
+				camelCaseSvgKeywords: true
+			}
+		]
 	}
 };
