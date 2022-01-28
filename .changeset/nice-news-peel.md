@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Adding table modifiers; updating site with relevant documenation
+Adding table modifiers; updating site with relevant documenation.
