@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Update control-sm & control-lg font size variables
+Update control-sm & control-lg font size variables.
