@@ -2,6 +2,9 @@ $control-radius: $radius !default;
 $control-radius-sm: $radius-sm !default;
 
 $control-font-size: $font-size-7 !default;
+$control-sm-font-size: $font-size-8 !default;
+$control-lg-font-size: $font-size-6 !default;
+
 $control-border-width: 1px !default;
 
 $control-padding-vertical: calc(0.375em - #{$control-border-width}) !default;
@@ -34,9 +37,9 @@ $control-padding-horizontal: calc(0.625em - #{$control-border-width}) !default;
 
 @mixin control-sm {
 	border-radius: $control-radius-sm;
-	font-size: $font-size-sm;
+	font-size: $control-sm-font-size;
 }
 
 @mixin control-lg {
-	font-size: $font-size-lg;
+	font-size: $control-lg-font-size;
 }
