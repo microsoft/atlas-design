@@ -297,7 +297,7 @@ _`table-sm`_/_`table-lg`_ makes table more or less condensed than the default.
 
 ### Stacked on mobile
 
-_`table-stacked-mobile`_ stacks table cells on mobile screen sizes.
+_`table-stacked-mobile`_ stacks table cells on mobile screen sizes. Please use it wisely due to its unusual appearance, it is not the default behavior for the tables.
 
 <table class="table table-stacked-mobile margin-top-sm">
 	<thead>
