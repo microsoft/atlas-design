@@ -136,7 +136,7 @@ _`table-simple`_ gives table only horizontal cell borders.
 
 ### Complex
 
-_`table-complex`_ - gives table a completely bordered cell layout with a heavily stylized header row.
+_`table-complex`_ gives table a completely bordered cell layout with a heavily stylized header row.
 
 <table class="table table-complex margin-top-sm">
 	<thead>
