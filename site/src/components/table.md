@@ -105,7 +105,7 @@ All modifier classes should be applied in conjunction with the `.table` class.
 
 ### Simple
 
-_`table-simple`_ gives table has only horizontal cell borders.
+_`table-simple`_ gives table only horizontal cell borders.
 
 <table class="table table-simple margin-top-sm">
 	<thead>
@@ -136,7 +136,7 @@ _`table-simple`_ gives table has only horizontal cell borders.
 
 ### Complex
 
-_`table-complex`_ - complex table style is a completely bordered cell layout with a heavy stylized header row.
+_`table-complex`_ - gives table a completely bordered cell layout with a heavily stylized header row.
 
 <table class="table table-complex margin-top-sm">
 	<thead>
