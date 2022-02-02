@@ -2,6 +2,7 @@
 title: Table
 description: Table element and its modifiers.
 template: standard
+figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F1xPKoajeYtL7JPQ4ZoENkr%2F%25F0%259F%258C%259E-Atlas-Design-UI-Kit-(Team-Guidance)%3Fnode-id%3D195%253A3262
 ---
 
 # Table
@@ -53,8 +54,7 @@ Here is an example of applying `table` class to the table element:
 
 For cases in which a table has many columns, the `table-wrapper` class is available to handle the overflow. This class should be applied to the table's parent element.
 
-```html
-<div class="table-wrapper">
+<div class="table-wrapper margin-top-sm">
 	<table class="table">
 		<thead>
 			<tr>
@@ -86,17 +86,28 @@ For cases in which a table has many columns, the `table-wrapper` class is availa
 				<td>Cell</td>
 				<td>Cell</td>
 			</tr>
+			<tr>
+				<td>Row three</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+				<td>Cell</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
-```
 
 ## Modifiers
 
-_`table-stacked-mobile`_ - stacks table cells on mobile screen sizes.
+All modifier classes should be applied in conjunction with the `.table` class.
 
-```html
-<table class="table table-stacked-mobile">
+### Simple
+
+_`table-simple`_ gives table only horizontal cell borders.
+
+<table class="table table-simple margin-top-sm">
 	<thead>
 		<tr>
 			<th>Heading row</th>
@@ -122,4 +133,202 @@ _`table-stacked-mobile`_ - stacks table cells on mobile screen sizes.
 		</tr>
 	</tbody>
 </table>
-```
+
+### Complex
+
+_`table-complex`_ gives table a completely bordered cell layout with a heavily stylized header row.
+
+<table class="table table-complex margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+
+### Borderless
+
+_`table-borderless`_ removes all table cell borders.
+
+<table class="table table-borderless margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+
+### Striped
+
+_`table-striped`_ adds background color to every even row.
+
+<table class="table table-striped margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row four</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row five</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+
+### Size
+
+_`table-sm`_/_`table-lg`_ makes table more or less condensed than the default.
+
+<table class="table table-sm margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="table table-lg margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+
+### Stacked on mobile
+
+_`table-stacked-mobile`_ stacks table cells on mobile screen sizes. Please use it wisely due to its unusual appearance, it is not the default behavior for the tables.
+
+<table class="table table-stacked-mobile margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading row</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Row one</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row two</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Row three</td>
+			<td>Cell</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Footer row</th>
+			<th>Footer cell</th>
+			<th>Footer cell</th>
+		</tr>
+	</tfoot>
+</table>

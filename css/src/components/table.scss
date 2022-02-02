@@ -1,5 +1,7 @@
-$table-cell-vertical-padding: $spacer-4 !default;
-$table-cell-horizontal-padding: $spacer-5 !default;
+$table-cell-vertical-padding: $spacer-5 !default;
+$table-cell-horizontal-padding: $spacer-6 !default;
+$table-cell-padding-compact: $spacer-3 !default;
+$table-cell-padding-loose: $spacer-8 !default;
 
 $table-caption-padding: $spacer-6 !default;
 $table-caption-size: $font-size-9 !default;
@@ -17,6 +19,10 @@ $table-caption-spacing: $letter-spacing-medium !default;
 	border-collapse: collapse;
 	table-layout: auto;
 
+	&:not(.table-simple) {
+		border: 1px solid $table-border-dark;
+	}
+
 	caption {
 		padding: $table-caption-padding;
 		font-size: $table-caption-size;
@@ -31,14 +37,9 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		display: table-cell;
 		word-wrap: break-word;
 		padding: $table-cell-vertical-padding $table-cell-horizontal-padding;
-		border-top: 1px solid $border;
+		border-top: 1px solid $table-border-dark;
 		line-height: 1.5;
 		vertical-align: top;
-	}
-
-	thead th {
-		border-top: 0;
-		border-bottom: 1px solid $border;
 	}
 
 	th:not([align]) {
@@ -47,21 +48,67 @@ $table-caption-spacing: $letter-spacing-medium !default;
 
 	&.table-stacked-mobile {
 		@include discouraged-mobile {
-			thead,
-			tfoot {
-				display: none;
-			}
-
+			th,
 			td {
 				display: block;
 				width: 100%;
-				padding: $table-cell-vertical-padding 0;
 			}
 
+			th:not(:nth-child(1)),
 			td:not(:nth-child(1)) {
 				padding-block-start: 0;
 				border-width: 0;
 			}
+
+			thead tr:nth-child(1) th,
+			tbody tr:nth-child(1) td {
+				border-top: none;
+			}
+
+			thead tr > th:last-child {
+				border-bottom: 1px solid $table-border-dark;
+			}
+		}
+	}
+
+	&.table-borderless {
+		border: none;
+
+		th,
+		td {
+			border: none;
+		}
+	}
+
+	&.table-complex {
+		thead tr,
+		tfoot tr {
+			background-color: $table-header;
+		}
+
+		th,
+		td {
+			border: 1px solid $table-border-dark;
+		}
+	}
+
+	&.table-striped {
+		tbody tr:nth-of-type(even) {
+			background-color: $table-row;
+		}
+	}
+
+	&.table-sm {
+		th,
+		td {
+			padding: $table-cell-padding-compact;
+		}
+	}
+
+	&.table-lg {
+		th,
+		td {
+			padding: $table-cell-padding-loose;
 		}
 	}
 }
