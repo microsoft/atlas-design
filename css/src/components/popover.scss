@@ -30,13 +30,13 @@ $popover-width: 224px !default;
 
 	&.popover-right {
 		.popover-content {
-			right: 0;
+			inset-inline-end: 0;
 		}
 	}
 
 	&.popover-center {
 		.popover-content {
-			left: 50%;
+			inset-inline-start: 50%;
 			transform: translateX(-50%);
 		}
 	}
