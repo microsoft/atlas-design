@@ -5,7 +5,7 @@ template: standard
 figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fnode-id%3D506%253A1176
 ---
 
-# Input component
+# Input
 
 Input elements are used to accept data from the user.
 
@@ -59,5 +59,5 @@ Here is an example of a standard usage of input paired with a label.
 | Success | `.input .input-success` | <input class="input input-success" type="text" placeholder="Placeholder" /> |
 
 ```abut-html
-<input class="input .input-error" type="text" placeholder="Placeholder" />
+<input class="input input-error" type="text" placeholder="Placeholder" />
 ```
