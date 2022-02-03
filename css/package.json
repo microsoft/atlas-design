@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-css",
-	"version": "3.9.0",
+	"version": "3.10.0",
 	"description": "Styles backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -37,9 +37,9 @@
 	"devDependencies": {
 		"parcel": "^2.2.1",
 		"@parcel/transformer-sass": "^2.2.1",
-		"@microsoft/stylelint-config-atlas": "4.0.0",
+		"@microsoft/stylelint-config-atlas": "4.0.1",
 		"prettier": "^2.5.1",
-		"sass": "^1.49.0",
+		"sass": "^1.49.7",
 		"stylelint": "^14.3.0",
 		"stylelint-config-prettier": "^9.0.3",
 		"eslint-plugin-security": "^1.4.0",
