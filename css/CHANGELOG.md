@@ -1,5 +1,17 @@
 # @microsoft/atlas-css
 
+## 3.10.0
+
+### Minor Changes
+
+- a222f28: Adding table modifiers; updating site with relevant documentation.
+
+### Patch Changes
+
+- 1b7816d: Update dependencies.
+- 3002855: Update control-sm & control-lg font size variables.
+- 0b98193: Bugfix: in popover component, use logical properties instead of `left` and `right`.
+
 ## 3.9.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # @microsoft/stylelint-config-atlas
 
+## 4.0.1
+
+### Patch Changes
+
+- 1b7816d: Update dependencies.
+- 1b7816d: Update options with `value-keyword-case` and `cameCaseSvgKeywords`.
+
 ## 4.0.0
 
 ### Major Changes

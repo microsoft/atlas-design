@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.18.0
+
+### Minor Changes
+
+- a222f28: Adding table modifiers; updating site with relevant documentation.
+
+### Patch Changes
+
+- 1b7816d: Update dependencies.
+- be9c41d: Fixing popover's closing even listener.
+
 ## 0.17.0
 
 ### Minor Changes
