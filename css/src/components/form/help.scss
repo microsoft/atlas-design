@@ -1,0 +1,35 @@
+$help-color: $danger !default;
+$help-error-color: $danger !default;
+$help-warning-color: $warning-active !default;
+$help-success-color: $score-high !default;
+
+$help-font-size: $font-size-8 !default;
+$help-sm-font-size: $font-size-9 !default;
+$help-lg-font-size: $font-size-7 !default;
+
+.help {
+	display: block;
+	margin-top: 0.25rem;
+	color: $help-color;
+	font-size: $help-font-size;
+
+	&.help-error {
+		color: $help-error-color;
+	}
+
+	&.help-warning {
+		color: $help-warning-color;
+	}
+
+	&.help-success {
+		color: $help-success-color;
+	}
+
+	&.help-sm {
+		font-size: $help-sm-font-size;
+	}
+
+	&.help-lg {
+		font-size: $help-sm-font-size;
+	}
+}

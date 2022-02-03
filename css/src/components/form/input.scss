@@ -1,0 +1,91 @@
+$input-color: $text !default;
+$input-background-color: $body-background !default;
+$input-border-color: $text !default;
+$input-placeholder-color: $text-subtle !default;
+
+$input-hover-color: $text !default;
+$input-hover-border-color: $primary !default;
+$input-focus-border-color: $primary !default;
+
+$input-disabled-color: $text-subtle !default;
+$input-disabled-background-color: $body-background-medium !default;
+$input-disabled-border-color: $table-border-dark !default;
+
+$input-error-border-color: $danger !default;
+$input-warning-border-color: $warning-active !default;
+$input-success-border-color: $score-high !default;
+
+.input {
+	@include control;
+
+	width: 100%;
+	max-width: 100%;
+	border-color: $input-border-color;
+	background-color: $input-background-color;
+	color: $input-color !important;
+
+	&::placeholder {
+		color: $input-placeholder-color;
+	}
+
+	&:hover,
+	&:focus-visible {
+		border-color: $input-hover-border-color;
+	}
+
+	&:focus-visible {
+		@extend %focus;
+
+		outline-color: $input-focus-border-color;
+		outline-offset: 0 !important;
+		outline-style: solid !important;
+	}
+
+	&[disabled] {
+		border-color: $input-disabled-border-color;
+		background-color: $input-disabled-background-color;
+		color: $input-disabled-color;
+	}
+
+	&.input-sm {
+		@include control-sm;
+	}
+
+	&.input-lg {
+		@include control-lg;
+	}
+
+	&.input-narrow {
+		width: auto;
+
+		&-tablet {
+			@include tablet {
+				width: auto;
+			}
+		}
+	}
+
+	&.input-error {
+		border-color: $input-error-border-color;
+
+		&:focus-visible {
+			outline-color: $input-error-border-color;
+		}
+	}
+
+	&.input-warning {
+		border-color: $input-warning-border-color;
+
+		&:focus-visible {
+			outline-color: $input-warning-border-color;
+		}
+	}
+
+	&.input-success {
+		border-color: $input-success-border-color;
+
+		&:focus-visible {
+			outline-color: $input-success-border-color;
+		}
+	}
+}

@@ -1,0 +1,106 @@
+$textarea-color: $text !default;
+$textarea-background-color: $body-background !default;
+$textarea-border-color: $text !default;
+$textarea-placeholder-color: $text-subtle !default;
+
+$textarea-hover-color: $text !default;
+$textarea-hover-border-color: $primary !default;
+$textarea-focus-border-color: $primary !default;
+
+$textarea-disabled-color: $text-subtle !default;
+$textarea-disabled-background-color: $body-background-medium !default;
+$textarea-disabled-border-color: $table-border-dark !default;
+
+$textarea-error-border-color: $danger !default;
+$textarea-warning-border-color: $warning-active !default;
+$textarea-success-border-color: $score-high !default;
+
+.textarea {
+	@include control;
+
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	resize: vertical;
+	border-color: $textarea-border-color;
+	background-color: $textarea-background-color;
+	color: $textarea-color !important;
+
+	&::placeholder {
+		color: $textarea-placeholder-color;
+	}
+
+	&:hover,
+	&:focus-visible {
+		border-color: $textarea-hover-border-color;
+	}
+
+	&:focus-visible {
+		@extend %focus;
+
+		outline-color: $textarea-focus-border-color;
+		outline-offset: 0 !important;
+		outline-style: solid !important;
+	}
+
+	&[disabled] {
+		border-color: $textarea-disabled-border-color;
+		background-color: $textarea-disabled-background-color;
+		color: $textarea-disabled-color;
+	}
+
+	&:not([rows]) {
+		min-height: 120px;
+		max-height: 600px;
+	}
+
+	&[rows] {
+		height: initial;
+	}
+
+	&.has-fixed-size {
+		resize: none;
+	}
+
+	&.textarea-sm {
+		@include control-sm;
+	}
+
+	&.textarea-lg {
+		@include control-lg;
+	}
+
+	&.textarea-narrow {
+		width: auto;
+
+		&-tablet {
+			@include tablet {
+				width: auto;
+			}
+		}
+	}
+
+	&.textarea-error {
+		border-color: $textarea-error-border-color;
+
+		&:focus-visible {
+			outline-color: $textarea-error-border-color;
+		}
+	}
+
+	&.textarea-warning {
+		border-color: $textarea-warning-border-color;
+
+		&:focus-visible {
+			outline-color: $textarea-warning-border-color;
+		}
+	}
+
+	&.textarea-success {
+		border-color: $textarea-success-border-color;
+
+		&:focus-visible {
+			outline-color: $textarea-success-border-color;
+		}
+	}
+}
