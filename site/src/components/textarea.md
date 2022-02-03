@@ -19,12 +19,14 @@ Textarea element represents a multi-line plain-text editing control.
 
 ## Usage
 
+Here is an example of a standard textarea usage paired with a label.
+
 ```html
-<label class="label">Label</label>
-<textarea class="textarea" placeholder="Textarea placeholder"></textarea>
+<label class="label" for="textarea-demo">Label</label>
+<textarea class="textarea" id="textarea-demo" placeholder="Textarea placeholder"></textarea>
 ```
 
-## Sizes
+### Sizes
 
 `textarea-sm`/`textarea-lg` makes textarea a little bigger or smaller than the default.
 
@@ -32,6 +34,12 @@ Textarea element represents a multi-line plain-text editing control.
 <textarea class="textarea textarea-sm" placeholder="Textarea placeholder"></textarea>
 <textarea class="textarea margin-top-xs" placeholder="Textarea placeholder"></textarea>
 <textarea class="textarea textarea-lg margin-top-xs" placeholder="Textarea placeholder"></textarea>
+```
+
+`textarea-fixed-height` disables the ability to resize the textarea component in browser.
+
+```html
+<textarea class="textarea textarea-fixed-height" placeholder="Textarea placeholder"></textarea>
 ```
 
 `textarea-narrow`/`textarea-narrow-tablet` resets textarea's width.
@@ -46,7 +54,7 @@ Textarea element represents a multi-line plain-text editing control.
 <textarea class="textarea textarea-narrow-tablet" placeholder="Textarea placeholder"></textarea>
 ```
 
-## Validation states
+### Validation states
 
 `textarea-error`/`textarea-warning`/`textarea-success` helps with visual reflection of validation states.
 

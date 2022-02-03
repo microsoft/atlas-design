@@ -1,4 +1,4 @@
-$help-color: $danger !default;
+$help-color: $text !default;
 $help-error-color: $danger !default;
 $help-warning-color: $warning-active !default;
 $help-success-color: $score-high !default;
@@ -9,7 +9,7 @@ $help-lg-font-size: $font-size-7 !default;
 
 .help {
 	display: block;
-	margin-top: 0.25rem;
+	margin-block-start: 0.5rem;
 	color: $help-color;
 	font-size: $help-font-size;
 
@@ -30,6 +30,6 @@ $help-lg-font-size: $font-size-7 !default;
 	}
 
 	&.help-lg {
-		font-size: $help-sm-font-size;
+		font-size: $help-lg-font-size;
 	}
 }

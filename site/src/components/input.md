@@ -19,14 +19,14 @@ Input elements are used to accept data from the user.
 
 ## Usage
 
-Inputs are normally paired with a label, but there times when they can be used without a label. Placeholder text should primarily be used as a content prompt and only provided when needed.
+Here is an example of a standard usage of input paired with a label.
 
 ```html
-<label class="label">Label</label>
-<input class="input" type="text" placeholder="Placeholder text" />
+<label class="label" for="input-demo">Label</label>
+<input class="input" id="input-demo" type="text" placeholder="Placeholder text" />
 ```
 
-## Sizes
+### Sizes
 
 `input-sm`/`input-lg` makes input a little bigger or smaller than the default.
 
@@ -48,7 +48,7 @@ Inputs are normally paired with a label, but there times when they can be used w
 <input class="input input-narrow-tablet margin-top-xs" type="text" placeholder="Placeholder" />
 ```
 
-## Validation states
+### Validation states
 
 `input-error`/`input-warning`/`input-success` helps with visual reflection of validation states.
 

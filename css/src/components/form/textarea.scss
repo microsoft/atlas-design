@@ -25,6 +25,7 @@ $textarea-success-border-color: $score-high !default;
 	border-color: $textarea-border-color;
 	background-color: $textarea-background-color;
 	color: $textarea-color !important;
+	margin-block-start: 0.5rem;
 
 	&::placeholder {
 		color: $textarea-placeholder-color;
@@ -50,7 +51,7 @@ $textarea-success-border-color: $score-high !default;
 	}
 
 	&:not([rows]) {
-		min-height: 120px;
+		min-height: 100px;
 		max-height: 600px;
 	}
 
@@ -58,7 +59,7 @@ $textarea-success-border-color: $score-high !default;
 		height: initial;
 	}
 
-	&.has-fixed-size {
+	&.textarea-fixed-height {
 		resize: none;
 	}
 

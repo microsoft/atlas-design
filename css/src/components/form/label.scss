@@ -12,15 +12,11 @@ $label-font-weight: $weight-semibold !default;
 	font-size: $label-font-size;
 	font-weight: $label-font-weight;
 
-	&:not(:last-child) {
-		margin-bottom: 0.5em;
-	}
-
 	&.label-sm {
 		font-size: $label-sm-font-size;
 	}
 
 	&.label-lg {
-		font-size: $label-sm-font-size;
+		font-size: $label-lg-font-size;
 	}
 }
