@@ -29,14 +29,14 @@ $input-success-border-color: $score-high !default;
 		color: $input-placeholder-color;
 	}
 
-	&:hover,
-	&:focus-visible {
+	&:hover {
 		border-color: $input-hover-border-color;
 	}
 
-	&:focus-visible {
+	@include focus-visible {
 		@extend %focus;
 
+		border-color: $input-hover-border-color;
 		outline-color: $input-focus-border-color;
 		outline-offset: 0 !important;
 		outline-style: solid !important;
