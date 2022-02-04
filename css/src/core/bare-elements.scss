@@ -4,3 +4,11 @@ details,
 details > * {
 	box-sizing: border-box !important;
 }
+
+:is(a) {
+	color: $hyperlink;
+}
+
+:is(a:visited) {
+	color: $visited;
+}
