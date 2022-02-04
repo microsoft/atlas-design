@@ -56,37 +56,18 @@ $input-success-border-color: $score-high !default;
 		@include control-lg;
 	}
 
-	&.input-narrow {
-		width: auto;
-
-		&-tablet {
-			@include tablet {
-				width: auto;
-			}
-		}
-	}
-
 	&.input-error {
 		border-color: $input-error-border-color;
-
-		&:focus-visible {
-			outline-color: $input-error-border-color;
-		}
+		outline-color: $input-error-border-color;
 	}
 
 	&.input-warning {
 		border-color: $input-warning-border-color;
-
-		&:focus-visible {
-			outline-color: $input-warning-border-color;
-		}
+		outline-color: $input-warning-border-color;
 	}
 
 	&.input-success {
 		border-color: $input-success-border-color;
-
-		&:focus-visible {
-			outline-color: $input-success-border-color;
-		}
+		outline-color: $input-success-border-color;
 	}
 }

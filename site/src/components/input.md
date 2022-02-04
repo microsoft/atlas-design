@@ -36,18 +36,6 @@ Here is an example of a standard usage of input paired with a label.
 <input class="input input-lg margin-top-xs" type="text" placeholder="Placeholder" />
 ```
 
-`input-narrow`/`input-narrow-tablet` resets input's width.
-
-```html
-<input class="input input-narrow" type="text" placeholder="Placeholder" />
-<div class="display-flex align-items-center padding-sm color-danger font-size-sm">
-	<div class="flex-grow-1 margin-right-xs border-color-danger border-top"></div>
-	<p>The following are only applied above the tablet breakpoint</p>
-	<div class="flex-grow-1 margin-left-xs border-color-danger border-top"></div>
-</div>
-<input class="input input-narrow-tablet margin-top-xs" type="text" placeholder="Placeholder" />
-```
-
 ### Validation states
 
 `input-error`/`input-warning`/`input-success` helps with visual reflection of validation states.

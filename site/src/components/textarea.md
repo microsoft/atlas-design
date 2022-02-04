@@ -42,18 +42,6 @@ Here is an example of a standard textarea usage paired with a label.
 <textarea class="textarea textarea-fixed-height" placeholder="Textarea placeholder"></textarea>
 ```
 
-`textarea-narrow`/`textarea-narrow-tablet` resets textarea's width.
-
-```html
-<textarea class="textarea textarea-narrow" placeholder="Textarea placeholder"></textarea>
-<div class="display-flex align-items-center padding-sm color-danger font-size-sm">
-	<div class="flex-grow-1 margin-right-xs border-color-danger border-top"></div>
-	<p>The following are only applied above the tablet breakpoint</p>
-	<div class="flex-grow-1 margin-left-xs border-color-danger border-top"></div>
-</div>
-<textarea class="textarea textarea-narrow-tablet" placeholder="Textarea placeholder"></textarea>
-```
-
 ### Validation states
 
 `textarea-error`/`textarea-warning`/`textarea-success` helps with visual reflection of validation states.

@@ -71,37 +71,18 @@ $textarea-success-border-color: $score-high !default;
 		@include control-lg;
 	}
 
-	&.textarea-narrow {
-		width: auto;
-
-		&-tablet {
-			@include tablet {
-				width: auto;
-			}
-		}
-	}
-
 	&.textarea-error {
 		border-color: $textarea-error-border-color;
-
-		&:focus-visible {
-			outline-color: $textarea-error-border-color;
-		}
+		outline-color: $textarea-error-border-color;
 	}
 
 	&.textarea-warning {
 		border-color: $textarea-warning-border-color;
-
-		&:focus-visible {
-			outline-color: $textarea-warning-border-color;
-		}
+		outline-color: $textarea-warning-border-color;
 	}
 
 	&.textarea-success {
 		border-color: $textarea-success-border-color;
-
-		&:focus-visible {
-			outline-color: $textarea-success-border-color;
-		}
+		outline-color: $textarea-success-border-color;
 	}
 }
