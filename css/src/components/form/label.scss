@@ -1,9 +1,5 @@
 $label-color: $text !default;
-
 $label-font-size: $font-size-7 !default;
-$label-sm-font-size: $font-size-8 !default;
-$label-lg-font-size: $font-size-6 !default;
-
 $label-font-weight: $weight-semibold !default;
 
 .label {
@@ -11,12 +7,4 @@ $label-font-weight: $weight-semibold !default;
 	color: $label-color;
 	font-size: $label-font-size;
 	font-weight: $label-font-weight;
-
-	&.label-sm {
-		font-size: $label-sm-font-size;
-	}
-
-	&.label-lg {
-		font-size: $label-lg-font-size;
-	}
 }

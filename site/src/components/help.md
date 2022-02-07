@@ -18,34 +18,6 @@ Here is an example of a help component textarea usage paired with an input and a
 <p class="help">Help message</p>
 ```
 
-## Sizes
-
-`help-sm`/`help-lg` makes help component a little bigger or smaller than the default.
-
-```html
-<div>
-	<label class="label label-sm">
-		Label
-		<input class="input input-sm" type="text" placeholder="Placeholder" />
-	</label>
-	<p class="help help-sm">Help message</p>
-</div>
-<div class="margin-top-sm">
-	<label class="label">
-		Label
-		<input class="input" type="text" placeholder="Placeholder" />
-	</label>
-	<p class="help">Help message</p>
-</div>
-<div class="margin-top-sm">
-	<label class="label label-lg">
-		Label
-		<input class="input input-lg" type="text" placeholder="Placeholder" />
-	</label>
-	<p class="help help-lg">Help message</p>
-</div>
-```
-
 ### Validation states
 
 `help-error`/`help-warning`/`help-success` helps with visual reflection of validation states.
