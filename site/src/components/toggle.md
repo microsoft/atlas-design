@@ -16,18 +16,24 @@ A selectable form element that represents a binary state (on or off).
 </div>
 ```
 
-Sizing
+## Disabled states
+
+In order to achieve disabled styles, you'll need to add the `disabled` attribute to the inner input.
+
+### Disabled and unselected
 
 ```html
-<div class="toggle font-size-lg is-selected">
-	<input id="toggle-id-1" type="checkbox" aria-label="Toggle me!" />
-	<label for="toggle-id-1"></label>
+<div class="toggle">
+	<input id="toggle-id-2" type="checkbox" aria-label="Disabled toggle" disabled />
+	<label for="toggle-id-2"></label>
 </div>
 ```
 
+### Disabled and selected
+
 ```html
-<div class="toggle font-size-h1">
-	<input id="toggle-id-2" type="checkbox" aria-label="Toggle me!" />
+<div class="toggle">
+	<input id="toggle-id-2" type="checkbox" aria-label="Disabled toggle" checked disabled />
 	<label for="toggle-id-2"></label>
 </div>
 ```

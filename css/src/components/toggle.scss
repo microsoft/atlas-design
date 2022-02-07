@@ -59,5 +59,10 @@ $toggle-circle-selected-background-color: $body-background !default;
 				@extend %focus;
 			}
 		}
+
+		&:disabled + label {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
 	}
 }
