@@ -1,0 +1,86 @@
+$toggle-transition: $input-transition-duration cubic-bezier(0.01, 1.23, 0.58, 0.96) !default;
+$toggle-circle-size: 0.75em !default;
+$toggle-circle-top: 0.1875em !default;
+$toggle-circle-distance-from-border: 1em - $toggle-circle-size;
+
+$toggle-unselected-circle-color: $text-subtle !default;
+$toggle-unselected-border-color: $text-subtle !default;
+$toggle-unselected-background-color: $body-background !default;
+$toggle-selected-background-color: $primary !default;
+$toggle-circle-selected-background-color: $body-background !default;
+
+.toggle {
+	label {
+		display: block;
+		position: relative;
+		width: 2.5em;
+		height: 1.25em;
+		transition: $input-transition-duration linear;
+		transition-property: background-color, border-color;
+		border: 0.065em solid $toggle-unselected-border-color;
+		border-radius: $radius-rounded;
+		background-color: $toggle-unselected-background-color;
+		cursor: pointer;
+
+		@include forced-colors {
+			border-color: CanvasText !important;
+			background-color: Canvas !important;
+		}
+
+		&::after {
+			display: block;
+			position: absolute;
+			width: $toggle-circle-size;
+			height: $toggle-circle-size;
+			transition: $toggle-transition;
+			transition-property: inset-inline-start, border-color, background-color;
+			border-radius: $radius-rounded;
+			inset-block-start: $toggle-circle-top;
+			inset-inline-start: $toggle-circle-distance-from-border;
+			background-color: $toggle-unselected-circle-color;
+			content: '';
+
+			@include forced-colors {
+				background-color: CanvasText !important;
+			}
+		}
+	}
+
+	/* stylelint-disable -- want to keep [type="checkbox"] as a requirement here  */
+	&.is-selected label,
+	input[type='checkbox']:checked + label {
+		/* stylelint-enable */
+		border-color: $toggle-selected-background-color;
+		background-color: $toggle-selected-background-color;
+
+		@include forced-colors {
+			border-color: LinkText !important;
+			background-color: LinkText !important;
+		}
+
+		&::after {
+			background-color: $toggle-circle-selected-background-color;
+			inset-inline-start: calc(100% - ($toggle-circle-distance-from-border + $toggle-circle-size));
+
+			@include forced-colors {
+				background-color: Canvas !important;
+			}
+		}
+	}
+
+	/* stylelint-disable-next-line -- want to keep [type="checkbox"] as a requirement here */
+	input[type='checkbox'] {
+		@include visually-hidden();
+
+		@include focus-visible() {
+			+ label {
+				@extend %focus;
+			}
+		}
+
+		&:disabled + label {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+	}
+}

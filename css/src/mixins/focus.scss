@@ -9,3 +9,15 @@
 %focus {
 	@include focus();
 }
+
+@mixin focus-visible {
+	@if ($focus-visible-use-polyfill) {
+		&.focus-visible {
+			@content;
+		}
+	} @else {
+		&:focus-visible {
+			@content;
+		}
+	}
+}
