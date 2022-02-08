@@ -256,7 +256,26 @@ module.exports = {
 		'value-keyword-case': [
 			'lower',
 			{
-				camelCaseSvgKeywords: true
+				camelCaseSvgKeywords: true,
+				ignoreKeywords: [
+					'Canvas',
+					'CanvasText',
+					'LinkText',
+					'VisitedText',
+					'ActiveText',
+					'ButtonFace',
+					'ButtonText',
+					'ButtonBorder',
+					'Field',
+					'FieldText',
+					'Highlight',
+					'HighlightText',
+					'SelectedItem',
+					'SelectedItemText',
+					'Mark',
+					'MarkText',
+					'GrayText'
+				]
 			}
 		]
 	}
