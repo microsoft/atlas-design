@@ -24,8 +24,8 @@ In order to achieve disabled styles, you'll need to add the `disabled` attribute
 
 ```html
 <div class="toggle">
-	<input id="toggle-id-2" type="checkbox" aria-label="Disabled toggle" disabled />
-	<label for="toggle-id-2"></label>
+	<input id="toggle-id-1" type="checkbox" aria-label="Disabled toggle" disabled />
+	<label for="toggle-id-1"></label>
 </div>
 ```
 
