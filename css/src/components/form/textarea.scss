@@ -54,17 +54,8 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
 	@include focus-visible {
 		border-color: $textarea-focus-border-color;
-
-		@if ($focus-visible-use-polyfill) {
-			outline: none !important;
-			box-shadow: $textarea-focus-box-shadow-size $textarea-focus-border-color;
-		} @else {
-			@extend %focus;
-
-			outline-color: $textarea-focus-border-color;
-			outline-offset: 0 !important;
-			outline-style: solid !important;
-		}
+		outline: none !important;
+		box-shadow: $textarea-focus-box-shadow-size $textarea-focus-border-color;
 	}
 
 	&.textarea-fixed-height {
@@ -81,37 +72,26 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
 	&.textarea-error {
 		border-color: $textarea-error-border-color;
-		outline-color: $textarea-error-border-color;
 
-		@if ($focus-visible-use-polyfill) {
-			@include focus-visible() {
-				outline: none !important;
-				box-shadow: $input-focus-box-shadow-size $input-error-border-color;
-			}
+		@include focus-visible() {
+			outline: none !important;
+			box-shadow: $input-focus-box-shadow-size $input-error-border-color;
 		}
 	}
 
 	&.textarea-warning {
 		border-color: $textarea-warning-border-color;
-		outline-color: $textarea-warning-border-color;
-
-		@if ($focus-visible-use-polyfill) {
-			@include focus-visible() {
-				outline: none !important;
-				box-shadow: $input-focus-box-shadow-size $input-warning-border-color;
-			}
+		@include focus-visible() {
+			outline: none !important;
+			box-shadow: $input-focus-box-shadow-size $input-warning-border-color;
 		}
 	}
 
 	&.textarea-success {
 		border-color: $textarea-success-border-color;
-		outline-color: $textarea-success-border-color;
-
-		@if ($focus-visible-use-polyfill) {
-			@include focus-visible() {
-				outline: none !important;
-				box-shadow: $input-focus-box-shadow-size $input-success-border-color;
-			}
+		@include focus-visible() {
+			outline: none !important;
+			box-shadow: $input-focus-box-shadow-size $input-success-border-color;
 		}
 	}
 }
