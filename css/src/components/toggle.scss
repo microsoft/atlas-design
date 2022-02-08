@@ -21,6 +21,7 @@ $toggle-circle-selected-background-color: $body-background !default;
 		border-radius: $radius-rounded;
 		background-color: $toggle-unselected-background-color;
 		cursor: pointer;
+		forced-color-adjust: none;
 
 		&::after {
 			display: block;
