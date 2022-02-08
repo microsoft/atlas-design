@@ -15,6 +15,8 @@ $textarea-error-border-color: $danger !default;
 $textarea-warning-border-color: $warning-active !default;
 $textarea-success-border-color: $score-high !default;
 
+$textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
+
 .textarea {
 	@include control;
 
@@ -27,6 +29,15 @@ $textarea-success-border-color: $score-high !default;
 	color: $textarea-color !important;
 	margin-block-start: 0.5rem;
 
+	&[rows] {
+		height: initial;
+	}
+
+	&:not([rows]) {
+		min-height: 100px;
+		max-height: 600px;
+	}
+
 	&::placeholder {
 		color: $textarea-placeholder-color;
 	}
@@ -35,28 +46,25 @@ $textarea-success-border-color: $score-high !default;
 		border-color: $textarea-hover-border-color;
 	}
 
-	@include focus-visible {
-		@extend %focus;
-
-		border-color: $textarea-hover-border-color;
-		outline-color: $textarea-focus-border-color;
-		outline-offset: 0 !important;
-		outline-style: solid !important;
-	}
-
 	&[disabled] {
 		border-color: $textarea-disabled-border-color;
 		background-color: $textarea-disabled-background-color;
 		color: $textarea-disabled-color;
 	}
 
-	&:not([rows]) {
-		min-height: 100px;
-		max-height: 600px;
-	}
+	@include focus-visible {
+		border-color: $textarea-focus-border-color;
 
-	&[rows] {
-		height: initial;
+		@if ($focus-visible-use-polyfill) {
+			outline: none !important;
+			box-shadow: $textarea-focus-box-shadow-size $textarea-focus-border-color;
+		} @else {
+			@extend %focus;
+
+			outline-color: $textarea-focus-border-color;
+			outline-offset: 0 !important;
+			outline-style: solid !important;
+		}
 	}
 
 	&.textarea-fixed-height {
@@ -74,15 +82,36 @@ $textarea-success-border-color: $score-high !default;
 	&.textarea-error {
 		border-color: $textarea-error-border-color;
 		outline-color: $textarea-error-border-color;
+
+		@if ($focus-visible-use-polyfill) {
+			@include focus-visible() {
+				outline: none !important;
+				box-shadow: $input-focus-box-shadow-size $input-error-border-color;
+			}
+		}
 	}
 
 	&.textarea-warning {
 		border-color: $textarea-warning-border-color;
 		outline-color: $textarea-warning-border-color;
+
+		@if ($focus-visible-use-polyfill) {
+			@include focus-visible() {
+				outline: none !important;
+				box-shadow: $input-focus-box-shadow-size $input-warning-border-color;
+			}
+		}
 	}
 
 	&.textarea-success {
 		border-color: $textarea-success-border-color;
 		outline-color: $textarea-success-border-color;
+
+		@if ($focus-visible-use-polyfill) {
+			@include focus-visible() {
+				outline: none !important;
+				box-shadow: $input-focus-box-shadow-size $input-success-border-color;
+			}
+		}
 	}
 }

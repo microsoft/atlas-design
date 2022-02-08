@@ -15,6 +15,8 @@ $input-error-border-color: $danger !default;
 $input-warning-border-color: $warning-active !default;
 $input-success-border-color: $score-high !default;
 
+$input-focus-box-shadow-size: 0 0 0 0.125rem !default;
+
 .input {
 	@include control;
 
@@ -33,19 +35,25 @@ $input-success-border-color: $score-high !default;
 		border-color: $input-hover-border-color;
 	}
 
-	@include focus-visible {
-		@extend %focus;
-
-		border-color: $input-hover-border-color;
-		outline-color: $input-focus-border-color;
-		outline-offset: 0 !important;
-		outline-style: solid !important;
-	}
-
 	&[disabled] {
 		border-color: $input-disabled-border-color;
 		background-color: $input-disabled-background-color;
 		color: $input-disabled-color;
+	}
+
+	@include focus-visible {
+		border-color: $input-focus-border-color;
+
+		@if ($focus-visible-use-polyfill) {
+			outline: none !important;
+			box-shadow: $input-focus-box-shadow-size $input-focus-border-color;
+		} @else {
+			@extend %focus;
+
+			outline-color: $input-focus-border-color;
+			outline-offset: 0 !important;
+			outline-style: solid !important;
+		}
 	}
 
 	&.input-sm {
@@ -59,15 +67,36 @@ $input-success-border-color: $score-high !default;
 	&.input-error {
 		border-color: $input-error-border-color;
 		outline-color: $input-error-border-color;
+
+		@if ($focus-visible-use-polyfill) {
+			@include focus-visible() {
+				outline: none !important;
+				box-shadow: $input-focus-box-shadow-size $input-error-border-color;
+			}
+		}
 	}
 
 	&.input-warning {
 		border-color: $input-warning-border-color;
 		outline-color: $input-warning-border-color;
+
+		@if ($focus-visible-use-polyfill) {
+			@include focus-visible() {
+				outline: none !important;
+				box-shadow: $input-focus-box-shadow-size $input-warning-border-color;
+			}
+		}
 	}
 
 	&.input-success {
 		border-color: $input-success-border-color;
 		outline-color: $input-success-border-color;
+
+		@if ($focus-visible-use-polyfill) {
+			@include focus-visible() {
+				outline: none !important;
+				box-shadow: $input-focus-box-shadow-size $input-success-border-color;
+			}
+		}
 	}
 }
