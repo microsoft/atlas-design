@@ -11,9 +11,9 @@ $input-disabled-color: $text-subtle !default;
 $input-disabled-background-color: $body-background-medium !default;
 $input-disabled-border-color: $table-border-dark !default;
 
-$input-error-border-color: $danger !default;
-$input-warning-border-color: $warning-active !default;
-$input-success-border-color: $score-high !default;
+$input-error-border-color: $danger-dark !default;
+$input-warning-border-color: $warning-dark !default;
+$input-success-border-color: $success !default;
 
 $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
