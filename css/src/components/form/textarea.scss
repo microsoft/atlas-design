@@ -27,7 +27,6 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 	border-color: $textarea-border-color;
 	background-color: $textarea-background-color;
 	color: $textarea-color !important;
-	margin-block-start: 0.5rem;
 
 	&[rows] {
 		height: initial;
@@ -60,14 +59,6 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
 	&.textarea-fixed-height {
 		resize: none;
-	}
-
-	&.textarea-sm {
-		@include control-sm;
-	}
-
-	&.textarea-lg {
-		@include control-lg;
 	}
 
 	&.textarea-error {

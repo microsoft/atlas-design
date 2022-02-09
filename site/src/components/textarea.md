@@ -22,19 +22,11 @@ Textarea element represents a multi-line plain-text editing control.
 Here is an example of a standard textarea usage paired with a label.
 
 ```html
-<label class="label" for="textarea-demo">Label</label>
+<label class="label margin-bottom-xxs" for="textarea-demo">Label</label>
 <textarea class="textarea" id="textarea-demo" placeholder="Textarea placeholder"></textarea>
 ```
 
 ### Sizes
-
-`textarea-sm`/`textarea-lg` makes textarea a little bigger or smaller than the default.
-
-```html
-<textarea class="textarea textarea-sm" placeholder="Textarea placeholder"></textarea>
-<textarea class="textarea margin-top-xs" placeholder="Textarea placeholder"></textarea>
-<textarea class="textarea textarea-lg margin-top-xs" placeholder="Textarea placeholder"></textarea>
-```
 
 `textarea-fixed-height` disables the ability to resize the textarea component in browser.
 

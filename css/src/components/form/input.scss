@@ -25,7 +25,6 @@ $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 	border-color: $input-border-color;
 	background-color: $input-background-color;
 	color: $input-color !important;
-	margin-block-start: 0.5rem;
 
 	&::placeholder {
 		color: $input-placeholder-color;

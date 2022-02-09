@@ -13,9 +13,9 @@ Help component can be paired with form's elements and contain additional informa
 Here is an example of a help component textarea usage paired with an input and a label.
 
 ```html
-<label class="label" for="input-demo">Label</label>
+<label class="label margin-bottom-xxs" for="input-demo">Label</label>
 <input class="input" id="input-demo" type="text" placeholder="Placeholder" />
-<p class="help">Help message</p>
+<p class="help margin-top-xxs">Help message</p>
 ```
 
 ### Validation states
@@ -31,7 +31,7 @@ Here is an example of a help component textarea usage paired with an input and a
 ```html
 <label class="label">
 	Label
-	<input class="input input-error" type="text" placeholder="Placeholder" />
+	<input class="input input-error margin-top-xxs" type="text" placeholder="Placeholder" />
 </label>
-<p class="help help-error">Error message</p>
+<p class="help help-error margin-top-xxs">Error message</p>
 ```

@@ -22,7 +22,7 @@ Input elements are used to accept data from the user.
 Here is an example of a standard usage of input paired with a label.
 
 ```html
-<label class="label" for="input-demo">Label</label>
+<label class="label margin-bottom-xxs" for="input-demo">Label</label>
 <input class="input" id="input-demo" type="text" placeholder="Placeholder text" />
 ```
 
