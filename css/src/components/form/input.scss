@@ -11,7 +11,7 @@ $input-disabled-color: $text-subtle !default;
 $input-disabled-background-color: $body-background-medium !default;
 $input-disabled-border-color: $table-border-dark !default;
 
-$input-error-border-color: $danger-dark !default;
+$input-danger-border-color: $danger !default;
 $input-warning-border-color: $warning-dark !default;
 $input-success-border-color: $success !default;
 
@@ -54,12 +54,12 @@ $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		@include control-lg;
 	}
 
-	&.input-error {
-		border-color: $input-error-border-color;
+	&.input-danger {
+		border-color: $input-danger-border-color;
 
 		@include focus-visible() {
 			outline: none !important;
-			box-shadow: $input-focus-box-shadow-size $input-error-border-color;
+			box-shadow: $input-focus-box-shadow-size $input-danger-border-color;
 		}
 	}
 

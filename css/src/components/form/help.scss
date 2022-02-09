@@ -1,5 +1,5 @@
 $help-color: $text !default;
-$help-error-color: $danger-dark !default;
+$help-danger-color: $danger !default;
 $help-warning-color: $warning-dark !default;
 $help-success-color: $success !default;
 $help-font-size: $font-size-8 !default;
@@ -9,8 +9,8 @@ $help-font-size: $font-size-8 !default;
 	color: $help-color;
 	font-size: $help-font-size;
 
-	&.help-error {
-		color: $help-error-color;
+	&.help-danger {
+		color: $help-danger-color;
 	}
 
 	&.help-warning {

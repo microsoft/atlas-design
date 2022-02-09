@@ -9,12 +9,12 @@ figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.f
 
 Textarea element represents a multi-line plain-text editing control.
 
-| Class       | Default                                                               | Disabled                                                                        |
-| ----------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `.textarea` | <textarea class="textarea" placeholder="Default textarea"></textarea> | <textarea class="textarea" placeholder="Default textarea" disabled ></textarea> |
+| Class       | Default                                                          | Disabled                                                                   |
+| ----------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `.textarea` | <textarea class="textarea" placeholder="Placeholder"></textarea> | <textarea class="textarea" placeholder="Placeholder" disabled ></textarea> |
 
 ```abut-html
-<textarea class="textarea" placeholder="Default textarea"></textarea>
+<textarea class="textarea" placeholder="Placeholder"></textarea>
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ Here is an example of a standard textarea usage paired with a label.
 
 ```html
 <label class="label margin-bottom-xxs" for="textarea-demo">Label</label>
-<textarea class="textarea" id="textarea-demo" placeholder="Textarea placeholder"></textarea>
+<textarea class="textarea" id="textarea-demo" placeholder="Placeholder"></textarea>
 ```
 
 ### Sizes
@@ -31,19 +31,19 @@ Here is an example of a standard textarea usage paired with a label.
 `textarea-fixed-height` disables the ability to resize the textarea component in browser.
 
 ```html
-<textarea class="textarea textarea-fixed-height" placeholder="Textarea placeholder"></textarea>
+<textarea class="textarea textarea-fixed-height" placeholder="Placeholder"></textarea>
 ```
 
 ### Validation states
 
-`textarea-error`/`textarea-warning`/`textarea-success` helps with visual reflection of validation states.
+`textarea-danger`/`textarea-warning`/`textarea-success` helps with visual reflection of validation states.
 
-| State   | Class                         |                                                                                        |
-| ------- | ----------------------------- | -------------------------------------------------------------------------------------- |
-| Error   | `.textarea .textarea-error`   | <textarea class="textarea textarea-error" placeholder="Default textarea"></textarea>   |
-| Warning | `.textarea .textarea-warning` | <textarea class="textarea textarea-warning" placeholder="Default textarea"></textarea> |
-| Success | `.textarea .textarea-success` | <textarea class="textarea textarea-success" placeholder="Default textarea"></textarea> |
+| State   | Class                         |                                                                                   |
+| ------- | ----------------------------- | --------------------------------------------------------------------------------- |
+| Danger  | `.textarea .textarea-danger`  | <textarea class="textarea textarea-danger" placeholder="Placeholder"></textarea>  |
+| Warning | `.textarea .textarea-warning` | <textarea class="textarea textarea-warning" placeholder="Placeholder"></textarea> |
+| Success | `.textarea .textarea-success` | <textarea class="textarea textarea-success" placeholder="Placeholder"></textarea> |
 
 ```abut-html
-<textarea class="textarea textarea-error" placeholder="Default textarea"></textarea>
+<textarea class="textarea textarea-danger" placeholder="Placeholder"></textarea>
 ```

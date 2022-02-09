@@ -20,18 +20,18 @@ Here is an example of a help component textarea usage paired with an input and a
 
 ### Validation states
 
-`help-error`/`help-warning`/`help-success` helps with visual reflection of validation states.
+`help-danger`/`help-warning`/`help-success` helps with visual reflection of validation states.
 
 | State   | Class                 | Preview                                                          |
 | ------- | --------------------- | ---------------------------------------------------------------- |
-| Error   | `.help .help-error`   | <p class="help help-error margin-top-none">Error message</p>     |
+| Danger  | `.help .help-danger`  | <p class="help help-danger margin-top-none">Error message</p>    |
 | Warning | `.help .help-warning` | <p class="help help-warning margin-top-none">Warning message</p> |
 | Success | `.help .help-success` | <p class="help help-success margin-top-none">Success message</p> |
 
 ```html
 <label class="label">
 	Label
-	<input class="input input-error margin-top-xxs" type="text" placeholder="Placeholder" />
+	<input class="input input-danger margin-top-xxs" type="text" placeholder="Placeholder" />
 </label>
-<p class="help help-error margin-top-xxs">Error message</p>
+<p class="help help-danger margin-top-xxs">Error message</p>
 ```

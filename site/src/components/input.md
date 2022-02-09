@@ -23,7 +23,7 @@ Here is an example of a standard usage of input paired with a label.
 
 ```html
 <label class="label margin-bottom-xxs" for="input-demo">Label</label>
-<input class="input" id="input-demo" type="text" placeholder="Placeholder text" />
+<input class="input" id="input-demo" type="text" placeholder="Placeholder" />
 ```
 
 ### Sizes
@@ -38,14 +38,14 @@ Here is an example of a standard usage of input paired with a label.
 
 ### Validation states
 
-`input-error`/`input-warning`/`input-success` helps with visual reflection of validation states.
+`input-danger`/`input-warning`/`input-success` helps with visual reflection of validation states.
 
 | State   | Class                   |                                                                             |
 | ------- | ----------------------- | --------------------------------------------------------------------------- |
-| Error   | `.input .input-error`   | <input class="input input-error" type="text" placeholder="Placeholder" />   |
+| Danger  | `.input .input-danger`  | <input class="input input-danger" type="text" placeholder="Placeholder" />  |
 | Warning | `.input .input-warning` | <input class="input input-warning" type="text" placeholder="Placeholder" /> |
 | Success | `.input .input-success` | <input class="input input-success" type="text" placeholder="Placeholder" /> |
 
 ```abut-html
-<input class="input input-error" type="text" placeholder="Placeholder" />
+<input class="input input-danger" type="text" placeholder="Placeholder" />
 ```

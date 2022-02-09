@@ -11,7 +11,7 @@ $textarea-disabled-color: $text-subtle !default;
 $textarea-disabled-background-color: $body-background-medium !default;
 $textarea-disabled-border-color: $table-border-dark !default;
 
-$textarea-error-border-color: $danger-dark !default;
+$textarea-danger-border-color: $danger !default;
 $textarea-warning-border-color: $warning-dark !default;
 $textarea-success-border-color: $success !default;
 
@@ -61,12 +61,12 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		resize: none;
 	}
 
-	&.textarea-error {
-		border-color: $textarea-error-border-color;
+	&.textarea-danger {
+		border-color: $textarea-danger-border-color;
 
 		@include focus-visible() {
 			outline: none !important;
-			box-shadow: $input-focus-box-shadow-size $input-error-border-color;
+			box-shadow: $textarea-focus-box-shadow-size $textarea-danger-border-color;
 		}
 	}
 
@@ -74,7 +74,7 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		border-color: $textarea-warning-border-color;
 		@include focus-visible() {
 			outline: none !important;
-			box-shadow: $input-focus-box-shadow-size $input-warning-border-color;
+			box-shadow: $textarea-focus-box-shadow-size $textarea-warning-border-color;
 		}
 	}
 
@@ -82,7 +82,7 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		border-color: $textarea-success-border-color;
 		@include focus-visible() {
 			outline: none !important;
-			box-shadow: $input-focus-box-shadow-size $input-success-border-color;
+			box-shadow: $textarea-focus-box-shadow-size $textarea-success-border-color;
 		}
 	}
 }
