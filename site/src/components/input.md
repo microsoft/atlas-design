@@ -38,12 +38,11 @@ Here is an example of a standard usage of input paired with a label.
 
 ### Validation states
 
-`input-danger`/`input-warning`/`input-success` helps with visual reflection of validation states.
+`input-danger`/`input-success` helps with visual reflection of validation states.
 
 | State   | Class                   |                                                                             |
 | ------- | ----------------------- | --------------------------------------------------------------------------- |
 | Danger  | `.input .input-danger`  | <input class="input input-danger" type="text" placeholder="Placeholder" />  |
-| Warning | `.input .input-warning` | <input class="input input-warning" type="text" placeholder="Placeholder" /> |
 | Success | `.input .input-success` | <input class="input input-success" type="text" placeholder="Placeholder" /> |
 
 ```abut-html

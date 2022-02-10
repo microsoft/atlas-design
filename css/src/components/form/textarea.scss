@@ -12,7 +12,6 @@ $textarea-disabled-background-color: $body-background-medium !default;
 $textarea-disabled-border-color: $table-border-dark !default;
 
 $textarea-danger-border-color: $danger !default;
-$textarea-warning-border-color: $warning-dark !default;
 $textarea-success-border-color: $success !default;
 
 $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
@@ -67,14 +66,6 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		@include focus-visible() {
 			outline: none !important;
 			box-shadow: $textarea-focus-box-shadow-size $textarea-danger-border-color;
-		}
-	}
-
-	&.textarea-warning {
-		border-color: $textarea-warning-border-color;
-		@include focus-visible() {
-			outline: none !important;
-			box-shadow: $textarea-focus-box-shadow-size $textarea-warning-border-color;
 		}
 	}
 

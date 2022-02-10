@@ -12,7 +12,6 @@ $input-disabled-background-color: $body-background-medium !default;
 $input-disabled-border-color: $table-border-dark !default;
 
 $input-danger-border-color: $danger !default;
-$input-warning-border-color: $warning-dark !default;
 $input-success-border-color: $success !default;
 
 $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
@@ -60,15 +59,6 @@ $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		@include focus-visible() {
 			outline: none !important;
 			box-shadow: $input-focus-box-shadow-size $input-danger-border-color;
-		}
-	}
-
-	&.input-warning {
-		border-color: $input-warning-border-color;
-
-		@include focus-visible() {
-			outline: none !important;
-			box-shadow: $input-focus-box-shadow-size $input-warning-border-color;
 		}
 	}
 
