@@ -1,0 +1,79 @@
+$textarea-color: $text !default;
+$textarea-background-color: $body-background !default;
+$textarea-border-color: $text !default;
+$textarea-placeholder-color: $text-subtle !default;
+
+$textarea-hover-color: $text !default;
+$textarea-hover-border-color: $primary !default;
+$textarea-focus-border-color: $primary !default;
+
+$textarea-disabled-color: $text-subtle !default;
+$textarea-disabled-background-color: $body-background-medium !default;
+$textarea-disabled-border-color: $table-border-dark !default;
+
+$textarea-danger-border-color: $danger !default;
+$textarea-success-border-color: $success !default;
+
+$textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
+
+.textarea {
+	@include control;
+
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	resize: vertical;
+	border-color: $textarea-border-color;
+	background-color: $textarea-background-color;
+	color: $textarea-color !important;
+
+	&[rows] {
+		height: initial;
+	}
+
+	&:not([rows]) {
+		min-height: 100px;
+		max-height: 600px;
+	}
+
+	&::placeholder {
+		color: $textarea-placeholder-color;
+	}
+
+	&:hover {
+		border-color: $textarea-hover-border-color;
+	}
+
+	&[disabled] {
+		border-color: $textarea-disabled-border-color;
+		background-color: $textarea-disabled-background-color;
+		color: $textarea-disabled-color;
+	}
+
+	@include focus-visible {
+		border-color: $textarea-focus-border-color;
+		outline: none !important;
+		box-shadow: $textarea-focus-box-shadow-size $textarea-focus-border-color;
+	}
+
+	&.textarea-fixed-height {
+		resize: none;
+	}
+
+	&.textarea-danger {
+		border-color: $textarea-danger-border-color;
+
+		@include focus-visible() {
+			outline: none !important;
+			box-shadow: $textarea-focus-box-shadow-size $textarea-danger-border-color;
+		}
+	}
+
+	&.textarea-success {
+		border-color: $textarea-success-border-color;
+		@include focus-visible() {
+			outline: none !important;
+			box-shadow: $textarea-focus-box-shadow-size $textarea-success-border-color;
+		}
+	}
+}

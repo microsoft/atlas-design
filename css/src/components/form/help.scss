@@ -1,0 +1,18 @@
+$help-color: $text !default;
+$help-danger-color: $danger !default;
+$help-success-color: $success !default;
+$help-font-size: $font-size-8 !default;
+
+.help {
+	display: block;
+	color: $help-color;
+	font-size: $help-font-size;
+
+	&.help-danger {
+		color: $help-danger-color;
+	}
+
+	&.help-success {
+		color: $help-success-color;
+	}
+}
