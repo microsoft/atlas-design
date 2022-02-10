@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.11.0
+
+### Minor Changes
+
+- c18cd7e: Add Toggle element and relevant documentation.
+- cd2d8bb: Adding Input and Textarea components and relevant documentation.
+
 ## 3.10.0
 
 ### Minor Changes

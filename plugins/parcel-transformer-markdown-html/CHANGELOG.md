@@ -1,5 +1,14 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.5.3
+
+### Patch Changes
+
+- b7ca7f5: Removing border from the table-wrapper.
+- Updated dependencies [c18cd7e]
+- Updated dependencies [cd2d8bb]
+  - @microsoft/atlas-css@3.11.0
+
 ## 2.5.2
 
 ### Patch Changes

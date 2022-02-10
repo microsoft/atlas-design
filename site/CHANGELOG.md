@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.19.0
+
+### Minor Changes
+
+- c18cd7e: Add Toggle element and relevant documentation.
+- cd2d8bb: Adding Input and Textarea components and relevant documentation.
+
 ## 0.18.0
 
 ### Minor Changes

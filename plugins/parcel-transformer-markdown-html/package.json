@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/parcel-transformer-markdown-html",
-	"version": "2.5.2",
+	"version": "2.5.3",
 	"license": "MIT",
 	"private": true,
 	"repository": {
@@ -13,7 +13,7 @@
 		"parcel": "^2.0.1"
 	},
 	"dependencies": {
-		"@microsoft/atlas-css": "^3.10.0",
+		"@microsoft/atlas-css": "^3.11.0",
 		"@parcel/plugin": "^2.2.1",
 		"@parcel/utils": "^2.2.1",
 		"marked": "^4.0.12",
