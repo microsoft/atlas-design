@@ -1,3 +1,5 @@
+/* stylelint-disable selector-no-qualifying-type */
+
 $select-color: $text !default;
 $select-background-color: $body-background !default;
 $select-border-color: $text !default;
@@ -25,6 +27,7 @@ $select-arrow-real-width: 0.75em !default;
 
 	select {
 		@include control;
+
 		width: 100%;
 		max-width: 100%;
 		border-color: $select-border-color;
@@ -60,20 +63,20 @@ $select-arrow-real-width: 0.75em !default;
 		}
 
 		&::after {
-			border: $select-arrow-border-width solid $select-color;
-			border-right: 0;
-			border-top: 0;
-			content: ' ';
 			display: block;
-			width: $select-arrow-size;
-			height: $select-arrow-size;
-			pointer-events: none;
 			position: absolute;
 			top: calc(50% - $select-arrow-real-width / 2);
-			inset-inline-end: $control-padding-horizontal;
+			width: $select-arrow-size;
+			height: $select-arrow-size;
 			transform: rotate(-45deg);
 			transform-origin: center;
+			border: $select-arrow-border-width solid $select-color;
+			border-top: 0;
+			border-right: 0;
+			pointer-events: none;
+			content: ' ';
 			z-index: $zindex-active;
+			inset-inline-end: $control-padding-horizontal;
 		}
 
 		&.select-disabled::after {
