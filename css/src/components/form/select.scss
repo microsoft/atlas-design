@@ -1,0 +1,109 @@
+$select-color: $text !default;
+$select-background-color: $body-background !default;
+$select-border-color: $text !default;
+$select-placeholder-color: $text-subtle !default;
+
+$select-hover-color: $text !default;
+$select-hover-border-color: $primary !default;
+$select-focus-border-color: $primary !default;
+
+$select-disabled-color: $text-subtle !default;
+$select-disabled-background-color: $body-background-medium !default;
+$select-disabled-border-color: $table-border-dark !default;
+
+$select-danger-border-color: $danger !default;
+$select-success-border-color: $success !default;
+
+$select-focus-box-shadow-size: 0 0 0 0.125rem !default;
+
+$select-arrow-size: 0.525em !default;
+$select-arrow-border-width: 1px !default;
+$select-arrow-real-width: 0.75em !default;
+
+.select {
+	position: relative;
+
+	select {
+		@include control;
+		width: 100%;
+		max-width: 100%;
+		border-color: $select-border-color;
+		background-color: $select-background-color;
+		color: $select-color;
+		font-size: inherit;
+		cursor: pointer;
+
+		&[multiple] {
+			padding: 0;
+
+			option {
+				padding: $control-padding-vertical $control-padding-horizontal;
+			}
+		}
+
+		&[disabled] {
+			border-color: $select-disabled-border-color;
+			background-color: $select-disabled-background-color;
+			color: $select-disabled-color;
+		}
+
+		@include focus-visible {
+			border-color: $select-focus-border-color;
+			outline: none !important;
+			box-shadow: $select-focus-box-shadow-size $select-focus-border-color;
+		}
+	}
+
+	&:not(.select-multiple) {
+		select {
+			padding-inline-end: calc($control-padding-horizontal + $select-arrow-real-width);
+		}
+
+		&::after {
+			border: $select-arrow-border-width solid $select-color;
+			border-right: 0;
+			border-top: 0;
+			content: ' ';
+			display: block;
+			width: $select-arrow-size;
+			height: $select-arrow-size;
+			pointer-events: none;
+			position: absolute;
+			top: calc(50% - $select-arrow-real-width / 2);
+			inset-inline-end: $control-padding-horizontal;
+			transform: rotate(-45deg);
+			transform-origin: center;
+			z-index: $zindex-active;
+		}
+
+		&.select-disabled::after {
+			border-color: $select-disabled-border-color;
+		}
+	}
+
+	&.select-sm {
+		@include control-sm;
+	}
+
+	&.select-lg {
+		@include control-lg;
+	}
+
+	&.select-danger select {
+		border-color: $select-danger-border-color;
+
+		@include focus-visible() {
+			outline: none !important;
+			box-shadow: $select-focus-box-shadow-size $select-danger-border-color;
+		}
+	}
+
+	&.select-success select {
+		border-color: $select-success-border-color;
+
+		@include focus-visible() {
+			outline: none !important;
+			box-shadow: $select-focus-box-shadow-size $select-success-border-color;
+		}
+	}
+}
