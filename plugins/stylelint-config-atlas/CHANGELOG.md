@@ -1,5 +1,11 @@
 # @microsoft/stylelint-config-atlas
 
+## 4.0.2
+
+### Patch Changes
+
+- c18cd7e: Add system color keywords to value-keyword-case ignoreKeywords.
+
 ## 4.0.1
 
 ### Patch Changes
