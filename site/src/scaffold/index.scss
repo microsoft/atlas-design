@@ -3,3 +3,10 @@
 @import './styles/height.scss';
 @import './styles/overflow.scss';
 @import './code-block.scss';
+
+.header-spacer {
+	width: 2px;
+	display: inline-block;
+	background-color: $text;
+	height: 100%;
+}
