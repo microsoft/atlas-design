@@ -38,6 +38,7 @@ $select-arrow-real-width: 0.75em !default;
 
 		&[multiple] {
 			padding: 0;
+			overflow-y: auto;
 
 			option {
 				padding: $control-padding-vertical $control-padding-horizontal;
