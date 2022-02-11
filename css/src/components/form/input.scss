@@ -40,8 +40,12 @@ $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 	}
 
 	@include focus-visible {
+		@extend %focus;
+
 		border-color: $input-focus-border-color;
-		outline: none !important;
+		outline-color: transparent;
+		outline-offset: 0;
+		outline-style: solid;
 		box-shadow: $input-focus-box-shadow-size $input-focus-border-color;
 	}
 
@@ -57,7 +61,6 @@ $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		border-color: $input-danger-border-color;
 
 		@include focus-visible() {
-			outline: none !important;
 			box-shadow: $input-focus-box-shadow-size $input-danger-border-color;
 		}
 	}
@@ -66,7 +69,6 @@ $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		border-color: $input-success-border-color;
 
 		@include focus-visible() {
-			outline: none !important;
 			box-shadow: $input-focus-box-shadow-size $input-success-border-color;
 		}
 	}

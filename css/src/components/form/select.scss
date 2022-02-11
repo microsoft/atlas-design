@@ -52,8 +52,12 @@ $select-arrow-real-width: 0.75em !default;
 		}
 
 		@include focus-visible {
+			@extend %focus;
+
 			border-color: $select-focus-border-color;
-			outline: none !important;
+			outline-color: transparent;
+			outline-offset: 0;
+			outline-style: solid;
 			box-shadow: $select-focus-box-shadow-size $select-focus-border-color;
 		}
 	}
