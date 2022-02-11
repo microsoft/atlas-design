@@ -20,7 +20,7 @@ $select-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
 $select-arrow-size: 0.525em !default;
 $select-arrow-border-width: 1px !default;
-$select-arrow-real-width: 0.75em !default;
+$select-arrow-actual-width: 0.75em !default;
 
 .select {
 	position: relative;
@@ -64,13 +64,13 @@ $select-arrow-real-width: 0.75em !default;
 
 	&:not(.select-multiple) {
 		select {
-			padding-inline-end: calc($control-padding-horizontal + $select-arrow-real-width);
+			padding-inline-end: calc($control-padding-horizontal + $select-arrow-actual-width);
 		}
 
 		&::after {
 			display: block;
 			position: absolute;
-			top: calc(50% - $select-arrow-real-width / 2);
+			top: calc(50% - $select-arrow-actual-width / 2);
 			width: $select-arrow-size;
 			height: $select-arrow-size;
 			transform: rotate(-45deg);
@@ -101,7 +101,6 @@ $select-arrow-real-width: 0.75em !default;
 		border-color: $select-danger-border-color;
 
 		@include focus-visible() {
-			outline: none !important;
 			box-shadow: $select-focus-box-shadow-size $select-danger-border-color;
 		}
 	}
@@ -110,7 +109,6 @@ $select-arrow-real-width: 0.75em !default;
 		border-color: $select-success-border-color;
 
 		@include focus-visible() {
-			outline: none !important;
 			box-shadow: $select-focus-box-shadow-size $select-success-border-color;
 		}
 	}
