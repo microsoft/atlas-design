@@ -180,3 +180,31 @@ html.debug {
 		@include debug('footer');
 	}
 }
+
+#header {
+	display: grid;
+	grid-template-areas: 'header-body header-body header-body header-body header-body';
+
+	@include widescreen {
+		grid-template-columns: auto $size-bar-width #{$breakpoint-widescreen - $size-bar-width * 2} $size-bar-width auto;
+		grid-template-areas: '. header-body header-body header-body header-body';
+	}
+}
+
+#header-body {
+	grid-area: header-body;
+	@include widescreen {
+		padding-inline: 1.5rem;
+	}
+}
+
+.header-spacer {
+	width: 2px;
+
+	height: 100%;
+	border-left: 2px solid $text-subtle;
+	display: inline-block;
+	height: 1.5rem;
+	margin-left: 0.5rem;
+	margin-right: 1rem;
+}
