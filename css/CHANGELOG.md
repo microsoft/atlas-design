@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.12.0
+
+### Minor Changes
+
+- 0447774: Adding Select component and relevant documentation.
+
 ## 3.11.0
 
 ### Minor Changes
