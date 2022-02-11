@@ -29,7 +29,7 @@ Here is an example of a standard select usage paired with a label.
 
 There is an option to style a multiple select dropdowns by using the `.select-multiple` class in conjunction with `.select` and adding the `multiple` attribute to the `<select>` tag.
 
-Hold down `control` button on Windows/`command` button on Mac to select multiple options.
+Hold down `Ctrl` button on Windows/`Command` button on Mac to select multiple options.
 
 ```html
 <div class="select select-multiple">
