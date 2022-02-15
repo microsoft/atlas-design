@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.20.0
+
+### Minor Changes
+
+- 0447774: Adding Select component and relevant documentation.
+
+### Patch Changes
+
+- bc641df: Fix site logo.
+
 ## 0.19.0
 
 ### Minor Changes
