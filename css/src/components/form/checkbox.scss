@@ -36,6 +36,7 @@ $checkbox-spacing: $spacer-3 !default;
 
 	.checkbox-check {
 		display: flex;
+		position: relative;
 		flex-shrink: 0;
 		align-items: center;
 		justify-content: center;
