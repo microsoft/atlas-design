@@ -24,6 +24,7 @@ $select-arrow-actual-width: 0.75em !default;
 
 .select {
 	position: relative;
+	font-size: $control-font-size;
 
 	select {
 		@include control;
@@ -33,7 +34,6 @@ $select-arrow-actual-width: 0.75em !default;
 		border-color: $select-border-color;
 		background-color: $select-background-color;
 		color: $select-color;
-		font-size: inherit;
 		cursor: pointer;
 
 		&[multiple] {
@@ -89,12 +89,20 @@ $select-arrow-actual-width: 0.75em !default;
 		}
 	}
 
-	&.select-sm select {
-		@include control-sm;
+	&.select-sm {
+		font-size: $control-sm-font-size;
+
+		select {
+			@include control-sm;
+		}
 	}
 
-	&.select-lg select {
-		@include control-lg;
+	&.select-lg {
+		font-size: $control-lg-font-size;
+
+		select {
+			@include control-lg;
+		}
 	}
 
 	&.select-danger select {
