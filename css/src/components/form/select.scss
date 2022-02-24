@@ -89,11 +89,11 @@ $select-arrow-actual-width: 0.75em !default;
 		}
 	}
 
-	&.select-sm {
+	&.select-sm select {
 		@include control-sm;
 	}
 
-	&.select-lg {
+	&.select-lg select {
 		@include control-lg;
 	}
 
