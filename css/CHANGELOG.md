@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.12.2
+
+### Patch Changes
+
+- ad96c61: Fixing the select component size variations.
+
 ## 3.12.1
 
 ### Patch Changes
