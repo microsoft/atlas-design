@@ -1,0 +1,340 @@
+$radio-circle-size: 1.125rem !default;
+$radio-dot-size: 0.75rem !default;
+$radio-dot-checked-color: $primary !default;
+$radio-dot-color: $text-subtle !default;
+$radio-timing-function: $input-timing-function !default;
+$radio-duration: $input-transition-duration !default;
+$radio-animation: boop !default;
+
+$radio-background-color: $body-background !default;
+
+$radios-spacing: 0.5rem;
+$radios-large-size: 1.5rem;
+$radios-large-spacing: 1rem;
+$radio-image-padding-mobile: $radios-spacing * 2;
+$radio-image-padding: $radios-spacing * 2 + $radio-dot-size !default;
+
+@mixin radio-dot {
+	display: inline-block;
+	position: absolute;
+	inset-block-start: 0.125rem;
+	inset-inline-start: 0.125rem;
+	width: $radio-dot-size;
+	height: $radio-dot-size;
+	transform: rotate(-45deg) scale(0, 0);
+	border-radius: 50%;
+	content: '';
+	z-index: 1;
+}
+
+@mixin radio-dot-checked {
+	animation: $radio-animation $radio-duration $radio-timing-function 1;
+	transform: rotate(-45deg) scale(0.65, 0.65);
+	background: $radio-dot-checked-color;
+}
+
+.radio {
+	display: inline-flex;
+	position: relative;
+	align-items: flex-start;
+	line-height: 1.25;
+	cursor: pointer;
+
+	.radio-dot {
+		display: inline-flex;
+		position: relative;
+		flex-shrink: 0;
+		width: $radio-circle-size;
+		height: $radio-circle-size;
+		border: 1px solid;
+		border-radius: $radius-rounded;
+		outline-color: $text;
+		color: $radio-dot-color;
+
+		&::before {
+			@include radio-dot;
+		}
+
+		&.focus-visible,
+		&.is-focused {
+			@extend %focus;
+		}
+	}
+
+	.radio-label-text {
+		margin: 0 $radios-spacing;
+	}
+
+	/* stylelint-disable selector-no-qualifying-type */
+
+	input {
+		@include visually-hidden();
+
+		&.focus-visible + .radio-dot,
+		&.is-focused + .radio-dot {
+			@extend %focus;
+		}
+	}
+
+	input.is-checked ~ .radio-dot,
+	input:checked ~ .radio-dot,
+	.radio-dot.is-checked {
+		border-color: $radio-dot-checked-color;
+
+		&::before {
+			@include radio-dot;
+			@include radio-dot-checked;
+		}
+	}
+
+	input[disabled] ~ .radio-dot,
+	input[disabled] ~ .radio-label-text {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	/* stylelint-enable */
+
+	&.is-hovered,
+	&:hover:not([disabled]) {
+		/* stylelint-disable selector-max-specificity */
+
+		.radio-dot:not(:checked)::before {
+			@include radio-dot;
+			@include radio-dot-checked;
+		}
+
+		/* stylelint-enable */
+	}
+
+	&.is-image {
+		display: block;
+		position: relative;
+		width: 100%;
+		margin-block-end: $radios-spacing * 2;
+		margin-inline-end: $radios-spacing * 2;
+
+		@include tablet {
+			flex: 0 0 46%;
+		}
+		@include desktop {
+			flex: 0 0 30%;
+		}
+		@include widescreen {
+			flex: 0 0 22%;
+		}
+
+		.radio-background {
+			position: absolute;
+			inset-block-start: 0;
+			inset-inline-end: 0;
+			inset-block-end: 0;
+			inset-inline-start: 0;
+			border: 1px solid $border-white-high-contrast;
+			background-color: $body-background-medium;
+			z-index: 0;
+		}
+
+		.radio-dot {
+			display: flex;
+			position: absolute;
+			inset-block-start: $radios-spacing;
+			inset-inline-end: $radios-spacing;
+			border: 1px solid $text;
+			z-index: 1;
+
+			@include tablet {
+				inset-block-start: $radios-spacing * 1.5;
+				inset-inline-end: $radios-spacing * 1.5;
+			}
+		}
+
+		/* stylelint-disable selector-max-specificity, selector-no-qualifying-type */
+
+		input.is-checked ~ .radio-dot,
+		input:checked ~ .radio-dot,
+		.radio-dot.is-checked {
+			&::before {
+				@include radio-dot;
+				@include radio-dot-checked;
+			}
+		}
+
+		&.is-hovered,
+		&:hover:not([disabled]) {
+			.radio-dot:not(:checked)::before {
+				@include radio-dot;
+				@include radio-dot-checked;
+			}
+
+			.radio-dot:not(:checked) {
+				color: $radio-dot-checked-color;
+			}
+		}
+
+		/* stylelint-enable */
+
+		/* stylelint-disable selector-no-qualifying-type */
+
+		input.is-checked ~ .radio-background,
+		input:checked ~ .radio-background {
+			border: 1px solid $primary;
+		}
+
+		input.focus-visible ~ .radio-background {
+			@extend %focus;
+		}
+
+		/* stylelint-enable */
+
+		.radio-image {
+			display: block;
+			position: relative;
+			width: 40%;
+			padding: $radio-image-padding-mobile;
+			pointer-events: none;
+			z-index: 1;
+
+			@include tablet {
+				width: 100%;
+				padding: $radio-image-padding $radio-image-padding 0;
+
+				/* stylelint-disable max-nesting-depth */
+
+				&.icon {
+					padding-bottom: 1.5rem;
+				}
+
+				/* stylelint-eable */
+			}
+
+			.radio-image-icon {
+				display: block;
+				font-size: 1.875rem;
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.radio-label-text {
+			display: block;
+			position: relative;
+			width: 50%;
+			margin-block-start: $radios-spacing;
+			margin-inline-start: $radios-spacing * 2;
+			padding: $radio-image-padding-mobile;
+			text-align: center;
+
+			@include tablet {
+				margin-inline-start: 0;
+			}
+
+			@include tablet {
+				width: 100%;
+				padding: 0 $radio-image-padding $radio-image-padding;
+			}
+		}
+	}
+}
+
+.radios {
+	.radio {
+		display: flex;
+	}
+
+	.radio + .radio {
+		margin-block-start: $radios-spacing;
+		margin-inline-start: 0;
+	}
+
+	@include tablet {
+		.radio {
+			display: block;
+		}
+
+		.radio + .radio {
+			margin-block-start: none;
+		}
+
+		&.is-large {
+			.radio + .radio {
+				margin-block-start: none;
+			}
+		}
+	}
+
+	&.has-images {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+
+	&.is-large {
+		.radio {
+			.radio-dot {
+				width: calc(#{$radios-large-size} - 0.1875rem);
+				height: calc(#{$radios-large-size} - 0.1875rem);
+				font-size: $radios-large-size;
+				line-height: $radios-large-size;
+
+				/* stylelint-disable selector-max-specificity */
+
+				&::before {
+					width: $radios-large-size;
+					height: $radios-large-size;
+					margin-inline-start: -1.5px;
+				}
+
+				/* stylelint-enable */
+			}
+
+			.radio-label-text {
+				margin: 0 $radios-large-spacing;
+				font-size: $radios-large-size;
+			}
+
+			+ .radio {
+				margin-block-start: $radios-large-spacing;
+
+				/* stylelint-disable max-nesting-depth */
+
+				@include tablet {
+					margin-inline-start: $radios-large-spacing;
+				}
+
+				/* stylelint-enable */
+			}
+		}
+	}
+
+	&.is-vertical {
+		.radio {
+			display: flex;
+		}
+
+		.radio + .radio {
+			margin-block-start: $radios-spacing;
+			margin-inline-start: 0;
+		}
+
+		/* stylelint-disable selector-max-specificity */
+
+		&.is-large {
+			.radio + .radio {
+				margin-block-start: $radios-large-spacing;
+			}
+		}
+
+		/* stylelint-enable */
+	}
+
+	legend + .control > & {
+		margin-block-start: $radios-spacing;
+
+		&.is-large {
+			margin-block-start: $radios-large-spacing;
+		}
+	}
+}
