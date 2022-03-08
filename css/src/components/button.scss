@@ -239,6 +239,15 @@ $button-filled-text-color: $text-invert !default;
 				background-color: transparent;
 				color: $base;
 				box-shadow: none;
+
+				/* stylelint-disable max-nesting-depth */
+
+				&.is-loading {
+					background-color: $base !important;
+					opacity: 0.5 !important;
+				}
+
+				/* stylelint-enable */
 			}
 		}
 	}
