@@ -2,7 +2,7 @@
 
 $select-color: $text !default;
 $select-background-color: $body-background !default;
-$select-border-color: $text !default;
+$select-border-color: $control-border !default;
 $select-placeholder-color: $text-subtle !default;
 
 $select-hover-color: $text !default;
@@ -34,6 +34,7 @@ $select-arrow-actual-width: 0.75em !default;
 		border-color: $select-border-color;
 		background-color: $select-background-color;
 		color: $select-color;
+		font-size: 1em;
 		cursor: pointer;
 
 		&[multiple] {
@@ -93,16 +94,12 @@ $select-arrow-actual-width: 0.75em !default;
 		font-size: $control-sm-font-size;
 
 		select {
-			@include control-sm;
+			border-radius: $control-radius-sm;
 		}
 	}
 
 	&.select-lg {
 		font-size: $control-lg-font-size;
-
-		select {
-			@include control-lg;
-		}
 	}
 
 	&.select-danger select {
