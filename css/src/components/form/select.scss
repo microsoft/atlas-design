@@ -29,12 +29,12 @@ $select-arrow-actual-width: 0.75em !default;
 	select {
 		@include control;
 
-		font-size: 1em;
 		width: 100%;
 		max-width: 100%;
 		border-color: $select-border-color;
 		background-color: $select-background-color;
 		color: $select-color;
+		font-size: 1em;
 		cursor: pointer;
 
 		&[multiple] {
