@@ -1,5 +1,13 @@
 # @microsoft/atlas-css
 
+## 3.12.3
+
+### Patch Changes
+
+- 20d5731: Fix button colors for button-filled disabled + loading state.
+- d470bf6: Adding control-border to the theme palette and applying it to the form controls.
+- d470bf6: Fixing select component font size.
+
 ## 3.12.2
 
 ### Patch Changes
