@@ -5,14 +5,7 @@ $radio-dot-color: $text-subtle !default;
 $radio-timing-function: $input-timing-function !default;
 $radio-duration: $input-transition-duration !default;
 $radio-animation: boop !default;
-
 $radios-spacing: 0.5rem !default;
-$radios-large-size: 1.5rem !default;
-$radios-radio-dot-large-size: 0.625em !default;
-$radios-large-spacing: 1rem !default;
-
-/* $radio-image-padding-mobile: $radios-spacing * 2 !default;
-$radio-image-padding: $radios-spacing * 2 + $radio-dot-size !default; */
 
 @mixin radio-dot {
 	position: absolute;
@@ -33,6 +26,7 @@ $radio-image-padding: $radios-spacing * 2 + $radio-dot-size !default; */
 
 .radio {
 	display: inline-flex;
+	position: relative;
 	align-items: flex-start;
 	line-height: 1.25;
 	cursor: pointer;
@@ -46,6 +40,7 @@ $radio-image-padding: $radios-spacing * 2 + $radio-dot-size !default; */
 		border: 1px solid $text;
 		border-radius: $radius-rounded;
 		color: $radio-dot-color;
+		appearance: none;
 
 		&::before {
 			@include radio-dot;
@@ -60,59 +55,17 @@ $radio-image-padding: $radios-spacing * 2 + $radio-dot-size !default; */
 		margin-block-start: $radios-spacing;
 	}
 
-	&.radio-lg {
-		line-height: 0.75;
-		margin-block-start: $radios-large-spacing;
-
-		.radio-dot {
-			width: calc(#{$radios-large-size} - 0.1875rem);
-			height: calc(#{$radios-large-size} - 0.1875rem);
-			font-size: $radios-large-size;
-			line-height: $radios-large-size;
-
-			/* stylelint-disable max-nesting-depth, selector-max-specificity */
-
-			&::before {
-				width: $radios-radio-dot-large-size;
-				height: $radios-radio-dot-large-size;
-			}
-
-			/* stylelint-enable */
-		}
-
-		.radio-label-text {
-			margin: 0 $radios-large-spacing;
-			font-size: $radios-large-size;
-		}
-
-		+ .radio {
-			/* stylelint-disable max-nesting-depth */
-
-			@include tablet {
-				margin-inline-start: $radios-large-spacing;
-			}
-
-			/* stylelint-enable */
-		}
-
-		legend + & {
-			margin-block-start: $radios-large-spacing;
-		}
-	}
-
 	/* stylelint-disable selector-no-qualifying-type */
 
 	input {
-		@include visually-hidden();
-
 		&.focus-visible,
 		&.is-focused {
 			@extend %focus;
 		}
 	}
 
-	input.is-checked ~ .radio-dot,
-	input:checked ~ .radio-dot,
+	input.is-checked,
+	input:checked,
 	.radio-dot.is-checked {
 		animation: $radio-animation $radio-duration $radio-timing-function 1;
 		border-color: $radio-dot-checked-color;
@@ -122,7 +75,7 @@ $radio-image-padding: $radios-spacing * 2 + $radio-dot-size !default; */
 		}
 	}
 
-	input[disabled] ~ .radio-dot,
+	input[disabled],
 	input[disabled] ~ .radio-label-text {
 		opacity: 0.5;
 		cursor: not-allowed;

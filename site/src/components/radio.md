@@ -28,9 +28,9 @@ A radio button allows users to select a single option. It is usually associated 
                     		id="assessment-choice-b16fe0d7-9dfa-460d-a8c4-8b39cad04240-4"
                     		name="b16fe0d7-9dfa-460d-a8c4-8b39cad04240"
                     		value="4"
+                            class="radio-dot"
                     	/>
-                        <span class="radio-dot" aria-hidden="true"></span>
-                    	<span class="radio-label-text"><!---->50%<!----></span>
+                    	<span class="radio-label-text">50%</span>
                     </label>
 				</td>
 				<td>
@@ -40,10 +40,10 @@ A radio button allows users to select a single option. It is usually associated 
                     		id="assessment-choice-b16fe0d7-9dfa-460d-a8c4-8b39cad04240-4"
                     		name="b16fe0d7-9dfa-460d-a8c4-8b39cad04240"
                     		value="4"
+                            class="radio-dot"
                             disabled
                     	/>
-                        <span class="radio-dot" aria-hidden="true"></span>
-                    	<span class="radio-label-text"><!---->70%<!----></span>
+                    	<span class="radio-label-text">70%</span>
                     </label>
 				</td>
 			</tr>
@@ -56,10 +56,10 @@ A radio button allows users to select a single option. It is usually associated 
                     		id="assessment-choice-b16fe0d7-9dfa-460d-a8c4-8b39cad04240-4"
                     		name="b16fe0d7-9dfa-460d-a8c4-8b39cad04241"
                     		value="4"
+                            class="radio-dot"
                             checked
                     	/>
-                        <span class="radio-dot" aria-hidden="true"></span>
-                    	<span class="radio-label-text"><!---->50%<!----></span>
+                    	<span class="radio-label-text">50%</span>
                     </label>
 				</td>
 				<td>
@@ -69,11 +69,10 @@ A radio button allows users to select a single option. It is usually associated 
                     		id="assessment-choice-b16fe0d7-9dfa-460d-a8c4-8b39cad04240-4"
                     		name="b16fe0d7-9dfa-460d-a8c4-8b39cad04241"
                     		value="4"
-                    		class="is-checked"
+                    		class="is-checked radio-dot"
                             disabled
                     	/>
-                        <span class="radio-dot" aria-hidden="true"></span>
-                    	<span class="radio-label-text"><!---->70%<!----></span>
+                    	<span class="radio-label-text">70%</span>
                     </label>
 				</td>
 			</tr>
@@ -84,23 +83,21 @@ A radio button allows users to select a single option. It is usually associated 
 ## Usage
 
 Here is an example of a group of radio buttons. You can group multiple ratio buttons together within a `fieldset`.
+Make sure to use the same value for the `name` attribute within a group of radio buttons.
 
 ```html
 <fieldset class="field border-none">
 	<legend>This legend describes the nature of the selection.</legend>
 	<label class="radio">
-		<input checked name="question-1" type="radio" />
-		<span class="radio-dot" aria-hidden="true"></span>
+		<input checked name="question-1" type="radio" class="radio-dot" />
 		<span class="radio-label-text">Yes</span>
 	</label>
 	<label class="radio">
-		<input name="question-1" type="radio" />
-		<span class="radio-dot" aria-hidden="true"></span>
+		<input name="question-1" type="radio" class="radio-dot" />
 		<span class="radio-label-text">No</span>
 	</label>
 	<label class="radio">
-		<input name="question-1" type="radio" />
-		<span class="radio-dot" aria-hidden="true"></span>
+		<input name="question-1" type="radio" class="radio-dot" />
 		<span class="radio-label-text">Maybe</span>
 	</label>
 </fieldset>
@@ -116,24 +113,21 @@ Here is an example of a group of radio buttons. You can group multiple ratio but
 <fieldset class="field border-none">
 	<legend>This legend describes the nature of the selection.</legend>
 	<label class="radio">
-		<input name="question-2" type="radio" class="is-checked" />
-		<span class="radio-dot" aria-hidden="true"></span>
+		<input name="question-2" type="radio" class="is-checked radio-dot" />
 		<span class="radio-label-text"
 			>Reliability metrics are built into organizational objectives for teams managing mission
 			critical workloads</span
 		>
 	</label>
 	<label class="radio">
-		<input name="question-2" type="radio" />
-		<span class="radio-dot" aria-hidden="true"></span>
+		<input name="question-2" type="radio" class="radio-dot" />
 		<span class="radio-label-text"
 			>Security metrics are built into organizational objectives for teams managing mission critical
 			workloads</span
 		>
 	</label>
 	<label class="radio">
-		<input name="question-2" type="radio" />
-		<span class="radio-dot" aria-hidden="true"></span>
+		<input name="question-2" type="radio" class="radio-dot" />
 		<span class="radio-label-text"
 			>Performance metrics are built into organizational objectives for teams managing mission
 			critical workloads</span
@@ -149,50 +143,17 @@ You can wrap the radio button group with a container and use flex classes to dis
 	<legend>This legend describes the nature of the selection.</legend>
 	<div class="display-flex flex-direction-column margin-top-xxs">
 		<label class="radio">
-			<input name="question-2" type="radio" class="margin-bottom-xxs" />
-			<span class="radio-dot" aria-hidden="true"></span>
+			<input name="question-3" type="radio" class="radio-dot margin-bottom-xxs" />
 			<span class="radio-label-text">Yes</span>
 		</label>
 		<label class="radio">
-			<input name="question-2" type="radio" class="margin-bottom-xxs" />
-			<span class="radio-dot" aria-hidden="true"></span>
+			<input name="question-3" type="radio" class="radio-dot margin-bottom-xxs" />
 			<span class="radio-label-text">No</span>
 		</label>
 		<label class="radio">
-			<input name="question-2" type="radio" />
-			<span class="radio-dot" aria-hidden="true"></span>
+			<input name="question-3" type="radio" class="radio-dot" />
 			<span class="radio-label-text">Maybe</span>
 		</label>
 	</div>
-</fieldset>
-```
-
-### Images
-
-https://docs.microsoft.com/en-us/learn/support/troubleshooting#report-feedback
-https://ppe.docs.microsoft.com/en-us/learn-sandbox/support/troubleshoot?uid=learn-sandbox.sample-module-2.unit-1&branch=main
-
-### Size
-
-`radio-lg` is used with `radio` to display a larger size.
-
-```html
-<fieldset class="field border-none">
-	<legend>This legend describes the nature of the selection.</legend>
-	<label class="radio radio-lg">
-		<input checked name="question-2" type="radio" />
-		<span class="radio-dot" aria-hidden="true"></span>
-		<span class="radio-label-text">Yes</span>
-	</label>
-	<label class="radio radio-lg">
-		<input name="question-2" type="radio" />
-		<span class="radio-dot" aria-hidden="true"></span>
-		<span class="radio-label-text">No</span>
-	</label>
-	<label class="radio radio-lg">
-		<input name="question-2" type="radio" />
-		<span class="radio-dot" aria-hidden="true"></span>
-		<span class="radio-label-text">Maybe</span>
-	</label>
 </fieldset>
 ```
