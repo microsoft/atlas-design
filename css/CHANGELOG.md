@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.12.4
+
+### Patch Changes
+
+- 4ec3f5b: Updating controls with fixed border radius for all sizes.
+
 ## 3.12.3
 
 ### Patch Changes
