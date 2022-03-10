@@ -92,10 +92,6 @@ $select-arrow-actual-width: 0.75em !default;
 
 	&.select-sm {
 		font-size: $control-sm-font-size;
-
-		select {
-			border-radius: $control-radius-sm;
-		}
 	}
 
 	&.select-lg {

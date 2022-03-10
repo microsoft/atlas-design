@@ -8,7 +8,7 @@ $button-sm-font-size: $font-size-8 !default;
 
 $button-border-color: $text-subtle !default;
 $button-border-width: $control-border-width !default;
-$button-border-radius: $radius-sm;
+$button-border-radius: $control-radius !default;
 
 $button-padding-vertical: calc(0.375em - #{$button-border-width}) !default;
 $button-padding-horizontal: 0.75em !default;
