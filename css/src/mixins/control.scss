@@ -1,5 +1,4 @@
-$control-radius: $radius !default;
-$control-radius-sm: $radius-sm !default;
+$control-radius: $radius-sm !default;
 
 $control-font-size: $font-size-7 !default;
 $control-sm-font-size: $font-size-8 !default;
@@ -36,7 +35,6 @@ $control-padding-horizontal: calc(0.625em - #{$control-border-width}) !default;
 }
 
 @mixin control-sm {
-	border-radius: $control-radius-sm;
 	font-size: $control-sm-font-size;
 }
 
