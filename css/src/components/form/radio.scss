@@ -1,11 +1,11 @@
-$radio-circle-size: 1.125rem !default;
-$radio-dot-size: 0.75rem !default;
+$radio-circle-size: 1.125em !default;
+$radio-dot-size: 0.75em !default;
 $radio-dot-checked-color: $primary !default;
 $radio-dot-color: $text-subtle !default;
 $radio-timing-function: $input-timing-function !default;
 $radio-duration: $input-transition-duration !default;
 $radio-animation: boop !default;
-$radios-spacing: 0.5rem !default;
+$radios-spacing: 0.5em !default;
 
 @mixin radio-dot {
 	position: absolute;
@@ -14,6 +14,7 @@ $radios-spacing: 0.5rem !default;
 	height: $radio-dot-size;
 	margin: auto;
 	border-radius: 50%;
+	background-color: $body-background;
 	content: '';
 	overflow: hidden;
 }

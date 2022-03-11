@@ -25,7 +25,6 @@ A radio button allows users to select a single option. It is usually associated 
 					<label class="radio" title="">
                     	<input
                     		type="radio"
-                    		id="assessment-choice-b16fe0d7-9dfa-460d-a8c4-8b39cad04240-4"
                     		name="b16fe0d7-9dfa-460d-a8c4-8b39cad04240"
                     		value="4"
                             class="radio-dot"
@@ -37,7 +36,6 @@ A radio button allows users to select a single option. It is usually associated 
 					<label class="radio" title="">
                     	<input
                     		type="radio"
-                    		id="assessment-choice-b16fe0d7-9dfa-460d-a8c4-8b39cad04240-4"
                     		name="b16fe0d7-9dfa-460d-a8c4-8b39cad04240"
                     		value="4"
                             class="radio-dot"
@@ -53,7 +51,6 @@ A radio button allows users to select a single option. It is usually associated 
 					<label class="radio" title="">
                     	<input
                     		type="radio"
-                    		id="assessment-choice-b16fe0d7-9dfa-460d-a8c4-8b39cad04240-4"
                     		name="b16fe0d7-9dfa-460d-a8c4-8b39cad04241"
                     		value="4"
                             class="radio-dot"
@@ -66,7 +63,6 @@ A radio button allows users to select a single option. It is usually associated 
 					<label class="radio" title="">
                     	<input
                     		type="radio"
-                    		id="assessment-choice-b16fe0d7-9dfa-460d-a8c4-8b39cad04240-4"
                     		name="b16fe0d7-9dfa-460d-a8c4-8b39cad04241"
                     		value="4"
                     		class="is-checked radio-dot"
