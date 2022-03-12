@@ -78,24 +78,26 @@ A radio button allows users to select a single option. It is usually associated 
 
 ## Usage
 
-Here is an example of a group of radio buttons. You can group multiple ratio buttons together within a `fieldset`.
+Here is an example of a group of radio buttons. You can group multiple ratio buttons together within a `fieldset` and `radios` container.
 Make sure to use the same value for the `name` attribute within a group of radio buttons.
 
 ```html
 <fieldset class="field border-none">
 	<legend>This legend describes the nature of the selection.</legend>
-	<label class="radio">
-		<input checked name="question-1" type="radio" class="radio-dot" />
-		<span class="radio-label-text">Yes</span>
-	</label>
-	<label class="radio">
-		<input name="question-1" type="radio" class="radio-dot" />
-		<span class="radio-label-text">No</span>
-	</label>
-	<label class="radio">
-		<input name="question-1" type="radio" class="radio-dot" />
-		<span class="radio-label-text">Maybe</span>
-	</label>
+	<div class="radios">
+		<label class="radio">
+			<input checked name="question-1" type="radio" class="radio-dot" />
+			<span class="radio-label-text">Yes</span>
+		</label>
+		<label class="radio">
+			<input name="question-1" type="radio" class="radio-dot" />
+			<span class="radio-label-text">No</span>
+		</label>
+		<label class="radio">
+			<input name="question-1" type="radio" class="radio-dot" />
+			<span class="radio-label-text">Maybe</span>
+		</label>
+	</div>
 </fieldset>
 ```
 
@@ -108,42 +110,44 @@ Make sure to use the same value for the `name` attribute within a group of radio
 ```html
 <fieldset class="field border-none">
 	<legend>This legend describes the nature of the selection.</legend>
-	<label class="radio">
-		<input name="question-2" type="radio" class="is-checked radio-dot" />
-		<span class="radio-label-text"
-			>Reliability metrics are built into organizational objectives for teams managing mission
-			critical workloads</span
-		>
-	</label>
-	<label class="radio">
-		<input name="question-2" type="radio" class="radio-dot" />
-		<span class="radio-label-text"
-			>Security metrics are built into organizational objectives for teams managing mission critical
-			workloads</span
-		>
-	</label>
-	<label class="radio">
-		<input name="question-2" type="radio" class="radio-dot" />
-		<span class="radio-label-text"
-			>Performance metrics are built into organizational objectives for teams managing mission
-			critical workloads</span
-		>
-	</label>
+	<div class="radios">
+		<label class="radio">
+			<input name="question-2" type="radio" class="is-checked radio-dot" />
+			<span class="radio-label-text"
+				>Reliability metrics are built into organizational objectives for teams managing mission
+				critical workloads</span
+			>
+		</label>
+		<label class="radio">
+			<input name="question-2" type="radio" class="radio-dot" />
+			<span class="radio-label-text"
+				>Security metrics are built into organizational objectives for teams managing mission
+				critical workloads</span
+			>
+		</label>
+		<label class="radio">
+			<input name="question-2" type="radio" class="radio-dot" />
+			<span class="radio-label-text"
+				>Performance metrics are built into organizational objectives for teams managing mission
+				critical workloads</span
+			>
+		</label>
+	</div>
 </fieldset>
 ```
 
-You can wrap the radio button group with a container and use flex classes to display a vertical alignment.
+You can add `radios-vertical` to the `radios` container to display a vertical alignment.
 
 ```html
 <fieldset class="field border-none">
 	<legend>This legend describes the nature of the selection.</legend>
-	<div class="display-flex flex-direction-column margin-top-xxs">
+	<div class="radios radios-vertical">
 		<label class="radio">
-			<input name="question-3" type="radio" class="radio-dot margin-bottom-xxs" />
+			<input name="question-3" type="radio" class="radio-dot" />
 			<span class="radio-label-text">Yes</span>
 		</label>
 		<label class="radio">
-			<input name="question-3" type="radio" class="radio-dot margin-bottom-xxs" />
+			<input name="question-3" type="radio" class="radio-dot" />
 			<span class="radio-label-text">No</span>
 		</label>
 		<label class="radio">

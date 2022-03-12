@@ -1,5 +1,5 @@
-$radio-circle-size: 1.125em !default;
-$radio-dot-size: 0.75em !default;
+$radio-circle-size: 1.25em !default;
+$radio-dot-size: 0.625em !default;
 $radio-dot-checked-color: $primary !default;
 $radio-dot-color: $text-subtle !default;
 $radio-timing-function: $input-timing-function !default;
@@ -20,8 +20,6 @@ $radios-spacing: 0.5em !default;
 }
 
 @mixin radio-dot-checked {
-	transform: rotate(-45deg) scale(0.65, 0.65);
-	border: 6px solid transparent;
 	background: $radio-dot-checked-color;
 }
 
@@ -50,10 +48,35 @@ $radios-spacing: 0.5em !default;
 
 	.radio-label-text {
 		margin: 0 $radios-spacing;
+		line-height: 1.15;
 	}
 
 	legend + & {
 		margin-block-start: $radios-spacing;
+	}
+
+	.radios & {
+		margin-top: $radios-spacing;
+	}
+
+	/* stylelint-disable selector-max-specificity */
+
+	&.is-hovered,
+	&:hover:not([disabled]) {
+		.radio-dot:not(:checked)::before {
+			@include radio-dot-checked;
+		}
+	}
+
+	/* stylelint-enable */
+
+	.radios.radios-vertical & {
+		display: flex;
+
+		+ .radio {
+			margin-top: $radios-spacing;
+			margin-left: 0;
+		}
 	}
 
 	/* stylelint-disable selector-no-qualifying-type */
@@ -83,15 +106,4 @@ $radios-spacing: 0.5em !default;
 	}
 
 	/* stylelint-enable */
-
-	&.is-hovered,
-	&:hover:not([disabled]) {
-		/* stylelint-disable selector-max-specificity */
-
-		.radio-dot:not(:checked)::before {
-			@include radio-dot-checked;
-		}
-
-		/* stylelint-enable */
-	}
 }
