@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.20.1
+
+### Patch Changes
+
+- d48aa50: Updating border radius atomics and tokens and relevant documentation.
+- 13954f5: Fix `[disabled].button.button-filled` buttons in all semantic colors.
+
 ## 0.20.0
 
 ### Minor Changes
