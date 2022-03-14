@@ -178,7 +178,7 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 				color: $dark;
 			}
 
-			&.button-disabled,
+			&.is-disabled,
 			&[disabled] {
 				background-color: transparent;
 				color: $base;
@@ -231,23 +231,6 @@ $button-filled-text-color: $text-invert !default;
 				@include loader;
 
 				border-color: transparent transparent $invert $invert !important;
-			}
-
-			&.button-disabled,
-			&[disabled] {
-				border-color: $base;
-				background-color: transparent;
-				color: $base;
-				box-shadow: none;
-
-				/* stylelint-disable max-nesting-depth */
-
-				&.is-loading {
-					background-color: $base !important;
-					opacity: 0.5 !important;
-				}
-
-				/* stylelint-enable */
 			}
 		}
 	}

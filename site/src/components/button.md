@@ -17,7 +17,7 @@ Each style is explained below, detailing how and where to use them.
 
 ## Secondary
 
-All buttons, by default, are secondary buttons. There are three gradutating secondary styles.
+All buttons, by default, are secondary buttons. There are three graduating secondary styles.
 
 1. Outlined (Default)
 2. Clear
