@@ -74,12 +74,20 @@
 
 // Radius
 
+.border-radius-sm {
+	border-radius: $border-radius-sm !important;
+}
+
 .border-radius {
 	border-radius: $border-radius !important;
 }
 
 .border-radius-lg {
 	border-radius: $border-radius-lg !important;
+}
+
+.border-radius-rounded {
+	border-radius: $border-radius-rounded !important;
 }
 
 // Colors
