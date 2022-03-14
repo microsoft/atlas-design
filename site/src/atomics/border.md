@@ -58,22 +58,27 @@ Here is an example of applying border to specific side of the element:
 
 ### Radius
 
-Currently two classes are available to set border radius:
+There are a few classes available to set border radius:
 
-| class              | size      |
-| ------------------ | --------- |
-| `border-radius`    | `0.25rem` |
-| `border-radius-lg` | `0.5rem`  |
+| class                | size            |
+| -------------------- | --------------- |
+| `border-radius-sm`   | `0.125rem`      |
+| `border-radius`      | `0.25rem`       |
+| `border-radius-lg`   | `0.375rem`      |
+| `border-radius-full` | `full rounding` |
 
 ```html
-<div class="border border-radius padding-sm">
+<div class="border border-radius-sm padding-sm">
+	<p>Small radius</p>
+</div>
+<div class="border border-radius padding-sm margin-top-xs">
 	<p>Default radius</p>
 </div>
-```
-
-```html
-<div class="border border-radius-lg padding-sm">
+<div class="border border-radius-lg padding-sm margin-top-xs">
 	<p>Large radius</p>
+</div>
+<div class="border border-radius-full padding-sm margin-top-xs">
+	<p>Full radius</p>
 </div>
 ```
 

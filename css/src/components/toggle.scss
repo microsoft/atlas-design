@@ -18,7 +18,7 @@ $toggle-circle-selected-background-color: $body-background !default;
 		transition: $input-transition-duration linear;
 		transition-property: background-color, border-color;
 		border: 0.065em solid $toggle-unselected-border-color;
-		border-radius: $radius-rounded;
+		border-radius: $border-radius-full;
 		background-color: $toggle-unselected-background-color;
 		cursor: pointer;
 
@@ -34,7 +34,7 @@ $toggle-circle-selected-background-color: $body-background !default;
 			height: $toggle-circle-size;
 			transition: $toggle-transition;
 			transition-property: inset-inline-start, border-color, background-color;
-			border-radius: $radius-rounded;
+			border-radius: $border-radius-full;
 			inset-block-start: $toggle-circle-top;
 			inset-inline-start: $toggle-circle-distance-from-border;
 			background-color: $toggle-unselected-circle-color;
