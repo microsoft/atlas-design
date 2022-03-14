@@ -126,10 +126,11 @@ Make a button take up the full width of a container.
 
 ### Loading buttons
 
-Ensure the user knows they need to wait for some event (like a fetch request) in order to interact with a button.
+Ensure the user knows they need to wait for some event (like a fetch request) in order to interact with a button. Can be used with the `disabled` attribute, as in the second button example below.
 
 ```html
-<button class="button is-loading">Primary</button>
+<button class="button is-loading">Loading</button>
+<button class="button button-primary button-filled is-loading" disabled>Disabled</button>
 ```
 
 ## Adaptive buttons
