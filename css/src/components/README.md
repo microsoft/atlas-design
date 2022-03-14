@@ -24,7 +24,13 @@ When horizontal (inline) direction is important to a component, the user's text 
 
 ## Class nomenclature within components
 
-The component name itself should be a noun or noun-phrase. Endeavor to choose the shorted applicable word or series of words that best describes the component. Modifiers on a particular component should contain the top level component within the class name. State based class modifiers will follow a different convention, and be prefixed with `is-`.
+The component name itself should be a noun or noun-phrase. Endeavor to choose the shortest applicable word or series of words that best describes the component. Modifiers on a particular component should contain the top level component within the class name. State based class modifiers will follow a different convention, and be prefixed with `is-`.
+
+Examples of state-targeting classes are:
+
+- `is-disabled`
+- `is-hovered`
+- `is-focused`
 
 ## Sizes within class names
 
