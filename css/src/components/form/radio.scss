@@ -99,6 +99,14 @@ $radios-spacing: 0.5em !default;
 		}
 	}
 
+	@include reduceMotion {
+		input.is-checked,
+		input:checked,
+		.radio-dot.is-checked {
+			animation: none;
+		}
+	}
+
 	input[disabled],
 	input[disabled] ~ .radio-label-text {
 		opacity: 0.5;

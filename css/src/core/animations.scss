@@ -24,3 +24,9 @@
 		transform: scale(1);
 	}
 }
+
+@mixin reduceMotion {
+	@media (prefers-reduced-motion: reduce) {
+		@content;
+	}
+}
