@@ -1,0 +1,16 @@
+.radios {
+	.radio {
+		margin-top: $radios-spacing;
+	}
+
+	&.radios-vertical {
+		.radio {
+			display: flex;
+
+			+ .radio {
+				margin-top: $radios-spacing;
+				margin-left: 0;
+			}
+		}
+	}
+}

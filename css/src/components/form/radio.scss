@@ -1,5 +1,7 @@
 $radio-circle-size: 1.25em !default;
 $radio-dot-size: 0.625em !default;
+$radio-border-color: $control-border !default;
+$radio-border-width: $control-border-width !default;
 $radio-dot-checked-color: $primary !default;
 $radio-dot-color: $text-subtle !default;
 $radio-timing-function: $input-timing-function !default;
@@ -37,8 +39,8 @@ $radios-spacing: 0.5em !default;
 		flex-shrink: 0;
 		width: $radio-circle-size;
 		height: $radio-circle-size;
-		border: 1px solid $text;
-		border-radius: $radius-rounded;
+		border: 1px solid $radio-border-color;
+		border-radius: $border-radius-rounded;
 		color: $radio-dot-color;
 		appearance: none;
 
@@ -49,14 +51,6 @@ $radios-spacing: 0.5em !default;
 
 	.radio-label-text {
 		margin: 0 $radios-spacing;
-	}
-
-	legend + & {
-		margin-block-start: $radios-spacing;
-	}
-
-	.radios & {
-		margin-top: $radios-spacing;
 	}
 
 	/* stylelint-disable selector-max-specificity */
@@ -70,22 +64,11 @@ $radios-spacing: 0.5em !default;
 
 	/* stylelint-enable */
 
-	.radios.radios-vertical & {
-		display: flex;
-
-		+ .radio {
-			margin-top: $radios-spacing;
-			margin-left: 0;
-		}
-	}
-
 	/* stylelint-disable selector-no-qualifying-type */
 
-	input {
-		&.focus-visible,
-		&.is-focused {
-			@extend %focus;
-		}
+	input.focus-visible,
+	input.is-focused {
+		@extend %focus;
 	}
 
 	input.is-checked,
@@ -96,14 +79,6 @@ $radios-spacing: 0.5em !default;
 
 		&::before {
 			@include radio-dot-checked;
-		}
-	}
-
-	@include reduceMotion {
-		input.is-checked,
-		input:checked,
-		.radio-dot.is-checked {
-			animation: none;
 		}
 	}
 
