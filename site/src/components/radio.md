@@ -46,24 +46,24 @@ You can add `radios-vertical` to the `radios` container to display a vertical al
 <div class="radios radios-vertical">
 	<label class="radio">
 		<input name="question-3" type="radio" class="radio-dot" />
-		<span class="radio-label-text"
-			>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+		<span class="radio-label-text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 			laboris nisi ut aliquip ex ea commodo consequat.
 		</span>
 	</label>
 	<label class="radio">
 		<input name="question-3" type="radio" class="radio-dot" />
-		<span class="radio-label-text"
-			>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+		<span class="radio-label-text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 			laboris nisi ut aliquip ex ea commodo consequat.
 		</span>
 	</label>
 	<label class="radio">
 		<input name="question-3" type="radio" class="radio-dot" />
-		<span class="radio-label-text"
-			>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+		<span class="radio-label-text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 			laboris nisi ut aliquip ex ea commodo consequat.
 		</span>
