@@ -36,7 +36,7 @@ Here is an example of radio buttons. Make sure to use the same value for the `na
 You can wrap the radio button group with a container and use flex classes to display a vertical alignment.
 
 ```html
-<div class="display-flex flex-direction-column margin-top-xxs">
+<div class="display-flex flex-direction-column">
 	<label class="radio margin-bottom-xxs">
 		<input name="question-3" type="radio" class="radio-dot" value="0" />
 		<span class="radio-label-text">0%</span>
@@ -45,7 +45,7 @@ You can wrap the radio button group with a container and use flex classes to dis
 		<input name="question-3" type="radio" class="radio-dot" value="1" />
 		<span class="radio-label-text">50%</span>
 	</label>
-	<label class="radio margin-bottom-xxs">
+	<label class="radio">
 		<input name="question-3" type="radio" class="radio-dot" value="2" />
 		<span class="radio-label-text">100%</span>
 	</label>
