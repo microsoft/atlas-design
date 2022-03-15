@@ -7,7 +7,7 @@ $radio-dot-color: $text-subtle !default;
 $radio-timing-function: $input-timing-function !default;
 $radio-duration: $input-transition-duration !default;
 $radio-animation: boop !default;
-$radios-spacing: 0.5em !default;
+$radio-spacing: 0.5em !default;
 
 @mixin radio-dot {
 	position: absolute;
@@ -50,7 +50,7 @@ $radios-spacing: 0.5em !default;
 	}
 
 	.radio-label-text {
-		margin: 0 $radios-spacing;
+		margin: 0 $radio-spacing;
 	}
 
 	/* stylelint-disable selector-max-specificity */

@@ -16,43 +16,36 @@ A radio button allows users to select a single option. It is usually associated 
 
 ## Usage
 
-Here is an example of radio buttons. You can group multiple ratio buttons together within a `radios` container.
-Make sure to use the same value for the `name` attribute within a group of radio buttons.
+Here is an example of radio buttons. Make sure to use the same value for the `name` attribute within a group of radio buttons.
 
 ```html
-<div class="radios">
-	<label class="radio">
-		<input checked name="question-1" type="radio" class="radio-dot" value="0" />
-		<span class="radio-label-text">Yes</span>
-	</label>
-	<label class="radio">
-		<input name="question-1" type="radio" class="radio-dot" value="1" />
-		<span class="radio-label-text">No</span>
-	</label>
-	<label class="radio">
-		<input name="question-1" type="radio" class="radio-dot" value="2" />
-		<span class="radio-label-text">Maybe</span>
-	</label>
-</div>
+<label class="radio">
+	<input checked name="question-1" type="radio" class="radio-dot" value="0" />
+	<span class="radio-label-text">Yes</span>
+</label>
+<label class="radio">
+	<input name="question-1" type="radio" class="radio-dot" value="1" />
+	<span class="radio-label-text">No</span>
+</label>
+<label class="radio">
+	<input name="question-1" type="radio" class="radio-dot" value="2" />
+	<span class="radio-label-text">Maybe</span>
+</label>
 ```
 
-## Modifiers
-
-### Styles
-
-You can add `radios-vertical` to the `radios` container to display a vertical alignment.
+You can wrap the radio button group with a container and use flex classes to display a vertical alignment.
 
 ```html
-<div class="radios radios-vertical">
-	<label class="radio">
+<div class="display-flex flex-direction-column margin-top-xxs">
+	<label class="radio margin-bottom-xxs">
 		<input name="question-3" type="radio" class="radio-dot" value="0" />
 		<span class="radio-label-text">0%</span>
 	</label>
-	<label class="radio">
+	<label class="radio margin-bottom-xxs">
 		<input name="question-3" type="radio" class="radio-dot" value="1" />
 		<span class="radio-label-text">50%</span>
 	</label>
-	<label class="radio">
+	<label class="radio margin-bottom-xxs">
 		<input name="question-3" type="radio" class="radio-dot" value="2" />
 		<span class="radio-label-text">100%</span>
 	</label>
