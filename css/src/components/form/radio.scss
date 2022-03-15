@@ -1,0 +1,92 @@
+$radio-circle-size: 1.25em !default;
+$radio-dot-size: 0.625em !default;
+$radio-border-color: $control-border !default;
+$radio-border-width: $control-border-width !default;
+$radio-dot-checked-color: $primary !default;
+$radio-dot-color: $text-subtle !default;
+$radio-timing-function: $input-timing-function !default;
+$radio-duration: $input-transition-duration !default;
+$radio-animation: boop !default;
+$radio-spacing: 0.5em !default;
+
+@mixin radio-dot {
+	position: absolute;
+	inset: 0;
+	width: $radio-dot-size;
+	height: $radio-dot-size;
+	margin: auto;
+	border-radius: $border-radius-rounded;
+	background-color: $body-background;
+	content: '';
+	overflow: hidden;
+}
+
+@mixin radio-dot-checked {
+	background: $radio-dot-checked-color;
+}
+
+.radio {
+	display: inline-flex;
+	position: relative;
+	align-items: flex-start;
+	line-height: 1.25;
+	cursor: pointer;
+
+	.radio-dot {
+		display: inline-block;
+		position: relative;
+		inset-block-start: 0.0625em;
+		flex-shrink: 0;
+		width: $radio-circle-size;
+		height: $radio-circle-size;
+		border: $radio-border-width solid $radio-border-color;
+		border-radius: $border-radius-rounded;
+		color: $radio-dot-color;
+		appearance: none;
+
+		&::before {
+			@include radio-dot;
+		}
+	}
+
+	.radio-label-text {
+		margin: 0 $radio-spacing;
+	}
+
+	/* stylelint-disable selector-max-specificity */
+
+	&.is-hovered,
+	&:hover:not([disabled]) {
+		.radio-dot:not(:checked)::before {
+			@include radio-dot-checked;
+		}
+	}
+
+	/* stylelint-enable */
+
+	/* stylelint-disable selector-no-qualifying-type */
+
+	input.focus-visible,
+	input.is-focused {
+		@extend %focus;
+	}
+
+	input.is-checked,
+	input:checked,
+	.radio-dot.is-checked {
+		animation: $radio-animation $radio-duration $radio-timing-function 1;
+		border-color: $radio-dot-checked-color;
+
+		&::before {
+			@include radio-dot-checked;
+		}
+	}
+
+	input[disabled],
+	input[disabled] ~ .radio-label-text {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	/* stylelint-enable */
+}
