@@ -13,8 +13,11 @@
 	}
 
 	a.color-#{$name} {
-		&:hover,
-		&.focus-visible {
+		&:hover {
+			color: $hover !important;
+		}
+
+		@include focus-visible {
 			color: $hover !important;
 		}
 

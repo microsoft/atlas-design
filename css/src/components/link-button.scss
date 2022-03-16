@@ -16,10 +16,14 @@
 		text-decoration: underline !important;
 	}
 
-	&.focus-visible,
 	&.is-focused,
 	&:hover,
 	&.is-hovered {
+		color: $primary-hover;
+		text-decoration: underline !important;
+	}
+
+	@include focus-visible {
 		color: $primary-hover;
 		text-decoration: underline !important;
 	}

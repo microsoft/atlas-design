@@ -4,7 +4,8 @@
 	appearance: none;
 
 	&:not(:hover),
-	&:not(.focus-visible) {
+	&:not(.focus-visible),
+	&:not(:focus-visible) {
 		background-color: transparent;
 	}
 }

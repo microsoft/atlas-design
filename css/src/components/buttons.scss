@@ -64,11 +64,18 @@
 				z-index: $zindex-hover;
 			}
 
-			&.focus-visible,
 			&.is-focused,
 			&:active,
 			&.is-active,
 			&.is-selected {
+				z-index: $zindex-focus;
+
+				&:hover {
+					z-index: $zindex-multi;
+				}
+			}
+
+			@include focus-visible {
 				z-index: $zindex-focus;
 
 				&:hover {
