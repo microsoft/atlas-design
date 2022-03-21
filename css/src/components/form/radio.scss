@@ -66,9 +66,14 @@ $radio-spacing: 0.5em !default;
 
 	/* stylelint-disable selector-no-qualifying-type */
 
-	input.focus-visible,
-	input.is-focused {
-		@extend %focus;
+	input {
+		&.is-focused {
+			@extend %focus;
+		}
+
+		@include focus-visible {
+			@extend %focus;
+		}
 	}
 
 	input.is-checked,
