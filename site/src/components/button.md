@@ -23,7 +23,7 @@ All buttons, by default, are secondary buttons. There are three graduating secon
 2. Clear
 3. Filled
 
-| Type     | Class                      | Default State                                        | Hover                                                           |                                                                          |
+| Type     | Class                      | Default State                                        | Hover                                                           | Disabled                                                                 |
 | -------- | -------------------------- | ---------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | Outlined | `.button`                  | <button class="button">Default</button>              | <button class="button is-hovered">Default</button>              | <button class="button" disabled>Default</button>                         |
 | Clear    | `.button` `.button-clear`  | <button class="button button-clear">Clear</button>   | <button class="button button-clear is-hovered">Clear</button>   | <button class="button button-clear is-hovered" disabled>Clear</button>   |
@@ -95,7 +95,7 @@ Warning buttons are yellow on most themes. This color indicates a critical situa
 | Type     | Class                                           | Default State                                                       | Hover                                                                          | Disabled                                                                     |
 | -------- | ----------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | Outlined | `.button`, `.button-warning`                    | <button class="button button-warning">Default</button>              | <button class="button button-warning is-hovered">Default</button>              | <button class="button button-warning" disabled>Default</button>              |
-| Clear    | `.button`, `.button-warning`, `.button-clear`   | <button class="button button-warning button-clear">Clear</button>   | <button class="button button-warning button-clear is-hovered">Clear</button>   | <button class="button button-warning button-clear" disabled>Default</button> |
+| Clear    | `.button`, `.button-warning`, `.button-clear`   | <button class="button button-warning button-clear">Clear</button>   | <button class="button button-warning button-clear is-hovered">Clear</button>   | <button class="button button-warning button-clear" disabled>Clear</button>   |
 | Filled   | `.button` , `.button-warning`, `.button-filled` | <button class="button button-warning button-filled">Filled</button> | <button class="button button-warning button-filled is-hovered">Filled</button> | <button class="button button-warning button-filled" disabled>Filled</button> |
 
 ```abut-html
