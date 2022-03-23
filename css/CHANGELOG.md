@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 3.13.0
+
+### Minor Changes
+
+- c37b130: Add radio component and relevant documentation.
+
+### Patch Changes
+
+- 0934c3a: Updates uses of focus-visible class instances with mixin that can pivot between psuedo-selector and class.
+
 ## 3.12.5
 
 ### Patch Changes
