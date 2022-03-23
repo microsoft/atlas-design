@@ -13,11 +13,11 @@
 		"parcel": "^2.0.1"
 	},
 	"dependencies": {
-		"@microsoft/atlas-css": "^3.11.0",
-		"@parcel/plugin": "^2.2.1",
-		"@parcel/utils": "^2.2.1",
+		"@microsoft/atlas-css": "^3.12.5",
+		"@parcel/plugin": "^2.3.2",
+		"@parcel/utils": "^2.3.2",
 		"marked": "^4.0.12",
-		"highlight.js": "^11.4.0",
+		"highlight.js": "^11.5.0",
 		"front-matter": "^4.0.2",
 		"mustache": "^4.2.0"
 	}
