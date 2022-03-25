@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.13.1
+
+### Patch Changes
+
+- b637b59: Update unchecked radio button hover color.
+
 ## 3.13.0
 
 ### Minor Changes

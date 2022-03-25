@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.21.1
+
+### Patch Changes
+
+- Updated dependencies [34db8e6]
+  - @microsoft/atlas-js@1.0.0
+
 ## 0.21.0
 
 ### Minor Changes
