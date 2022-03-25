@@ -4,14 +4,10 @@
 	"public": true,
 	"description": "Scripts backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"scripts": {
-		"browserstack-test": "karma start --single-run --no-auto-watch --browsers \"Edge on Windows 10\",\"Chrome on Windows 10\",\"Safari on Mac Catalina\"",
-		"build": "tsc --project \"./tsconfig.json\" --outDir \"./dist\"",
+		"build": "tsc --project \"./tsconfig.json\" --outDir \"./dist\" --declaration true --declarationMap true",
 		"lint": "eslint . --ext .ts",
 		"prebuild": "rimraf dist",
-		"start": "node \"./esbuild.js\" --watch",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build:scripts": "parcel build src/index.ts --no-cache --no-autoinstall",
-		"tokens": "node ./tokens/index.js",
 		"prepublishOnly": "npm run lint && npm run build"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",

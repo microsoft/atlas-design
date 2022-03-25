@@ -1,3 +1,1 @@
-import { initPopover } from './behaviors/popover';
-
-initPopover();
+export * from './behaviors/popover';

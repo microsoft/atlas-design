@@ -20,7 +20,7 @@
 		"serve:site": "npm run start --workspace=@microsoft/atlas-site",
 		"serve:css": "npm run start --workspace=@microsoft/atlas-css",
 		"build:css": "npm run build --workspace=@microsoft/atlas-css",
-		"build:scripts": "npm run build --workspace=@microsoft/atlas-scripts",
+		"build:scripts": "npm run build --workspace=@microsoft/atlas-js",
 		"build:site": "npm run build --workspace=@microsoft/atlas-site",
 		"build:tokens": "npm run tokens --workspace=@microsoft/atlas-css",
 		"toc": "npm run toc --workspace=@microsoft/atlas-site",
