@@ -1,4 +1,5 @@
-export function initPopovers(container: HTMLElement) {
+/* eslint-disable @typescript-eslint/no-use-before-define */
+export function initPopover(container: HTMLElement = document.body) {
 	container.addEventListener(
 		'toggle',
 		(event: Event) => {
