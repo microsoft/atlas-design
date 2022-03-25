@@ -1,9 +1,10 @@
 import { handleCodeFilters } from './scripts/code-filter';
 import { handleFigmaFullScreenRequest } from './scripts/figma-embed';
-import { initPopovers } from './scripts/popover';
 import { initTheme } from './scripts/theming';
 
+import { initPopover } from '@microsoft/atlas-js/src/index';
+
 initTheme();
-initPopovers(document.body);
+initPopover();
 handleCodeFilters();
 handleFigmaFullScreenRequest();
