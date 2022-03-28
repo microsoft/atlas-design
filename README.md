@@ -1,16 +1,22 @@
-# Atlas Design
-
-[![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml) [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml)
-[![npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)
-[![Site](https://dev.azure.com/ceapex/Engineering/_apis/build/status/microsoft.atlas-design?branchName=main)](https://dev.azure.com/ceapex/Engineering/_build/latest?definitionId=3602&branchName=main)
+# 🌎 Atlas Design ✨
 
 Welcome to the Atlas Design project! This repository holds the source code backing the Atlas Design System.
 
 ## Our mission
 
-The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and consistent experiences at scale across the DevRel web properties.
+The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and co./css/README.mdsistent experiences at scale across the DevRel web properties.
 
-Looking for information about the Atlas CSS framework? Start at the [/css README](./css/README.md)!
+Looking for information about the Atlas CSS framework? Start in `/css`!
+
+## Version and status
+
+| Name                     | Status                                                                                                                                                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **@microsoft/atlas-css** | [![@microsoft/atlas-css npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)                                                         |
+| **@microsoft/atlas-js**  | [![@microsoft/atlas-js npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-js.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-js)                                                            |
+| **Site build**           | [![Site](https://dev.azure.com/ceapex/Engineering/_apis/build/status/microsoft.atlas-design?branchName=main)](https://dev.azure.com/ceapex/Engineering/_build/latest?definitionId=3602&branchName=main) |
+| **Release Pipeline**     | [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml)                                |
+| **PR Builds**            | [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml)                                |
 
 ## Development
 
@@ -23,7 +29,7 @@ Looking for information about the Atlas CSS framework? Start at the [/css README
 
 ## Using Atlas CSS
 
-The styles backing the Atlas Design system are discussed in greater detail in the [atlas-css readme](./css/README.md).
+The styles backing the Atlas Design system are discussed in greater detail in `/css`.
 
 ### Install Atlas CSS in your project
 
@@ -41,9 +47,18 @@ https://unpkg.com/browse/@microsoft/atlas-css/ # Will redirect to latest version
 https://unpkg.com/browse/@microsoft/atlas-css@<version>/ # Use this pattern on your page
 ```
 
+### Install Atlas JS in your project
+
+Behaviors and elements beyond the scope of CSS are found in the `/js` folder.
+
+```sh
+# install with NPM
+npm install --save @microsoft/atlas-js
+```
+
 ## Contributing
 
-While this project is open source, its primary purpose is to serve Microsoft web properties through a css-only implementation of a design system. We do love contributions to both our documentation (`/site` folder) and our framework (`/css`).
+While this project is open source, its primary purpose is to serve Microsoft web properties through a css-first implementation of a design system. We do appreciate contributions to both our documentation (`/site` folder), our framework (`/css`), and its companion scripts (`/js`).
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
@@ -69,7 +84,7 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 
 The following commands can be used to update broadly update dependencies. (Note: we omit major updates to husky because of major api changes and a general preference for version 4.x)
 
-```
+```sh
 npm exec --package npm-check-updates --workspaces --include-workspace-root -- npm-check-updates --upgrade --reject husky
 npm exec --package npm-check-updates --workspaces --include-workspace-root -- npm-check-updates --upgrade --target minor
 rm package-lock.json
