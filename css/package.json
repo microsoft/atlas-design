@@ -36,10 +36,10 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@microsoft/stylelint-config-atlas": "4.0.2",
-		"@parcel/transformer-sass": "^2.4.0",
+		"@parcel/transformer-sass": "^2.3.2",
 		"eslint-plugin-security": "^1.4.0",
 		"fs-extra": "^10.0.1",
-		"parcel": "^2.4.0",
+		"parcel": "^2.3.2",
 		"prettier": "^2.6.1",
 		"quicktype-core": "^6.0.62",
 		"sass": "^1.49.9",
