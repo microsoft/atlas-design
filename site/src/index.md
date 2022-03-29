@@ -2,8 +2,5 @@
 title: Atlas Design
 description: The Atlas Design system for Developer Relations.
 template: standard
+import: ../README.md
 ---
-
-# Atlas Design ✨
-
-Welcome to the Atlas Design system.
