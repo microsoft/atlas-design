@@ -33,18 +33,7 @@ $radio-spacing: 0.5em !default;
 		margin: 0 $radio-spacing;
 	}
 
-	/* stylelint-disable selector-max-specificity */
-
-	&.is-hovered,
-	&:hover:not([disabled]) {
-		.radio-dot:not(:checked) {
-			background: $radio-dot-hover-unchecked-color;
-		}
-	}
-
-	/* stylelint-enable */
-
-	/* stylelint-disable selector-no-qualifying-type */
+	/* stylelint-disable selector-no-qualifying-type, selector-max-specificity */
 
 	input {
 		&.is-focused {
@@ -62,6 +51,17 @@ $radio-spacing: 0.5em !default;
 		animation: $radio-animation $radio-duration $radio-timing-function 1;
 		border-color: $radio-dot-checked-color;
 		background: $radio-dot-checked-color;
+	}
+
+	&.is-hovered,
+	&:hover:not([disabled]) {
+		.radio-dot:not(:checked) {
+			background: $radio-dot-hover-unchecked-color;
+		}
+
+		.radio-dot.is-checked {
+			background: $radio-dot-checked-color;
+		}
 	}
 
 	input[type='radio'] {
