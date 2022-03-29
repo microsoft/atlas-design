@@ -17,7 +17,6 @@ $radio-spacing: 0.5em !default;
 	cursor: pointer;
 
 	.radio-dot {
-		inset-block-start: 0.0625em;
 		width: $radio-circle-size;
 		height: $radio-circle-size;
 		padding: $radio-dot-whitespace;
@@ -26,7 +25,6 @@ $radio-spacing: 0.5em !default;
 		background-clip: content-box !important;
 		background-color: $body-background;
 		color: $radio-dot-color;
-		inset: 0;
 	}
 
 	.radio-label-text {
