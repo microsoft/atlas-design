@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.0.2
+
+### Patch Changes
+
+- f4c9147: Add main and source properties to package.json
+
 ## 1.0.1
 
 ### Patch Changes
