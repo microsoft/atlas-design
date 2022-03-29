@@ -58,7 +58,7 @@ npm install --save @microsoft/atlas-js
 
 ## Contributing
 
-While this project is open source, its primary purpose is to serve Microsoft web properties through a css-first implementation of a design system. We do appreciate contributions to both our documentation (`/site` folder), our framework (`/css`), and its companion scripts (`/js`).
+While this project is open source, its primary purpose is to serve Microsoft web properties through a CSS-first implementation of a design system. We do appreciate contributions to our documentation (`/site` folder), our framework (`/css`), and its companion scripts (`/js`).
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
