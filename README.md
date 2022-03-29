@@ -40,7 +40,7 @@ Use NPM to add `@microsoft/atlas-css` to your project.
 npm install --save @microsoft/atlas-css
 ```
 
-You may access any file within the `/css` folder using the following UNPKG url. Just add the path to the file, relative to the at the end.
+You may access any file within the `/css` folder using the following UNPKG url. Just add the path to the file, relative to the `@` sign or version the end.
 
 ```sh
 https://unpkg.com/browse/@microsoft/atlas-css/ # Will redirect to latest version
