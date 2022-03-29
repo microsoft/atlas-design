@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.22.0
+
+### Minor Changes
+
+- 27eb7cd: Update site home to reflect root readme for now. Update status section.
+
+### Patch Changes
+
+- Updated dependencies [f4c9147]
+  - @microsoft/atlas-js@1.0.2
+
 ## 0.21.1
 
 ### Patch Changes
