@@ -37,7 +37,7 @@ $radio-spacing: 0.5em !default;
 
 	&.is-hovered,
 	&:hover:not([disabled]) {
-		.radio-dot:not(:checked)::before {
+		.radio-dot:not(:checked) {
 			background: $radio-dot-hover-unchecked-color;
 		}
 	}
