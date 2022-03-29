@@ -4,7 +4,7 @@ Welcome to the Atlas Design project! This repository holds the source code backi
 
 ## Our mission
 
-The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and co./css/README.mdsistent experiences at scale across the DevRel web properties.
+The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and consistent experiences at scale across the DevRel web properties.
 
 Looking for information about the Atlas CSS framework? Start in `/css`!
 
