@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.14.0
+
+### Minor Changes
+
+- 2a6d9c8: Add object-fit-fill atomic class.
+
 ## 3.13.1
 
 ### Patch Changes
