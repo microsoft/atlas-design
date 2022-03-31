@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.15.0
+
+### Minor Changes
+
+- f7aee90: Updated :where rules for inheriting focus outlines in bare elements.
+
 ## 3.14.0
 
 ### Minor Changes
