@@ -4,3 +4,10 @@ details,
 details > * {
 	box-sizing: border-box !important;
 }
+
+:where(html *),
+:where(html a),
+:where(html li) {
+	// include a,li {} to override css reset/normalize; this is causing .focus-visible color issues
+	outline-color: inherit;
+}
