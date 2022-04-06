@@ -17,7 +17,6 @@ $radio-spacing: 0.5em !default;
 	height: $radio-dot-size;
 	margin: auto;
 	border-radius: $border-radius-rounded;
-	background-color: $body-background;
 	content: '';
 	overflow: hidden;
 }
@@ -28,8 +27,6 @@ $radio-spacing: 0.5em !default;
 
 .radio {
 	display: inline-flex;
-	position: relative;
-	align-items: flex-start;
 	line-height: 1.25;
 	cursor: pointer;
 
@@ -42,6 +39,7 @@ $radio-spacing: 0.5em !default;
 		height: $radio-circle-size;
 		border: $radio-border-width solid $radio-border-color;
 		border-radius: $border-radius-rounded;
+		background-color: $body-background;
 		color: $radio-dot-color;
 		appearance: none;
 
@@ -54,18 +52,7 @@ $radio-spacing: 0.5em !default;
 		margin: 0 $radio-spacing;
 	}
 
-	/* stylelint-disable selector-max-specificity */
-
-	&.is-hovered,
-	&:hover:not([disabled]) {
-		.radio-dot:not(:checked)::before {
-			background: $radio-dot-hover-unchecked-color;
-		}
-	}
-
-	/* stylelint-enable */
-
-	/* stylelint-disable selector-no-qualifying-type */
+	/* stylelint-disable selector-max-specificity, selector-no-qualifying-type */
 
 	input {
 		&.is-focused {
@@ -84,6 +71,17 @@ $radio-spacing: 0.5em !default;
 		border-color: $radio-dot-checked-color;
 
 		&::before {
+			@include radio-dot-checked;
+		}
+	}
+
+	&.is-hovered,
+	&:hover:not([disabled]) {
+		.radio-dot:not(:checked)::before {
+			background: $radio-dot-hover-unchecked-color;
+		}
+
+		.radio-dot.is-checked {
 			@include radio-dot-checked;
 		}
 	}
