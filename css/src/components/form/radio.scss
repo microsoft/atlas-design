@@ -1,5 +1,4 @@
 $radio-circle-size: 1.25em !default;
-$radio-dot-size: 0.625em !default;
 $radio-border-color: $control-border !default;
 $radio-border-width: $control-border-width !default;
 $radio-dot-checked-color: $primary !default;
@@ -10,19 +9,9 @@ $radio-duration: $input-transition-duration !default;
 $radio-animation: boop !default;
 $radio-spacing: 0.5em !default;
 
-@mixin radio-dot {
-	position: absolute;
-	inset: 0;
-	width: $radio-dot-size;
-	height: $radio-dot-size;
-	margin: auto;
-	border-radius: $border-radius-rounded;
-	content: '';
-	overflow: hidden;
-}
-
 @mixin radio-dot-checked {
 	background: $radio-dot-checked-color;
+	box-shadow: inset 0 0 0 0.25em $body-background;
 }
 
 .radio {
@@ -32,7 +21,6 @@ $radio-spacing: 0.5em !default;
 
 	.radio-dot {
 		display: inline-block;
-		position: relative;
 		inset-block-start: 0.0625em;
 		flex-shrink: 0;
 		width: $radio-circle-size;
@@ -42,10 +30,7 @@ $radio-spacing: 0.5em !default;
 		background-color: $body-background;
 		color: $radio-dot-color;
 		appearance: none;
-
-		&::before {
-			@include radio-dot;
-		}
+		content: '';
 	}
 
 	.radio-label-text {
@@ -67,17 +52,15 @@ $radio-spacing: 0.5em !default;
 	input.is-checked,
 	input:checked,
 	.radio-dot.is-checked {
+		@include radio-dot-checked;
+
 		animation: $radio-animation $radio-duration $radio-timing-function 1;
 		border-color: $radio-dot-checked-color;
-
-		&::before {
-			@include radio-dot-checked;
-		}
 	}
 
 	&.is-hovered,
 	&:hover:not([disabled]) {
-		.radio-dot:not(:checked)::before {
+		.radio-dot:not(:checked) {
 			background: $radio-dot-hover-unchecked-color;
 		}
 
