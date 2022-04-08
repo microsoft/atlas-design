@@ -9,11 +9,20 @@ template: standard
 ```html
 <div class="border border-radius-lg">
 	<form class="padding-sm" id="star-rating-example-form">
-		<star-rating id="star-rating-0" name="star-rating-0" value="3">
+		<star-rating id="star-rating-0" name="star-rating-0" value="3" readonly>
 			<legend slot="legend">How are <strong>we doing</strong>?</legend>
 		</star-rating>
 
-		<star-rating id="star-rating-1" name="star-rating-1" value="0" class="margin-top-sm" required>
+		<star-rating id="star-rating-1" name="star-rating-1" value="0" class="margin-top-sm">
+			<legend slot="legend">Did this web component make you <strong>smile</strong>?</legend>
+			<span slot="label-1">Not in the slightest</span>
+			<span slot="label-2">No</span>
+			<span slot="label-3">Maybe</span>
+			<span slot="label-4">A bit</span>
+			<span slot="label-5">From ear to ear</span>
+		</star-rating>
+
+		<star-rating id="star-rating-2" name="star-rating-2" value="0" class="margin-top-sm">
 			<legend slot="legend">Did this web component make you <strong>smile</strong>?</legend>
 			<span slot="label-1">Not in the slightest</span>
 			<span slot="label-2">No</span>
@@ -30,6 +39,10 @@ template: standard
 		<div id="well-thats-good-news" class="margin-top-sm" hidden>
 			<p>That's great! 😊</p>
 		</div>
+
+		<input type="text" readonly name="readonly" value="do i exist - readonly" />
+		<input type="text" disabled name="disabled" value="do i exist - disabled" />
+		<input type="text" value="do i exist - nameless" />
 
 		<button type="submit" class="button margin-top-xs">Submit</button>
 	</form>

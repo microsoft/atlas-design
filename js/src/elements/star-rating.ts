@@ -114,54 +114,57 @@ starRatingTemplate.innerHTML = `
 	}
   </style>
 
-<div id="legend-container">
-	<slot name="legend" part="legend">Enter rating</slot>
-</div>
+<fieldset>
+	<div id="legend-container">
+		<slot name="legend" part="legend">Enter rating</slot>
+	</div>
 
-<div id="input-container" role="menu" aria-multiselectable="false">
-	<input role="menuitemradio" aria-setsize="5" aria-posinset="5" aria-labelledby="label-5" class="visually-hidden" type="radio" name="rating" value="5" id="radio-5" />
-	<label id="star-5" for="radio-5" aria-hidden="true">
-		<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-			<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
-		</svg>
-	</label>
+	<div id="input-container">
+		<input class="visually-hidden" type="radio" value="5" id="radio-5" />
+		<label id="star-5" for="radio-5">
+			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+			</svg>
+		</label>
 
-	<input role="menuitemradio" aria-setsize="5" aria-posinset="4" aria-labelledby="label-4" class="visually-hidden" type="radio" name="rating" value="4" id="radio-4" />
-	<label id="star-4" for="radio-4" aria-hidden="true">
-		<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-			<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
-		</svg>
-	</label>
+		<input class="visually-hidden" type="radio" value="4" id="radio-4" />
+		<label id="star-4" for="radio-4">
+			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+			</svg>
+		</label>
 
-	<input role="menuitemradio" aria-setsize="5" aria-posinset="3" aria-labelledby="label-3" class="visually-hidden" type="radio" name="rating" value="3" id="radio-3" />
-	<label id="star-3" for="radio-3" aria-hidden="true">
-		<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-			<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
-		</svg>
-	</label>
+		<input class="visually-hidden" type="radio" value="3" id="radio-3" />
+		<label id="star-3" for="radio-3">
+			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+			</svg>
+		</label>
 
-	<input role="menuitemradio" aria-setsize="5" aria-posinset="2" aria-labelledby="label-2" class="visually-hidden" type="radio" name="rating" value="2" id="radio-2" />
-	<label id="star-2" for="radio-2" aria-hidden="true">
-		<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-			<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
-		</svg>
-	</label>
+		<input class="visually-hidden" type="radio" value="2" id="radio-2" />
+		<label id="star-2" for="radio-2">
+			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+			</svg>
+		</label>
 
-	<input role="menuitemradio" aria-setsize="5" aria-posinset="1" aria-labelledby="label-1" class="visually-hidden" type="radio" name="rating" value="1" id="radio-1" />
-	<label id="star-1" for="radio-1" aria-hidden="true">
-		<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-			<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
-		</svg>
-	</label>
+		<input class="visually-hidden" type="radio" value="1" id="radio-1" />
+		<label id="star-1" for="radio-1">
+			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+			</svg>
+		</label>
 
-	<span id="alert" aria-hidden="true">
-		<span aria-hidden="true" id="label-1"><slot name="label-1"></slot></span>
-		<span aria-hidden="true" id="label-2"><slot name="label-2"></slot></span>
-		<span aria-hidden="true" id="label-3"><slot name="label-3"></slot></span>
-		<span aria-hidden="true" id="label-4"><slot name="label-4"></slot></span>
-		<span aria-hidden="true" id="label-5"><slot name="label-5"></slot></span>
-	</span>
-</div>`;
+		<span id="alert">
+			<span id="label-1"><slot name="label-1"></slot></span>
+			<span id="label-2"><slot name="label-2"></slot></span>
+			<span id="label-3"><slot name="label-3"></slot></span>
+			<span id="label-4"><slot name="label-4"></slot></span>
+			<span id="label-5"><slot name="label-5"></slot></span>
+		</span>
+	</div>
+</fieldset>
+`;
 
 const template = starRatingTemplate;
 
@@ -180,6 +183,14 @@ class StarRatingElement extends HTMLElement {
 		const clone = document.importNode(template.content, true);
 		this.attachShadow({ mode: 'open' });
 		this.shadowRoot?.appendChild(clone);
+
+		const inputs = Array.from(this?.shadowRoot?.querySelectorAll('input')) as HTMLInputElement[];
+		if (!this.name) {
+			throw new Error('StarRatingElement requires a name attribute');
+		}
+		for (const input of inputs) {
+			input.name = this.name;
+		}
 
 		// // https://html.spec.whatwg.org/multipage/custom-elements.html 4.13.1.2
 		// this.internals_ = this.attachInternals();
@@ -230,27 +241,17 @@ class StarRatingElement extends HTMLElement {
 	get required() {
 		return this.hasAttribute('required');
 	}
-	// get validity() {
-	// 	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-	// 	return this.internals_.validity;
-	// }
-	// get validationMessage() {
-	// 	return this.internals_.validationMessage;
-	// }
-	// get willValidate() {
-	// 	return this.internals_.willValidate;
-	// }
 
 	connectedCallback() {
-		this.shadowRoot?.addEventListener('keydown', this.handleEvent);
-		this.shadowRoot?.addEventListener('change', this.handleEvent);
+		this.shadowRoot?.addEventListener('keydown', this);
+		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
-		this.closest('form')?.addEventListener('formdata', e => this.handleFormData(e));
+		this.closest('form')?.addEventListener('formdata', this);
 	}
 
 	disconnectedCallback() {
 		this.shadowRoot?.removeEventListener('change', this);
-		// this.closest('form')?.removeEventListener('formdata', this);
+		this.closest('form')?.removeEventListener('formdata', this);
 	}
 
 	attributeChangedCallback(/*_name: string, _oldValue: string, _newValue: string*/) {
@@ -324,25 +325,12 @@ class StarRatingElement extends HTMLElement {
 				starRating.host.value = value;
 				window.dispatchEvent(customEvent);
 				break;
+			case 'formdata':
+				if (this.readonly || !this.name) {
+					return;
+				}
+				(event as FormDataEvent).formData.append(this.name, this.value.toString());
 		}
-	}
-
-	handleFormData(event: FormDataEvent) {
-		// console.log(event)(
-		// 	// https://web.dev/more-capable-form-controls/
-		// 	event as FormDataEvent
-		// );
-		const starRating = this as unknown as StarRatingElement;
-		// const starRating = form.querySelector(`star-rating[name="${inputName}"`);
-
-		if (
-			// !starRating.readonly || // consider whether to disable submission if readonly
-			!starRating
-		) {
-			return;
-		}
-		const elementName = starRating.name || 'unnamed-star-rating';
-		(event as FormDataEvent).formData.append(elementName, starRating.value.toString());
 	}
 }
 
