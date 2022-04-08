@@ -45,7 +45,10 @@ $radio-spacing: 0.5em !default;
 		appearance: none;
 		content: '';
 
-		@media (forced-colors: active) {
+		@include forced-colors {
+			border-color: CanvasText !important;
+			background-color: unset !important;
+
 			&::before {
 				@include radio-dot;
 			}
@@ -56,7 +59,7 @@ $radio-spacing: 0.5em !default;
 		margin: 0 $radio-spacing;
 	}
 
-	/* stylelint-disable selector-max-specificity, selector-no-qualifying-type */
+	/* stylelint-disable selector-max-specificity, selector-no-qualifying-type, max-nesting-depth */
 
 	input {
 		&.is-focused {
@@ -76,9 +79,13 @@ $radio-spacing: 0.5em !default;
 		animation: $radio-animation $radio-duration $radio-timing-function 1;
 		border-color: $radio-dot-checked-color;
 
-		@media (forced-colors: active) {
+		@include forced-colors {
+			border-color: CanvasText !important;
+			background-color: unset !important;
+			box-shadow: none !important;
+
 			&::before {
-				background-color: ButtonText !important;
+				background-color: CanvasText !important;
 			}
 		}
 	}
@@ -88,11 +95,14 @@ $radio-spacing: 0.5em !default;
 		.radio-dot:not(:checked) {
 			background: $radio-dot-hover-unchecked-color;
 			box-shadow: inset 0 0 0 0.25em $body-background;
-		}
 
-		@media (forced-colors: active) {
-			.radio-dot:not(:checked)::before {
-				background-color: ButtonText !important;
+			@include forced-colors {
+				background-color: unset !important;
+				box-shadow: none !important;
+
+				&::before {
+					background-color: CanvasText !important;
+				}
 			}
 		}
 
