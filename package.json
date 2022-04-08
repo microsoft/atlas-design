@@ -40,7 +40,8 @@
 			"css",
 			"plugins/*",
 			"site",
-			"js"
+			"js",
+			"integration"
 		]
 	},
 	"installConfig": {
