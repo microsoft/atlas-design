@@ -1,0 +1,110 @@
+// *,
+// ::before,
+// ::after {
+// 	box-sizing: border-box;
+// }
+
+// :host {
+// 	display: block;
+// 	--star-color: var(--theme-primary-base);
+// }
+
+// :host([readonly]) {
+// 	pointer-events: none;
+// 	cursor: not-allowed;
+// 	--star-color: var(--theme-text);
+// }
+
+// #legend-container {
+// 	margin-block: 0.75rem;
+// }
+
+// #input-container {
+// 	display: inline-grid;
+// 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto;
+// 	grid-template-areas: 'star-1 star-2 star-3 star-4 star-5 alert';
+// }
+
+// #star-1 {
+// 	grid-area: star-1;
+// }
+
+// #star-2 {
+// 	grid-area: star-2;
+// }
+
+// #star-3 {
+// 	grid-area: star-3;
+// }
+
+// #star-4 {
+// 	grid-area: star-4;
+// }
+
+// #star-5 {
+// 	grid-area: star-5;
+// }
+
+// #alert {
+// 	grid-area: alert;
+// 	display: flex;
+// 	align-items: center;
+// 	margin-inline-start: 0.5rem;
+// }
+
+// .visually-hidden {
+// 	clip: rect(0 0 0 0);
+// 	clip-path: inset(50%);
+// 	height: 1px;
+// 	overflow: hidden;
+// 	position: absolute;
+// 	white-space: nowrap;
+// 	width: 1px;
+// }
+
+// svg {
+// 	fill: none;
+// 	stroke: var(--star-color);
+// }
+
+// label {
+// 	border-radius: 0.5em;
+// 	padding-inline: 0.125em;
+// }
+
+// input:checked ~ label > svg,
+// input:checked + label > svg,
+// label:hover > svg,
+// label:hover ~ label > svg {
+// 	fill: var(--star-color);
+// }
+
+// [id^='label-'] {
+// 	display: none;
+// }
+
+// input:focus-visible + label,
+// input.focus-visible + label {
+// 	outline: 3px dashed;
+// }
+
+// input[value='1']:checked ~ #alert #label-1,
+// input[value='2']:checked ~ #alert #label-2,
+// input[value='3']:checked ~ #alert #label-3,
+// input[value='4']:checked ~ #alert #label-4,
+// input[value='5']:checked ~ #alert #label-5 {
+// 	display: inline;
+// }
+
+// /* override checked styles with hover styles */
+// input:hover ~ #alert [id^='label-'] {
+// 	display: none !important;
+// }
+
+// input[value='1']:hover ~ #alert #label-1,
+// input[value='2']:hover ~ #alert #label-2,
+// input[value='3']:hover ~ #alert #label-3,
+// input[value='4']:hover ~ #alert #label-4,
+// input[value='5']:hover ~ #alert #label-5 {
+// 	display: inline !important;
+// }
