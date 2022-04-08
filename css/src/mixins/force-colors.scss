@@ -1,6 +1,4 @@
 @mixin forced-colors() {
-	forced-color-adjust: none;
-
 	@media (forced-colors: active) {
 		@content;
 	}
