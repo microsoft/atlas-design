@@ -44,7 +44,6 @@ $radio-spacing: 0.5em !default;
 		color: $radio-dot-color;
 		cursor: pointer;
 		appearance: none;
-		content: '';
 
 		@include forced-colors {
 			border-color: CanvasText !important;
