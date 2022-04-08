@@ -5,7 +5,6 @@
 	"private": true,
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"type-check": "npm run build:css && npm run type-check --workspace=@microsoft/atlas-site",
 		"prelint": "npm run build:tokens",
 		"lint": "npm run lint:css && npm run lint:site",
@@ -23,6 +22,7 @@
 		"build:js": "npm run build --workspace=@microsoft/atlas-js",
 		"build:site": "npm run build --workspace=@microsoft/atlas-site",
 		"build:tokens": "npm run tokens --workspace=@microsoft/atlas-css",
+		"test": "npm run test --workspace=@microsoft/atlas-integration",
 		"toc": "npm run toc --workspace=@microsoft/atlas-site",
 		"prettier": "prettier --write \"**/*.{scss,ts,js,json,yml,md}\"",
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
