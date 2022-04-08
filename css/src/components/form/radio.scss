@@ -42,6 +42,7 @@ $radio-spacing: 0.5em !default;
 		border-radius: $border-radius-rounded;
 		background-color: $body-background;
 		color: $radio-dot-color;
+		cursor: pointer;
 		appearance: none;
 		content: '';
 
