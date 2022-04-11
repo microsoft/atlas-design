@@ -8,7 +8,7 @@ for (const pageConfig of pages) {
 
 	test(`"${pageConfig.pathname}"`, async ({ page }) => {
 		await page.goto(pageConfig.pathname);
-		const pathname = pageConfig.name.replace(/\s|\\|\//g, '_');
+		const pathname = './visual-diff/screenshots/' + pageConfig.name.replace(/\s|\\|\//g, '_');
 		expect
 			.soft(await page.screenshot({ path: pathname, type: 'png', ...screenshotSettings }))
 			.toMatchSnapshot();
