@@ -51,12 +51,21 @@ jobs:
         id: 'visual_diff'
         run: npm run visual-diff
 
+      # tasks after the test should have if: always() to prevent an early exit
       - name: ls
         run: ls -r
+        if: always()
 
       - name: Upload playwright report
-        if: ${{ failure() && steps.visual_diff.outcome == 'failure' }}
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: visual_diff-report-${{github.sha}}
           path: ./integration/playwright-report/
+
+      - name: Upload playwright report
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: visual_diff-report-${{github.sha}}
+          path: ./integration/test-results/
