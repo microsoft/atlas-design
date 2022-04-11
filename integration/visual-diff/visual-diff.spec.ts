@@ -1,5 +1,7 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { pages } from '../config/page';
+
+test.describe.configure({ mode: 'parallel' });
 
 for (const pageConfig of pages) {
 	const screenshotSettings = pageConfig?.options?.screenshot || {};
