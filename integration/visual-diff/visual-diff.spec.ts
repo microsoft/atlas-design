@@ -6,9 +6,11 @@ test.describe.configure({ mode: 'parallel' });
 for (const pageConfig of pages) {
 	const screenshotSettings = pageConfig?.options?.screenshot || {};
 
-	test(`screenshot ${pageConfig.name} at "${pageConfig.pathname}"`, async ({ page }) => {
+	test(`"${pageConfig.pathname}"`, async ({ page }) => {
 		await page.goto(pageConfig.pathname);
-		expect(await page.screenshot({ ...screenshotSettings })).toMatchSnapshot();
+		expect
+			.soft(await page.screenshot({ path: pageConfig.name, type: 'png', ...screenshotSettings }))
+			.toMatchSnapshot();
 	});
 }
 

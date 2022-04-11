@@ -58,5 +58,5 @@ jobs:
         if: ${{ failure() && steps.visual_diff.outcome == 'failure' }}
         uses: actions/upload-artifact@v2
         with:
-          name: visual_diff-chrome-test-results-linux-${{github.sha}}
-          path: ./playwright-report/
+          name: visual_diff-report-${{github.sha}}
+          path: ./integration/playwright-report/
