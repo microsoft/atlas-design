@@ -51,9 +51,12 @@ jobs:
         id: 'visual_diff'
         run: npm run visual-diff
 
+      - name: ls
+        run: ls -r
+
       - name: Upload playwright report
         if: ${{ failure() && steps.visual_diff.outcome == 'failure' }}
         uses: actions/upload-artifact@v2
         with:
           name: visual_diff-chrome-test-results-linux-${{github.sha}}
-          path: ./integration/playwright-report/
+          path: ./playwright-report/
