@@ -5,3 +5,4 @@ dist
 .parcel-cache
 *.log
 toc.json
+visual-diff.spec.ts-snapshots
