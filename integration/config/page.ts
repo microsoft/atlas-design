@@ -1,9 +1,36 @@
-import { PageScreenshotOptions } from '@playwright/test';
 import type { LocalPageConfig } from './typings';
 
 export const pages: LocalPageConfig[] = [
-	{
-		pathname: '/',
-		name: 'Home'
-	}
+	{ pathname: '/index.html', name: 'Home' },
+	{ pathname: '/atomics/border.html', name: 'Atomics/border' },
+	{ pathname: '/atomics/display.html', name: 'Atomics/display' },
+	{ pathname: '/atomics/flex.html', name: 'Atomics/flex' },
+	{ pathname: '/atomics/image.html', name: 'Atomics/image' },
+	{ pathname: '/atomics/line-html.html', name: 'Atomics/line' },
+	{ pathname: '/atomics/lists.html', name: 'Atomics/lists' },
+	{ pathname: '/atomics/overflow.html', name: 'Atomics/overflow' },
+	{ pathname: '/atomics/overview.html', name: 'Atomics/overview' },
+	{ pathname: '/atomics/position.html', name: 'Atomics/position' },
+	{ pathname: '/atomics/shadow.html', name: 'Atomics/shadow' },
+	{ pathname: '/atomics/spacing.html', name: 'Atomics/spacing' },
+	{ pathname: '/atomics/typography.html', name: 'Atomics/typography' },
+	{ pathname: '/atomics/width.html', name: 'Atomics/width' },
+	{ pathname: '/components/breadcrumbs.html', name: 'Components/breadcrumbs' },
+	{ pathname: '/components/button.html', name: 'Components/button' },
+	{ pathname: '/components/checkbox.html', name: 'Components/checkbox' },
+	{ pathname: '/components/help.html', name: 'Components/help' },
+	{ pathname: '/components/icon.html', name: 'Components/icon' },
+	{ pathname: '/components/input.html', name: 'Components/input' },
+	{ pathname: '/components/label.html', name: 'Components/label' },
+	{ pathname: '/components/link-button.html', name: 'Components/link-button' },
+	{ pathname: '/components/markdown.html', name: 'Components/markdown' },
+	{ pathname: '/components/overview.html', name: 'Components/overview' },
+	{ pathname: '/components/popover.html', name: 'Components/popover' },
+	{ pathname: '/components/radio.html', name: 'Components/radio' },
+	{ pathname: '/components/scroll.html', name: 'Components/scroll' },
+	{ pathname: '/components/select.html', name: 'Components/select' },
+	{ pathname: '/components/table.html', name: 'Components/table' },
+	{ pathname: '/components/textarea.html', name: 'Components/textarea' },
+	{ pathname: '/components/toggle.html', name: 'Components/toggle' },
+	{ pathname: 'patterns/article-header.html', name: 'Patterns/article-header' }
 ];
