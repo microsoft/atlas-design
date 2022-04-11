@@ -48,4 +48,12 @@ jobs:
 
       # Run lint
       - name: Visual Diff
+        id: 'visual_diff'
         run: npm run visual-diff
+
+      - name: Upload test results
+        if: ${{ failure() && steps.visual_diff.outcome == 'failure' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: visual_diff-chrome-test-results-linux-${{github.sha}}
+          path: build/test-report/e2e
