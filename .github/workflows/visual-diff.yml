@@ -1,38 +1,45 @@
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# This is a basic workflow to help you get started with Actions
 
-# Visual regression testing
-name: Visual Diff
+name: Visual diff
 
-trigger: none
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  # push:
+  #   branches:
+  #     - main
+  pull_request:
+    branches:
+      - main
 
-pr:
-  autoCancel: true
-  drafts: true
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
-pool:
-  vmImage: windows-2022
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
-steps:
-  - task: NodeTool@0
-    displayName: Use node 16.6.x
-    inputs:
-      versionSpec: '16.6.x'
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-  - script: npm -v
-    displayName: View NPM Version
+      - name: Use Node.js 16.6.X
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.6.X'
 
-  - script: npm ci --no-optional
-    displayName: Install
+      # Monorepo installation
+      - name: Npm install
+        run: npm ci;
 
-  - script: npm run visual-diff
-    displayName: Visual Diff
+      # Run formatting check
+      - name: Check formatting
+        run: npm run prettier-check;
 
-  # - task: AzureFileCopy@4
-  #   displayName: Deploy site
-  #   inputs:
-  #     sourcePath: $(System.DefaultWorkingDirectory)/site/dist/*
-  #     azureSubscription: 'MSFTDOCS - AtlasDesign Content Publisher'
-  #     destination: azureBlob
-  #     storage: atlasdesignpublic
-  #     containerName: $web
+      # Run lint
+      - name: Visual Diff
+        run: npm run visual-diff
