@@ -40,6 +40,9 @@ jobs:
       - name: Npm install
         run: npm ci;
 
+      - name: Install Playwright
+        run: npx playwright install
+
       # Run lint
       - name: Visual Diff
         run: npm run visual-diff
