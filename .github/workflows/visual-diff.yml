@@ -56,4 +56,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: visual_diff-chrome-test-results-linux-${{github.sha}}
-          path: integration/playwright-report/
+          path: ./integration/playwright-report/

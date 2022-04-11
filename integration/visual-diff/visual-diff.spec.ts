@@ -7,7 +7,7 @@ for (const pageConfig of pages) {
 	const screenshotSettings = pageConfig?.options?.screenshot || {};
 
 	test(`screenshot ${pageConfig.name} at "${pageConfig.pathname}"`, async ({ page }) => {
-		await page.goto('pageConfig.pathname');
+		await page.goto(pageConfig.pathname);
 		expect(await page.screenshot({ ...screenshotSettings })).toMatchSnapshot();
 	});
 }
