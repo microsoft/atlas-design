@@ -25,8 +25,10 @@ const config: PlaywrightTestConfig = {
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
+	/** By default, test files are run in parallel. Tests in a single file are run in order, in the same worker process. */
+	fullyParallel: true,
 	// /* Opt out of parallel tests on CI. */
-	workers: process.env.CI ? 2 : undefined,
+	// workers: process.env.CI ? 2 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
 	reporter: 'html',
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -76,10 +78,6 @@ const config: PlaywrightTestConfig = {
 		{
 			name: 'Android Chrome',
 			use: devices['Pixel 5']
-		},
-		{
-			name: 'Mobile Safari',
-			use: devices['iPhone 13']
 		}
 	],
 
