@@ -63,9 +63,9 @@ jobs:
           name: visual_diff-report-${{github.sha}}
           path: ./integration/playwright-report/
 
-      - name: Upload playwright report
+      - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: visual_diff-report-${{github.sha}}
+          name: visual_diff-test-results-${{github.sha}}
           path: ./integration/test-results/
