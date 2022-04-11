@@ -1,0 +1,38 @@
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+# Visual regression testing
+name: Visual Diff
+
+trigger: none
+
+pr:
+  autoCancel: true
+  drafts: true
+
+pool:
+  vmImage: windows-2022
+
+steps:
+  - task: NodeTool@0
+    displayName: Use node 16.6.x
+    inputs:
+      versionSpec: '16.6.x'
+
+  - script: npm -v
+    displayName: View NPM Version
+
+  - script: npm ci --no-optional
+    displayName: Install
+
+  - script: npm run visual-diff
+    displayName: Visual Diff
+
+  # - task: AzureFileCopy@4
+  #   displayName: Deploy site
+  #   inputs:
+  #     sourcePath: $(System.DefaultWorkingDirectory)/site/dist/*
+  #     azureSubscription: 'MSFTDOCS - AtlasDesign Content Publisher'
+  #     destination: azureBlob
+  #     storage: atlasdesignpublic
+  #     containerName: $web

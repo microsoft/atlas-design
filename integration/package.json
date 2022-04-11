@@ -4,7 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "playwright test --config=playwright.config.ts"
+		"visual-diff": "playwright test --config=visual-diff.config.ts",
+		"update-snapshots": "playwright test --config=visual-diff.config.ts --update-snapshots",
+		"show-report": "playwright show-report"
 	},
 	"keywords": [],
 	"author": "",

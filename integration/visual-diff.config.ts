@@ -11,7 +11,7 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-	testDir: './tests',
+	testDir: './visual-diff',
 	/* Maximum time one test can run for. */
 	timeout: 30 * 1000,
 	expect: {
@@ -25,10 +25,10 @@ const config: PlaywrightTestConfig = {
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
-	/* Opt out of parallel tests on CI. */
-	workers: process.env.CI ? 1 : undefined,
+	// /* Opt out of parallel tests on CI. */
+	// workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	reporter: 'html',
+	reporter: process.env.CI ? 'github' : 'list',
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		/* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
@@ -46,20 +46,6 @@ const config: PlaywrightTestConfig = {
 			name: 'chromium',
 			use: {
 				...devices['Desktop Chrome']
-			}
-		},
-
-		{
-			name: 'firefox',
-			use: {
-				...devices['Desktop Firefox']
-			}
-		},
-
-		{
-			name: 'webkit',
-			use: {
-				...devices['Desktop Safari']
 			}
 		}
 
@@ -97,7 +83,7 @@ const config: PlaywrightTestConfig = {
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
-		command: 'npm run start',
+		command: 'npm run start --prefix ../',
 		port: 1111
 	}
 };
