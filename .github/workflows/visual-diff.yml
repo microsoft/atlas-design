@@ -24,7 +24,7 @@ jobs:
   # This workflow contains a single job called "build"
   visual-diff:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -53,7 +53,7 @@ jobs:
 
       # tasks after the test should have if: always() to prevent an early exit
       - name: ls
-        run: ls -r
+        run: cd ./integration/; ls -a
         if: always()
 
       - name: Upload playwright report
