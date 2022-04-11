@@ -40,8 +40,11 @@ jobs:
       - name: Npm install
         run: npm ci;
 
-      - name: Install Playwright
+      - name: Install Playwright Deps
         run: npx playwright install-deps
+
+      - name: Install Playright
+        run: npx playwright install
 
       # Run lint
       - name: Visual Diff
