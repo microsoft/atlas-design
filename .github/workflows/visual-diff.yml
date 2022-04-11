@@ -36,10 +36,6 @@ jobs:
       - name: Npm install
         run: npm ci;
 
-      # Run formatting check
-      - name: Check formatting
-        run: npm run prettier-check;
-
       # Run lint
       - name: Visual Diff
         run: npm run visual-diff
