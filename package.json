@@ -24,6 +24,7 @@
 		"serve:site": "npm run start --workspace=@microsoft/atlas-site",
 		"serve:css": "npm run start --workspace=@microsoft/atlas-css",
 		"visual-diff": "npm run visual-diff --workspace=@microsoft/atlas-integration",
+		"flows": "npm run flows --workspace=@microsoft/atlas-integration",
 		"update-snapshots": "npm run update-snapshots --workspace=@microsoft/atlas-integration",
 		"show-report": "npm run show-report --workspace=@microsoft/atlas-integration",
 		"toc": "npm run toc --workspace=@microsoft/atlas-site",
