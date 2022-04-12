@@ -1,4 +1,4 @@
-# 🌎 Atlas Design System ✨
+# 🌎 Atlas Design ✨
 
 Welcome to the Atlas Design project! This repository holds the source code backing the Atlas Design System.
 
