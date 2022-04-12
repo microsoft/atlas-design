@@ -60,6 +60,7 @@
 	],
 	"devDependencies": {
 		"@changesets/cli": "^2.21.1",
+		"@playwright/test": "^1.21.0",
 		"husky": "4.3.8",
 		"prettier": "^2.6.0",
 		"pretty-quick": "^3.1.3"

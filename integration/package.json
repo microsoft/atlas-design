@@ -6,7 +6,9 @@
 	"scripts": {
 		"codegen": "npx playwright codegen localhost:1111",
 		"visual-diff": "playwright test --config=visual-diff.config.ts",
-		"flows": "playwright test --config=flows.config.ts",
+		"visual-diff:debug": "playwright test --debug --config=visual-diff.config.ts",
+		"flows": "playwright test --config=flows.config.ts ",
+		"flows:debug": "playwright test --debug --config=flows.config.ts",
 		"update-snapshots": "playwright test --config=visual-diff.config.ts --update-snapshots",
 		"preupdate-snapshots": "rimraf \"./visual-diff/visual-diff.spec.ts-snapshots\"",
 		"show-report": "playwright show-report"
