@@ -86,6 +86,7 @@ const config: PlaywrightTestConfig = {
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
+		reuseExistingServer: true,
 		command: 'npm run start --prefix ../',
 		port: 1111
 	}
