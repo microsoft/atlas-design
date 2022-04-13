@@ -1,4 +1,4 @@
-import { devices } from '@playwright/test';
+import { devices, PlaywrightTestOptions, PlaywrightWorkerOptions, Project } from '@playwright/test';
 import { indexHTMLOnlyRoutes } from './routes.ts/index-html';
 import type { LocalPageConfig, Theme, ObjectifiedPlayWrightRouteArgs } from './typings';
 
@@ -47,7 +47,7 @@ export const pages: LocalPageConfig[] = [
 	{ pathname: '/patterns/article-header.html', name: 'Patterns/article-header', themes, routes }
 ];
 
-export const auxillaryViewports = [
+export const auxillaryViewports: Project<PlaywrightTestOptions, PlaywrightWorkerOptions>[] = [
 	// { // All tests start at this viewport
 	// 	name: 'Widescreen Chromium',
 	// 	use: {
@@ -79,7 +79,13 @@ export const auxillaryViewports = [
 		}
 	},
 	{
-		name: 'Android Chrome',
-		use: devices['Pixel 5']
+		name: 'Narrow Chromium',
+		use: {
+			browserName: 'chromium',
+			viewport: {
+				width: 326,
+				height: 480
+			}
+		}
 	}
 ];
