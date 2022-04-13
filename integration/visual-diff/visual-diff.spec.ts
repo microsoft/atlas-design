@@ -33,7 +33,7 @@ for (const pageConfig of pages) {
 			// const pathname = '' + pageConfig.name.replace(/\s|\\|\//g, '_') + '.png';
 			await page.screenshot({
 				...screenshotSettings,
-				path: getVisualDiffFilePath(pageConfig, projectName, width, height)
+				path: getVisualDiffFilePath(pageConfig, projectName, theme, width, height)
 			});
 		}
 	});
@@ -42,9 +42,10 @@ for (const pageConfig of pages) {
 function getVisualDiffFilePath(
 	pageConfig: LocalPageConfig,
 	projectName: string,
+	theme: string,
 	width: number,
 	height: number
 ): string {
 	const pagename = pageConfig.name.replace(/(\s|\\|\/)/g, '-');
-	return `./visual-diff/snapshots/${pagename}__light__${width}x${height}__${projectName}.png`;
+	return `./visual-diff/snapshots/${pagename}__${theme}__${width}x${height}__${projectName}.png`;
 }
