@@ -36,10 +36,11 @@ const includeAllThemes = process.argv?.includes('--full-diff');
 for (const pageConfig of pages) {
 	const screenshotSettings = pageConfig?.options?.screenshot || {};
 
-	test(`"${pageConfig.pathname}"`, async ({ page, context }) => {
+	test(`"${pageConfig.pathname}"`, async ({ page, context, browser }) => {
 		await Promise.all(pageConfig.routes.map(r => context.route(r.url, r.handler, r.options)));
 
 		const moreThemes = includeAllThemes ? axilliaryThemes : [];
+		await page.goto(pageConfig.pathname);
 
 		for (const theme of ['light', ...moreThemes]) {
 			// first one (above is widescreen)
@@ -52,7 +53,7 @@ for (const pageConfig of pages) {
 				} = project;
 
 				const filepath = getVisualDiffFilePath(pageConfig, projectName, theme, width, height);
-				await page.goto(pageConfig.pathname);
+				await page.setViewportSize({ width, height });
 				// const pathname = '' + pageConfig.name.replace(/\s|\\|\//g, '_') + '.png';
 				const imageBuffer = await page.screenshot({
 					...screenshotSettings,
