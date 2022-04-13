@@ -1,8 +1,9 @@
 import { test } from '@playwright/test';
 import { auxillaryViewports, pages } from '../config/page';
 import { LocalPageConfig, VisualDiffManifest } from '../config/typings';
-import * as pixelmatch from 'pixelmatch';
-// const { PNG } = require('pngjs');
+import pixelmatch from 'pixelmatch';
+import { PNG } from 'pngjs';
+import fs from 'fs-extra';
 
 /**
  * By default tests are run in serial manner in a single file.
@@ -61,11 +62,19 @@ for (const pageConfig of pages) {
 					...screenshotSettings,
 					path: filepath
 				});
+
+				const diffPng = new PNG({ width, height });
+				/// second one is wrong!
+				const pixelCount = pixelmatch(imageBuffer, imageBuffer, diffPng.data, width, height, {
+					threshold: 0.05
+				});
+
+				const totalPixels = width * height;
+				const ratio = pixelCount / totalPixels;
+				const diffPath = getVisualDiffFilePath(pageConfig, 'diff', theme, width, height);
+				await fs.writeFile(diffPath, diffPng.data);
+				console.log(ratio);
 			}
-
-			const result = pixelmatch(imageBuffer, imageBuffer);
-
-			// visualDiffManifest[]
 		}
 	});
 }

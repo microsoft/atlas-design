@@ -17,10 +17,12 @@
 	"author": "Microsoft Corporation",
 	"license": "ISC",
 	"devDependencies": {
+		"@types/fs-extra": "9.0.13",
+		"@types/pixelmatch": "^5.2.4",
 		"@playwright/test": "^1.20.2",
+		"@types/pngjs": "6.0.1",
 		"fs-extra": "10.0.1",
 		"pixelmatch": "^4.0.2",
-		"@types/pixelmatch": "^5.2.4",
 		"pngjs": "^2.3.0"
 	}
 }
