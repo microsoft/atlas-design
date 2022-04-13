@@ -51,10 +51,10 @@ jobs:
         id: 'visual_diff'
         run: npm run visual-diff
 
-      # tasks after the test should have if: always() to prevent an early exit
-      - name: ls
-        run: cd ./integration/; ls -a
-        if: always()
+      # # tasks after the test should have if: always() to prevent an early exit
+      # - name: ls
+      #   run: cd ./integration/; ls -r
+      #   if: always()
 
       - name: Upload playwright report
         if: always()
