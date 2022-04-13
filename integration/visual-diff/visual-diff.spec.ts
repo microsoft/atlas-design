@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { pages } from '../config/page';
+import { LocalPageConfig } from '../config/typings';
 
 /**
  * By default tests are run in serial manner in a single file.
@@ -19,8 +20,12 @@ for (const pageConfig of pages) {
 		await Promise.all(pageConfig.routes.map(r => context.route(r.url, r.handler, r.options)));
 
 		const moreThemes = includeAllThemes ? axilliaryThemes : [];
-
-		const imageName = transformNameToFilePath(pageConfig.name);
+		const {
+			name: projectName,
+			use: {
+				viewport: { width, height }
+			}
+		} = test.info().project;
 
 		for (const theme in ['light', ...moreThemes]) {
 			// await Promise.all(pageConfig.routes.map(route => ));
@@ -28,12 +33,18 @@ for (const pageConfig of pages) {
 			// const pathname = '' + pageConfig.name.replace(/\s|\\|\//g, '_') + '.png';
 			await page.screenshot({
 				...screenshotSettings,
-				path: `./visual-diff/snapshots/${imageName}__light__.png`
+				path: getVisualDiffFilePath(pageConfig, projectName, width, height)
 			});
 		}
 	});
 }
 
-const transformNameToFilePath = (name: string) => {
-	return name.replace(/(\s|\\|\/)/g, '_');
-};
+function getVisualDiffFilePath(
+	pageConfig: LocalPageConfig,
+	projectName: string,
+	width: number,
+	height: number
+): string {
+	const pagename = pageConfig.name.replace(/(\s|\\|\/)/g, '-');
+	return `./visual-diff/snapshots/${pagename}__light__${width}x${height}__${projectName}.png`;
+}
