@@ -6,7 +6,7 @@
 	"scripts": {
 		"codegen": "npx playwright codegen localhost:1111",
 		"visual-diff": "playwright test --config=visual-diff.config.ts",
-		"full-diff": "playwright test --config=visual-diff.config.ts --full-diff",
+		"full-diff": "playwright test --config=visual-diff.config.ts",
 		"visual-diff:debug": "playwright test --debug --config=visual-diff.config.ts",
 		"flows": "playwright test --config=flows.config.ts ",
 		"flows:debug": "playwright test --debug --config=flows.config.ts",
@@ -17,6 +17,9 @@
 	"author": "Microsoft Corporation",
 	"license": "ISC",
 	"devDependencies": {
-		"@playwright/test": "^1.20.2"
+		"@playwright/test": "^1.20.2",
+		"fs-extra": "10.0.1",
+		"pixelmatch": "^4.0.2",
+		"pngjs": "^2.3.0"
 	}
 }

@@ -18,3 +18,20 @@ export interface LocalPageConfig {
 	};
 	routes: ObjectifiedPlayWrightRouteArgs[];
 }
+
+interface ImageManifestTheme {
+	[filename: string]: {
+		location: string;
+	};
+}
+
+export interface ImageManifest {
+	light: ImageManifestTheme;
+	dark: ImageManifestTheme;
+	'high-contrast': ImageManifestTheme;
+}
+export interface VisualDiffManifest {
+	name: string;
+	main: ImageManifest;
+	actual: ImageManifest;
+}
