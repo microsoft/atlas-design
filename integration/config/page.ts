@@ -1,3 +1,4 @@
+import { devices } from '@playwright/test';
 import { indexHTMLOnlyRoutes } from './routes.ts/index-html';
 import type { LocalPageConfig, Theme, ObjectifiedPlayWrightRouteArgs } from './typings';
 
@@ -17,7 +18,7 @@ export const pages: LocalPageConfig[] = [
 	{ pathname: '/atomics/display.html', name: 'Atomics/display', themes, routes },
 	{ pathname: '/atomics/flex.html', name: 'Atomics/flex', themes, routes },
 	{ pathname: '/atomics/image.html', name: 'Atomics/image', themes, routes },
-	{ pathname: '/atomics/line-html.html', name: 'Atomics/line', themes, routes },
+	{ pathname: '/atomics/line-clamp.html', name: 'Atomics/line', themes, routes },
 	{ pathname: '/atomics/lists.html', name: 'Atomics/lists', themes, routes },
 	{ pathname: '/atomics/overflow.html', name: 'Atomics/overflow', themes, routes },
 	{ pathname: '/atomics/overview.html', name: 'Atomics/overview', themes, routes },
@@ -44,4 +45,41 @@ export const pages: LocalPageConfig[] = [
 	{ pathname: '/components/textarea.html', name: 'Components/textarea', themes, routes },
 	{ pathname: '/components/toggle.html', name: 'Components/toggle', themes, routes },
 	{ pathname: '/patterns/article-header.html', name: 'Patterns/article-header', themes, routes }
+];
+
+export const auxillaryViewports = [
+	// { // All tests start at this viewport
+	// 	name: 'Widescreen Chromium',
+	// 	use: {
+	// 		browserName: 'chromium',
+	// 		viewport: {
+	// 			width: 1920,
+	// 			height: 1080
+	// 		}
+	// 	}
+	// },
+	{
+		name: 'Desktop Chromium',
+		use: {
+			browserName: 'chromium',
+			viewport: {
+				width: 1152,
+				height: 648
+			}
+		}
+	},
+	{
+		name: 'Tablet Chromium',
+		use: {
+			browserName: 'chromium',
+			viewport: {
+				width: 768,
+				height: 600
+			}
+		}
+	},
+	{
+		name: 'Android Chrome',
+		use: devices['Pixel 5']
+	}
 ];

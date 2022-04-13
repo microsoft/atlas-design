@@ -54,30 +54,6 @@ const config: PlaywrightTestConfig = {
 					height: 1080
 				}
 			}
-		},
-		{
-			name: 'Desktop Chromium',
-			use: {
-				browserName: 'chromium',
-				viewport: {
-					width: 1152,
-					height: 648
-				}
-			}
-		},
-		{
-			name: 'Tablet Chromium',
-			use: {
-				browserName: 'chromium',
-				viewport: {
-					width: 768,
-					height: 600
-				}
-			}
-		},
-		{
-			name: 'Android Chrome',
-			use: devices['Pixel 5']
 		}
 	],
 

@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { pages } from '../config/page';
+import { auxillaryViewports, pages } from '../config/page';
 import { LocalPageConfig, VisualDiffManifest } from '../config/typings';
 import * as pixelmatch from 'pixelmatch';
 // const { PNG } = require('pngjs');
@@ -29,7 +29,7 @@ const visualDiffManifest: VisualDiffManifest = {
 };
 
 const axilliaryThemes = ['dark', 'high-contrast']; // light is always included
-console.log(process.argv);
+
 const includeAllThemes = process.argv?.includes('--full-diff');
 // const updateSnapshots = process.argv?.includes('--update-snapshots');
 
@@ -40,24 +40,27 @@ for (const pageConfig of pages) {
 		await Promise.all(pageConfig.routes.map(r => context.route(r.url, r.handler, r.options)));
 
 		const moreThemes = includeAllThemes ? axilliaryThemes : [];
-		const {
-			name: projectName,
-			use: {
-				viewport: { width, height }
-			}
-		} = test.info().project;
 
 		for (const theme of ['light', ...moreThemes]) {
-			// await Promise.all(pageConfig.routes.map(route => ));
-			const filepath = getVisualDiffFilePath(pageConfig, projectName, theme, width, height);
-			await page.goto(pageConfig.pathname);
-			// const pathname = '' + pageConfig.name.replace(/\s|\\|\//g, '_') + '.png';
-			const imageBuffer = await page.screenshot({
-				...screenshotSettings,
-				path: filepath
-			});
+			// first one (above is widescreen)
+			for (const project of [test.info().project, ...auxillaryViewports]) {
+				const {
+					name: projectName,
+					use: {
+						viewport: { width, height }
+					}
+				} = project;
 
-			const result = pixelmatch(imageBuffer, imageBuffer);
+				const filepath = getVisualDiffFilePath(pageConfig, projectName, theme, width, height);
+				await page.goto(pageConfig.pathname);
+				// const pathname = '' + pageConfig.name.replace(/\s|\\|\//g, '_') + '.png';
+				const imageBuffer = await page.screenshot({
+					...screenshotSettings,
+					path: filepath
+				});
+			}
+
+			// const result = pixelmatch(imageBuffer, imageBuffer);
 
 			// visualDiffManifest[]
 		}
