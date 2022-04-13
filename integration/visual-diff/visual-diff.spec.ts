@@ -42,6 +42,8 @@ for (const pageConfig of pages) {
 		const moreThemes = includeAllThemes ? axilliaryThemes : [];
 		await page.goto(pageConfig.pathname);
 
+		// move to change theme based on theme
+
 		for (const theme of ['light', ...moreThemes]) {
 			// first one (above is widescreen)
 			for (const project of [test.info().project, ...auxillaryViewports]) {
@@ -61,7 +63,7 @@ for (const pageConfig of pages) {
 				});
 			}
 
-			// const result = pixelmatch(imageBuffer, imageBuffer);
+			const result = pixelmatch(imageBuffer, imageBuffer);
 
 			// visualDiffManifest[]
 		}

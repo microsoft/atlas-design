@@ -6,6 +6,10 @@ const themes: Theme[] = ['light'];
 
 const routes: ObjectifiedPlayWrightRouteArgs[] = [];
 
+/**
+ * Default behavior is to abort all external requests
+ */
+
 export const pages: LocalPageConfig[] = [
 	{
 		pathname: '/index.html',

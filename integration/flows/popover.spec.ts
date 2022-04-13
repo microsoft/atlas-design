@@ -4,7 +4,6 @@ test('popover closes .popover-content when an outer element is clicked', async (
 	// Go to http://localhost:1111/components/popover.html
 	await page.goto('http://localhost:1111/components/popover.html');
 
-	const summary = page.locator('#test-popover-summary');
 	const content = page.locator('#test-popover-content');
 
 	expect(content).not.toBeVisible();
