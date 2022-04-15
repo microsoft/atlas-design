@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.15.1
+
+### Patch Changes
+
+- feddc7d: Fix radio off-centered dot and background color issues.
+
 ## 3.15.0
 
 ### Minor Changes
