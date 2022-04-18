@@ -1,0 +1,86 @@
+# This is a basic workflow to help you get started with Actions
+
+# env:
+# PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1 # Skip downloading during yarn install
+# PLAYWRIGHT_BROWSERS_PATH: 0 # Places binaries to node_modules/@playwright/test
+
+name: Visual diff
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}-visual-diff
+  cancel-in-progress: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  visual-diff:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 16.6.X
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.6.X'
+
+      # Monorepo installation
+      - name: Npm install
+        run: npm ci;
+
+      - name: Install Playwright Deps
+        run: npx playwright install-deps
+
+      - name: Install Playright
+        run: npx playwright install
+
+      # Take images
+      - name: Take screenshots for comparison [push|main]
+        if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+        id: 'visual_diff_all'
+        run: npm run screenshots:all
+
+      # On pushes to main, upload images for comparison against pull_request runs
+      - name: Upload comparison screenshots [push|main]
+        if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: visual_diff_comparison_shapshots
+          path: ./integration/visual-diff/screenshots
+
+      # On pull requests into main, download images for comparison
+      - name: Take screenshots [pull_request]
+        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
+        id: 'visual_diff_light'
+        run: npm run screenshots:light
+
+      # Temporarily upload screenshots for pull requests, just to verify they are as we'd expect
+      - name: Upload screenshots [pull_request]
+        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: visual_diff_pull_request_shapshots-${{ github.sha }}
+          path: ./integration/visual-diff/screenshots
+
+      - name: Download comparison screenshots [pull_request]
+        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: visual_diff_comparison_shapshots
+          path: ./integration/visual-diff/comparison-screenshots

@@ -1,13 +1,12 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Build Site and CSS
+# Run Playwright user flow integration tests
+name: Flows
 
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   pull_request:
     branches:
       - main
@@ -15,10 +14,14 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.ref }}-flows
+  cancel-in-progress: true
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  flows:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -36,20 +39,20 @@ jobs:
       - name: Npm install
         run: npm ci;
 
-      # Run formatting check
-      - name: Check formatting
-        run: npm run prettier-check;
+      - name: Install Playwright Deps
+        run: npx playwright install-deps
+
+      - name: Install Playright
+        run: npx playwright install
 
       # Run lint
-      - name: Run lint
-        run: npm run lint;
+      - name: Flows
+        id: 'flows'
+        run: npm run flows
 
-      # Run Dart Sass build
-      - name: Build CSS
-        run: |
-          npm run build:css;
-
-      # Run build for tokens and website
-      - name: Build site
-        run: |
-          npm run build:site;
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: visual_diff-test-results-${{github.sha}}
+          path: ./integration/test-results/
