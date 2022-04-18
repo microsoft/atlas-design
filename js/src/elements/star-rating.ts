@@ -1,6 +1,9 @@
 const starRatingTemplate = document.createElement('template');
 starRatingTemplate.id = 'star-rating-template';
 
+/* TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
+https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
+
 starRatingTemplate.innerHTML = `
 <style>
 	*,
@@ -170,7 +173,7 @@ const template = starRatingTemplate;
 
 class StarRatingElement extends HTMLElement {
 	initialValue: number;
-	// internals_: ElementInternals; // not compatable with 'formData'
+	// internals_: ElementInternals; // not compatible with 'formData'
 	public readonly: boolean;
 	_validationMessage: string | undefined;
 	static formAssociated = true;
@@ -184,7 +187,10 @@ class StarRatingElement extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 		this.shadowRoot?.appendChild(clone);
 
-		const inputs = Array.from(this?.shadowRoot?.querySelectorAll('input')) as HTMLInputElement[];
+		const inputs = Array.from(
+			this.shadowRoot?.querySelectorAll('input') ?? []
+		) as HTMLInputElement[];
+
 		if (!this.name) {
 			throw new Error('StarRatingElement requires a name attribute');
 		}
@@ -221,6 +227,7 @@ class StarRatingElement extends HTMLElement {
 
 		// eslint - disable - next - line;
 		// focus visible polyfill must explicitly be setup here
+		// eslint-disable-next-line
 		if (window.applyFocusVisiblePolyfill != null) {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 			window.applyFocusVisiblePolyfill(this.shadowRoot);
@@ -233,7 +240,7 @@ class StarRatingElement extends HTMLElement {
 		return this.localName;
 	}
 	get value() {
-		return parseValue(this.shadowRoot?.querySelector('input:checked')?.value);
+		return parseValue((this.shadowRoot?.querySelector('input:checked') as HTMLInputElement)?.value);
 	}
 	set value(value: number) {
 		this.setAttribute('value', value.toString());
@@ -316,13 +323,13 @@ class StarRatingElement extends HTMLElement {
 					detail: {
 						value: parseValue(target.value),
 						// eslint-disable-next-line
-						name: starRating.host.name
+						name: starRating.name
 					},
 					bubbles: true,
 					composed: true
 				});
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-				starRating.host.value = value;
+				starRating.value = value;
 				window.dispatchEvent(customEvent);
 				break;
 			case 'formdata':
