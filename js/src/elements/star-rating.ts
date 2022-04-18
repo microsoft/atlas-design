@@ -115,6 +115,16 @@ starRatingTemplate.innerHTML = `
 	input[value="5"]:hover ~ #alert #label-5 {
 		display: inline !important;
 	}
+
+	input:disabled + label ,
+	input[value="1"]:disabled ~ #alert #label-1,
+	input[value="2"]:disabled ~ #alert #label-2,
+	input[value="3"]:disabled ~ #alert #label-3,
+	input[value="4"]:disabled ~ #alert #label-4,
+	input[value="5"]:disabled ~ #alert #label-5 {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
   </style>
 
 <fieldset>
