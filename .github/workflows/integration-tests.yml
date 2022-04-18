@@ -1,5 +1,5 @@
 # Run Playwright user flow integration tests
-name: Flows
+name: Integration Tests
 
 # Controls when the action will run.
 on:
@@ -15,13 +15,13 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.ref }}-flows
+  group: ${{ github.ref }}-integration-tests
   cancel-in-progress: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  flows:
+  integration_tests:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -45,10 +45,9 @@ jobs:
       - name: Install Playright
         run: npx playwright install
 
-      # Run lint
-      - name: Flows
-        id: 'flows'
-        run: npm run flows
+      - name: Integration Tests
+        id: 'integration-tests'
+        run: npm run integration-tests
 
       - name: Upload test results
         if: always()
