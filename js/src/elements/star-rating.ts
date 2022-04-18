@@ -13,7 +13,7 @@ starRatingTemplate.innerHTML = `
 
 	:host {
 		display: block;
-		--star-color: var(--theme-primary-base);
+		--star-color: var(--theme-primary-active);
 	}
 
 	:host([readonly]) {
