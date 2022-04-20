@@ -40,31 +40,25 @@ starRatingTemplate.innerHTML = `
 		stroke: var(--star-color);
 	}
 
-	#input-container .star-rating:has(readonly) svg {
-		stroke: var(--theme-text);
-	}
-
-	#input-container input:checked + .star svg,
-	#input-container input.is-selected + .star svg,
-	#input-container:hover > input + .star svg,
-	input + .star svg {
-		fill: var(--star-color);
-	}
-
-	#input-container > input:hover  ~ input + .star svg,
-	#input-container > input:checked ~ input + .star svg,
-	#input-container > input:not(.is-selected) ~ .star svg {
+	#input-container > input:not(.is-selected) ~ label svg,
+	#input-container > input + label:hover ~ label svg,
+	#input-container > input:checked ~ label svg {
 		fill: none;
 	}
 
-	#input-container:hover + label svg {
+	#input-container > input.is-selected + label svg,
+	#input-container:hover > input + label svg,
+	#input-container:focus-visible > input + label svg {
 		fill: var(--star-color);
 	}
 	
-	input:readonly {
+	input:read-only {
 		pointer-events: none; 
 	}
-	
+
+	input:read-only:not(.is-selected) ~ label svg {
+		fill: none;
+	}
 	
 	#star-1 {
 		grid-area: star-1;
@@ -89,7 +83,7 @@ starRatingTemplate.innerHTML = `
 	#alert {
 		grid-area: alert;
 		display: flex;
-		align-items: center;
+		align-items: start;
 		margin-inline-start: 0.5rem;
 	}
 	
@@ -148,6 +142,15 @@ starRatingTemplate.innerHTML = `
 		opacity: 0.6;
 		cursor: not-allowed;
 	}
+
+	input[value="1"]:read-only.is-selected + input ~ label svg,
+	input[value="2"]:read-only.is-selected + input ~ label svg,
+	input[value="3"]:read-only.is-selected + input ~ label svg,
+	input[value="4"]:read-only.is-selected + input ~ label svg,
+	input[value="5"]:read-only.is-selected + input ~ label svg {
+		fill: none;
+	}
+
   </style>
 
 <fieldset>
@@ -229,6 +232,7 @@ class StarRatingElement extends HTMLElement {
 			const toCheck = this.shadowRoot?.querySelector(
 				`input[value="${this.initialValue}"]`
 			) as HTMLInputElement;
+
 			if (toCheck) {
 				toCheck.checked = true;
 				this.setAttribute('aria-activedescendant', toCheck.id);
@@ -353,7 +357,7 @@ class StarRatingElement extends HTMLElement {
 						nextValue = 1;
 					}
 					target.checked = false;
-					const inputToFocus = this.querySelector(
+					const inputToFocus = this.shadowRoot?.querySelector(
 						`input[value="${nextValue}"]`
 					) as HTMLInputElement;
 
