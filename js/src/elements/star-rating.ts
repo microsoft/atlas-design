@@ -7,66 +7,32 @@ https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
 starRatingTemplate.innerHTML = `
 <style>
 	*,
-	::before, ::after {
+	::before,
+	::after {
 		box-sizing: border-box;
 	}
-
+	
 	:host {
-		display: block;
 		--star-color: var(--theme-primary-active);
+	
+		display: block;
 	}
-
+	
 	:host([readonly]) {
-		pointer-events: none;
-		cursor: not-allowed;
 		--star-color: var(--theme-text);
+	
+		cursor: not-allowed;
+		pointer-events: none;
 	}
-
+	
 	#legend-container {
-		margin-block: .75rem;
+		margin-block: 0.75rem;
 	}
-
+	
 	#input-container {
 		display: inline-grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto;
 		grid-template-areas: 'star-1 star-2 star-3 star-4 star-5 alert';
-	}
-
-	#star-1 {
-		grid-area: star-1;
-	}
-	
-	#star-2 {
-		grid-area: star-2;
-	}
-
-	#star-3 {
-		grid-area: star-3;
-	}
-
-	#star-4 {
-		grid-area: star-4;
-	}
-
-	#star-5 {
-		grid-area: star-5;
-	}
-
-	#alert {
-		grid-area: alert;
-		display: flex;
-		align-items: center;
-		margin-inline-start: .5rem;
-	}
-
-	.visually-hidden {
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
 	}
 
 	svg {
@@ -74,27 +40,83 @@ starRatingTemplate.innerHTML = `
 		stroke: var(--star-color);
 	}
 
-	label {
-		border-radius: .5em;
-		padding-inline: .125em;
+	#input-container .star-rating:has(readonly) svg {
+		stroke: var(--theme-text);
 	}
-	
-	input:checked ~ label > svg,
-	input:checked + label > svg,
-	label:hover > svg,
-	label:hover ~ label > svg {
+
+	#input-container input:checked + .star svg,
+	#input-container input.is-selected + .star svg,
+	#input-container:hover > input + .star svg,
+	input + .star svg {
 		fill: var(--star-color);
 	}
 
+	#input-container > input:hover  ~ input + .star svg,
+	#input-container > input:checked ~ input + .star svg,
+	#input-container > input:not(.is-selected) ~ .star svg {
+		fill: none;
+	}
+
+	#input-container:hover + label svg {
+		fill: var(--star-color);
+	}
+	
+	input:readonly {
+		pointer-events: none; 
+	}
+	
+	
+	#star-1 {
+		grid-area: star-1;
+	}
+	
+	#star-2 {
+		grid-area: star-2;
+	}
+	
+	#star-3 {
+		grid-area: star-3;
+	}
+	
+	#star-4 {
+		grid-area: star-4;
+	}
+	
+	#star-5 {
+		grid-area: star-5;
+	}
+	
+	#alert {
+		grid-area: alert;
+		display: flex;
+		align-items: center;
+		margin-inline-start: 0.5rem;
+	}
+	
+	.visually-hidden {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	
+	label {
+		border-radius: 0.5em;
+		padding-inline: 0.125em;
+	}
+	
 	[id^="label-"] {
 		display: none;
 	}
-
+	
 	input:focus-visible + label,
 	input.focus-visible + label {
 		outline: 3px dashed;
 	}
-
+	
 	input[value="1"]:checked ~ #alert #label-1,
 	input[value="2"]:checked ~ #alert #label-2,
 	input[value="3"]:checked ~ #alert #label-3,
@@ -102,12 +124,13 @@ starRatingTemplate.innerHTML = `
 	input[value="5"]:checked ~ #alert #label-5 {
 		display: inline;
 	}
-
+	
 	/* override checked styles with hover styles */
+	
 	input:hover ~ #alert [id^="label-"] {
 		display: none !important;
 	}
-
+	
 	input[value="1"]:hover ~ #alert #label-1,
 	input[value="2"]:hover ~ #alert #label-2,
 	input[value="3"]:hover ~ #alert #label-3,
@@ -115,8 +138,8 @@ starRatingTemplate.innerHTML = `
 	input[value="5"]:hover ~ #alert #label-5 {
 		display: inline !important;
 	}
-
-	input:disabled + label ,
+	
+	input:disabled + label,
 	input[value="1"]:disabled ~ #alert #label-1,
 	input[value="2"]:disabled ~ #alert #label-2,
 	input[value="3"]:disabled ~ #alert #label-3,
@@ -133,38 +156,38 @@ starRatingTemplate.innerHTML = `
 	</div>
 
 	<div id="input-container">
-		<input class="visually-hidden" type="radio" value="5" id="radio-5" />
-		<label id="star-5" for="radio-5">
-			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+		<input class="star-rating visually-hidden" type="radio" value="1" id="radio-1" />
+		<label id="star-1" for="radio-1" class="star">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
+				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
-		<input class="visually-hidden" type="radio" value="4" id="radio-4" />
-		<label id="star-4" for="radio-4">
-			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+		<input class="star-rating visually-hidden" type="radio" value="2" id="radio-2" />
+		<label id="star-2" for="radio-2" class="star">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
+				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
-		<input class="visually-hidden" type="radio" value="3" id="radio-3" />
-		<label id="star-3" for="radio-3">
-			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+		<input class="star-rating visually-hidden" type="radio" value="3" id="radio-3" />
+		<label id="star-3" for="radio-3" class="star">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
+				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
-		<input class="visually-hidden" type="radio" value="2" id="radio-2" />
-		<label id="star-2" for="radio-2">
-			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+		<input class="star-rating visually-hidden" type="radio" value="4" id="radio-4" />
+		<label id="star-4" for="radio-4" class="star">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
+				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
-		<input class="visually-hidden" type="radio" value="1" id="radio-1" />
-		<label id="star-1" for="radio-1">
-			<svg width="24" height="24" style="overflow: visible" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-				<path d="M5.6939 1.1017C6.02403 0.432778 6.97789 0.432774 7.30802 1.1017L8.82911 4.18375L12.2304 4.67798C12.9685 4.78525 13.2633 5.69242 12.7291 6.2131L10.268 8.61215L10.849 11.9997C10.9751 12.7349 10.2034 13.2955 9.54313 12.9484L6.50096 11.349L3.45879 12.9484C2.79853 13.2955 2.02684 12.7349 2.15294 11.9997L2.73394 8.61215L0.272773 6.2131C-0.261391 5.69242 0.0333649 4.78525 0.771565 4.67798L4.17281 4.18375L5.6939 1.1017Z" />
+		<input class="star-rating visually-hidden" type="radio" value="5" id="radio-5" />
+		<label id="star-5" for="radio-5" class="star">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
+				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
@@ -197,17 +220,6 @@ class StarRatingElement extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 		this.shadowRoot?.appendChild(clone);
 
-		const inputs = Array.from(
-			this.shadowRoot?.querySelectorAll('input') ?? []
-		) as HTMLInputElement[];
-
-		if (!this.name) {
-			throw new Error('StarRatingElement requires a name attribute');
-		}
-		for (const input of inputs) {
-			input.name = this.name;
-		}
-
 		// // https://html.spec.whatwg.org/multipage/custom-elements.html 4.13.1.2
 		// this.internals_ = this.attachInternals();
 
@@ -235,7 +247,6 @@ class StarRatingElement extends HTMLElement {
 			}
 		}
 
-		// eslint - disable - next - line;
 		// focus visible polyfill must explicitly be setup here
 		// eslint-disable-next-line
 		if (window.applyFocusVisiblePolyfill != null) {
@@ -260,6 +271,16 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	connectedCallback() {
+		const inputs = Array.from(
+			this.shadowRoot?.querySelectorAll('input') ?? []
+		) as HTMLInputElement[];
+
+		if (!this.name) {
+			throw new Error('StarRatingElement requires a name attribute');
+		}
+		for (const input of inputs) {
+			input.name = this.name;
+		}
 		this.shadowRoot?.addEventListener('keydown', this);
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
@@ -271,14 +292,32 @@ class StarRatingElement extends HTMLElement {
 		this.closest('form')?.removeEventListener('formdata', this);
 	}
 
-	attributeChangedCallback(/*_name: string, _oldValue: string, _newValue: string*/) {
-		if (this.value === 0 || !this.value) {
+	attributeChangedCallback(_name: string, oldValue: string, newValue: string) {
+		if (oldValue !== newValue) {
+			this.updateContent(newValue);
+		}
+	}
+
+	updateContent(newValue: string) {
+		// element already has new value at this point. Basic html attributes are already set.
+		if (newValue === '0' || !newValue) {
 			const toUncheck = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
 			if (toUncheck) {
 				toUncheck.checked = false;
 			}
 		} else {
-			const toCheck = this.shadowRoot?.querySelector(`[value="${this.value}"]`) as HTMLInputElement;
+			const stars = this.shadowRoot?.querySelectorAll('input');
+			for (let i = 0; i < 5; i++) {
+				if (stars) {
+					if (i < parseValue(newValue)) {
+						stars[i].classList.add('is-selected');
+					} else {
+						stars[i].classList.remove('is-selected');
+					}
+				}
+			}
+			// might be redundant
+			const toCheck = this.shadowRoot?.querySelector(`[value="${newValue}"]`) as HTMLInputElement;
 			if (toCheck) {
 				toCheck.checked = true;
 			}
