@@ -61,7 +61,8 @@ starRatingTemplate.innerHTML = `
 
 	#input-container > input.is-selected + label svg,
 	#input-container:hover > input + label svg,
-	#input-container:focus-visible > input + label svg {
+	#input-container input.focus-visible + label svg,
+	#input-container input:focus-visible:not(:read-only) + label svg {
 		fill: var(--star-color);
 	}
 	
@@ -98,16 +99,6 @@ starRatingTemplate.innerHTML = `
 		display: flex;
 		align-items: start;
 		margin-inline-start: 0.5rem;
-	}
-	
-	.visually-hidden {
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		white-space: nowrap;
-		overflow: hidden;
 	}
 	
 	label {
@@ -323,16 +314,7 @@ class StarRatingElement extends HTMLElement {
 				toUncheck.checked = false;
 			}
 		} else {
-			const stars = this.shadowRoot?.querySelectorAll('input');
-			for (let i = 0; i < 5; i++) {
-				if (stars) {
-					if (i < parseValue(newValue)) {
-						stars[i].classList.add('is-selected');
-					} else {
-						stars[i].classList.remove('is-selected');
-					}
-				}
-			}
+			this.updateStarFill(parseInt(newValue));
 			// might be redundant
 			const toCheck = this.shadowRoot?.querySelector(`[value="${newValue}"]`) as HTMLInputElement;
 			if (toCheck) {
@@ -376,6 +358,9 @@ class StarRatingElement extends HTMLElement {
 
 					inputToFocus.focus();
 					inputToFocus.checked = true;
+					if (!this.readonly) {
+						this.updateStarFill(nextValue);
+					}
 
 					// set value here too?
 
@@ -403,6 +388,19 @@ class StarRatingElement extends HTMLElement {
 					return;
 				}
 				(event as FormDataEvent).formData.append(this.name, this.value.toString());
+		}
+	}
+
+	updateStarFill(newValue: number) {
+		const stars = this.shadowRoot?.querySelectorAll('input');
+		for (let i = 0; i < 5; i++) {
+			if (stars) {
+				if (i < newValue) {
+					stars[i].classList.add('is-selected');
+				} else {
+					stars[i].classList.remove('is-selected');
+				}
+			}
 		}
 	}
 }
