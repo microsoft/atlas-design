@@ -277,9 +277,9 @@ class StarRatingElement extends HTMLElement {
 		}
 
 		// focus visible polyfill must explicitly be setup here
-		// eslint-disable-next-line
+		// @ts-ignore
 		if (window.applyFocusVisiblePolyfill != null) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+			// @ts-ignore
 			window.applyFocusVisiblePolyfill(this.shadowRoot);
 		}
 	}
@@ -349,7 +349,6 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	updateContent(newValue: string) {
-		// element already has new value at this point. Basic html attributes are already set.
 		if (newValue === '0' || !newValue) {
 			const toUncheck = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
 			if (toUncheck) {
@@ -357,7 +356,6 @@ class StarRatingElement extends HTMLElement {
 			}
 		} else {
 			this.updateStarFill(parseInt(newValue));
-			// might be redundant
 			const toCheck = this.shadowRoot?.querySelector(`[value="${newValue}"]`) as HTMLInputElement;
 			if (toCheck) {
 				toCheck.checked = true;
@@ -370,7 +368,7 @@ class StarRatingElement extends HTMLElement {
 		const target = event.target as HTMLInputElement;
 
 		switch (event.type) {
-			// Internally, star-rating uses radios, but we're hiyacking keyboard events to invert focus order.
+			// Internally, star-rating uses radios, but we're hijacking keyboard events to invert focus order.
 			// Good star highlighting is achieved with reordering, but requires inverted keyboard focusing.
 			case 'keydown':
 				const { shiftKey, altKey, ctrlKey, code } = event as KeyboardEvent;
@@ -410,18 +408,16 @@ class StarRatingElement extends HTMLElement {
 				}
 				break;
 			case 'change':
-				const starRating = this as StarRatingElement; // type isn't quite right yet
+				const starRating = this as StarRatingElement;
 				const value = parseValue(target.value);
 				const customEvent = new CustomEvent('star-rating-change', {
 					detail: {
 						value: parseValue(target.value),
-						// eslint-disable-next-line
 						name: starRating.name
 					},
 					bubbles: true,
 					composed: true
 				});
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 				starRating.value = value;
 				window.dispatchEvent(customEvent);
 				break;
