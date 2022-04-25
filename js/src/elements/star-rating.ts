@@ -24,7 +24,14 @@ starRatingTemplate.innerHTML = `
 		cursor: not-allowed;
 		pointer-events: none;
 	}
-	
+
+	:host([disabled]) {	
+		--star-color: var(--theme-text);
+
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+
 	.visually-hidden {
 		position: absolute;
 		width: 1px;
@@ -145,6 +152,7 @@ starRatingTemplate.innerHTML = `
 	input[value="5"]:disabled ~ #alert #label-5 {
 		opacity: 0.6;
 		cursor: not-allowed;
+		pointer-events: none;
 	}
 
 	input[value="1"]:read-only.is-selected + input ~ label svg,
@@ -218,7 +226,7 @@ class StarRatingElement extends HTMLElement {
 	_validationMessage: string | undefined;
 	static formAssociated = true;
 	static get observedAttributes() {
-		return ['value'];
+		return ['value', 'disabled'];
 	}
 
 	constructor() {
@@ -255,6 +263,19 @@ class StarRatingElement extends HTMLElement {
 			}
 		}
 
+		this.disabled = this.hasAttribute('disabled');
+		if (this.disabled) {
+			this.setAttribute('disabled', '');
+			this.setAttribute('aria-disabled', 'true');
+			const inputs = Array.from(
+				this.shadowRoot?.querySelectorAll(`input`) || []
+			) as HTMLInputElement[];
+			for (const input of inputs) {
+				input.setAttribute('disabled', '');
+				input.setAttribute('aria-disabled', 'true');
+			}
+		}
+
 		// focus visible polyfill must explicitly be setup here
 		// eslint-disable-next-line
 		if (window.applyFocusVisiblePolyfill != null) {
@@ -276,6 +297,18 @@ class StarRatingElement extends HTMLElement {
 	}
 	get required() {
 		return this.hasAttribute('required');
+	}
+
+	get disabled() {
+		return this.hasAttribute('disabled');
+	}
+
+	set disabled(val) {
+		if (val) {
+			this.setAttribute('disabled', 'true');
+		} else {
+			this.removeAttribute('disabled');
+		}
 	}
 
 	connectedCallback() {
@@ -303,6 +336,15 @@ class StarRatingElement extends HTMLElement {
 	attributeChangedCallback(_name: string, oldValue: string, newValue: string) {
 		if (oldValue !== newValue) {
 			this.updateContent(newValue);
+		}
+
+		// When disabled, update keyboard/screen reader behavior.
+		if (this.disabled) {
+			this.setAttribute('tabindex', '-1');
+			this.setAttribute('aria-disabled', 'true');
+		} else {
+			this.setAttribute('tabindex', '');
+			this.setAttribute('aria-disabled', 'false');
 		}
 	}
 
