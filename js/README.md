@@ -32,7 +32,3 @@ Or include a script tag to pull the built JavaScript from UNPKG.
 ```html
 <script src="https://unpkg.com/@microsoft/atlas-js@0.0.1/dist/index.js" type="module" defer>
 ```
-
-## A note on web types
-
-Due to its more extensive interface, this package uses @types/web instead of lib.dom.ts. You can fine more information about @types/web on [npm](https://www.npmjs.com/package/@types/web) and [GitHub](https://github.com/microsoft/TypeScript-DOM-Lib-Generator#readme).
