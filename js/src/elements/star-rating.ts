@@ -17,27 +17,25 @@ starRatingTemplate.innerHTML = `
 	
 		display: block;
 	}
-	
-	:host([readonly]) {
-		--star-color: var(--theme-text);
-	
-		cursor: not-allowed;
-		pointer-events: none;
-	}
+
 
 	:host([disabled]) {	
 		--star-color: var(--theme-text);
 
-		opacity: 0.6;
 		cursor: not-allowed;
 	}
 	
-	#legend-container {
-		margin-block: 0.75rem;
+	fieldset {
+		display: flex;
+		gap: 3px;
+        align-items: center;
+        border: none;
+        margin: 0;
+        padding: 0.75rem;
 	}
 	
 	#input-container {
-		display: flex
+		display: flex;
 	}
 
 	svg {
@@ -52,18 +50,9 @@ starRatingTemplate.innerHTML = `
 	}
 
 	#input-container > input.is-selected + label svg,
-	#input-container:hover > input + label svg,
-	#input-container input.focus-visible + label svg,
-	#input-container input:focus-visible:not(:read-only) + label svg {
+	fieldset:not(:disabled) #input-container:hover > input + label svg,
+	#input-container input:focus-visible:not(:disabled) + label svg {
 		fill: var(--star-color);
-	}
-	
-	input:read-only {
-		pointer-events: none; 
-	}
-
-	input:read-only:not(.is-selected) ~ label svg {
-		fill: none;
 	}
 	
 	#alert {
@@ -92,6 +81,14 @@ starRatingTemplate.innerHTML = `
 	input[value="5"]:checked ~ #alert #label-5 {
 		display: inline;
 	}
+
+	input[value="1"]:focus-visible ~ #alert #label-1,
+	input[value="2"]:focus-visible ~ #alert #label-2,
+	input[value="3"]:focus-visible ~ #alert #label-3,
+	input[value="4"]:focus-visible ~ #alert #label-4,
+	input[value="5"]:focus-visible ~ #alert #label-5 {
+		display: inline;
+	}
 	
 	/* override checked styles with hover styles */
 	
@@ -113,25 +110,13 @@ starRatingTemplate.innerHTML = `
 	input[value="3"]:disabled ~ #alert #label-3,
 	input[value="4"]:disabled ~ #alert #label-4,
 	input[value="5"]:disabled ~ #alert #label-5 {
-		opacity: 0.6;
 		cursor: not-allowed;
 		pointer-events: none;
 	}
-
-	input[value="1"]:read-only.is-selected + input ~ label svg,
-	input[value="2"]:read-only.is-selected + input ~ label svg,
-	input[value="3"]:read-only.is-selected + input ~ label svg,
-	input[value="4"]:read-only.is-selected + input ~ label svg,
-	input[value="5"]:read-only.is-selected + input ~ label svg {
-		fill: none;
-	}
-
   </style>
 
 <fieldset>
-	<div id="legend-container">
-		<slot name="legend" part="legend">Enter rating</slot>
-	</div>
+	<slot name="legend" part="legend">Enter rating</slot>
 
 	<div id="input-container">
 		<input class="star-rating" part="visually-hidden" type="radio" value="1" id="radio-1" />
@@ -228,18 +213,6 @@ class StarRatingElement extends HTMLElement {
 		fieldset.querySelectorAll('input').forEach(input => (input.disabled = val));
 	}
 
-	get readonly() {
-		return this.hasAttribute('readonly');
-	}
-
-	set readonly(val) {
-		if (val) {
-			this.setAttribute('readonly', '');
-		} else {
-			this.removeAttribute('readonly');
-		}
-	}
-
 	connectedCallback() {
 		/* 	this.shadowRoot?.addEventListener('keydown', this); */
 		this.shadowRoot?.addEventListener('change', this);
@@ -275,8 +248,6 @@ class StarRatingElement extends HTMLElement {
 			}
 		} else if (_name === 'disabled') {
 			this.disabled = this.hasAttribute('disabled');
-		} else if (_name === 'readonly') {
-			this.readonly = this.hasAttribute('readonly');
 		}
 	}
 
