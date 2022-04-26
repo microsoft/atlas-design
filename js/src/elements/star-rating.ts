@@ -50,9 +50,13 @@ starRatingTemplate.innerHTML = `
 	}
 
 	#input-container > input.is-selected + label svg,
-	fieldset:not(:disabled) #input-container:hover > input + label svg,
+	#input-container:hover > input + label svg,
 	#input-container input:focus-visible:not(:disabled) + label svg {
 		fill: var(--star-color);
+	}
+
+	fieldset:disabled #input-container:hover input:not(.is-selected) + label svg{ 
+		fill: none;
 	}
 	
 	#alert {
