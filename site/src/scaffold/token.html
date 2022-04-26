@@ -96,16 +96,16 @@
 				{{#entries}}
 					{{#isDirectory}}
 						<div class="margin-top-xs">
-							<p class="font-weight-semibold">{{name}}</p>
+							<p class="font-weight-bold font-size-lg">{{name}}</p>
 							<div class="margin-left-xs">
 								{{#children}}
-									<a class="display-block margin-top-xxs" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+									<a class="display-block text-decoration-none margin-top-xxs font-weight-semibold" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 								{{/children}}
 							</div>
 						</div>
 					{{/isDirectory}}
 					{{^children.0}}
-						<a class="display-block margin-top-xs" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
+						<a class="display-block margin-top-xs font-weight-semibold" href="{{{href}}}" {{#isHidden}}hidden{{/isHidden}}>{{name}}</a>
 					{{/children.0}}
 				{{/entries}}
 			{{/toc}}
