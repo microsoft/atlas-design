@@ -7,5 +7,3 @@ dist
 toc.json
 test-results/
 playwright-report/
-integration/visual-diff/screenshots/
-integration/visual-diff/comparison-screenshots/
