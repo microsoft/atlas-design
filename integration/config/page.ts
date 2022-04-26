@@ -1,5 +1,5 @@
 import { devices, PlaywrightTestOptions, PlaywrightWorkerOptions, Project } from '@playwright/test';
-import { indexHTMLOnlyRoutes } from './routes.ts/index-html';
+import { indexHTMLOnlyRoutes } from './mocks/index-html';
 import type { LocalPageConfig, Theme, ObjectifiedPlayWrightRouteArgs } from './typings';
 
 const themes: Theme[] = ['light'];
@@ -9,7 +9,6 @@ const routes: ObjectifiedPlayWrightRouteArgs[] = [];
 /**
  * Default behavior is to abort all external requests
  */
-
 export const pages: LocalPageConfig[] = [
 	{
 		pathname: '/index.html',

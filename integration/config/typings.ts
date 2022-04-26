@@ -1,4 +1,4 @@
-import { BrowserContext, PageScreenshotOptions, Request, Route } from '@playwright/test';
+import { PageScreenshotOptions, Request, Route } from '@playwright/test';
 
 export type Theme = 'light' | 'dark' | 'high-contrast';
 
