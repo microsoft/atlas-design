@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: visual_diff_comparison_shapshots
-          path: ./integration/visual-diff/screenshots
+          path: ./integration/visual-diff/screenshots/updated
 
       # On pull requests into main, download images for comparison
       - name: Take screenshots [pull_request]
@@ -76,11 +76,11 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: visual_diff_pull_request_shapshots-${{ github.sha }}
-          path: ./integration/visual-diff/screenshots
+          path: ./integration/visual-diff/screenshots/updated
 
       - name: Download comparison screenshots [pull_request]
         if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
         uses: actions/upload-artifact@v3
         with:
           name: visual_diff_comparison_shapshots
-          path: ./integration/visual-diff/comparison-screenshots
+          path: ./integration/visual-diff/screenshots/comparison
