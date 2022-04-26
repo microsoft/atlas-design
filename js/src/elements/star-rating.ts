@@ -37,9 +37,7 @@ starRatingTemplate.innerHTML = `
 	}
 	
 	#input-container {
-		display: inline-grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto;
-		grid-template-areas: 'star-1 star-2 star-3 star-4 star-5 alert';
+		display: flex
 	}
 
 	svg {
@@ -68,28 +66,7 @@ starRatingTemplate.innerHTML = `
 		fill: none;
 	}
 	
-	#star-1 {
-		grid-area: star-1;
-	}
-	
-	#star-2 {
-		grid-area: star-2;
-	}
-	
-	#star-3 {
-		grid-area: star-3;
-	}
-	
-	#star-4 {
-		grid-area: star-4;
-	}
-	
-	#star-5 {
-		grid-area: star-5;
-	}
-	
 	#alert {
-		grid-area: alert;
 		display: flex;
 		align-items: start;
 		margin-inline-start: 0.5rem;
@@ -104,8 +81,7 @@ starRatingTemplate.innerHTML = `
 		display: none;
 	}
 	
-	input:focus-visible + label,
-	input.focus-visible + label {
+	input:focus-visible + label {
 		outline: 3px dashed;
 	}
 	
@@ -207,89 +183,37 @@ starRatingTemplate.innerHTML = `
 const template = starRatingTemplate;
 
 class StarRatingElement extends HTMLElement {
-	initialValue: number;
-	// internals_: ElementInternals; // not compatible with 'formData'
-	public readonly: boolean;
 	_validationMessage: string | undefined;
-	static formAssociated = true;
 	static get observedAttributes() {
-		return ['value', 'disabled'];
+		return ['name', 'value', 'disabled'];
 	}
 
 	constructor() {
 		super();
-		const clone = document.importNode(template.content, true);
 		this.attachShadow({ mode: 'open' });
-		this.shadowRoot?.appendChild(clone);
-
-		// // https://html.spec.whatwg.org/multipage/custom-elements.html 4.13.1.2
-		// this.internals_ = this.attachInternals();
-
-		// set initial value
-		this.initialValue = parseValue(this.getAttribute('value'));
-		if (this.initialValue) {
-			const toCheck = this.shadowRoot?.querySelector(
-				`input[value="${this.initialValue}"]`
-			) as HTMLInputElement;
-
-			if (toCheck) {
-				toCheck.checked = true;
-				this.setAttribute('aria-activedescendant', toCheck.id);
-			}
-		}
-
-		const parts = this.shadowRoot?.querySelectorAll('[part]');
-		if (parts) {
-			for (const element of parts) {
-				// @ts-ignore
-				element.part = element.getAttribute('part');
-			}
-		}
-
-		this.readonly = this.hasAttribute('readonly');
-		if (this.readonly) {
-			this.setAttribute('aria-readonly', 'true');
-			const inputs = Array.from(
-				this.shadowRoot?.querySelectorAll(`input`) || []
-			) as HTMLInputElement[];
-			for (const input of inputs) {
-				input.setAttribute('readonly', 'true');
-				input.setAttribute('aria-readonly', 'true');
-			}
-		}
-
-		this.disabled = this.hasAttribute('disabled');
-		if (this.disabled) {
-			this.setAttribute('disabled', '');
-			this.setAttribute('aria-disabled', 'true');
-			const inputs = Array.from(
-				this.shadowRoot?.querySelectorAll(`input`) || []
-			) as HTMLInputElement[];
-			for (const input of inputs) {
-				input.setAttribute('disabled', '');
-				input.setAttribute('aria-disabled', 'true');
-			}
-		}
-
-		// focus visible polyfill must explicitly be setup here
-		// @ts-ignore
-		if (window.applyFocusVisiblePolyfill != null) {
-			// @ts-ignore
-			window.applyFocusVisiblePolyfill(this.shadowRoot);
-		}
+		this.shadowRoot?.appendChild(template.content.cloneNode(true));
 	}
+
 	get name() {
-		return this.getAttribute('name');
+		return this.getAttribute('name') ?? '';
 	}
+
+	set name(value) {
+		this.setAttribute('name', value);
+	}
+
 	get type() {
 		return this.localName;
 	}
+
 	get value() {
-		return parseValue((this.shadowRoot?.querySelector('input:checked') as HTMLInputElement)?.value);
+		return Math.max(0, Math.min(parseInt(this.getAttribute('value') || '0'), 5));
 	}
-	set value(value: number) {
-		this.setAttribute('value', value.toString());
+
+	set value(val: number) {
+		this.setAttribute('value', val.toString());
 	}
+
 	get required() {
 		return this.hasAttribute('required');
 	}
@@ -299,25 +223,25 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	set disabled(val) {
+		const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
+		fieldset.disabled = val;
+		fieldset.querySelectorAll('input').forEach(input => (input.disabled = val));
+	}
+
+	get readonly() {
+		return this.hasAttribute('readonly');
+	}
+
+	set readonly(val) {
 		if (val) {
-			this.setAttribute('disabled', 'true');
+			this.setAttribute('readonly', '');
 		} else {
-			this.removeAttribute('disabled');
+			this.removeAttribute('readonly');
 		}
 	}
 
 	connectedCallback() {
-		const inputs = Array.from(
-			this.shadowRoot?.querySelectorAll('input') ?? []
-		) as HTMLInputElement[];
-
-		if (!this.name) {
-			throw new Error('StarRatingElement requires a name attribute');
-		}
-		for (const input of inputs) {
-			input.name = this.name;
-		}
-		this.shadowRoot?.addEventListener('keydown', this);
+		/* 	this.shadowRoot?.addEventListener('keydown', this); */
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
 		this.closest('form')?.addEventListener('formdata', this);
@@ -330,97 +254,42 @@ class StarRatingElement extends HTMLElement {
 
 	attributeChangedCallback(_name: string, oldValue: string, newValue: string) {
 		if (oldValue !== newValue) {
-			this.updateContent(newValue);
-		}
-
-		// When disabled, update keyboard/screen reader behavior.
-		if (this.disabled) {
-			this.setAttribute('tabindex', '-1');
-			this.setAttribute('aria-disabled', 'true');
-		} else {
-			this.setAttribute('tabindex', '');
-			this.setAttribute('aria-disabled', 'false');
+			this.updateContent(_name, newValue);
 		}
 	}
 
-	updateContent(newValue: string) {
-		if (newValue === '0' || !newValue) {
-			const toUncheck = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
-			if (toUncheck) {
-				toUncheck.checked = false;
+	updateContent(_name: string, newValue: string) {
+		if (_name === 'name') {
+			this.shadowRoot?.querySelectorAll('input[type="radio"]').forEach(input => {
+				input.setAttribute('name', this.name);
+			});
+		} else if (_name === 'value') {
+			const checkedEl = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
+			if (checkedEl && this.value === 0) {
+				checkedEl.checked = false;
 			}
-		} else {
-			this.updateStarFill(parseInt(newValue));
-			const toCheck = this.shadowRoot?.querySelector(`[value="${newValue}"]`) as HTMLInputElement;
+			const toCheck = this.shadowRoot?.querySelector(`[value="${this.value}"]`) as HTMLInputElement;
 			if (toCheck) {
 				toCheck.checked = true;
+				this.updateStarFill(parseInt(newValue));
 			}
+		} else if (_name === 'disabled') {
+			this.disabled = this.hasAttribute('disabled');
+		} else if (_name === 'readonly') {
+			this.readonly = this.hasAttribute('readonly');
 		}
 	}
 
 	handleEvent(event: Event) {
-		// the value of `this` is shadowRoot star-rating for keydown and change
-		const target = event.target as HTMLInputElement;
-
 		switch (event.type) {
-			// Internally, star-rating uses radios, but we're hijacking keyboard events to invert focus order.
-			// Good star highlighting is achieved with reordering, but requires inverted keyboard focusing.
-			case 'keydown':
-				const { shiftKey, altKey, ctrlKey, code } = event as KeyboardEvent;
-				if (shiftKey || altKey || ctrlKey) {
-					return;
-				}
-
-				if (
-					code === 'ArrowDown' ||
-					code === 'ArrowUp' ||
-					code === 'ArrowLeft' ||
-					code === 'ArrowRight'
-				) {
-					const action = code === 'ArrowDown' || code === 'ArrowRight' ? 1 : -1;
-					const currentValue = parseInt((event.target as HTMLInputElement).value);
-
-					let nextValue = currentValue + action;
-					if (nextValue < 1) {
-						nextValue = 5;
-					} else if (nextValue > 5) {
-						nextValue = 1;
-					}
-					target.checked = false;
-					const inputToFocus = this.shadowRoot?.querySelector(
-						`input[value="${nextValue}"]`
-					) as HTMLInputElement;
-
-					inputToFocus.focus();
-					inputToFocus.checked = true;
-					if (!this.readonly) {
-						this.updateStarFill(nextValue);
-					}
-
-					// set value here too?
-
-					event.preventDefault();
-				}
-				break;
 			case 'change':
-				const starRating = this as StarRatingElement;
-				const value = parseValue(target.value);
-				const customEvent = new CustomEvent('star-rating-change', {
-					detail: {
-						value: parseValue(target.value),
-						name: starRating.name
-					},
-					bubbles: true,
-					composed: true
-				});
-				starRating.value = value;
-				window.dispatchEvent(customEvent);
+				this.setAttribute('value', (event.target as HTMLInputElement).value);
+				this.dispatchEvent(new Event('change', { bubbles: true }));
 				break;
 			case 'formdata':
-				if (this.readonly || !this.name) {
-					return;
-				}
+				// https://web.dev/more-capable-form-controls/
 				(event as FormDataEvent).formData.append(this.name, this.value.toString());
+				break;
 		}
 	}
 
