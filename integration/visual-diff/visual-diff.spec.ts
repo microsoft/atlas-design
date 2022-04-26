@@ -63,5 +63,5 @@ function getVisualDiffFilePath(
 ): string {
 	const pagename = pageConfig.name.replace(/(\s|\\|\/)/g, '-');
 	const projectName = project.replace(/(\s|\\|\/)/g, '-');
-	return `./visual-diff/screenshots/updated${pagename}__${theme}__${width}x${height}__${projectName}.png`;
+	return `./visual-diff/screenshots/updated/${pagename}__${theme}__${width}x${height}__${projectName}.png`;
 }
