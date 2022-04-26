@@ -15,9 +15,9 @@ npx playwright install
 
 ## Using Playwright
 
-Both of the above use [`@playwright/test`](https://playwright.dev/). Their documentaton for should be the primary source of information on how to write tests here. Because of our monorepo setup, we've taken the approach of referencing playwright commands via npm. The primary commands available at the root of the project are:
+Both of the above use [`@playwright/test`](https://playwright.dev/). Their documentaton should be the primary source of information on how to write tests here. Because of our monorepo setup, we've taken the approach of referencing playwright commands via npm. The primary commands available at the root of the project are:
 
-| Command                           | Referant                                                                  | Description                                                                                                 |
+| Command                           | Referent                                                                  | Description                                                                                                 |
 | --------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `npm run integration-tests`       | `playwright test --config=integration-tests.config.ts`                    | Runs all tests in the `/integration-tests` folder.                                                          |
 | `npm run integration-tests:debug` | `playwright test --debug --config=integration-tests.config.ts`            | The same as above but in Playwright debug mode.                                                             |
