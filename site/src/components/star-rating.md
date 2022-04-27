@@ -6,7 +6,7 @@ template: standard
 
 # Star rating
 
-Needs form connection.
+The star rating component allows the user to select a rating value. It is often used with forms to collect user feedback.
 
 ```html
 <star-rating name="rating-1" value="0">
