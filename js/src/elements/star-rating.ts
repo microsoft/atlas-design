@@ -167,13 +167,24 @@ const template = starRatingTemplate;
 
 class StarRatingElement extends HTMLElement {
 	static get observedAttributes() {
-		return ['name', 'value', 'disabled'];
+		return ['disabled', 'name', 'value'];
 	}
 
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
 		this.shadowRoot?.appendChild(template.content.cloneNode(true));
+	}
+
+	get disabled() {
+		return this.hasAttribute('disabled');
+	}
+
+	set disabled(val) {
+		this.setAttribute('disabled', val.toString());
+		const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
+		fieldset.disabled = val;
+		fieldset.querySelectorAll('input').forEach(input => (input.disabled = val));
 	}
 
 	get name() {
@@ -190,17 +201,6 @@ class StarRatingElement extends HTMLElement {
 
 	set value(val: number) {
 		this.setAttribute('value', val.toString());
-	}
-
-	get disabled() {
-		return this.hasAttribute('disabled');
-	}
-
-	set disabled(val) {
-		this.setAttribute('disabled', val.toString());
-		const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
-		fieldset.disabled = val;
-		fieldset.querySelectorAll('input').forEach(input => (input.disabled = val));
 	}
 
 	/* TODO: add form related properties */
@@ -269,10 +269,6 @@ class StarRatingElement extends HTMLElement {
 			}
 		}
 	}
-}
-
-function parseValue(str: string | null): number {
-	return Math.max(0, Math.min(parseInt(str || '0'), 5));
 }
 
 customElements.define('star-rating', StarRatingElement);
