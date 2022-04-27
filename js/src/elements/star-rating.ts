@@ -2,6 +2,7 @@ const starRatingTemplate = document.createElement('template');
 starRatingTemplate.id = 'star-rating-template';
 
 /* TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
+https://web.dev/custom-elements-v1/
 https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
 
 starRatingTemplate.innerHTML = `
@@ -27,11 +28,9 @@ starRatingTemplate.innerHTML = `
 	
 	fieldset {
 		display: flex;
-		gap: 3px;
-        align-items: center;
         border: none;
         margin: 0;
-        padding: 0.75rem;
+        padding-block: 0.75rem;
 	}
 	
 	#input-container {
@@ -43,14 +42,16 @@ starRatingTemplate.innerHTML = `
 		stroke: var(--star-color);
 	}
 
+	/* On hover, fill stars as default so that stars prior to hovered/checked star looks filled, then un-fill the following stars */
+
 	#input-container > input:not(.is-selected) ~ label svg,
 	#input-container > input + label:hover ~ label svg,
 	#input-container > input:checked ~ label svg {
 		fill: none;
 	}
 
-	#input-container > input.is-selected + label svg,
 	#input-container:hover > input + label svg,
+	#input-container > input.is-selected + label svg,
 	#input-container input:focus-visible:not(:disabled) + label svg {
 		fill: var(--star-color);
 	}
@@ -60,13 +61,11 @@ starRatingTemplate.innerHTML = `
 	}
 	
 	#alert {
-		display: flex;
-		align-items: start;
 		margin-inline-start: 0.5rem;
+		line-height: 1;
 	}
 	
 	label {
-		border-radius: 0.5em;
 		padding-inline: 0.125em;
 	}
 	
@@ -108,12 +107,7 @@ starRatingTemplate.innerHTML = `
 		display: inline !important;
 	}
 	
-	input:disabled + label,
-	input[value="1"]:disabled ~ #alert #label-1,
-	input[value="2"]:disabled ~ #alert #label-2,
-	input[value="3"]:disabled ~ #alert #label-3,
-	input[value="4"]:disabled ~ #alert #label-4,
-	input[value="5"]:disabled ~ #alert #label-5 {
+	input:disabled + label {
 		cursor: not-allowed;
 		pointer-events: none;
 	}
@@ -123,36 +117,36 @@ starRatingTemplate.innerHTML = `
 	<slot name="legend" part="legend">Enter rating</slot>
 
 	<div id="input-container">
-		<input class="star-rating" part="visually-hidden" type="radio" value="1" id="radio-1" />
-		<label id="star-1" for="radio-1" class="star">
+		<input part="visually-hidden" type="radio" value="1" id="radio-1" />
+		<label id="star-1" for="radio-1">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
-		<input class="star-rating" part="visually-hidden" type="radio" value="2" id="radio-2" />
-		<label id="star-2" for="radio-2" class="star">
+		<input part="visually-hidden" type="radio" value="2" id="radio-2" />
+		<label id="star-2" for="radio-2">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
-		<input class="star-rating" part="visually-hidden" type="radio" value="3" id="radio-3" />
-		<label id="star-3" for="radio-3" class="star">
+		<input part="visually-hidden" type="radio" value="3" id="radio-3" />
+		<label id="star-3" for="radio-3">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
-		<input class="star-rating" part="visually-hidden" type="radio" value="4" id="radio-4" />
-		<label id="star-4" for="radio-4" class="star">
+		<input part="visually-hidden" type="radio" value="4" id="radio-4" />
+		<label id="star-4" for="radio-4">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
 		</label>
 
-		<input class="star-rating" part="visually-hidden" type="radio" value="5" id="radio-5" />
-		<label id="star-5" for="radio-5" class="star">
+		<input part="visually-hidden" type="radio" value="5" id="radio-5" />
+		<label id="star-5" for="radio-5">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
@@ -172,7 +166,6 @@ starRatingTemplate.innerHTML = `
 const template = starRatingTemplate;
 
 class StarRatingElement extends HTMLElement {
-	_validationMessage: string | undefined;
 	static get observedAttributes() {
 		return ['name', 'value', 'disabled'];
 	}
@@ -191,10 +184,6 @@ class StarRatingElement extends HTMLElement {
 		this.setAttribute('name', value);
 	}
 
-	get type() {
-		return this.localName;
-	}
-
 	get value() {
 		return Math.max(0, Math.min(parseInt(this.getAttribute('value') || '0'), 5));
 	}
@@ -203,22 +192,20 @@ class StarRatingElement extends HTMLElement {
 		this.setAttribute('value', val.toString());
 	}
 
-	get required() {
-		return this.hasAttribute('required');
-	}
-
 	get disabled() {
 		return this.hasAttribute('disabled');
 	}
 
 	set disabled(val) {
+		this.setAttribute('disabled', val.toString());
 		const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
 		fieldset.disabled = val;
 		fieldset.querySelectorAll('input').forEach(input => (input.disabled = val));
 	}
 
+	/* TODO: add form related properties */
+
 	connectedCallback() {
-		/* 	this.shadowRoot?.addEventListener('keydown', this); */
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
 		this.closest('form')?.addEventListener('formdata', this);
@@ -229,18 +216,19 @@ class StarRatingElement extends HTMLElement {
 		this.closest('form')?.removeEventListener('formdata', this);
 	}
 
-	attributeChangedCallback(_name: string, oldValue: string, newValue: string) {
+	attributeChangedCallback(name: string, oldValue: string, newValue: string) {
 		if (oldValue !== newValue) {
-			this.updateContent(_name, newValue);
+			this.updateContent(name, newValue);
 		}
 	}
 
-	updateContent(_name: string, newValue: string) {
-		if (_name === 'name') {
+	updateContent(name: string, newValue: string) {
+		if (name === 'name') {
 			this.shadowRoot?.querySelectorAll('input[type="radio"]').forEach(input => {
 				input.setAttribute('name', this.name);
 			});
-		} else if (_name === 'value') {
+		}
+		if (name === 'value') {
 			const checkedEl = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
 			if (checkedEl && this.value === 0) {
 				checkedEl.checked = false;
@@ -250,7 +238,8 @@ class StarRatingElement extends HTMLElement {
 				toCheck.checked = true;
 				this.updateStarFill(parseInt(newValue));
 			}
-		} else if (_name === 'disabled') {
+		}
+		if (name === 'disabled') {
 			this.disabled = this.hasAttribute('disabled');
 		}
 	}
