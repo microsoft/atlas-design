@@ -28,8 +28,8 @@ starRatingTemplate.innerHTML = `
 	
 	fieldset {
 		display: flex;
-        border: none;
         margin: 0;
+        border: none;
         padding-block: 0.75rem;
 	}
 	
@@ -74,8 +74,8 @@ starRatingTemplate.innerHTML = `
 	}
 	
 	input:focus-visible + label {
-		outline: 3px dashed;
 		border-radius: 0.5em;
+		outline: 3px dashed;
 	}
 	
 	input[value="1"]:checked ~ #alert #label-1,
@@ -108,6 +108,7 @@ starRatingTemplate.innerHTML = `
 		display: inline !important;
 	}
 	
+	fieldset:disabled span,
 	input:disabled + label {
 		cursor: not-allowed;
 		pointer-events: none;
