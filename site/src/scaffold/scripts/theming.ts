@@ -47,6 +47,15 @@ export interface ThemeTypeMap {
 }
 
 /**
+ * The setTheme functions is used during page.evaulate in screenshots.
+ */
+declare global {
+	interface Window {
+		setTheme: typeof setTheme;
+	}
+}
+
+/**
  * Using the current theme key, get the next one in the cycle.
  * @param current The current theme's name.
  * @returns The next theme's name.
@@ -119,6 +128,9 @@ export function initTheme() {
 	const theme = getInitialTheme();
 	setTheme(theme);
 	initThemeControls();
+
+	// For use in screenshots
+	window.setTheme = setTheme;
 }
 
 export function getInitialTheme(

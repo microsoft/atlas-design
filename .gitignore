@@ -5,3 +5,5 @@ dist
 .parcel-cache
 *.log
 toc.json
+test-results/
+playwright-report/

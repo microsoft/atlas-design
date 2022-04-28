@@ -1,0 +1,21 @@
+{
+	"name": "@microsoft/atlas-integration",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"codegen": "playwright codegen localhost:1111",
+		"test": "playwright test --config=integration-tests.config.ts",
+		"test:debug": "playwright test --debug --config=integration-tests.config.ts",
+		"screenshots:all": "cross-env FULL_DIFF=true playwright test --config=visual-diff.config.ts",
+		"screenshots:light": "playwright test --config=visual-diff.config.ts",
+		"prescreenshots": "rimraf \"./visual-diff/visual-diff.spec.ts-screenshots\"",
+		"prescreenshots:all": "rimraf \"./visual-diff/visual-diff.spec.ts-screenshots\"",
+		"show-report": "playwright show-report"
+	},
+	"author": "Microsoft Corporation",
+	"license": "ISC",
+	"devDependencies": {
+		"@playwright/test": "^1.20.2",
+		"cross-env": "^7.0.3"
+	}
+}
