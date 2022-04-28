@@ -200,16 +200,23 @@ class StarRatingElement extends HTMLElement {
 		return Math.max(0, Math.min(parseInt(this.getAttribute('value') || '0'), 5));
 	}
 
-	set value(val: number) {
+	set value(val) {
 		this.setAttribute('value', val.toString());
 	}
 
-	/* TODO: add form related properties */
+	/** TODO: add form related properties */
 
 	connectedCallback() {
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
 		this.closest('form')?.addEventListener('formdata', this);
+		this.shadowRoot?.querySelectorAll('input[type="radio"]').forEach(input => {
+			/* Upon initial focus on a brand new star rating, set value to match the currently focused star.
+			Otherwise, the value remains at 0 until user selects the focused star. */
+			input.addEventListener('focus', e => {
+				this.value = parseInt((e.target as HTMLInputElement).value);
+			});
+		});
 	}
 
 	disconnectedCallback() {
