@@ -19,3 +19,7 @@ details > * {
 :where(a:visited) {
 	color: $visited;
 }
+
+::part(visually-hidden) {
+	@include visually-hidden();
+}
