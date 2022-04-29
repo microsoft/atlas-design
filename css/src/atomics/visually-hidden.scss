@@ -1,0 +1,5 @@
+/** TODO: add visually-hidden atomic */
+
+::part(visually-hidden) {
+	@include visually-hidden();
+}

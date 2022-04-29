@@ -65,7 +65,7 @@ starRatingTemplate.innerHTML = `
 		line-height: 1;
 	}
 	
-	label {
+	#input-container > label {
 		padding-inline: 0.125em;
 	}
 	
@@ -184,40 +184,46 @@ class StarRatingElement extends HTMLElement {
 
 	set disabled(val) {
 		this.setAttribute('disabled', val.toString());
-		const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
-		fieldset.disabled = val;
-		fieldset.querySelectorAll('input').forEach(input => (input.disabled = val));
 	}
 
 	get name() {
 		return this.getAttribute('name') ?? '';
 	}
 
-	set name(value) {
-		this.setAttribute('name', value);
+	set name(val) {
+		this.setAttribute('name', val);
+	}
+
+	get required() {
+		return this.hasAttribute('required');
+	}
+
+	set required(val) {
+		this.setAttribute('required', val.toString());
+	}
+
+	get type() {
+		return this.localName;
 	}
 
 	get value() {
-		return Math.max(0, Math.min(parseInt(this.getAttribute('value') || '0'), 5));
+		return this.getAttribute('value') ?? '';
 	}
 
-	set value(val) {
-		this.setAttribute('value', val.toString());
+	set value(val: string) {
+		this.setAttribute('value', val);
 	}
 
-	/** TODO: add form related properties */
+	get valueAsNumber() {
+		return parseInt(this.getAttribute('value') ?? '');
+	}
+
+	/** TODO: add form related properties (i.e validity, etc */
 
 	connectedCallback() {
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
 		this.closest('form')?.addEventListener('formdata', this);
-		this.shadowRoot?.querySelectorAll('input[type="radio"]').forEach(input => {
-			/* Upon initial focus on a brand new star rating, set value to match the currently focused star.
-			Otherwise, the value remains at 0 until user selects the focused star. */
-			input.addEventListener('focus', e => {
-				this.value = parseInt((e.target as HTMLInputElement).value);
-			});
-		});
 	}
 
 	disconnectedCallback() {
@@ -239,7 +245,7 @@ class StarRatingElement extends HTMLElement {
 		}
 		if (name === 'value') {
 			const checkedEl = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
-			if (checkedEl && this.value === 0) {
+			if (checkedEl && this.value === '0') {
 				checkedEl.checked = false;
 			}
 			const toCheck = this.shadowRoot?.querySelector(`[value="${this.value}"]`) as HTMLInputElement;
@@ -249,14 +255,14 @@ class StarRatingElement extends HTMLElement {
 			}
 		}
 		if (name === 'disabled') {
-			this.disabled = this.hasAttribute('disabled');
+			const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
+			fieldset.setAttribute('disabled', '');
 		}
 	}
 
 	handleEvent(event: Event) {
 		switch (event.type) {
 			case 'change':
-				this.setAttribute('value', (event.target as HTMLInputElement).value);
 				this.dispatchEvent(new Event('change', { bubbles: true }));
 				break;
 			case 'formdata':
@@ -267,14 +273,12 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	updateStarFill(newValue: number) {
-		const stars = this.shadowRoot?.querySelectorAll('input');
+		const stars = this.shadowRoot!.querySelectorAll('input');
 		for (let i = 0; i < 5; i++) {
-			if (stars) {
-				if (i < newValue) {
-					stars[i].classList.add('is-selected');
-				} else {
-					stars[i].classList.remove('is-selected');
-				}
+			if (i < newValue) {
+				stars[i].classList.add('is-selected');
+			} else {
+				stars[i].classList.remove('is-selected');
 			}
 		}
 	}
