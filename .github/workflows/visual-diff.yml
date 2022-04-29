@@ -80,7 +80,7 @@ jobs:
 
       - name: Download comparison screenshots [pull_request]
         if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/download-artifact@v3
         with:
           name: visual_diff_comparison_shapshots
           path: ./integration/visual-diff/screenshots/comparison
