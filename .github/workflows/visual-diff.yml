@@ -84,3 +84,6 @@ jobs:
         with:
           name: visual_diff_comparison_shapshots
           path: ./integration/visual-diff/screenshots/comparison
+
+      - name: Visual Diff
+        run: echo todo
