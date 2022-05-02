@@ -248,7 +248,7 @@ class StarRatingElement extends HTMLElement {
 			if (checkedEl && this.value === '0') {
 				checkedEl.checked = false;
 			}
-			const toCheck = this.shadowRoot?.querySelector(`[value="${this.value}"]`) as HTMLInputElement;
+			const toCheck = this.shadowRoot?.querySelector(`[value="${newValue}"]`) as HTMLInputElement;
 			if (toCheck) {
 				toCheck.checked = true;
 				this.updateStarFill(parseInt(newValue));
@@ -263,6 +263,8 @@ class StarRatingElement extends HTMLElement {
 	handleEvent(event: Event) {
 		switch (event.type) {
 			case 'change':
+				const target = event.target as HTMLInputElement;
+				this.updateContent('value', target.value);
 				this.dispatchEvent(new Event('change', { bubbles: true }));
 				break;
 			case 'formdata':

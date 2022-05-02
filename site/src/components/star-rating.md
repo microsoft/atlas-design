@@ -10,7 +10,7 @@ figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.f
 The star rating component allows the user to select a rating value. It is often used with forms to collect user feedback.
 
 ```html
-<star-rating name="rating-1" value="0">
+<star-rating name="rating-1">
 	<legend slot="legend">How are we doing?</legend>
 	<span slot="label-1">Terrible</span>
 	<span slot="label-2">Poor</span>
