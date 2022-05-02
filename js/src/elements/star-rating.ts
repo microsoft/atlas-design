@@ -33,7 +33,7 @@ starRatingTemplate.innerHTML = `
         padding-block: 0.75rem;
 	}
 	
-	#input-container {
+	.star-container {
 		display: flex;
 	}
 
@@ -44,19 +44,19 @@ starRatingTemplate.innerHTML = `
 
 	/* On hover, fill stars as default so that stars prior to hovered/checked star looks filled, then un-fill the following stars */
 
-	#input-container > input:not(.is-selected) ~ label svg,
-	#input-container > input + label:hover ~ label svg,
-	#input-container > input:checked ~ label svg {
+	.star-container > input:not(.is-selected) ~ label svg,
+	.star-container > input + label:hover ~ label svg,
+	.star-container > input:checked ~ label svg {
 		fill: none;
 	}
 
-	#input-container:hover > input + label svg,
-	#input-container > input.is-selected + label svg,
-	#input-container input:focus-visible:not(:disabled) + label svg {
+	.star-container:hover > input + label svg,
+	.star-container > input.is-selected + label svg,
+	.star-container input:focus-visible:not(:disabled) + label svg {
 		fill: var(--star-color);
 	}
 
-	fieldset:disabled #input-container:hover input:not(.is-selected) + label svg{ 
+	fieldset:disabled .star-container:hover input:not(.is-selected) + label svg{ 
 		fill: none;
 	}
 	
@@ -65,7 +65,7 @@ starRatingTemplate.innerHTML = `
 		line-height: 1;
 	}
 	
-	#input-container > label {
+	.star-container > label {
 		padding-inline: 0.125em;
 	}
 	
@@ -118,7 +118,7 @@ starRatingTemplate.innerHTML = `
 <fieldset>
 	<slot name="legend" part="legend">Enter rating</slot>
 
-	<div id="input-container">
+	<div class="star-container">
 		<input part="visually-hidden" type="radio" value="1" id="radio-1" />
 		<label for="radio-1">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
