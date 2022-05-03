@@ -124,13 +124,15 @@ starRatingTemplate.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
+			<span part="visually-hidden">1<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
 		<input part="visually-hidden" type="radio" value="2" id="radio-2" />
-		<label for="radio-2">
+		<label for="radio-2" >
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
+			<span part="visually-hidden">2<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
 		<input part="visually-hidden" type="radio" value="3" id="radio-3" />
@@ -138,13 +140,15 @@ starRatingTemplate.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
+			<span part="visually-hidden">3<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
 		<input part="visually-hidden" type="radio" value="4" id="radio-4" />
-		<label for="radio-4">
+		<label for="radio-4" >
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
+			<span part="visually-hidden">4<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
 		<input part="visually-hidden" type="radio" value="5" id="radio-5" />
@@ -152,14 +156,15 @@ starRatingTemplate.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 14.7633 6.69239 14.2291 7.21307L11.768 9.61212L12.349 12.9996C12.4751 13.7348 11.7034 14.2955 11.0431 13.9484L8.00096 12.349L4.95879 13.9484C4.29853 14.2955 3.52684 13.7348 3.65294 12.9996L4.23394 9.61212L1.77277 7.21307C1.23861 6.69239 1.53336 5.78522 2.27156 5.67795L5.67281 5.18372L7.1939 2.10167Z"/>
 			</svg>
+			<span part="visually-hidden">5<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
 		<span id="alert">
-			<label for="radio-1"><span id="label-1"><slot name="label-1"></slot></span></label>
-			<label for="radio-2"><span id="label-2"><slot name="label-2"></slot></span></label>
-			<label for="radio-3"><span id="label-3"><slot name="label-3"></slot></span></label>
-			<label for="radio-4"><span id="label-4"><slot name="label-4"></slot></span></label>
-			<label for="radio-5"><span id="label-5"><slot name="label-5"></slot></span></label>
+			<span id="label-1"><slot name="label-1"></slot></span>
+			<span id="label-2"><slot name="label-2"></slot></span>
+			<span id="label-3"><slot name="label-3"></slot></span>
+			<span id="label-4"><slot name="label-4"></slot></span>
+			<span id="label-5"><slot name="label-5"></slot></span>
 		</span>
 	</div>
 </fieldset>
@@ -224,6 +229,7 @@ class StarRatingElement extends HTMLElement {
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
 		this.closest('form')?.addEventListener('formdata', this);
+		this.shadowRoot?.addEventListener('slotchange', this);
 	}
 
 	disconnectedCallback() {
@@ -270,6 +276,28 @@ class StarRatingElement extends HTMLElement {
 			case 'formdata':
 				// https://web.dev/more-capable-form-controls/
 				(event as FormDataEvent).formData.append(this.name, this.value.toString());
+				break;
+			case 'slotchange':
+				const slot = event.target as HTMLSlotElement;
+				if (!slot.name.startsWith('label-')) {
+					break;
+				}
+				const radioNumber = slot.name.substring(6);
+				const label = this.shadowRoot?.querySelector(`[for="radio-${radioNumber}"]`);
+
+				if (label) {
+					while (label.firstElementChild !== label.lastElementChild) {
+						label.lastElementChild?.remove();
+					}
+					if (slot.assignedNodes().length) {
+						const hiddenSpan = document.createElement('span');
+						hiddenSpan.setAttribute('part', 'visually-hidden');
+						hiddenSpan.append(
+							...Array.from(slot.assignedNodes()).map(node => node.cloneNode(true))
+						);
+						label.append(hiddenSpan);
+					}
+				}
 				break;
 		}
 	}
