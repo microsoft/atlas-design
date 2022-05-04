@@ -6,7 +6,7 @@ https://web.dev/custom-elements-v1/
 https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
 
 starRatingTemplate.innerHTML = `
-<style>
+<style type="text/css">
 	*,
 	::before,
 	::after {
@@ -116,7 +116,7 @@ starRatingTemplate.innerHTML = `
   </style>
 
 <fieldset>
-	<slot name="legend" part="legend">Enter rating</slot>
+	<legend><slot name="legend" id="legend">Enter rating</slot></legend>
 
 	<div class="star-container">
 		<input part="visually-hidden" type="radio" value="1" id="radio-1" />

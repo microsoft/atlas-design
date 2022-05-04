@@ -11,7 +11,7 @@ The star rating component allows the user to select a rating value. It is often 
 
 ```html
 <star-rating name="rating-1">
-	<legend slot="legend" class="padding-right-xxs">How are we doing?</legend>
+	<span slot="legend" class="padding-right-xxs">How are we doing?</span>
 	<span slot="label-1">Terrible</span>
 	<span slot="label-2">Poor</span>
 	<span slot="label-3">Fair</span>
