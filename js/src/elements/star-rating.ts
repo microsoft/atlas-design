@@ -16,7 +16,7 @@ starRatingTemplate.innerHTML = `
 	:host {
 		--star-color: var(--theme-primary-active);
 	
-		display: block;
+		display: inline-flex;
 	}
 
 
@@ -27,7 +27,7 @@ starRatingTemplate.innerHTML = `
 	}
 	
 	fieldset {
-		display: flex;
+		display: contents;
         margin: 0;
         border: none;
         padding-block: 0.75rem;
