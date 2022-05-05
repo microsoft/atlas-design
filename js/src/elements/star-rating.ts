@@ -114,7 +114,6 @@ starRatingTemplate.innerHTML = `
 		pointer-events: none;
 	}
   </style>
-
 <fieldset>
 	<legend><slot name="legend" id="legend">Enter rating</slot></legend>
 
@@ -180,6 +179,8 @@ class StarRatingElement extends HTMLElement {
 		return ['disabled', 'name', 'value'];
 	}
 
+	coercedValue = '';
+
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
@@ -219,7 +220,18 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	set value(val: string) {
-		this.setAttribute('value', val);
+		this.coercedValue = ['', '1', '2', '3', '4', '5'].includes(val) ? val : '';
+		const toCheck = this.shadowRoot?.querySelector(
+			`[value="${this.coercedValue}"]`
+		) as HTMLInputElement;
+		if (toCheck) {
+			toCheck.checked = true;
+		} else {
+			const uncheck = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
+			if (uncheck) {
+				uncheck.checked = false;
+			}
+		}
 	}
 
 	get valueAsNumber() {
@@ -253,19 +265,12 @@ class StarRatingElement extends HTMLElement {
 			});
 		}
 		if (name === 'value') {
-			const checkedEl = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
-			if (checkedEl && this.value === '0') {
-				checkedEl.checked = false;
-			}
-			const toCheck = this.shadowRoot?.querySelector(`[value="${newValue}"]`) as HTMLInputElement;
-			if (toCheck) {
-				toCheck.checked = true;
+			this.value = newValue;
 				this.updateStarFill(parseInt(newValue));
-			}
 		}
 		if (name === 'disabled') {
 			const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
-			fieldset.setAttribute('disabled', '');
+			fieldset.disabled = newValue !== null;
 		}
 	}
 
@@ -287,7 +292,6 @@ class StarRatingElement extends HTMLElement {
 				}
 				const radioNumber = slot.name.substring(6);
 				const label = this.shadowRoot?.querySelector(`[for="radio-${radioNumber}"]`);
-
 				if (label) {
 					while (label.firstElementChild !== label.lastElementChild) {
 						label.lastElementChild?.remove();
