@@ -216,7 +216,7 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	get value() {
-		return this.getAttribute('value') ?? '';
+		return this.coercedValue;
 	}
 
 	set value(val: string) {
