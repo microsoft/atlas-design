@@ -266,7 +266,7 @@ class StarRatingElement extends HTMLElement {
 		}
 		if (name === 'value') {
 			this.value = newValue;
-				this.updateStarFill(parseInt(newValue));
+			this.updateStarFill(parseInt(newValue));
 		}
 		if (name === 'disabled') {
 			const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
