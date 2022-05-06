@@ -25,14 +25,14 @@ starRatingTemplate.innerHTML = `
 
 		cursor: not-allowed;
 	}
-	
+
 	fieldset {
 		display: contents;
-        margin: 0;
-        border: none;
-        padding-block: 0.75rem;
+		margin: 0;
+		border: none;
+		padding-block: 0.75rem;
 	}
-	
+
 	.star-container {
 		display: flex;
 	}
@@ -114,7 +114,7 @@ starRatingTemplate.innerHTML = `
 		pointer-events: none;
 	}
   </style>
-<fieldset>
+  <fieldset>
 	<legend><slot name="legend" id="legend">Enter rating</slot></legend>
 
 	<div class="star-container">
@@ -161,22 +161,22 @@ starRatingTemplate.innerHTML = `
 			<span part="visually-hidden">5<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
-		<span id="alert">
+		<output id="alert" for="radio-1 radio-2 radio-3 radio-4 radio-5">
 			<span id="label-1"><slot name="label-1"></slot></span>
 			<span id="label-2"><slot name="label-2"></slot></span>
 			<span id="label-3"><slot name="label-3"></slot></span>
 			<span id="label-4"><slot name="label-4"></slot></span>
 			<span id="label-5"><slot name="label-5"></slot></span>
-		</span>
+		</output>
 	</div>
-</fieldset>
+    </fieldset>
 `;
 
 const template = starRatingTemplate;
 
 class StarRatingElement extends HTMLElement {
 	static get observedAttributes() {
-		return ['disabled', 'name', 'value'];
+		return ['disabled', 'name', 'required', 'value'];
 	}
 
 	coercedValue = '';
@@ -195,6 +195,10 @@ class StarRatingElement extends HTMLElement {
 		this.setAttribute('disabled', val.toString());
 	}
 
+	get form() {
+		return this.closest(`form`)?.id;
+	}
+
 	get name() {
 		return this.getAttribute('name') ?? '';
 	}
@@ -208,7 +212,7 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	set required(val) {
-		this.setAttribute('required', val.toString());
+		this.required = val !== null;
 	}
 
 	get type() {
@@ -238,6 +242,10 @@ class StarRatingElement extends HTMLElement {
 		return parseInt(this.getAttribute('value') ?? '');
 	}
 
+	get validity() {
+		return (this.shadowRoot?.querySelector('input') as HTMLInputElement).validity;
+	}
+
 	/** TODO: add form related properties (i.e validity, etc */
 
 	connectedCallback() {
@@ -245,6 +253,7 @@ class StarRatingElement extends HTMLElement {
 		// arrow function to bind `this` value to star rating in handleFormData
 		this.closest('form')?.addEventListener('formdata', this);
 		this.shadowRoot?.addEventListener('slotchange', this);
+		this.setAttribute('aria-label', 'star rating');
 	}
 
 	disconnectedCallback() {
@@ -271,6 +280,15 @@ class StarRatingElement extends HTMLElement {
 		if (name === 'disabled') {
 			const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
 			fieldset.disabled = newValue !== null;
+		}
+		if (name === 'required') {
+			const input = this.shadowRoot?.querySelectorAll('input[type="radio"]')[0] as HTMLInputElement;
+			input.required = newValue !== null;
+			const requiredIndicator = document.createElement('span');
+			requiredIndicator.setAttribute('part', 'required-indicator');
+			requiredIndicator.ariaHidden = 'true';
+			const lastStar = this.shadowRoot?.querySelectorAll('label')[4] as HTMLLabelElement;
+			lastStar.insertAdjacentElement('afterend', requiredIndicator);
 		}
 	}
 
