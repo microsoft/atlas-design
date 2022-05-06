@@ -10,7 +10,7 @@ const thereAreNoEditsToSubmitMsg = 'There are no edits to submit';
 const weEncounteredAnUnexpectedErrorMsg =
 	'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.';
 const youMustSelectBetweenMinAndMaxTagsMsg = 'You must select between {min} and {max} {tagLabel}.';
-
+// <form-behavior>
 class FormBehaviorElement extends HTMLElement {
 	submitting = false as boolean;
 	initialData = new FormData();
@@ -40,6 +40,7 @@ class FormBehaviorElement extends HTMLElement {
 		form.setAttribute('novalidate', '');
 
 		this.initialData = new FormData(form);
+
 		if (this.ownerDocument.readyState === 'loading') {
 			this.ownerDocument.addEventListener(
 				'readystatechange',
@@ -109,8 +110,8 @@ class FormBehaviorElement extends HTMLElement {
 	commit = (event: Event) => {
 		if (
 			!isValueElement(event.target) ||
-			!event.target.form ||
-			event.target.form !== this.parentElement
+			!event.target?.form ||
+			event.target?.form !== this.parentElement
 		) {
 			return;
 		}
@@ -156,11 +157,9 @@ class FormBehaviorElement extends HTMLElement {
 				return;
 			}
 
-			return alert('Form submmitted!');
 			const url = form.action;
 			const params = new URL(form.action).searchParams;
 			const formData = new FormData(form);
-
 			// set and read headers:
 			const headers = new Headers();
 			headers.set('content-type', 'application/json');
@@ -246,14 +245,26 @@ if (!window.customElements.get('form-behavior')) {
 }
 
 // Start <form behavior> Helper functions
-type HTMLValueElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+interface HTMLValueElement extends HTMLElement {
+	form: HTMLFormElement;
+	labels: NodeListOf<HTMLLabelElement> | null;
+	name: string;
+	type: string;
+	value: string;
+	validity: ValidityState;
+}
 
+// Check if the required value related properties exist rather than an instance of a form related element.
 function isValueElement(target: EventTarget | null): target is HTMLValueElement {
-	return (
-		target instanceof HTMLSelectElement ||
-		target instanceof HTMLInputElement ||
-		target instanceof HTMLTextAreaElement
-	);
+	if (target) {
+		return (
+			target.hasOwnProperty('value') &&
+			target.hasOwnProperty('validity') &&
+			target.hasOwnProperty('form') &&
+			target.hasOwnProperty('labels')
+		);
+	}
+	return false;
 }
 
 function normalizeInputValue(target: EventTarget | null) {
@@ -441,7 +452,7 @@ const validators: Validator[] = [
 ];
 
 function canValidate(target: EventTarget | null): target is HTMLValueElement {
-	return isValueElement(target) && target.type !== 'hidden';
+	return isValueElement(target) && (target as HTMLValueElement).type !== 'hidden';
 }
 
 export async function validateForm(
@@ -456,7 +467,6 @@ export async function validateForm(
 		errorAlert.hidden = true;
 		errorList.innerHTML = '';
 	}
-
 	for (const input of form.elements) {
 		if (!scope.contains(input) || !canValidate(input)) {
 			continue;
@@ -487,7 +497,6 @@ export async function validateForm(
 
 		for (const validator of validators) {
 			const message = validator(input, label);
-
 			if (!message) {
 				continue;
 			}
