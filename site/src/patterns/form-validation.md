@@ -72,7 +72,36 @@ Use the form behavior component within a form to ensure accessible form validati
 				mintags="1"
 				maxtags="5"
 			/>
-			<div class="tag-input-holder border" style="height: 2em;"></div>
+			<div class="tag-input-holder border" style="height: 2em;">
+				<div class="autocomplete" data-bi-name="autocomplete">
+					<!---->
+					<div class="control ">
+						<input
+							role="combobox"
+							maxlength="100"
+							aria-autocomplete="list"
+							autocapitalize="off"
+							autocomplete="off"
+							autocorrect="off"
+							spellcheck="false"
+							id="tag-input"
+							class="autocomplete-input input"
+							type="text"
+							aria-expanded="true"
+							aria-owns="ax-0-listbox"
+							aria-controls="ax-0-listbox"
+							aria-activedescendant=""
+							aria-label="Tag selector"
+							placeholder="Enter tags..."
+							pattern=".*"
+							style="outline: none; border: none; box-shadow: none;"
+							aria-describedby="ax-15 "
+							hidden
+						/>
+					</div>
+					<p id="ax-15" class="help has-text-danger"></p>
+				</div>
+			</div>
 			<button class="add-tags-button" type="button">Add tags</button>
 		</div>
 	</div>
@@ -92,7 +121,7 @@ Some sample text
 
 	<div class="field margin-bottom-xs">
 		<div class="control">
-			<star-rating name="rating-1" required>
+			<star-rating name="rating-1" required id="rating-1">
 				<legend slot="legend">How are we doing?</legend>
 				<span slot="label-1">Terrible</span>
 				<span slot="label-2">Poor</span>
