@@ -1,9 +1,14 @@
 const starRatingTemplate = document.createElement('template');
 starRatingTemplate.id = 'star-rating-template';
 
-/* TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
-https://web.dev/custom-elements-v1/
-https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
+/** TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
+ * https://web.dev/custom-elements-v1/
+ * https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
+ *
+ * TODO: Turn into form associated custom element when element internals is more supported
+ * https://web.dev/more-capable-form-controls/
+ * https://caniuse.com/?search=internals
+ */
 
 starRatingTemplate.innerHTML = `
 <style type="text/css">
@@ -196,7 +201,7 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	get form() {
-		return this.closest(`form`)?.id;
+		return this.closest(`form`);
 	}
 
 	get name() {
@@ -243,10 +248,18 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	get validity() {
-		return (this.shadowRoot?.querySelector('input') as HTMLInputElement).validity;
+		// borrow input's validity, https://caniuse.com/?search=validity
+		const checkedStarValidity = this.shadowRoot?.querySelectorAll('input').forEach(input => {
+			if (input.checked) {
+				return input.validity;
+			}
+			return undefined;
+		});
+		if (checkedStarValidity) {
+			return checkedStarValidity;
+		}
+		return this.shadowRoot?.querySelector('input')?.validity;
 	}
-
-	/** TODO: add form related properties (i.e validity, etc */
 
 	connectedCallback() {
 		this.shadowRoot?.addEventListener('change', this);
