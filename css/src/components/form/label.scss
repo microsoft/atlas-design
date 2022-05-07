@@ -9,9 +9,9 @@ $label-font-weight: $weight-semibold !default;
 	font-weight: $label-font-weight;
 }
 
-.required-indicator:after,
-::part(required-indicator):after {
+.required-indicator::after,
+::part(required-indicator)::after {
 	color: $danger;
-	vertical-align: baseline;
 	content: '*';
+	vertical-align: baseline;
 }
