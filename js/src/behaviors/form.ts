@@ -152,7 +152,12 @@ class FormBehaviorElement extends HTMLElement {
 		try {
 			this.submitting = true;
 			setBusySubmitButton(form, this.submitting);
-			const valid = await validateForm(form);
+			const valid = await validateForm(
+				form,
+				undefined,
+				undefined,
+				collectCustomElementsByName(form)
+			);
 			if (!valid.valid) {
 				return;
 			}
@@ -459,7 +464,8 @@ function canValidate(target: EventTarget | null): target is HTMLValueElement {
 export async function validateForm(
 	form: HTMLFormElement,
 	displayValidity = true,
-	scope: Element = form
+	scope: Element = form,
+	customElements?: Element[]
 ): Promise<FormValidationResult> {
 	const errors: FormValidationError[] = [];
 	const { errorAlert, errorList } = getErrorAlert(form);
@@ -468,7 +474,20 @@ export async function validateForm(
 		errorAlert.hidden = true;
 		errorList.innerHTML = '';
 	}
+
+	if (customElements) {
+		for (const input of customElements) {
+			if (!scope.contains(input) || !canValidate(input)) {
+				continue;
+			}
+			runBasicValidation(input, displayValidity, errors, errorList, false);
+		}
+	}
 	for (const input of form.elements) {
+		if (input instanceof HTMLButtonElement) {
+			continue;
+		}
+
 		if (!scope.contains(input) || !canValidate(input)) {
 			continue;
 		}
@@ -488,46 +507,7 @@ export async function validateForm(
 			continue;
 		}
 
-		const label = getLabel(input);
-		const group = getField(input);
-
-		if (displayValidity) {
-			setValidationMessage(input, '');
-			group.classList.remove('errored');
-		}
-
-		for (const validator of validators) {
-			const message = validator(input, label);
-			if (!message) {
-				continue;
-			}
-
-			errors.push({ input, message });
-
-			if (displayValidity) {
-				const inputId = isTagSelector
-					? input.parentElement?.querySelector('input.autocomplete-input')?.id
-					: input.id;
-				if (!inputId) {
-					continue;
-				}
-
-				setValidationMessage(input, message);
-				group.classList.add('errored');
-				const child = document.createElement('li');
-				child.classList.add('margin-bottom-xs', 'font-weight-semibold');
-
-				const a = document.createElement('a');
-				a.href = `#${inputId}`;
-				a.textContent = message;
-				a.classList.add('help', 'help-danger');
-
-				child.appendChild(a);
-				errorList.appendChild(child);
-			}
-
-			break;
-		}
+		runBasicValidation(input, displayValidity, errors, errorList, isTagSelector);
 	}
 
 	if (errors.length === 0) {
@@ -607,5 +587,73 @@ export function navigateAfterSubmit(href: string, navigationStep: string | null)
 			break;
 		default:
 			throw new Error(`Unexpected navigation attribute value.`);
+	}
+}
+
+/* Custom elements are not included in HTMLFormControlsCollection so can't be retrieved by form.elements */
+export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
+	// Compare FormData with form.elements to find missing elements.
+	const formData = Object.fromEntries(new FormData(form));
+	const formElements = Object.keys(form.elements);
+	const customElementList: Element[] = [];
+	const customElements = Object.keys(formData).filter(el => formElements.indexOf(el) === -1);
+	customElements.forEach(name => {
+		const element = form.querySelector(`[name="${name}"]`);
+		if (element) {
+			customElementList.push(element);
+		}
+	});
+	return customElementList;
+}
+
+export function runBasicValidation(
+	input: Element,
+	displayValidity: boolean = true,
+	errors: FormValidationError[],
+	errorList: HTMLElement,
+	isTagSelector: boolean
+) {
+	if (!canValidate(input)) {
+		return;
+	}
+
+	const label = getLabel(input);
+	const group = getField(input);
+
+	if (displayValidity) {
+		setValidationMessage(input, '');
+		group.classList.remove('errored');
+	}
+
+	for (const validator of validators) {
+		const message = validator(input, label);
+		if (!message) {
+			continue;
+		}
+
+		errors.push({ input, message });
+		if (displayValidity) {
+			const inputId = isTagSelector
+				? input.parentElement?.querySelector('input.autocomplete-input')?.id
+				: input.id;
+			if (!inputId) {
+				continue;
+			}
+
+			setValidationMessage(input, message);
+			group.classList.add('errored');
+			const child = document.createElement('li');
+			child.classList.add('margin-bottom-xs', 'font-weight-semibold');
+
+			const a = document.createElement('a');
+			a.href = `#${inputId}`;
+			a.textContent = message;
+			a.classList.add('help', 'help-danger');
+
+			child.appendChild(a);
+			errorList.appendChild(child);
+		}
+
+		break;
 	}
 }
