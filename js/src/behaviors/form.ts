@@ -257,11 +257,12 @@ interface HTMLValueElement extends HTMLElement {
 // Check if the required value related properties exist rather than an instance of a form related element.
 function isValueElement(target: EventTarget | null): target is HTMLValueElement {
 	if (target) {
+		const el = target as HTMLValueElement;
 		return (
-			target.hasOwnProperty('value') &&
-			target.hasOwnProperty('validity') &&
-			target.hasOwnProperty('form') &&
-			target.hasOwnProperty('labels')
+			el.value !== undefined &&
+			el.validity !== undefined &&
+			el.form !== undefined &&
+			el.localName !== 'button'
 		);
 	}
 	return false;
