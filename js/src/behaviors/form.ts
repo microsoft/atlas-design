@@ -262,12 +262,12 @@ interface HTMLValueElement extends HTMLElement {
 // Check if the required value related properties exist rather than an instance of a form related element.
 function isValueElement(target: EventTarget | null): target is HTMLValueElement {
 	if (target) {
-		const el = target as HTMLValueElement;
+		const element = target as HTMLValueElement;
 		return (
-			el.value !== undefined &&
-			el.validity !== undefined &&
-			el.form !== undefined &&
-			el.localName !== 'button'
+			element.value !== undefined &&
+			element.validity !== undefined &&
+			element.form !== undefined &&
+			element.localName !== 'button'
 		);
 	}
 	return false;
@@ -393,7 +393,10 @@ type Validator = (input: HTMLValueElement, label: string) => string | null;
 
 function validateRequired(input: HTMLValueElement, label: string): string | null {
 	if (input.validity.valueMissing) {
-		return `${inputRequiredMsg.replace('{inputLabel}', label)}`;
+		return `${inputRequiredMsg.replace(
+			'{inputLabel}',
+			label === 'star rating' ? 'Rating' : label
+		)}`;
 	}
 	return null;
 }
