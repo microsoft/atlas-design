@@ -248,15 +248,12 @@ class StarRatingElement extends HTMLElement {
 	}
 
 	get validity() {
-		// borrow input's validity, https://caniuse.com/?search=validity
-		const checkedStarValidity = this.shadowRoot?.querySelectorAll('input').forEach(input => {
-			if (input.checked) {
-				return input.validity;
-			}
-			return undefined;
-		});
-		if (checkedStarValidity) {
-			return checkedStarValidity;
+		// borrow checked input's validity, https://caniuse.com/?search=validity
+		const inputs = Array.from(this.shadowRoot!.querySelectorAll('input')) as HTMLInputElement[];
+		const checkedStarValidity = inputs.filter(input => input.checked);
+
+		if (checkedStarValidity.length !== 0) {
+			return checkedStarValidity[0].validity;
 		}
 		return this.shadowRoot?.querySelector('input')?.validity;
 	}
