@@ -395,7 +395,7 @@ function validateRequired(input: HTMLValueElement, label: string): string | null
 	if (input.validity.valueMissing) {
 		return `${inputRequiredMsg.replace(
 			'{inputLabel}',
-			label === 'star rating' ? 'Rating' : label
+			input.localName === 'star-rating' ? `A selection for "${label}"` : label
 		)}`;
 	}
 	return null;
