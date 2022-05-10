@@ -121,7 +121,6 @@ class FormBehaviorElement extends HTMLElement {
 		if (event.type === 'change') {
 			normalizeInputValue(event.target);
 		}
-
 		this.setDirty();
 	};
 
@@ -547,6 +546,13 @@ export function clearValidationErrors(target: EventTarget | null) {
 
 function showNoChangesMessage(form: HTMLFormElement) {
 	const { errorAlert, errorList } = getErrorAlert(form);
+	if (errorList.childElementCount > 0) {
+		while (errorList.firstChild) {
+			errorList.lastChild?.remove();
+		}
+		// clear no edits error if it exists as well
+		errorList.querySelector('#no-edits-error')?.remove();
+	}
 	const errorText = document.createElement('li');
 	errorText.id = 'no-edits-error';
 	errorText.innerText = thereAreNoEditsToSubmitMsg;

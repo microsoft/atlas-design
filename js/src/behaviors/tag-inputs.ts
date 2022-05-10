@@ -30,6 +30,7 @@ export function initTagInputs(container: HTMLElement = document.body) {
 			);
 			newTag.innerText = newTag.id;
 			targetTagContainer.value += `${newTag.id},`;
+			targetTagContainer.dispatchEvent(new Event('change', { bubbles: true }));
 
 			const deleteButton = document.createElement('button');
 			deleteButton.classList.add('delete', 'has-inner-focus', 'border-none');
@@ -43,6 +44,7 @@ export function initTagInputs(container: HTMLElement = document.body) {
 				// make sure the event isn't coming from the parent input!
 				if (document.activeElement?.classList.contains('delete')) {
 					deleteTag(e, newTag.id);
+					targetTagContainer.dispatchEvent(new Event('change', { bubbles: true }));
 				}
 			});
 			newTag.insertAdjacentElement('beforeend', deleteButton);
