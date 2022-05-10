@@ -4,10 +4,18 @@ description: The Form validation pattern in the Atlas Design System
 template: standard
 ---
 
-Use the form behavior component within a form to ensure accessible form validation. It expands on HTML5 validation.
+Use the form behavior component within a form to ensure accessible form validation. Form elements should be contained by `.field` and `.control` class.
 
 ```html
-<form id="question-ask" data-form-type="question" action="#" method="POST" new="" novalidate="">
+<form
+	id="sample-question-ask"
+	data-form-type="question"
+	action="#"
+	method="POST"
+	new=""
+	novalidate=""
+	onsubmit="handleMockFormSubmit()"
+>
 	<form-behavior
 		navigation="follow"
 		header-content-type="application/json"
@@ -18,9 +26,7 @@ Use the form behavior component within a form to ensure accessible form validati
 			Input
 			<span class="required-indicator" part="required-indicator" aria-hidden="true"></span>
 		</label>
-		<span id="sample-input-note" class="help margin-bottom-xxs"
-			>Sum up your question in a sentence. How would you ask a colleague?</span
-		>
+		<span id="sample-input-note" class="help margin-bottom-xxs">Input description</span>
 		<div class="control">
 			<input
 				id="sample-input"
@@ -40,66 +46,46 @@ Use the form behavior component within a form to ensure accessible form validati
 			Select
 			<span class="required-indicator" aria-hidden="true"></span>
 		</label>
-		<span id="question-tags-note" class="help margin-bottom-xxs">
-			Select 1 of 3 tags to describe your question.
-		</span>
+		<span id="sample-select-note" class="help margin-bottom-xxs"> Select 1 of 3 options. </span>
 		<div class="control">
-			<select id="sample-option" name="tags">
+			<select id="sample-option" name="tags" class="select">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
 			</select>
 		</div>
 	</div>
-	<div class="field">
-		<label class="label margin-none" for="question-tags">
+	<div class="field margin-bottom-xs">
+		<label class="label margin-none" for="sample-tags">
 			Tags
 			<span class="required-indicator" aria-hidden="true"></span>
 		</label>
-		<span id="question-tags-note" class="help margin-bottom-xxs">
-			Select up to 5 tags to describe your question.
-		</span>
+		<span id="sample-tags-note" class="help margin-bottom-xxs"> Select up to 5 tags. </span>
 		<div class="control">
 			<input
-				id="question-tags"
+				id="sample-tags"
 				name="tags"
 				class="tag-input input"
-				aria-describedby="questions-tag-note"
-				placeholder="e.g., Azure Active Directory"
+				aria-describedby="sample-tags-note"
+				placeholder="e.g., Good"
 				hidden
 				aria-hidden="true"
 				value=""
 				mintags="1"
 				maxtags="5"
 			/>
-			<div class="tag-input-holder border" style="height: 2em;">
-				<div class="autocomplete" data-bi-name="autocomplete">
-					<!---->
-					<div class="control ">
-						<input
-							role="combobox"
-							maxlength="100"
-							aria-autocomplete="list"
-							autocapitalize="off"
-							autocomplete="off"
-							autocorrect="off"
-							spellcheck="false"
-							id="tag-input"
-							class="autocomplete-input input"
-							type="text"
-							aria-expanded="true"
-							aria-owns="ax-0-listbox"
-							aria-controls="ax-0-listbox"
-							aria-activedescendant=""
-							aria-label="Tag selector"
-							placeholder="Enter tags..."
-							pattern=".*"
-							style="outline: none; border: none; box-shadow: none;"
-							aria-describedby="ax-15 "
-							hidden
-						/>
-					</div>
-					<p id="ax-15" class="help has-text-danger"></p>
+			<div class="tag-input-holder border margin-bottom-xxs" style="height: 2em;">
+				<div class="control">
+					<input
+						role="combobox"
+						maxlength="100"
+						id="tag-input"
+						class="autocomplete-input input"
+						type="text"
+						aria-label="Tag selector"
+						placeholder="Enter tags..."
+						hidden
+					/>
 				</div>
 			</div>
 			<button class="add-tags-button" type="button">Add tags</button>
@@ -110,7 +96,7 @@ Use the form behavior component within a form to ensure accessible form validati
 			Textarea
 			<span class="required-indicator" aria-hidden="true"></span>
 		</label>
-		<span id="question-body-note" class="help margin-bottom-xxs"> Add more details here. </span>
+		<span id="question-body-note" class="help margin-bottom-xxs">Textarea description</span>
 		<div class="control">
 			<textarea id="question-body" name="body" class="textarea" minlength="10" rows="4" cols="30">
 Some sample text
@@ -121,7 +107,7 @@ Some sample text
 
 	<div class="field margin-bottom-xs">
 		<div class="control">
-			<star-rating name="rating-1" required id="rating-1">
+			<star-rating id="rating-1" name="rating-1" required>
 				<legend slot="legend">How are we doing?</legend>
 				<span slot="label-1">Terrible</span>
 				<span slot="label-2">Poor</span>
@@ -139,7 +125,6 @@ Some sample text
 			<a href="#" id="question-form-cancel" class="button">Cancel</a>
 		</div>
 	</div>
-
 	<div class="error-container"></div>
 </form>
 ```
