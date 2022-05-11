@@ -7,6 +7,7 @@ template: standard
 # Form Validation
 
 Use the form behavior component within a form to ensure accessible form validation. Form elements should be contained by `.field` and `.control` class.
+When the form do not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
 
 ```html
 <form
@@ -130,7 +131,7 @@ Some sample text
 </form>
 ```
 
-When the form do not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
+Simple form without edits
 
 ```html
 <form
