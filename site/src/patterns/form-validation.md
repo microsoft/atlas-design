@@ -9,6 +9,8 @@ template: standard
 Use the form behavior component within a form to ensure accessible form validation. Form elements should be contained by `.field` and `.control` class.
 When the form do not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
 
+##### Form with edits required
+
 ```html
 <form
 	id="sample-question-ask"
@@ -110,7 +112,19 @@ Some sample text
 	<div class="field margin-bottom-xs">
 		<div class="control">
 			<star-rating id="rating-1" name="rating-1" required>
-				<legend slot="legend">How are we doing?</legend>
+				<legend slot="legend">Star rating</legend>
+				<span slot="label-1">Terrible</span>
+				<span slot="label-2">Poor</span>
+				<span slot="label-3">Fair</span>
+				<span slot="label-4">Good</span>
+				<span slot="label-5">Great</span>
+			</star-rating>
+		</div>
+	</div>
+	<div class="field margin-bottom-xs">
+		<div class="control">
+			<star-rating id="rating-2" name="rating-2" disabled value="2">
+				<legend slot="legend">Star rating disabled</legend>
 				<span slot="label-1">Terrible</span>
 				<span slot="label-2">Poor</span>
 				<span slot="label-3">Fair</span>
@@ -131,7 +145,7 @@ Some sample text
 </form>
 ```
 
-Simple form without edits
+##### Simple form without edits
 
 ```html
 <form

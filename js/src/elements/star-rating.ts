@@ -38,6 +38,10 @@ starRatingTemplate.innerHTML = `
 		padding-block: 0.75rem;
 	}
 
+	legend {
+		margin-inline-end: 0.25rem;
+	}
+
 	.star-container {
 		display: flex;
 	}
@@ -249,20 +253,14 @@ export class StarRatingElement extends HTMLElement {
 	}
 
 	get validity() {
-		// borrow checked input's validity, https://caniuse.com/?search=validity
-		const inputs = Array.from(this.shadowRoot!.querySelectorAll('input')) as HTMLInputElement[];
-		const checkedStarValidity = inputs.filter(input => input.checked);
-
-		if (checkedStarValidity.length !== 0) {
-			return checkedStarValidity[0].validity;
-		}
+		// borrow radio input's native validity
 		return this.shadowRoot?.querySelector('input')?.validity;
 	}
 
 	connectedCallback() {
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
-		this.closest('form')?.addEventListener('formdata', this);
+		this.closest('form')?.addEventListener('formdata', e => this.handleFormData(e));
 		this.shadowRoot?.addEventListener('slotchange', this);
 		this.setAttribute(
 			'aria-label',
@@ -270,6 +268,9 @@ export class StarRatingElement extends HTMLElement {
 				? (this.querySelector('legend[slot="legend"]') as HTMLLegendElement)?.innerText
 				: 'star rating'
 		);
+		if (!this.name) {
+			throw new Error(`${this.nodeName} id="${this.id}" requires a name attribute.`);
+		}
 	}
 
 	disconnectedCallback() {
@@ -347,6 +348,16 @@ export class StarRatingElement extends HTMLElement {
 				}
 				break;
 		}
+	}
+
+	handleFormData(event: Event) {
+		const starRating = this as StarRatingElement;
+
+		if (!starRating || starRating.disabled) {
+			return;
+		}
+		const elementName = starRating.name || 'unnamed-star-rating';
+		(event as FormDataEvent).formData.append(elementName, starRating.value);
 	}
 
 	updateStarFill(newValue: number) {
