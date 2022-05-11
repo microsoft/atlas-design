@@ -4,6 +4,8 @@ description: The Form validation pattern in the Atlas Design System
 template: standard
 ---
 
+# Form Validation
+
 Use the form behavior component within a form to ensure accessible form validation. Form elements should be contained by `.field` and `.control` class.
 
 ```html
@@ -14,7 +16,6 @@ Use the form behavior component within a form to ensure accessible form validati
 	method="POST"
 	new=""
 	novalidate=""
-	onsubmit="handleMockFormSubmit()"
 >
 	<form-behavior
 		navigation="follow"
@@ -123,6 +124,30 @@ Some sample text
 		</div>
 		<div class="control">
 			<a href="#" id="question-form-cancel" class="button">Cancel</a>
+		</div>
+	</div>
+	<div class="error-container"></div>
+</form>
+```
+
+When the form do not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
+
+```html
+<form
+	id="sample-question-ask"
+	data-form-type="question"
+	action="/"
+	method="POST"
+	new=""
+	novalidate=""
+>
+	<form-behavior navigation="reload" header-x-docsauth="cookie" new></form-behavior>
+	<div class="field is-grouped display-flex">
+		<div class="control">
+			<button type="submit" class="button button-primary button-filled">Yes</button>
+		</div>
+		<div class="control">
+			<a href="#" id="question-form-cancel" class="button">No</a>
 		</div>
 	</div>
 	<div class="error-container"></div>
