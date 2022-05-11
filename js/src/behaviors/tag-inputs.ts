@@ -29,7 +29,7 @@ export function initTagInputs(container: HTMLElement = document.body) {
 				'margin-inline-xxs'
 			);
 			newTag.innerText = newTag.id;
-			targetTagContainer.value += `${newTag.id},`;
+			targetTagContainer.value += targetTagContainer.value ? `,${newTag.id}` : newTag.id;
 			targetTagContainer.dispatchEvent(new Event('change', { bubbles: true }));
 
 			const deleteButton = document.createElement('button');
