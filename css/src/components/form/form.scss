@@ -1,0 +1,366 @@
+$form-font-size: $font-size-7;
+$form-font-size-sm: $font-size-8;
+$form-font-size-lg: $font-size-6;
+
+$icon-font-size: $font-size-7;
+$icon-sm-font-size: $font-size-8;
+$icon-lg-font-size: $font-size-6;
+$icon-size: 2.25em;
+
+$icon-color: $secondary-background !default;
+$icon-active-color: $secondary !default;
+
+$field-label-top-padding: 0.375em;
+
+.field {
+	&:not(:last-child) {
+		margin-bottom: 0.75rem;
+	}
+
+	// Modifiers
+
+	&.field-addons {
+		display: flex;
+		justify-content: flex-start;
+
+		.control {
+			&:not(:last-child) {
+				margin-inline-end: -1px;
+			}
+
+			&:not(:first-child):not(:last-child) {
+				.button,
+				.input,
+				.select select {
+					border-radius: 0;
+				}
+			}
+
+			&:first-child {
+				.button,
+				.input,
+				.select select {
+					border-bottom-right-radius: 0;
+					border-top-right-radius: 0;
+				}
+			}
+
+			&:last-child {
+				.button,
+				.input,
+				.select select {
+					border-bottom-left-radius: 0;
+					border-top-left-radius: 0;
+				}
+			}
+
+			.button,
+			.input,
+			.select select {
+				&:hover,
+				&.is-hovered {
+					z-index: $zindex-hover;
+				}
+
+				&:focus-visible,
+				&.is-focused,
+				&:active,
+				&.is-active {
+					z-index: $zindex-active;
+
+					&:hover {
+						z-index: $zindex-multi;
+					}
+				}
+			}
+
+			&.is-expanded {
+				flex-grow: 1;
+			}
+		}
+
+		&.field-addons-fullwidth {
+			.control {
+				flex-grow: 1;
+				flex-shrink: 0;
+			}
+		}
+	}
+
+	&.field-grouped {
+		display: flex;
+		justify-content: flex-start;
+
+		& > .control {
+			flex-shrink: 0;
+
+			&:not(:last-child) {
+				margin-bottom: 0;
+				margin-inline-end: 0.75rem;
+			}
+
+			&.is-expanded {
+				flex-grow: 1;
+				flex-shrink: 1;
+			}
+		}
+
+		&.field-grouped-multiline {
+			flex-wrap: wrap;
+
+			& > .control {
+				&:last-child,
+				&:not(:last-child) {
+					margin-bottom: 0.75rem;
+				}
+			}
+
+			&:last-child {
+				margin-bottom: -0.75rem;
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.field-label {
+	margin-bottom: 0.5rem;
+
+	.label {
+		font-size: inherit;
+	}
+
+	@include tablet {
+		flex-basis: 0;
+		flex-grow: 1;
+		flex-shrink: 0;
+		margin-inline-end: 1.5rem;
+		margin-block-end: 0;
+
+		&.field-label-small {
+			font-size: $form-font-size-sm;
+			padding-top: $field-label-top-padding;
+		}
+
+		&.field-label-normal {
+			padding-top: $field-label-top-padding;
+		}
+
+		&.field-label-medium {
+			font-size: $form-font-size;
+			padding-top: $field-label-top-padding;
+		}
+
+		&.field-label-large {
+			font-size: $form-font-size-lg;
+			padding-top: $field-label-top-padding;
+		}
+
+		&.field-label-side-by-side {
+			align-self: flex-end;
+			flex-basis: auto;
+			text-align: left;
+		}
+	}
+}
+
+.field-body {
+	.field .field {
+		margin-bottom: 0;
+	}
+
+	@include tablet {
+		display: flex;
+		flex-basis: 0;
+		flex-grow: 5;
+		flex-shrink: 1;
+
+		.field {
+			margin-bottom: 0;
+		}
+
+		& > .field {
+			flex-shrink: 1;
+
+			&:not(.is-narrow) {
+				flex-grow: 1;
+			}
+
+			&:not(:last-child) {
+				margin-inline-end: 0.75rem;
+			}
+		}
+	}
+
+	&.extend-input-field {
+		flex-basis: auto;
+	}
+}
+
+.control {
+	font-size: $form-font-size;
+	position: relative;
+	text-align: left;
+
+	&.control-icon {
+		.icon {
+			color: $icon-color;
+			font-size: $icon-font-size;
+			width: $icon-size;
+			height: $icon-size;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			z-index: 4;
+		}
+
+		.input {
+			&.focus-visible {
+				& + .icon {
+					color: $icon-active-color;
+				}
+			}
+
+			&.input-sm {
+				& + .icon {
+					font-size: $icon-sm-font-size;
+				}
+			}
+
+			&.input-lg {
+				& + .icon {
+					font-size: $icon-lg-font-size;
+				}
+			}
+		}
+
+		&:not(.control-icon-right) {
+			.docon {
+				inset-inline-start: 0;
+			}
+
+			.input {
+				padding-inline-start: $icon-size;
+			}
+		}
+
+		&.control-icon-right {
+			.icon {
+				inset-inline-end: 0;
+			}
+
+			.input {
+				padding-inline-end: $icon-size;
+			}
+		}
+	}
+
+	&.control-icons-left,
+	&.control-icons-right {
+		.input,
+		.select {
+			&.focus-visible {
+				& ~ .icon {
+					color: $icon-active-color;
+				}
+			}
+
+			~ .icon {
+				font-size: $icon-font-size;
+			}
+
+			&.input-sm,
+			&.select-sm {
+				~ .icon {
+					font-size: $icon-sm-font-size;
+				}
+			}
+
+			&.input-lg,
+			&.select-lg {
+				~ .icon {
+					font-size: $icon-lg-font-size;
+				}
+			}
+		}
+
+		.icon {
+			color: $icon-color;
+			width: $icon-size;
+			height: $icon-size;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			z-index: 4;
+		}
+	}
+
+	&.control-icons-left {
+		.input,
+		.select select {
+			padding-inline-start: $icon-size;
+		}
+
+		.icon.is-left {
+			inset-inline-start: 0;
+		}
+	}
+
+	&.control-icons-right {
+		.input,
+		.select select {
+			padding-inline-end: $icon-size;
+		}
+
+		// Chromium browsers need to reposition and hide their date picker icon.
+		& .input[type='date'] {
+			position: relative;
+
+			&::-webkit-calendar-picker-indicator {
+				color: transparent;
+				background: none;
+				position: absolute;
+				#{$user-right}: 0;
+				width: 1.5em;
+				z-index: $zindex-dropdown;
+			}
+		}
+
+		.icon.icon-right {
+			inset-inline-end: 0;
+		}
+	}
+
+	&.is-loading {
+		&:after {
+			@include loader;
+
+			position: absolute !important;
+			inset-inline-end: 0.625em;
+			top: 0.625em;
+			z-index: 4;
+		}
+
+		&.control-small:after {
+			font-size: $form-font-size-sm;
+		}
+
+		&.control-medium:after {
+			font-size: $form-font-size;
+		}
+
+		&.control-large:after {
+			font-size: $form-font-size-lg;
+		}
+	}
+}
+
+.required-indicator::after,
+::part(required-indicator)::after {
+	color: $danger;
+	content: '*';
+	vertical-align: baseline;
+}
