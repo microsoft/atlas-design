@@ -482,7 +482,7 @@ export async function validateForm(
 			if (!scope.contains(input) || !canValidate(input)) {
 				continue;
 			}
-			runBasicValidation(input, displayValidity, errors, errorList, false);
+			runBasicValidation(input, displayValidity, errors, errorList, false, true);
 		}
 	}
 	for (const input of form.elements) {
@@ -509,7 +509,7 @@ export async function validateForm(
 			continue;
 		}
 
-		runBasicValidation(input, displayValidity, errors, errorList, isTagSelector);
+		runBasicValidation(input, displayValidity, errors, errorList, isTagSelector, false);
 	}
 
 	if (errors.length === 0) {
@@ -620,7 +620,8 @@ export function runBasicValidation(
 	displayValidity: boolean = true,
 	errors: FormValidationError[],
 	errorList: HTMLElement,
-	isTagSelector: boolean
+	isTagSelector: boolean,
+	isCustomElement: boolean
 ) {
 	if (!canValidate(input)) {
 		return;
@@ -637,15 +638,22 @@ export function runBasicValidation(
 	for (const validator of validators) {
 		const message = validator(input, label);
 		if (!message) {
+			if (!isCustomElement) {
+				if (isTagSelector) {
+					input.nextElementSibling?.classList.remove('border-color-danger');
+				}
+				input.classList.remove(`${input.localName}-danger`);
+			}
 			continue;
 		}
 
 		errors.push({ input, message });
 		if (displayValidity) {
-			const inputId = isTagSelector
-				? input.parentElement?.querySelector('input.autocomplete-input')?.id
-				: input.id;
-			if (!inputId) {
+			const inputWithError = isTagSelector
+				? input.parentElement?.querySelector('input.autocomplete-input')
+				: input;
+
+			if (!inputWithError?.id) {
 				continue;
 			}
 
@@ -655,12 +663,19 @@ export function runBasicValidation(
 			child.classList.add('margin-bottom-xs', 'font-weight-semibold');
 
 			const a = document.createElement('a');
-			a.href = `#${inputId}`;
+			a.href = `#${inputWithError.id}`;
 			a.textContent = message;
 			a.classList.add('help', 'help-danger');
 
 			child.appendChild(a);
 			errorList.appendChild(child);
+
+			if (!isCustomElement) {
+				if (isTagSelector) {
+					input.nextElementSibling?.classList.add('border-color-danger');
+				}
+				input.classList.add(`${input.localName}-danger`);
+			}
 		}
 
 		break;
