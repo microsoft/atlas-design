@@ -1,15 +1,17 @@
 import { generateElementId } from '../utilities/util';
 
-const contentHasChangedMsg =
-	'Content has changed, please reload the page to get the latest changes.';
-const inputMaxLengthMsg = '{inputLabel} cannot be longer than {maxLength} characters.';
-const inputMinLengthMsg = '{inputLabel} must be at least {minLength} characters.';
-const inputRequiredMsg = '{inputLabel} is required.';
-const pleaseFixTheseIssuesMsg = 'Please fix these issues:';
-const thereAreNoEditsToSubmitMsg = 'There are no edits to submit';
-const weEncounteredAnUnexpectedErrorMsg =
-	'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.';
-const youMustSelectBetweenMinAndMaxTagsMsg = 'You must select between {min} and {max} {tagLabel}.';
+const defaultLocStrings = `{
+	loc_formBehavior_contentHasChanged:
+		'Content has changed, please reload the page to get the latest changes.',
+	loc_formBehavior_inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
+	loc_formBehavior_inputMinLength: '{inputLabel} must be at least {minLength} characters.',
+	loc_formBehavior_inputRequired: '{inputLabel} is required.',
+	loc_formBehavior_pleaseFixTheseIssues: 'Please fix these issues:',
+	loc_formBehavior_thereAreNoEditsToSubmit: 'There are no edits to submit',
+	loc_formBehavior_weEncounteredAnUnexpectedError:
+		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.',
+	loc_youMustSelectBetweenMinAndMaxTags: 'You must select between {min} and {max} {tagLabel}.'
+}`;
 // <form-behavior>
 class FormBehaviorElement extends HTMLElement {
 	submitting = false as boolean;
@@ -17,9 +19,17 @@ class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
+	locStrings = JSON.parse(this.dataset.locStrings ?? defaultLocStrings) as LocStrings;
+	validators: Validator[] = [
+		this.validateMinLength.bind(this), // min length before required
+		this.validateRequired.bind(this),
+		this.validateMaxLength.bind(this),
+		this.validateTagSelector.bind(this)
+	];
 
 	constructor() {
 		super();
+		this.locStrings = this.locStrings;
 	}
 
 	// use the new attribute when you want to ignore isDirty validation (for example, if the only user action on the form is to click a button)
@@ -84,11 +94,11 @@ class FormBehaviorElement extends HTMLElement {
 				this.handleUnloadEvent(event);
 				break;
 			case 'input':
-				clearValidationErrors(event.target as HTMLInputElement);
+				this.clearValidationErrors(event.target as HTMLInputElement);
 				this.scheduleCommit(event);
 				break;
 			case 'change':
-				clearValidationErrors(event.target as HTMLInputElement);
+				this.clearValidationErrors(event.target as HTMLInputElement);
 				this.commit(event);
 				break;
 			default:
@@ -144,14 +154,14 @@ class FormBehaviorElement extends HTMLElement {
 
 		// reject the submit if no edits have been made (overridable with the new attribute)
 		if (!this.canSave) {
-			showNoChangesMessage(form);
+			this.showNoChangesMessage(form);
 			return;
 		}
 
 		try {
 			this.submitting = true;
 			setBusySubmitButton(form, this.submitting);
-			const valid = await validateForm(
+			const valid = await this.validateForm(
 				form,
 				undefined,
 				undefined,
@@ -215,12 +225,12 @@ class FormBehaviorElement extends HTMLElement {
 				);
 				this.navigate(response.headers.get('location') ?? this.getAttribute('navigation-href'));
 			} else {
-				const { errorAlert, errorList } = getErrorAlert(form);
+				const { errorAlert, errorList } = this.getErrorAlert(form);
 				const errorText = document.createElement('li');
-				errorText.innerText = weEncounteredAnUnexpectedErrorMsg;
+				errorText.innerText = this.locStrings.loc_formBehavior_weEncounteredAnUnexpectedError;
 				// custom text for version mismatch
 				if (response.status === 412) {
-					errorText.innerText = contentHasChangedMsg;
+					errorText.innerText = this.locStrings.loc_formBehavior_contentHasChanged;
 				}
 
 				errorList.appendChild(errorText);
@@ -230,6 +240,268 @@ class FormBehaviorElement extends HTMLElement {
 		} finally {
 			this.submitting = false;
 			setBusySubmitButton(form, this.submitting);
+		}
+	}
+
+	createErrorAlert(form: HTMLFormElement): {
+		errorAlert: HTMLDivElement;
+		errorList: HTMLUListElement;
+	} {
+		const formLayout = form.querySelector('.error-container') || form;
+		formLayout.setAttribute('role', 'alert');
+		const alertId = generateElementId();
+
+		const errorAlert = document.createElement('div');
+		errorAlert.className = 'alert help help-danger border border-color-danger padding-xs';
+		errorAlert.setAttribute('role', 'group');
+		errorAlert.setAttribute('aria-labelledby', alertId);
+		errorAlert.setAttribute('tabindex', '-1');
+		errorAlert.hidden = true;
+
+		const alertText = document.createElement('p');
+		alertText.id = alertId;
+		alertText.className = 'font-size-md font-weight-semibold margin-bottom-xs';
+		alertText.innerText = this.locStrings.loc_formBehavior_pleaseFixTheseIssues;
+
+		const errorList = document.createElement('ul');
+		errorList.setAttribute('aria-label', 'Validation errors');
+
+		errorAlert.append(alertText, errorList);
+		formLayout.appendChild(errorAlert);
+
+		return { errorAlert, errorList };
+	}
+
+	getErrorAlert(form: HTMLFormElement) {
+		const errorAlert = form.querySelector<HTMLDivElement>('.error-container .alert');
+		if (errorAlert) {
+			return {
+				errorAlert,
+				errorList: errorAlert.lastElementChild as HTMLUListElement
+			};
+		}
+		return this.createErrorAlert(form);
+	}
+
+	validateRequired(input: HTMLValueElement, label: string): string | null {
+		if (input.validity.valueMissing) {
+			return `${this.locStrings.loc_formBehavior_inputRequired.replace(
+				'{inputLabel}',
+				input.localName === 'star-rating' ? `A selection for "${label}"` : label
+			)}`;
+		}
+		return null;
+	}
+
+	validateMinLength(input: HTMLValueElement | HTMLInputElement, label: string): string | null {
+		if (
+			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
+			(input.validity.tooShort || (input.minLength > 0 && input.value.length < input.minLength))
+		) {
+			return `${this.locStrings.loc_formBehavior_inputMinLength
+				.replace('{inputLabel}', label)
+				.replace('{minLength}', input.minLength.toString())}`;
+		}
+		return null;
+	}
+
+	validateMaxLength(input: HTMLValueElement, label: string): string | null {
+		if (
+			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
+			(input.validity.tooLong || (input.maxLength > 0 && input.value.length > input.maxLength))
+		) {
+			return `${this.locStrings.loc_formBehavior_inputMaxLength
+				.replace('{inputLabel}', label)
+				.replace('{maxLength}', input.maxLength.toString())}`;
+		}
+		return null;
+	}
+
+	validateTagSelector(input: HTMLInputElement | HTMLValueElement, label: string): string | null {
+		if (input instanceof HTMLInputElement && input.classList.contains('tag-input')) {
+			const min = input.getAttribute('minTags');
+			const max = input.getAttribute('maxTags');
+			const tagCount = input.value === '' ? 0 : input.value.split(',').length;
+
+			// if no min or max, no need to validate
+			if (!min || !max) {
+				return null;
+			}
+
+			if (!tagCount || tagCount < Number(min) || tagCount > Number(max)) {
+				return `${this.locStrings.loc_youMustSelectBetweenMinAndMaxTags
+					.replace('{min}', min)
+					.replace('{max}', max)
+					.replace('{tagLabel}', label.toLocaleLowerCase())}`;
+			}
+			return null;
+		}
+		return null;
+	}
+
+	async validateForm(
+		form: HTMLFormElement,
+		displayValidity = true,
+		scope: Element = form,
+		customElements?: Element[]
+	): Promise<FormValidationResult> {
+		const errors: FormValidationError[] = [];
+		const { errorAlert, errorList } = this.getErrorAlert(form);
+
+		if (displayValidity) {
+			errorAlert.hidden = true;
+			errorList.innerHTML = '';
+		}
+
+		if (customElements) {
+			for (const input of customElements) {
+				if (!scope.contains(input) || !canValidate(input)) {
+					continue;
+				}
+				this.runBasicValidation(input, displayValidity, errors, errorList, false, true);
+			}
+		}
+		for (const input of form.elements) {
+			if (input instanceof HTMLButtonElement) {
+				continue;
+			}
+
+			if (!scope.contains(input) || !canValidate(input)) {
+				continue;
+			}
+
+			const isTagSelector = input.classList.contains('tag-input');
+			if (input.hasAttribute('aria-hidden') && !isTagSelector) {
+				continue;
+			}
+
+			// Don't check combobox
+			if (input.getAttribute('role') === 'combobox') {
+				continue;
+			}
+
+			// Don't check elements that are part of markdown editor
+			if (input.closest('docs-markdown-editor')) {
+				continue;
+			}
+
+			this.runBasicValidation(input, displayValidity, errors, errorList, isTagSelector, false);
+		}
+
+		if (errors.length === 0) {
+			return { valid: true };
+		}
+
+		if (displayValidity) {
+			errorAlert.hidden = false;
+			errorAlert.focus();
+		}
+
+		return { valid: false, errors };
+	}
+
+	clearValidationErrors(target: EventTarget | null) {
+		if (!canValidate(target)) {
+			return;
+		}
+
+		setValidationMessage(target, '');
+		getField(target).classList.remove('errored');
+
+		if (target.form) {
+			const { errorAlert, errorList } = this.getErrorAlert(target.form);
+			errorList.querySelectorAll(`a[href="#${target.id}"]`).forEach(a => a.parentElement?.remove());
+			// clear no edits error if it exists as well
+			errorList.querySelector('#no-edits-error')?.remove();
+
+			if (!errorList.firstElementChild) {
+				errorAlert.hidden = true;
+			}
+		}
+	}
+
+	showNoChangesMessage(form: HTMLFormElement) {
+		const { errorAlert, errorList } = this.getErrorAlert(form);
+		if (errorList.childElementCount > 0) {
+			while (errorList.firstChild) {
+				errorList.lastChild?.remove();
+			}
+			// clear no edits error if it exists as well
+			errorList.querySelector('#no-edits-error')?.remove();
+		}
+		const errorText = document.createElement('li');
+		errorText.id = 'no-edits-error';
+		errorText.innerText = this.locStrings.loc_formBehavior_thereAreNoEditsToSubmit;
+
+		errorList.appendChild(errorText);
+		errorAlert.hidden = false;
+		errorAlert.focus();
+	}
+
+	runBasicValidation(
+		input: Element,
+		displayValidity: boolean = true,
+		errors: FormValidationError[],
+		errorList: HTMLElement,
+		isTagSelector: boolean,
+		isCustomElement: boolean
+	) {
+		if (!canValidate(input)) {
+			return;
+		}
+
+		const label = getLabel(input);
+		const group = getField(input);
+
+		if (displayValidity) {
+			setValidationMessage(input, '');
+			group.classList.remove('errored');
+		}
+
+		for (const validator of this.validators) {
+			const message = validator(input, label);
+			if (!message) {
+				if (!isCustomElement) {
+					if (isTagSelector) {
+						input.nextElementSibling?.classList.remove('border-color-danger');
+					}
+					input.classList.remove(`${input.localName}-danger`);
+				}
+				continue;
+			}
+
+			errors.push({ input, message });
+			if (displayValidity) {
+				const inputWithError = isTagSelector
+					? input.parentElement?.querySelector('input.autocomplete-input')
+					: input;
+
+				if (!inputWithError?.id) {
+					continue;
+				}
+
+				setValidationMessage(input, message);
+				group.classList.add('errored');
+				const child = document.createElement('li');
+				child.classList.add('margin-bottom-xs', 'font-weight-semibold');
+
+				const a = document.createElement('a');
+				a.href = `#${inputWithError.id}`;
+				a.textContent = message;
+				a.classList.add('help', 'help-danger');
+
+				child.appendChild(a);
+				errorList.appendChild(child);
+
+				if (!isCustomElement) {
+					if (isTagSelector) {
+						input.nextElementSibling?.classList.add('border-color-danger');
+					}
+					input.classList.add(`${input.localName}-danger`);
+				}
+			}
+
+			break;
 		}
 	}
 }
@@ -256,6 +528,17 @@ interface HTMLValueElement extends HTMLElement {
 	type: string;
 	value: string;
 	validity: ValidityState;
+}
+
+interface LocStrings {
+	loc_formBehavior_contentHasChanged: string;
+	loc_formBehavior_inputMaxLength: string;
+	loc_formBehavior_inputMinLength: string;
+	loc_formBehavior_inputRequired: string;
+	loc_formBehavior_pleaseFixTheseIssues: string;
+	loc_formBehavior_thereAreNoEditsToSubmit: string;
+	loc_formBehavior_weEncounteredAnUnexpectedError: string;
+	loc_youMustSelectBetweenMinAndMaxTags: string;
 }
 
 // Check if the required value related properties exist rather than an instance of a form related element.
@@ -324,43 +607,6 @@ function getControl(input: HTMLValueElement) {
 	return body;
 }
 
-function createErrorAlert(form: HTMLFormElement) {
-	const formLayout = form.querySelector('.error-container') || form;
-	formLayout.setAttribute('role', 'alert');
-	const alertId = generateElementId();
-
-	const errorAlert = document.createElement('div');
-	errorAlert.className = 'alert help help-danger border border-color-danger padding-xs';
-	errorAlert.setAttribute('role', 'group');
-	errorAlert.setAttribute('aria-labelledby', alertId);
-	errorAlert.setAttribute('tabindex', '-1');
-	errorAlert.hidden = true;
-
-	const alertText = document.createElement('p');
-	alertText.id = alertId;
-	alertText.className = 'font-size-md font-weight-semibold margin-bottom-xs';
-	alertText.innerText = pleaseFixTheseIssuesMsg;
-
-	const errorList = document.createElement('ul');
-	errorList.setAttribute('aria-label', 'Validation errors');
-
-	errorAlert.append(alertText, errorList);
-	formLayout.appendChild(errorAlert);
-
-	return { errorAlert, errorList };
-}
-
-function getErrorAlert(form: HTMLFormElement) {
-	const errorAlert = form.querySelector<HTMLElement>('.error-container .alert');
-	if (errorAlert) {
-		return {
-			errorAlert,
-			errorList: errorAlert.lastElementChild as HTMLElement
-		};
-	}
-	return createErrorAlert(form);
-}
-
 function createErrorNote(input: HTMLValueElement) {
 	const note = document.createElement('p');
 	note.id = generateElementId();
@@ -390,176 +636,8 @@ export type FormValidationResult =
 
 type Validator = (input: HTMLValueElement, label: string) => string | null;
 
-function validateRequired(input: HTMLValueElement, label: string): string | null {
-	if (input.validity.valueMissing) {
-		return `${inputRequiredMsg.replace(
-			'{inputLabel}',
-			input.localName === 'star-rating' ? `A selection for "${label}"` : label
-		)}`;
-	}
-	return null;
-}
-
-function validateMinLength(
-	input: HTMLValueElement | HTMLInputElement,
-	label: string
-): string | null {
-	if (
-		(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
-		(input.validity.tooShort || (input.minLength > 0 && input.value.length < input.minLength))
-	) {
-		return `${inputMinLengthMsg
-			.replace('{inputLabel}', label)
-			.replace('{minLength}', input.minLength.toString())}`;
-	}
-	return null;
-}
-
-function validateMaxLength(input: HTMLValueElement, label: string): string | null {
-	if (
-		(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
-		(input.validity.tooLong || (input.maxLength > 0 && input.value.length > input.maxLength))
-	) {
-		return `${inputMaxLengthMsg
-			.replace('{inputLabel}', label)
-			.replace('{maxLength}', input.maxLength.toString())}`;
-	}
-	return null;
-}
-
-function validateTagSelector(
-	input: HTMLInputElement | HTMLValueElement,
-	label: string
-): string | null {
-	if (input instanceof HTMLInputElement && input.classList.contains('tag-input')) {
-		const min = input.getAttribute('minTags');
-		const max = input.getAttribute('maxTags');
-		const tagCount = input.value === '' ? 0 : input.value.split(',').length;
-
-		// if no min or max, no need to validate
-		if (!min || !max) {
-			return null;
-		}
-
-		if (!tagCount || tagCount < Number(min) || tagCount > Number(max)) {
-			return `${youMustSelectBetweenMinAndMaxTagsMsg
-				.replace('{min}', min)
-				.replace('{max}', max)
-				.replace('{tagLabel}', label.toLocaleLowerCase())}`;
-		}
-		return null;
-	}
-	return null;
-}
-
-const validators: Validator[] = [
-	validateMinLength, // min length before required
-	validateRequired,
-	validateMaxLength,
-	validateTagSelector
-];
-
 function canValidate(target: EventTarget | null): target is HTMLValueElement {
 	return isValueElement(target) && (target as HTMLValueElement).type !== 'hidden';
-}
-
-export async function validateForm(
-	form: HTMLFormElement,
-	displayValidity = true,
-	scope: Element = form,
-	customElements?: Element[]
-): Promise<FormValidationResult> {
-	const errors: FormValidationError[] = [];
-	const { errorAlert, errorList } = getErrorAlert(form);
-
-	if (displayValidity) {
-		errorAlert.hidden = true;
-		errorList.innerHTML = '';
-	}
-
-	if (customElements) {
-		for (const input of customElements) {
-			if (!scope.contains(input) || !canValidate(input)) {
-				continue;
-			}
-			runBasicValidation(input, displayValidity, errors, errorList, false, true);
-		}
-	}
-	for (const input of form.elements) {
-		if (input instanceof HTMLButtonElement) {
-			continue;
-		}
-
-		if (!scope.contains(input) || !canValidate(input)) {
-			continue;
-		}
-
-		const isTagSelector = input.classList.contains('tag-input');
-		if (input.hasAttribute('aria-hidden') && !isTagSelector) {
-			continue;
-		}
-
-		// Don't check combobox
-		if (input.getAttribute('role') === 'combobox') {
-			continue;
-		}
-
-		// Don't check elements that are part of markdown editor
-		if (input.closest('docs-markdown-editor')) {
-			continue;
-		}
-
-		runBasicValidation(input, displayValidity, errors, errorList, isTagSelector, false);
-	}
-
-	if (errors.length === 0) {
-		return { valid: true };
-	}
-
-	if (displayValidity) {
-		errorAlert.hidden = false;
-		errorAlert.focus();
-	}
-
-	return { valid: false, errors };
-}
-
-export function clearValidationErrors(target: EventTarget | null) {
-	if (!canValidate(target)) {
-		return;
-	}
-
-	setValidationMessage(target, '');
-	getField(target).classList.remove('errored');
-
-	if (target.form) {
-		const { errorAlert, errorList } = getErrorAlert(target.form);
-		errorList.querySelectorAll(`a[href="#${target.id}"]`).forEach(a => a.parentElement?.remove());
-		// clear no edits error if it exists as well
-		errorList.querySelector('#no-edits-error')?.remove();
-
-		if (!errorList.firstElementChild) {
-			errorAlert.hidden = true;
-		}
-	}
-}
-
-function showNoChangesMessage(form: HTMLFormElement) {
-	const { errorAlert, errorList } = getErrorAlert(form);
-	if (errorList.childElementCount > 0) {
-		while (errorList.firstChild) {
-			errorList.lastChild?.remove();
-		}
-		// clear no edits error if it exists as well
-		errorList.querySelector('#no-edits-error')?.remove();
-	}
-	const errorText = document.createElement('li');
-	errorText.id = 'no-edits-error';
-	errorText.innerText = thereAreNoEditsToSubmitMsg;
-
-	errorList.appendChild(errorText);
-	errorAlert.hidden = false;
-	errorAlert.focus();
 }
 
 /**
@@ -613,71 +691,4 @@ export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 		}
 	});
 	return customElementList;
-}
-
-export function runBasicValidation(
-	input: Element,
-	displayValidity: boolean = true,
-	errors: FormValidationError[],
-	errorList: HTMLElement,
-	isTagSelector: boolean,
-	isCustomElement: boolean
-) {
-	if (!canValidate(input)) {
-		return;
-	}
-
-	const label = getLabel(input);
-	const group = getField(input);
-
-	if (displayValidity) {
-		setValidationMessage(input, '');
-		group.classList.remove('errored');
-	}
-
-	for (const validator of validators) {
-		const message = validator(input, label);
-		if (!message) {
-			if (!isCustomElement) {
-				if (isTagSelector) {
-					input.nextElementSibling?.classList.remove('border-color-danger');
-				}
-				input.classList.remove(`${input.localName}-danger`);
-			}
-			continue;
-		}
-
-		errors.push({ input, message });
-		if (displayValidity) {
-			const inputWithError = isTagSelector
-				? input.parentElement?.querySelector('input.autocomplete-input')
-				: input;
-
-			if (!inputWithError?.id) {
-				continue;
-			}
-
-			setValidationMessage(input, message);
-			group.classList.add('errored');
-			const child = document.createElement('li');
-			child.classList.add('margin-bottom-xs', 'font-weight-semibold');
-
-			const a = document.createElement('a');
-			a.href = `#${inputWithError.id}`;
-			a.textContent = message;
-			a.classList.add('help', 'help-danger');
-
-			child.appendChild(a);
-			errorList.appendChild(child);
-
-			if (!isCustomElement) {
-				if (isTagSelector) {
-					input.nextElementSibling?.classList.add('border-color-danger');
-				}
-				input.classList.add(`${input.localName}-danger`);
-			}
-		}
-
-		break;
-	}
 }
