@@ -13,7 +13,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 
 ```html
 <form
-	id="sample-question-ask"
+	id="sample-form-complex"
 	data-form-type="question"
 	action="#"
 	method="POST"
@@ -24,6 +24,8 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		navigation="follow"
 		header-content-type="application/json"
 		header-x-docsauth="cookie"
+		data-loc-strings='{"loc_formBehavior_contentHasChanged": "Content has changed, please reload the page to get the latest changes.","loc_formBehavior_inputMaxLength": "{inputLabel} cannot be longer than {maxLength} characters.","loc_formBehavior_inputMinLength":
+"{inputLabel} must be at least {minLength} characters.","loc_formBehavior_inputRequired": "{inputLabel} is required.","loc_formBehavior_pleaseFixTheseIssues": "Please fix these issues:","loc_formBehavior_thereAreNoEditsToSubmit":"There are no edits to submit","loc_formBehavior_weEncounteredAnUnexpectedError": "We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.","loc_youMustSelectBetweenMinAndMaxTags":"You must select between {min} and {max} {tagLabel}."}'
 	></form-behavior>
 	<div class="field margin-bottom-xs">
 		<label class="label margin-none" for="sample-input">
@@ -138,7 +140,7 @@ Some sample text
 			<button type="submit" class="button button-primary button-filled">Submit form</button>
 		</div>
 		<div class="control">
-			<a href="#" id="question-form-cancel" class="button">Cancel</a>
+			<button type="button" class="button">Cancel</button>
 		</div>
 	</div>
 	<div class="error-container"></div>
@@ -149,20 +151,26 @@ Some sample text
 
 ```html
 <form
-	id="sample-question-ask"
+	id="sample-form-simple"
 	data-form-type="question"
-	action="/"
+	action="#"
 	method="POST"
 	new=""
 	novalidate=""
 >
-	<form-behavior navigation="reload" header-x-docsauth="cookie" new></form-behavior>
+	<form-behavior
+		navigation="reload"
+		header-x-docsauth="cookie"
+		new
+		data-loc-strings='{"loc_formBehavior_contentHasChanged": "Content has changed, please reload the page to get the latest changes.","loc_formBehavior_inputMaxLength": "{inputLabel} cannot be longer than {maxLength} characters.","loc_formBehavior_inputMinLength":
+"{inputLabel} must be at least {minLength} characters.","loc_formBehavior_inputRequired": "{inputLabel} is required.","loc_formBehavior_pleaseFixTheseIssues": "Please fix these issues:","loc_formBehavior_thereAreNoEditsToSubmit":"There are no edits to submit","loc_formBehavior_weEncounteredAnUnexpectedError": "We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.","loc_youMustSelectBetweenMinAndMaxTags":"You must select between {min} and {max} {tagLabel}."}'
+	></form-behavior>
 	<div class="field is-grouped display-flex">
 		<div class="control">
 			<button type="submit" class="button button-primary button-filled">Yes</button>
 		</div>
 		<div class="control">
-			<a href="#" id="question-form-cancel" class="button">No</a>
+			<button type="button" class="button">No</button>
 		</div>
 	</div>
 	<div class="error-container"></div>
