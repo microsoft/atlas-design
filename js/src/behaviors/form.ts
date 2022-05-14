@@ -405,6 +405,8 @@ class FormBehaviorElement extends HTMLElement {
 			return;
 		}
 
+		clearInputErrorBorder(target);
+
 		setValidationMessage(target, '');
 		getField(target).classList.remove('errored');
 
@@ -462,10 +464,7 @@ class FormBehaviorElement extends HTMLElement {
 			const message = validator(input, label);
 			if (!message) {
 				if (!isCustomElement) {
-					if (isTagSelector) {
-						input.nextElementSibling?.classList.remove('border-color-danger');
-					}
-					input.classList.remove(`${input.localName}-danger`);
+					clearInputErrorBorder(input);
 				}
 				continue;
 			}
@@ -691,4 +690,12 @@ export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 		}
 	});
 	return customElementList;
+}
+
+function clearInputErrorBorder(input: HTMLValueElement) {
+	const isTagSelector = input.classList.contains('tag-input');
+	if (isTagSelector) {
+		input.nextElementSibling?.classList.remove('border-color-danger');
+	}
+	input.classList.remove(`${input.localName}-danger`);
 }
