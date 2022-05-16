@@ -54,7 +54,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		</label>
 		<span id="sample-select-note" class="help margin-bottom-xxs"> Select 1 of 3 options. </span>
 		<div class="control">
-			<select id="sample-option" name="tags" class="select">
+			<select id="sample-option" name="select" class="select">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -105,9 +105,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		<span id="question-body-note" class="help margin-bottom-xxs">Textarea description</span>
 		<div class="control">
 			<textarea id="question-body" name="body" class="textarea" minlength="10" rows="4" cols="30">
-Some sample text
-            </textarea
-			>
+			</textarea>
 		</div>
 	</div>
 
