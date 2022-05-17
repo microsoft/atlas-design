@@ -1,0 +1,343 @@
+/* stylelint-disable max-nesting-depth, selector-no-qualifying-type, selector-max-specificity  */
+
+$form-font-size: $font-size-7;
+$form-font-size-sm: $font-size-8;
+$form-font-size-lg: $font-size-6;
+
+$icon-font-size: $font-size-7;
+$icon-sm-font-size: $font-size-8;
+$icon-lg-font-size: $font-size-6;
+$icon-size: 2.25em;
+
+$icon-color: $secondary-background !default;
+$icon-active-color: $secondary !default;
+
+$field-label-top-padding: 0.375em;
+
+.control {
+	position: relative;
+	font-size: $form-font-size;
+	text-align: left;
+
+	&.control-icon {
+		.icon {
+			position: absolute;
+			top: 0;
+			width: $icon-size;
+			height: $icon-size;
+			color: $icon-color;
+			font-size: $icon-font-size;
+			pointer-events: none;
+			z-index: 4;
+		}
+
+		&.control-icon-right {
+			.icon {
+				inset-inline-end: 0;
+			}
+
+			.input {
+				padding-inline-end: $icon-size;
+			}
+		}
+
+		.input {
+			&.focus-visible {
+				+ .icon {
+					color: $icon-active-color;
+				}
+			}
+
+			&.input-sm {
+				+ .icon {
+					font-size: $icon-sm-font-size;
+				}
+			}
+
+			&.input-lg {
+				+ .icon {
+					font-size: $icon-lg-font-size;
+				}
+			}
+		}
+
+		&:not(.control-icon-right) {
+			.docon {
+				inset-inline-start: 0;
+			}
+
+			.input {
+				padding-inline-start: $icon-size;
+			}
+		}
+	}
+
+	&.control-icons-left,
+	&.control-icons-right {
+		.icon {
+			position: absolute;
+			top: 0;
+			width: $icon-size;
+			height: $icon-size;
+			color: $icon-color;
+			pointer-events: none;
+			z-index: 4;
+		}
+
+		.input,
+		.select {
+			~ .icon {
+				font-size: $icon-font-size;
+			}
+
+			&.focus-visible {
+				~ .icon {
+					color: $icon-active-color;
+				}
+			}
+
+			&.input-sm,
+			&.select-sm {
+				~ .icon {
+					font-size: $icon-sm-font-size;
+				}
+			}
+
+			&.input-lg,
+			&.select-lg {
+				~ .icon {
+					font-size: $icon-lg-font-size;
+				}
+			}
+		}
+	}
+
+	&.control-icons-left {
+		.input,
+		.select select {
+			padding-inline-start: $icon-size;
+		}
+
+		.icon.is-left {
+			inset-inline-start: 0;
+		}
+	}
+
+	&.control-icons-right {
+		.input,
+		.select select {
+			padding-inline-end: $icon-size;
+		}
+
+		// Chromium browsers need to reposition and hide their date picker icon.
+
+		.input[type='date'] {
+			position: relative;
+
+			&::-webkit-calendar-picker-indicator {
+				position: absolute;
+				width: 1.5em;
+				background: none;
+				color: transparent;
+				#{$user-right}: 0;
+				z-index: $zindex-dropdown;
+			}
+		}
+
+		.icon.icon-right {
+			inset-inline-end: 0;
+		}
+	}
+
+	&.is-loading {
+		&::after {
+			@include loader;
+
+			position: absolute !important;
+			inset-inline-end: 0.625em;
+			top: 0.625em;
+			z-index: 4;
+		}
+
+		&.control-small::after {
+			font-size: $form-font-size-sm;
+		}
+
+		&.control-medium::after {
+			font-size: $form-font-size;
+		}
+
+		&.control-large::after {
+			font-size: $form-font-size-lg;
+		}
+	}
+}
+
+.field {
+	&:not(:last-child) {
+		margin-block-end: 0.75rem;
+	}
+
+	// Modifiers
+
+	&.field-addons {
+		display: flex;
+		justify-content: flex-start;
+
+		.control {
+			&:not(:last-child) {
+				margin-inline-end: -1px;
+			}
+
+			.button,
+			.input,
+			.select select {
+				&:hover,
+				&.is-hovered {
+					z-index: $zindex-hover;
+				}
+
+				&:focus-visible,
+				&.is-focused,
+				&:active,
+				&.is-active {
+					z-index: $zindex-active;
+
+					&:hover {
+						z-index: $zindex-multi;
+					}
+				}
+			}
+
+			&:first-child {
+				.button,
+				.input,
+				.select select {
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+				}
+			}
+
+			&:last-child {
+				.button,
+				.input,
+				.select select {
+					border-top-left-radius: 0;
+					border-bottom-left-radius: 0;
+				}
+			}
+
+			&:not(:first-child):not(:last-child) {
+				.button,
+				.input,
+				.select select {
+					border-radius: 0;
+				}
+			}
+		}
+	}
+
+	&.field-grouped {
+		display: flex;
+		justify-content: flex-start;
+
+		> .control {
+			flex-shrink: 0;
+
+			&:not(:last-child) {
+				margin-block-end: 0;
+				margin-inline-end: 0.75rem;
+			}
+		}
+
+		&.field-grouped-multiline {
+			flex-wrap: wrap;
+
+			> .control {
+				margin-block-end: 0.75rem;
+			}
+
+			&:last-child {
+				> .control {
+					margin-block-end: 0;
+				}
+			}
+
+			&:not(:last-child) {
+				margin-block-end: 0;
+			}
+		}
+	}
+
+	.field-label {
+		margin-block-end: 0.5rem;
+
+		.label {
+			font-size: inherit;
+		}
+
+		@include tablet {
+			flex: 1 0 0;
+			margin-inline-end: 1.5rem;
+			margin-block-end: 0;
+			align-self: center;
+			text-align: right;
+
+			&.field-label-sm {
+				font-size: $form-font-size-sm;
+			}
+
+			&.field-label-md {
+				font-size: $form-font-size;
+			}
+
+			&.field-label-lg {
+				font-size: $form-font-size-lg;
+			}
+
+			&.field-label-side-by-side {
+				flex-basis: auto;
+				align-self: flex-end;
+				text-align: left;
+			}
+		}
+	}
+}
+
+.field-body {
+	.field .field {
+		margin-block-end: 0;
+	}
+
+	@include tablet {
+		display: flex;
+		flex: 5 1 0;
+
+		.field {
+			margin-block-end: 0;
+		}
+
+		> .field {
+			flex-shrink: 1;
+
+			&:not(.is-narrow) {
+				flex-grow: 1;
+			}
+
+			&:not(:last-child) {
+				margin-inline-end: 0.75rem;
+			}
+		}
+	}
+
+	&.extend-input-field {
+		flex-basis: auto;
+	}
+}
+
+.required-indicator::after,
+::part(required-indicator)::after {
+	color: $danger;
+	content: '*';
+	vertical-align: baseline;
+}
