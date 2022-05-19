@@ -62,7 +62,7 @@ It can be used to hold `.control` containers, which contains the individual cont
 </div>
 ```
 
-`.form-grouped`
+`.form-grouped` can be used to group controls together.
 
 ```html
 <div class="field field-grouped">
@@ -75,45 +75,10 @@ It can be used to hold `.control` containers, which contains the individual cont
 </div>
 ```
 
-`.form-grouped-multiline`
+`.field-horizontal`
 
 ```html
-<div class="border">
-	<div class="field field-grouped field-grouped-multiline">
-		<div class="control">
-			<a class="button"> One </a>
-		</div>
-		<div class="control">
-			<a class="button"> Two </a>
-		</div>
-		<div class="control">
-			<a class="button"> Twelve </a>
-		</div>
-		<div class="control">
-			<a class="button"> Thirteen </a>
-		</div>
-	</div>
-	<div class="field field-grouped field-grouped-multiline">
-		<div class="control">
-			<a class="button"> A </a>
-		</div>
-		<div class="control">
-			<a class="button"> B </a>
-		</div>
-		<div class="control">
-			<a class="button"> Y </a>
-		</div>
-		<div class="control">
-			<a class="button"> Z </a>
-		</div>
-	</div>
-</div>
-```
-
-`.form-horizontal`
-
-```html
-<div class="field display-flex-tablet">
+<div class="field field-horizontal">
 	<div class="field-label field-label-sm">
 		<label class="label" for="example-small-label">Search</label>
 	</div>
@@ -131,15 +96,15 @@ It can be used to hold `.control` containers, which contains the individual cont
 	</div>
 </div>
 <div>
-	<div class="field display-flex-tablet">
+	<div class="field field-horizontal">
 		<div class="field-label field-label-lg">
-			<label class="label" for="example-small-label">Search</label>
+			<label class="label" for="example-large-label">Search</label>
 		</div>
 		<div class="field-body">
 			<div class="field">
 				<div class="control">
 					<input
-						id="example-small-label"
+						id="example-large-label"
 						class="input input-lg"
 						type="text"
 						placeholder="www.microsoft.com"
@@ -147,6 +112,58 @@ It can be used to hold `.control` containers, which contains the individual cont
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+```
+
+### Form Control
+
+Form element can be used within a `.control` container.
+
+### Modifiers
+
+`.control-icon`
+
+```html
+<div class="field">
+	<div class="control control-icon">
+		<input class="input input-small" placeholder="www.microsoft.com" />
+		<span class="icon border" aria-hidden="true"> </span>
+	</div>
+</div>
+```
+
+`.control-icon-right`
+
+```html
+<div class="field">
+	<div class="control control-icon control-icon-right">
+		<input class="input input-small" placeholder="www.microsoft.com" />
+		<span class="icon border" aria-hidden="true"> </span>
+	</div>
+</div>
+```
+
+```html
+<div class="field">
+	<div class="control control-icon control-icon-right">
+		<div class="select">
+			<select>
+				<option>A</option>
+				<option>B</option>
+			</select>
+			<span class="icon border" aria-hidden="true"> </span>
+		</div>
+	</div>
+</div>
+```
+
+`.is-loading`
+
+```html
+<div class="field">
+	<div class="control is-loading">
+		<input class="input input-small" placeholder="www.microsoft.com" />
 	</div>
 </div>
 ```
