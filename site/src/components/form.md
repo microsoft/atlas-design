@@ -18,7 +18,7 @@ Forms contain form control elements such as the following:
 - [`.textarea`](./textarea.md)
 - custom form elements
 
-### Form Field
+## Form Field
 
 The `.field` component is a container for form control elements to provide consistency.
 It can be used to hold `.control` containers, which holds the individual control elements.
@@ -41,7 +41,7 @@ It can be used to hold `.control` containers, which holds the individual control
 
 ### Modifiers
 
-`.form-addons` can be added to attach controls together.
+`.form-addons` is added to attach controls together.
 
 ```html
 <div class="field field-addons">
@@ -62,7 +62,8 @@ It can be used to hold `.control` containers, which holds the individual control
 </div>
 ```
 
-`.field-horizontal` can be used for displaying form label and field side by side.
+`.field-horizontal` is used for displaying form label and field side by side. `.field-label` is used on the label.
+`field-body` is used on the control element container.
 
 ```html
 <div class="field field-horizontal">
@@ -70,42 +71,36 @@ It can be used to hold `.control` containers, which holds the individual control
 		<label class="label" for="example-small-label">Search</label>
 	</div>
 	<div class="field-body">
-		<div class="field">
-			<div class="control">
-				<input
-					id="example-small-label"
-					class="input input-sm"
-					type="text"
-					placeholder="www.microsoft.com"
-				/>
-			</div>
+		<div class="control">
+			<input
+				id="example-small-label"
+				class="input input-sm"
+				type="text"
+				placeholder="www.microsoft.com"
+			/>
 		</div>
 	</div>
 </div>
-<div>
-	<div class="field field-horizontal">
-		<div class="field-label field-label-lg">
-			<label class="label" for="example-large-label">Search</label>
-		</div>
-		<div class="field-body">
-			<div class="field">
-				<div class="control">
-					<input
-						id="example-large-label"
-						class="input input-lg"
-						type="text"
-						placeholder="www.microsoft.com"
-					/>
-				</div>
-			</div>
+<div class="field field-horizontal">
+	<div class="field-label field-label-lg">
+		<label class="label" for="example-large-label">Search</label>
+	</div>
+	<div class="field-body">
+		<div class="control">
+			<input
+				id="example-large-label"
+				class="input input-lg"
+				type="text"
+				placeholder="www.microsoft.com"
+			/>
 		</div>
 	</div>
 </div>
 ```
 
-### Form Control
+## Form Control
 
-Form element can be used within a `.control` container.
+Form control element are wrapped with a `.control` container.
 
 ### Modifiers
 
@@ -146,6 +141,22 @@ Form element can be used within a `.control` container.
 <div class="field">
 	<div class="control is-loading">
 		<input class="input input-sm" placeholder="www.microsoft.com" />
+	</div>
+</div>
+```
+
+### Required Indicator
+
+For control elements that are required for form submission, you can add a span element with the `.required-indicator` class inside the label or adjacent to the element.
+
+```html
+<div class="field">
+	<div class="control">
+		<label class="field-label label margin-bottom-xxs" for="sample-form-input-2">
+			First name
+			<span class="required-indicator" aria-hidden="true"></span>
+		</label>
+		<input class="input" type="text" placeholder="First name" id="sample-form-input-2" />
 	</div>
 </div>
 ```
