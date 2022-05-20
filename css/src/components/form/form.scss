@@ -4,9 +4,6 @@ $form-font-size: $font-size-7;
 $form-font-size-sm: $font-size-8;
 $form-font-size-lg: $font-size-6;
 
-$icon-font-size: $font-size-7;
-$icon-font-size-sm: $font-size-8;
-$icon-font-size-lg: $font-size-6;
 $icon-size: 2.25em;
 
 $icon-color: $secondary-background !default;
@@ -25,7 +22,7 @@ $icon-active-color: $secondary !default;
 			width: $icon-size;
 			height: $icon-size;
 			color: $icon-color;
-			font-size: $icon-font-size;
+			font-size: $form-font-size;
 			pointer-events: none;
 			z-index: $zindex-multi;
 			padding-inline-start: $icon-size;
@@ -39,7 +36,7 @@ $icon-active-color: $secondary !default;
 		.input,
 		.select {
 			~ .icon {
-				font-size: $icon-font-size;
+				font-size: $form-font-size;
 			}
 
 			&:focus-visible {
@@ -53,7 +50,7 @@ $icon-active-color: $secondary !default;
 			&.select-sm {
 				~ .icon,
 				.icon {
-					font-size: $icon-font-size-sm;
+					font-size: $form-font-size-sm;
 				}
 			}
 
@@ -61,7 +58,7 @@ $icon-active-color: $secondary !default;
 			&.select-lg {
 				~ .icon,
 				.icon {
-					font-size: $icon-font-size-lg;
+					font-size: $form-font-size-lg;
 				}
 			}
 		}
