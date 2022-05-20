@@ -1,4 +1,4 @@
-/* stylelint-disable max-nesting-depth, selector-no-qualifying-type, selector-max-specificity  */
+/* stylelint-disable max-nesting-depth, selector-max-specificity  */
 
 $form-font-size: $font-size-7;
 $form-font-size-sm: $font-size-8;
@@ -6,9 +6,8 @@ $form-font-size-lg: $font-size-6;
 
 $icon-font-size: $font-size-7;
 $icon-font-size-sm: $font-size-8;
-$icon-lg-font-size: $font-size-6;
+$icon-font-size-lg: $font-size-6;
 $icon-size: 2.25em;
-$icon-size-lg: 2.25em;
 
 $icon-color: $secondary-background !default;
 $icon-active-color: $secondary !default;
@@ -43,7 +42,7 @@ $icon-active-color: $secondary !default;
 				font-size: $icon-font-size;
 			}
 
-			&.focus-visible {
+			&:focus-visible {
 				~ .icon,
 				.icon {
 					color: $icon-active-color;
@@ -62,7 +61,7 @@ $icon-active-color: $secondary !default;
 			&.select-lg {
 				~ .icon,
 				.icon {
-					font-size: $icon-lg-font-size;
+					font-size: $icon-font-size-lg;
 				}
 			}
 		}
@@ -97,7 +96,7 @@ $icon-active-color: $secondary !default;
 					width: 1.5em;
 					background: none;
 					color: transparent;
-					#{$user-right}: 0;
+					inset-inline-end: 0;
 					z-index: $zindex-dropdown;
 				}
 			}
@@ -110,7 +109,7 @@ $icon-active-color: $secondary !default;
 
 			position: absolute !important;
 			inset-inline-end: 0.625em;
-			top: 0.625em;
+			inset-block-start: 0.625em;
 			z-index: $zindex-multi;
 		}
 
@@ -173,16 +172,10 @@ $icon-active-color: $secondary !default;
 	}
 
 	.field-label {
-		margin-block-end: 0.5rem;
-
-		.label {
-			font-size: inherit;
-		}
+		margin-block-end: $spacer-3;
 
 		@include tablet {
 			flex: 1 0 0;
-			margin-inline-end: 1.5rem;
-			margin-block-end: 0;
 
 			&.field-label-sm {
 				font-size: $form-font-size-sm;
@@ -201,6 +194,7 @@ $icon-active-color: $secondary !default;
 
 		.field-label {
 			@include tablet {
+				margin-inline-end: $spacer-7;
 				align-self: center;
 				text-align: right;
 			}
@@ -227,7 +221,7 @@ $icon-active-color: $secondary !default;
 					}
 
 					&:not(:last-child) {
-						margin-inline-end: 0.75rem;
+						margin-inline-end: $spacer-4;
 					}
 				}
 			}

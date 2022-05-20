@@ -23,18 +23,51 @@ Forms contain form control elements such as the following:
 The `.field` component is a container for form control elements to provide consistency.
 It can be used to hold `.control` containers, which holds the individual control elements.
 
+`.field-label` is used on the label. Add `field-label-sm`/`field-label-lg` makes label a little bigger or smaller than the default.
+
 ```html
-<div class="field margin-bottom-xs">
-	<label class="field-label label margin-bottom-xxs" for="sample-form-input"> Input </label>
+<div class="field">
+	<label class="field-label field-label-sm label" for="sample-form-input-sm"> Input </label>
 	<div class="control">
 		<input
-			id="sample-form-input"
+			id="sample-form-input-sm"
 			name="title"
-			aria-describedby="sample-form-input-note"
 			class="input"
 			type="text"
 			placeholder="e.g., Why is the sky blue?"
 		/>
+	</div>
+</div>
+<div class="field">
+	<label class="field-label label" for="sample-form-input"> Input </label>
+	<div class="control">
+		<input
+			id="sample-form-input"
+			name="title"
+			class="input"
+			type="text"
+			placeholder="e.g., Why is the sky blue?"
+		/>
+	</div>
+</div>
+<div class="field">
+	<label class="field-label field-label-lg label" for="sample-form-input-lg"> Input </label>
+	<div class="control">
+		<input
+			id="sample-form-input-lg"
+			name="title"
+			class="input"
+			type="text"
+			placeholder="e.g., Why is the sky blue?"
+		/>
+	</div>
+</div>
+<div class="field display-flex">
+	<div class="control">
+		<button class="button button-primary margin-right-xxs">Submit</button>
+	</div>
+	<div class="control">
+		<button class="button button-danger">Cancel</button>
 	</div>
 </div>
 ```
@@ -62,7 +95,7 @@ It can be used to hold `.control` containers, which holds the individual control
 </div>
 ```
 
-`.field-horizontal` is used for displaying form label and field side by side. `.field-label` is used on the label.
+`.field-horizontal` is used for displaying form label and field side by side.
 `field-body` is used on the control element container.
 
 ```html
