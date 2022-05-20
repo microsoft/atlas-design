@@ -6,7 +6,7 @@ template: standard
 
 # Form
 
-Forms can contain the following form control elements:
+Forms contain form control elements such as the following:
 
 - [`.button`](./button.md)
 - [`.checkbox`](./checkbox.md)
@@ -16,16 +16,16 @@ Forms can contain the following form control elements:
 - [`.radio`](./radio.md)
 - [`.select`](./select.md)
 - [`.textarea`](./textarea.md)
+- custom form elements
 
 ### Form Field
 
 The `.field` component is a container for form control elements to provide consistency.
-It can be used to hold `.control` containers, which contains the individual control elements.
+It can be used to hold `.control` containers, which holds the individual control elements.
 
 ```html
 <div class="field margin-bottom-xs">
-	<label class="field-label label" for="sample-form-input"> Input </label>
-	<span id="sample-form-input-note" class="help margin-bottom-xxs">Input description</span>
+	<label class="field-label label margin-bottom-xxs" for="sample-form-input"> Input </label>
 	<div class="control">
 		<input
 			id="sample-form-input"
@@ -41,7 +41,7 @@ It can be used to hold `.control` containers, which contains the individual cont
 
 ### Modifiers
 
-`.form-addon` can be added for attaching controls together.
+`.form-addons` can be added to attach controls together.
 
 ```html
 <div class="field field-addons">
@@ -62,20 +62,7 @@ It can be used to hold `.control` containers, which contains the individual cont
 </div>
 ```
 
-`.form-grouped` can be used to group controls together.
-
-```html
-<div class="field field-grouped">
-	<div class="control">
-		<a class="button is-primary"> Submit </a>
-	</div>
-	<div class="control">
-		<a class="button is-danger"> Cancel </a>
-	</div>
-</div>
-```
-
-`.field-horizontal`
+`.field-horizontal` can be used for displaying form label and field side by side.
 
 ```html
 <div class="field field-horizontal">
@@ -122,32 +109,16 @@ Form element can be used within a `.control` container.
 
 ### Modifiers
 
-`.control-icon`
+`.control-icons` is used when the control element contains icons.
 
 ```html
 <div class="field">
-	<div class="control control-icon">
-		<input class="input input-small" placeholder="www.microsoft.com" />
+	<div class="control control-icons">
+		<input class="input input-sm" placeholder="www.microsoft.com" />
 		<span class="icon border" aria-hidden="true"> </span>
 	</div>
-</div>
-```
-
-`.control-icon-right`
-
-```html
-<div class="field">
-	<div class="control control-icon control-icon-right">
-		<input class="input input-small" placeholder="www.microsoft.com" />
-		<span class="icon border" aria-hidden="true"> </span>
-	</div>
-</div>
-```
-
-```html
-<div class="field">
-	<div class="control control-icon control-icon-right">
-		<div class="select">
+	<div class="control control-icons margin-top-xxs">
+		<div class="select select-sm">
 			<select>
 				<option>A</option>
 				<option>B</option>
@@ -158,12 +129,23 @@ Form element can be used within a `.control` container.
 </div>
 ```
 
-`.is-loading`
+`.control-icon-right` is used to display the icon on the right side of the element.
+
+```html
+<div class="field">
+	<div class="control control-icons control-icon-right">
+		<input class="input input-sm" placeholder="www.microsoft.com" />
+		<span class="icon border" aria-hidden="true"> </span>
+	</div>
+</div>
+```
+
+`.is-loading` is used to add a spinner icon.
 
 ```html
 <div class="field">
 	<div class="control is-loading">
-		<input class="input input-small" placeholder="www.microsoft.com" />
+		<input class="input input-sm" placeholder="www.microsoft.com" />
 	</div>
 </div>
 ```
