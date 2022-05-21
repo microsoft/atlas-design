@@ -23,7 +23,7 @@ Forms contain form control elements such as the following:
 The `.field` component is a container for form control elements to provide consistency.
 It can be used to hold `.field-section` containers, which holds the individual elements.
 
-`.field-section-label` is used on the label. Adding `field-section-label-sm`/`field-section-label-lg` makes the label a little bigger or smaller than the default.
+`.field-section-label` is used on the label. Adding `field-section-label-sm`/`field-section-label-lg` makes the label a little smaller or bigger than the default.
 
 ```html
 <div class="field">
