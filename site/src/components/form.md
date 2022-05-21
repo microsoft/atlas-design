@@ -168,7 +168,7 @@ For control elements that are required for form submission, you can add a span e
 	<div class="field-section">
 		<label class="field-section-label label margin-bottom-xxs" for="sample-form-input-2">
 			First name
-			<span class="required-indicator" aria-label="required"></span>
+			<span class="required-indicator"></span>
 		</label>
 		<input class="input" type="text" placeholder="First name" id="sample-form-input-2" required />
 	</div>
