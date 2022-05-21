@@ -105,19 +105,20 @@ Form control elements are wrapped with a `.field-section` container.
 
 ```html
 <div class="field">
-	<div class="field-section field-section-icons">
-		<label class="checkbox margin-bottom-xxs">
-			<input type="checkbox" />
-			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-			<span class="checkbox-text" aria-hidden="true">Checkbox 1</span>
+	<div class="field-section">
+		<label class="field-section-label field-section-label-lg label" for="sample-form-input-note">
+			Input
 		</label>
-		<label class="checkbox margin-bottom-xxs">
-			<input type="checkbox" />
-			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-			<span class="checkbox-text" aria-hidden="true">Checkbox 2</span>
-		</label>
+		<input
+			id="sample-form-input-note"
+			name="title"
+			class="input"
+			type="text"
+			placeholder="e.g., Why is the sky blue?"
+			aria-describedby="section-note"
+		/>
 	</div>
-	<p class="field-section-note help help-danger">Sample warning message.</p>
+	<p id="section-note" class="field-section-note help help-danger">Sample warning message.</p>
 </div>
 ```
 
