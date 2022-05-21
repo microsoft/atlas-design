@@ -101,7 +101,7 @@ It can be used to hold `.field-section` containers, which holds the individual e
 
 Form control elements are wrapped with a `.field-section` container.
 
-`.field-section-note` is placed after the element for form validation messages.
+`.field-section-message` is placed after the element for form validation messages.
 
 ```html
 <div class="field">
@@ -118,7 +118,7 @@ Form control elements are wrapped with a `.field-section` container.
 			aria-describedby="section-note"
 		/>
 	</div>
-	<p id="section-note" class="field-section-note help help-danger">Sample warning message.</p>
+	<p id="section-note" class="field-section-message help help-danger">Sample warning message.</p>
 </div>
 ```
 
