@@ -21,14 +21,16 @@ Forms contain form control elements such as the following:
 ## Form Field
 
 The `.field` component is a container for form control elements to provide consistency.
-It can be used to hold `.control` containers, which holds the individual control elements.
+It can be used to hold `.field-section` containers, which holds the individual elements.
 
-`.field-label` is used on the label. Add `field-label-sm`/`field-label-lg` makes label a little bigger or smaller than the default.
+`.field-section-label` is used on the label. Adding `field-section-label-sm`/`field-section-label-lg` makes the label a little bigger or smaller than the default.
 
 ```html
 <div class="field">
-	<label class="field-label field-label-sm label" for="sample-form-input-sm"> Input </label>
-	<div class="control">
+	<div class="field-section">
+		<label class="field-section-label field-section-label-sm label" for="sample-form-input-sm">
+			Input
+		</label>
 		<input
 			id="sample-form-input-sm"
 			name="title"
@@ -39,8 +41,8 @@ It can be used to hold `.control` containers, which holds the individual control
 	</div>
 </div>
 <div class="field">
-	<label class="field-label label" for="sample-form-input"> Input </label>
-	<div class="control">
+	<div class="field-section">
+		<label class="field-section-label label" for="sample-form-input"> Input </label>
 		<input
 			id="sample-form-input"
 			name="title"
@@ -51,8 +53,10 @@ It can be used to hold `.control` containers, which holds the individual control
 	</div>
 </div>
 <div class="field">
-	<label class="field-label field-label-lg label" for="sample-form-input-lg"> Input </label>
-	<div class="control">
+	<div class="field-section">
+		<label class="field-section-label field-section-label-lg label" for="sample-form-input-lg">
+			Input
+		</label>
 		<input
 			id="sample-form-input-lg"
 			name="title"
@@ -63,10 +67,8 @@ It can be used to hold `.control` containers, which holds the individual control
 	</div>
 </div>
 <div class="field display-flex">
-	<div class="control">
+	<div class="field-section">
 		<button class="button button-primary margin-right-xxs">Submit</button>
-	</div>
-	<div class="control">
 		<button class="button button-danger">Cancel</button>
 	</div>
 </div>
@@ -74,11 +76,11 @@ It can be used to hold `.control` containers, which holds the individual control
 
 ### Modifiers
 
-`.form-addons` is added to attach controls together.
+`.field-addons` is added to attach controls together.
 
 ```html
 <div class="field field-addons">
-	<div class="control">
+	<div class="field-section">
 		<div class="select">
 			<select>
 				<option>$</option>
@@ -86,66 +88,50 @@ It can be used to hold `.control` containers, which holds the individual control
 			</select>
 		</div>
 	</div>
-	<div class="control">
+	<div class="field-section">
 		<input class="input" type="text" placeholder="Transfer money" />
 	</div>
-	<div class="control">
+	<div class="field-section">
 		<a class="button button-primary"> Transfer </a>
 	</div>
 </div>
 ```
 
-`.field-horizontal` is used for displaying form label and field side by side.
-`field-body` is used on the control element container.
+## Form Section
 
-```html
-<div class="field field-horizontal">
-	<div class="field-label field-label-sm">
-		<label class="label" for="example-small-label">Search</label>
-	</div>
-	<div class="field-body">
-		<div class="control">
-			<input
-				id="example-small-label"
-				class="input input-sm"
-				type="text"
-				placeholder="www.microsoft.com"
-			/>
-		</div>
-	</div>
-</div>
-<div class="field field-horizontal">
-	<div class="field-label field-label-lg">
-		<label class="label" for="example-large-label">Search</label>
-	</div>
-	<div class="field-body">
-		<div class="control">
-			<input
-				id="example-large-label"
-				class="input input-lg"
-				type="text"
-				placeholder="www.microsoft.com"
-			/>
-		</div>
-	</div>
-</div>
-```
+Form control elements are wrapped with a `.field-section` container.
 
-## Form Control
-
-Form control element are wrapped with a `.control` container.
-
-### Modifiers
-
-`.control-icons` is used when the control element contains icons.
+`.field-section-note` is placed after the element for form validation messages.
 
 ```html
 <div class="field">
-	<div class="control control-icons">
+	<div class="field-section field-section-icons">
+		<label class="checkbox margin-bottom-xxs">
+			<input type="checkbox" />
+			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+			<span class="checkbox-text" aria-hidden="true">Checkbox 1</span>
+		</label>
+		<label class="checkbox margin-bottom-xxs">
+			<input type="checkbox" />
+			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+			<span class="checkbox-text" aria-hidden="true">Checkbox 2</span>
+		</label>
+	</div>
+	<p class="field-section-note help help-danger">Sample warning message.</p>
+</div>
+```
+
+### Modifiers
+
+`.field-section-icons` is used when the control element contains icons.
+
+```html
+<div class="field">
+	<div class="field-section field-section-icons">
 		<input class="input input-sm" placeholder="www.microsoft.com" />
 		<span class="icon border" aria-hidden="true"> </span>
 	</div>
-	<div class="control control-icons margin-top-xxs">
+	<div class="field-section field-section-icons margin-top-xxs">
 		<div class="select select-sm">
 			<select>
 				<option>A</option>
@@ -157,23 +143,13 @@ Form control element are wrapped with a `.control` container.
 </div>
 ```
 
-`.control-icon-right` is used to display the icon on the right side of the element.
+`.field-section-icon-right` is used to display the icon on the right side of the element.
 
 ```html
 <div class="field">
-	<div class="control control-icons control-icon-right">
+	<div class="field-section field-section-icons field-section-icon-right">
 		<input class="input input-sm" placeholder="www.microsoft.com" />
 		<span class="icon border" aria-hidden="true"> </span>
-	</div>
-</div>
-```
-
-`.is-loading` is used to add a spinner icon.
-
-```html
-<div class="field">
-	<div class="control is-loading">
-		<input class="input input-sm" placeholder="www.microsoft.com" />
 	</div>
 </div>
 ```
@@ -184,12 +160,16 @@ For control elements that are required for form submission, you can add a span e
 
 ```html
 <div class="field">
-	<div class="control">
-		<label class="field-label label margin-bottom-xxs" for="sample-form-input-2">
+	<p class="margin-bottom-xs">
+		Required fields are marked with an
+		<span class="required-indicator" aria-label="required"></span>
+	</p>
+	<div class="field-section">
+		<label class="field-section-label label margin-bottom-xxs" for="sample-form-input-2">
 			First name
-			<span class="required-indicator" aria-hidden="true"></span>
+			<span class="required-indicator" aria-label="required"></span>
 		</label>
-		<input class="input" type="text" placeholder="First name" id="sample-form-input-2" />
+		<input class="input" type="text" placeholder="First name" id="sample-form-input-2" required />
 	</div>
 </div>
 ```
