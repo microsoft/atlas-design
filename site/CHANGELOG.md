@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.23.0
+
+### Minor Changes
+
+- 97a0c8b: Adding star rating component and relevant documentation.
+
+### Patch Changes
+
+- Updated dependencies [97a0c8b]
+  - @microsoft/atlas-js@1.1.0
+
 ## 0.22.0
 
 ### Minor Changes

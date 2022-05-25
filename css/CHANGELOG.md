@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.16.0
+
+### Minor Changes
+
+- 97a0c8b: Adding star rating component and relevant documentation.
+
 ## 3.15.1
 
 ### Patch Changes
