@@ -46,7 +46,8 @@ export const pages: LocalPageConfig[] = [
 	{ pathname: '/components/table.html', name: 'Components/table', routes },
 	{ pathname: '/components/textarea.html', name: 'Components/textarea', routes },
 	{ pathname: '/components/toggle.html', name: 'Components/toggle', routes },
-	{ pathname: '/patterns/article-header.html', name: 'Patterns/article-header', routes }
+	{ pathname: '/patterns/article-header.html', name: 'Patterns/article-header', routes },
+	{ pathname: '/patterns/form-validation.html', name: 'Patterns/form-validation', routes }
 ];
 
 export const auxillaryViewports: Project<PlaywrightTestOptions, PlaywrightWorkerOptions>[] = [
