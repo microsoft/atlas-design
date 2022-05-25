@@ -1,16 +1,16 @@
 import { generateElementId } from '../utilities/util';
 
-const defaultLocStrings = `{
-	loc_formBehavior_contentHasChanged:
-		'Content has changed, please reload the page to get the latest changes.',
-	loc_formBehavior_inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
-	loc_formBehavior_inputMinLength: '{inputLabel} must be at least {minLength} characters.',
-	loc_formBehavior_inputRequired: '{inputLabel} is required.',
-	loc_formBehavior_pleaseFixTheseIssues: 'Please fix these issues:',
-	loc_formBehavior_thereAreNoEditsToSubmit: 'There are no edits to submit',
-	loc_formBehavior_weEncounteredAnUnexpectedError:
-		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.',
-	loc_youMustSelectBetweenMinAndMaxTags: 'You must select between {min} and {max} {tagLabel}.'
+const defaultMessageStrings = `{
+	"contentHasChanged":
+		"Content has changed, please reload the page to get the latest changes.",
+	"inputMaxLength": "{inputLabel} cannot be longer than {maxLength} characters.",
+	"inputMinLength": "{inputLabel} must be at least {minLength} characters.",
+	"inputRequired": "{inputLabel} is required.",
+	"pleaseFixTheseIssues": "Please fix these issues:",
+	"thereAreNoEditsToSubmit": "There are no edits to submit.",
+	"weEncounteredAnUnexpectedError":
+		"We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.",
+	"youMustSelectBetweenMinAndMaxTags": "You must select between {min} and {max} {tagLabel}."
 }`;
 // <form-behavior>
 class FormBehaviorElement extends HTMLElement {
@@ -19,7 +19,23 @@ class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
-	locStrings = JSON.parse(this.dataset.locStrings ?? defaultLocStrings) as LocStrings;
+	defaultStrings = JSON.parse(defaultMessageStrings) as LocStrings;
+	locStrings = {
+		contentHasChanged: this.dataset.contentHasChanged ?? this.defaultStrings.contentHasChanged,
+		inputMaxLength: this.dataset.inputMaxLength ?? this.defaultStrings.inputMaxLength,
+		inputMinLength: this.dataset.inputMinLength ?? this.defaultStrings.inputMinLength,
+		inputRequired: this.dataset.inputRequired ?? this.defaultStrings.inputRequired,
+		pleaseFixTheseIssues:
+			this.dataset.pleaseFixTheseIssues ?? this.defaultStrings.pleaseFixTheseIssues,
+		thereAreNoEditsToSubmit:
+			this.dataset.thereAreNoEditsToSubmit ?? this.defaultStrings.thereAreNoEditsToSubmit,
+		weEncounteredAnUnexpectedError:
+			this.dataset.weEncounteredAnUnexpectedError ??
+			this.defaultStrings.weEncounteredAnUnexpectedError,
+		youMustSelectBetweenMinAndMaxTags:
+			this.dataset.youMustSelectBetweenMinAndMaxTags ??
+			this.defaultStrings.youMustSelectBetweenMinAndMaxTags
+	} as LocStrings;
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
 		this.validateRequired.bind(this),
@@ -227,10 +243,10 @@ class FormBehaviorElement extends HTMLElement {
 			} else {
 				const { errorAlert, errorList } = this.getErrorAlert(form);
 				const errorText = document.createElement('li');
-				errorText.innerText = this.locStrings.loc_formBehavior_weEncounteredAnUnexpectedError;
+				errorText.innerText = this.locStrings.weEncounteredAnUnexpectedError;
 				// custom text for version mismatch
 				if (response.status === 412) {
-					errorText.innerText = this.locStrings.loc_formBehavior_contentHasChanged;
+					errorText.innerText = this.locStrings.contentHasChanged;
 				}
 
 				errorList.appendChild(errorText);
@@ -261,7 +277,7 @@ class FormBehaviorElement extends HTMLElement {
 		const alertText = document.createElement('p');
 		alertText.id = alertId;
 		alertText.className = 'font-size-md font-weight-semibold margin-bottom-xs';
-		alertText.innerText = this.locStrings.loc_formBehavior_pleaseFixTheseIssues;
+		alertText.innerText = this.locStrings.pleaseFixTheseIssues;
 
 		const errorList = document.createElement('ul');
 		errorList.setAttribute('aria-label', 'Validation errors');
@@ -285,7 +301,7 @@ class FormBehaviorElement extends HTMLElement {
 
 	validateRequired(input: HTMLValueElement, label: string): string | null {
 		if (input.validity.valueMissing) {
-			return `${this.locStrings.loc_formBehavior_inputRequired.replace(
+			return `${this.locStrings.inputRequired.replace(
 				'{inputLabel}',
 				input.localName === 'star-rating' ? `A selection for "${label}"` : label
 			)}`;
@@ -298,7 +314,7 @@ class FormBehaviorElement extends HTMLElement {
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
 			(input.validity.tooShort || (input.minLength > 0 && input.value.length < input.minLength))
 		) {
-			return `${this.locStrings.loc_formBehavior_inputMinLength
+			return `${this.locStrings.inputMinLength
 				.replace('{inputLabel}', label)
 				.replace('{minLength}', input.minLength.toString())}`;
 		}
@@ -308,11 +324,13 @@ class FormBehaviorElement extends HTMLElement {
 	validateMaxLength(input: HTMLValueElement, label: string): string | null {
 		if (
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
-			(input.validity.tooLong || (input.maxLength > 0 && input.value.length > input.maxLength))
+			(input.validity.tooLong ||
+				(input.maxLength > 0 && input.value.length > input.maxLength) ||
+				input.value.length > 255)
 		) {
-			return `${this.locStrings.loc_formBehavior_inputMaxLength
+			return `${this.locStrings.inputMaxLength
 				.replace('{inputLabel}', label)
-				.replace('{maxLength}', input.maxLength.toString())}`;
+				.replace('{maxLength}', input.maxLength > 0 ? input.maxLength.toString() : '255')}`;
 		}
 		return null;
 	}
@@ -329,7 +347,7 @@ class FormBehaviorElement extends HTMLElement {
 			}
 
 			if (!tagCount || tagCount < Number(min) || tagCount > Number(max)) {
-				return `${this.locStrings.loc_youMustSelectBetweenMinAndMaxTags
+				return `${this.locStrings.youMustSelectBetweenMinAndMaxTags
 					.replace('{min}', min)
 					.replace('{max}', max)
 					.replace('{tagLabel}', label.toLocaleLowerCase())}`;
@@ -433,7 +451,7 @@ class FormBehaviorElement extends HTMLElement {
 		}
 		const errorText = document.createElement('li');
 		errorText.id = 'no-edits-error';
-		errorText.innerText = this.locStrings.loc_formBehavior_thereAreNoEditsToSubmit;
+		errorText.innerText = this.locStrings.thereAreNoEditsToSubmit;
 
 		errorList.appendChild(errorText);
 		errorAlert.hidden = false;
@@ -530,14 +548,14 @@ interface HTMLValueElement extends HTMLElement {
 }
 
 interface LocStrings {
-	loc_formBehavior_contentHasChanged: string;
-	loc_formBehavior_inputMaxLength: string;
-	loc_formBehavior_inputMinLength: string;
-	loc_formBehavior_inputRequired: string;
-	loc_formBehavior_pleaseFixTheseIssues: string;
-	loc_formBehavior_thereAreNoEditsToSubmit: string;
-	loc_formBehavior_weEncounteredAnUnexpectedError: string;
-	loc_youMustSelectBetweenMinAndMaxTags: string;
+	contentHasChanged: string;
+	inputMaxLength: string;
+	inputMinLength: string;
+	inputRequired: string;
+	pleaseFixTheseIssues: string;
+	thereAreNoEditsToSubmit: string;
+	weEncounteredAnUnexpectedError: string;
+	youMustSelectBetweenMinAndMaxTags: string;
 }
 
 // Check if the required value related properties exist rather than an instance of a form related element.
