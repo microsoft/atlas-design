@@ -11,3 +11,11 @@ details > * {
 	// include a,li {} to override css reset/normalize; this is causing .focus-visible color issues
 	outline-color: inherit;
 }
+
+:where(a) {
+	color: $hyperlink;
+}
+
+:where(a:visited) {
+	color: $visited;
+}
