@@ -33,7 +33,7 @@ test.describe('form behavior validation', () => {
 		errorContainer,
 		submitBtn
 	}) => {
-		const input = page.locator('#sample-input');
+		const input = page.locator('#sample-input-min');
 		const label = await input.textContent();
 		const minLength = await input.getAttribute('minlength');
 
@@ -69,7 +69,9 @@ test.describe('form behavior validation', () => {
 
 		await submitBtn.click();
 
-		expect(errorContainer).toBeVisible();
+		const messageId = (await input.getAttribute('aria-describedby')).split(' ')[0];
+		const message = await page.locator(`#${messageId}`);
+		expect(message).toContainText(`${label} cannot be longer than ${maxLength} characters.`);
 		expect(errorContainer).toContainText('Please fix these issues:');
 		expect(errorContainer).toContainText(
 			[`${label} cannot be longer than ${maxLength} characters.`],
@@ -92,7 +94,9 @@ test.describe('form behavior validation', () => {
 
 		await submitBtn.click();
 
-		expect(errorContainer).toBeVisible();
+		const messageId = (await input.getAttribute('aria-describedby')).split(' ')[0];
+		const message = await page.locator(`#${messageId}`);
+		expect(message).toContainText(`${label} is required.`);
 		expect(errorContainer).toContainText('Please fix these issues:');
 		expect(errorContainer).toContainText([`${label} is required.`], {
 			useInnerText: true
@@ -116,7 +120,9 @@ test.describe('form behavior validation', () => {
 
 		await submitBtn.click();
 
-		expect(errorContainer).toBeVisible();
+		const messageId = (await input.getAttribute('aria-describedby')).split(' ')[0];
+		const message = await page.locator(`#${messageId}`);
+		expect(message).toContainText(`You must select between ${min} and ${max} ${label}.`);
 		expect(errorContainer).toContainText('Please fix these issues:');
 		expect(errorContainer).toContainText([`You must select between ${min} and ${max} ${label}.`], {
 			useInnerText: true
@@ -145,7 +151,9 @@ test.describe('form behavior validation', () => {
 
 		await submitBtn.click();
 
-		expect(errorContainer).toBeVisible();
+		const messageId = (await input.getAttribute('aria-describedby')).split(' ')[0];
+		const message = await page.locator(`#${messageId}`);
+		expect(message).toContainText(`You must select between ${min} and ${max} ${label}.`);
 		expect(errorContainer).toContainText('Please fix these issues:');
 		expect(errorContainer).toContainText([`You must select between ${min} and ${max} ${label}.`], {
 			useInnerText: true

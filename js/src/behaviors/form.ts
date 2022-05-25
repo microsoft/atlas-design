@@ -489,11 +489,11 @@ class FormBehaviorElement extends HTMLElement {
 
 			errors.push({ input, message });
 			if (displayValidity) {
-				const inputWithError = isTagSelector
-					? input.parentElement?.querySelector('input.autocomplete-input')
-					: input;
+				const inputId = isTagSelector
+					? input.parentElement?.querySelector('input.autocomplete-input')?.id
+					: input.id;
 
-				if (!inputWithError?.id) {
+				if (!inputId) {
 					continue;
 				}
 
@@ -503,7 +503,7 @@ class FormBehaviorElement extends HTMLElement {
 				child.classList.add('margin-bottom-xs', 'font-weight-semibold');
 
 				const a = document.createElement('a');
-				a.href = `#${inputWithError.id}`;
+				a.href = `#${inputId}`;
 				a.textContent = message;
 				a.classList.add('help', 'help-danger');
 
