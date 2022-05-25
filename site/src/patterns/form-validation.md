@@ -44,12 +44,32 @@ When the form do not require any edits (i.e the only action is to submit), you c
 				id="sample-input"
 				name="title"
 				aria-describedby="sample-input-note"
-				minlength="10"
 				class="input"
 				type="text"
 				placeholder="e.g., Why is the sky blue?"
 				value=""
 				required
+			/>
+		</div>
+	</div>
+	<div class="field margin-bottom-xs">
+		<label class="label margin-none" for="sample-input-min">
+			Input
+			<span class="required-indicator" part="required-indicator" aria-hidden="true"></span>
+		</label>
+		<span id="sample-input-min-note" class="help margin-bottom-xxs">Input description</span>
+		<div class="control">
+			<input
+				id="sample-input-min"
+				name="title"
+				aria-describedby="sample-input-note"
+				class="input"
+				type="text"
+				placeholder="e.g., Why is the sky blue?"
+				value=""
+				required
+				minlength="10"
+				maxlength="255"
 			/>
 		</div>
 	</div>
@@ -86,7 +106,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 				mintags="1"
 				maxtags="5"
 			/>
-			<div class="tag-input-holder border margin-bottom-xxs" style="height: 2em;">
+			<div class="tag-input-holder margin-bottom-xxs has-height-auto">
 				<div class="control">
 					<input
 						role="combobox"
@@ -96,7 +116,6 @@ When the form do not require any edits (i.e the only action is to submit), you c
 						type="text"
 						aria-label="Tag selector"
 						placeholder="Enter tags..."
-						hidden
 					/>
 				</div>
 			</div>
