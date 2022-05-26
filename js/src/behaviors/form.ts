@@ -6,7 +6,7 @@ const defaultMessageStrings = `{
 	"inputMaxLength": "{inputLabel} cannot be longer than {maxLength} characters.",
 	"inputMinLength": "{inputLabel} must be at least {minLength} characters.",
 	"inputRequired": "{inputLabel} is required.",
-	"pleaseFixTheseIssues": "Please fix these issues:",
+	"pleaseFixTheFollowingIssues": "Please fix the following issues to continue:",
 	"thereAreNoEditsToSubmit": "There are no edits to submit.",
 	"weEncounteredAnUnexpectedError":
 		"We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.",
@@ -25,8 +25,8 @@ class FormBehaviorElement extends HTMLElement {
 		inputMaxLength: this.dataset.inputMaxLength ?? this.defaultStrings.inputMaxLength,
 		inputMinLength: this.dataset.inputMinLength ?? this.defaultStrings.inputMinLength,
 		inputRequired: this.dataset.inputRequired ?? this.defaultStrings.inputRequired,
-		pleaseFixTheseIssues:
-			this.dataset.pleaseFixTheseIssues ?? this.defaultStrings.pleaseFixTheseIssues,
+		pleaseFixTheFollowingIssues:
+			this.dataset.pleaseFixTheFollowingIssues ?? this.defaultStrings.pleaseFixTheFollowingIssues,
 		thereAreNoEditsToSubmit:
 			this.dataset.thereAreNoEditsToSubmit ?? this.defaultStrings.thereAreNoEditsToSubmit,
 		weEncounteredAnUnexpectedError:
@@ -64,6 +64,9 @@ class FormBehaviorElement extends HTMLElement {
 		}
 
 		form.setAttribute('novalidate', '');
+		const errorSummaryContainer = document.createElement('div');
+		errorSummaryContainer.classList.add('form-error-container', 'margin-bottom-sm');
+		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);
 
@@ -218,8 +221,8 @@ class FormBehaviorElement extends HTMLElement {
 				cancelable: true
 			});
 
-			const canceled = !this.dispatchEvent(event);
-			if (canceled) {
+			const cancelled = !this.dispatchEvent(event);
+			if (cancelled) {
 				return;
 			}
 
@@ -263,12 +266,13 @@ class FormBehaviorElement extends HTMLElement {
 		errorAlert: HTMLDivElement;
 		errorList: HTMLUListElement;
 	} {
-		const formLayout = form.querySelector('.error-container') || form;
+		const formLayout = form.querySelector('.form-error-container') || form;
 		formLayout.setAttribute('role', 'alert');
 		const alertId = generateElementId();
 
 		const errorAlert = document.createElement('div');
-		errorAlert.className = 'alert help help-danger border border-color-danger padding-xs';
+		errorAlert.className =
+			'alert help help-danger border border-color-danger border-radius padding-xs';
 		errorAlert.setAttribute('role', 'group');
 		errorAlert.setAttribute('aria-labelledby', alertId);
 		errorAlert.setAttribute('tabindex', '-1');
@@ -277,7 +281,7 @@ class FormBehaviorElement extends HTMLElement {
 		const alertText = document.createElement('p');
 		alertText.id = alertId;
 		alertText.className = 'font-size-md font-weight-semibold margin-bottom-xs';
-		alertText.innerText = this.locStrings.pleaseFixTheseIssues;
+		alertText.innerText = this.locStrings.pleaseFixTheFollowingIssues;
 
 		const errorList = document.createElement('ul');
 		errorList.setAttribute('aria-label', 'Validation errors');
@@ -289,7 +293,7 @@ class FormBehaviorElement extends HTMLElement {
 	}
 
 	getErrorAlert(form: HTMLFormElement) {
-		const errorAlert = form.querySelector<HTMLDivElement>('.error-container .alert');
+		const errorAlert = form.querySelector<HTMLDivElement>('.form-error-container .alert');
 		if (errorAlert) {
 			return {
 				errorAlert,
@@ -303,7 +307,7 @@ class FormBehaviorElement extends HTMLElement {
 		if (input.validity.valueMissing) {
 			return `${this.locStrings.inputRequired.replace(
 				'{inputLabel}',
-				input.localName === 'star-rating' ? `A selection for "${label}"` : label
+				customElements.get(input.localName) ? `A selection for "${label}"` : label
 			)}`;
 		}
 		return null;
@@ -552,7 +556,7 @@ interface LocStrings {
 	inputMaxLength: string;
 	inputMinLength: string;
 	inputRequired: string;
-	pleaseFixTheseIssues: string;
+	pleaseFixTheFollowingIssues: string;
 	thereAreNoEditsToSubmit: string;
 	weEncounteredAnUnexpectedError: string;
 	youMustSelectBetweenMinAndMaxTags: string;

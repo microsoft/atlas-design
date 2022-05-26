@@ -28,7 +28,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		data-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		data-input-min-length="{inputLabel} must be at least {minLength} characters."
 		data-input-required="{inputLabel} is required."
-		data-please-fix-these-issues="Please fix these issues:"
+		data-please-fix-the-following-issues="Please fix the following issues to continue:"
 		data-there-are-no-edits-to-submit="There are no edits to submit."
 		data-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 		data-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
@@ -57,7 +57,9 @@ When the form do not require any edits (i.e the only action is to submit), you c
 			Input
 			<span class="required-indicator" part="required-indicator" aria-hidden="true"></span>
 		</label>
-		<span id="sample-input-min-note" class="help margin-bottom-xxs">Input description</span>
+		<span id="sample-input-min-note" class="help margin-bottom-xxs"
+			>This input has minlength and maxlength attributes.</span
+		>
 		<div class="control">
 			<input
 				id="sample-input-min"
@@ -144,19 +146,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 	<div class="field margin-bottom-xs">
 		<div class="control">
 			<star-rating id="rating-1" name="rating-1" required>
-				<legend slot="legend">Star rating</legend>
-				<span slot="label-1">Terrible</span>
-				<span slot="label-2">Poor</span>
-				<span slot="label-3">Fair</span>
-				<span slot="label-4">Good</span>
-				<span slot="label-5">Great</span>
-			</star-rating>
-		</div>
-	</div>
-	<div class="field margin-bottom-xs">
-		<div class="control">
-			<star-rating id="rating-2" name="rating-2" disabled value="2">
-				<legend slot="legend">Star rating disabled</legend>
+				<legend slot="legend">Custom element</legend>
 				<span slot="label-1">Terrible</span>
 				<span slot="label-2">Poor</span>
 				<span slot="label-3">Fair</span>
@@ -173,7 +163,6 @@ When the form do not require any edits (i.e the only action is to submit), you c
 			<button type="button" class="button">Cancel</button>
 		</div>
 	</div>
-	<div class="error-container"></div>
 </form>
 ```
 
@@ -196,7 +185,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		data-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		data-input-min-length="{inputLabel} must be at least {minLength} characters."
 		data-input-required="{inputLabel} is required."
-		data-please-fix-these-issues="Please fix these issues:"
+		data-please-fix-the-following-issues="Please fix the following issues to continue:"
 		data-there-are-no-edits-to-submit="There are no edits to submit."
 		data-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 		data-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
@@ -209,6 +198,5 @@ When the form do not require any edits (i.e the only action is to submit), you c
 			<button type="button" class="button">No</button>
 		</div>
 	</div>
-	<div class="error-container"></div>
 </form>
 ```
