@@ -31,25 +31,13 @@ It can be used to hold `.field-section` containers, which holds the individual e
 		<label class="field-section-label field-section-label-sm label" for="sample-form-input-sm">
 			Input
 		</label>
-		<input
-			id="sample-form-input-sm"
-			name="title"
-			class="input"
-			type="text"
-			placeholder="e.g., Why is the sky blue?"
-		/>
+		<input id="sample-form-input-sm" name="title" class="input" type="text" />
 	</div>
 </div>
 <div class="field">
 	<div class="field-section">
 		<label class="field-section-label label" for="sample-form-input"> Input </label>
-		<input
-			id="sample-form-input"
-			name="title"
-			class="input"
-			type="text"
-			placeholder="e.g., Why is the sky blue?"
-		/>
+		<input id="sample-form-input" name="title" class="input" type="text" />
 	</div>
 </div>
 <div class="field">
@@ -57,20 +45,12 @@ It can be used to hold `.field-section` containers, which holds the individual e
 		<label class="field-section-label field-section-label-lg label" for="sample-form-input-lg">
 			Input
 		</label>
-		<input
-			id="sample-form-input-lg"
-			name="title"
-			class="input"
-			type="text"
-			placeholder="e.g., Why is the sky blue?"
-		/>
+		<input id="sample-form-input-lg" name="title" class="input" type="text" />
 	</div>
 </div>
-<div class="field display-flex">
-	<div class="field-section">
-		<button class="button button-primary margin-right-xxs">Submit</button>
-		<button class="button button-danger">Cancel</button>
-	</div>
+<div class="display-flex">
+	<button class="button button-primary margin-right-xxs">Submit</button>
+	<button class="button button-danger">Cancel</button>
 </div>
 ```
 
@@ -89,7 +69,7 @@ It can be used to hold `.field-section` containers, which holds the individual e
 		</div>
 	</div>
 	<div class="field-section">
-		<input class="input" type="text" placeholder="Transfer money" />
+		<input class="input" type="text" />
 	</div>
 	<div class="field-section">
 		<a class="button button-primary"> Transfer </a>
@@ -114,7 +94,6 @@ Form control elements are wrapped with a `.field-section` container.
 			name="title"
 			class="input"
 			type="text"
-			placeholder="e.g., Why is the sky blue?"
 			aria-describedby="section-note"
 		/>
 		<p id="section-note" class="field-section-message help help-danger">Sample warning message.</p>
@@ -129,7 +108,7 @@ Form control elements are wrapped with a `.field-section` container.
 ```html
 <div class="field">
 	<div class="field-section field-section-icons">
-		<input class="input input-sm" placeholder="www.microsoft.com" />
+		<input class="input input-sm" />
 		<span class="icon border" aria-hidden="true"> </span>
 	</div>
 	<div class="field-section field-section-icons margin-top-xxs">
@@ -149,7 +128,7 @@ Form control elements are wrapped with a `.field-section` container.
 ```html
 <div class="field">
 	<div class="field-section field-section-icons field-section-icon-right">
-		<input class="input input-sm" placeholder="www.microsoft.com" />
+		<input class="input input-sm" />
 		<span class="icon border" aria-hidden="true"> </span>
 	</div>
 </div>
@@ -163,14 +142,14 @@ For control elements that are required for form submission, you can add a span e
 <div class="field">
 	<p class="margin-bottom-xs">
 		Required fields are marked with an
-		<span class="required-indicator" aria-label="required"></span>
+		<span class="required-indicator"></span>
 	</p>
 	<div class="field-section">
 		<label class="field-section-label label margin-bottom-xxs" for="sample-form-input-2">
 			First name
 			<span class="required-indicator"></span>
 		</label>
-		<input class="input" type="text" placeholder="First name" id="sample-form-input-2" required />
+		<input class="input" type="text" id="sample-form-input-2" required />
 	</div>
 </div>
 ```
