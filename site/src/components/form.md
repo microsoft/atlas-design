@@ -117,8 +117,8 @@ Form control elements are wrapped with a `.field-section` container.
 			placeholder="e.g., Why is the sky blue?"
 			aria-describedby="section-note"
 		/>
+		<p id="section-note" class="field-section-message help help-danger">Sample warning message.</p>
 	</div>
-	<p id="section-note" class="field-section-message help help-danger">Sample warning message.</p>
 </div>
 ```
 
