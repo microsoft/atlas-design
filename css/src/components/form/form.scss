@@ -18,29 +18,16 @@ $icon-active-color: $secondary !default;
 		margin-block-end: 0.75rem;
 	}
 
-	.field-section {
-		.field-section-label {
-			margin-block-end: $spacer-3;
+	.field-label {
+		margin-block-end: $spacer-3;
 
-			@include tablet {
-				flex: 1 0 0;
-
-				&.field-section-label-sm {
-					font-size: $form-font-size-sm;
-				}
-
-				&.field-section-label-lg {
-					font-size: $form-font-size-lg;
-				}
-			}
+		@include tablet {
+			flex: 1 0 0;
 		}
+	}
 
-		.field-section-message {
-			display: block;
-			line-height: 1.5;
-		}
-
-		&.field-section-icons {
+	.field-body {
+		&.field-body-icons {
 			.icon {
 				position: absolute;
 				inset-block-start: 0;
@@ -89,7 +76,7 @@ $icon-active-color: $secondary !default;
 				}
 			}
 
-			&.field-section-icon-right {
+			&.field-body-icon-right {
 				.input {
 					padding-inline: $control-padding-horizontal;
 
@@ -127,43 +114,8 @@ $icon-active-color: $secondary !default;
 		}
 	}
 
-	// Modifiers
-
-	&.field-addons {
-		display: flex;
-		justify-content: flex-start;
-
-		.field-section {
-			&:not(:last-child) {
-				margin-inline-end: -1px;
-			}
-
-			&:first-child {
-				.button,
-				.input,
-				.select select {
-					border-start-end-radius: 0;
-					border-end-end-radius: 0;
-				}
-			}
-
-			&:last-child {
-				.button,
-				.input,
-				.select select {
-					border-start-start-radius: 0;
-					border-end-start-radius: 0;
-				}
-			}
-
-			&:not(:first-child):not(:last-child) {
-				.button,
-				.input,
-				.select select {
-					border-radius: 0;
-				}
-			}
-		}
+	.field-validation-message {
+		line-height: 1.5;
 	}
 }
 
