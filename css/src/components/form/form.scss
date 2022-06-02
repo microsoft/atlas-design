@@ -19,6 +19,8 @@ $icon-active-color: $secondary !default;
 	}
 
 	.field-label {
+		@include label;
+
 		margin-block-end: $spacer-3;
 
 		@include tablet {
@@ -123,5 +125,5 @@ $icon-active-color: $secondary !default;
 ::part(required-indicator)::after {
 	color: $danger;
 	content: '*';
-	vertical-align: baseline;
+	vertical-align: top;
 }
