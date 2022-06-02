@@ -26,7 +26,7 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 
 ```html
 <fieldset class="field border-none">
-	<legend class="field-label label margin-bottom-xs" aria-describedby="drink-description">
+	<legend class="field-label margin-bottom-xs" aria-describedby="drink-description">
 		Favorite drink
 	</legend>
 	<p class="field-description margin-bottom-xxs" id="drink-description">Which do you prefer?</p>
@@ -34,12 +34,12 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 		<label class="checkbox margin-bottom-xxs">
 			<input type="checkbox" />
 			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-			<span class="checkbox-text" aria-hidden="true">Coca-cola</span>
+			<span class="checkbox-text">Coca-cola</span>
 		</label>
 		<label class="checkbox">
 			<input type="checkbox" />
 			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-			<span class="checkbox-text" aria-hidden="true">Pepsi</span>
+			<span class="checkbox-text">Pepsi</span>
 		</label>
 	</div>
 </fieldset>
@@ -85,7 +85,7 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 ```html
 <form>
 	<div class="field">
-		<label class="field-label label" for="sample-form-validation-input">Input</label>
+		<label class="field-label" for="sample-form-validation-input">Input</label>
 		<div class="field-body">
 			<input
 				id="sample-form-validation-input"
@@ -109,18 +109,18 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 For control elements that are required for form submission, you can add a span element with the `.required-indicator` class inside the label or adjacent to the element.
 
 ```html
-<fieldset class="field border-none">
-	<legend class="field-label label margin-bottom-xs">Radio group</legend>
+<fieldset class="field">
+	<legend class="field-label margin-bottom-xs">Radio group</legend>
 	<p class="margin-bottom-xs">
 		Required fields are marked with
 		<span class="required-indicator"></span>
 	</p>
 	<div class="field-body">
-		<label class="radio field-label">
+		<label class="radio">
 			<input checked name="question-1" type="radio" class="radio-dot" value="Yes" required />
 			<span class="radio-label-text">Yes</span>
 		</label>
-		<label class="radio field-label">
+		<label class="radio">
 			<input checked name="question-1" type="radio" class="radio-dot" value="No" />
 			<span class="radio-label-text">No</span>
 		</label>
