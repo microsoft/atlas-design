@@ -34,6 +34,10 @@ $checkbox-spacing: $spacer-3 !default;
 	line-height: 1.25;
 	cursor: pointer;
 
+	&:not(:last-child) {
+		margin-block-end: 0.5rem;
+	}
+
 	.checkbox-check {
 		display: flex;
 		position: relative;

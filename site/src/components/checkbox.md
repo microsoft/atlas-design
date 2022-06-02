@@ -62,7 +62,7 @@ A checkbox is a square box that allows you to select the displayed option when a
 Here is an example of a group of checkboxes. Default spacing is added between each `.checkbox` when there is more than one checkbox.
 
 ```html
-<label class="checkbox margin-bottom-xxs">
+<label class="checkbox">
 	<input type="checkbox" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 	<span class="checkbox-text" aria-hidden="true">Checkbox 1</span>
