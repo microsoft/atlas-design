@@ -48,3 +48,16 @@ Here is an example of a standard usage of input paired with a label.
 ```abut-html
 <input class="input input-danger" type="text" placeholder="Placeholder" />
 ```
+
+### Modifiers
+
+Use `input-icon` on the input in combination with a `.icon` sibling to add an icon to the input. If the icon needs to displayed at the end of the input, use `input-icon-right`.
+
+```html
+<div class="position-relative margin-bottom-xxs">
+	<input class="input input-icon" type="text" /> <span class="icon border"></span>
+</div>
+<div class="position-relative">
+	<input class="input input-icon-right" type="text" /> <span class="icon border"></span>
+</div>
+```

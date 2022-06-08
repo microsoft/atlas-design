@@ -25,57 +25,22 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 `field-label` is used for the element's label.
 
 ```html
-<fieldset class="field border-none">
-	<legend class="field-label margin-bottom-xs" aria-describedby="drink-description">
-		Favorite drink
-	</legend>
-	<p class="field-description margin-bottom-xxs" id="drink-description">Which do you prefer?</p>
+<fieldset class="field">
+	<legend class="field-label" aria-describedby="drink-description">Field label</legend>
+	<p class="field-description" id="drink-description">Field description</p>
 	<div class="field-body">
-		<label class="checkbox margin-bottom-xxs">
+		<label class="checkbox">
 			<input type="checkbox" />
 			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-			<span class="checkbox-text">Coca-cola</span>
+			<span class="checkbox-text">Checkbox 1</span>
 		</label>
 		<label class="checkbox">
 			<input type="checkbox" />
 			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-			<span class="checkbox-text">Pepsi</span>
+			<span class="checkbox-text">Checkbox 2</span>
 		</label>
 	</div>
 </fieldset>
-```
-
-### Modifiers
-
-`.field-body-icons` is used when the control element contains icons.
-
-```html
-<div class="field">
-	<div class="field-body field-body-icons">
-		<input class="input input-sm" />
-		<span class="icon border" aria-hidden="true"> </span>
-	</div>
-	<div class="field-body field-body-icons margin-top-xxs">
-		<div class="select select-sm">
-			<select>
-				<option>A</option>
-				<option>B</option>
-			</select>
-			<span class="icon border" aria-hidden="true"> </span>
-		</div>
-	</div>
-</div>
-```
-
-`.field-body-icon-right` is used to display the icon on the right side of the element.
-
-```html
-<div class="field">
-	<div class="field-body field-body-icons field-body-icon-right">
-		<input class="input input-sm" />
-		<span class="icon border" aria-hidden="true"> </span>
-	</div>
-</div>
 ```
 
 ## Form Validation
@@ -109,22 +74,24 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 For control elements that are required for form submission, you can add a span element with the `.required-indicator` class inside the label or adjacent to the element.
 
 ```html
-<fieldset class="field">
-	<legend class="field-label margin-bottom-xs">Radio group</legend>
-	<p class="margin-bottom-xs">
-		Required fields are marked with
-		<span class="required-indicator"></span>
-	</p>
-	<div class="field-body">
-		<label class="radio">
-			<input checked name="question-1" type="radio" class="radio-dot" value="Yes" required />
-			<span class="radio-label-text">Yes</span>
-		</label>
-		<label class="radio">
-			<input checked name="question-1" type="radio" class="radio-dot" value="No" />
-			<span class="radio-label-text">No</span>
-		</label>
-		<span class="required-indicator"></span>
-	</div>
-</fieldset>
+<form>
+	<fieldset class="field">
+		<legend class="field-label">Radio group</legend>
+		<p class="margin-bottom-xs">
+			Required fields are marked with
+			<span class="required-indicator"></span>
+		</p>
+		<div class="field-body">
+			<label class="radio">
+				<input checked name="question-1" type="radio" class="radio-dot" value="Yes" required />
+				<span class="radio-label-text">Yes</span>
+			</label>
+			<label class="radio">
+				<input checked name="question-1" type="radio" class="radio-dot" value="No" />
+				<span class="radio-label-text">No</span>
+			</label>
+			<span class="required-indicator"></span>
+		</div>
+	</fieldset>
+</form>
 ```

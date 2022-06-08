@@ -10,12 +10,12 @@ $icon-color: $secondary-background !default;
 $icon-active-color: $secondary !default;
 
 .field {
-	position: relative;
-	font-size: $form-font-size;
-	text-align: start;
-
 	&:not(:last-child) {
-		margin-block-end: 0.75rem;
+		margin-block-end: $spacer-4;
+	}
+
+	.field-description {
+		margin-block-end: $spacer-4;
 	}
 
 	.field-label {
@@ -29,91 +29,9 @@ $icon-active-color: $secondary !default;
 	}
 
 	.field-body {
-		&.field-body-icons {
-			.icon {
-				position: absolute;
-				inset-block-start: 0;
-				inset-inline-start: 0;
-				width: $icon-size;
-				height: $icon-size;
-				color: $icon-color;
-				font-size: $form-font-size;
-				pointer-events: none;
-				z-index: $zindex-multi;
-				padding-inline-start: $icon-size;
-			}
-
-			.input,
-			.select select {
-				padding-inline-start: $icon-size;
-			}
-
-			.input,
-			.select {
-				~ .icon {
-					font-size: $form-font-size;
-				}
-
-				&:focus-visible {
-					~ .icon,
-					.icon {
-						color: $icon-active-color;
-					}
-				}
-
-				&.input-sm,
-				&.select-sm {
-					~ .icon,
-					.icon {
-						font-size: $form-font-size-sm;
-					}
-				}
-
-				&.input-lg,
-				&.select-lg {
-					~ .icon,
-					.icon {
-						font-size: $form-font-size-lg;
-					}
-				}
-			}
-
-			&.field-body-icon-right {
-				.input {
-					padding-inline: $control-padding-horizontal;
-
-					~ .icon {
-						inset-inline-start: unset;
-						inset-inline-end: 0;
-					}
-				}
-
-				.select {
-					~ .icon {
-						inset-inline-start: unset;
-						inset-inline-end: 2.25em;
-					}
-				}
-
-				.input,
-				.select select {
-					padding-inline-end: $icon-size;
-				}
-
-				.input[type='date'] {
-					position: relative;
-
-					&::-webkit-calendar-picker-indicator {
-						position: absolute;
-						width: 1.5em;
-						background: none;
-						color: transparent;
-						inset-inline-end: 0;
-						z-index: $zindex-dropdown;
-					}
-				}
-			}
-		}
+		position: relative;
+		font-size: $form-font-size;
+		text-align: start;
 	}
 
 	.field-validation-message {
