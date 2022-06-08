@@ -16,14 +16,6 @@ $input-success-border-color: $success !default;
 
 $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
-$input-icon-size: 2.25em !default;
-$input-icon-color: $secondary-background !default;
-$input-icon-active-color: $secondary !default;
-
-$input-icon-font-size: $font-size-7 !default;
-$input-icon-font-size-sm: $font-size-8 !default;
-$input-icon-font-size-lg: $font-size-6 !default;
-
 .input {
 	@include control;
 
@@ -78,67 +70,6 @@ $input-icon-font-size-lg: $font-size-6 !default;
 
 		@include focus-visible() {
 			box-shadow: $input-focus-box-shadow-size $input-success-border-color;
-		}
-	}
-
-	&.input-icon-right {
-		padding-inline-start: $control-padding-horizontal;
-		padding-inline-end: $input-icon-size;
-
-		~ .icon {
-			inset-inline-start: unset !important;
-			inset-inline-end: 0;
-		}
-
-		.input[type='date'] {
-			position: relative;
-
-			&::-webkit-calendar-picker-indicator {
-				position: absolute;
-				width: 1.5em;
-				background: none;
-				color: transparent;
-				inset-inline-end: 0;
-				z-index: $zindex-dropdown;
-			}
-		}
-	}
-
-	&.input-icon,
-	&.input-icon-right {
-		padding-inline-start: $input-icon-size;
-
-		+ .icon {
-			position: absolute;
-			inset-block-start: 0;
-			inset-inline-start: 0;
-			width: $input-icon-size;
-			height: $input-icon-size;
-			color: $input-icon-color;
-			font-size: $input-icon-font-size;
-			pointer-events: none;
-			z-index: $zindex-multi;
-			padding-inline-start: $input-icon-size;
-		}
-
-		@include focus-visible {
-			+ .icon {
-				color: $input-icon-active-color;
-			}
-		}
-
-		&.input-sm {
-			~ .icon,
-			.icon {
-				font-size: $input-icon-font-size-sm;
-			}
-		}
-
-		&.input-lg {
-			~ .icon,
-			.icon {
-				font-size: $input-icon-font-size-lg;
-			}
 		}
 	}
 }
