@@ -26,16 +26,16 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 
 ```html
 <fieldset class="field">
-	<legend class="field-label" aria-describedby="drink-description">Field label</legend>
+	<legend class="field-label">Field label</legend>
 	<p class="field-description" id="drink-description">Field description</p>
 	<div class="field-body">
 		<label class="checkbox">
-			<input type="checkbox" />
+			<input type="checkbox" name="field-checkbox" />
 			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 			<span class="checkbox-text">Checkbox 1</span>
 		</label>
 		<label class="checkbox">
-			<input type="checkbox" />
+			<input type="checkbox" name="field-checkbox" />
 			<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 			<span class="checkbox-text">Checkbox 2</span>
 		</label>
@@ -45,22 +45,32 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 
 ## Form Validation
 
-`.field-section-message` is placed after the element for form validation messages.
+`.field-error` is placed after the element for form validation error messages.
 
 ```html
 <form>
+	<p class="margin-bottom-xs visually-hidden">
+		Required fields are marked with asterisk/star
+		<span class="required-indicator" aria-hidden="true"></span>
+	</p>
 	<div class="field">
-		<label class="field-label" for="sample-form-validation-input">Input</label>
+		<label class="field-label" for="sample-form-validation-input"
+			>Input <span class="required-indicator"></span
+		></label>
+		<p class="field-description">
+			Optional field description
+			<!-- 👈 optional -->
+		</p>
 		<div class="field-body">
 			<input
 				id="sample-form-validation-input"
-				name="title"
+				name="sample-input"
 				class="input"
 				type="text"
-				aria-describedby="section-note"
+				required
 			/>
 		</div>
-		<p class="field-validation-message help help-danger">Input is required.</p>
+		<p class="field-error">Input is required.</p>
 	</div>
 	<div class="display-flex">
 		<button class="button button-primary margin-right-xxs">Submit</button>
@@ -75,12 +85,12 @@ For control elements that are required for form submission, you can add a span e
 
 ```html
 <form>
+	<p class="margin-bottom-xs visually-hidden">
+		Required fields are marked with asterisk/star
+		<span class="required-indicator" aria-hidden="true"></span>
+	</p>
 	<fieldset class="field">
-		<legend class="field-label">Radio group</legend>
-		<p class="margin-bottom-xs">
-			Required fields are marked with
-			<span class="required-indicator"></span>
-		</p>
+		<legend class="field-label">Radio group <span class="required-indicator"></span></legend>
 		<div class="field-body">
 			<label class="radio">
 				<input checked name="question-1" type="radio" class="radio-dot" value="Yes" required />
@@ -90,7 +100,6 @@ For control elements that are required for form submission, you can add a span e
 				<input checked name="question-1" type="radio" class="radio-dot" value="No" />
 				<span class="radio-label-text">No</span>
 			</label>
-			<span class="required-indicator"></span>
 		</div>
 	</fieldset>
 </form>

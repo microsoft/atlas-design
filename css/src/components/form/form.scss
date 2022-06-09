@@ -1,13 +1,7 @@
 /* stylelint-disable max-nesting-depth, selector-max-specificity  */
 
-$form-font-size: $font-size-7;
-$form-font-size-sm: $font-size-8;
-$form-font-size-lg: $font-size-6;
-
-$icon-size: 2.25em;
-
-$icon-color: $secondary-background !default;
-$icon-active-color: $secondary !default;
+$field-line-height: 1.5 !default;
+$field-error-color: $danger !default;
 
 .field {
 	&:not(:last-child) {
@@ -15,7 +9,8 @@ $icon-active-color: $secondary !default;
 	}
 
 	.field-description {
-		margin-block-end: $spacer-4;
+		margin-block-end: $spacer-3;
+		line-height: $field-line-height;
 	}
 
 	.field-label {
@@ -29,13 +24,14 @@ $icon-active-color: $secondary !default;
 	}
 
 	.field-body {
-		position: relative;
-		font-size: $form-font-size;
-		text-align: start;
+		&:not(:first-child) {
+			margin-block-start: $spacer-3;
+		}
 	}
 
-	.field-validation-message {
-		line-height: 1.5;
+	.field-error {
+		color: $field-error-color;
+		line-height: $field-line-height;
 	}
 }
 
