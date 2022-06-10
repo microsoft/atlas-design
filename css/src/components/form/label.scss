@@ -2,9 +2,13 @@ $label-color: $text !default;
 $label-font-size: $font-size-7 !default;
 $label-font-weight: $weight-semibold !default;
 
-.label {
+@mixin label {
 	display: block;
 	color: $label-color;
 	font-size: $label-font-size;
 	font-weight: $label-font-weight;
+}
+
+.label {
+	@include label;
 }

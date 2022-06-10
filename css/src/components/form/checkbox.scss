@@ -34,6 +34,10 @@ $checkbox-spacing: $spacer-3 !default;
 	line-height: 1.25;
 	cursor: pointer;
 
+	&:not(:last-child) {
+		margin-block-end: $checkbox-spacing;
+	}
+
 	.checkbox-check {
 		display: flex;
 		position: relative;
@@ -49,7 +53,7 @@ $checkbox-spacing: $spacer-3 !default;
 		border-radius: $checkbox-border-radius;
 
 		&:not(:last-child) {
-			margin-inline-end: 0.5rem;
+			margin-inline-end: $checkbox-spacing;
 		}
 
 		&::before {

@@ -1,5 +1,4 @@
-/** TODO: add visually-hidden atomic */
-
+.visually-hidden,
 ::part(visually-hidden) {
 	@include visually-hidden();
 }

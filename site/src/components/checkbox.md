@@ -9,69 +9,26 @@ figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.f
 
 A checkbox is a square box that allows you to select the displayed option when activated. It is usually associated with form submissions.
 
-<div class="table-wrapper margin-top-xs">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Type</th>
-				<th>Default</th>
-				<th>Disabled</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Unchecked</td>
-				<td>
-					<label class="checkbox font-size-md">
-						<input type="checkbox" />
-						<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-						<span class="checkbox-text" aria-hidden="true">Default</span>
-					</label>
-				</td>
-				<td>
-					<label class="checkbox font-size-md">
-						<input type="checkbox" disabled />
-						<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-						<span class="checkbox-text" aria-hidden="true">Disabled</span>
-					</label>
-				</td>
-			</tr>
-			<tr>
-				<td>Checked</td>
-				<td>
-					<label class="checkbox font-size-md">
-						<input type="checkbox" checked />
-						<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-						<span class="checkbox-text" aria-hidden="true">Default</span>
-					</label>
-				</td>
-				<td>
-					<label class="checkbox font-size-md">
-						<input type="checkbox" disabled checked />
-						<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-						<span class="checkbox-text" aria-hidden="true">Disabled</span>
-					</label>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+| Type      | Default State                                                                                                                                                                                       | Disabled                                                                                                                                                                                                      |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unchecked | <label class="checkbox font-size-md"><input type="checkbox" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Default</span></label>         | <label class="checkbox font-size-md"><input type="checkbox" disabled /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Disabled</span></label>         |
+| Checked   | <label class="checkbox font-size-md"><input type="checkbox" checked /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Default</span></label> | <label class="checkbox font-size-md"><input type="checkbox" disabled checked /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Disabled</span></label> |
 
 ## Usage
 
 Here is an example of a group of checkboxes. Default spacing is added between each `.checkbox` when there is more than one checkbox.
 
 ```html
-<label class="checkbox margin-bottom-xxs">
-	<input type="checkbox" />
+<label class="checkbox">
+	<input type="checkbox" name="checkbox-example" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-	<span class="checkbox-text" aria-hidden="true">Checkbox 1</span>
+	<span class="checkbox-text">Checkbox 1</span>
 </label>
 
 <label class="checkbox">
-	<input type="checkbox" checked />
+	<input type="checkbox" checked name="checkbox-example" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-	<span class="checkbox-text" aria-hidden="true">Checkbox 2</span>
+	<span class="checkbox-text">Checkbox 2</span>
 </label>
 ```
 
@@ -83,9 +40,9 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 
 ```html
 <label class="checkbox checkbox-muted">
-	<input type="checkbox" checked />
+	<input type="checkbox" checked name="checkbox-muted" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-	<span class="checkbox-text" aria-hidden="true">Checked</span>
+	<span class="checkbox-text">Checked</span>
 </label>
 ```
 
@@ -94,7 +51,7 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 ```html
 <label class="checkbox">
 	<span class="checkbox-check is-checked" role="presentation" aria-hidden="true"></span>
-	<span class="checkbox-text" aria-hidden="true">Checked</span>
+	<span class="checkbox-text">Checked</span>
 </label>
 ```
 
@@ -104,8 +61,8 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 
 ```html
 <label class="checkbox checkbox-sm">
-	<input type="checkbox" checked />
+	<input type="checkbox" checked name="checkbox-small" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-	<span class="checkbox-text" aria-hidden="true">Checked</span>
+	<span class="checkbox-text">Checked</span>
 </label>
 ```

@@ -1,0 +1,43 @@
+/* stylelint-disable max-nesting-depth, selector-max-specificity  */
+
+$field-line-height: 1.5 !default;
+$field-error-color: $danger !default;
+
+.field {
+	&:not(:last-child) {
+		margin-block-end: $spacer-4;
+	}
+
+	.field-description {
+		margin-block-end: $spacer-3;
+		line-height: $field-line-height;
+	}
+
+	.field-label {
+		@include label;
+
+		margin-block-end: $spacer-3;
+
+		@include tablet {
+			flex: 1 0 0;
+		}
+	}
+
+	.field-body {
+		&:not(:first-child) {
+			margin-block-start: $spacer-3;
+		}
+	}
+
+	.field-error {
+		color: $field-error-color;
+		line-height: $field-line-height;
+	}
+}
+
+.required-indicator::after,
+::part(required-indicator)::after {
+	color: $danger;
+	content: '*';
+	vertical-align: top;
+}
