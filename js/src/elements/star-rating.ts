@@ -1,12 +1,11 @@
-export function initStarRating() {
-	const starRatingTemplate = document.createElement('template');
-	starRatingTemplate.id = 'star-rating-template';
+const starRatingTemplate = document.createElement('template');
+starRatingTemplate.id = 'star-rating-template';
 
-	/* TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
+/* TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
 		https://web.dev/custom-elements-v1/
 		https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
 
-	starRatingTemplate.innerHTML = `
+starRatingTemplate.innerHTML = `
 	<style type="text/css">
 		*,
 		::before,
@@ -173,154 +172,165 @@ export function initStarRating() {
 	</fieldset>
 	`;
 
-	const template = starRatingTemplate;
+const template = starRatingTemplate;
 
-	class StarRatingElement extends HTMLElement {
-		static get observedAttributes() {
-			return ['disabled', 'name', 'value'];
-		}
+export class StarRatingElement extends HTMLElement {
+	static get observedAttributes() {
+		return ['disabled', 'name', 'value'];
+	}
 
-		coercedValue = '';
+	coercedValue = '';
 
-		constructor() {
-			super();
-			this.attachShadow({ mode: 'open' });
-			this.shadowRoot?.appendChild(template.content.cloneNode(true));
-		}
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' });
+		this.shadowRoot?.appendChild(template.content.cloneNode(true));
+	}
 
-		get disabled() {
-			return this.hasAttribute('disabled');
-		}
+	get disabled() {
+		return this.hasAttribute('disabled');
+	}
 
-		set disabled(val) {
-			this.setAttribute('disabled', val.toString());
-		}
+	set disabled(val) {
+		this.setAttribute('disabled', val.toString());
+	}
 
-		get name() {
-			return this.getAttribute('name') ?? '';
-		}
+	get name() {
+		return this.getAttribute('name') ?? '';
+	}
 
-		set name(val) {
-			this.setAttribute('name', val);
-		}
+	set name(val) {
+		this.setAttribute('name', val);
+	}
 
-		get required() {
-			return this.hasAttribute('required');
-		}
+	get required() {
+		return this.hasAttribute('required');
+	}
 
-		set required(val) {
-			this.setAttribute('required', val.toString());
-		}
+	set required(val) {
+		this.setAttribute('required', val.toString());
+	}
 
-		get type() {
-			return this.localName;
-		}
+	get type() {
+		return this.localName;
+	}
 
-		get value() {
-			return this.coercedValue;
-		}
+	get value() {
+		return this.coercedValue;
+	}
 
-		set value(val: string) {
-			this.coercedValue = ['', '1', '2', '3', '4', '5'].includes(val) ? val : '';
-			const toCheck = this.shadowRoot?.querySelector(
-				`[value="${this.coercedValue}"]`
-			) as HTMLInputElement;
-			if (toCheck) {
-				toCheck.checked = true;
-			} else {
-				const uncheck = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
-				if (uncheck) {
-					uncheck.checked = false;
-				}
-			}
-		}
-
-		get valueAsNumber() {
-			return parseInt(this.getAttribute('value') ?? '');
-		}
-
-		/** TODO: add form related properties (i.e validity, etc */
-
-		connectedCallback() {
-			this.shadowRoot?.addEventListener('change', this);
-			// arrow function to bind `this` value to star rating in handleFormData
-			this.closest('form')?.addEventListener('formdata', this);
-			this.shadowRoot?.addEventListener('slotchange', this);
-		}
-
-		disconnectedCallback() {
-			this.shadowRoot?.removeEventListener('change', this);
-			this.closest('form')?.removeEventListener('formdata', this);
-		}
-
-		attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-			if (oldValue !== newValue) {
-				this.updateContent(name, newValue);
-			}
-		}
-
-		updateContent(name: string, newValue: string) {
-			if (name === 'name') {
-				this.shadowRoot?.querySelectorAll('input[type="radio"]').forEach(input => {
-					input.setAttribute('name', this.name);
-				});
-			}
-			if (name === 'value') {
-				this.value = newValue;
-				this.updateStarFill(parseInt(newValue));
-			}
-			if (name === 'disabled') {
-				const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
-				fieldset.disabled = newValue !== null;
-			}
-		}
-
-		handleEvent(event: Event) {
-			switch (event.type) {
-				case 'change':
-					const target = event.target as HTMLInputElement;
-					this.updateContent('value', target.value);
-					this.dispatchEvent(new Event('change', { bubbles: true }));
-					break;
-				case 'formdata':
-					// https://web.dev/more-capable-form-controls/
-					(event as FormDataEvent).formData.append(this.name, this.value.toString());
-					break;
-				case 'slotchange':
-					const slot = event.target as HTMLSlotElement;
-					if (!slot.name.startsWith('label-')) {
-						break;
-					}
-					const radioNumber = slot.name.substring(6);
-					const label = this.shadowRoot?.querySelector(`[for="radio-${radioNumber}"]`);
-					if (label) {
-						while (label.firstElementChild !== label.lastElementChild) {
-							label.lastElementChild?.remove();
-						}
-						if (slot.assignedNodes().length) {
-							const hiddenSpan = document.createElement('span');
-							hiddenSpan.setAttribute('part', 'visually-hidden');
-							hiddenSpan.append(
-								...Array.from(slot.assignedNodes()).map(node => node.cloneNode(true))
-							);
-							label.append(hiddenSpan);
-						}
-					}
-					break;
-			}
-		}
-
-		updateStarFill(newValue: number) {
-			const stars = this.shadowRoot!.querySelectorAll('input');
-			for (let i = 0; i < 5; i++) {
-				if (i < newValue) {
-					stars[i].classList.add('is-selected');
-				} else {
-					stars[i].classList.remove('is-selected');
-				}
+	set value(val: string) {
+		this.coercedValue = ['', '1', '2', '3', '4', '5'].includes(val) ? val : '';
+		const toCheck = this.shadowRoot?.querySelector(
+			`[value="${this.coercedValue}"]`
+		) as HTMLInputElement;
+		if (toCheck) {
+			toCheck.checked = true;
+		} else {
+			const uncheck = this.shadowRoot?.querySelector(':checked') as HTMLInputElement;
+			if (uncheck) {
+				uncheck.checked = false;
 			}
 		}
 	}
 
-	return customElements.define('star-rating', StarRatingElement);
+	get valueAsNumber() {
+		return parseInt(this.getAttribute('value') ?? '');
+	}
+
+	/** TODO: add form related properties (i.e validity, etc */
+
+	connectedCallback() {
+		this.shadowRoot?.addEventListener('change', this);
+		// arrow function to bind `this` value to star rating in handleFormData
+		this.closest('form')?.addEventListener('formdata', this);
+		this.shadowRoot?.addEventListener('slotchange', this);
+	}
+
+	disconnectedCallback() {
+		this.shadowRoot?.removeEventListener('change', this);
+		this.closest('form')?.removeEventListener('formdata', this);
+	}
+
+	attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+		if (oldValue !== newValue) {
+			this.updateContent(name, newValue);
+		}
+	}
+
+	updateContent(name: string, newValue: string) {
+		if (name === 'name') {
+			this.shadowRoot?.querySelectorAll('input[type="radio"]').forEach(input => {
+				input.setAttribute('name', this.name);
+			});
+		}
+		if (name === 'value') {
+			this.value = newValue;
+			this.updateStarFill(parseInt(newValue));
+		}
+		if (name === 'disabled') {
+			const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
+			fieldset.disabled = newValue !== null;
+		}
+	}
+
+	handleEvent(event: Event) {
+		switch (event.type) {
+			case 'change':
+				const target = event.target as HTMLInputElement;
+				this.updateContent('value', target.value);
+				this.dispatchEvent(new Event('change', { bubbles: true }));
+				break;
+			case 'formdata':
+				// https://web.dev/more-capable-form-controls/
+				(event as FormDataEvent).formData.append(this.name, this.value.toString());
+				break;
+			case 'slotchange':
+				const slot = event.target as HTMLSlotElement;
+				if (!slot.name.startsWith('label-')) {
+					break;
+				}
+				const radioNumber = slot.name.substring(6);
+				const label = this.shadowRoot?.querySelector(`[for="radio-${radioNumber}"]`);
+				if (label) {
+					while (label.firstElementChild !== label.lastElementChild) {
+						label.lastElementChild?.remove();
+					}
+					if (slot.assignedNodes().length) {
+						const hiddenSpan = document.createElement('span');
+						hiddenSpan.setAttribute('part', 'visually-hidden');
+						hiddenSpan.append(
+							...Array.from(slot.assignedNodes()).map(node => node.cloneNode(true))
+						);
+						label.append(hiddenSpan);
+					}
+				}
+				break;
+		}
+	}
+
+	updateStarFill(newValue: number) {
+		const stars = this.shadowRoot!.querySelectorAll('input');
+		for (let i = 0; i < 5; i++) {
+			if (i < newValue) {
+				stars[i].classList.add('is-selected');
+			} else {
+				stars[i].classList.remove('is-selected');
+			}
+		}
+	}
+}
+
+declare global {
+	interface Window {
+		StarRatingElement: typeof StarRatingElement;
+	}
+	interface HTMLElementTagNameMap {
+		'star-rating': StarRatingElement;
+	}
+}
+
+if (!window.customElements.get('star-rating')) {
+	window.StarRatingElement = StarRatingElement;
+	window.customElements.define('star-rating', StarRatingElement);
 }
