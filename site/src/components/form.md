@@ -27,7 +27,7 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 ```html
 <fieldset class="field">
 	<legend class="field-label">Field label</legend>
-	<p class="field-description" id="drink-description">Field description</p>
+	<p class="field-description">Field description</p>
 	<div class="field-body">
 		<label class="checkbox">
 			<input type="checkbox" name="field-checkbox" />
@@ -49,7 +49,7 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 
 ```html
 <form>
-	<p class="margin-bottom-xs visually-hidden">Required fields are marked with asterisk/star</p>
+	<p class="\visually-hidden">Required fields are marked with asterisk/star</p>
 	<div class="field">
 		<label class="field-label" for="sample-form-validation-input"
 			>Input <span class="required-indicator"></span
@@ -82,7 +82,7 @@ For control elements that are required for form submission, you can add a span e
 
 ```html
 <form>
-	<p class="margin-bottom-xs visually-hidden">Required fields are marked with asterisk/star</p>
+	<p class="\visually-hidden">Required fields are marked with asterisk/star</p>
 	<fieldset class="field">
 		<legend class="field-label">Radio group <span class="required-indicator"></span></legend>
 		<div class="field-body">
