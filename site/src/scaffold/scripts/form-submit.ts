@@ -4,6 +4,12 @@ export function handleMockFormSubmit() {
 			e.preventDefault();
 			const formData = new FormData(form);
 			submitAlert(formData);
+			const warningIcon = document.createElement('span');
+			warningIcon.classList.add('warning-icon');
+
+			document.querySelectorAll('.form-error-container').forEach(container => {
+				container.firstElementChild?.prepend(warningIcon);
+			});
 		});
 	});
 }

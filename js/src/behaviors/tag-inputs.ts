@@ -6,7 +6,9 @@ export function initTagInputs(container: HTMLElement = document.body) {
 		(event: Event) => {
 			const targetTagContainer =
 				event.target instanceof Element &&
-				(event.target.closest('div.control')?.querySelector('input.tag-input') as HTMLInputElement);
+				(event.target
+					.closest('div.field-body')
+					?.querySelector('input.tag-input') as HTMLInputElement);
 
 			const tagHolder = document.querySelector('.tag-input-holder');
 			if (!targetTagContainer) {
@@ -29,6 +31,7 @@ export function initTagInputs(container: HTMLElement = document.body) {
 				'margin-inline-xxs'
 			);
 			newTag.innerText = newTag.id;
+
 			targetTagContainer.value += targetTagContainer.value ? `,${newTag.id}` : newTag.id;
 			targetTagContainer.dispatchEvent(new Event('change', { bubbles: true }));
 
@@ -48,9 +51,9 @@ export function initTagInputs(container: HTMLElement = document.body) {
 				}
 			});
 			newTag.insertAdjacentElement('beforeend', deleteButton);
-
-			if (tagHolder) {
-				tagHolder.append(newTag);
+			const tagsHolder = tagHolder?.querySelector('.tags');
+			if (tagsHolder) {
+				tagsHolder.append(newTag);
 			}
 		},
 		true

@@ -73,18 +73,6 @@ When the form do not require any edits (i.e the only action is to submit), you c
 
 `.field-error` is placed after the element for form validation error messages.
 
-```html
-<form>
-	<div class="field">
-		<p class="field-error">Input is required.</p>
-	</div>
-	<div class="display-flex">
-		<button class="button button-primary margin-right-xxs">Submit</button>
-		<button class="button button-danger">Cancel</button>
-	</div>
-</form>
-```
-
 ##### Form with edits required
 
 ```html
@@ -111,7 +99,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 	></form-behavior>
 	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
 	<div class="field">
-		<label class="label margin-none" for="sample-input-min">
+		<label class="field-label margin-none" for="sample-input-min">
 			Input with min/max length
 			<span class="required-indicator"></span>
 		</label>
@@ -170,17 +158,17 @@ When the form do not require any edits (i.e the only action is to submit), you c
 				maxtags="5"
 			/>
 			<div class="tag-input-holder margin-bottom-xxs has-height-auto">
-				<div class="field-body">
-					<input
-						role="combobox"
-						maxlength="100"
-						id="tag-input"
-						class="autocomplete-input input"
-						type="text"
-						aria-label="Tag selector"
-						placeholder="Enter tags..."
-					/>
-				</div>
+				<div class="tags"></div>
+				<input
+					role="combobox"
+					maxlength="100"
+					id="tag-input"
+					class="autocomplete-input input"
+					type="text"
+					aria-label="Tag selector"
+					placeholder="Enter tags..."
+					hidden
+				/>
 			</div>
 			<button class="add-tags-button" type="button">Add tags</button>
 		</div>
@@ -207,18 +195,6 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		<div class="field-body">
 			<star-rating id="rating-1" name="rating-1" required>
 				<legend slot="legend">Star rating</legend>
-				<span slot="label-1">Terrible</span>
-				<span slot="label-2">Poor</span>
-				<span slot="label-3">Fair</span>
-				<span slot="label-4">Good</span>
-				<span slot="label-5">Great</span>
-			</star-rating>
-		</div>
-	</div>
-	<div class="field">
-		<div class="field-body">
-			<star-rating id="rating-2" name="rating-2" disabled value="2">
-				<legend slot="legend">Star rating disabled</legend>
 				<span slot="label-1">Terrible</span>
 				<span slot="label-2">Poor</span>
 				<span slot="label-3">Fair</span>
@@ -261,14 +237,11 @@ When the form do not require any edits (i.e the only action is to submit), you c
 	<div class="field display-flex">
 		<button
 			type="submit"
-			class="button button-primary button-filled"
+			class="button button-primary button-filled margin-right-xxs"
 			value="yes"
 			name="simple-form"
 		>
 			Yes
-		</button>
-		<button type="submit" class="button button-primary button-filled" value="no" name="simple-form">
-			No
 		</button>
 	</div>
 </form>

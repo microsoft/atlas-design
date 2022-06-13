@@ -10,8 +10,8 @@ $field-error-color: $danger !default;
 
 	.field-description {
 		margin-block-end: $spacer-3;
-		line-height: $field-line-height;
 		font-size: $font-size-8;
+		line-height: $field-line-height;
 	}
 
 	.field-label {
@@ -21,6 +21,14 @@ $field-error-color: $danger !default;
 
 		@include tablet {
 			flex: 1 0 0;
+		}
+
+		&.field-label-sm {
+			font-size: $font-size-8;
+		}
+
+		&.field-label-lg {
+			font-size: $font-size-6;
 		}
 	}
 
@@ -32,6 +40,7 @@ $field-error-color: $danger !default;
 
 	.field-error {
 		color: $field-error-color;
+		font-size: $font-size-8;
 		line-height: $field-line-height;
 	}
 }

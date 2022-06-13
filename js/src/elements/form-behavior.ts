@@ -501,7 +501,7 @@ class FormBehaviorElement extends HTMLElement {
 				setValidationMessage(input, message);
 				group.classList.add('errored');
 				const child = document.createElement('li');
-				child.classList.add('margin-bottom-xs', 'font-weight-semibold');
+				child.classList.add('margin-bottom-xs');
 
 				const a = document.createElement('a');
 				a.href = `#${inputId}`;
