@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.1.1
+
+### Patch Changes
+
+- 290e2b5: Update star rating to allow for exporting.
+
 ## 1.1.0
 
 ### Minor Changes

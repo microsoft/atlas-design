@@ -1,5 +1,17 @@
 # @microsoft/atlas-site
 
+## 0.24.0
+
+### Minor Changes
+
+- 95d2e61: Add form field component.
+
+### Patch Changes
+
+- 290e2b5: Update star rating to allow for exporting.
+- Updated dependencies [290e2b5]
+  - @microsoft/atlas-js@1.1.1
+
 ## 0.23.0
 
 ### Minor Changes
