@@ -8,3 +8,13 @@
 	color: $danger;
 	border-color: $danger !important;
 }
+
+.warning-icon-container {
+	margin-inline-end: $spacer-3;
+
+	svg {
+		fill: currentColor;
+		width: 1rem;
+		height: auto;
+	}
+}

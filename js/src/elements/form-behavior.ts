@@ -277,7 +277,7 @@ class FormBehaviorElement extends HTMLElement {
 
 		const alertText = document.createElement('p');
 		alertText.id = alertId;
-		alertText.className = 'font-size-md font-weight-semibold margin-bottom-xs';
+		alertText.className = 'font-size-md font-weight-semibold margin-bottom-xs display-inline-flex';
 		alertText.innerText = this.locStrings.pleaseFixTheFollowingIssues;
 
 		const errorList = document.createElement('ul');
