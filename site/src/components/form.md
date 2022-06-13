@@ -92,12 +92,21 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
 		loc-input-required="{inputLabel} is required."
-		loc-please-fix-the-following-issues="Please fix these issues:"
+		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 		loc-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
 	></form-behavior>
 	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
+	<div class="field">
+		<label class="field-label margin-none" for="sample-input">
+			Input
+			<span class="required-indicator"></span>
+		</label>
+		<div class="field-body">
+			<input id="sample-input" name="input" class="input" type="text" value="" required />
+		</div>
+	</div>
 	<div class="field">
 		<label class="field-label margin-none" for="sample-input-min">
 			Input with min/max length
@@ -117,6 +126,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 				required
 				minlength="10"
 				maxlength="255"
+				aria-describedby="sample-input-description"
 			/>
 		</div>
 	</div>
@@ -193,7 +203,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 
 	<div class="field">
 		<div class="field-body">
-			<star-rating id="rating-1" name="rating-1" required>
+			<star-rating id="star-rating-1" name="star-rating-1" required>
 				<legend slot="legend">Star rating</legend>
 				<span slot="label-1">Terrible</span>
 				<span slot="label-2">Poor</span>
@@ -229,7 +239,7 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
 		loc-input-required="{inputLabel} is required."
-		loc-please-fix-the-following-issues="Please fix these issues:"
+		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 		loc-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
