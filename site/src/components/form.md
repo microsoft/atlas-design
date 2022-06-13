@@ -244,10 +244,10 @@ When the form do not require any edits (i.e the only action is to submit), you c
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 		loc-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
 	></form-behavior>
-	<div class="field display-flex">
+	<div class="field">
 		<button
 			type="submit"
-			class="button button-primary button-filled margin-right-xxs"
+			class="button button-primary button-filled"
 			value="yes"
 			name="simple-form"
 		>

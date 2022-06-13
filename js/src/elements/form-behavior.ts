@@ -282,6 +282,7 @@ class FormBehaviorElement extends HTMLElement {
 
 		const errorList = document.createElement('ul');
 		errorList.setAttribute('aria-label', 'Validation errors');
+		errorList.classList.add('margin-left-sm-tablet');
 
 		errorAlert.append(alertText, errorList);
 		formLayout.appendChild(errorAlert);
