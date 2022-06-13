@@ -2,8 +2,8 @@ const starRatingTemplate = document.createElement('template');
 starRatingTemplate.id = 'star-rating-template';
 
 /* TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
-https://web.dev/custom-elements-v1/
-https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
+	https://web.dev/custom-elements-v1/
+	https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
 
 starRatingTemplate.innerHTML = `
 <style type="text/css">
@@ -28,9 +28,9 @@ starRatingTemplate.innerHTML = `
 	
 	fieldset {
 		display: contents;
-        margin: 0;
-        border: none;
-        padding-block: 0.75rem;
+		margin: 0;
+		border: none;
+		padding-block: 0.75rem;
 	}
 	
 	.star-container {
@@ -113,7 +113,7 @@ starRatingTemplate.innerHTML = `
 		cursor: not-allowed;
 		pointer-events: none;
 	}
-  </style>
+</style>
 <fieldset>
 	<legend><slot name="legend" id="legend">Enter rating</slot></legend>
 
@@ -174,7 +174,7 @@ starRatingTemplate.innerHTML = `
 
 const template = starRatingTemplate;
 
-class StarRatingElement extends HTMLElement {
+export class StarRatingElement extends HTMLElement {
 	static get observedAttributes() {
 		return ['disabled', 'name', 'value'];
 	}
@@ -321,4 +321,16 @@ class StarRatingElement extends HTMLElement {
 	}
 }
 
-customElements.define('star-rating', StarRatingElement);
+declare global {
+	interface Window {
+		StarRatingElement: typeof StarRatingElement;
+	}
+	interface HTMLElementTagNameMap {
+		'star-rating': StarRatingElement;
+	}
+}
+
+if (!window.customElements.get('star-rating')) {
+	window.StarRatingElement = StarRatingElement;
+	window.customElements.define('star-rating', StarRatingElement);
+}
