@@ -260,7 +260,7 @@ export class StarRatingElement extends HTMLElement {
 	connectedCallback() {
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
-		this.closest('form')?.addEventListener('formdata', e => this.handleFormData(e));
+		this.form?.addEventListener('formdata', e => this.handleFormData(e));
 		this.shadowRoot?.addEventListener('slotchange', this);
 		this.setAttribute(
 			'aria-label',
@@ -275,7 +275,7 @@ export class StarRatingElement extends HTMLElement {
 
 	disconnectedCallback() {
 		this.shadowRoot?.removeEventListener('change', this);
-		this.closest('form')?.removeEventListener('formdata', this);
+		this.form?.removeEventListener('formdata', this);
 	}
 
 	attributeChangedCallback(name: string, oldValue: string, newValue: string) {
