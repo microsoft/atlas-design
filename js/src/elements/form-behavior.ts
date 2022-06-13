@@ -1,17 +1,16 @@
-import { generateElementId } from '../utilities/util';
+import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
-const defaultMessageStrings = `{
-	"contentHasChanged":
-		"Content has changed, please reload the page to get the latest changes.",
-	"inputMaxLength": "{inputLabel} cannot be longer than {maxLength} characters.",
-	"inputMinLength": "{inputLabel} must be at least {minLength} characters.",
-	"inputRequired": "{inputLabel} is required.",
-	"pleaseFixTheFollowingIssues": "Please fix the following issues to continue:",
-	"thereAreNoEditsToSubmit": "There are no edits to submit.",
-	"weEncounteredAnUnexpectedError":
-		"We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.",
-	"youMustSelectBetweenMinAndMaxTags": "You must select between {min} and {max} {tagLabel}."
-}`;
+const defaultMessageStrings = {
+	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
+	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
+	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
+	inputRequired: '{inputLabel} is required.',
+	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
+	thereAreNoEditsToSubmit: 'There are no edits to submit.',
+	weEncounteredAnUnexpectedError:
+		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.',
+	youMustSelectBetweenMinAndMaxTags: 'You must select between {min} and {max} {tagLabel}.'
+};
 // <form-behavior>
 class FormBehaviorElement extends HTMLElement {
 	submitting = false as boolean;
@@ -19,23 +18,17 @@ class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
-	defaultStrings = JSON.parse(defaultMessageStrings) as LocStrings;
-	locStrings = {
-		contentHasChanged: this.dataset.contentHasChanged ?? this.defaultStrings.contentHasChanged,
-		inputMaxLength: this.dataset.inputMaxLength ?? this.defaultStrings.inputMaxLength,
-		inputMinLength: this.dataset.inputMinLength ?? this.defaultStrings.inputMinLength,
-		inputRequired: this.dataset.inputRequired ?? this.defaultStrings.inputRequired,
-		pleaseFixTheFollowingIssues:
-			this.dataset.pleaseFixTheFollowingIssues ?? this.defaultStrings.pleaseFixTheFollowingIssues,
-		thereAreNoEditsToSubmit:
-			this.dataset.thereAreNoEditsToSubmit ?? this.defaultStrings.thereAreNoEditsToSubmit,
-		weEncounteredAnUnexpectedError:
-			this.dataset.weEncounteredAnUnexpectedError ??
-			this.defaultStrings.weEncounteredAnUnexpectedError,
-		youMustSelectBetweenMinAndMaxTags:
-			this.dataset.youMustSelectBetweenMinAndMaxTags ??
-			this.defaultStrings.youMustSelectBetweenMinAndMaxTags
-	} as LocStrings;
+	locStrings = Object.assign(
+		{},
+		defaultMessageStrings,
+		Array.from(this.attributes)
+			.filter(a => a.name.startsWith('loc-'))
+			.reduce((map: { [key: string]: string }, a) => {
+				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
+				return map;
+			}, {})
+	);
+
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
 		this.validateRequired.bind(this),
@@ -55,6 +48,10 @@ class FormBehaviorElement extends HTMLElement {
 
 	get canSave() {
 		return this.isDirty || this.isNew;
+	}
+
+	get form() {
+		return this.closest(`form`);
 	}
 
 	connectedCallback() {
@@ -138,7 +135,7 @@ class FormBehaviorElement extends HTMLElement {
 
 	commit = (event: Event) => {
 		if (
-			!isValueElement(event.target) ||
+			!isValueElement(event.target, this.form) ||
 			!event.target?.form ||
 			event.target?.form !== this.parentElement
 		) {
@@ -207,7 +204,7 @@ class FormBehaviorElement extends HTMLElement {
 
 			const init: RequestInit = {
 				method,
-				body: JSON.stringify(toObject(formData)),
+				body: JSON.stringify(Object.fromEntries(formData)),
 				headers
 			};
 
@@ -377,7 +374,7 @@ class FormBehaviorElement extends HTMLElement {
 
 		if (customElements) {
 			for (const input of customElements) {
-				if (!scope.contains(input) || !canValidate(input)) {
+				if (!scope.contains(input) || !canValidate(input, form)) {
 					continue;
 				}
 				this.runBasicValidation(input, displayValidity, errors, errorList, false, true);
@@ -388,7 +385,7 @@ class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
-			if (!scope.contains(input) || !canValidate(input)) {
+			if (!scope.contains(input) || !canValidate(input, form)) {
 				continue;
 			}
 
@@ -423,7 +420,7 @@ class FormBehaviorElement extends HTMLElement {
 	}
 
 	clearValidationErrors(target: EventTarget | null) {
-		if (!canValidate(target)) {
+		if (!canValidate(target, this.form)) {
 			return;
 		}
 
@@ -470,7 +467,7 @@ class FormBehaviorElement extends HTMLElement {
 		isTagSelector: boolean,
 		isCustomElement: boolean
 	) {
-		if (!canValidate(input)) {
+		if (!canValidate(input, this.form)) {
 			return;
 		}
 
@@ -562,9 +559,25 @@ interface LocStrings {
 	youMustSelectBetweenMinAndMaxTags: string;
 }
 
+type LocStringsKeys = keyof LocStrings;
+
+export interface FormValidationError {
+	message: string;
+	input: HTMLValueElement;
+}
+
+export type FormValidationResult =
+	| { valid: true }
+	| { valid: false; errors: FormValidationError[] };
+
+type Validator = (input: HTMLValueElement, label: string) => string | null;
+
 // Check if the required value related properties exist rather than an instance of a form related element.
-function isValueElement(target: EventTarget | null): target is HTMLValueElement {
-	if (target) {
+function isValueElement(
+	target: EventTarget | null,
+	form: HTMLFormElement | null
+): target is HTMLValueElement {
+	/* 	if (target) {
 		const element = target as HTMLValueElement;
 		return (
 			element.value !== undefined &&
@@ -573,6 +586,24 @@ function isValueElement(target: EventTarget | null): target is HTMLValueElement 
 			element.localName !== 'button'
 		);
 	}
+	return false; */
+
+	const element = target as HTMLInputElement;
+	if (element) {
+		return (
+			element instanceof HTMLElement &&
+			'form' in element &&
+			element.form === form &&
+			'validity' in element &&
+			element.validity instanceof ValidityState &&
+			'value' in element &&
+			typeof element.value === 'string' &&
+			'type' in element &&
+			typeof element.type === 'string' &&
+			!['button', 'submit'].includes(element.type)
+		);
+	}
+
 	return false;
 }
 
@@ -618,11 +649,11 @@ function getField(input: HTMLValueElement) {
 	return group;
 }
 
-function getControl(input: HTMLValueElement) {
-	const body = input.closest('.control');
+function getFieldBody(input: HTMLValueElement) {
+	const body = input.closest('.field-body');
 	if (!body) {
 		throw new Error(
-			`${input.nodeName} name="${input.name}" id="${input.id}" is not within a .control`
+			`${input.nodeName} name="${input.name}" id="${input.id}" is not within a .field-body`
 		);
 	}
 	return body;
@@ -635,44 +666,22 @@ function createErrorNote(input: HTMLValueElement) {
 		'aria-describedby',
 		`${note.id} ${input.getAttribute('aria-describedby') || ''}`
 	);
-	note.classList.add('help', 'help-danger');
-	getControl(input).after(note);
+	note.classList.add('field-error');
+	getFieldBody(input).after(note);
 	return note;
 }
 
 function setValidationMessage(element: HTMLValueElement, message: string) {
 	const group = getField(element);
-	const note = group.querySelector('.help.help-danger') || createErrorNote(element);
+	const note = group.querySelector('.field-error') || createErrorNote(element);
 	note.textContent = message;
 }
 
-export interface FormValidationError {
-	message: string;
-	input: HTMLValueElement;
-}
-
-export type FormValidationResult =
-	| { valid: true }
-	| { valid: false; errors: FormValidationError[] };
-
-type Validator = (input: HTMLValueElement, label: string) => string | null;
-
-function canValidate(target: EventTarget | null): target is HTMLValueElement {
-	return isValueElement(target) && (target as HTMLValueElement).type !== 'hidden';
-}
-
-/**
- * Convert to an object.
- */
-export function toObject<TKey extends string | number | symbol, TValue>(
-	formData: FormData
-): Record<TKey, TValue> {
-	const object = Object.create(null) as Record<TKey, TValue>;
-	formData.forEach((value, key) => {
-		// @ts-ignore any
-		object[key] = value;
-	});
-	return object;
+function canValidate(
+	target: EventTarget | null,
+	form: HTMLFormElement | null
+): target is HTMLValueElement {
+	return isValueElement(target, form) && (target as HTMLValueElement).type !== 'hidden';
 }
 
 export function navigateAfterSubmit(href: string, navigationStep: string | null) {
@@ -698,7 +707,7 @@ export function navigateAfterSubmit(href: string, navigationStep: string | null)
 	}
 }
 
-/* Custom elements are not included in HTMLFormControlsCollection so can't be retrieved by form.elements */
+/* Custom elements are not included in HTMLFormControlsCollection so they can't be retrieved by form.elements */
 export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 	// Compare FormData with form.elements to find missing elements.
 	const formData = Object.fromEntries(new FormData(form));
