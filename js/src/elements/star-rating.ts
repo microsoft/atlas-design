@@ -25,6 +25,20 @@ starRatingTemplate.innerHTML = `
 
 		cursor: not-allowed;
 	}
+
+	.visually-hidden,
+    ::part(visually-hidden) {
+        position: absolute;
+    	width: 1px;
+    	height: 1px;
+    	margin: -1px;
+    	padding: 0;
+    	border: 0;
+    	overflow: hidden;
+    	clip: rect(1px, 1px, 1px, 1px);
+    	clip-path: inset(50%);
+    	word-wrap: normal;
+    }
 	
 	fieldset {
 		display: contents;
