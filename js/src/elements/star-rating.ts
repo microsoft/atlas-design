@@ -132,7 +132,7 @@ starRatingTemplate.innerHTML = `
 	<legend><slot name="legend" id="legend">Enter rating</slot></legend>
 
 	<div class="star-container">
-		<input part="visually-hidden" type="radio" value="1" id="radio-1" />
+		<input part="visually-hidden" type="radio" value="1" id="radio-1" class="visually-hidden"/>
 		<label for="radio-1">
 			<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<path id="star" d="M7.1939 2.10167C7.52403 1.43275 8.47789 1.43274 8.80802 2.10167L10.3291 5.18372L13.7304 5.67795C14.4685 5.78522 
@@ -143,7 +143,7 @@ starRatingTemplate.innerHTML = `
 			<span part="visually-hidden">1<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
-		<input part="visually-hidden" type="radio" value="2" id="radio-2" />
+		<input part="visually-hidden" type="radio" value="2" id="radio-2" class="visually-hidden"/>
 		<label for="radio-2" >
 			<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<use href="#star">
@@ -151,7 +151,7 @@ starRatingTemplate.innerHTML = `
 			<span part="visually-hidden">2<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
-		<input part="visually-hidden" type="radio" value="3" id="radio-3" />
+		<input part="visually-hidden" type="radio" value="3" id="radio-3" class="visually-hidden"/>
 		<label for="radio-3">
 			<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<use href="#star">
@@ -159,7 +159,7 @@ starRatingTemplate.innerHTML = `
 			<span part="visually-hidden">3<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
-		<input part="visually-hidden" type="radio" value="4" id="radio-4" />
+		<input part="visually-hidden" type="radio" value="4" id="radio-4" class="visually-hidden"/>
 		<label for="radio-4" >
 			<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<use href="#star">
@@ -167,7 +167,7 @@ starRatingTemplate.innerHTML = `
 			<span part="visually-hidden">4<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
-		<input part="visually-hidden" type="radio" value="5" id="radio-5" />
+		<input part="visually-hidden" type="radio" value="5" id="radio-5" class="visually-hidden"/>
 		<label for="radio-5">
 			<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" style="overflow: visible" >
 				<use href="#star">
