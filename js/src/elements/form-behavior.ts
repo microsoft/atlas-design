@@ -151,6 +151,7 @@ class FormBehaviorElement extends HTMLElement {
 	};
 
 	async handleUnloadEvent(event: BeforeUnloadEvent) {
+		this.setDirty();
 		if (!this.isDirty) {
 			return;
 		}
@@ -559,8 +560,6 @@ interface LocStrings {
 	weEncounteredAnUnexpectedError: string;
 	youMustSelectBetweenMinAndMaxTags: string;
 }
-
-type LocStringsKeys = keyof LocStrings;
 
 export interface FormValidationError {
 	message: string;
