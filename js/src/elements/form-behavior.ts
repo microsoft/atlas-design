@@ -188,6 +188,7 @@ class FormBehaviorElement extends HTMLElement {
 				return;
 			}
 
+			handleSubmitButtonAction(event);
 			const url = form.action;
 			const params = new URL(form.action).searchParams;
 			const formData = new FormData(form);
@@ -209,7 +210,7 @@ class FormBehaviorElement extends HTMLElement {
 				headers
 			};
 
-			const event = new CustomEvent('beforesubmit', {
+			const beforeSubmitEvent = new CustomEvent('beforesubmit', {
 				detail: {
 					url,
 					init,
@@ -219,12 +220,12 @@ class FormBehaviorElement extends HTMLElement {
 				cancelable: true
 			});
 
-			const cancelled = !this.dispatchEvent(event);
+			const cancelled = !this.dispatchEvent(beforeSubmitEvent);
 			if (cancelled) {
 				return;
 			}
 
-			const request = new Request(event.detail.url, event.detail.init);
+			const request = new Request(beforeSubmitEvent.detail.url, beforeSubmitEvent.detail.init);
 			const response = await fetch(request);
 			if (response.ok) {
 				this.removeAttribute('new');
@@ -271,7 +272,7 @@ class FormBehaviorElement extends HTMLElement {
 		const errorAlert = document.createElement('div');
 		errorAlert.className =
 			'alert help help-danger border border-color-danger border-radius padding-xs';
-		errorAlert.setAttribute('role', 'group');
+		errorAlert.setAttribute('role', 'alert');
 		errorAlert.setAttribute('aria-labelledby', alertId);
 		errorAlert.setAttribute('tabindex', '-1');
 		errorAlert.hidden = true;
@@ -729,4 +730,15 @@ function clearInputErrorBorder(input: HTMLValueElement) {
 		input.nextElementSibling?.classList.remove('border-color-danger');
 	}
 	input.classList.remove(`${input.localName}-danger`);
+}
+
+function handleSubmitButtonAction(event: Event) {
+	const submitter = (event as SubmitEvent).submitter;
+	const formAction =
+		submitter instanceof HTMLButtonElement && submitter.formAction ? submitter.formAction : null;
+	const form = event.currentTarget as HTMLFormElement;
+
+	if (formAction) {
+		form.action = formAction;
+	}
 }
