@@ -178,18 +178,12 @@ class FormBehaviorElement extends HTMLElement {
 		try {
 			this.submitting = true;
 			setBusySubmitButton(form, this.submitting);
-			const valid = await this.validateForm(
-				form,
-				undefined,
-				undefined,
-				collectCustomElementsByName(form)
-			);
+			const valid = await this.validateForm(form);
 			if (!valid.valid) {
 				return;
 			}
 
-			handleSubmitButtonAction(event);
-			const url = form.action;
+			const url = handleSubmitButtonAction(event) ?? form.action;
 			const params = new URL(form.action).searchParams;
 			const formData = new FormData(form);
 			// set and read headers:
@@ -356,7 +350,6 @@ class FormBehaviorElement extends HTMLElement {
 					.replace('{max}', max)
 					.replace('{tagLabel}', label.toLocaleLowerCase())}`;
 			}
-			return null;
 		}
 		return null;
 	}
@@ -364,8 +357,7 @@ class FormBehaviorElement extends HTMLElement {
 	async validateForm(
 		form: HTMLFormElement,
 		displayValidity = true,
-		scope: Element = form,
-		customElements?: Element[]
+		scope: Element = form
 	): Promise<FormValidationResult> {
 		const errors: FormValidationError[] = [];
 		const { errorAlert, errorList } = this.getErrorAlert(form);
@@ -375,15 +367,8 @@ class FormBehaviorElement extends HTMLElement {
 			errorList.innerHTML = '';
 		}
 
-		if (customElements) {
-			for (const input of customElements) {
-				if (!scope.contains(input) || !canValidate(input, form)) {
-					continue;
-				}
-				this.runBasicValidation(input, displayValidity, errors, errorList, false, true);
-			}
-		}
-		for (const input of form.elements) {
+		const customElements = collectCustomElementsByName(form);
+		for (const input of [...form.elements, ...customElements]) {
 			if (input instanceof HTMLButtonElement) {
 				continue;
 			}
@@ -578,17 +563,6 @@ function isValueElement(
 	target: EventTarget | null,
 	form: HTMLFormElement | null
 ): target is HTMLValueElement {
-	/* 	if (target) {
-		const element = target as HTMLValueElement;
-		return (
-			element.value !== undefined &&
-			element.validity !== undefined &&
-			element.form !== undefined &&
-			element.localName !== 'button'
-		);
-	}
-	return false; */
-
 	const element = target as HTMLInputElement;
 	if (element) {
 		return (
@@ -736,9 +710,6 @@ function handleSubmitButtonAction(event: Event) {
 	const submitter = (event as SubmitEvent).submitter;
 	const formAction =
 		submitter instanceof HTMLButtonElement && submitter.formAction ? submitter.formAction : null;
-	const form = event.currentTarget as HTMLFormElement;
 
-	if (formAction) {
-		form.action = formAction;
-	}
+	return formAction;
 }
