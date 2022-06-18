@@ -168,10 +168,15 @@ class FormBehaviorElement extends HTMLElement {
 		}
 
 		const form = event.currentTarget as HTMLFormElement;
+		const validationErrorEvent = new CustomEvent('validationerror', {
+			bubbles: true,
+			cancelable: true
+		});
 
 		// reject the submit if no edits have been made (overridable with the new attribute)
 		if (!this.canSave) {
 			this.showNoChangesMessage(form);
+			this.dispatchEvent(validationErrorEvent);
 			return;
 		}
 
@@ -180,6 +185,7 @@ class FormBehaviorElement extends HTMLElement {
 			setBusySubmitButton(form, this.submitting);
 			const valid = await this.validateForm(form);
 			if (!valid.valid) {
+				this.dispatchEvent(validationErrorEvent);
 				return;
 			}
 
@@ -369,10 +375,6 @@ class FormBehaviorElement extends HTMLElement {
 
 		const customElements = collectCustomElementsByName(form);
 		for (const input of [...form.elements, ...customElements]) {
-			if (input instanceof HTMLButtonElement) {
-				continue;
-			}
-
 			if (!scope.contains(input) || !canValidate(input, form)) {
 				continue;
 			}

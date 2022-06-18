@@ -224,8 +224,8 @@ The form behavior component can accept certain HTML attributes.
 	</div>
 	<div class="display-flex">
 		<button type="submit" class="button button-primary button-filled">Submit form</button>
-		<button type="button" class="button">Cancel</button>
 	</div>
+	<div class="submitted-form-data-example"></div>
 </form>
 ```
 
@@ -264,5 +264,6 @@ The form behavior component can accept certain HTML attributes.
 			Yes
 		</button>
 	</div>
+	<div class="submitted-form-data-example"></div>
 </form>
 ```

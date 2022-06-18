@@ -1,13 +1,8 @@
 export function handleMockFormSubmit() {
 	document.querySelectorAll('form')?.forEach(form => {
-		form.addEventListener('submit', function (e) {
-			e.preventDefault();
-			const formData = new FormData(form);
-			submitAlert(formData);
-
-			const warningIcon = document.createElement('span');
-			warningIcon.classList.add('warning-icon-container');
-			warningIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 15 13">
+		const warningIcon = document.createElement('span');
+		warningIcon.classList.add('warning-icon-container');
+		warningIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 15 13">
 				<path d="M7.50781 0.109375C7.23698 0.109375 6.98177 0.182292 6.74219 0.328125C6.5026 0.46875 6.31771 0.658854 6.1875 
 				0.898438L0.859375 10.7891C0.739583 11.013 0.679688 11.25 0.679688 11.5C0.679688 11.7031 0.721354 11.8958 0.804688 
 				12.0781C0.882812 12.2604 0.989583 12.4193 1.125 12.5547C1.26042 12.6901 1.41927 12.7995 1.60156 12.8828C1.78385 12.9609 
@@ -35,15 +30,42 @@ export function handleMockFormSubmit() {
 				9H8.00781V4H7.00781V9Z"/>
 				</svg>`;
 
-			document.querySelectorAll('.form-error-container').forEach(container => {
-				if (!container.firstElementChild?.querySelector('.warning-icon-container')) {
-					container.firstElementChild?.prepend(warningIcon);
-				}
-			});
+		form.addEventListener('validationerror', function (e) {
+			e.preventDefault();
+			console.log('error');
+			const container = form.querySelector('.form-error-container');
+			const warningIconContainer =
+				container?.firstElementChild?.querySelector('.warning-icon-container');
+
+			if (!warningIconContainer) {
+				container?.firstElementChild?.prepend(warningIcon);
+			}
+		});
+
+		form.addEventListener('beforesubmit', function (e) {
+			e.preventDefault();
+
+			const formData = new FormData(form);
+			populateSubmittedFormData(formData, form);
 		});
 	});
 }
 
-function submitAlert(formData: FormData) {
-	alert(`The form is being submitted, ${JSON.stringify(Object.fromEntries(formData), null, 2)}`);
+function populateSubmittedFormData(formData: FormData, form: HTMLFormElement) {
+	/* alert(`The form is being submitted, ${JSON.stringify(Object.fromEntries(formData), null, 2)}`); */
+	const submittedFormDataExample = form.querySelector('.submitted-form-data-example');
+	const dataMessage = `The following data will be submitted: ${JSON.stringify(
+		Object.fromEntries(formData),
+		null,
+		2
+	)}`;
+
+	if (submittedFormDataExample?.firstChild) {
+		submittedFormDataExample.firstChild.textContent = dataMessage;
+	} else {
+		const message = document.createElement('p');
+		message.classList.add('padding-xs');
+		message.textContent = dataMessage;
+		submittedFormDataExample?.appendChild(message);
+	}
 }

@@ -222,7 +222,7 @@ export class StarRatingElement extends HTMLElement {
 	}
 
 	set required(val) {
-		this.required = val !== null;
+		this.toggleAttribute('required', val);
 	}
 
 	get type() {
@@ -268,9 +268,6 @@ export class StarRatingElement extends HTMLElement {
 				? (this.querySelector('legend[slot="legend"]') as HTMLLegendElement)?.innerText
 				: 'star rating'
 		);
-		if (!this.name) {
-			throw new Error(`${this.nodeName} id="${this.id}" requires a name attribute.`);
-		}
 	}
 
 	disconnectedCallback() {
@@ -322,10 +319,6 @@ export class StarRatingElement extends HTMLElement {
 				this.updateContent('value', target.value, target);
 				this.dispatchEvent(new Event('change', { bubbles: true }));
 				break;
-			case 'formdata':
-				// https://web.dev/more-capable-form-controls/
-				(event as FormDataEvent).formData.append(this.name, this.value.toString());
-				break;
 			case 'slotchange':
 				const slot = event.target as HTMLSlotElement;
 				if (!slot.name.startsWith('label-')) {
@@ -350,14 +343,13 @@ export class StarRatingElement extends HTMLElement {
 		}
 	}
 
-	handleFormData(event: Event) {
-		const starRating = this as StarRatingElement;
-
-		if (!starRating || starRating.disabled) {
+	handleFormData(event: FormDataEvent) {
+		if (this.disabled) {
 			return;
 		}
-		const elementName = starRating.name || 'unnamed-star-rating';
-		(event as FormDataEvent).formData.append(elementName, starRating.value);
+		if (this.name) {
+			event.formData.append(this.name, this.value);
+		}
 	}
 
 	updateStarFill(newValue: number) {
