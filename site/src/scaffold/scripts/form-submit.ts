@@ -30,29 +30,35 @@ export function handleMockFormSubmit() {
 				9H8.00781V4H7.00781V9Z"/>
 				</svg>`;
 
-		form.addEventListener('validationerror', function (e) {
-			e.preventDefault();
-			console.log('error');
-			const container = form.querySelector('.form-error-container');
-			const warningIconContainer =
-				container?.firstElementChild?.querySelector('.warning-icon-container');
+		form.addEventListener(
+			'validationerror',
+			e => {
+				e.preventDefault();
+				const container = form.querySelector('.form-error-container');
+				const warningIconContainer =
+					container?.firstElementChild?.querySelector('.warning-icon-container');
 
-			if (!warningIconContainer) {
-				container?.firstElementChild?.prepend(warningIcon);
-			}
-		});
+				if (!warningIconContainer) {
+					container?.firstElementChild?.prepend(warningIcon);
+				}
+			},
+			{ capture: true }
+		);
 
-		form.addEventListener('beforesubmit', function (e) {
-			e.preventDefault();
+		form.addEventListener(
+			'beforesubmit',
+			e => {
+				e.preventDefault();
 
-			const formData = new FormData(form);
-			populateSubmittedFormData(formData, form);
-		});
+				const formData = new FormData(form);
+				populateSubmittedFormData(formData, form);
+			},
+			{ capture: true }
+		);
 	});
 }
 
 function populateSubmittedFormData(formData: FormData, form: HTMLFormElement) {
-	/* alert(`The form is being submitted, ${JSON.stringify(Object.fromEntries(formData), null, 2)}`); */
 	const submittedFormDataExample = form.querySelector('.submitted-form-data-example');
 	const dataMessage = `The following data will be submitted: ${JSON.stringify(
 		Object.fromEntries(formData),
