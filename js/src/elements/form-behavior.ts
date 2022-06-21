@@ -190,7 +190,7 @@ class FormBehaviorElement extends HTMLElement {
 			}
 
 			const url = handleSubmitButtonAction(event) ?? form.action;
-			const params = new URL(form.action).searchParams;
+			const params = new URL(url).searchParams;
 			const formData = new FormData(form);
 			// set and read headers:
 			const headers = new Headers();
