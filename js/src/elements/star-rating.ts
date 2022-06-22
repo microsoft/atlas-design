@@ -304,11 +304,6 @@ export class StarRatingElement extends HTMLElement {
 		if (name === 'required') {
 			const input = this.shadowRoot?.querySelectorAll('input[type="radio"]')[0] as HTMLInputElement;
 			input.required = newValue !== null;
-			const requiredIndicator = document.createElement('span');
-			requiredIndicator.setAttribute('part', 'required-indicator');
-			requiredIndicator.ariaHidden = 'true';
-			const lastStar = this.shadowRoot?.querySelectorAll('label')[4] as HTMLLabelElement;
-			lastStar.insertAdjacentElement('afterend', requiredIndicator);
 		}
 	}
 

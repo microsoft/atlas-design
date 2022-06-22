@@ -94,6 +94,7 @@ The form behavior component can accept certain HTML attributes.
 	novalidate=""
 >
 	<form-behavior
+		new=""
 		navigation="follow"
 		header-content-type="application/json"
 		header-x-docsauth="cookie"
@@ -108,7 +109,7 @@ The form behavior component can accept certain HTML attributes.
 	></form-behavior>
 	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
 	<div class="field">
-		<label class="field-label margin-none" for="sample-input">
+		<label class="field-label" for="sample-input">
 			Input
 			<span class="required-indicator"></span>
 		</label>
@@ -117,7 +118,7 @@ The form behavior component can accept certain HTML attributes.
 		</div>
 	</div>
 	<div class="field">
-		<label class="field-label margin-none" for="sample-input-min">
+		<label class="field-label" for="sample-input-min">
 			Input with min/max length
 			<span class="required-indicator"></span>
 		</label>
@@ -140,7 +141,7 @@ The form behavior component can accept certain HTML attributes.
 		</div>
 	</div>
 	<div class="field">
-		<label class="label" for="sample-select">
+		<label class="field-label" for="sample-select">
 			Select
 			<span class="required-indicator"></span>
 		</label>
@@ -176,7 +177,7 @@ The form behavior component can accept certain HTML attributes.
 				mintags="1"
 				maxtags="5"
 			/>
-			<div class="tag-input-holder margin-bottom-xxs has-height-auto">
+			<div class="tag-input-holder has-height-auto">
 				<div class="tags"></div>
 				<input
 					role="combobox"
@@ -211,6 +212,7 @@ The form behavior component can accept certain HTML attributes.
 	</div>
 
 	<div class="field">
+		<div class="field-label">Star rating<span class="required-indicator"></span></div>
 		<div class="field-body">
 			<star-rating id="star-rating-1" name="star-rating-1" required>
 				<legend slot="legend">Star rating</legend>
