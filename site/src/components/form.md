@@ -160,7 +160,7 @@ The form behavior component can accept certain HTML attributes.
 		</div>
 	</div>
 	<div class="field">
-		<label class="label" for="sample-tags">
+		<label class="field-label" for="sample-tags">
 			Tags
 			<span class="required-indicator"></span>
 		</label>
@@ -211,11 +211,11 @@ The form behavior component can accept certain HTML attributes.
 		</div>
 	</div>
 
-	<div class="field">
-		<div class="field-label">Star rating<span class="required-indicator"></span></div>
+	<div class="field display-inline-flex">
+		<div class="field-label align-self-flex-end" for="star-rating-1">Star rating<span class="required-indicator"></span></div>
 		<div class="field-body">
 			<star-rating id="star-rating-1" name="star-rating-1" required>
-				<legend slot="legend">Star rating</legend>
+				<legend slot="legend" class="visually-hidden">Star rating<span class="required-indicator"></span></legend>
 				<span slot="label-1">Terrible</span>
 				<span slot="label-2">Poor</span>
 				<span slot="label-3">Fair</span>

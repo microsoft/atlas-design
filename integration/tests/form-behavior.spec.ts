@@ -17,16 +17,6 @@ export const test = base.extend({
 });
 
 test.describe('form behavior validation', () => {
-	test('show thereAreNoEditsToSubmit message when there are no edits', async ({
-		errorContainer,
-		submitBtn
-	}) => {
-		await submitBtn.click();
-
-		expect(errorContainer).toContainText('Please fix the following issues to continue:');
-		expect(errorContainer).toContainText('There are no edits to submit.');
-	});
-
 	test('show inputMinLength message when input length is below minlength', async ({
 		page,
 		errorContainer,
