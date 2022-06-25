@@ -22,7 +22,7 @@ Forms contain form control elements such as the following:
 
 The `.field` component is a container for form control elements to provide consistency.
 It can be used to hold `.field-body` containers, which holds the individual elements.
-`field-label` is used for the element's label.
+`field-label` is used for the element's label. Use `.field-label-inline` and `.field-body-inline` to display the label and body inline.
 
 ```html
 <fieldset class="field">
@@ -211,11 +211,15 @@ The form behavior component can accept certain HTML attributes.
 		</div>
 	</div>
 
-	<div class="field display-inline-flex">
-		<div class="field-label align-self-flex-end" for="star-rating-1">Star rating<span class="required-indicator"></span></div>
+	<div class="field">
+		<div class="field-label" for="star-rating-1">
+			Star rating<span class="required-indicator"></span>
+		</div>
 		<div class="field-body">
 			<star-rating id="star-rating-1" name="star-rating-1" required>
-				<legend slot="legend" class="visually-hidden">Star rating<span class="required-indicator"></span></legend>
+				<legend slot="legend" class="visually-hidden">
+					Star rating<span class="required-indicator"></span>
+				</legend>
 				<span slot="label-1">Terrible</span>
 				<span slot="label-2">Poor</span>
 				<span slot="label-3">Fair</span>

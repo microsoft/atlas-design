@@ -19,6 +19,12 @@ $field-error-color: $danger !default;
 
 		margin-block-end: $spacer-3;
 
+		&.field-label-inline {
+			display: inline-flex;
+			margin-block-end: unset;
+			align-self: flex-end;
+		}
+
 		@include tablet {
 			flex: 1 0 0;
 		}
@@ -35,6 +41,11 @@ $field-error-color: $danger !default;
 	.field-body {
 		&:not(:first-child) {
 			margin-block-start: $spacer-3;
+
+			&.field-body-inline {
+				display: inline-flex;
+				vertical-align: text-bottom;
+			}
 		}
 	}
 
