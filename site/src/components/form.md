@@ -69,7 +69,7 @@ For elements that are required for form submission, you can add a span element w
 ## Form Behavior
 
 Use the `form-behavior` component within a form to ensure accessible form validation. Form elements should be contained by `.field` and `.field-body` class.
-When the form do not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
+When the form does not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
 
 `.field-error` is placed after the element for form validation error messages.
 

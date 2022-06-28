@@ -394,7 +394,16 @@ class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
-			this.runBasicValidation(input, displayValidity, errors, errorList, isTagSelector, false);
+			const isCustomElement = !!customElements.find(el => el === input);
+
+			this.runBasicValidation(
+				input,
+				displayValidity,
+				errors,
+				errorList,
+				isTagSelector,
+				isCustomElement
+			);
 		}
 
 		if (errors.length === 0) {
@@ -497,6 +506,17 @@ class FormBehaviorElement extends HTMLElement {
 				a.href = `#${inputId}`;
 				a.textContent = message;
 				a.classList.add('help', 'help-danger');
+
+				/* a.addEventListener('click', e => {
+					console.log('e', e.target);
+					if (isCustomElement) {
+						const link = (e.target as HTMLAnchorElement).getAttribute('href');
+						if (link) {
+							console.log('click', document.querySelector(link));
+							(document.querySelector(link) as HTMLElement).focus();
+						}
+					}
+				}); */
 
 				child.appendChild(a);
 				errorList.appendChild(child);
