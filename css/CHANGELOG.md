@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.18.0
+
+### Minor Changes
+
+- d20e762: Add form behavior pattern and relevant documentation.
+
 ## 3.17.0
 
 ### Minor Changes

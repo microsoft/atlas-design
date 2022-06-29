@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.2.0
+
+### Minor Changes
+
+- d20e762: Add form behavior pattern and relevant documentation.
+
 ## 1.1.1
 
 ### Patch Changes
