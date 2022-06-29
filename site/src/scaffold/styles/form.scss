@@ -1,0 +1,20 @@
+.tag-input-holder {
+	border: 1px solid $control-border;
+	height: 36px;
+}
+
+.form-error-container {
+	background-color: $danger-background;
+	color: $danger;
+	border-color: $danger !important;
+}
+
+.warning-icon-container {
+	margin-inline-end: $spacer-3;
+
+	svg {
+		fill: currentColor;
+		width: 1rem;
+		height: auto;
+	}
+}

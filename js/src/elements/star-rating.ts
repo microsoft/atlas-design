@@ -1,9 +1,14 @@
 const starRatingTemplate = document.createElement('template');
 starRatingTemplate.id = 'star-rating-template';
 
-/* TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
-	https://web.dev/custom-elements-v1/
-	https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet */
+/** TODO: Consider replacing with constructable stylesheets when there is broader support for Firefox and Safari.
+ * https://web.dev/custom-elements-v1/
+ * https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
+ *
+ * TODO: Turn into form associated custom element when element internals is more supported
+ * https://web.dev/more-capable-form-controls/
+ * https://caniuse.com/?search=internals
+ */
 
 starRatingTemplate.innerHTML = `
 <style type="text/css">
@@ -25,14 +30,18 @@ starRatingTemplate.innerHTML = `
 
 		cursor: not-allowed;
 	}
-	
+
 	fieldset {
 		display: contents;
 		margin: 0;
 		border: none;
 		padding-block: 0.75rem;
 	}
-	
+
+	legend {
+		margin-inline-end: 0.25rem;
+	}
+
 	.star-container {
 		display: flex;
 	}
@@ -45,12 +54,13 @@ starRatingTemplate.innerHTML = `
 	/* On hover, fill stars as default so that stars prior to hovered/checked star looks filled, then un-fill the following stars */
 
 	.star-container > input:not(.is-selected) ~ label svg,
-	.star-container > input + label:hover ~ label svg,
+	.star-container > input + label:hover ~ input:not(.is-selected) + label svg,
 	.star-container > input:checked ~ label svg {
 		fill: none;
 	}
 
 	.star-container:hover > input + label svg,
+	.star-container:hover ~ input.is-selected + label svg,
 	.star-container > input.is-selected + label svg,
 	.star-container input:focus-visible:not(:disabled) + label svg {
 		fill: var(--star-color);
@@ -113,8 +123,8 @@ starRatingTemplate.innerHTML = `
 		cursor: not-allowed;
 		pointer-events: none;
 	}
-</style>
-<fieldset>
+  </style>
+  <fieldset>
 	<legend><slot name="legend" id="legend">Enter rating</slot></legend>
 
 	<div class="star-container">
@@ -161,22 +171,22 @@ starRatingTemplate.innerHTML = `
 			<span part="visually-hidden">5<!-- default label, will be replaced by slot content if provided --></span>
 		</label>
 
-		<span id="alert">
+		<output id="alert" for="radio-1 radio-2 radio-3 radio-4 radio-5" class="star-rating-output">
 			<span id="label-1"><slot name="label-1"></slot></span>
 			<span id="label-2"><slot name="label-2"></slot></span>
 			<span id="label-3"><slot name="label-3"></slot></span>
 			<span id="label-4"><slot name="label-4"></slot></span>
 			<span id="label-5"><slot name="label-5"></slot></span>
-		</span>
+		</output>
 	</div>
-</fieldset>
+    </fieldset>
 `;
 
 const template = starRatingTemplate;
 
 export class StarRatingElement extends HTMLElement {
 	static get observedAttributes() {
-		return ['disabled', 'name', 'value'];
+		return ['disabled', 'name', 'required', 'value'];
 	}
 
 	coercedValue = '';
@@ -195,6 +205,10 @@ export class StarRatingElement extends HTMLElement {
 		this.setAttribute('disabled', val.toString());
 	}
 
+	get form() {
+		return this.closest(`form`);
+	}
+
 	get name() {
 		return this.getAttribute('name') ?? '';
 	}
@@ -208,7 +222,7 @@ export class StarRatingElement extends HTMLElement {
 	}
 
 	set required(val) {
-		this.setAttribute('required', val.toString());
+		this.toggleAttribute('required', val);
 	}
 
 	get type() {
@@ -238,18 +252,27 @@ export class StarRatingElement extends HTMLElement {
 		return parseInt(this.getAttribute('value') ?? '');
 	}
 
-	/** TODO: add form related properties (i.e validity, etc */
+	get validity() {
+		// borrow radio input's native validity
+		return this.shadowRoot?.querySelector('input')?.validity;
+	}
 
 	connectedCallback() {
 		this.shadowRoot?.addEventListener('change', this);
 		// arrow function to bind `this` value to star rating in handleFormData
-		this.closest('form')?.addEventListener('formdata', this);
+		this.form?.addEventListener('formdata', e => this.handleFormData(e));
 		this.shadowRoot?.addEventListener('slotchange', this);
+		this.setAttribute(
+			'aria-label',
+			this.querySelector('legend[slot="legend"]')
+				? (this.querySelector('legend[slot="legend"]') as HTMLLegendElement)?.innerText
+				: 'star rating'
+		);
 	}
 
 	disconnectedCallback() {
 		this.shadowRoot?.removeEventListener('change', this);
-		this.closest('form')?.removeEventListener('formdata', this);
+		this.form?.removeEventListener('formdata', this);
 	}
 
 	attributeChangedCallback(name: string, oldValue: string, newValue: string) {
@@ -258,7 +281,7 @@ export class StarRatingElement extends HTMLElement {
 		}
 	}
 
-	updateContent(name: string, newValue: string) {
+	updateContent(name: string, newValue: string, target?: HTMLInputElement) {
 		if (name === 'name') {
 			this.shadowRoot?.querySelectorAll('input[type="radio"]').forEach(input => {
 				input.setAttribute('name', this.name);
@@ -267,10 +290,20 @@ export class StarRatingElement extends HTMLElement {
 		if (name === 'value') {
 			this.value = newValue;
 			this.updateStarFill(parseInt(newValue));
+			const outputElement = this.shadowRoot?.querySelector(
+				'.star-rating-output'
+			) as HTMLOutputElement;
+			if (target?.nextElementSibling) {
+				outputElement.textContent = target?.nextElementSibling?.textContent!.trimStart();
+			}
 		}
 		if (name === 'disabled') {
 			const fieldset = this.shadowRoot?.querySelector('fieldset') as HTMLFieldSetElement;
 			fieldset.disabled = newValue !== null;
+		}
+		if (name === 'required') {
+			const input = this.shadowRoot?.querySelectorAll('input[type="radio"]')[0] as HTMLInputElement;
+			input.required = newValue !== null;
 		}
 	}
 
@@ -278,12 +311,8 @@ export class StarRatingElement extends HTMLElement {
 		switch (event.type) {
 			case 'change':
 				const target = event.target as HTMLInputElement;
-				this.updateContent('value', target.value);
+				this.updateContent('value', target.value, target);
 				this.dispatchEvent(new Event('change', { bubbles: true }));
-				break;
-			case 'formdata':
-				// https://web.dev/more-capable-form-controls/
-				(event as FormDataEvent).formData.append(this.name, this.value.toString());
 				break;
 			case 'slotchange':
 				const slot = event.target as HTMLSlotElement;
@@ -306,6 +335,15 @@ export class StarRatingElement extends HTMLElement {
 					}
 				}
 				break;
+		}
+	}
+
+	handleFormData(event: FormDataEvent) {
+		if (this.disabled) {
+			return;
+		}
+		if (this.name) {
+			event.formData.append(this.name, this.value);
 		}
 	}
 

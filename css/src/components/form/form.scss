@@ -10,6 +10,7 @@ $field-error-color: $danger !default;
 
 	.field-description {
 		margin-block-end: $spacer-3;
+		font-size: $font-size-8;
 		line-height: $field-line-height;
 	}
 
@@ -18,19 +19,39 @@ $field-error-color: $danger !default;
 
 		margin-block-end: $spacer-3;
 
+		&.field-label-inline {
+			display: inline-flex;
+			margin-block-end: unset;
+			align-self: flex-end;
+		}
+
 		@include tablet {
 			flex: 1 0 0;
+		}
+
+		&.field-label-sm {
+			font-size: $font-size-8;
+		}
+
+		&.field-label-lg {
+			font-size: $font-size-6;
 		}
 	}
 
 	.field-body {
 		&:not(:first-child) {
 			margin-block-start: $spacer-3;
+
+			&.field-body-inline {
+				display: inline-flex;
+				vertical-align: text-bottom;
+			}
 		}
 	}
 
 	.field-error {
 		color: $field-error-color;
+		font-size: $font-size-8;
 		line-height: $field-line-height;
 	}
 }
