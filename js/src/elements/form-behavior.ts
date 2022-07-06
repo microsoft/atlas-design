@@ -507,17 +507,6 @@ class FormBehaviorElement extends HTMLElement {
 				a.textContent = message;
 				a.classList.add('help', 'help-danger');
 
-				/* a.addEventListener('click', e => {
-					console.log('e', e.target);
-					if (isCustomElement) {
-						const link = (e.target as HTMLAnchorElement).getAttribute('href');
-						if (link) {
-							console.log('click', document.querySelector(link));
-							(document.querySelector(link) as HTMLElement).focus();
-						}
-					}
-				}); */
-
 				child.appendChild(a);
 				errorList.appendChild(child);
 
@@ -689,6 +678,16 @@ export function navigateAfterSubmit(href: string, navigationStep: string | null)
 		case 'follow':
 			if (href) {
 				location.href = href;
+			}
+			break;
+		case 'hash-reload':
+			if (href) {
+				const search = href.includes('?') ? '' : window.location.search;
+				if (href !== search + window.location.hash) {
+					const state = (history.state || {}) as Record<string, any>;
+					window.history.pushState(state, document.title, window.location.pathname + search + href); // prevents scrolling to spot until reload
+				}
+				location.reload();
 			}
 			break;
 		case 'replace':
