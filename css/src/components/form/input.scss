@@ -20,10 +20,6 @@ $input-icon-size: 2.25em !default;
 $input-icon-color: $text-subtle !default;
 $input-icon-active-color: $secondary !default;
 
-$input-icon-font-size: $font-size-7 !default;
-$input-icon-font-size-sm: $font-size-8 !default;
-$input-icon-font-size-lg: $font-size-6 !default;
-
 .input {
 	@include control;
 
@@ -109,7 +105,7 @@ $input-icon-font-size-lg: $font-size-6 !default;
 		padding-inline-start: $input-icon-size;
 
 		&.input-icon-right {
-			padding-inline-start: unset;
+			padding-inline-start: $spacer-3;
 		}
 
 		+ .icon {
@@ -120,7 +116,6 @@ $input-icon-font-size-lg: $font-size-6 !default;
 			height: $input-icon-size;
 			fill: currentColor;
 			color: $input-icon-color;
-			font-size: $input-icon-font-size;
 			pointer-events: none;
 			z-index: $zindex-multi;
 		}
@@ -132,16 +127,14 @@ $input-icon-font-size-lg: $font-size-6 !default;
 		}
 
 		&.input-sm {
-			~ .icon,
-			.icon {
-				font-size: $input-icon-font-size-sm;
+			~ .icon {
+				@include control-sm;
 			}
 		}
 
 		&.input-lg {
-			~ .icon,
-			.icon {
-				font-size: $input-icon-font-size-lg;
+			~ .icon {
+				@include control-lg;
 			}
 		}
 	}
