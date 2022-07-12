@@ -17,7 +17,7 @@ $input-success-border-color: $success !default;
 $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
 $input-icon-size: 2.25em !default;
-$input-icon-color: $secondary-background !default;
+$input-icon-color: $text-subtle !default;
 $input-icon-active-color: $secondary !default;
 
 $input-icon-font-size: $font-size-7 !default;
@@ -108,17 +108,21 @@ $input-icon-font-size-lg: $font-size-6 !default;
 	&.input-icon-right {
 		padding-inline-start: $input-icon-size;
 
+		&.input-icon-right {
+			padding-inline-start: unset;
+		}
+
 		+ .icon {
 			position: absolute;
 			inset-block-start: 0;
 			inset-inline-start: 0;
 			width: $input-icon-size;
 			height: $input-icon-size;
+			fill: currentColor;
 			color: $input-icon-color;
 			font-size: $input-icon-font-size;
 			pointer-events: none;
 			z-index: $zindex-multi;
-			padding-inline-start: $input-icon-size;
 		}
 
 		@include focus-visible {
