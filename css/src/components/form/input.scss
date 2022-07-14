@@ -55,6 +55,8 @@ $input-icon-active-color: $secondary !default;
 
 	&.input-sm {
 		@include control-sm;
+
+		padding-inline-start: 2.75em;
 	}
 
 	&.input-lg {
@@ -78,7 +80,6 @@ $input-icon-active-color: $secondary !default;
 	}
 
 	&.input-icon-right {
-		padding-inline-start: $control-padding-horizontal;
 		padding-inline-end: $input-icon-size;
 
 		~ .icon {
@@ -105,7 +106,7 @@ $input-icon-active-color: $secondary !default;
 		padding-inline-start: $input-icon-size;
 
 		&.input-icon-right {
-			padding-inline-start: $spacer-3;
+			padding-inline-start: $control-padding-horizontal;
 		}
 
 		+ .icon {
@@ -113,7 +114,7 @@ $input-icon-active-color: $secondary !default;
 			inset-block-start: 0;
 			inset-inline-start: 0;
 			width: $input-icon-size;
-			height: $input-icon-size;
+			height: 100%;
 			fill: currentColor;
 			color: $input-icon-color;
 			pointer-events: none;
@@ -127,14 +128,16 @@ $input-icon-active-color: $secondary !default;
 		}
 
 		&.input-sm {
-			~ .icon {
-				@include control-sm;
+			~ .icon svg {
+				width: 0.875em;
+				height: 0.875em;
 			}
 		}
 
 		&.input-lg {
-			~ .icon {
-				@include control-lg;
+			~ .icon svg {
+				width: 1.125em;
+				height: 1.125em;
 			}
 		}
 	}
