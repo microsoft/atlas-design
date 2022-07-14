@@ -16,6 +16,10 @@ $input-success-border-color: $success !default;
 
 $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
+$input-icon-size: 2.25em !default;
+$input-icon-color: $text-subtle !default;
+$input-icon-active-color: $secondary !default;
+
 .input {
 	@include control;
 
@@ -51,6 +55,8 @@ $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
 	&.input-sm {
 		@include control-sm;
+
+		padding-inline-start: 2.75em;
 	}
 
 	&.input-lg {
@@ -70,6 +76,69 @@ $input-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
 		@include focus-visible() {
 			box-shadow: $input-focus-box-shadow-size $input-success-border-color;
+		}
+	}
+
+	&.input-icon-right {
+		padding-inline-end: $input-icon-size;
+
+		~ .icon {
+			inset-inline-start: unset !important;
+			inset-inline-end: 0;
+		}
+
+		.input[type='date'] {
+			position: relative;
+
+			&::-webkit-calendar-picker-indicator {
+				position: absolute;
+				width: 1.5em;
+				background: none;
+				color: transparent;
+				inset-inline-end: 0;
+				z-index: $zindex-dropdown;
+			}
+		}
+	}
+
+	&.input-icon,
+	&.input-icon-right {
+		padding-inline-start: $input-icon-size;
+
+		&.input-icon-right {
+			padding-inline-start: $control-padding-horizontal;
+		}
+
+		+ .icon {
+			position: absolute;
+			inset-block-start: 0;
+			inset-inline-start: 0;
+			width: $input-icon-size;
+			height: 100%;
+			fill: currentColor;
+			color: $input-icon-color;
+			pointer-events: none;
+			z-index: $zindex-multi;
+		}
+
+		@include focus-visible {
+			+ .icon {
+				color: $input-icon-active-color;
+			}
+		}
+
+		&.input-sm {
+			~ .icon svg {
+				width: 0.875em;
+				height: 0.875em;
+			}
+		}
+
+		&.input-lg {
+			~ .icon svg {
+				width: 1.125em;
+				height: 1.125em;
+			}
 		}
 	}
 }
