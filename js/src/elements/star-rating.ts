@@ -268,6 +268,7 @@ export class StarRatingElement extends HTMLElement {
 				? (this.querySelector('legend[slot="legend"]') as HTMLLegendElement)?.innerText
 				: 'star rating'
 		);
+		this.style.scrollMargin = '2rem';
 	}
 
 	disconnectedCallback() {
