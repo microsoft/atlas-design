@@ -83,7 +83,8 @@ starRatingTemplate.innerHTML = `
 		display: none;
 	}
 	
-	input:focus-visible + label {
+	input:focus-visible + label,
+	input:focus + label {
 		border-radius: 0.5em;
 		outline: 3px dashed;
 	}
@@ -186,7 +187,7 @@ const template = starRatingTemplate;
 
 export class StarRatingElement extends HTMLElement {
 	static get observedAttributes() {
-		return ['disabled', 'name', 'required', 'value'];
+		return ['disabled', 'name', 'required', 'value', 'focus'];
 	}
 
 	coercedValue = '';
@@ -269,6 +270,7 @@ export class StarRatingElement extends HTMLElement {
 				: 'star rating'
 		);
 		this.style.scrollMargin = '2rem';
+		this.addEventListener('focus', this);
 	}
 
 	disconnectedCallback() {
@@ -315,6 +317,9 @@ export class StarRatingElement extends HTMLElement {
 				this.updateContent('value', target.value, target);
 				this.dispatchEvent(new Event('change', { bubbles: true }));
 				break;
+			case 'focus':
+				this.shadowRoot!.querySelectorAll('input')[0].focus();
+				break;
 			case 'slotchange':
 				const slot = event.target as HTMLSlotElement;
 				if (!slot.name.startsWith('label-')) {
@@ -357,6 +362,11 @@ export class StarRatingElement extends HTMLElement {
 				stars[i].classList.remove('is-selected');
 			}
 		}
+	}
+
+	focus() {
+		this.setAttribute('tabindex', '-1');
+		this.shadowRoot!.querySelectorAll('input')[0].focus();
 	}
 }
 
