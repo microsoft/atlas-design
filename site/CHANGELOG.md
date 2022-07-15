@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.26.0
+
+### Minor Changes
+
+- 87acc49: Add input icons.
+
+### Patch Changes
+
+- Updated dependencies [c8a9e5e]
+  - @microsoft/atlas-js@1.3.0
+
 ## 0.25.0
 
 ### Minor Changes
