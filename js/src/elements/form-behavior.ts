@@ -124,7 +124,7 @@ class FormBehaviorElement extends HTMLElement {
 
 	navigate(href: string | null) {
 		if (href) {
-			navigateAfterSubmit(href, this.getAttribute('navigation'));
+			navigateAfterSubmit(href, this.getAttribute('navigation') as NavigationSteps);
 		}
 	}
 
@@ -558,6 +558,8 @@ interface LocStrings {
 	youMustSelectBetweenMinAndMaxTags: string;
 }
 
+type NavigationSteps = 'follow' | 'hash-reload' | 'replace' | 'reload' | null;
+
 export interface FormValidationError {
 	message: string;
 	input: HTMLValueElement;
@@ -670,7 +672,7 @@ function canValidate(
 	return isValueElement(target, form) && (target as HTMLValueElement).type !== 'hidden';
 }
 
-export function navigateAfterSubmit(href: string, navigationStep: string | null) {
+export function navigateAfterSubmit(href: string, navigationStep: NavigationSteps) {
 	switch (navigationStep) {
 		case null:
 			// do nothing.
