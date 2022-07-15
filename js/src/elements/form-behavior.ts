@@ -124,7 +124,7 @@ class FormBehaviorElement extends HTMLElement {
 
 	navigate(href: string | null) {
 		if (href) {
-			navigateAfterSubmit(href, this.getAttribute('navigation'));
+			navigateAfterSubmit(href, this.getAttribute('navigation') as NavigationSteps);
 		}
 	}
 
@@ -507,17 +507,6 @@ class FormBehaviorElement extends HTMLElement {
 				a.textContent = message;
 				a.classList.add('help', 'help-danger');
 
-				/* a.addEventListener('click', e => {
-					console.log('e', e.target);
-					if (isCustomElement) {
-						const link = (e.target as HTMLAnchorElement).getAttribute('href');
-						if (link) {
-							console.log('click', document.querySelector(link));
-							(document.querySelector(link) as HTMLElement).focus();
-						}
-					}
-				}); */
-
 				child.appendChild(a);
 				errorList.appendChild(child);
 
@@ -568,6 +557,8 @@ interface LocStrings {
 	weEncounteredAnUnexpectedError: string;
 	youMustSelectBetweenMinAndMaxTags: string;
 }
+
+type NavigationSteps = 'follow' | 'hash-reload' | 'replace' | 'reload' | null;
 
 export interface FormValidationError {
 	message: string;
@@ -681,7 +672,7 @@ function canValidate(
 	return isValueElement(target, form) && (target as HTMLValueElement).type !== 'hidden';
 }
 
-export function navigateAfterSubmit(href: string, navigationStep: string | null) {
+export function navigateAfterSubmit(href: string, navigationStep: NavigationSteps) {
 	switch (navigationStep) {
 		case null:
 			// do nothing.
@@ -689,6 +680,16 @@ export function navigateAfterSubmit(href: string, navigationStep: string | null)
 		case 'follow':
 			if (href) {
 				location.href = href;
+			}
+			break;
+		case 'hash-reload':
+			if (href) {
+				const search = href.includes('?') ? '' : window.location.search;
+				if (href !== search + window.location.hash) {
+					const state = (history.state || {}) as Record<string, any>;
+					window.history.pushState(state, document.title, window.location.pathname + search + href); // prevents scrolling to spot until reload
+				}
+				location.reload();
 			}
 			break;
 		case 'replace':

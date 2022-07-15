@@ -76,6 +76,7 @@ When the form does not require any edits (i.e the only action is to submit), you
 The form behavior component can accept certain HTML attributes.
 
 - `navigation` handles different navigation options after form submission.
+  - `hash-reload` - add a hash and reload the current page while navigating to the hash.
   - `follow` - redirect to the url provided by the API response header or `navigation-href` attribute value.
   - `reload` - reload the current page
   - `replace` - replaces the current page with the url provided by the API response header or `navigation-href` attribute value.
