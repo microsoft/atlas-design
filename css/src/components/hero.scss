@@ -11,16 +11,16 @@ $hero-min-height-lg: 500px !default;
 .hero {
 	@extend %layout-gap;
 
-	align-items: stretch;
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	position: relative;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-between;
 
 	.hero-content {
-		z-index: $zindex-active;
 		width: 100%;
 		max-width: $reading-max-width !important;
+		z-index: $zindex-active;
 		padding-block: $hero-padding-sm;
 
 		@include desktop {
@@ -51,19 +51,19 @@ $hero-min-height-lg: 500px !default;
 
 	.hero-card {
 		position: relative;
-		z-index: 1;
+		padding: $spacer-5;
 		border: none;
 		background-color: transparent;
-		padding: $spacer-5;
+		z-index: 1;
 
 		@include tablet {
 			padding: $spacer-10;
 		}
 
 		@include desktop {
+			border-right: 1px solid $border;
 			border-bottom: 1px solid $border;
 			border-left: 1px solid $border;
-			border-right: 1px solid $border;
 			border-bottom-left-radius: $border-radius-lg;
 			border-bottom-right-radius: $border-radius-lg;
 		}
@@ -72,9 +72,9 @@ $hero-min-height-lg: 500px !default;
 	.hero-background {
 		position: absolute;
 		top: 0;
-		left: 0;
 		right: 0;
 		bottom: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -88,17 +88,17 @@ $hero-min-height-lg: 500px !default;
 	}
 }
 
-.hero-image:before {
+.hero-image::before {
 	display: none;
-	content: ' ';
-	width: calc(100% - $reading-max-width);
-	height: 100%;
 	position: absolute;
 	top: 0;
-	inset-inline-end: $layout-gap;
-	background-size: cover;
-	background-repeat: no-repeat;
+	width: calc(100% - $reading-max-width);
+	height: 100%;
 	background-image: var(--hero-background-image);
+	background-repeat: no-repeat;
+	background-size: cover;
+	content: ' ';
+	inset-inline-end: $layout-gap;
 
 	@include widescreen {
 		inset-inline-end: $layout-widescreen-gap;
@@ -116,9 +116,11 @@ $hero-min-height-lg: 500px !default;
 	.theme-light & {
 		--hero-background-image: var(--hero-background-image-light);
 	}
+
 	.theme-dark & {
 		--hero-background-image: var(--hero-background-image-dark);
 	}
+
 	.theme-high-contrast & {
 		--hero-background-image: none;
 	}
