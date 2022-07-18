@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Include a hero component.
+Add layout-gap placeholder class (~~uhf-container~~).
