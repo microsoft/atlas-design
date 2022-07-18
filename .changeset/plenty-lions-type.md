@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Include a hero component.
+Add background image pattern plus and relevant documentation.
