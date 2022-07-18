@@ -19,7 +19,8 @@ const languageDisplayNames = {
 	markdown: 'Markdown',
 	'atomics-filter': 'Atomics',
 	atomics: 'Atomics',
-	'abut-html': 'HTML'
+	'abut-html': 'HTML',
+	'html-no-indent': 'HTML'
 };
 
 let filterIds = 0;
@@ -59,12 +60,16 @@ const markedOptions = {
 		</div>`;
 	},
 	code(code, language) {
-		const elementExample = createExample(language, code);
+		const fullWidth = language === 'html-no-indent';
 		let spacing = 'margin-top-sm';
-		if (language === 'abut-html') {
-			spacing = '';
+		if (language === 'abut-html' || language === 'html-no-indent') {
 			language = 'html';
 		}
+		if (language === 'abut-html') {
+			spacing = '';
+		}
+		const elementExample = createExample(language, code, fullWidth);
+
 		const displayName =
 			language in languageDisplayNames ? languageDisplayNames[language] : language;
 		if (language === 'atomics-filter') {
@@ -227,9 +232,9 @@ module.exports = new Transformer({
 	}
 });
 
-function createExample(language, code) {
+function createExample(language, code, noIndent = false) {
 	if (language.toLowerCase() === 'html') {
-		return `<div class="example padding-block-md">${code}</div>`;
+		return `<div class="example ${noIndent ? 'full-width' : ''} padding-block-md">${code}</div>`;
 	}
 	if (language.toLowerCase() === 'markdown') {
 		return `<div class="example padding-block-md">${marked(code)}</div>`;

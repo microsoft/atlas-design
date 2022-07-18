@@ -1,0 +1,7 @@
+%layout-gap {
+	padding-inline: $layout-gap;
+
+	@include widescreen {
+		padding-inline: $layout-widescreen-gap;
+	}
+}

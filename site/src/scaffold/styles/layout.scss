@@ -76,6 +76,7 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 	grid-area: main;
 	min-height: 90vh;
 	padding: $layout-3;
+	background-color: $body-background;
 	gap: $layout-3;
 	grid-template: auto 1fr / 9fr 1fr;
 	grid-template-areas:
@@ -109,6 +110,14 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 
 .example {
 	padding: $layout-2;
+
+	&.full-width {
+		padding-inline: 0;
+	}
+
+	[data-is-full-screened='true'] &.full-width {
+		margin-inline: -1.5rem;
+	}
 }
 
 // For debugging layout purposes only
