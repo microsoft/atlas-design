@@ -507,6 +507,16 @@ class FormBehaviorElement extends HTMLElement {
 				a.textContent = message;
 				a.classList.add('help', 'help-danger');
 
+				// ensure focus is set on the custom element
+				a.addEventListener('click', e => {
+					if (isCustomElement) {
+						const target = (e.target as HTMLAnchorElement).getAttribute('href');
+						if (target) {
+							(document.querySelector(target) as HTMLElement).focus();
+						}
+					}
+				});
+
 				child.appendChild(a);
 				errorList.appendChild(child);
 
