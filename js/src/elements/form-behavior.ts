@@ -709,9 +709,11 @@ export function navigateAfterSubmit(href: string, navigationStep: NavigationStep
 export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 	// Compare FormData with form.elements to find missing elements.
 	const formData = Object.fromEntries(new FormData(form));
-	const formElements = Object.keys(form.elements);
 	const customElementList: Element[] = [];
-	const customElements = Object.keys(formData).filter(el => formElements.indexOf(el) === -1);
+	const customElements = Object.keys(formData).filter(el => {
+		return !form.elements.namedItem(el);
+	});
+
 	customElements.forEach(name => {
 		const element = form.querySelector(`[name="${name}"]`);
 		if (element) {
