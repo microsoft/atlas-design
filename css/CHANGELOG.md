@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.19.0
+
+### Minor Changes
+
+- 87acc49: Add input icons.
+
 ## 3.18.0
 
 ### Minor Changes

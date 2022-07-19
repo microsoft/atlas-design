@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.3.0
+
+### Minor Changes
+
+- c8a9e5e: Add form behavior hash reload handling.
+
 ## 1.2.0
 
 ### Minor Changes
