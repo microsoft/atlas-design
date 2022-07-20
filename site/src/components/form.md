@@ -99,6 +99,7 @@ The form behavior component can accept certain HTML attributes.
 		navigation="follow"
 		header-content-type="application/json"
 		header-x-docsauth="cookie"
+		loc-attachment-count-exceed-maximum="Maximum number of attachments exceeded. Please select up to {maximumCount} attachments."
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
@@ -251,6 +252,7 @@ The form behavior component can accept certain HTML attributes.
 		navigation="reload"
 		header-x-docsauth="cookie"
 		new
+		loc-attachment-count-exceed-maximum="Maximum number of attachments exceeded. Please select up to {maximumCount} attachments."
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."

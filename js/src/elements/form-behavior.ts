@@ -1,6 +1,8 @@
 import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
 const defaultMessageStrings = {
+	attachmentCountExceedMaximum:
+		'Maximum number of attachments exceeded. Please select up to {maximumCount} attachments.',
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
@@ -356,6 +358,27 @@ class FormBehaviorElement extends HTMLElement {
 					.replace('{max}', max)
 					.replace('{tagLabel}', label.toLocaleLowerCase())}`;
 			}
+		}
+		return null;
+	}
+
+	validateAttachmentMaxCount(input: HTMLInputElement): string | null {
+		if (input instanceof HTMLInputElement && input.classList.contains('attachment-input')) {
+			const maxCount = input.getAttribute('maxCount');
+			const attachmentCount = input.value === '' ? 0 : Number(input.value);
+
+			// if no max, no need to validate
+			if (!maxCount) {
+				return null;
+			}
+
+			if (attachmentCount > Number(maxCount)) {
+				return `${this.locStrings.attachmentCountExceedMaximum.replace(
+					'{maximumCount}',
+					maxCount
+				)}`;
+			}
+			return null;
 		}
 		return null;
 	}
