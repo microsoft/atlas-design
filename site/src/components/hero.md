@@ -45,7 +45,7 @@ That is not quite where the story ends. You can also use certain classes on the 
 
 ### Hero sizes
 
-Heroes have defaults spacing that relies on the `.hero-content` element, so be sure to include it. However, there are also a few modifiers that can be used to change the _minimum_ height of the hero. If you pack a hero with text, it will grow in height. Each size is denoted by a t-shirt size. For more on how Atlas creates its names [check out the explainer for component sizes](../components/overview.md).
+Heroes have default spacing that relies on the `.hero-content` element, so be sure to include it. However, there are also a few modifiers that can be used to change the _minimum_ height of the hero. If you pack a hero with text, it will grow in height. Each size is denoted by a t-shirt size. For more on how Atlas creates its names [check out the explainer for component sizes](../components/overview.md).
 
 ```html-no-indent
 <section class="hero hero-xs hero-xs background-color-primary color-primary-invert">
@@ -81,7 +81,7 @@ Heroes have defaults spacing that relies on the `.hero-content` element, so be s
 
 ### Hero images
 
-Heroes have two primary ways of displaying media. The first is with the `.hero-image` class, which should be place adjacent to the `.hero` class. This subclass can be used in conjunction with inline css variable declarations to display images suitable for different themes. Image sources should be reference in a style attribute as shown below. This allows for convenient image swapping between themes. These images display to the side of the hero's content. On narrow screens, no image will display.
+Heroes have two primary ways of displaying media. The first is with the `.hero-image` class, which should be placed adjacent to the `.hero` class. This subclass can be used in conjunction with inline css variable declarations to display images suitable for different themes. Image sources should be referenced in a style attribute as shown below. This allows for convenient image swapping between themes. These images display to the side of the hero's content. On narrow screens, no image will display.
 
 **Images are currently not intended to scale or shrink. They are not shown on smaller or zoomed screens. For this reason, it's required that these images are presentational only. They should not contain words, subjects that might look naff if cut off, or anything essential to understanding the material of the page.**
 
@@ -98,7 +98,7 @@ Heroes have two primary ways of displaying media. The first is with the `.hero-i
 
 ## Heroes with full media backgrounds
 
-Hero backgrounds with full-bleed media can be somewhat problematic. Always be sure that you can ensure accessible text colors between a background image and a piece of text. You may also need to apply a static theme class to your hero to ensure the text does not change with the theme. Images and videos included in this way will scale always cover the entire contains, so responsive testing is particularly important when validating media choices.
+Hero backgrounds with full-bleed media can be somewhat problematic. Always be sure that you can ensure accessible text colors between a background image and a piece of text. You may also need to apply a static theme class to your hero to ensure the text does not change with the theme. Images and videos included in this way will scale always cover the entire container, so responsive testing is particularly important when validating media choices.
 
 You can include a video or image by using the `.hero-background` sub-component, and either a `video` or `img` tag. This media will scale (using `object-fit: cover`) to ensure the whole hero background is always covered by the media.
 

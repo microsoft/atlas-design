@@ -6,7 +6,7 @@ template: standard
 
 # Hero Patterns
 
-This page catelogues some of the common combinations that might but used with the hero component. For component documentation, [visit the hero component page](../components/hero.md).
+This page catalogues some of the common combinations that might be used with the hero component. For component documentation, [visit the hero component page](../components/hero.md).
 
 **This page is best viewed with the content section full screened because heroes are intended to be full width elements. Go full screen by clicking the button in the top right corner.**
 
