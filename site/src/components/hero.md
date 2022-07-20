@@ -48,7 +48,7 @@ That is not quite where the story ends. You can also use certain classes on the 
 Heroes have default spacing that relies on the `.hero-content` element, so be sure to include it. However, there are also a few modifiers that can be used to change the _minimum_ height of the hero. If you pack a hero with text, it will grow in height. Each size is denoted by a t-shirt size. For more on how Atlas creates its names [check out the explainer for component sizes](../components/overview.md).
 
 ```html-no-indent
-<section class="hero hero-xs hero-xs background-color-primary color-primary-invert">
+<section class="hero hero-xs background-color-primary color-primary-invert">
 	<div class="hero-content">
 		<h2 class="font-size-h2">Extra small</h2>
 	</div>

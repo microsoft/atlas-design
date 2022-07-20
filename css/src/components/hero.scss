@@ -21,12 +21,12 @@ $hero-min-height-lg: 500px !default;
 		width: 100%;
 		max-width: $reading-max-width !important;
 		z-index: $zindex-active;
-		padding-block: $hero-padding-sm;
+		padding-block: $hero-padding-default;
 
 		@include desktop {
 			min-height: $hero-min-height-default;
 			padding-block: $hero-padding-default;
-			padding-inline-end: $hero-padding-sm;
+			padding-inline-end: $hero-padding-default;
 		}
 	}
 
