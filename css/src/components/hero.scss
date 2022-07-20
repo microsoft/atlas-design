@@ -31,8 +31,10 @@ $hero-min-height-lg: 500px !default;
 	}
 
 	&.hero-xs {
-		min-height: $hero-min-height-xs;
-		padding-block: $hero-padding-xs;
+		.hero-content {
+			min-height: $hero-min-height-xs;
+			padding-block: $hero-padding-xs;
+		}
 	}
 
 	&.hero-sm {
