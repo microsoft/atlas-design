@@ -35,7 +35,8 @@ class FormBehaviorElement extends HTMLElement {
 		this.validateMinLength.bind(this), // min length before required
 		this.validateRequired.bind(this),
 		this.validateMaxLength.bind(this),
-		this.validateTagSelector.bind(this)
+		this.validateTagSelector.bind(this),
+		this.validateAttachmentMaxCount.bind(this)
 	];
 
 	constructor() {
