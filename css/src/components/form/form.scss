@@ -39,6 +39,10 @@ $field-error-color: $danger !default;
 	}
 
 	.field-body {
+		> * {
+			scroll-margin: 2rem;
+		}
+
 		&:not(:first-child) {
 			margin-block-start: $spacer-3;
 
