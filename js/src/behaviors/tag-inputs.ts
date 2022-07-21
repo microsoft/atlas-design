@@ -1,3 +1,4 @@
+import { FormValidationError } from '../elements/form-behavior';
 export function initTagInputs(container: HTMLElement = document.body) {
 	const deleteTagLabel = 'Delete {tagName} tag';
 	let tagCount = 0;
@@ -72,4 +73,18 @@ export function initTagInputs(container: HTMLElement = document.body) {
 		input.dispatchEvent(new Event('change', { bubbles: true }));
 		deleteButton.parentElement!.remove();
 	}
+
+	// can be removed if/when autocomplete is added to Atlas
+	document.addEventListener(
+		'validationerror',
+		(e: CustomEventInit<{ errors: FormValidationError }>) => {
+			console.log(e.detail);
+			const tagInputErrorLink = document
+				.querySelector('.form-error-container')
+				?.firstElementChild?.lastElementChild?.querySelector(
+					'a[href="#tag-input'
+				) as HTMLAnchorElement;
+			tagInputErrorLink.href = '#tag-input-holder';
+		}
+	);
 }

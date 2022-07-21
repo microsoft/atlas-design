@@ -178,7 +178,7 @@ The form behavior component can accept certain HTML attributes.
 				mintags="1"
 				maxtags="5"
 			/>
-			<div class="tag-input-holder has-height-auto">
+			<div class="tag-input-holder has-height-auto" id="tag-input-holder">
 				<div class="tags"></div>
 				<input
 					role="combobox"
