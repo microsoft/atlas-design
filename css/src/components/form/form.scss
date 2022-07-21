@@ -40,7 +40,7 @@ $field-error-color: $danger !default;
 
 	.field-body {
 		> * {
-			scroll-margin: 2rem;
+			scroll-margin-top: 3rem;
 		}
 
 		&:not(:first-child) {
