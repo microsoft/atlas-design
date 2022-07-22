@@ -110,7 +110,7 @@ test.describe('form behavior validation', () => {
 		expect(errorContainer).toContainText([`A selection for "${label}" is required.`]);
 	});
 
-	test('show youMustSelectBetweenMinAndMaxTags message when number of tags is below mintags', async ({
+	test('show youMustSelectBetweenMinAndMaxTags message when number of tags is below min', async ({
 		page,
 		errorContainer,
 		submitBtn
@@ -119,8 +119,8 @@ test.describe('form behavior validation', () => {
 		const label = await (await page.locator('label[for="sample-tags"]').textContent())
 			.trim()
 			.toLocaleLowerCase();
-		const min = await input.getAttribute('mintags');
-		const max = await input.getAttribute('maxtags');
+		const min = await input.getAttribute('min');
+		const max = await input.getAttribute('max');
 
 		page.fill('#sample-input', 'Lorem ipsum');
 		page.fill('#sample-text-area', 'Lorem ipsum');
@@ -136,7 +136,7 @@ test.describe('form behavior validation', () => {
 		});
 	});
 
-	test('show youMustSelectBetweenMinAndMaxTags message when number of tags is above maxtags', async ({
+	test('show youMustSelectBetweenMinAndMaxTags message when number of tags is above max', async ({
 		page,
 		errorContainer,
 		submitBtn
@@ -145,8 +145,8 @@ test.describe('form behavior validation', () => {
 		const label = await (await page.locator('label[for="sample-tags"]').textContent())
 			.trim()
 			.toLocaleLowerCase();
-		const min = await input.getAttribute('mintags');
-		const max = await input.getAttribute('maxtags');
+		const min = await input.getAttribute('min');
+		const max = await input.getAttribute('max');
 
 		page.fill('#sample-input', 'Lorem ipsum');
 		page.fill('#sample-text-area', 'Lorem ipsum');

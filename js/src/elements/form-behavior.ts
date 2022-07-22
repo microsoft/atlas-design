@@ -354,18 +354,19 @@ class FormBehaviorElement extends HTMLElement {
 				return null;
 			}
 
-			if (!count || count < Number(min)) {
+			if (!count || count < Number(min) || count > Number(max)) {
+				if (
+					count > Number(max) &&
+					input instanceof HTMLInputElement &&
+					input.classList.contains('attachment-input')
+				) {
+					return `${this.locStrings.attachmentCountExceedMaximum.replace('{maximumCount}', max)}`;
+				}
 				if (input.classList.contains('tag-input')) {
 					return `${this.locStrings.youMustSelectBetweenMinAndMaxTags
 						.replace('{min}', min)
 						.replace('{max}', max)
 						.replace('{tagLabel}', label.toLocaleLowerCase())}`;
-				}
-
-				if (count > Number(max)) {
-					if (input instanceof HTMLInputElement && input.classList.contains('attachment-input')) {
-						return `${this.locStrings.attachmentCountExceedMaximum.replace('{maximumCount}', max)}`;
-					}
 				}
 			}
 		}
