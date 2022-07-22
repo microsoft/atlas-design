@@ -187,7 +187,7 @@ const template = starRatingTemplate;
 
 export class StarRatingElement extends HTMLElement {
 	static get observedAttributes() {
-		return ['disabled', 'name', 'required', 'value', 'focus'];
+		return ['disabled', 'name', 'required', 'value', 'focus', 'blur'];
 	}
 
 	coercedValue = '';
@@ -270,6 +270,7 @@ export class StarRatingElement extends HTMLElement {
 				: 'star rating'
 		);
 		this.addEventListener('focus', this);
+		this.addEventListener('blur', this);
 	}
 
 	disconnectedCallback() {
@@ -311,13 +312,18 @@ export class StarRatingElement extends HTMLElement {
 
 	handleEvent(event: Event) {
 		switch (event.type) {
+			case 'blur':
+				this.removeAttribute('tabindex');
+				break;
 			case 'change':
 				const target = event.target as HTMLInputElement;
 				this.updateContent('value', target.value, target);
 				this.dispatchEvent(new Event('change', { bubbles: true }));
 				break;
 			case 'focus':
-				this.shadowRoot!.querySelectorAll('input')[0].focus();
+				if (!this.shadowRoot?.activeElement) {
+					this.shadowRoot?.querySelectorAll('input')[0].focus();
+				}
 				break;
 			case 'slotchange':
 				const slot = event.target as HTMLSlotElement;
@@ -365,7 +371,6 @@ export class StarRatingElement extends HTMLElement {
 
 	focus() {
 		this.setAttribute('tabindex', '-1');
-		this.shadowRoot!.querySelectorAll('input')[0].focus();
 	}
 }
 

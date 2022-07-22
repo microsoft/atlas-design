@@ -720,8 +720,8 @@ export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 	// Compare FormData with form.elements to find missing elements.
 	const formData = Object.fromEntries(new FormData(form));
 	const customElementList: Element[] = [];
-	const customElements = Object.keys(formData).filter(el => {
-		return !form.elements.namedItem(el);
+	const customElements = Object.keys(formData).filter(key => {
+		return !form.elements.namedItem(key);
 	});
 
 	customElements.forEach(name => {
