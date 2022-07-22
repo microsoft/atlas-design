@@ -175,20 +175,18 @@ The form behavior component can accept certain HTML attributes.
 				aria-describedby="sample-select-description"
 				hidden
 				aria-hidden="true"
-				value=""
-				mintags="1"
-				maxtags="5"
+				min="1"
+				max="5"
 			/>
-			<div class="tag-input-holder has-height-auto">
+			<div class="tag-input-holder has-height-auto" id="tag-input-holder">
 				<div class="tags"></div>
 				<input
 					role="combobox"
 					maxlength="100"
 					id="tag-input"
-					class="autocomplete-input input"
+					class="autocomplete-input input tag-input"
 					type="text"
 					aria-label="Tag selector"
-					placeholder="Enter tags..."
 					hidden
 				/>
 			</div>

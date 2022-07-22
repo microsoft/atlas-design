@@ -1,6 +1,6 @@
 import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
-const defaultMessageStrings = {
+export const defaultMessageStrings = {
 	attachmentCountExceedMaximum:
 		'Maximum number of attachments exceeded. Please select up to {maximumCount} attachments.',
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
@@ -35,8 +35,7 @@ class FormBehaviorElement extends HTMLElement {
 		this.validateMinLength.bind(this), // min length before required
 		this.validateRequired.bind(this),
 		this.validateMaxLength.bind(this),
-		this.validateTagSelector.bind(this),
-		this.validateAttachmentMaxCount.bind(this)
+		this.validateMinMax.bind(this)
 	];
 
 	constructor() {
@@ -171,23 +170,25 @@ class FormBehaviorElement extends HTMLElement {
 		}
 
 		const form = event.currentTarget as HTMLFormElement;
-		const validationErrorEvent = new CustomEvent('validationerror', {
-			bubbles: true,
-			cancelable: true
-		});
 
 		// reject the submit if no edits have been made (overridable with the new attribute)
 		if (!this.canSave) {
 			this.showNoChangesMessage(form);
-			this.dispatchEvent(validationErrorEvent);
 			return;
 		}
 
 		try {
 			this.submitting = true;
 			setBusySubmitButton(form, this.submitting);
-			const valid = await this.validateForm(form);
-			if (!valid.valid) {
+			const result = await this.validateForm(form);
+			if (!result.valid) {
+				const validationErrorEvent = new CustomEvent('validationerror', {
+					detail: {
+						errors: result.errors
+					},
+					bubbles: true,
+					cancelable: true
+				});
 				this.dispatchEvent(validationErrorEvent);
 				return;
 			}
@@ -342,44 +343,31 @@ class FormBehaviorElement extends HTMLElement {
 		return null;
 	}
 
-	validateTagSelector(input: HTMLInputElement | HTMLValueElement, label: string): string | null {
-		if (input instanceof HTMLInputElement && input.classList.contains('tag-input')) {
-			const min = input.getAttribute('minTags');
-			const max = input.getAttribute('maxTags');
-			const tagCount = input.value === '' ? 0 : input.value.split(',').length;
+	validateMinMax(input: HTMLInputElement, label: string): string | null {
+		if (input instanceof HTMLInputElement) {
+			const min = input.min;
+			const max = input.max;
+			const count = input.value === '' ? 0 : input.value.split(',').length;
 
 			// if no min or max, no need to validate
 			if (!min || !max) {
 				return null;
 			}
 
-			if (!tagCount || tagCount < Number(min) || tagCount > Number(max)) {
-				return `${this.locStrings.youMustSelectBetweenMinAndMaxTags
-					.replace('{min}', min)
-					.replace('{max}', max)
-					.replace('{tagLabel}', label.toLocaleLowerCase())}`;
-			}
-		}
-		return null;
-	}
+			if (!count || count < Number(min)) {
+				if (input.classList.contains('tag-input')) {
+					return `${this.locStrings.youMustSelectBetweenMinAndMaxTags
+						.replace('{min}', min)
+						.replace('{max}', max)
+						.replace('{tagLabel}', label.toLocaleLowerCase())}`;
+				}
 
-	validateAttachmentMaxCount(input: HTMLInputElement): string | null {
-		if (input instanceof HTMLInputElement && input.classList.contains('attachment-input')) {
-			const maxCount = input.getAttribute('maxCount');
-			const attachmentCount = input.value === '' ? 0 : Number(input.value);
-
-			// if no max, no need to validate
-			if (!maxCount) {
-				return null;
+				if (count > Number(max)) {
+					if (input instanceof HTMLInputElement && input.classList.contains('attachment-input')) {
+						return `${this.locStrings.attachmentCountExceedMaximum.replace('{maximumCount}', max)}`;
+					}
+				}
 			}
-
-			if (attachmentCount > Number(maxCount)) {
-				return `${this.locStrings.attachmentCountExceedMaximum.replace(
-					'{maximumCount}',
-					maxCount
-				)}`;
-			}
-			return null;
 		}
 		return null;
 	}
