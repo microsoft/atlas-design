@@ -266,7 +266,6 @@ class FormBehaviorElement extends HTMLElement {
 		errorList: HTMLUListElement;
 	} {
 		const formLayout = form.querySelector('.form-error-container') || form;
-		formLayout.setAttribute('role', 'alert');
 		const alertId = generateElementId();
 
 		const errorAlert = document.createElement('div');
@@ -568,7 +567,7 @@ interface LocStrings {
 	youMustSelectBetweenMinAndMaxTags: string;
 }
 
-type NavigationSteps = 'follow' | 'hash-reload' | 'replace' | 'reload' | null;
+export type NavigationSteps = 'follow' | 'hash-reload' | 'replace' | 'reload' | null;
 
 export interface FormValidationError {
 	message: string;
