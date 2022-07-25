@@ -11,7 +11,6 @@ $field-error-color: $danger !default;
 	.field-description {
 		margin-block-end: $spacer-3;
 		font-size: $font-size-8;
-		line-height: $field-line-height;
 	}
 
 	.field-label {
@@ -39,6 +38,10 @@ $field-error-color: $danger !default;
 	}
 
 	.field-body {
+		> * {
+			scroll-margin-top: 3rem;
+		}
+
 		&:not(:first-child) {
 			margin-block-start: $spacer-3;
 

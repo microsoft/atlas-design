@@ -83,7 +83,8 @@ starRatingTemplate.innerHTML = `
 		display: none;
 	}
 	
-	input:focus-visible + label {
+	input:focus-visible + label,
+	input:focus + label {
 		border-radius: 0.5em;
 		outline: 3px dashed;
 	}
@@ -186,7 +187,7 @@ const template = starRatingTemplate;
 
 export class StarRatingElement extends HTMLElement {
 	static get observedAttributes() {
-		return ['disabled', 'name', 'required', 'value'];
+		return ['disabled', 'name', 'required', 'value', 'focus', 'blur'];
 	}
 
 	coercedValue = '';
@@ -268,6 +269,8 @@ export class StarRatingElement extends HTMLElement {
 				? (this.querySelector('legend[slot="legend"]') as HTMLLegendElement)?.innerText
 				: 'star rating'
 		);
+		this.addEventListener('focus', this);
+		this.addEventListener('blur', this);
 	}
 
 	disconnectedCallback() {
@@ -309,10 +312,18 @@ export class StarRatingElement extends HTMLElement {
 
 	handleEvent(event: Event) {
 		switch (event.type) {
+			case 'blur':
+				this.removeAttribute('tabindex');
+				break;
 			case 'change':
 				const target = event.target as HTMLInputElement;
 				this.updateContent('value', target.value, target);
 				this.dispatchEvent(new Event('change', { bubbles: true }));
+				break;
+			case 'focus':
+				if (!this.shadowRoot?.activeElement) {
+					this.shadowRoot?.querySelectorAll('input')[0].focus();
+				}
 				break;
 			case 'slotchange':
 				const slot = event.target as HTMLSlotElement;
@@ -356,6 +367,10 @@ export class StarRatingElement extends HTMLElement {
 				stars[i].classList.remove('is-selected');
 			}
 		}
+	}
+
+	focus() {
+		this.setAttribute('tabindex', '-1');
 	}
 }
 

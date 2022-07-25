@@ -266,7 +266,6 @@ class FormBehaviorElement extends HTMLElement {
 		errorList: HTMLUListElement;
 	} {
 		const formLayout = form.querySelector('.form-error-container') || form;
-		formLayout.setAttribute('role', 'alert');
 		const alertId = generateElementId();
 
 		const errorAlert = document.createElement('div');
@@ -507,6 +506,16 @@ class FormBehaviorElement extends HTMLElement {
 				a.textContent = message;
 				a.classList.add('help', 'help-danger');
 
+				// ensure focus is set on the custom element
+				a.addEventListener('click', e => {
+					if (isCustomElement) {
+						const target = (e.target as HTMLAnchorElement).getAttribute('href');
+						if (target) {
+							(document.querySelector(target) as HTMLElement).focus();
+						}
+					}
+				});
+
 				child.appendChild(a);
 				errorList.appendChild(child);
 
@@ -558,7 +567,7 @@ interface LocStrings {
 	youMustSelectBetweenMinAndMaxTags: string;
 }
 
-type NavigationSteps = 'follow' | 'hash-reload' | 'replace' | 'reload' | null;
+export type NavigationSteps = 'follow' | 'hash-reload' | 'replace' | 'reload' | null;
 
 export interface FormValidationError {
 	message: string;
@@ -709,9 +718,11 @@ export function navigateAfterSubmit(href: string, navigationStep: NavigationStep
 export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 	// Compare FormData with form.elements to find missing elements.
 	const formData = Object.fromEntries(new FormData(form));
-	const formElements = Object.keys(form.elements);
 	const customElementList: Element[] = [];
-	const customElements = Object.keys(formData).filter(el => formElements.indexOf(el) === -1);
+	const customElements = Object.keys(formData).filter(key => {
+		return !form.elements.namedItem(key);
+	});
+
 	customElements.forEach(name => {
 		const element = form.querySelector(`[name="${name}"]`);
 		if (element) {
