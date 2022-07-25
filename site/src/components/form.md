@@ -99,7 +99,6 @@ The form behavior component can accept certain HTML attributes.
 		navigation="follow"
 		header-content-type="application/json"
 		header-x-docsauth="cookie"
-		loc-attachment-count-exceed-maximum="Maximum number of attachments exceeded. Please select up to {maximumCount} attachments."
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
@@ -107,7 +106,6 @@ The form behavior component can accept certain HTML attributes.
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
-		loc-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
 	></form-behavior>
 	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
 	<div class="field">
@@ -159,38 +157,6 @@ The form behavior component can accept certain HTML attributes.
 				<option value="2">2</option>
 				<option value="3">3</option>
 			</select>
-		</div>
-	</div>
-	<div class="field">
-		<label class="field-label" for="sample-tags">
-			Tags
-			<span class="required-indicator"></span>
-		</label>
-		<span id="sample-tags-description" class="field-description"> Select up to 5 tags. </span>
-		<div class="field-body">
-			<input
-				id="sample-tags"
-				name="tags"
-				class="tag-input input"
-				aria-describedby="sample-select-description"
-				hidden
-				aria-hidden="true"
-				min="1"
-				max="5"
-			/>
-			<div class="tag-input-holder has-height-auto" id="tag-input-holder">
-				<div class="tags"></div>
-				<input
-					role="combobox"
-					maxlength="100"
-					id="tag-input"
-					class="autocomplete-input input tag-input"
-					type="text"
-					aria-label="Tag selector"
-					hidden
-				/>
-			</div>
-			<button class="add-tags-button" type="button">Add tags</button>
 		</div>
 	</div>
 	<div class="field">
@@ -250,7 +216,6 @@ The form behavior component can accept certain HTML attributes.
 		navigation="reload"
 		header-x-docsauth="cookie"
 		new
-		loc-attachment-count-exceed-maximum="Maximum number of attachments exceeded. Please select up to {maximumCount} attachments."
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
@@ -258,7 +223,6 @@ The form behavior component can accept certain HTML attributes.
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
-		loc-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
 	></form-behavior>
 	<div class="field">
 		<button

@@ -1,8 +1,6 @@
 import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
 export const defaultMessageStrings = {
-	attachmentCountExceedMaximum:
-		'Maximum number of attachments exceeded. Please select up to {maximumCount} attachments.',
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
@@ -10,8 +8,7 @@ export const defaultMessageStrings = {
 	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
 	thereAreNoEditsToSubmit: 'There are no edits to submit.',
 	weEncounteredAnUnexpectedError:
-		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.',
-	youMustSelectBetweenMinAndMaxTags: 'You must select between {min} and {max} {tagLabel}.'
+		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
 // <form-behavior>
 class FormBehaviorElement extends HTMLElement {
@@ -34,8 +31,7 @@ class FormBehaviorElement extends HTMLElement {
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
 		this.validateRequired.bind(this),
-		this.validateMaxLength.bind(this),
-		this.validateMinMax.bind(this)
+		this.validateMaxLength.bind(this)
 	];
 
 	constructor() {
@@ -182,14 +178,6 @@ class FormBehaviorElement extends HTMLElement {
 			setBusySubmitButton(form, this.submitting);
 			const result = await this.validateForm(form);
 			if (!result.valid) {
-				const validationErrorEvent = new CustomEvent('validationerror', {
-					detail: {
-						errors: result.errors
-					},
-					bubbles: true,
-					cancelable: true
-				});
-				this.dispatchEvent(validationErrorEvent);
 				return;
 			}
 
@@ -343,36 +331,6 @@ class FormBehaviorElement extends HTMLElement {
 		return null;
 	}
 
-	validateMinMax(input: HTMLInputElement, label: string): string | null {
-		if (input instanceof HTMLInputElement) {
-			const min = input.min;
-			const max = input.max;
-			const count = input.value === '' ? 0 : input.value.split(',').length;
-
-			// if no min or max, no need to validate
-			if (!min || !max) {
-				return null;
-			}
-
-			if (!count || count < Number(min) || count > Number(max)) {
-				if (
-					count > Number(max) &&
-					input instanceof HTMLInputElement &&
-					input.classList.contains('attachment-input')
-				) {
-					return `${this.locStrings.attachmentCountExceedMaximum.replace('{maximumCount}', max)}`;
-				}
-				if (input.classList.contains('tag-input')) {
-					return `${this.locStrings.youMustSelectBetweenMinAndMaxTags
-						.replace('{min}', min)
-						.replace('{max}', max)
-						.replace('{tagLabel}', label.toLocaleLowerCase())}`;
-				}
-			}
-		}
-		return null;
-	}
-
 	async validateForm(
 		form: HTMLFormElement,
 		displayValidity = true,
@@ -428,6 +386,14 @@ class FormBehaviorElement extends HTMLElement {
 			errorAlert.focus();
 		}
 
+		const validationErrorEvent = new CustomEvent('form-validating', {
+			detail: {
+				errors,
+				form
+			},
+			bubbles: true
+		});
+		this.dispatchEvent(validationErrorEvent);
 		return { valid: false, errors };
 	}
 
