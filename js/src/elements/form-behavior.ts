@@ -350,8 +350,7 @@ class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
-			const isTagSelector = input.classList.contains('tag-input');
-			if (input.hasAttribute('aria-hidden') && !isTagSelector) {
+			if (input.hasAttribute('aria-hidden')) {
 				continue;
 			}
 
@@ -367,14 +366,7 @@ class FormBehaviorElement extends HTMLElement {
 
 			const isCustomElement = !!customElements.find(el => el === input);
 
-			this.runBasicValidation(
-				input,
-				displayValidity,
-				errors,
-				errorList,
-				isTagSelector,
-				isCustomElement
-			);
+			this.runBasicValidation(input, displayValidity, errors, errorList, isCustomElement);
 		}
 
 		if (errors.length === 0) {
@@ -417,6 +409,7 @@ class FormBehaviorElement extends HTMLElement {
 				errorAlert.hidden = true;
 			}
 		}
+
 		const clearValidationEvent = new CustomEvent('clear-validation-errors', {
 			bubbles: true
 		});
@@ -446,7 +439,6 @@ class FormBehaviorElement extends HTMLElement {
 		displayValidity: boolean = true,
 		errors: FormValidationError[],
 		errorList: HTMLElement,
-		isTagSelector: boolean,
 		isCustomElement: boolean
 	) {
 		if (!canValidate(input, this.form)) {
@@ -472,11 +464,7 @@ class FormBehaviorElement extends HTMLElement {
 
 			errors.push({ input, message });
 			if (displayValidity) {
-				const inputId = isTagSelector
-					? input.parentElement?.querySelector('input.autocomplete-input')?.id
-					: input.id;
-
-				if (!inputId) {
+				if (!input.id) {
 					continue;
 				}
 
@@ -486,7 +474,7 @@ class FormBehaviorElement extends HTMLElement {
 				child.classList.add('margin-bottom-xs');
 
 				const a = document.createElement('a');
-				a.href = `#${inputId}`;
+				a.href = `#${input.id}`;
 				a.textContent = message;
 				a.classList.add('help', 'help-danger');
 
@@ -494,9 +482,6 @@ class FormBehaviorElement extends HTMLElement {
 				errorList.appendChild(child);
 
 				if (!isCustomElement) {
-					if (isTagSelector) {
-						input.nextElementSibling?.classList.add('border-color-danger');
-					}
 					input.classList.add(`${input.localName}-danger`);
 				}
 			}
@@ -538,7 +523,6 @@ interface LocStrings {
 	pleaseFixTheFollowingIssues: string;
 	thereAreNoEditsToSubmit: string;
 	weEncounteredAnUnexpectedError: string;
-	youMustSelectBetweenMinAndMaxTags: string;
 }
 
 type NavigationSteps = 'follow' | 'hash-reload' | 'replace' | 'reload' | null;
@@ -705,10 +689,6 @@ export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 }
 
 function clearInputErrorBorder(input: HTMLValueElement) {
-	const isTagSelector = input.classList.contains('tag-input');
-	if (isTagSelector) {
-		input.nextElementSibling?.classList.remove('border-color-danger');
-	}
 	input.classList.remove(`${input.localName}-danger`);
 }
 
