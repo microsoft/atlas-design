@@ -4,4 +4,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Add support for attachment max count validation.
+Remove tag validation and add custom event to allow for custom validation/error handling.
