@@ -417,6 +417,10 @@ class FormBehaviorElement extends HTMLElement {
 				errorAlert.hidden = true;
 			}
 		}
+		const clearValidationEvent = new CustomEvent('clear-validation-errors', {
+			bubbles: true
+		});
+		this.dispatchEvent(clearValidationEvent);
 	}
 
 	showNoChangesMessage(form: HTMLFormElement) {
