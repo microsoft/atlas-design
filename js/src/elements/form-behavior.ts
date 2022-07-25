@@ -367,20 +367,19 @@ class FormBehaviorElement extends HTMLElement {
 			const isCustomElement = !!customElements.find(el => el === input);
 
 			this.runBasicValidation(input, displayValidity, errors, errorList, isCustomElement);
+			const validationErrorEvent = new CustomEvent('form-validating', {
+				detail: {
+					errors,
+					form
+				},
+				bubbles: true
+			});
+			this.dispatchEvent(validationErrorEvent);
 		}
 
 		if (errors.length === 0) {
 			return { valid: true };
 		}
-
-		const validationErrorEvent = new CustomEvent('form-validating', {
-			detail: {
-				errors,
-				form
-			},
-			bubbles: true
-		});
-		this.dispatchEvent(validationErrorEvent);
 
 		if (displayValidity) {
 			errorAlert.hidden = false;
