@@ -373,11 +373,6 @@ class FormBehaviorElement extends HTMLElement {
 			return { valid: true };
 		}
 
-		if (displayValidity) {
-			errorAlert.hidden = false;
-			errorAlert.focus();
-		}
-
 		const validationErrorEvent = new CustomEvent('form-validating', {
 			detail: {
 				errors,
@@ -386,6 +381,12 @@ class FormBehaviorElement extends HTMLElement {
 			bubbles: true
 		});
 		this.dispatchEvent(validationErrorEvent);
+
+		if (displayValidity) {
+			errorAlert.hidden = false;
+			errorAlert.focus();
+		}
+
 		return { valid: false, errors };
 	}
 
