@@ -60,7 +60,7 @@ class FormBehaviorElement extends HTMLElement {
 
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
-		errorSummaryContainer.classList.add('form-error-container', 'margin-bottom-sm');
+		errorSummaryContainer.classList.add('form-error-container');
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);
@@ -242,6 +242,15 @@ class FormBehaviorElement extends HTMLElement {
 				if (response.status === 412) {
 					errorText.innerText = this.locStrings.contentHasChanged;
 				}
+				this.dispatchEvent(
+					new CustomEvent('submission-error', {
+						detail: {
+							request,
+							response
+						},
+						bubbles: true
+					})
+				);
 
 				errorList.appendChild(errorText);
 				errorAlert.hidden = false;
@@ -382,6 +391,7 @@ class FormBehaviorElement extends HTMLElement {
 		}
 
 		if (displayValidity) {
+			errorAlert.classList.add('margin-bottom-sm');
 			errorAlert.hidden = false;
 			errorAlert.focus();
 		}
