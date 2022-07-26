@@ -7,6 +7,8 @@ $black-static: #000;
 $text: var(--theme-text);
 $text-subtle: var(--theme-text-subtle);
 $text-invert: var(--theme-text-invert);
+$text-purple: var(--theme-text-purple);
+$text-blue: var(--theme-text-blue);
 $hyperlink: var(--theme-hyperlink);
 $text-glow-high-contrast: var(--theme-text-glow-high-contrast);
 $box-shadow-color-light: var(--theme-box-shadow-light);
@@ -16,6 +18,9 @@ $box-shadow-color-extra-heavy: var(--theme-box-shadow-extra-heavy);
 
 $body-background: var(--theme-body-background);
 $body-background-medium: var(--theme-body-background-medium);
+$body-background-learn: var(--theme-body-background-learn);
+
+$card-background: var(--theme-card-background);
 
 $alternate-background: var(--theme-alternate-background);
 $alternate-background-medium: var(--theme-alternate-background-medium);

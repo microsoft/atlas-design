@@ -69,6 +69,10 @@
 	color: $text !important;
 }
 
+.color-text-invert {
+	color: $text-invert !important;
+}
+
 .color-text-subtle {
 	color: $text-subtle !important;
 }
@@ -148,6 +152,16 @@
 		outline-color: $text;
 		background-color: $body-background;
 	}
+}
+
+.background-color-body-learn {
+	outline-color: $text !important;
+	background-color: $body-background-learn !important;
+}
+
+.background-colo-card {
+	outline-color: $text !important;
+	background-color: $card-background !important;
 }
 
 // Static colors - do not change with theme
