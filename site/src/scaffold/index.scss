@@ -4,3 +4,16 @@
 @import './styles/layout.scss';
 @import './styles/overflow.scss';
 @import './code-block.scss';
+
+.scroll-snap-container {
+	margin-block: 1rem;
+	scroll-snap-type: x mandatory;
+	gap: 1rem;
+	scroll-behavior: smooth;
+}
+
+.scroll-snap-item {
+	scroll-snap-align: start;
+	flex-basis: 90%;
+	min-width: 90%;
+}
