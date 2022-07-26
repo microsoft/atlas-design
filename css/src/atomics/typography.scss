@@ -157,17 +157,3 @@
 .letter-spacing-wide {
 	letter-spacing: $letter-spacing-wide !important;
 }
-
-// Gradient
-
-$text-gradient-angle: 90deg !default;
-
-.text-gradient-purple-blue {
-	/*stylelint-disable*/
-	-webkit-background-clip: text;
-	/*stylelint-enable*/
-	background-clip: text;
-	background-color: $text-purple;
-	background-image: linear-gradient($text-gradient-angle, $text-purple, $text-blue);
-	color: transparent;
-}

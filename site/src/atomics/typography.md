@@ -77,13 +77,3 @@ The following class is used to alter the letter spacing.
 <p>Text with normal letter spacing</p>
 <p class="letter-spacing-wide">Text with wide letter spacing</p>
 ```
-
-## Styling with gradient
-
-There is a theme-aware class available for styling the text with a purple-to-blue gradient - `text-gradient-purple-blue`.
-
-```html
-<p><span class="text-gradient-purple-blue">Highlighted segment</span> of the sentence.</p>
-<p><strong class="text-gradient-purple-blue">Highlighted segment</strong> of the sentence.</p>
-<p><em class="text-gradient-purple-blue">Highlighted segment</em> of the sentence.</p>
-```

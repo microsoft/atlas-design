@@ -21,9 +21,9 @@ Atlas currently supports three themes out of the box.
 	<p><code>.background-color-body-medium</code></p>
 </div>
 
-<div class="padding-xl background-color-body-learn">
-	<p class="font-weight-bold font-size-h4 margin-bottom-xs">body-learn</p>
-	<p><code>.background-color-body-medium</code></p>
+<div class="padding-xl background-color-body-accent">
+	<p class="font-weight-bold font-size-h4 margin-bottom-xs">body-accent</p>
+	<p><code>.background-color-body-accent</code></p>
 </div>
 
 <div class="padding-xl background-color-alternate color-text-invert">
