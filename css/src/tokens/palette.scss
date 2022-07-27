@@ -84,6 +84,8 @@ $palette-blue-100: #000a13 !default;
 $palette-blue-opacity-30: hsl(206deg 100% 35% / 30%);
 $palette-blue-opacity-70: hsl(206deg 100% 35% / 70%);
 
+$palette-blue-black: #091f2c !default;
+
 // Navy
 
 $palette-navy-10: #dfe5ee !default;
@@ -164,6 +166,8 @@ $palette-yellow-100: #2d1703 !default;
 $palette-yellow-opacity-30: hsl(44deg 100% 50% / 30%) !default;
 $palette-yellow-opacity-70: hsl(44deg 100% 50% / 70%) !default;
 
+$palette-yellow-sand: #e8e6df !default;
+
 // Red
 
 $palette-red-10: #fde7e9 !default;
@@ -185,4 +189,5 @@ $palette-red-opacity-70: hsl(0deg 100% 33% / 70%) !default;
 $palette-yellow-high-contrast: #ff0 !default;
 $palette-yellow-high-contrast-hover: #ff3 !default;
 $palette-visited-high-contrast: #3cff00 !default;
+
 //@end-sass-export-section
