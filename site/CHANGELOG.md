@@ -1,5 +1,18 @@
 # @microsoft/atlas-site
 
+## 0.27.0
+
+### Minor Changes
+
+- 784a0ac: Adding the new sand and blue-black colors to the palette, as well as new theme color - body-background-accent. Adding the use case example to the site.
+- d86b7ec: Remove tag validation and add custom event to allow for custom validation/error handling.
+
+### Patch Changes
+
+- Updated dependencies [d86b7ec]
+- Updated dependencies [f6a2abc]
+  - @microsoft/atlas-js@1.4.0
+
 ## 0.26.0
 
 ### Minor Changes

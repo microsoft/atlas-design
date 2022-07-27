@@ -1,5 +1,15 @@
 # @microsoft/atlas-js
 
+## 1.4.0
+
+### Minor Changes
+
+- d86b7ec: Remove tag validation and add custom event to allow for custom validation/error handling.
+
+### Patch Changes
+
+- f6a2abc: Fix form behavior error summary duplicate messages.
+
 ## 1.3.0
 
 ### Minor Changes
