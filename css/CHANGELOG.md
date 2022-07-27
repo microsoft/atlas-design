@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.20.0
+
+### Minor Changes
+
+- 784a0ac: Adding the new sand and blue-black colors to the palette, as well as new theme color - body-background-accent. Adding the use case example to the site.
+
 ## 3.19.0
 
 ### Minor Changes
