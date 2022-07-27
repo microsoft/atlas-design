@@ -31,7 +31,7 @@ export function handleMockFormSubmit() {
 				</svg>`;
 
 		form.addEventListener(
-			'validationerror',
+			'form-validating',
 			e => {
 				e.preventDefault();
 				const container = form.querySelector('.form-error-container');
