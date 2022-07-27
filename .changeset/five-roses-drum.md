@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Adding new colors to the palette. Adding the use case example to the site.
+Adding the new sand and blue-black colors to the palette, as well as new theme color - body-background-accent. Adding the use case example to the site.
