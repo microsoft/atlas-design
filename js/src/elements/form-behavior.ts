@@ -1,6 +1,6 @@
 import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
-const defaultMessageStrings = {
+export const defaultMessageStrings = {
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
@@ -8,8 +8,7 @@ const defaultMessageStrings = {
 	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
 	thereAreNoEditsToSubmit: 'There are no edits to submit.',
 	weEncounteredAnUnexpectedError:
-		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.',
-	youMustSelectBetweenMinAndMaxTags: 'You must select between {min} and {max} {tagLabel}.'
+		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
 // <form-behavior>
 class FormBehaviorElement extends HTMLElement {
@@ -32,8 +31,7 @@ class FormBehaviorElement extends HTMLElement {
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
 		this.validateRequired.bind(this),
-		this.validateMaxLength.bind(this),
-		this.validateTagSelector.bind(this)
+		this.validateMaxLength.bind(this)
 	];
 
 	constructor() {
@@ -62,7 +60,7 @@ class FormBehaviorElement extends HTMLElement {
 
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
-		errorSummaryContainer.classList.add('form-error-container', 'margin-bottom-sm');
+		errorSummaryContainer.classList.add('form-error-container');
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);
@@ -168,24 +166,18 @@ class FormBehaviorElement extends HTMLElement {
 		}
 
 		const form = event.currentTarget as HTMLFormElement;
-		const validationErrorEvent = new CustomEvent('validationerror', {
-			bubbles: true,
-			cancelable: true
-		});
 
 		// reject the submit if no edits have been made (overridable with the new attribute)
 		if (!this.canSave) {
 			this.showNoChangesMessage(form);
-			this.dispatchEvent(validationErrorEvent);
 			return;
 		}
 
 		try {
 			this.submitting = true;
 			setBusySubmitButton(form, this.submitting);
-			const valid = await this.validateForm(form);
-			if (!valid.valid) {
-				this.dispatchEvent(validationErrorEvent);
+			const result = await this.validateForm(form);
+			if (!result.valid) {
 				return;
 			}
 
@@ -250,6 +242,15 @@ class FormBehaviorElement extends HTMLElement {
 				if (response.status === 412) {
 					errorText.innerText = this.locStrings.contentHasChanged;
 				}
+				this.dispatchEvent(
+					new CustomEvent('submission-error', {
+						detail: {
+							request,
+							response
+						},
+						bubbles: true
+					})
+				);
 
 				errorList.appendChild(errorText);
 				errorAlert.hidden = false;
@@ -338,27 +339,6 @@ class FormBehaviorElement extends HTMLElement {
 		return null;
 	}
 
-	validateTagSelector(input: HTMLInputElement | HTMLValueElement, label: string): string | null {
-		if (input instanceof HTMLInputElement && input.classList.contains('tag-input')) {
-			const min = input.getAttribute('minTags');
-			const max = input.getAttribute('maxTags');
-			const tagCount = input.value === '' ? 0 : input.value.split(',').length;
-
-			// if no min or max, no need to validate
-			if (!min || !max) {
-				return null;
-			}
-
-			if (!tagCount || tagCount < Number(min) || tagCount > Number(max)) {
-				return `${this.locStrings.youMustSelectBetweenMinAndMaxTags
-					.replace('{min}', min)
-					.replace('{max}', max)
-					.replace('{tagLabel}', label.toLocaleLowerCase())}`;
-			}
-		}
-		return null;
-	}
-
 	async validateForm(
 		form: HTMLFormElement,
 		displayValidity = true,
@@ -378,8 +358,7 @@ class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
-			const isTagSelector = input.classList.contains('tag-input');
-			if (input.hasAttribute('aria-hidden') && !isTagSelector) {
+			if (input.hasAttribute('aria-hidden')) {
 				continue;
 			}
 
@@ -395,14 +374,15 @@ class FormBehaviorElement extends HTMLElement {
 
 			const isCustomElement = !!customElements.find(el => el === input);
 
-			this.runBasicValidation(
-				input,
-				displayValidity,
-				errors,
-				errorList,
-				isTagSelector,
-				isCustomElement
-			);
+			this.runBasicValidation(input, displayValidity, errors, errorList, isCustomElement);
+			const validationErrorEvent = new CustomEvent('form-validating', {
+				detail: {
+					errors,
+					form
+				},
+				bubbles: true
+			});
+			this.dispatchEvent(validationErrorEvent);
 		}
 
 		if (errors.length === 0) {
@@ -410,6 +390,7 @@ class FormBehaviorElement extends HTMLElement {
 		}
 
 		if (displayValidity) {
+			errorAlert.classList.add('margin-bottom-sm');
 			errorAlert.hidden = false;
 			errorAlert.focus();
 		}
@@ -437,6 +418,11 @@ class FormBehaviorElement extends HTMLElement {
 				errorAlert.hidden = true;
 			}
 		}
+
+		const clearValidationEvent = new CustomEvent('clear-validation-errors', {
+			bubbles: true
+		});
+		this.dispatchEvent(clearValidationEvent);
 	}
 
 	showNoChangesMessage(form: HTMLFormElement) {
@@ -462,7 +448,6 @@ class FormBehaviorElement extends HTMLElement {
 		displayValidity: boolean = true,
 		errors: FormValidationError[],
 		errorList: HTMLElement,
-		isTagSelector: boolean,
 		isCustomElement: boolean
 	) {
 		if (!canValidate(input, this.form)) {
@@ -488,11 +473,7 @@ class FormBehaviorElement extends HTMLElement {
 
 			errors.push({ input, message });
 			if (displayValidity) {
-				const inputId = isTagSelector
-					? input.parentElement?.querySelector('input.autocomplete-input')?.id
-					: input.id;
-
-				if (!inputId) {
+				if (!input.id) {
 					continue;
 				}
 
@@ -502,7 +483,7 @@ class FormBehaviorElement extends HTMLElement {
 				child.classList.add('margin-bottom-xs');
 
 				const a = document.createElement('a');
-				a.href = `#${inputId}`;
+				a.href = `#${input.id}`;
 				a.textContent = message;
 				a.classList.add('help', 'help-danger');
 
@@ -520,9 +501,6 @@ class FormBehaviorElement extends HTMLElement {
 				errorList.appendChild(child);
 
 				if (!isCustomElement) {
-					if (isTagSelector) {
-						input.nextElementSibling?.classList.add('border-color-danger');
-					}
 					input.classList.add(`${input.localName}-danger`);
 				}
 			}
@@ -564,7 +542,6 @@ interface LocStrings {
 	pleaseFixTheFollowingIssues: string;
 	thereAreNoEditsToSubmit: string;
 	weEncounteredAnUnexpectedError: string;
-	youMustSelectBetweenMinAndMaxTags: string;
 }
 
 export type NavigationSteps = 'follow' | 'hash-reload' | 'replace' | 'reload' | null;
@@ -733,10 +710,6 @@ export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 }
 
 function clearInputErrorBorder(input: HTMLValueElement) {
-	const isTagSelector = input.classList.contains('tag-input');
-	if (isTagSelector) {
-		input.nextElementSibling?.classList.remove('border-color-danger');
-	}
 	input.classList.remove(`${input.localName}-danger`);
 }
 

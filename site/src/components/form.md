@@ -106,7 +106,6 @@ The form behavior component can accept certain HTML attributes.
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
-		loc-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
 	></form-behavior>
 	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
 	<div class="field">
@@ -158,40 +157,6 @@ The form behavior component can accept certain HTML attributes.
 				<option value="2">2</option>
 				<option value="3">3</option>
 			</select>
-		</div>
-	</div>
-	<div class="field">
-		<label class="field-label" for="sample-tags">
-			Tags
-			<span class="required-indicator"></span>
-		</label>
-		<span id="sample-tags-description" class="field-description"> Select up to 5 tags. </span>
-		<div class="field-body">
-			<input
-				id="sample-tags"
-				name="tags"
-				class="tag-input input"
-				aria-describedby="sample-select-description"
-				hidden
-				aria-hidden="true"
-				value=""
-				mintags="1"
-				maxtags="5"
-			/>
-			<div class="tag-input-holder has-height-auto">
-				<div class="tags"></div>
-				<input
-					role="combobox"
-					maxlength="100"
-					id="tag-input"
-					class="autocomplete-input input"
-					type="text"
-					aria-label="Tag selector"
-					placeholder="Enter tags..."
-					hidden
-				/>
-			</div>
-			<button class="add-tags-button" type="button">Add tags</button>
 		</div>
 	</div>
 	<div class="field">
@@ -258,7 +223,6 @@ The form behavior component can accept certain HTML attributes.
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
-		loc-you-must-select-between-min-and-max-tags="You must select between {min} and {max} {tagLabel}."
 	></form-behavior>
 	<div class="field">
 		<button
