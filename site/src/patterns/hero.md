@@ -28,6 +28,7 @@ This hero can be used on hub type pages, and provides quick feed of where the us
 </section>
 ```
 
+<!--
 ## Accent hero
 
 Hero with a theme-aware companion image.
@@ -36,8 +37,8 @@ Hero with a theme-aware companion image.
 <section
     class="hero hero-image hero-image-gradient-accent-right background-color-body-accent"
     style="
-        --hero-background-image-light: url('../scaffold/media/hero-400-light.jpg');
-        --hero-background-image-dark: url('../scaffold/media/hero-400-dark.jpg');
+        --hero-background-image-light: url('./scaffold/media/hero-400-light.jpg');
+        --hero-background-image-dark: url('./scaffold/media/hero-400-dark.jpg');
     ">
 	<div class="hero-content">
 		<p class="letter-spacing-wide text-transform-uppercase font-size-sm">LOREM IPSUM DOLOR SIT AMET</p>
@@ -49,4 +50,4 @@ Hero with a theme-aware companion image.
 		</div>
 	</div>
 </section>
-```
+``` -->
