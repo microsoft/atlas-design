@@ -55,8 +55,6 @@ $input-icon-active-color: $secondary !default;
 
 	&.input-sm {
 		@include control-sm;
-
-		padding-inline-start: 2.75em;
 	}
 
 	&.input-lg {
@@ -128,6 +126,8 @@ $input-icon-active-color: $secondary !default;
 		}
 
 		&.input-sm {
+			padding-inline-start: 2.75em;
+
 			~ .icon svg {
 				width: 0.875em;
 				height: 0.875em;
