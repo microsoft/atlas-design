@@ -176,24 +176,6 @@ The form behavior component can accept certain HTML attributes.
 			</textarea>
 		</div>
 	</div>
-
-	<div class="field">
-		<div class="field-label" for="star-rating-1">
-			Star rating<span class="required-indicator"></span>
-		</div>
-		<div class="field-body">
-			<star-rating id="star-rating-1" name="star-rating-1" required>
-				<legend slot="legend" class="visually-hidden">
-					Star rating<span class="required-indicator"></span>
-				</legend>
-				<span slot="label-1">Terrible</span>
-				<span slot="label-2">Poor</span>
-				<span slot="label-3">Fair</span>
-				<span slot="label-4">Good</span>
-				<span slot="label-5">Great</span>
-			</star-rating>
-		</div>
-	</div>
 	<div class="display-flex">
 		<button type="submit" class="button button-primary button-filled">Submit form</button>
 	</div>
