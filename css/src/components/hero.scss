@@ -8,7 +8,7 @@ $hero-min-height-sm: 300px !default;
 $hero-min-height-default: 400px !default;
 $hero-min-height-lg: 500px !default;
 
-$hero-content-width: 45% !default;
+$hero-content-width: $reading-max-width !default;
 $hero-content-fluid-width: 45% !default;
 $hero-image-width: calc((100% - 2 * $layout-gap) * 0.55) !default;
 $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !default;
@@ -38,7 +38,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		.hero-content {
 			@include desktop {
 				width: 100%;
-				max-width: $reading-max-width;
+				max-width: $hero-content-width;
 			}
 		}
 	}
