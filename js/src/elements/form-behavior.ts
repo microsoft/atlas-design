@@ -525,7 +525,7 @@ if (!window.customElements.get('form-behavior')) {
 }
 
 // Start <form behavior> Helper functions
-interface HTMLValueElement extends HTMLElement {
+export interface HTMLValueElement extends HTMLElement {
 	form: HTMLFormElement;
 	labels: NodeListOf<HTMLLabelElement> | null;
 	name: string;

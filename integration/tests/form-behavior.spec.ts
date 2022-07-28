@@ -109,4 +109,17 @@ test.describe('form behavior validation', () => {
 		expect(errorContainer).toContainText('Please fix the following issues to continue:');
 		expect(errorContainer).toContainText([`A selection for "${label}" is required.`]);
 	});
+
+	test('show thereAreNoEditsToSubmit message when no edits are made on the form', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		const formBehavior = page.locator('form-behavior');
+		await page.$eval('form-behavior', el => el.removeAttribute('new'));
+		await submitBtn.click();
+
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText(['There are no edits to submit.']);
+	});
 });
