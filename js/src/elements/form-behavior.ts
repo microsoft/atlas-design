@@ -358,7 +358,7 @@ class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
-			if (input.hasAttribute('aria-hidden')) {
+			if (input.hasAttribute('aria-hidden') === true) {
 				continue;
 			}
 
