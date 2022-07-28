@@ -17,7 +17,13 @@ At its most basic, a hero is comprised of two elements, a container with the `.h
 ```html-no-indent
 <section class="hero border">
 	<div class="hero-content">
-		<h1 class="font-size-h1">Hero</h1>
+        <p class="letter-spacing-wide text-transform-uppercase font-size-sm">LOREM IPSUM DOLOR SIT AMET</p>
+        <h1 class="font-size-h1 font-weight-semibold">Hero</h1>
+        <p class="font-size-lg font-weight-semibold margin-block-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <div class="buttons margin-top-md">
+            <button class="button border button-clear">Click me</button>
+        </div>
 	</div>
 </section>
 ```
@@ -31,12 +37,10 @@ While at its core, the hero is a spacing element, it also has some extra functio
 Atlas has no classes specifically for hero background colors. Instead, we provide a host of color related atomic classes to be used on any element; these can also be used to modify hero background colors and text.
 
 ```html-no-indent
-<section
-    class="hero background-color-primary color-primary-invert"
-	style="--hero-background-image-light: url('https://via.placeholder.com/1000x500');
-			--hero-background-image-dark: url('https://via.placeholder.com/1000x500');">
+<section class="hero background-color-primary color-primary-invert">
 	<div class="hero-content">
-		<h2 class="font-size-h2">A hero with a primary background color and inverted text</h1>
+		<h2 class="font-size-h2">A hero with a primary background color and inverted text</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 </section>
 ```
@@ -48,9 +52,10 @@ That is not quite where the story ends. You can also use certain classes on the 
 Heroes have default spacing that relies on the `.hero-content` element, so be sure to include it. However, there are also a few modifiers that can be used to change the _minimum_ height of the hero. If you pack a hero with text, it will grow in height. Each size is denoted by a t-shirt size. For more on how Atlas creates its names [check out the explainer for component sizes](../components/overview.md).
 
 ```html-no-indent
-<section class="hero hero-xs hero-xs background-color-primary color-primary-invert">
+<section class="hero hero-xs background-color-primary color-primary-invert">
 	<div class="hero-content">
 		<h2 class="font-size-h2">Extra small</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 </section>
 ```
@@ -59,6 +64,7 @@ Heroes have default spacing that relies on the `.hero-content` element, so be su
 <section class="hero hero-sm background-color-success color-success-invert">
 	<div class="hero-content">
 		<h2 class="font-size-h2">Small</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 </section>
 ```
@@ -67,6 +73,7 @@ Heroes have default spacing that relies on the `.hero-content` element, so be su
 <section class="hero background-color-danger color-danger-invert">
 	<div class="hero-content">
 		<h2 class="font-size-h2">Default</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 </section>
 ```
@@ -75,6 +82,7 @@ Heroes have default spacing that relies on the `.hero-content` element, so be su
 <section class="hero hero-lg background-color-tertiary color-tertiary-invert">
 	<div class="hero-content">
 		<h2 class="font-size-h2">Large</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 </section>
 ```
@@ -87,11 +95,14 @@ Heroes have two primary ways of displaying media. The first is with the `.hero-i
 
 ```html-no-indent
 <section
-    class="hero border hero-image"
-	style="--hero-background-image-light: url('https://via.placeholder.com/1000x500');
-			--hero-background-image-dark: url('https://via.placeholder.com/1000x500');">
+    class="hero hero-image border"
+	style="
+        --hero-background-image-light: url('https://via.placeholder.com/1000x400');
+		--hero-background-image-dark: url('https://via.placeholder.com/1000x400');
+    ">
 	<div class="hero-content">
-		<h2 class="font-size-h2">Hero</h1>
+		<h2 class="font-size-h2">Hero</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 </section>
 ```
@@ -105,11 +116,12 @@ You can include a video or image by using the `.hero-background` sub-component, 
 ```html-no-indent
 <section
     class="hero hero-lg theme-light ">
-	<div class="hero-content">
-		<h2 class="font-size-h2 color-primary-invert">Hero</h2>
+	<div class="hero-content color-primary-invert">
+		<h2 class="font-size-h2">Hero</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
     <div class="hero-background">
-        <img src="https://via.placeholder.com/1920x1080/0000FF/808080 ?Text=This is an image">
+        <img src="https://via.placeholder.com/1920x1080/0000FF/808080">
     </div>
 </section>
 ```

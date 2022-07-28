@@ -8,5 +8,5 @@ $reading-max-width: 50rem;
 
 $layout-gap: 16px !default;
 $layout-widescreen-width: $breakpoint-widescreen - $layout-gap * 2 !default;
-$layout-widescreen-gap: calc(50% - #{$breakpoint-widescreen} / 2) !default;
+$layout-widescreen-gap: calc(50% - #{$layout-widescreen-width} / 2) !default;
 //@end-sass-export-section
