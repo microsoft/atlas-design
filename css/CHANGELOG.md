@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.20.1
+
+### Patch Changes
+
+- aa917a4: Remove input-sm default padding.
+
 ## 3.20.0
 
 ### Minor Changes
