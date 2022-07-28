@@ -90,26 +90,6 @@ test.describe('form behavior validation', () => {
 		expect(errorContainer).toContainText([`${label} is required.`]);
 	});
 
-	test('show inputRequired message when custom element is missing value', async ({
-		page,
-		errorContainer,
-		submitBtn
-	}) => {
-		const input = page.locator('#star-rating-1');
-		const label = await input.getAttribute('aria-label');
-
-		page.fill('#sample-input-min', `Lorem ipsum`);
-		page.fill('#sample-text-area', 'Lorem ipsum');
-
-		await submitBtn.click();
-
-		const messageId = (await input.getAttribute('aria-describedby')).split(' ')[0];
-		const message = await page.locator(`#${messageId}`);
-		expect(message).toContainText(`A selection for "${label}" is required.`);
-		expect(errorContainer).toContainText('Please fix the following issues to continue:');
-		expect(errorContainer).toContainText([`A selection for "${label}" is required.`]);
-	});
-
 	test('show thereAreNoEditsToSubmit message when no edits are made on the form', async ({
 		page,
 		errorContainer,
