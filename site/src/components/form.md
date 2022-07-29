@@ -172,6 +172,7 @@ The form behavior component can accept certain HTML attributes.
 				minlength="10"
 				rows="4"
 				cols="30"
+				required
 			>
 			</textarea>
 		</div>
