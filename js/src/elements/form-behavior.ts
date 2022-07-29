@@ -420,6 +420,9 @@ class FormBehaviorElement extends HTMLElement {
 		}
 
 		const clearValidationEvent = new CustomEvent('clear-validation-errors', {
+			detail: {
+				target
+			},
 			bubbles: true
 		});
 		this.dispatchEvent(clearValidationEvent);
