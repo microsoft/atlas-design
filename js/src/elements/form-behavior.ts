@@ -328,13 +328,11 @@ class FormBehaviorElement extends HTMLElement {
 	validateMaxLength(input: HTMLValueElement, label: string): string | null {
 		if (
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
-			(input.validity.tooLong ||
-				(input.maxLength > 0 && input.value.length > input.maxLength) ||
-				input.value.length > 255)
+			(input.validity.tooLong || (input.maxLength > 0 && input.value.length > input.maxLength))
 		) {
 			return `${this.locStrings.inputMaxLength
 				.replace('{inputLabel}', label)
-				.replace('{maxLength}', input.maxLength > 0 ? input.maxLength.toString() : '255')}`;
+				.replace('{maxLength}', input.maxLength.toString())}`;
 		}
 		return null;
 	}
