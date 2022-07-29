@@ -173,8 +173,7 @@ The form behavior component can accept certain HTML attributes.
 				rows="4"
 				cols="30"
 				required
-			>
-			</textarea>
+			></textarea>
 		</div>
 	</div>
 	<div class="display-flex">
