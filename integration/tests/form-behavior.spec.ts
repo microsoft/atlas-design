@@ -39,37 +39,6 @@ test.describe('form behavior validation', () => {
 		});
 	});
 
-	// The input value string is automatically reduced if input has maxlength
-	test('show inputMaxLength message when input length is above maxlength', async ({
-		page,
-		errorContainer,
-		submitBtn
-	}) => {
-		const input = page.locator('#sample-input');
-		const label = await input.textContent();
-		const maxLength = (await input.getAttribute('maxlength')) ?? 255;
-
-		page.fill(
-			'#sample-input',
-			`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-			dolore magna aliqua. Imperdiet sed euismod nisi porta lorem mollis aliquam ut. Cursus metus aliquam eleifend 
-			mi in nulla. Vel facilisis volutpat est velit.`
-		);
-
-		await submitBtn.click();
-
-		const messageId = (await input.getAttribute('aria-describedby')).split(' ')[0];
-		const message = await page.locator(`#${messageId}`);
-		expect(message).toContainText(`${label} cannot be longer than ${maxLength} characters.`);
-		expect(errorContainer).toContainText('Please fix the following issues to continue:');
-		expect(errorContainer).toContainText(
-			[`${label} cannot be longer than ${maxLength} characters.`],
-			{
-				useInnerText: true
-			}
-		);
-	});
-
 	test('show inputRequired message when required input is missing value', async ({
 		page,
 		errorContainer,
