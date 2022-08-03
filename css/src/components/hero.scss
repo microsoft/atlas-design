@@ -102,49 +102,45 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 	}
 }
 
-.hero-image {
-	&::before {
-		display: none;
-		position: absolute;
-		inset-block-start: 0;
-		width: $hero-image-width;
-		height: 100%;
-		background-image: var(--hero-background-image);
-		background-repeat: no-repeat;
-		background-size: cover;
-		content: ' ';
-		inset-inline-end: $layout-gap;
+.hero-image::before {
+	display: none;
+	position: absolute;
+	inset-block-start: 0;
+	width: $hero-image-width;
+	height: 100%;
+	background-image: var(--hero-background-image);
+	background-repeat: no-repeat;
+	background-size: cover;
+	content: ' ';
+	inset-inline-end: $layout-gap;
 
-		@include desktop {
-			display: block;
-		}
-
-		@include widescreen {
-			width: $hero-image-width-widescreen;
-			inset-inline-end: $layout-widescreen-gap;
-		}
-
-		@media (forced-colors: active) {
-			background-image: none !important;
-		}
-
-		.theme-light & {
-			--hero-background-image: var(--hero-background-image-light);
-		}
-
-		.theme-dark & {
-			--hero-background-image: var(--hero-background-image-dark);
-		}
-
-		.theme-high-contrast & {
-			--hero-background-image: none;
-		}
+	@include desktop {
+		display: block;
 	}
 
-	&.hero-image-gradient-accent-right {
-		&::before {
-			background-image: linear-gradient(90deg, transparent 90%, $body-background-accent 100%),
-				var(--hero-background-image);
-		}
+	@include widescreen {
+		width: $hero-image-width-widescreen;
+		inset-inline-end: $layout-widescreen-gap;
 	}
+
+	@media (forced-colors: active) {
+		background-image: none !important;
+	}
+
+	.theme-light & {
+		--hero-background-image: var(--hero-background-image-light);
+	}
+
+	.theme-dark & {
+		--hero-background-image: var(--hero-background-image-dark);
+	}
+
+	.theme-high-contrast & {
+		--hero-background-image: none;
+	}
+}
+
+.hero-image.hero-image-gradient-accent-right::before {
+	background-image: linear-gradient(90deg, transparent 90%, $body-background-accent 100%),
+		var(--hero-background-image);
 }
