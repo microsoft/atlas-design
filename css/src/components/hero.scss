@@ -88,10 +88,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 
 	.hero-background {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		inset: 0;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -109,7 +106,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 	&::before {
 		display: none;
 		position: absolute;
-		top: 0;
+		inset-block-start: 0;
 		width: $hero-image-width;
 		height: 100%;
 		background-image: var(--hero-background-image);
