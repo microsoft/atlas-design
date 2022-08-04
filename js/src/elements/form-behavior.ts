@@ -601,7 +601,7 @@ function setBusySubmitButton(form: HTMLFormElement, isLoading: boolean) {
 	});
 }
 
-function getLabel(input: HTMLValueElement): string {
+export function getLabel(input: HTMLValueElement): string {
 	const label =
 		input.labels && input.labels.length
 			? input.labels[0].textContent
@@ -614,7 +614,7 @@ function getLabel(input: HTMLValueElement): string {
 	return label.trim();
 }
 
-function getField(input: HTMLValueElement) {
+export function getField(input: HTMLValueElement) {
 	const group = input.closest<HTMLElement>('.field');
 	if (!group) {
 		throw new Error(
@@ -624,7 +624,7 @@ function getField(input: HTMLValueElement) {
 	return group;
 }
 
-function getFieldBody(input: HTMLValueElement) {
+export function getFieldBody(input: HTMLValueElement) {
 	const body = input.closest('.field-body');
 	if (!body) {
 		throw new Error(
@@ -646,7 +646,7 @@ function createErrorNote(input: HTMLValueElement) {
 	return note;
 }
 
-function setValidationMessage(element: HTMLValueElement, message: string) {
+export function setValidationMessage(element: HTMLValueElement, message: string) {
 	const group = getField(element);
 	const note = group.querySelector('.field-error') || createErrorNote(element);
 	note.textContent = message;
