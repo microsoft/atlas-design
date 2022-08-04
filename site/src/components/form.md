@@ -82,7 +82,7 @@ The form behavior component can accept certain HTML attributes.
 | navigation="reload"      | After form submission, reload the current page.                                                                                         |
 | navigation="replace"     | After form submission, replace the current page with the url provided by the API response header or `navigation-href` attribute value.  |
 | navigation-href=         | The url to navigate to.                                                                                                                 |
-| header-\*=               | For attributes that start with `header-`, the name after `header-` and its value is added to the submit request header.                 |
+| header-\*=               | For attributes that start with `header-`, the name after `header-` and the attribute value is added to the submit request header.       |
 | nounload                 | Disables the browser warning message that appears when you try to navigate away from the current page with a partially filled out form. |
 
 ##### Form with edits required
