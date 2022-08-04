@@ -49,7 +49,7 @@ class FormBehaviorElement extends HTMLElement {
 
 	// disable browser message when leaving page
 	get hideUnloadMessage() {
-		return this.hasAttribute('noUnload');
+		return this.hasAttribute('nounload');
 	}
 
 	// use the new attribute when you want to ignore isDirty validation (for example, if the only user action on the form is to click a button)
