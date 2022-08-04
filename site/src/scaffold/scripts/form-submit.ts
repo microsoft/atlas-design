@@ -31,10 +31,11 @@ export function handleMockFormSubmit() {
 				</svg>`;
 
 		form.addEventListener(
-			'validationerror',
+			'form-validating',
 			e => {
 				e.preventDefault();
 				const container = form.querySelector('.form-error-container');
+				console.log('container', container);
 				const warningIconContainer =
 					container?.firstElementChild?.querySelector('.warning-icon-container');
 
