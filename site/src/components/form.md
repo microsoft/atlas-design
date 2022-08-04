@@ -75,14 +75,15 @@ When the form does not require any edits (i.e the only action is to submit), you
 
 The form behavior component can accept certain HTML attributes.
 
-- `navigation` - handles different navigation options after form submission. It can have the following values:
-  - `hash-reload` - add a hash and reload the current page while navigating to the hash.
-  - `follow` - redirect to the url provided by the API response header or `navigation-href` attribute value.
-  - `reload` - reload the current page
-  - `replace` - replaces the current page with the url provided by the API response header or `navigation-href` attribute value.
-- `navigation-href` - the url to navigate to.
-- `header-` - attribute values are added to the submit request header.
-- `nounload` - disables the browser warning message that appears when you try to navigate away from the current page with a partially filled out form.
+| Attribute                | Description                                                                                                                             |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| navigation="hash-reload" | After form submission, add a hash and reload the current page while navigating to the hash.                                             |
+| navigation="follow"      | After form submission, redirect to the url provided by the API response header or `navigation-href` attribute value.                    |
+| navigation="reload"      | After form submission, reload the current page.                                                                                         |
+| navigation="replace"     | After form submission, replace the current page with the url provided by the API response header or `navigation-href` attribute value.  |
+| navigation-href=         | The url to navigate to.                                                                                                                 |
+| header-\*=               | For attributes that start with `header-`, the name after `header-` and its value is added to the submit request header.                 |
+| nounload                 | Disables the browser warning message that appears when you try to navigate away from the current page with a partially filled out form. |
 
 ##### Form with edits required
 
