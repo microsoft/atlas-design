@@ -39,17 +39,22 @@ export class FormBehaviorElement extends HTMLElement {
 		this.locStrings = this.locStrings;
 	}
 
-	// use the new attribute when you want to ignore isDirty validation (for example, if the only user action on the form is to click a button)
-	get isNew() {
-		return this.hasAttribute('new');
-	}
-
 	get canSave() {
 		return this.isDirty || this.isNew;
 	}
 
 	get form() {
 		return this.closest(`form`);
+	}
+
+	// disable browser message when leaving page
+	get hideUnloadMessage() {
+		return this.hasAttribute('nounload');
+	}
+
+	// use the new attribute when you want to ignore isDirty validation (for example, if the only user action on the form is to click a button)
+	get isNew() {
+		return this.hasAttribute('new');
 	}
 
 	connectedCallback() {
@@ -150,7 +155,7 @@ export class FormBehaviorElement extends HTMLElement {
 
 	async handleUnloadEvent(event: BeforeUnloadEvent) {
 		this.setDirty();
-		if (!this.isDirty) {
+		if (!this.isDirty || this.hideUnloadMessage) {
 			return;
 		}
 
