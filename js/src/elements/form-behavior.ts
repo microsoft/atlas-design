@@ -11,7 +11,7 @@ export const defaultMessageStrings = {
 		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
 // <form-behavior>
-class FormBehaviorElement extends HTMLElement {
+export class FormBehaviorElement extends HTMLElement {
 	submitting = false as boolean;
 	initialData = new FormData();
 	toDispose: (() => void)[] = [];
