@@ -11,7 +11,7 @@ export const defaultMessageStrings = {
 		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
 // <form-behavior>
-class FormBehaviorElement extends HTMLElement {
+export class FormBehaviorElement extends HTMLElement {
 	submitting = false as boolean;
 	initialData = new FormData();
 	toDispose: (() => void)[] = [];
@@ -328,13 +328,11 @@ class FormBehaviorElement extends HTMLElement {
 	validateMaxLength(input: HTMLValueElement, label: string): string | null {
 		if (
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
-			(input.validity.tooLong ||
-				(input.maxLength > 0 && input.value.length > input.maxLength) ||
-				input.value.length > 255)
+			(input.validity.tooLong || (input.maxLength > 0 && input.value.length > input.maxLength))
 		) {
 			return `${this.locStrings.inputMaxLength
 				.replace('{inputLabel}', label)
-				.replace('{maxLength}', input.maxLength > 0 ? input.maxLength.toString() : '255')}`;
+				.replace('{maxLength}', input.maxLength.toString())}`;
 		}
 		return null;
 	}
@@ -358,7 +356,7 @@ class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
-			if (input.hasAttribute('aria-hidden')) {
+			if (input.hasAttribute('aria-hidden') === true) {
 				continue;
 			}
 
@@ -420,6 +418,9 @@ class FormBehaviorElement extends HTMLElement {
 		}
 
 		const clearValidationEvent = new CustomEvent('clear-validation-errors', {
+			detail: {
+				target
+			},
 			bubbles: true
 		});
 		this.dispatchEvent(clearValidationEvent);
@@ -525,7 +526,7 @@ if (!window.customElements.get('form-behavior')) {
 }
 
 // Start <form behavior> Helper functions
-interface HTMLValueElement extends HTMLElement {
+export interface HTMLValueElement extends HTMLElement {
 	form: HTMLFormElement;
 	labels: NodeListOf<HTMLLabelElement> | null;
 	name: string;
@@ -600,7 +601,7 @@ function setBusySubmitButton(form: HTMLFormElement, isLoading: boolean) {
 	});
 }
 
-function getLabel(input: HTMLValueElement): string {
+export function getLabel(input: HTMLValueElement): string {
 	const label =
 		input.labels && input.labels.length
 			? input.labels[0].textContent
@@ -613,7 +614,7 @@ function getLabel(input: HTMLValueElement): string {
 	return label.trim();
 }
 
-function getField(input: HTMLValueElement) {
+export function getField(input: HTMLValueElement) {
 	const group = input.closest<HTMLElement>('.field');
 	if (!group) {
 		throw new Error(
@@ -623,7 +624,7 @@ function getField(input: HTMLValueElement) {
 	return group;
 }
 
-function getFieldBody(input: HTMLValueElement) {
+export function getFieldBody(input: HTMLValueElement) {
 	const body = input.closest('.field-body');
 	if (!body) {
 		throw new Error(
@@ -645,7 +646,7 @@ function createErrorNote(input: HTMLValueElement) {
 	return note;
 }
 
-function setValidationMessage(element: HTMLValueElement, message: string) {
+export function setValidationMessage(element: HTMLValueElement, message: string) {
 	const group = getField(element);
 	const note = group.querySelector('.field-error') || createErrorNote(element);
 	note.textContent = message;
