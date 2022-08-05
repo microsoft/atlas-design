@@ -4,4 +4,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Removing star rating. Allow form behavior for export.
+Allow form behavior for export. Removing star rating.
