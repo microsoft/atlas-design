@@ -34,7 +34,7 @@ Hero with a theme-aware companion image.
 
 ```html-no-indent
 <section
-    class="hero hero-image hero-image-gradient-accent-right background-color-body-accent"
+    class="hero hero-image background-color-body-accent"
     style="
         --hero-background-image-light: url('../scaffold/media/hero-400-light.jpg');
         --hero-background-image-dark: url('../scaffold/media/hero-400-dark.jpg');
