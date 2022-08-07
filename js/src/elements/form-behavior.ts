@@ -65,7 +65,7 @@ export class FormBehaviorElement extends HTMLElement {
 
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
-		errorSummaryContainer.classList.add('form-error-container');
+		errorSummaryContainer.classList.add('form-error-container', 'margin-bottom-sm');
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);
@@ -393,7 +393,6 @@ export class FormBehaviorElement extends HTMLElement {
 		}
 
 		if (displayValidity) {
-			errorAlert.classList.add('margin-bottom-sm');
 			errorAlert.hidden = false;
 			errorAlert.focus();
 		}
