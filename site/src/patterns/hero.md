@@ -36,8 +36,8 @@ Hero with a theme-aware companion image.
 <section
     class="hero hero-image background-color-body-accent"
     style="
-        --hero-background-image-light: url('../scaffold/media/hero-400-light.jpg');
-        --hero-background-image-dark: url('../scaffold/media/hero-400-dark.jpg');
+        --hero-background-image-light: url('/site/src/scaffold/media/hero-400-light.jpg');
+        --hero-background-image-dark: url('/site/src/scaffold/media/hero-400-dark.jpg');
     ">
 	<div class="hero-content">
 		<p class="letter-spacing-wide text-transform-uppercase font-size-sm">LOREM IPSUM DOLOR SIT AMET</p>
