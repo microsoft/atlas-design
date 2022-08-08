@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-site",
-	"version": "0.27.0",
+	"version": "0.28.0",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
@@ -19,16 +19,16 @@
 		"@typescript-eslint/eslint-plugin": "^5.16.0",
 		"@typescript-eslint/parser": "^5.16.0",
 		"eslint-plugin-import": "^2.25.4",
-		"@microsoft/atlas-css": "^3.20.0",
+		"@microsoft/atlas-css": "^3.21.0",
 		"eslint-config-prettier": "^8.5.0",
 		"parcel": "^2.3.2",
 		"@parcel/transformer-sass": "^2.3.2",
-		"@microsoft/parcel-transformer-markdown-html": "^2.5.3",
+		"@microsoft/parcel-transformer-markdown-html": "^2.6.0",
 		"fs-extra": "^10.0.1",
 		"front-matter": "^4.0.2",
 		"typescript": "^4.5.5"
 	},
 	"dependencies": {
-		"@microsoft/atlas-js": "^1.4.0"
+		"@microsoft/atlas-js": "^1.5.0"
 	}
 }

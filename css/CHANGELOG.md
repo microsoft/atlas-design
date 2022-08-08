@@ -1,5 +1,14 @@
 # @microsoft/atlas-css
 
+## 3.21.0
+
+### Minor Changes
+
+- bf77710: Include a hero component.
+- 133dec4: Add snap scroll element and relevant documentation
+- bf77710: Add background image pattern plus and relevant documentation.
+- bf77710: Add layout-gap placeholder class (~~uhf-container~~).
+
 ## 3.20.1
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.6.0
+
+### Minor Changes
+
+- bf77710: Add example transform for html code blocks that need to go full width when content section is expanded to full screen.
+
+### Patch Changes
+
+- Updated dependencies [bf77710]
+- Updated dependencies [133dec4]
+- Updated dependencies [bf77710]
+- Updated dependencies [bf77710]
+  - @microsoft/atlas-css@3.21.0
+
 ## 2.5.3
 
 ### Patch Changes
