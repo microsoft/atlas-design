@@ -9,3 +9,18 @@
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 }
+
+.scroll-snap-container {
+	gap: 1rem;
+	height: max-content;
+	margin-block: 1rem;
+	scroll-behavior: smooth;
+	scroll-snap-type: x mandatory;
+}
+
+.scroll-snap-item {
+	flex-basis: 90%;
+	min-width: 80%;
+	height: auto;
+	scroll-snap-align: center;
+}
