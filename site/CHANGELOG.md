@@ -1,5 +1,23 @@
 # @microsoft/atlas-site
 
+## 0.28.0
+
+### Minor Changes
+
+- bf77710: Include a hero component.
+- 133dec4: Add snap scroll element and relevant documentation
+- bf77710: Add background image pattern plus and relevant documentation.
+- bf77710: Add layout-gap placeholder class (~~uhf-container~~).
+- bf77710: Add a full screen content section button.
+- e0fc0ad: Allow form behavior for export. Removing star rating.
+
+### Patch Changes
+
+- Updated dependencies [ad1c9a4]
+- Updated dependencies [133dec4]
+- Updated dependencies [e0fc0ad]
+  - @microsoft/atlas-js@1.5.0
+
 ## 0.27.0
 
 ### Minor Changes

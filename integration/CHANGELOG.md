@@ -1,5 +1,11 @@
 # @microsoft/atlas-integration
 
+## 1.2.0
+
+### Minor Changes
+
+- e0fc0ad: Allow form behavior for export. Removing star rating.
+
 ## 1.1.0
 
 ### Minor Changes

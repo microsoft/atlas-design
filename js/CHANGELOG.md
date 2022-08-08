@@ -1,5 +1,13 @@
 # @microsoft/atlas-js
 
+## 1.5.0
+
+### Minor Changes
+
+- ad1c9a4: Add noUnload attribute handling to form behavior for disabling browser message on page unload.
+- 133dec4: Add snap scroll element and relevant documentation
+- e0fc0ad: Allow form behavior for export. Removing star rating.
+
 ## 1.4.0
 
 ### Minor Changes
