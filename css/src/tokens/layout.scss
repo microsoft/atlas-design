@@ -5,4 +5,8 @@
 $column-gap: 0.75rem !default;
 $large-column-gap: 1.5rem !default;
 $reading-max-width: 50rem;
+
+$layout-gap: 16px !default;
+$layout-widescreen-width: $breakpoint-widescreen - $layout-gap * 2 !default;
+$layout-widescreen-gap: calc(50% - #{$layout-widescreen-width} / 2) !default;
 //@end-sass-export-section
