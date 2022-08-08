@@ -81,8 +81,8 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			border-right: 1px solid $border;
 			border-bottom: 1px solid $border;
 			border-left: 1px solid $border;
-			border-bottom-left-radius: $border-radius-lg;
-			border-bottom-right-radius: $border-radius-lg;
+			border-end-start-radius: $border-radius-lg;
+			border-end-end-radius: $border-radius-lg;
 		}
 	}
 
