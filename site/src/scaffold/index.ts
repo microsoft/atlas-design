@@ -3,13 +3,14 @@ import { handleFigmaFullScreenRequest } from './scripts/figma-embed';
 import { initTheme } from './scripts/theming';
 import { handleMockFormSubmit } from './scripts/form-submit';
 
-import { initPopover } from '@microsoft/atlas-js/src/index';
+import { initPopover, initSnapScroll } from '@microsoft/atlas-js/src/index';
 
 initTheme();
 initPopover();
 handleCodeFilters();
 handleFigmaFullScreenRequest();
 handleMockFormSubmit();
+initSnapScroll();
 initFullScreenToggle();
 
 function initFullScreenToggle() {

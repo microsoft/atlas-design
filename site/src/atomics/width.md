@@ -13,7 +13,7 @@ Values are in pixels. Keep in mind that the `min-width` and `max-width` properti
 | cssproperty                                      | value                                                           | screensize                           |
 | ------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------ |
 | `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350`, `full` (100%) | all screensizes, `tablet`, `desktop` |
-| `width` (available on tablet screens and larger) | `400`, `450`, `unset`                                           | `tablet`, `desktop`                  |
+| `width` (available on tablet screens and larger) | `400`, `450`, `500`, `unset`                                    | `tablet`, `desktop`                  |
 
 ## Usage
 
@@ -51,6 +51,9 @@ Set the `width` of an element.
 </div>
 <div class="width-450-tablet border padding-sm font-weight-semibold">
 	<p>450</p>
+</div>
+<div class="width-500-tablet border padding-sm font-weight-semibold">
+	<p>500</p>
 </div>
 ```
 
@@ -97,6 +100,7 @@ List of all available classes:
 .width-350-tablet
 .width-400-tablet
 .width-450-tablet
+.width-500-tablet
 .width-unset-tablet
 .width-full-desktop
 .width-auto-desktop
@@ -108,5 +112,6 @@ List of all available classes:
 .width-350-desktop
 .width-400-desktop
 .width-450-desktop
+.width-500-desktop
 .width-unset-desktop
 ```

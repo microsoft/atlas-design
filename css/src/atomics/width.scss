@@ -1,7 +1,7 @@
 @use 'sass:list';
 
 $universal-widths: auto, 100, 150, 200, 250, 300, 350 !default;
-$mobile-incompatible-widths: 400, 450, unset !default;
+$mobile-incompatible-widths: 400, 450, 500, unset !default;
 $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 
 // widths
