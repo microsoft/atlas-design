@@ -21,6 +21,6 @@
 .scroll-snap-item {
 	flex-basis: 90%;
 	min-width: 80%;
-	height: auto;
+	height: auto !important; // make sure card height is full height of container
 	scroll-snap-align: center;
 }
