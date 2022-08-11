@@ -91,6 +91,8 @@ Heroes have default spacing that relies on the `.hero-content` element, so be su
 
 Heroes have two primary ways of displaying media. The first is with the `.hero-image` class, which should be placed adjacent to the `.hero` class. This subclass can be used in conjunction with inline css variable declarations to display images suitable for different themes. Image sources should be referenced in a style attribute as shown below. This allows for convenient image swapping between themes. These images display to the side of the hero's content. On narrow screens, no image will display.
 
+Hero images are hidden in forced colors mode.
+
 **Images are currently not intended to scale or shrink. They are not shown on smaller or zoomed screens. For this reason, it's required that these images are presentational only. They should not contain words, subjects that might look naff if cut off, or anything essential to understanding the material of the page.**
 
 ```html-no-indent

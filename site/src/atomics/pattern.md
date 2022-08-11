@@ -4,7 +4,7 @@ description: Background pattern component in the Atlas Design System
 template: standard
 ---
 
-# Background Patterns
+# Patterns
 
 Background patterns are single classes that can be added to other components to create a patterned background effect.
 
