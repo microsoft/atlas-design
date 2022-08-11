@@ -1,0 +1,76 @@
+$border-gradient-colors: (
+	'body': $body-background,
+	'body-accent': $body-background-accent
+) !default;
+
+@each $name, $var in $border-gradient-colors {
+	// ex. .gradient-border-body { --border-gradient-end-color: var(--theme-body-background); }
+	.gradient-border-#{$name} {
+		--border-gradient-end-color: #{$var};
+	}
+}
+
+$border-gradient-direction: (
+	'right': 'inline-end',
+	'bottom': 'block-end'
+) !default;
+
+@each $direction, $logical-side in $border-gradient-direction {
+	.gradient-border-#{$direction} {
+		position: relative;
+	}
+	.gradient-border-#{$direction}:before {
+		display: block;
+		position: absolute;
+		content: '';
+		border-image: linear-gradient(
+			to #{$direction},
+			transparent 0%,
+			transparent 92%,
+			var(--border-gradient-end-color, transparent) 100%
+		);
+		border-#{$logical-side}-width: 320px;
+		border-#{$logical-side}-style: solid;
+		border-image-outset: 0;
+
+		@if $direction == 'right' {
+			border-image-slice: 0 128 0 0;
+			inset-block-start: 0;
+			inset-block-end: 0;
+			inset-inline-end: 0;
+		}
+
+		@if $direction == 'bottom' {
+			border-image-slice: 0 0 128 0;
+			inset-block-end: 0;
+			inset-inline-start: 0;
+			inset-inline-end: 0;
+		}
+
+		@include forced-colors {
+			display: none !important;
+		}
+	}
+
+	@include tablet {
+		.gradient-border-to-#{$direction}-tablet:before {
+			border-image: linear-gradient(
+				to #{$direction},
+				transparent 0%,
+				transparent 92%,
+				var(--border-gradient-end-color) 100%
+			);
+			border-#{$logical-side}-width: 320px;
+			border-#{$logical-side}-style: solid;
+			border-image-outset: 0;
+
+			@if $direction == 'right' {
+				border-image-slice: 0 128 0 0;
+			}
+
+			@if $direction == 'bottom' {
+				border-image-slice: 0 0 128 0;
+			}
+		}
+	}
+}
