@@ -16,10 +16,6 @@ $border-gradient-direction: (
 ) !default;
 
 @each $direction, $logical-side in $border-gradient-direction {
-	@include forced-colors {
-		display: none !important;
-	}
-
 	.gradient-border-#{$direction} {
 		position: relative;
 	}
@@ -49,6 +45,10 @@ $border-gradient-direction: (
 			inset-block-end: 0;
 			inset-inline-start: 0;
 			inset-inline-end: 0;
+		}
+
+		@include forced-colors {
+			display: none !important;
 		}
 	}
 
