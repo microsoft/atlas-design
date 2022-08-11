@@ -11,6 +11,12 @@ There are two main types of gradients.
 1. Gradients for blending colors between elements and contains (`.gradient-border-*`).
 2. Gradients displayed with font. Coming soon.
 
+## Text color gradients
+
+```html
+<h2 class="font-size-h2 font-weight-bold gradient-text-purple-blue">From purple to blue</h2>
+```
+
 ## Gradient borders usage
 
 The `.gradient-border` component is a moderately pluggable component used to blend the boundaries between colors. Because of the near-infinite number of steps, color variations, and gradient types involved in creating a gradient, we've scoped these to be linear gradients that transition between `transparent` and a given color represented by the `--border-gradient-end-color` custom property. Each gradient combination requires a minimum of two class, one specifying the color and one specifying the direction.

@@ -74,3 +74,14 @@ $border-gradient-direction: (
 		}
 	}
 }
+
+// Text color gradients cannot be quite so programmatic
+
+.gradient-text-purple-blue {
+	background-color: $gradient-text-purple;
+	background-image: linear-gradient(90deg, $gradient-text-purple, $gradient-text-blue);
+	background-clip: text;
+	color: transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
