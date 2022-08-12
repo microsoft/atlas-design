@@ -81,6 +81,7 @@ $border-gradient-direction: (
 	/* stylelint-disable */
 	-webkit-background-clip: text;
 	/* stylelint-enable */
+	line-height: 1.4; // required because of background clip, avoid "g" and "y" getting cut off
 	background-clip: text;
 	background-color: $gradient-text-purple;
 	background-image: linear-gradient(90deg, $gradient-text-purple, $gradient-text-blue);
