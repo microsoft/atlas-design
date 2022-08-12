@@ -105,12 +105,12 @@ Additionally `-md` and `-lg` may be added for a thicker border.
 
 The color of a border can be modified using the following classes.
 
-| modifiers | color name                                        | screensize |
-| --------- | ------------------------------------------------- | ---------- |
-| colors    | `primary`, `danger`, `warning`, `success`, `info` | n/a        |
+| modifiers | color name                                                  | screensize |
+| --------- | ----------------------------------------------------------- | ---------- |
+| colors    | `primary`, `danger`, `warning`, `success`, `info`, `accent` | n/a        |
 
 ```html
-<div class="border-color-info border-left-lg padding-block-md border-radius">
+<div class="border-color-accent border-left-lg padding-block-md border-radius">
 	<p class="margin-inline-md">Custom Color</p>
 </div>
 ```
