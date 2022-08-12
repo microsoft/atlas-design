@@ -6,7 +6,11 @@ template: standard
 
 # Media
 
-The media component is a simple layout component designed for placing an image next to the left of a flexible container element.
+The media component is a simple layout component designed for placing an image next to the left of a flexible container element. Its constituent parts are:
+
+- `.media`, the parent class
+- `.media-left`, the class containing some media, usually a small image or icon.
+- `.media-content`, the flexible container.
 
 ## Usage
 
@@ -40,7 +44,7 @@ The following example places a media element within a few card-like atomics clas
 			<h2 class="font-size-h4 font-weight-semibold margin-bottom-xs">
 				Media content is a place to put your text content.
 			</h2>
-			<p>You can also nest other media element inside.</p>
+			<p>You can also nest other media element inside <code>.media-content</code>.</p>
 		</div>
 	</div>
 </article>
