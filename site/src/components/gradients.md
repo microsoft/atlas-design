@@ -8,13 +8,17 @@ template: standard
 
 There are two main types of gradients.
 
-1. Gradients for blending colors between elements and contains (`.gradient-border-*`).
-2. Gradients displayed with font. Coming soon.
+1. Gradients displayed with font (`.gradient-text-`).
+2. Gradients for blending colors between elements and contains (`.gradient-border-*`).
 
 ## Text color gradients
 
+Currently there is only one available gradient for text.
+
 ```html
-<h2 class="font-size-h2 font-weight-bold gradient-text-purple-blue">From purple to blue</h2>
+<h3 class="font-size-h3 font-weight-bold gradient-text-purple-blue">
+	A gradient from purple to blue
+</h2>
 ```
 
 ## Gradient borders usage

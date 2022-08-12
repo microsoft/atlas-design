@@ -78,10 +78,12 @@ $border-gradient-direction: (
 // Text color gradients cannot be quite so programmatic
 
 .gradient-text-purple-blue {
+	/* stylelint-disable */
+	-webkit-background-clip: text;
+	/* stylelint-enable */
+	background-clip: text;
 	background-color: $gradient-text-purple;
 	background-image: linear-gradient(90deg, $gradient-text-purple, $gradient-text-blue);
-	background-clip: text;
 	color: transparent;
-	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
