@@ -19,7 +19,7 @@ First in order to apply a background pattern, specify the `--background-image-pa
 
 ```html
 <section
-	class="padding-lg background-image-pattern background-repeat-repeat background-color-primary color-primary-invert"
+	class="padding-lg background-image-pattern background-color-primary color-primary-invert"
 	style="--background-image-pattern: url('https://docs.microsoft.com/en-us/media/background-patterns/pixie-sticks.svg')"
 >
 	<h2 class="font-size-h2">A confetti background</h2>
@@ -52,7 +52,7 @@ Be aware that a transparent svg will not be themeable, so while background color
 
 ```html
 <section
-	class="padding-lg background-color-primary color-primary-invert background-image-pattern background-repeat-repeat background-size-100"
+	class="padding-lg background-color-primary color-primary-invert background-image-pattern background-size-100"
 	style="--background-image-pattern: url('https://docs.microsoft.com/en-us/media/background-patterns/plus.svg')"
 >
 	<p><code>background-size-100</code></p>
@@ -62,3 +62,13 @@ Be aware that a transparent svg will not be themeable, so while background color
 ## Why don't we just inline these SVGs into Atlas?
 
 Keeping svg source code out of Atlas reduces our file sizes, and maintains flexibility for you the developer.
+
+## Available classes
+
+List of all available classes:
+
+```atomics-filter
+background-image-pattern
+background-size-100
+background-size-200
+```
