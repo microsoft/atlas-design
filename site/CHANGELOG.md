@@ -1,5 +1,14 @@
 # @microsoft/atlas-site
 
+## 0.29.0
+
+### Minor Changes
+
+- d23288c: Include .border-color-accent and new `$border-accent` token.
+- ff02c45: Add a programatic gradient component and relevant documentation.
+- 96dd5af: Add media component and relevant documentation.
+- ba7ae35: Add gradient-text-purple-blue class.
+
 ## 0.28.0
 
 ### Minor Changes
