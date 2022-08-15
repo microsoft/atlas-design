@@ -1,0 +1,11 @@
+$background-sizes: 100, 200 !default;
+
+@each $size in $background-sizes {
+	.background-size-#{$size} {
+		background-size: #{$size}px;
+	}
+}
+
+.background-image-pattern {
+	background-image: var(--background-image-pattern);
+}
