@@ -13,11 +13,11 @@ There are two main types of gradients.
 
 ## Text color gradients
 
-Currently there is only one available gradient for text.
+Currently there is only one available gradient for text. Because gradients transitions take up the entire width of a particular element, it's recommended to highlight inline elements or a portion of a heading, not the entire heading itself.
 
 ```html
-<h3 class="font-size-h3 font-weight-bold gradient-text-purple-blue">
-	A gradient from purple to blue
+<h3 class="font-size-h3 font-weight-bold">
+	A gradient from <span class="gradient-text-purple-blue">purple to blue</span>
 </h2>
 ```
 
