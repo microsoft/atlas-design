@@ -100,6 +100,10 @@
 	}
 }
 
+.border-color-accent {
+	border-color: $border-accent !important;
+}
+
 .border-high-contrast {
 	border: $border-width solid $border-white-high-contrast !important;
 
