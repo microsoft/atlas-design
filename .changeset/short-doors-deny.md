@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Add media element and relevant documentation.
+Add media component and relevant documentation.
