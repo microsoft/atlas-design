@@ -1,5 +1,19 @@
 # @microsoft/atlas-css
 
+## 3.22.0
+
+### Minor Changes
+
+- d23288c: Include .border-color-accent and new `$border-accent` token.
+- ff02c45: Add a programatic gradient component and relevant documentation.
+- 21f8220: Add several atomics for repeating backgrounds.
+- 96dd5af: Add media component and relevant documentation.
+- ba7ae35: Add gradient-text-purple-blue class.
+
+### Patch Changes
+
+- 21f8220: Remove background-image pattern, which is unnecessarily long (3000chars).
+
 ## 3.21.0
 
 ### Minor Changes
