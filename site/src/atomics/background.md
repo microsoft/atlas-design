@@ -27,7 +27,7 @@ First in order to apply a background pattern, specify the `--background-image-pa
 </section>
 ```
 
-## Adjusting your repeat settings with background sizes
+## Adjusting background sizes
 
 You can adjust the look and feel of your pattern with different `background-size` values.
 
