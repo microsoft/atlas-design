@@ -10,17 +10,9 @@
 	}
 }
 
-.media-left,
-.media-right {
-	flex: 0 0 auto;
-}
-
 .media-left {
+	flex: 0 0 auto;
 	margin-inline-end: 1rem;
-}
-
-.media-right {
-	margin-inline-start: 1rem;
 }
 
 .media-content {
