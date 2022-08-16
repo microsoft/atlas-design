@@ -52,7 +52,8 @@ $field-error-color: $danger !default;
 		}
 	}
 
-	.field-error {
+	.field-error,
+	.field-error-custom {
 		color: $field-error-color;
 		font-size: $font-size-8;
 		line-height: $field-line-height;
