@@ -175,6 +175,13 @@ export class FormBehaviorElement extends HTMLElement {
 		// reject the submit if no edits have been made (overridable with the new attribute)
 		if (!this.canSave) {
 			this.showNoChangesMessage(form);
+			const validationErrorEvent = new CustomEvent('form-validating', {
+				detail: {
+					form
+				},
+				bubbles: true
+			});
+			this.dispatchEvent(validationErrorEvent);
 			return;
 		}
 
