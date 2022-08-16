@@ -27,10 +27,10 @@ The `.gradient-border` component is a moderately pluggable component used to ble
 
 Border gradients are hidden in forced colors mode.
 
-| base class name                  | interpolated value    | screensize |
-| -------------------------------- | --------------------- | ---------- |
-| `gradient-border-to-<direction>` | `right`, `bottom`     | `tablet`   |
-| `gradient-border-<colorname>`    | `body`, `body-accent` | n/a        |
+| base class name               | interpolated value    | screensize |
+| ----------------------------- | --------------------- | ---------- |
+| `gradient-border-<direction>` | `right`, `bottom`     | `tablet`   |
+| `gradient-border-<colorname>` | `body`, `body-accent` | n/a        |
 
 Note: you can also view the [Accent hero on the hero patterns page](../patterns/hero.md) page to see an example that uses this gradient to blend an image to the background.
 
