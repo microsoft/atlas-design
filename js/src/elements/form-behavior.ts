@@ -257,6 +257,7 @@ export class FormBehaviorElement extends HTMLElement {
 				this.dispatchEvent(
 					new CustomEvent('submission-error', {
 						detail: {
+							form,
 							request,
 							response
 						},
