@@ -383,6 +383,11 @@ export class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
+			// Don't check markdown editor attachment input
+			if (input.classList.contains('attachment-input')) {
+				continue;
+			}
+
 			const isCustomElement = !!customElements.find(el => el === input);
 
 			this.runBasicValidation(input, displayValidity, errors, errorList, isCustomElement);
