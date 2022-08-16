@@ -13,11 +13,11 @@ There are two main types of gradients.
 
 ## Text color gradients
 
-Currently there is only one available gradient for text.
+Currently there is only one available gradient for text. Because gradients transitions take up the entire width of a particular element, it's recommended to highlight inline elements or a portion of a heading, not the entire heading itself.
 
 ```html
-<h3 class="font-size-h3 font-weight-bold gradient-text-purple-blue">
-	A gradient from purple to blue
+<h3 class="font-size-h3 font-weight-bold">
+	A gradient from <span class="gradient-text-purple-blue">purple to blue</span>
 </h2>
 ```
 
@@ -27,10 +27,10 @@ The `.gradient-border` component is a moderately pluggable component used to ble
 
 Border gradients are hidden in forced colors mode.
 
-| base class name                  | interpolated value    | screensize |
-| -------------------------------- | --------------------- | ---------- |
-| `gradient-border-to-<direction>` | `right`, `bottom`     | `tablet`   |
-| `gradient-border-<colorname>`    | `body`, `body-accent` | n/a        |
+| base class name               | interpolated value    | screensize |
+| ----------------------------- | --------------------- | ---------- |
+| `gradient-border-<direction>` | `right`, `bottom`     | `tablet`   |
+| `gradient-border-<colorname>` | `body`, `body-accent` | n/a        |
 
 Note: you can also view the [Accent hero on the hero patterns page](../patterns/hero.md) page to see an example that uses this gradient to blend an image to the background.
 
