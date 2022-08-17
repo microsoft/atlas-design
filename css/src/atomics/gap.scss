@@ -1,0 +1,60 @@
+$separator: '-' !default;
+
+$gap-sizes: (
+	('xxs', $layout-1),
+	('xs', $layout-2),
+	('sm', $layout-3),
+	('md', $layout-4),
+	('lg', $layout-5),
+	// ('xl', $layout-6),
+	// ('xxl', $layout-7),
+	// ('xxxl', $layout-8),
+	('none', $layout-0)
+);
+
+@function sizeValue($key, $value) {
+	@return if($key == 'none', 0, $value);
+}
+
+@each $size in $gap-sizes {
+	$sizeKey: nth($size, 1);
+	$sizeValue: nth($size, 2);
+
+	// .<property>-<value>
+	.gap#{$separator}#{$sizeKey} {
+		gap: sizeValue($sizeKey, $sizeValue) !important;
+	}
+}
+
+@include tablet {
+	@each $size in $gap-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
+		.gap#{$separator}#{$sizeKey}#{$separator}tablet {
+			gap: $sizeValue !important;
+		}
+	}
+}
+
+@include desktop {
+	@each $size in $gap-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
+		.gap#{$separator}#{$sizeKey}#{$separator}desktop {
+			gap: $sizeValue !important;
+		}
+	}
+}
+
+@include widescreen {
+	@each $size in $gap-sizes {
+		$sizeKey: nth($size, 1);
+		$sizeValue: nth($size, 2);
+
+		.gap#{$separator}#{$sizeKey}#{$separator}widescreen {
+			gap: $sizeValue !important;
+		}
+	}
+}
