@@ -1,5 +1,17 @@
 # @microsoft/atlas-site
 
+## 0.30.0
+
+### Minor Changes
+
+- 7dae960: Add `gap` property atomics and relevant documentation.
+
+### Patch Changes
+
+- 72a1dcc: Update gradient-text example to show partial width gradients.
+- Updated dependencies [0ec44ce]
+  - @microsoft/atlas-js@1.5.1
+
 ## 0.29.0
 
 ### Minor Changes
