@@ -65,12 +65,8 @@ export class FormBehaviorElement extends HTMLElement {
 
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
-		errorSummaryContainer.classList.add(
-			'margin-bottom-sm',
-			'border-color-danger',
-			'background-color-danger-light'
-		);
-		errorSummaryContainer.setAttribute('data-label', 'form-error-container');
+		errorSummaryContainer.classList.add('margin-bottom-sm', 'background-color-danger-light');
+		errorSummaryContainer.setAttribute('data-form-error-container', '');
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);
@@ -284,7 +280,7 @@ export class FormBehaviorElement extends HTMLElement {
 		errorAlert: HTMLDivElement;
 		errorList: HTMLUListElement;
 	} {
-		const formLayout = form.querySelector('[data-label="form-error-container"]') || form;
+		const formLayout = form.querySelector('[data-form-error-container]') || form;
 		const alertId = generateElementId();
 
 		const errorAlert = document.createElement('div');
@@ -311,9 +307,7 @@ export class FormBehaviorElement extends HTMLElement {
 	}
 
 	getErrorAlert(form: HTMLFormElement) {
-		const errorAlert = form.querySelector<HTMLDivElement>(
-			'[data-label="form-error-container"] .alert'
-		);
+		const errorAlert = form.querySelector<HTMLDivElement>('[data-form-error-container] .alert');
 		if (errorAlert) {
 			return {
 				errorAlert,
@@ -666,13 +660,14 @@ function createErrorNote(input: HTMLValueElement) {
 		`${note.id} ${input.getAttribute('aria-describedby') || ''}`
 	);
 	note.classList.add('field-error');
+	note.setAttribute('data-field-error', '');
 	getFieldBody(input).after(note);
 	return note;
 }
 
 export function setValidationMessage(element: HTMLValueElement, message: string) {
 	const group = getField(element);
-	const note = group.querySelector('.field-error') || createErrorNote(element);
+	const note = group.querySelector('[data-field-error]') || createErrorNote(element);
 	note.textContent = message;
 }
 

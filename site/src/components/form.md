@@ -87,7 +87,7 @@ The form behavior component can accept certain HTML attributes.
 
 #### Custom validation
 
-Aside from basic input validation, you can use event listeners to listen for the `form-validating` custom event to inject custom validation logic. Use the `field-error-custom` class for the custom validation error message.
+Aside from basic input validation, you can use event listeners to listen for the `form-validating` custom event to inject custom validation logic.
 
 ##### Form with edits required
 
