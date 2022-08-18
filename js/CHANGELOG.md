@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.5.1
+
+### Patch Changes
+
+- 0ec44ce: Updating form behavior logic to use data attributes. Adding form-validating event for no edits scenario. Adding error container bottom spacing for all scenarios.
+
 ## 1.5.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.23.0
+
+### Minor Changes
+
+- 7dae960: Add `gap` property atomics and relevant documentation.
+
 ## 3.22.0
 
 ### Minor Changes
