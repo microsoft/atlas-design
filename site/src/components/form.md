@@ -18,7 +18,7 @@ Forms contain form control elements such as the following:
 - [`.textarea`](./textarea.md)
 - custom form elements
 
-## Form Field
+## Form field
 
 The `.field` component is a container for form control elements to provide consistency.
 It can be used to hold `.field-body` containers, which holds the individual elements.
@@ -43,7 +43,7 @@ It can be used to hold `.field-body` containers, which holds the individual elem
 </fieldset>
 ```
 
-## Required Indicator
+## Required indicator
 
 For elements that are required for form submission, you can add a span element with the `.required-indicator` class inside the label or adjacent to the element.
 
@@ -66,7 +66,7 @@ For elements that are required for form submission, you can add a span element w
 </form>
 ```
 
-## Form Behavior
+## Form behavior
 
 Use the `form-behavior` component within a form to ensure accessible form validation. Form elements should be contained by `.field` and `.field-body` class.
 When the form does not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
@@ -84,6 +84,10 @@ The form behavior component can accept certain HTML attributes.
 | navigation-href=         | The url to navigate to.                                                                                                                 |
 | header-\*=               | For attributes that start with `header-`, the name after `header-` and the attribute value is added to the submit request header.       |
 | nounload                 | Disables the browser warning message that appears when you try to navigate away from the current page with a partially filled out form. |
+
+#### Custom validation
+
+Aside from basic input validation, you can use event listeners to listen for the `form-validating` custom event to inject custom validation logic.
 
 ##### Form with edits required
 
