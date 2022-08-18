@@ -385,7 +385,7 @@ export class FormBehaviorElement extends HTMLElement {
 			}
 
 			// Don't check markdown editor attachment input
-			if (input.classList.contains('attachment-input')) {
+			if (input.id === 'attachment-count') {
 				continue;
 			}
 
