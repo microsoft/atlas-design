@@ -2,4 +2,4 @@
 '@microsoft/atlas-js': patch
 ---
 
-Add .field-error-custom class for form behavior custom validation error messages. Add form-validating event for no edits scenario. Add error container bottom spacing for all scenarios.
+Updating form behavior logic to use data attributes. Adding form-validating event for no edits scenario. Adding error container bottom spacing for all scenarios.
