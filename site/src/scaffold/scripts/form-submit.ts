@@ -34,7 +34,7 @@ export function handleMockFormSubmit() {
 			'form-validating',
 			e => {
 				e.preventDefault();
-				const container = form.querySelector('.form-error-container');
+				const container = form.querySelector('[data-label="form-error-container"]');
 				const warningIconContainer =
 					container?.firstElementChild?.querySelector('.warning-icon-container');
 

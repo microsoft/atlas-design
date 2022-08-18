@@ -65,7 +65,12 @@ export class FormBehaviorElement extends HTMLElement {
 
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
-		errorSummaryContainer.classList.add('form-error-container', 'margin-bottom-sm');
+		errorSummaryContainer.classList.add(
+			'margin-bottom-sm',
+			'border-color-danger',
+			'background-color-danger-light'
+		);
+		errorSummaryContainer.setAttribute('data-label', 'form-error-container');
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);
@@ -279,7 +284,7 @@ export class FormBehaviorElement extends HTMLElement {
 		errorAlert: HTMLDivElement;
 		errorList: HTMLUListElement;
 	} {
-		const formLayout = form.querySelector('.form-error-container') || form;
+		const formLayout = form.querySelector('[data-label="form-error-container"]') || form;
 		const alertId = generateElementId();
 
 		const errorAlert = document.createElement('div');
@@ -306,7 +311,9 @@ export class FormBehaviorElement extends HTMLElement {
 	}
 
 	getErrorAlert(form: HTMLFormElement) {
-		const errorAlert = form.querySelector<HTMLDivElement>('.form-error-container .alert');
+		const errorAlert = form.querySelector<HTMLDivElement>(
+			'[data-label="form-error-container"] .alert'
+		);
 		if (errorAlert) {
 			return {
 				errorAlert,

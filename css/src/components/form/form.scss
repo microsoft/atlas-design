@@ -66,9 +66,3 @@ $field-error-color: $danger !default;
 	content: '*';
 	vertical-align: top;
 }
-
-.form-error-container {
-	border-color: $danger !important;
-	background-color: $danger-background;
-	color: $danger;
-}
