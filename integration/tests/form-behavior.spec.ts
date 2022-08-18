@@ -7,7 +7,9 @@ export const test = base.extend({
 		await use(page);
 	},
 	errorContainer: async ({ page }, use) => {
-		const errorContainer = await page.locator('#sample-form-complex .form-error-container');
+		const errorContainer = await page.locator(
+			'#sample-form-complex [data-label="form-error-container"]'
+		);
 		await use(errorContainer);
 	},
 	submitBtn: async ({ page }, use) => {
