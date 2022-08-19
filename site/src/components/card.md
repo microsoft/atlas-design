@@ -7,11 +7,11 @@ figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.f
 
 # Card
 
-The card component is useful for representing data and actions associated with a singular entity within a partiuclar content model. A card can represent an article, page, module, learning path, course, certification, or nearly anything else. The component itself can be used in simple or complex ways. It can be used in a highly prescriptive manner or only as a freeform bucket within which other elements can be placed. Because of its many ins-and-outs, card, several optional subcomponents, and general flexibility, it can yield many different patterns.
+The card component is useful for representing data and actions associated with a singular entity within a particular content model. A card can represent an article, page, module, learning path, course, certification, or nearly anything else. The component itself can be used in simple or complex ways. It can be used in a highly prescriptive manner or only as a freeform bucket within which other elements can be placed. Because of its many ins-and-outs, several optional subcomponents, and general flexibility, card can yield many different visual outcomes.
 
-This page discussed component and subcomponents of `.card`, but it does not prescribe particular patterns. For examples of specific card builds, look to the [card patterns page](../patterns/card.md) for guidance.
+This page discusses the component and subcomponents that make up `.card`, but it does not prescribe particular patterns. For examples of specific card builds, look to the [card patterns page](../patterns/card.md) for guidance.
 
-Also note that while all many examples below use a width atomic, it's generally advisable not to do this, and to let your card with fit within an otherwise specified layout or grid.
+Also note that while many examples below use a width atomic, it's generally advisable not to do this, and to let your card width fit within an otherwise specified layout or grid.
 
 ```html
 <div class="card width-300">
@@ -57,12 +57,12 @@ Each of these subcomponents has their own optional subcomponents. They are discu
 
 ## The main content area of card
 
-In styling the main content area of a card, it's recommended you look first to `card-template`, and if that fails, fall back to the less prescriptive `.card-content`.
+In styling the main content area of a card, it's recommended you look first to `.card-template`, and if that fails, fall back to the less prescriptive `.card-content`.
 
-These two areas support the use of several subcomponents. Because they can be used in both `.card-template` and `.card-content`, they are no namespaces by their parent elements, but rather only by `.card-`
+Both `.card-template` and `.card-content` support the use of several subcomponents. Because they can be used in both `.card-template` and `.card-content`, they are no namespaces by their parent elements, but rather only by `.card-`
 
-- `card-supertitle` - a uppercase piece of text above the title.
-- `card-title` - the title of the card.
+- `.card-supertitle` - a uppercase piece of text above the title.
+- `.card-title` - the title of the card.
 
 The following can be used only inside `.card-content`.
 
@@ -105,7 +105,7 @@ A similar example using `.card-content`, including its only optional subcomponen
 
 ## Card footer
 
-The `.card-footer` class is an optional. It is often used to display actions related to the card's subject (like "save" or "follow"). Or for display information that doesn't fit well elsewhere, such as progress. It has a child component called `card-footer-item`. Place `card-footer-left` or `card-footer-right` on `.card-footer` (or use flex atomics) to align its inner items as you see fit. Note that the `.buttons` class is well supported in this context and can be added if space between buttons is desired. It's recommended that you use small buttons (`button-sm`) if placing buttons in this area.
+The `.card-footer` class is an optional. It is often used to display actions related to the card's subject (like "save" or "follow"). Or for display information that doesn't fit well elsewhere, such as progress. It has a child component called `.card-footer-item`. Place `.card-footer-left` or `.card-footer-right` on `.card-footer` (or use flex atomics) to align its inner items as you see fit. Note that the `.buttons` class is well supported in this context and can be added if space between buttons is desired. It's recommended that you use small buttons (`.button-sm`) if placing buttons in this area.
 
 ```html
 <article class="card width-350">
@@ -130,7 +130,7 @@ The `.card-footer` class is an optional. It is often used to display actions rel
 
 ## The card header
 
-The optional `.card-header` class can be used as a container to display anything you'd like pinned at the top of the card. It has only one possible subcomponent, `.card-header-image`. The example below uses several atomics to create a primary-flavored pattern and tag.
+The optional `.card-header` class can be used as a container to display anything you'd like pinned at the top of the card. It has only one possible subcomponent, `.card-header-image`. The example below uses several atomics to create a flavorful pattern and tag. Note that this is not a recommended pattern, just an example of the possibilties.
 
 ```html
 <article class="card width-350">
@@ -162,7 +162,7 @@ On certain views, it may be desireable for a particular card to take up a wider 
 
 ### A wide card using `.card-template`
 
-The prescriptive `.card-template` inner contain grows and shrinks well in this scenario with no changes to mark up. This should likely be your first choice for this situation.
+The prescriptive `.card-template` subcomponent grows and shrinks well in this scenario with no changes to mark up. This should likely be your first choice for this situation.
 
 ```html
 <article class="card">
@@ -183,7 +183,7 @@ The prescriptive `.card-template` inner contain grows and shrinks well in this s
 
 ### A wide card using `.card-horizontal`
 
-Another available option is using the `.card-content` inner container, and placing `card-horizontal` on the `.card` element.
+Another available option is using the `.card-content` inner container, and placing `.card-horizontal` on the `.card` element.
 
 ```html
 <article class="card card-horizontal">
