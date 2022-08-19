@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': patch
 ---
 
-Remove alert class from form behavior error summary.
+Adding data attribute for form behavior error summary icon. Removing alert class from form behavior error summary.
