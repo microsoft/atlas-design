@@ -1,0 +1,91 @@
+@use 'sass:math';
+
+$progress-bar-background-color: $secondary-background-glow-high-contrast !default;
+$progress-value-background-color: $secondary-invert !default;
+$progress-indeterminate-duration: 1.5s !default;
+$progress-indeterminate-duration-reduced-motion: $progress-indeterminate-duration * 10 !default;
+$progress-height: $spacer-5 !default;
+
+.progress {
+	display: block;
+	max-width: 100%;
+	height: $progress-height;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background-color: $progress-bar-background-color;
+	appearance: none;
+	overflow: hidden;
+
+	&::-webkit-progress-bar {
+		background-color: $progress-bar-background-color;
+	}
+
+	&::-webkit-progress-value {
+		background-color: $progress-value-background-color;
+	}
+
+	&::-moz-progress-bar {
+		background-color: $progress-value-background-color;
+	}
+
+	.theme-high-contrast & {
+		&::-webkit-progress-value {
+			background-color: $primary;
+		}
+
+		&::-moz-progress-bar {
+			background-color: $primary;
+		}
+	}
+
+	&.progress-sm {
+		height: $spacer-2;
+	}
+
+	// Colors
+
+	&.progress-success {
+		&::-webkit-progress-value {
+			background-color: $success;
+		}
+
+		&::-moz-progress-bar {
+			background-color: $success;
+		}
+	}
+
+	&.progress-primary {
+		&::-webkit-progress-value {
+			background-color: $primary;
+		}
+
+		&::-moz-progress-bar {
+			background-color: $primary;
+		}
+	}
+
+	&:indeterminate {
+		animation-name: slide-background;
+		animation-timing-function: linear;
+		background-color: $progress-bar-background-color;
+		background-image: linear-gradient(to right, $primary 30%, $progress-bar-background-color 30%);
+		background-repeat: no-repeat;
+		background-position: top left;
+		background-size: 150% 150%;
+		animation-duration: $progress-indeterminate-duration;
+		animation-iteration-count: infinite;
+
+		@include reduced-motion {
+			animation-duration: $progress-indeterminate-duration-reduced-motion;
+		}
+
+		&::-webkit-progress-bar {
+			background-color: transparent;
+		}
+
+		&::-moz-progress-bar {
+			background-color: transparent;
+		}
+	}
+}
