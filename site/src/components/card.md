@@ -29,8 +29,10 @@ Also note that while many examples below use a width atomic, it's generally advi
 	</div>
 	<div class="card-footer">
 		<div class="card-footer-item">
-			<button class="button button-clear button-sm">Save</button>
-			<button class="button button-primary button-filled button-sm">Start</button>
+			<div class="buttons">
+				<button class="button button-clear button-sm">Save</button>
+				<button class="button button-primary button-filled button-sm">Start</button>
+			</div>
 		</div>
 	</div>
 </div>
