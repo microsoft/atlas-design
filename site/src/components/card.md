@@ -64,7 +64,7 @@ These two areas support the use of several subcomponents. Because they can be us
 - `card-supertitle` - a uppercase piece of text above the title.
 - `card-title` - the title of the card.
 
-The following can be used only insdie `.card-content`.
+The following can be used only inside `.card-content`.
 
 - `.card-content-description` - a body of text truncated at four lines.
 
