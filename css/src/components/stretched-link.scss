@@ -1,0 +1,8 @@
+.stretched-link {
+	&::before {
+		position: absolute;
+		content: '';
+		z-index: $zindex-stretched-link;
+		inset: 0;
+	}
+}

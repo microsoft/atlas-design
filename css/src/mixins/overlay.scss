@@ -1,0 +1,12 @@
+%overlay {
+	position: absolute;
+	inset: 0;
+}
+
+@mixin overlay($offset: 0) {
+	@extend %overlay;
+
+	@if $offset != 0 {
+		inset: $offset;
+	}
+}
