@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.24.0
+
+### Minor Changes
+
+- a14e7a6: Add stretched-link component and relevant documentation.
+- a14e7a6: Add card component and relevant documentation.
+
 ## 3.23.0
 
 ### Minor Changes

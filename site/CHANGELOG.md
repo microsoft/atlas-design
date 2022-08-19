@@ -1,5 +1,13 @@
 # @microsoft/atlas-site
 
+## 0.31.0
+
+### Minor Changes
+
+- a14e7a6: Add stretched-link component and relevant documentation.
+- a14e7a6: Add card pattern example that uses .card-template.
+- a14e7a6: Add card component and relevant documentation.
+
 ## 0.30.0
 
 ### Minor Changes
