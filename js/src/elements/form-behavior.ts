@@ -284,8 +284,8 @@ export class FormBehaviorElement extends HTMLElement {
 		const alertId = generateElementId();
 
 		const errorAlert = document.createElement('div');
-		errorAlert.className =
-			'alert help help-danger border border-color-danger border-radius padding-xs';
+		errorAlert.className = 'help help-danger border border-color-danger border-radius padding-xs';
+		errorAlert.setAttribute('data-form-error-alert', '');
 		errorAlert.setAttribute('role', 'alert');
 		errorAlert.setAttribute('aria-labelledby', alertId);
 		errorAlert.setAttribute('tabindex', '-1');
@@ -307,7 +307,7 @@ export class FormBehaviorElement extends HTMLElement {
 	}
 
 	getErrorAlert(form: HTMLFormElement) {
-		const errorAlert = form.querySelector<HTMLDivElement>('[data-form-error-container] .alert');
+		const errorAlert = form.querySelector<HTMLDivElement>('[data-form-error-alert]');
 		if (errorAlert) {
 			return {
 				errorAlert,

@@ -1,6 +1,7 @@
 export function handleMockFormSubmit() {
 	const warningIcon = document.createElement('span');
 	warningIcon.classList.add('warning-icon-container');
+	warningIcon.setAttribute('data-warning-icon-container', '');
 	warningIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 15 13">
 			<path d="M7.50781 0.109375C7.23698 0.109375 6.98177 0.182292 6.74219 0.328125C6.5026 0.46875 6.31771 0.658854 6.1875 
 			0.898438L0.859375 10.7891C0.739583 11.013 0.679688 11.25 0.679688 11.5C0.679688 11.7031 0.721354 11.8958 0.804688 
@@ -35,8 +36,9 @@ export function handleMockFormSubmit() {
 			e => {
 				e.preventDefault();
 				const container = form.querySelector('[data-form-error-container]');
-				const warningIconContainer =
-					container?.firstElementChild?.querySelector('.warning-icon-container');
+				const warningIconContainer = container?.firstElementChild?.querySelector(
+					'[data-warning-icon-container]'
+				);
 
 				if (!warningIconContainer) {
 					container?.firstElementChild?.prepend(warningIcon);
