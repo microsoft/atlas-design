@@ -24,7 +24,7 @@ Also note that while many examples below use a width atomic, it's generally advi
 			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
-			<p>Additonal details or elements can be placed here.</p>
+			<p>Additionaldetails or elements can be placed here.</p>
 		</div>
 	</div>
 	<div class="card-footer">
@@ -61,7 +61,7 @@ Each of these subcomponents has their own optional subcomponents. They are discu
 
 In styling the main content area of a card, it's recommended you look first to `.card-template`, and if that fails, fall back to the less prescriptive `.card-content`.
 
-Both `.card-template` and `.card-content` support the use of several subcomponents. Because they can be used in both `.card-template` and `.card-content`, they are no namespaces by their parent elements, but rather only by `.card-`
+Both `.card-template` and `.card-content` support the use of several subcomponents. Because they can be used in both `.card-template` and `.card-content`, they are not namespaced by their parent elements, but rather only by `.card-`
 
 - `.card-supertitle` - a uppercase piece of text above the title.
 - `.card-title` - the title of the card.
@@ -86,7 +86,7 @@ The following can be used only inside `.card-template`.
 			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
-			<p>Additonal details might be listed here.</p>
+			<p>Additionaldetails might be listed here.</p>
 		</div>
 		</div>
 	</div>
@@ -100,21 +100,21 @@ A similar example using `.card-content`, including its only optional subcomponen
 	<div class="card-content">
 		<p class="card-supertitle">Course</p>
 		<a href="#" class="card-title">Learn how to create a card component</a>
-		<p class="card-content-description">Additonal details might be listed here.</p>
+		<p class="card-content-description">Additionaldetails might be listed here.</p>
 	</div>
 </article>
 ```
 
 ## Card footer
 
-The `.card-footer` class is an optional. It is often used to display actions related to the card's subject (like "save" or "follow"). Or for display information that doesn't fit well elsewhere, such as progress. It has a child component called `.card-footer-item`. Place `.card-footer-left` or `.card-footer-right` on `.card-footer` (or use flex atomics) to align its inner items as you see fit. Note that the `.buttons` class is well supported in this context and can be added if space between buttons is desired. It's recommended that you use small buttons (`.button-sm`) if placing buttons in this area.
+The `.card-footer` class is an optional that is often used to display actions related to the card's subject (like "save" or "follow"). Or for display information that doesn't fit well elsewhere, such as progress. It has a child component called `.card-footer-item`. Place `.card-footer-left` or `.card-footer-right` on `.card-footer` (or use flex atomics) to align its inner items as you see fit. Note that the `.buttons` class is well supported in this context and can be added if space between buttons is desired. It's recommended that you use small buttons (`.button-sm`) if placing buttons in this area.
 
 ```html
 <article class="card width-350">
 	<div class="card-content">
 		<p class="card-supertitle">Course</p>
 		<a href="#" class="card-title">Learn how to create a card component</a>
-		<p class="card-content-description">Additonal details might be listed here.</p>
+		<p class="card-content-description">Additionaldetails might be listed here.</p>
 	</div>
 	<div class="card-footer">
 		<div class="card-footer-item">
@@ -132,7 +132,7 @@ The `.card-footer` class is an optional. It is often used to display actions rel
 
 ## The card header
 
-The optional `.card-header` class can be used as a container to display anything you'd like pinned at the top of the card. It has only one possible subcomponent, `.card-header-image`. The example below uses several atomics to create a flavorful pattern and tag. Note that this is not a recommended pattern, just an example of the possibilties.
+The optional `.card-header` class can be used as a container to display anything you'd like pinned at the top of the card. It has only one possible subcomponent, `.card-header-image`. The example below uses several atomics to create a flavorful pattern and tag. Note that this is not a recommended pattern, just an example of the possibilities.
 
 ```html
 <article class="card width-350">
@@ -160,11 +160,11 @@ The optional `.card-header` class can be used as a container to display anything
 
 ## Wider cards
 
-On certain views, it may be desireable for a particular card to take up a wider space. There are two options for such views.
+On certain views, it may be desirable for a particular card to take up a wider space. There are two options for such views.
 
 ### A wide card using `.card-template`
 
-The prescriptive `.card-template` subcomponent grows and shrinks well in this scenario with no changes to mark up. This should likely be your first choice for this situation.
+The prescriptive `.card-template` subcomponent grows and shrinks well in this scenario with no changes to markup. This should likely be your first choice for this situation.
 
 ```html
 <article class="card">
@@ -177,7 +177,7 @@ The prescriptive `.card-template` subcomponent grows and shrinks well in this sc
 			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
-			<p>Additonal details might be listed here.</p>
+			<p>Additionaldetails might be listed here.</p>
 		</div>
 	</div>
 </article>

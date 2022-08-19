@@ -11,7 +11,7 @@ Because the `.card` component has so many possible permutations, it can be helpf
 
 ## Content type card
 
-This card type contains a super title labelled by the card's type, a title, an icon, and a section to place metadata specific to the content type. Its footer has two sections: a lefthand secton for status and progress, and a righthand section for buttons. It also uses border atomics to create a lefthand border.
+This card type contains a super title labelled by the card's type, a title, an icon, and a section to place metadata specific to the content type. Its footer has two sections: a lefthand section for status and progress, and a righthand section for buttons. It also uses border atomics to create a lefthand border.
 
 ```html
 <div class="card border-left-lg border-left-color-accent">
