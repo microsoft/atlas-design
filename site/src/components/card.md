@@ -51,7 +51,7 @@ Additionally, you can increase the the clickable area of a card with the `.stret
 The card element encapsulates several subcomponents.
 
 - `.card-header` - an optional section on top of the card.
-- `.card-template` - a highly prescriptive layout for the card's main contents. Not intented for compatibilty with `.card-content`.
+- `.card-template` - a highly prescriptive layout for the card's main contents. Not intented for compatibility with `.card-content`.
 - `.card-content` - a free-form box within which a card's main content can be placed. Intended for use instead of `.card-template` not in addition to it.
 - `.card-footer` - an optional section at the bottom of the card. Usually contains actions relevant to the card's subject.
 
