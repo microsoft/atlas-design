@@ -1,15 +1,3 @@
-%line-clamp {
-	/*stylelint-disable*/
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-}
-
-@mixin line-clamp($lines: 1) {
-	@extend %line-clamp;
-	-webkit-line-clamp: $lines !important;
-}
-
 .line-clamp-1 {
 	@include line-clamp(1);
 }
