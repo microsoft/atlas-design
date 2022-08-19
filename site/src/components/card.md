@@ -155,3 +155,47 @@ The optional `.card-header` class can be used as a container to display anything
 	</div>
 </article>
 ```
+
+## Wider cards
+
+On certain views, it may be desireable for a particular card to take up a wider space. There are two options for such views.
+
+### A wide card using `.card-template`
+
+The prescriptive `.card-template` inner contain grows and shrinks well in this scenario with no changes to mark up. This should likely be your first choice for this situation.
+
+```html
+<article class="card">
+	<div class="card-template">
+		<p class="card-supertitle">Course</p>
+		<a href="#" class="card-title">Learn how to create a card component</a>
+		<img
+			aria-hidden="true"
+			class="card-template-icon"
+			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+		/>
+		<div class="card-template-detail">
+			<p>Additonal details might be listed here.</p>
+		</div>
+	</div>
+</article>
+```
+
+### A wide card using `.card-horizontal`
+
+Another available option is using the `.card-content` inner container, and placing `card-horizontal` on the `.card` element.
+
+```html
+<article class="card card-horizontal">
+	<div class="card-header" aria-hidden="true">
+		<div class="card-header-image">
+			<img src="~/src/scaffold/media/path.svg" />
+		</div>
+	</div>
+	<div class="card-content">
+		<p class="card-supertitle">Content type</p>
+		<a class="card-title">The title of your content item here.</a>
+		<p>Additional metadata can be placed here.</p>
+	</div>
+</article>
+```
