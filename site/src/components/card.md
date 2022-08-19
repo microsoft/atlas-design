@@ -24,7 +24,7 @@ Also note that while many examples below use a width atomic, it's generally advi
 			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
-			<p>Additionaldetails or elements can be placed here.</p>
+			<p>Additional details or elements can be placed here.</p>
 		</div>
 	</div>
 	<div class="card-footer">
@@ -86,7 +86,7 @@ The following can be used only inside `.card-template`.
 			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
-			<p>Additionaldetails might be listed here.</p>
+			<p>Additional details might be listed here.</p>
 		</div>
 		</div>
 	</div>
@@ -100,7 +100,7 @@ A similar example using `.card-content`, including its only optional subcomponen
 	<div class="card-content">
 		<p class="card-supertitle">Course</p>
 		<a href="#" class="card-title">Learn how to create a card component</a>
-		<p class="card-content-description">Additionaldetails might be listed here.</p>
+		<p class="card-content-description">Additional details might be listed here.</p>
 	</div>
 </article>
 ```
@@ -114,7 +114,7 @@ The `.card-footer` class is an optional that is often used to display actions re
 	<div class="card-content">
 		<p class="card-supertitle">Course</p>
 		<a href="#" class="card-title">Learn how to create a card component</a>
-		<p class="card-content-description">Additionaldetails might be listed here.</p>
+		<p class="card-content-description">Additional details might be listed here.</p>
 	</div>
 	<div class="card-footer">
 		<div class="card-footer-item">
@@ -177,7 +177,7 @@ The prescriptive `.card-template` subcomponent grows and shrinks well in this sc
 			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
-			<p>Additionaldetails might be listed here.</p>
+			<p>Additional details might be listed here.</p>
 		</div>
 	</div>
 </article>
