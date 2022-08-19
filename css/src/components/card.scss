@@ -40,6 +40,7 @@ $card-column-gap: $spacer-5 !default;
 			'detail icon';
 
 		/* stylelint-disable no-descending-specificity */
+
 		.card-title {
 			margin-block-end: $spacer-5;
 		}
@@ -144,8 +145,6 @@ $card-column-gap: $spacer-5 !default;
 		text-decoration: underline;
 		cursor: pointer;
 	}
-
-	/* stylelint-disable no-descending-specificity */
 
 	.card-content {
 		flex-grow: 1;
