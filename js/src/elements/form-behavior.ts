@@ -384,8 +384,15 @@ export class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
-			// Don't check markdown editor attachment input
-			if (input.id === 'attachment-count') {
+			if (input.hasAttribute('data-skip-validation')) {
+				const validationErrorEvent = new CustomEvent('form-validating', {
+					detail: {
+						errors,
+						form
+					},
+					bubbles: true
+				});
+				this.dispatchEvent(validationErrorEvent);
 				continue;
 			}
 
