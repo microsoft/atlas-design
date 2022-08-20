@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': patch
 ---
 
-Adding data attribute for form behavior error summary icon. Removing alert class from form behavior error summary.
+Add logic to skip validation for data-skip-validation attribute. Add data attribute for form behavior error summary icon. Remove alert class from form behavior error summary.
