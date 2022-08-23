@@ -52,7 +52,7 @@ This card type contains a super title labelled by the card's type, a title, an i
 
 This card pattern makes use of the outer `.card` class and includes the use of the [`.media`](../components/media.md) and [`.image`](../components/image.md) components inside it. Also, because there is only one clickable element inside, it uses the [`.stretched-link` component](../components/stretched-link.md)
 
-````html
+```html
 <article class="card position-relative">
 	<div class="card-content">
 		<div class="media">
@@ -72,10 +72,13 @@ This card pattern makes use of the outer `.card` class and includes the use of t
 		</div>
 	</div>
 </article>
-## Plain card These cards use standard `.card` subcomponents, border atomics to create a left
-border, and (because they have only one clickable item inside) the [stretched-link
-component](../components/stretched-link.md). Note that these will typically not be full-width
-elements, but will be displayed side-by-side with other cards of this type. ```html
+```
+
+## Plain card
+
+These cards use standard `.card` subcomponents, border atomics to create a left border, and (because they have only one clickable item inside) the [stretched-link component](../components/stretched-link.md). Note that these will typically not be full-width elements, but will be displayed side-by-side with other cards of this type.
+
+```html
 <article class="card position-relative border-left-lg border-left-color-accent">
 	<div class="card-content">
 		<a href="#" class="card-title stretched-link">The title of the card</a>
@@ -88,4 +91,4 @@ elements, but will be displayed side-by-side with other cards of this type. ```h
 		</p>
 	</div>
 </article>
-````
+```
