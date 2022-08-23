@@ -12,9 +12,9 @@ The image component parents an image tag or svg and provides width based classes
 
 The default image class takes up the full width of its container, but various sizes and screensizes modifiers are available.
 
-| Class pattern         | Sizes                              | screensize          |
-| --------------------- | ---------------------------------- | ------------------- |
-| `image-<size>x<size>` | 16 24 32 36 48 64 76 88 96 112 128 | `tablet`, `desktop` |
+| Class pattern                | Sizes                              | screensize          |
+| ---------------------------- | ---------------------------------- | ------------------- |
+| `.image.image-<size>x<size>` | 16 24 32 36 48 64 76 88 96 112 128 | `tablet`, `desktop` |
 
 ```html
 <div class="image">
