@@ -1,0 +1,44 @@
+$dimensions: 16 24 32 36 48 64 76 88 96 112 128 !default;
+
+.image {
+	display: block;
+	position: relative;
+
+	img,
+	svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		max-height: 100%;
+	}
+
+	&.image-fullwidth {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		margin: 0;
+	}
+
+	// Sizes
+
+	@each $dimension in $dimensions {
+		&.image-#{$dimension}x#{$dimension} {
+			width: $dimension * 1px;
+			height: $dimension * 1px;
+		}
+
+		@include tablet {
+			&.image-#{$dimension}x#{$dimension}-tablet {
+				width: $dimension * 1px;
+				height: $dimension * 1px;
+			}
+		}
+
+		@include desktop {
+			&.image-#{$dimension}x#{$dimension}-desktop {
+				width: $dimension * 1px;
+				height: $dimension * 1px;
+			}
+		}
+	}
+}
