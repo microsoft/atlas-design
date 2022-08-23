@@ -47,3 +47,29 @@ This card type contains a super title labelled by the card's type, a title, an i
 	</div>
 </div>
 ```
+
+## Resource card
+
+This card pattern makes use of the outer `.card` class and includes the use of the [`.media`](../components/media.md) and [`.image`](../components/image.md) components inside it.
+
+```html
+<article class="card position-relative">
+	<div class="card-content">
+		<div class="media">
+			<div class="media-left">
+				<div class="image image-64x64">
+					<img src="~/src/scaffold/media/video-media.png" />
+				</div>
+			</div>
+			<div class="media-content">
+				<p class="text-transform-uppercase margin-bottom-xxs">Videos</p>
+				<p class="font-size-lg font-weight-semibold margin-bottom-xxs">
+					Media content is a place to put your text content.
+				</p>
+				<p class="color-text-subtle margin-bottom-xs">Videos to help you get started.</p>
+				<a class="text-decoration-none stretched-link" href="#">Watch videos</a>
+			</div>
+		</div>
+	</div>
+</article>
+```
