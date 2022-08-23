@@ -50,7 +50,7 @@ This card type contains a super title labelled by the card's type, a title, an i
 
 ## Resource card
 
-This card pattern makes use of the outer `.card` class and includes the use of the [`.media`](../components/media.md) and [`.image`](../components/image.md) components inside it.
+This card pattern makes use of the outer `.card` class and includes the use of the [`.media`](../components/media.md) and [`.image`](../components/image.md) components inside it. Also, because there is only one clickable element inside, it uses the [`.stretched-link` component](../components/stretched-link.md)
 
 ```html
 <article class="card position-relative">
