@@ -17,8 +17,10 @@ The default image class takes up the full width of its container, but various si
 | `.image.image-<size>` | `16x16` `24x24` `32x32` `36x36` `48x48` `64x64` `76x76` `88x88` `96x96` `112x112` `128x128` | `tablet`, `desktop` |
 
 ```html
-<div class="image">
-	<img src="~/src/scaffold/media/video-media.png" alt="A video icon" />
+<div class="width-300">
+	<div class="image">
+		<img src="~/src/scaffold/media/video-media.png" alt="A video icon" />
+	</div>
 </div>
 ```
 
