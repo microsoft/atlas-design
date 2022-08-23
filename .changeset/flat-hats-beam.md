@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Add resource card pattern to site documenation.
+Add resource card pattern to site documentation.

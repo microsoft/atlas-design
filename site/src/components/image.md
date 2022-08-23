@@ -6,7 +6,7 @@ template: standard
 
 # Image
 
-The image component parents an image tag or svg and provides width based classes to contrain its children.
+The image component parents an image tag or svg and provides width based classes to constrain its children.
 
 ## Usage
 
