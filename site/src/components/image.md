@@ -10,7 +10,7 @@ The image component parents an image tag or svg and provides width based classes
 
 ## Usage
 
-Here is an example of a standard usage of label paired with an input. The default image class takes up the full width of its container.
+The default image class takes up the full width of its container.
 
 ```html
 <div class="image">
