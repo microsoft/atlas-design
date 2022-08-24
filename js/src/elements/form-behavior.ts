@@ -275,9 +275,7 @@ export class FormBehaviorElement extends HTMLElement {
 		}
 	}
 
-	createErrorAlert(
-		form: HTMLFormElement
-	): {
+	createErrorAlert(form: HTMLFormElement): {
 		errorAlert: HTMLDivElement;
 		errorList: HTMLUListElement;
 	} {
