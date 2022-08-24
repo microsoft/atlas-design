@@ -19,7 +19,7 @@ This card type contains a super title labelled by the card's type, a title, an i
 		<p class="card-supertitle">content type</p>
 		<a href="#" class="card-title">The headline of the content item</a>
 		<img
-			aria-hidden="true"
+			alt="Write alt text here or if image is presentational only add aria-hidden attribute"
 			class="card-template-icon"
 			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
@@ -58,7 +58,10 @@ This card pattern makes use of the outer `.card` class and includes the use of t
 		<div class="media align-items-stretch">
 			<div class="media-left">
 				<div class="image image-64x64">
-					<img src="~/src/scaffold/media/video-media.png" />
+					<img
+						alt="Write alt text here or if image is presentational only add aria-hidden attribute"
+						src="~/src/scaffold/media/video-media.png"
+					/>
 				</div>
 			</div>
 			<div class="media-content display-flex flex-direction-column align-items-space-between">
@@ -107,7 +110,11 @@ The testimonial card provides a place for a user's opinion to be showcased. Nota
 		<div class="media">
 			<div class="media-left">
 				<div class="image image-64x64">
-					<img class="border-radius-rounded" src="~/src/scaffold/media/twitter-example.jpeg" />
+					<img
+						class="border-radius-rounded"
+						alt="Write alt text here or if image is presentational only add aria-hidden attribute"
+						src="~/src/scaffold/media/twitter-example.jpeg"
+					/>
 				</div>
 			</div>
 			<div class="media-content">
