@@ -11,7 +11,7 @@ Spacing atomics can be used to add margin or padding on elements. They are espec
 | cssproperty                                                                                                                                                                                                            | value                                                      | screensize                        |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------- |
 | `margin`, `padding`, `margin-block`, `padding-block`,`margin-inline`, `padding-inline`, `margin-top`, `padding-top`, `margin-right`, `padding-right`, `margin-bottom`, `padding-bottom`, `margin-left`, `padding-left` | `xxs`, `xs`, `sm`, `md`, `lg`, `xl`, `xxl`, `xxxl`, `none` | `tablet`, `desktop`, `widescreen` |
-| `margin-inline` `margin-right`, `margin-left`                                                                                                                                                                          | `auto`                                                     | `tablet`, `desktop`, `widescreen` |
+| `margin-inline` `margin-right`, `margin-left`, `margin-top`                                                                                                                                                            | `auto`                                                     | `tablet`, `desktop`, `widescreen` |
 
 ## Usage
 
@@ -79,6 +79,7 @@ Because the `auto` value is inapplicable to padding, and less useful when used w
 .margin-left-auto
 .margin-right-auto
 .margin-inline-auto
+.margin-top-auto
 .margin-xxs
 .margin-xs
 .margin-sm
@@ -586,10 +587,13 @@ Because the `auto` value is inapplicable to padding, and less useful when used w
 .margin-left-auto-tablet
 .margin-right-auto-tablet
 .margin-inline-auto-tablet
+.margin-top-auto-tablet
 .margin-left-auto-desktop
 .margin-right-auto-desktop
 .margin-inline-auto-desktop
+.margin-top-auto-desktop
 .margin-left-auto-widescreen
 .margin-right-auto-widescreen
 .margin-inline-auto-widescreen
+.margin-top-auto-widescreen
 ```
