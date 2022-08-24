@@ -108,14 +108,15 @@ The testimonial card provides a place for a user's opinion to be showcased. Nota
 			</div>
 			<div class="media-content">
 				<p class="font-size-xl font-weight-semibold margin-bottom-xxs">First Last Name</p>
-				<a class="color-text text-decoration-none stretched-link" href="#">@handle</a>
+				<p href="#">Role</p>
 			</div>
 		</div>
 		<div class="color-text-subtle">
 			<p class="margin-block-xs">
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
 			</p>
-			<p>City, Country</p>
+			<p class="margin-block-xs">City, Country</p>
+			<a href="#" class="display-block text-decoration-none">Read this person's story</a>
 		</div>
 	</div>
 </article>
