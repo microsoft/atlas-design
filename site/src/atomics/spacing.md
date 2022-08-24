@@ -66,10 +66,15 @@ Appending a screen size to an atomic class can be used to apply responsive sizin
 Because the `auto` value is inapplicable to padding, and less useful when used with top, bottom, and block margin properties, it has a much smaller subset of properties: `margin-left`, `margin-right`, and `margin-inline`. You can still use responsive rules just like any other spacing atomic.
 
 ```html
-<div class="display-flex flex-direction-column">
-	<div class="margin-left-auto margin-bottom-md padding-sm border">Auto left margin</div>
-	<div class="margin-right-auto margin-bottom-md padding-sm border">Auto right margin</div>
-	<div class="margin-inline-auto margin-bottom-md padding-sm border">Auto side margin</div>
+<div class="display-flex">
+	<div class="display-flex flex-direction-column flex-grow-1 border">
+		<div class="margin-left-auto margin-bottom-md padding-sm border">Auto left margin</div>
+		<div class="margin-right-auto margin-bottom-md padding-sm border">Auto right margin</div>
+		<div class="margin-inline-auto margin-bottom-md padding-sm border">Auto side margin</div>
+	</div>
+	<div class="display-flex flex-direction-column border">
+		<div class="margin-top-auto padding-sm border">Auto top margin</div>
+	</div>
 </div>
 ```
 
