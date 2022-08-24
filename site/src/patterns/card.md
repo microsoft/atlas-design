@@ -92,3 +92,31 @@ These cards use standard `.card` subcomponents, border atomics to create a left 
 	</div>
 </article>
 ```
+
+## Testimonial card
+
+A card designed to quote a social media account, the testimonial card provides a place for quoted social media comments to be showcased. Notable modifications from Icon Card include using `border-radius-rounded` on the image, as well as slightly different font and text sizes.
+
+```html
+<article class="card">
+	<div class="card-content font-size-lg">
+		<div class="media position-relative">
+			<div class="media-left">
+				<div class="image image-64x64">
+					<img class="border-radius-rounded" src="~/src/scaffold/media/twitter-example.jpeg" />
+				</div>
+			</div>
+			<div class="media-content">
+				<p class="font-size-xl font-weight-semibold margin-bottom-xxs">First Last Name</p>
+				<a class="color-text text-decoration-none stretched-link" href="#">@handle</a>
+			</div>
+		</div>
+		<div class="color-text-subtle">
+			<p class="margin-block-xs">
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+			</p>
+			<p>City, Country</p>
+		</div>
+	</div>
+</article>
+```
