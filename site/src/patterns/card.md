@@ -73,3 +73,57 @@ This card pattern makes use of the outer `.card` class and includes the use of t
 	</div>
 </article>
 ```
+
+## Resource card
+
+This card pattern makes use of the outer `.card` class and includes the use of the [`.media`](../components/media.md) and [`.image`](../components/image.md) components inside it. Also, because there is only one clickable element inside, it uses the [`.stretched-link` component](../components/stretched-link.md)
+
+```html
+<article class="card position-relative">
+	<div class="card-content">
+		<div class="media">
+			<div class="media-left">
+				<div class="image image-64x64">
+					<img src="~/src/scaffold/media/video-media.png" />
+				</div>
+			</div>
+			<div class="media-content">
+				<p class="text-transform-uppercase margin-bottom-xxs">Videos</p>
+				<p class="font-size-lg font-weight-semibold margin-bottom-xxs">
+					Media content is a place to put your text content.
+				</p>
+				<p class="color-text-subtle margin-bottom-xs">Videos to help you get started.</p>
+				<a class="text-decoration-none stretched-link" href="#">Watch videos</a>
+			</div>
+		</div>
+	</div>
+</article>
+```
+
+## Testimonial card
+
+A card designed to quote a social media account, the testimonial card works the resource card without the
+
+```html
+<article class="card">
+	<div class="card-content font-size-lg">
+		<div class="media">
+			<div class="media-left">
+				<div class="image image-64x64 border-radius-rounded overflow-hidden">
+					<img src="~/src/scaffold/media/twitter-example.jpeg" />
+				</div>
+			</div>
+			<div class="media-content">
+				<p class="font-size-xl font-weight-semibold margin-bottom-xxs">First Last Name</p>
+				<p>@handle</p>
+			</div>
+		</div>
+		<div class="color-text-subtle">
+			<p class="margin-block-xs">
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+			</p>
+			<p>City, Country</p>
+		</div>
+	</div>
+</article>
+```
