@@ -50,24 +50,28 @@ This card type contains a super title labelled by the card's type, a title, an i
 
 ## Icon card
 
-This card pattern makes use of the outer `.card` class and includes the use of the [`.media`](../components/media.md) and [`.image`](../components/image.md) components inside it. Also, because there is only one clickable element inside, it uses the [`.stretched-link` component](../components/stretched-link.md)
+This card pattern makes use of the outer `.card` class and includes the use of the [`.media`](../components/media.md) and [`.image`](../components/image.md) components inside it. Also, because there is only one clickable element inside, it uses the [`.stretched-link` component](../components/stretched-link.md). There are also several flexbox based atomics applied inside `.media` to ensure links justify at the ends of cards when placed in a grid.
 
 ```html
 <article class="card position-relative">
-	<div class="card-content">
-		<div class="media">
+	<div class="card-content display-flex">
+		<div class="media flex-grow-1 align-items-stretch">
 			<div class="media-left">
 				<div class="image image-64x64">
 					<img src="~/src/scaffold/media/video-media.png" />
 				</div>
 			</div>
-			<div class="media-content">
-				<p class="text-transform-uppercase margin-bottom-xxs">Videos</p>
-				<p class="font-size-lg font-weight-semibold margin-bottom-xxs">
-					Media content is a place to put your text content.
-				</p>
-				<p class="color-text-subtle margin-bottom-xs">Videos to help you get started.</p>
-				<a class="text-decoration-none stretched-link" href="#">Watch videos</a>
+			<div class="media-content display-flex flex-direction-column align-items-space-between">
+				<div>
+					<p class="text-transform-uppercase margin-bottom-xxs">Videos</p>
+					<p class="font-size-lg font-weight-semibold margin-bottom-xxs">
+						Media content is a place to put your text content.
+					</p>
+					<p class="color-text-subtle margin-bottom-xs">Videos to help you get started.</p>
+				</div>
+				<a class="text-decoration-none justify-self-stretch margin-top-auto" href="#"
+					>Watch videos</a
+				>
 			</div>
 		</div>
 	</div>
@@ -95,11 +99,11 @@ These cards use standard `.card` subcomponents, border atomics to create a left 
 
 ## Testimonial card
 
-The testimonial card provides a place for a user's opinion to be showcased. Notable modifications from Icon Card include using `border-radius-rounded` on the image, as well as slightly different font and text sizes.
+The testimonial card provides a place for a user's opinion to be showcased. Notable modifications from Icon Card include using `border-radius-rounded` on the image, as well as slightly different font and text sizes. There are also several flexbox based atomics applied to ensure links justify at the ends of cards when placed in a grid.
 
 ```html
 <article class="card">
-	<div class="card-content font-size-lg">
+	<div class="card-content font-size-lg display-flex flex-direction-column">
 		<div class="media position-relative">
 			<div class="media-left">
 				<div class="image image-64x64">
@@ -111,13 +115,12 @@ The testimonial card provides a place for a user's opinion to be showcased. Nota
 				<p href="#">Role</p>
 			</div>
 		</div>
-		<div class="color-text-subtle">
-			<p class="margin-block-xs">
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-			</p>
-			<p class="margin-block-xs">City, Country</p>
-			<a href="#" class="display-block text-decoration-none">Read this person's story</a>
-		</div>
+		<p class="margin-block-xs">
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+		</p>
+		<a href="#" class="display-block text-decoration-none margin-top-auto"
+			>Read this person's story</a
+		>
 	</div>
 </article>
 ```

@@ -1,7 +1,8 @@
 $auto-spacing-properties: (
 	('margin-inline', 'margin-inline'),
 	('margin-left', 'margin-inline-start'),
-	('margin-right', 'margin-inline-end')
+	('margin-right', 'margin-inline-end'),
+	('margin-top', 'margin-block-start')
 ) !default;
 
 $separator: '-';
