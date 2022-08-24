@@ -64,7 +64,7 @@ This card pattern makes use of the outer `.card` class and includes the use of t
 					/>
 				</div>
 			</div>
-			<div class="media-content display-flex flex-direction-column align-items-space-between">
+			<div class="media-content display-flex flex-direction-column">
 				<div>
 					<p class="text-transform-uppercase margin-bottom-xxs">Videos</p>
 					<p class="font-size-lg font-weight-semibold margin-bottom-xxs">
