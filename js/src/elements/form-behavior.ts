@@ -744,7 +744,9 @@ function clearInputErrorBorder(input: HTMLValueElement) {
 function handleSubmitButtonAction(event: Event) {
 	const submitter = (event as SubmitEvent).submitter;
 	const formAction =
-		submitter instanceof HTMLButtonElement && submitter.formAction ? submitter.formAction : null;
+		submitter instanceof HTMLButtonElement && submitter.formAction !== window.location.href
+			? submitter.formAction
+			: null;
 
 	return formAction;
 }
