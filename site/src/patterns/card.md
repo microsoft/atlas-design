@@ -55,7 +55,7 @@ This card pattern makes use of the outer `.card` class and includes the use of t
 ```html
 <article class="card position-relative">
 	<div class="card-content display-flex">
-		<div class="media flex-grow-1 align-items-stretch">
+		<div class="media align-items-stretch">
 			<div class="media-left">
 				<div class="image image-64x64">
 					<img src="~/src/scaffold/media/video-media.png" />
