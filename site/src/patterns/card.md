@@ -95,7 +95,7 @@ These cards use standard `.card` subcomponents, border atomics to create a left 
 
 ## Testimonial card
 
-A card designed to quote a social media account, the testimonial card provides a place for a user's opinion to be showcased. Notable modifications from Icon Card include using `border-radius-rounded` on the image, as well as slightly different font and text sizes.
+The testimonial card provides a place for a user's opinion to be showcased. Notable modifications from Icon Card include using `border-radius-rounded` on the image, as well as slightly different font and text sizes.
 
 ```html
 <article class="card">
