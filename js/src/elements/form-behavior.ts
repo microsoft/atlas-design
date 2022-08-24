@@ -284,7 +284,7 @@ export class FormBehaviorElement extends HTMLElement {
 
 		const errorAlert = document.createElement('div');
 		errorAlert.className =
-			'help help-danger border border-color-danger border-radius padding-xs margin-bottom-sm';
+			'help help-danger background-color-danger-light border border-color-danger border-radius padding-xs margin-bottom-sm';
 		errorAlert.setAttribute('data-form-error-alert', '');
 		errorAlert.setAttribute('role', 'alert');
 		errorAlert.setAttribute('aria-labelledby', alertId);
