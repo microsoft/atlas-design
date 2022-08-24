@@ -69,7 +69,7 @@ This card pattern makes use of the outer `.card` class and includes the use of t
 					</p>
 					<p class="color-text-subtle margin-bottom-xs">Videos to help you get started.</p>
 				</div>
-				<a class="text-decoration-none justify-self-stretch margin-top-auto" href="#"
+				<a class="text-decoration-none justify-self-stretch stretched-link margin-top-auto" href="#"
 					>Watch videos</a
 				>
 			</div>
@@ -104,21 +104,21 @@ The testimonial card provides a place for a user's opinion to be showcased. Nota
 ```html
 <article class="card">
 	<div class="card-content font-size-lg display-flex flex-direction-column">
-		<div class="media position-relative">
+		<div class="media">
 			<div class="media-left">
 				<div class="image image-64x64">
 					<img class="border-radius-rounded" src="~/src/scaffold/media/twitter-example.jpeg" />
 				</div>
 			</div>
 			<div class="media-content">
-				<p class="font-size-xl font-weight-semibold margin-bottom-xxs">First Last Name</p>
+				<p class="font-size-xl font-weight-semibold margin-bottom-xxs">Full Name</p>
 				<p href="#">Role</p>
 			</div>
 		</div>
-		<p class="margin-block-xs">
+		<p class="margin-block-xs color-text-subtle">
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
 		</p>
-		<a href="#" class="display-block text-decoration-none margin-top-auto"
+		<a href="#" class="display-block text-decoration-none margin-top-auto font-size-md"
 			>Read this person's story</a
 		>
 	</div>
