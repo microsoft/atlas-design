@@ -65,7 +65,6 @@ export class FormBehaviorElement extends HTMLElement {
 
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
-		errorSummaryContainer.classList.add('margin-bottom-sm', 'background-color-danger-light');
 		errorSummaryContainer.setAttribute('data-form-error-container', '');
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
@@ -276,7 +275,9 @@ export class FormBehaviorElement extends HTMLElement {
 		}
 	}
 
-	createErrorAlert(form: HTMLFormElement): {
+	createErrorAlert(
+		form: HTMLFormElement
+	): {
 		errorAlert: HTMLDivElement;
 		errorList: HTMLUListElement;
 	} {
@@ -284,7 +285,8 @@ export class FormBehaviorElement extends HTMLElement {
 		const alertId = generateElementId();
 
 		const errorAlert = document.createElement('div');
-		errorAlert.className = 'help help-danger border border-color-danger border-radius padding-xs';
+		errorAlert.className =
+			'help help-danger border border-color-danger border-radius padding-xs margin-bottom-sm';
 		errorAlert.setAttribute('data-form-error-alert', '');
 		errorAlert.setAttribute('role', 'alert');
 		errorAlert.setAttribute('aria-labelledby', alertId);
