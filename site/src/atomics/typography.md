@@ -77,3 +77,13 @@ The following class is used to alter the letter spacing.
 <p>Text with normal letter spacing</p>
 <p class="letter-spacing-wide">Text with wide letter spacing</p>
 ```
+
+## Alignment
+
+The following classes can be used to align text.
+
+```html
+<p class="text-align-left">Left aligned text</p>
+<p class="text-align-center">Center aligned text</p>
+<p class="text-align-right">Right aligned text</p>
+```
