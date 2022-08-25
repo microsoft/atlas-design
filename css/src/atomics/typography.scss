@@ -164,10 +164,6 @@
 
 // Alignment
 
-.text-align-left {
-	text-align: start !important;
-}
-
 .text-align-center {
 	text-align: center !important;
 }
@@ -177,10 +173,6 @@
 }
 
 @include tablet {
-	.text-align-left-tablet {
-		text-align: start !important;
-	}
-
 	.text-align-center-tablet {
 		text-align: center !important;
 	}

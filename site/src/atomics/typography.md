@@ -16,7 +16,7 @@ The typography scale is designed for great readability across the platform. This
 | `text-decoration` | `underline`, `none`                                              | N\A        |
 | `letter-spacing`  | `wide`                                                           | N\A        |
 | `text-transform`  | `uppercase`                                                      | N\A        |
-| `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
+| `text-align`      | `center`, `right`                                                | `tablet`   |
 
 ## Font size
 
@@ -93,7 +93,6 @@ The following class is used to alter the letter spacing.
 The following classes can be used to align text.
 
 ```html
-<p class="text-align-left">Left aligned text</p>
 <p class="text-align-center">Center aligned text</p>
 <p class="text-align-right">Right aligned text</p>
 ```
