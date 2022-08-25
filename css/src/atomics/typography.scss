@@ -175,3 +175,17 @@
 .text-align-right {
 	text-align: end !important;
 }
+
+@include tablet {
+	.text-align-left-tablet {
+		text-align: start !important;
+	}
+
+	.text-align-center-tablet {
+		text-align: center !important;
+	}
+
+	.text-align-right-tablet {
+		text-align: end !important;
+	}
+}

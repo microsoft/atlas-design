@@ -8,6 +8,16 @@ template: standard
 
 The typography scale is designed for great readability across the platform. This page covers the various classes available to modify text.
 
+| cssproperty       | value                                                            | screensize |
+| ----------------- | ---------------------------------------------------------------- | ---------- |
+| `font-size`       | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `xs`, `sm`, `md`, `lg`, `xl` | `tablet`   |
+| `font-weight`     | `semilight`, `light`, `normal`, `semibold` `bold`                | N\A        |
+| `font-style`      | `italic`                                                         | N\A        |
+| `text-decoration` | `underline`, `none`                                              | N\A        |
+| `letter-spacing`  | `wide`                                                           | N\A        |
+| `text-transform`  | `uppercase`                                                      | N\A        |
+| `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
+
 ## Font size
 
 There are two avenues for modifying font size in Atlas.
@@ -86,4 +96,10 @@ The following classes can be used to align text.
 <p class="text-align-left">Left aligned text</p>
 <p class="text-align-center">Center aligned text</p>
 <p class="text-align-right">Right aligned text</p>
+```
+
+Appending with `-tablet` to a text-align class will make that class applicable to tablet screen size and above. Resize the screen to see it in action.
+
+```html
+<p class="text-align-center-tablet">Text is centered on tablet size and above.</p>
 ```
