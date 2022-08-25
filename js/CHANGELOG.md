@@ -1,5 +1,13 @@
 # @microsoft/atlas-js
 
+## 1.5.2
+
+### Patch Changes
+
+- 2acc13d: Adjust margin classes on form behavior error container
+- fa45d12: Fix formAction behavior
+- 5445d56: Update form behavior to skip validation for data-skip-validation attribute.
+
 ## 1.5.1
 
 ### Patch Changes

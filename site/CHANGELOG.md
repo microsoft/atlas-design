@@ -1,5 +1,25 @@
 # @microsoft/atlas-site
 
+## 0.32.0
+
+### Minor Changes
+
+- 13de123: Add resource card pattern to site documentation.
+- 0327115: Add testimonial card example to card patterns.
+- 0327115: Add additional anchor link core styles to ensure correct hover states. No underline by default, but underlined on hover.
+- 73e0ba1: Add text alignment atomics and relevant documentation.
+- 0327115: Add plain card pattern to site documentation.
+- 13de123: Add image component and related documentation.
+- 0327115: Add margin-top-auto to spacing auto atomics and update relevant documentation.
+
+### Patch Changes
+
+- 5445d56: Update form behavior to skip validation for data-skip-validation attribute.
+- Updated dependencies [2acc13d]
+- Updated dependencies [fa45d12]
+- Updated dependencies [5445d56]
+  - @microsoft/atlas-js@1.5.2
+
 ## 0.31.0
 
 ### Minor Changes

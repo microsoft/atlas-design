@@ -1,5 +1,18 @@
 # @microsoft/atlas-css
 
+## 3.25.0
+
+### Minor Changes
+
+- 0327115: Add additional anchor link core styles to ensure correct hover states. No underline by default, but underlined on hover.
+- 73e0ba1: Add text alignment atomics and relevant documentation.
+- 13de123: Add image component and related documentation.
+- 0327115: Add margin-top-auto to spacing auto atomics and update relevant documentation.
+
+### Patch Changes
+
+- 13de123: Add resource card pattern to site documentation.
+
 ## 3.24.0
 
 ### Minor Changes
