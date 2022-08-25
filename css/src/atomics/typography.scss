@@ -161,3 +161,23 @@
 .text-transform-uppercase {
 	text-transform: uppercase !important;
 }
+
+// Alignment
+
+.text-align-center {
+	text-align: center !important;
+}
+
+.text-align-right {
+	text-align: end !important;
+}
+
+@include tablet {
+	.text-align-center-tablet {
+		text-align: center !important;
+	}
+
+	.text-align-right-tablet {
+		text-align: end !important;
+	}
+}
