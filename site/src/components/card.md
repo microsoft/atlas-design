@@ -14,7 +14,7 @@ This page discusses the component and subcomponents that make up `.card`, but it
 Also note that while many examples below use a width atomic, it's generally advisable not to do this, and to let your card width fit within an otherwise specified layout or grid.
 
 ```html
-<div class="card width-300">
+<article class="card width-300">
 	<div class="card-template">
 		<p class="card-supertitle">Course</p>
 		<a href="#" class="card-title">Learn how to create a card component</a>
@@ -35,7 +35,7 @@ Also note that while many examples below use a width atomic, it's generally advi
 			</div>
 		</div>
 	</div>
-</div>
+</article>
 ```
 
 ## Patterns for more accessible content
