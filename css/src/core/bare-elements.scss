@@ -14,6 +14,14 @@ details > * {
 
 :where(a) {
 	color: $hyperlink;
+	cursor: pointer;
+	text-decoration: none;
+	word-wrap: break-word;
+}
+
+:where(a:hover) {
+	color: $primary-hover;
+	text-decoration: underline;
 }
 
 :where(a:visited) {
