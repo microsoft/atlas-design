@@ -126,9 +126,7 @@ export class FormBehaviorElement extends HTMLElement {
 	}
 
 	navigate(href: string | null) {
-		if (href) {
-			navigateAfterSubmit(href, this.getAttribute('navigation') as NavigationSteps);
-		}
+		navigateAfterSubmit(href, this.getAttribute('navigation') as NavigationSteps);
 	}
 
 	scheduleCommit(event: Event) {
@@ -385,7 +383,6 @@ export class FormBehaviorElement extends HTMLElement {
 			}
 
 			if (input.hasAttribute('data-skip-validation')) {
-				this.clearValidationErrors(input);
 				const validationErrorEvent = new CustomEvent('form-validating', {
 					detail: {
 						errors,
@@ -398,7 +395,6 @@ export class FormBehaviorElement extends HTMLElement {
 			}
 
 			const isCustomElement = !!customElements.find(el => el === input);
-
 			this.runBasicValidation(input, displayValidity, errors, errorList, isCustomElement);
 			const validationErrorEvent = new CustomEvent('form-validating', {
 				detail: {
@@ -686,7 +682,7 @@ function canValidate(
 	return isValueElement(target, form) && (target as HTMLValueElement).type !== 'hidden';
 }
 
-export function navigateAfterSubmit(href: string, navigationStep: NavigationSteps) {
+export function navigateAfterSubmit(href: string | null, navigationStep: NavigationSteps) {
 	switch (navigationStep) {
 		case null:
 			// do nothing.
