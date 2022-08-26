@@ -31,12 +31,14 @@ This card type contains a super title labelled by the card's type, a title, an i
 		<div class="card-footer-item">
 			<span class="color-success">
 				<span>Completed</span>
-				<span class="icon"
-					><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
+				<span class="icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
 						<path
 							d="M160 397.255L9.373 246.627l45.255-45.254L160 306.745 393.373 73.373l45.254 45.255L160 397.255z"
-						/></svg></span
-			></span>
+						/>
+					</svg>
+				</span>
+			</span>
 		</div>
 		<div class="card-footer-item">
 			<div class="buttons">
@@ -117,7 +119,7 @@ The testimonial card provides a place for a user's opinion to be showcased. Nota
 			</div>
 			<div class="media-content">
 				<p class="font-size-xl font-weight-semibold margin-bottom-xxs">Full Name</p>
-				<p href="#">Role</p>
+				<p>Role</p>
 			</div>
 		</div>
 		<p class="margin-block-xs color-text-subtle">
