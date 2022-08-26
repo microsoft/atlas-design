@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.5.3
+
+### Patch Changes
+
+- 79fedb5: Update navigation reload to not require href.
+
 ## 1.5.2
 
 ### Patch Changes

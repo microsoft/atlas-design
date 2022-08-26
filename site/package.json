@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-site",
-	"version": "0.32.0",
+	"version": "0.32.1",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
@@ -29,6 +29,6 @@
 		"typescript": "^4.5.5"
 	},
 	"dependencies": {
-		"@microsoft/atlas-js": "^1.5.2"
+		"@microsoft/atlas-js": "^1.5.3"
 	}
 }
