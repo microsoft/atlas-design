@@ -1,5 +1,14 @@
 # @microsoft/atlas-site
 
+## 0.32.1
+
+### Patch Changes
+
+- 79fedb5: Update navigation reload to not require href.
+- a7ecfa6: Certain elements should be an article not a div
+- Updated dependencies [79fedb5]
+  - @microsoft/atlas-js@1.5.3
+
 ## 0.32.0
 
 ### Minor Changes
