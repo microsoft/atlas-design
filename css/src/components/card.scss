@@ -31,8 +31,8 @@ $card-column-gap: $spacer-5 !default;
 
 	.card-template {
 		display: grid;
-		padding: $card-padding;
 		flex-grow: 1;
+		padding: $card-padding;
 		grid-template: auto / 1fr $spacer-10;
 		gap: $card-row-gap $card-column-gap;
 		grid-template-areas:
