@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.32.2
+
+### Patch Changes
+
+- 4a3714b: Fixing demo example - removing href from paragraph.
+
 ## 0.32.1
 
 ### Patch Changes

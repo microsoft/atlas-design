@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.25.1
+
+### Patch Changes
+
+- 01a019c: Add flex-grow to .card-template. That container needs to grow to push the footer down.
+
 ## 3.25.0
 
 ### Minor Changes
