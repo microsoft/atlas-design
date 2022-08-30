@@ -36,7 +36,7 @@ $card-column-gap: $spacer-5 !default;
 		grid-template: auto / 1fr $spacer-10;
 		gap: $card-row-gap $card-column-gap;
 		grid-template-areas:
-			'supertitle supertitle'
+			'supertitle flag'
 			'title title'
 			'detail icon';
 
@@ -62,6 +62,19 @@ $card-column-gap: $spacer-5 !default;
 		font-size: $font-size-9;
 		line-height: 1.25;
 		grid-area: detail;
+	}
+
+	.card-template-flag {
+		grid-area: flag;
+		line-height: 1.25;
+		font-size: $font-size-9;
+		text-transform: uppercase;
+		background-color: $body-background-accent;
+		border: 1px solid $border-white-high-contrast;
+		position: relative;
+		inset-inline-end: -$card-padding;
+
+		@include line-clamp(1);
 	}
 
 	.card-header {

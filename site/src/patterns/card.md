@@ -26,6 +26,7 @@ This card type contains a super title labelled by the card's type, a title, an i
 		<div class="card-template-detail">
 			<p>Place card details items here.</p>
 		</div>
+		<div class="card-template-flag">1000XP</div>
 	</div>
 	<div class="card-footer">
 		<div class="card-footer-item">
