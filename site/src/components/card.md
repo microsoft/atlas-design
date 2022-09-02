@@ -215,7 +215,7 @@ Another available option is using the `.card-content` inner container, and placi
 		<div class="card-footer-item">
 			<div class="buttons">
 				<button class="button button-clear button-sm">Share</button>
-				<button class="button button-primary button-sm">Save</button>
+				<button class="button button-clear button-primary button-sm">Save</button>
 			</div>
 		</div>
 	</div>
