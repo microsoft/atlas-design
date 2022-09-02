@@ -245,7 +245,7 @@ $card-column-gap: $spacer-5 !default;
 
 			.card-footer {
 				flex-grow: 1;
-				flex-shrink: 0;
+				flex-shrink: 1;
 				width: 100%;
 			}
 		}
