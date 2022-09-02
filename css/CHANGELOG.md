@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.25.2
+
+### Patch Changes
+
+- e8f6f04: Card horiztonal needs flex-shrink in card footer.
+
 ## 3.25.1
 
 ### Patch Changes
