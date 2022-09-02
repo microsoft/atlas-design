@@ -43,7 +43,7 @@ This card type contains a super title labelled by the card's type, a title, an i
 		<div class="card-footer-item">
 			<div class="buttons">
 				<button class="button button-clear button-sm">Share</button>
-				<button class="button button-primary button-sm">Save</button>
+				<button class="button button-clear button-primary button-sm">Save</button>
 			</div>
 		</div>
 	</div>
