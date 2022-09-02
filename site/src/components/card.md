@@ -203,7 +203,7 @@ Another available option is using the `.card-content` inner container, and placi
 		<div class="card-footer-item">
 			<span class="color-success">
 				<span>Completed</span>
-				<span class="icon">
+				<span class="icon" aria-hidden="true">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
 						<path
 							d="M160 397.255L9.373 246.627l45.255-45.254L160 306.745 393.373 73.373l45.254 45.255L160 397.255z"
