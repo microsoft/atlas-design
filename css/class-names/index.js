@@ -18,7 +18,7 @@ async function createClassNameReferences() {
 		);
 	}
 
-	const collection = [];
+	const filenames = {};
 
 	const textContents = await fs.readFile(indexPath, 'utf8');
 	const cssClassNameRegexp = /\.-?([_a-zA-Z]+[_a-zA-Z0-9-]*)/g;
@@ -26,14 +26,14 @@ async function createClassNameReferences() {
 	let matches;
 
 	while ((matches = cssClassNameRegexp.exec(textContents)) !== null) {
-		collection.push(matches[1]);
-		// console.log(`Found ${matches[0]}. Next starts at ${cssClassNameRegexp.lastIndex}.`);
-		// console.log(`Found ${matches[1]}. Next starts at ${cssClassNameRegexp.lastIndex}.`);
-		// expected output: "Found foo. Next starts at 9."
-		// expected output: "Found foo. Next starts at 19."
+		filenames[matches[1]] = true;
+		// note that this does not match rule contents
 	}
 
+	const collection = Object.keys(filenames).sort();
+
 	try {
+		console.log(collection.length, 'class names found. Generating a file with their names.');
 		await fs.ensureDir(outfilePath);
 		await Promise.all([
 			fs.writeJSON(`${outfileStem}.json`, collection),
