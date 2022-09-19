@@ -7,9 +7,10 @@
 		"lint": "stylelint \"./src/**/*.scss\"",
 		"lint-fix": "stylelint \"./src/**/*.scss\" --fix",
 		"start": "parcel watch src/index.scss --no-autoinstall",
-		"build": "npm run build:css && npm run tokens",
+		"build": "npm run build:css && npm run tokens && npm run class-names",
 		"build:css": "parcel build src/index.scss --no-cache --no-autoinstall",
 		"tokens": "node ./tokens/index.js",
+		"class-names": "node ./class-names/index.js",
 		"prepublishOnly": "npm run lint && npm run build"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",

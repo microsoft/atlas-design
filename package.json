@@ -9,6 +9,8 @@
 		"build:js": "npm run build --workspace=@microsoft/atlas-js",
 		"build:site": "npm run build --workspace=@microsoft/atlas-site",
 		"build:tokens": "npm run tokens --workspace=@microsoft/atlas-css",
+		"build:class-names": "npm run class-names --workspace=@microsoft/atlas-css",
+		"prebuild:class-names": "npm run build:css",
 		"codegen": "npm run codegen --workspace=@microsoft/atlas-integration",
 		"type-check": "npm run build:css && npm run type-check --workspace=@microsoft/atlas-site",
 		"prelint": "npm run build:tokens",
