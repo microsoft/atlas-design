@@ -2,7 +2,6 @@
 	"name": "@microsoft/atlas-site",
 	"version": "0.32.3",
 	"license": "MIT",
-	"private": true,
 	"scripts": {
 		"prebuild": "node toc.js",
 		"prestart": "node toc.js",
@@ -12,7 +11,8 @@
 		"type-check": "tsc --noEmit",
 		"prelint": "npm run type-check",
 		"lint": "eslint . --ext .ts",
-		"lint-fix": "eslint . --ext .ts --fix"
+		"lint-fix": "eslint . --ext .ts --fix",
+		"prepublishOnly": "npm run lint && npm run build"
 	},
 	"devDependencies": {
 		"eslint": "^8.11.0",

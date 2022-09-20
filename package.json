@@ -36,7 +36,8 @@
 		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\"",
 		"prestart": "npm run build:tokens",
 		"prebuild:site": "npm run build:tokens",
-		"release": "npx changeset publish"
+		"release": "npx changeset publish",
+		"prepare:extension": "npm run build:css & npm run build:site"
 	},
 	"repository": {
 		"type": "git",
