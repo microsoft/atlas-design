@@ -48,7 +48,8 @@
 			"plugins/*",
 			"site",
 			"js",
-			"integration"
+			"integration",
+			"extension"
 		]
 	},
 	"installConfig": {
