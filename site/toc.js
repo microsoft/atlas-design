@@ -40,13 +40,16 @@ const settings = normalizePaths({
 		'/atomics/gap.md': 'Gap',
 		'/atomics/typography.md': 'Typography',
 		'/atomics/width.md': 'Width'
-	}
+	},
+	distFolder: path.resolve(process.cwd(), 'dist')
 });
 
-createToc().then(toc => {
-	const saveTo = settings.outFile;
+createToc().then(async toc => {
+	const { outFile, distFolder } = settings;
+	const saveTo = outFile;
 	fs.writeFile(saveTo, JSON.stringify(toc));
-	const documentedClassPrefixesOutFile = path.resolve('dist', 'routes-for-class-prefixes.json');
+	await fs.ensureDir(distFolder);
+	const documentedClassPrefixesOutFile = path.resolve(distFolder, 'routes-for-class-prefixes.json');
 	fs.writeFile(documentedClassPrefixesOutFile, JSON.stringify(routesForClassPrefixes));
 });
 
