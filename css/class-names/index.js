@@ -1,9 +1,25 @@
 // @ts-nocheck
 const fs = require('fs-extra');
 const path = require('path');
+// const AtlasTokenTypes = require('../dist/tokens');
+const atlasTokens = require('../dist/tokens.json');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
+const csstree = require('css-tree');
 
 createClassNameReferences();
+
+const themes = atlasTokens.themes.tokens.$themes;
+const themeCssVarPrefix = '--theme-';
+
+function createBlankThemeObject() {
+	const item = {
+		isValid: false
+	};
+	for (const [key, i] of Object.entries(themes)) {
+		item[key] = '';
+	}
+	return item;
+}
 
 async function createClassNameReferences() {
 	const filePathStem = path.join(process.cwd(), './src/class-names');
@@ -19,28 +35,81 @@ async function createClassNameReferences() {
 		);
 	}
 
-	const filenames = {};
-
+	const classnames = {};
+	const collection = {};
 	const textContents = await fs.readFile(indexPath, 'utf8');
-	const cssClassNameRegexp = /\.-?([_a-zA-Z]+[_a-zA-Z0-9-]*)/g;
 
-	let matches;
+	const cssAST = csstree.parse(textContents);
+	await fs.ensureDir(outfilePath);
 
-	while ((matches = cssClassNameRegexp.exec(textContents)) !== null) {
-		filenames[matches[1]] = true;
-		// note that this does not match rule contents
-	}
+	// await fs.writeJSON(`${outfileStem}-ast.json`, cssAST);  // debugging
 
-	const collection = Object.keys(filenames).sort();
+	let counter = 0;
+	csstree.walk(cssAST, (node, item, list) => {
+		if (node.type === 'Rule') {
+			counter++;
+			const { prelude, block } = node;
+			const classSelectors = csstree.findAll(prelude, (node, item, list) => {
+				return node.type === 'ClassSelector';
+			});
+
+			if (classSelectors.length === 1) {
+				const colorDecl = csstree.find(block, (node, item, list) => {
+					return (
+						node.type === 'Declaration' &&
+						(node.property === 'color' ||
+							node.property === 'background-color' ||
+							node.property === 'border-color' ||
+							node.property === 'outline-color')
+					);
+				});
+
+				const colorValue = colorDecl
+					? csstree.find(
+							colorDecl,
+							node => node.type === 'Identifier' && node.name.indexOf(themeCssVarPrefix) === 0
+					  )
+					: null;
+
+				let color = createBlankThemeObject();
+
+				if (colorValue) {
+					// remove --theme-prefix as it doesn't exist in the token map
+					const name = colorValue.name.replace(themeCssVarPrefix, '');
+
+					if (name in themes.light) {
+						// we can be reasonably sure that if a color is in light, its in other themes
+						color.light = themes.light[name];
+						color.dark = themes.dark[name];
+						color['high-contrast'] = themes['high-contrast'][name];
+						color.isValid = true;
+					}
+				}
+
+				collection[classSelectors[0].name] = {
+					name: classSelectors[0].name,
+					color
+				};
+			}
+		}
+
+		if (node.type === 'ClassSelector' && !(node.name in collection)) {
+			collection[node.name] = { name: node.name };
+		}
+	});
+
+	const classes = Object.keys(collection).sort();
 
 	try {
-		console.log(collection.length, 'class names found. Generating a file with their names.');
+		console.log(classes.length, 'class names found. Generating a file with their names.');
 		await fs.ensureDir(outfilePath);
 		await Promise.all([
-			fs.writeJSON(`${outfileStem}.json`, collection),
+			fs.writeJSON(`${outfileStem}.json`, classes),
+			// fs.writeJSON(`${outfileStem}-test.json`, collection), // debugging
+
 			quicktypeJSON(
 				'AtlasClassNames',
-				JSON.stringify(collection),
+				JSON.stringify(classnames),
 				`${outfileStem}.ts`,
 				'typescript'
 			)

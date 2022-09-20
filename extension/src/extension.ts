@@ -92,7 +92,8 @@ export function activate(context: vscode.ExtensionContext) {
 				// https://code.visualstudio.com/api/references/vscode-api#CompletionItemKind
 				const item = new vscode.CompletionItem(className, vscode.CompletionItemKind.Event);
 
-				item.kind = vscode.CompletionItemKind.Class;
+				item.kind = vscode.CompletionItemKind.Color;
+				// vscode.window.activeColorTheme.kind === 'dark';
 
 				// const docsPageForItem = getDocsPageForClass(className);
 				// if (docsPageForItem) {

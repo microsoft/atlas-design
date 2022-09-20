@@ -47,6 +47,7 @@
 		"stylelint-prettier": "^2.0.0",
 		"fs-extra": "^10.0.1",
 		"quicktype-core": "^6.0.70",
-		"sass-export": "^2.1.0"
+		"sass-export": "^2.1.0",
+		"css-tree": "^2.2.1"
 	}
 }
