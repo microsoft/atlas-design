@@ -2,6 +2,8 @@
 title: Gap Atomics
 description: Gap related atomic css classes for the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - gap
 ---
 
 # Gap Atomics

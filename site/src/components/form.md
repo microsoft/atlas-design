@@ -2,6 +2,9 @@
 title: Form
 description: The form related components in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - field
+  - required-indicator
 ---
 
 # Form

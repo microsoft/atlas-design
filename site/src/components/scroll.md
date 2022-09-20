@@ -2,6 +2,8 @@
 title: Scroll
 description: Scroll related components in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - scroll
 ---
 
 # Scrolling

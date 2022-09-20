@@ -2,6 +2,9 @@
 title: Gradients
 description: Gradient related components in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - gradient-border
+  - gradient-text
 ---
 
 # Gradients

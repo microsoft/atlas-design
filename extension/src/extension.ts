@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
 import * as classNames from '@microsoft/atlas-css/dist/class-names.json'; // 👋
+import * as documentedClassPrefixes from '@microsoft/atlas-site/dist/documented-class-prefixes.json';
+import { ATLAS_DOCS_BASE_URL, getDocsPageForClass } from './get-docs-page-for-class';
 
 export function activate(context: vscode.ExtensionContext) {
 	const documentSelectors = [
@@ -92,7 +94,16 @@ export function activate(context: vscode.ExtensionContext) {
 				const item = new vscode.CompletionItem(className, vscode.CompletionItemKind.Event);
 
 				// item.kind = vscode.CompletionItemKind.Class;
-				item.documentation = 'Atlas links or rule references?'; // todo: could be the rule itself, this appears if a little caret next to the suggestion is clicked
+				const docsPageForItem = getDocsPageForClass(className);
+				if (docsPageForItem) {
+					item.documentation = new vscode.MarkdownString(
+						`\`${className}\` utility class from the Atlas Design system. Learn more on Atlas's [${docsPageForItem.title} docs](${docsPageForItem.href}).`
+					);
+				} else {
+					item.documentation = new vscode.MarkdownString(
+						`\`${className}\` utility class from the Atlas Design system. Learn more on the [Atlas docs](${ATLAS_DOCS_BASE_URL}).`
+					);
+				}
 				item.detail = `@microsoft/atlas-css`;
 
 				return item;

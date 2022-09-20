@@ -2,6 +2,14 @@
 title: Typography Atomics
 description: Typography related atomic css classes for the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - font-size
+  - font-style
+  - font-weight
+  - letter-spacing
+  - text-align
+  - text-decoration
+  - text-transform
 ---
 
 # Typography Atomics

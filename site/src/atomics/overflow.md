@@ -2,6 +2,8 @@
 title: Overflow
 description: Overflow related atomic css classes for the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - overflow
 ---
 
 # Overflow

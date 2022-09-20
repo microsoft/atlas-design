@@ -2,6 +2,9 @@
 title: Border Atomics
 description: Border related atomic css classes for the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - border
+  - border-radius
 ---
 
 # Border Atomics

@@ -2,6 +2,8 @@
 title: Help
 description: Help component in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - help
 ---
 
 # Help

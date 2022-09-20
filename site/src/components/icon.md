@@ -2,6 +2,8 @@
 title: Icon
 description: The Icon component in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - icon
 ---
 
 # Icon

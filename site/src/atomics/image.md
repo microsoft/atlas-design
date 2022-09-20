@@ -2,6 +2,9 @@
 title: Image
 description: Image related atomic css classes for the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - object-fit
+  - object-position
 ---
 
 # Image

@@ -2,6 +2,9 @@
 title: Pagination
 description: Pagination related components in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - pagination
+  - is-current
 ---
 
 # Pagination
@@ -130,10 +133,11 @@ But you can change the positioning and order of these elements by using the `pag
 	<a href class="pagination-next" aria-label="next">
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
-					<path class="fill-current-color"
-						d="M-253.625 281v-32H131.75L-16.938 100.313 5.687 77.688 193 265 5.687 452.313l-22.625-22.625L131.75 281h-385.375z"
-					/>
-      </svg>
+				<path
+					class="fill-current-color"
+					d="M-253.625 281v-32H131.75L-16.938 100.313 5.687 77.688 193 265 5.687 452.313l-22.625-22.625L131.75 281h-385.375z"
+				/>
+			</svg>
 		</span>
 	</a>
 	<ul class="pagination-list">

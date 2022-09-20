@@ -2,6 +2,8 @@
 title: Display Atomics
 description: Display related atomic css classes for the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - display
 ---
 
 # Display Atomics

@@ -2,6 +2,8 @@
 title: Width Atomics
 description: Width related atomic css classes for the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - width
 ---
 
 # Width Atomics

@@ -2,6 +2,9 @@
 title: Backgrounds
 description: Background pattern component in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - background-image-pattern
+  - background-size
 ---
 
 # Background atomics

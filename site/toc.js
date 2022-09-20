@@ -6,6 +6,8 @@ const frontMatter = require('front-matter');
 const siteDir = path.join(process.cwd(), '/src/');
 console.log(siteDir);
 
+const routesForClassPrefixes = {};
+
 const settings = normalizePaths({
 	/**
 	 * Folders to ignore
@@ -44,6 +46,8 @@ const settings = normalizePaths({
 createToc().then(toc => {
 	const saveTo = settings.outFile;
 	fs.writeFile(saveTo, JSON.stringify(toc));
+	const documentedClassPrefixesOutFile = path.resolve('dist', 'routes-for-class-prefixes.json');
+	fs.writeFile(documentedClassPrefixesOutFile, JSON.stringify(routesForClassPrefixes));
 });
 
 /**
@@ -110,6 +114,10 @@ async function createToc(subDir) {
 		}
 
 		const name = await getName(settings, srcPath, isMarkdown, location, parsed);
+
+		if (isMarkdown) {
+			await getDocumentedClassPrefixes(location, srcPath, name);
+		}
 		/**
 		 * The data structure
 		 */
@@ -151,4 +159,17 @@ async function getName(settings, srcPath, isMarkdown, location, parsed) {
 	}
 
 	return parsed.name;
+}
+
+async function getDocumentedClassPrefixes(location, pagePath, pageName) {
+	const contents = await fs.readFile(location, 'utf-8');
+	const { attributes } = frontMatter(contents);
+	if (!Array.isArray(attributes.documentedClassPrefixes)) {
+		return;
+	}
+
+	for (const prefix of attributes.documentedClassPrefixes) {
+		const href = pagePath.replace('.md', '.html');
+		routesForClassPrefixes[prefix] = { href, title: pageName };
+	}
 }

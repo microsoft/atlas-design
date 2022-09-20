@@ -2,6 +2,8 @@
 title: Link button
 description: .link-button the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - link-button
 ---
 
 # Link Button

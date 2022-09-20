@@ -2,6 +2,8 @@
 title: Line Clamp
 description: Line clamp, the text truncated component in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - line-clamp
 ---
 
 # Line Clamp

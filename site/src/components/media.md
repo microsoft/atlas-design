@@ -2,6 +2,8 @@
 title: Media
 description: The Media component in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - media
 ---
 
 # Media

@@ -2,6 +2,8 @@
 title: Image
 description: Image component in the Atlas Design System
 template: standard
+documentedClassPrefixes:
+  - image
 ---
 
 # Image
