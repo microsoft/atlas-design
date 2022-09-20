@@ -1,3 +1,4 @@
+// @ts-nocheck
 const fs = require('fs-extra');
 const path = require('path');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');

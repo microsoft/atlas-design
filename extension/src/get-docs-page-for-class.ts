@@ -6,6 +6,7 @@ const prefixArray = Object.keys(docsRoutesForClassPrefixes);
 export function getDocsPageForClass(className: string) {
 	const matchedPrefix = prefixArray.find(prefix => className.startsWith(prefix));
 	if (matchedPrefix) {
+		// @ts-ignore
 		const pageData = docsRoutesForClassPrefixes[page];
 		return {
 			title: pageData.title as string,
