@@ -1,3 +1,7 @@
+/**
+ * Getting an error here? Remember to run `npm run prepare:extension` before debugging extension.
+ */
+
 // @ts-nocheck
 const fs = require('fs-extra');
 const path = require('path');
