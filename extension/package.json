@@ -3,6 +3,7 @@
 	"displayName": "Atlas Design System Tools",
 	"description": "VSCode tooling for using the Atlas Design System.",
 	"version": "0.0.1",
+	"publisher": "@microsoft/atlas-design",
 	"engines": {
 		"vscode": "^1.71.0"
 	},
@@ -21,8 +22,10 @@
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js"
 	},
+	"dependencies": {
+		"@microsoft/atlas-css": "^3.25.2"
+	},
 	"devDependencies": {
-		"@microsoft/atlas-css": "^3.25.2",
 		"@types/vscode": "^1.71.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",

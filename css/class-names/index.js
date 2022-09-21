@@ -10,6 +10,24 @@ const atlasTokens = require('../dist/tokens.json');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
 const csstree = require('css-tree');
 
+const COLOR_PROPS = {
+	'accent-color': true,
+	'caret-color': true,
+	color: true,
+	'column-rule-color': true,
+	'background-color': true,
+	'border-color': true,
+	'border-top-color': true,
+	'border-right-color': true,
+	'border-bottom-color': true,
+	'border-left-color': true,
+	fill: true,
+	'outline-color': true,
+	'stop-color': true,
+	stroke: true,
+	'text-decoration-color': true
+};
+
 createClassNameReferences();
 
 const themes = atlasTokens.themes.tokens.$themes;
@@ -51,20 +69,19 @@ async function createClassNameReferences() {
 	let counter = 0;
 	csstree.walk(cssAST, (node, item, list) => {
 		if (node.type === 'Rule') {
-			counter++;
 			const { prelude, block } = node;
-			const classSelectors = csstree.findAll(prelude, (node, item, list) => {
+			const classSelectors = csstree.findAll(prelude, node => {
 				return node.type === 'ClassSelector';
 			});
 
 			if (classSelectors.length === 1) {
+				const className = classSelectors[0].name;
 				const colorDecl = csstree.find(block, (node, item, list) => {
+					// scope things down to remove cruft
 					return (
 						node.type === 'Declaration' &&
-						(node.property === 'color' ||
-							node.property === 'background-color' ||
-							node.property === 'border-color' ||
-							node.property === 'outline-color')
+						node.property in COLOR_PROPS &&
+						namestartsWithCssProp(className)
 					);
 				});
 
@@ -98,14 +115,19 @@ async function createClassNameReferences() {
 		}
 
 		if (node.type === 'ClassSelector' && !(node.name in collection)) {
-			collection[node.name] = { name: node.name };
+			collection[node.name] = { name: node.name, color: createBlankThemeObject() };
 		}
 	});
 
-	const classes = Object.keys(collection).sort();
+	// want to know the number of classes and have alphaordered keys
+	const orderedArray = Object.keys(collection).sort();
+	const classes = orderedArray.reduce((obj, key) => {
+		obj[key] = collection[key];
+		return obj;
+	}, {});
 
 	try {
-		console.log(classes.length, 'class names found. Generating a file with their names.');
+		console.log(orderedArray.length, 'class names found. Generating a file with their names.');
 		await fs.ensureDir(outfilePath);
 		await Promise.all([
 			fs.writeJSON(`${outfileStem}.json`, classes),
@@ -152,4 +174,13 @@ async function quicktypeJSON(typeName, jsonString, outfile, targetLanguage = 'ty
 		lang: targetLanguage
 	});
 	return fs.writeFile(outfile, result.lines.join('\n'));
+}
+
+function namestartsWithCssProp(name) {
+	for (const prop in COLOR_PROPS) {
+		if (name.indexOf(prop) === 0) {
+			return true;
+		}
+	}
+	return false;
 }
