@@ -4,6 +4,10 @@
 	"description": "VSCode tooling for using the Atlas Design System.",
 	"version": "0.0.1",
 	"publisher": "@microsoft/atlas-design",
+	"repository": {
+		"url": "https://github.com/microsoft/atlas-design/",
+		"type": "git"
+	},
 	"engines": {
 		"vscode": "^1.71.0"
 	},
@@ -20,12 +24,15 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./out/test/runTest.js",
+		"vsce:package": "vcse package",
+		"vsce:publish": "vcse publish"
 	},
 	"dependencies": {
 		"@microsoft/atlas-css": "^3.25.2"
 	},
 	"devDependencies": {
+		"vsce": "^2.11.0",
 		"@types/vscode": "^1.71.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
