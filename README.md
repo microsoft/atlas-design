@@ -1,4 +1,6 @@
-# ![Atlas Logo](./atlas-light.svg) Atlas Design System
+![Atlas Logo](./atlas-light.svg)
+
+# Atlas Design System
 
 Welcome to the Atlas Design project! This repository holds the source code backing the Atlas Design System.
 
