@@ -1,4 +1,4 @@
-![Atlas Logo](./atlas-light.svg)
+![Atlas Logo](./atlas-light.png)
 
 # Atlas Design System
 
