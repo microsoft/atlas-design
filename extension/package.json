@@ -1,9 +1,10 @@
 {
-	"name": "@microsoft/atlas-design-system-tools",
+	"name": "atlas-design-system-tools",
 	"displayName": "Atlas Design System Tools",
 	"description": "VSCode tooling for using the Atlas Design System.",
 	"version": "0.0.1",
-	"publisher": "@microsoft/atlas-design",
+	"preview": true,
+	"publisher": "docsmsft",
 	"repository": {
 		"url": "https://github.com/microsoft/atlas-design/",
 		"type": "git"
