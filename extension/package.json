@@ -25,8 +25,8 @@
 		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js",
-		"vcse:package": "vcse package",
-		"vcse:publish": "vcse publish"
+		"vsce:package": "vsce package",
+		"vsce:publish": "vsce publish"
 	},
 	"dependencies": {
 		"@microsoft/atlas-css": "^3.25.2"

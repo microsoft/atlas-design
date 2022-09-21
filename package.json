@@ -36,7 +36,7 @@
 		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\"",
 		"prestart": "npm run build:tokens",
 		"prebuild:site": "npm run build:tokens",
-		"publish:extension": "npm run prepare:extension && npm run vcse:publish -w @microsoft/atlas-design-system-tools",
+		"publish:extension": "npm run prepare:extension && npm run vsce:publish -w @microsoft/atlas-design-system-tools",
 		"release": "npx changeset publish",
 		"prepare:extension": "npm run build:css & npm run build:site"
 	},
