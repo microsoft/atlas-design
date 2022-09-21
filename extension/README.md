@@ -1,7 +1,5 @@
 # atlas-design-system-tools README
 
-This is the README for your extension "atlas-design-system-tools". After writing up a brief description, we recommend including the following sections.
-
 [Visit the Atlas Design documentation](https://design.docs.microsoft.com/)
 
 ## Features
