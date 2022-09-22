@@ -29,7 +29,7 @@
 		"test": "node ./out/test/runTest.js",
 		"vsce:package": "vsce package",
 		"vsce:publish": "vsce publish",
-		"vsce:publish:dryrun": "vsce publish ls",
+		"vsce:publish:dryrun": "vsce ls",
 		"vscode:prepublish": "npm run esbuild-base -- --minify",
 		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
 		"esbuild": "npm run esbuild-base -- --sourcemap",
