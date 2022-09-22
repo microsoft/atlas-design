@@ -10,7 +10,7 @@
 		"url": "https://github.com/microsoft/atlas-design/",
 		"type": "git"
 	},
-	"icon": "https://learn.microsoft.com/en-us/media/vscode-ext-icons/atlas-icon-512.png",
+	"icon": "icons/atlas-icon-512.png",
 	"engines": {
 		"vscode": "^1.71.0"
 	},
@@ -28,7 +28,7 @@
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js",
 		"vsce:package": "vsce package",
-		"vsce:publish": "vsce publish",
+		"vsce:publish": "vsce publish --no-dependencies",
 		"vsce:publish:dryrun": "vsce ls",
 		"vscode:prepublish": "npm run esbuild-base -- --minify",
 		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
