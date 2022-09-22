@@ -20,6 +20,13 @@
 	"activationEvents": [
 		"onStartupFinished"
 	],
+	"keywords": [
+		"atlas",
+		"design-system",
+		"css",
+		"scss",
+		"classes"
+	],
 	"main": "./out/main.js",
 	"scripts": {
 		"compile": "tsc -p ./",
