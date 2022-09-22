@@ -12,7 +12,7 @@ export class AtlasClassCompletionItemProvider implements vscode.CompletionItemPr
 	) {
 		const classInformation = Object.entries(classNames);
 
-		if (!!classNames || classInformation.length === 0) {
+		if (!classNames || classInformation.length === 0) {
 			throw new Error(
 				'Class name informatio not found. Please update extension or try again later.'
 			);
