@@ -28,9 +28,17 @@ jobs:
       # https://github.com/changesets/action
       - name: Publish on version increment
         uses: changesets/action@v1
+        id: changesets
         with:
           publish: npx changeset publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish VSCode extension on version increment
+        if: steps.changesets.outputs.published == 'true'
+        # You can do something when a publish happens.
+        run: npm run publish:extension
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
