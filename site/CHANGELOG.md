@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.33.0
+
+### Minor Changes
+
+- b031e38: Generate data structure to map class prefixes to documentation pages.
+
 ## 0.32.3
 
 ### Patch Changes
