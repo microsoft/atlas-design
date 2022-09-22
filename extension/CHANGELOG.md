@@ -4,6 +4,10 @@ All notable changes to the "atlas-design-system-tools" extension will be documen
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## 0.0.2
 
-- Initial release
+- Second preview release (testing)
+
+## 0.0.1
+
+- Initial preview release (testing)
