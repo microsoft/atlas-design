@@ -9,6 +9,7 @@
 		"url": "https://github.com/microsoft/atlas-design/",
 		"type": "git"
 	},
+	"icon": "https://learn.microsoft.com/en-us/media/vscode-ext-icons/atlas-icon-512.png",
 	"engines": {
 		"vscode": "^1.71.0"
 	},

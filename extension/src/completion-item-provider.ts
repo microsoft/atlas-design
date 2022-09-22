@@ -11,6 +11,13 @@ export class AtlasClassCompletionItemProvider implements vscode.CompletionItemPr
 		_context: vscode.CompletionContext
 	) {
 		const classInformation = Object.entries(classNames);
+
+		if (!!classNames || classInformation.length === 0) {
+			throw new Error(
+				'Class name informatio not found. Please update extension or try again later.'
+			);
+		}
+
 		const classSnippets = classInformation.map(([className, data]) => {
 			const item = new vscode.CompletionItem(className, vscode.CompletionItemKind.Event);
 			const documentation = new vscode.MarkdownString(undefined, true);
