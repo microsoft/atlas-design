@@ -37,6 +37,7 @@
 		"prestart": "npm run build:tokens",
 		"prebuild:site": "npm run build:tokens",
 		"publish:extension": "npm run prepare:extension && npm run vsce:publish -w atlas-design-system-tools",
+		"publish:extension:dryrun": "npm run prepare:extension && npm run vsce:publish:dryrun -w atlas-design-system-tools",
 		"release": "npx changeset publish",
 		"prepare:extension": "npm run build:css & npm run build:site"
 	},

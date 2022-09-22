@@ -2,8 +2,9 @@
 	"name": "atlas-design-system-tools",
 	"displayName": "Atlas Design System Tools",
 	"description": "VSCode tooling for using the Atlas Design System.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"preview": true,
+	"private": true,
 	"publisher": "docsmsft",
 	"repository": {
 		"url": "https://github.com/microsoft/atlas-design/",
@@ -28,6 +29,7 @@
 		"test": "node ./out/test/runTest.js",
 		"vsce:package": "vsce package",
 		"vsce:publish": "vsce publish",
+		"vsce:publish:dryrun": "vsce publish ls",
 		"vscode:prepublish": "npm run esbuild-base -- --minify",
 		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
 		"esbuild": "npm run esbuild-base -- --sourcemap",
@@ -38,6 +40,7 @@
 	},
 	"devDependencies": {
 		"vsce": "^2.11.0",
+		"esbuild": "^0.15.8",
 		"@types/vscode": "^1.71.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
