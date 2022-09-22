@@ -2,7 +2,7 @@
 	"name": "atlas-design-system-tools",
 	"displayName": "Atlas Design System Tools",
 	"description": "VSCode tooling for using the Atlas Design System.",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"preview": true,
 	"private": true,
 	"publisher": "docsmsft",
@@ -20,7 +20,7 @@
 	"activationEvents": [
 		"onStartupFinished"
 	],
-	"main": "./out/extension.js",
+	"main": "./out/main.js",
 	"scripts": {
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
