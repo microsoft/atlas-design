@@ -8,6 +8,7 @@
 		"build:css": "npm run build --workspace=@microsoft/atlas-css",
 		"build:js": "npm run build --workspace=@microsoft/atlas-js",
 		"build:site": "npm run build --workspace=@microsoft/atlas-site",
+		"build:class-names": "npm run class-names --workspace=@microsoft/atlas-css",
 		"build:tokens": "npm run tokens --workspace=@microsoft/atlas-css",
 		"codegen": "npm run codegen --workspace=@microsoft/atlas-integration",
 		"type-check": "npm run build:css && npm run type-check --workspace=@microsoft/atlas-site",
@@ -33,6 +34,7 @@
 		"prettier-check": "prettier --check \"**/*.{scss,ts,js,json,yml}\" --loglevel debug",
 		"pretty-quick": "pretty-quick --staged --pattern \"**/*.{scss,ts,js,json,yml}\"",
 		"prestart": "npm run build:tokens",
+		"prebuild:class-names": "npm run build:css",
 		"prebuild:site": "npm run build:tokens",
 		"release": "npx changeset publish"
 	},
