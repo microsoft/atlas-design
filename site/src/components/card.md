@@ -83,7 +83,7 @@ The following can be used only inside `.card-template`.
 		<img
 			aria-hidden="true"
 			class="card-template-icon"
-			src="https://learn.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+			src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
 			<p>Additional details might be listed here.</p>
@@ -144,7 +144,7 @@ The optional `.card-header` class can be used as a container to display anything
 			<img
 				aria-hidden="true"
 				class="card-template-icon"
-				src="https://learn.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+				src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 			/>
 		</div>
 		<div class="position-absolute top-0 right-0 margin-top-xs margin-right-xxs">
@@ -174,7 +174,7 @@ The prescriptive `.card-template` subcomponent grows and shrinks well in this sc
 		<img
 			aria-hidden="true"
 			class="card-template-icon"
-			src="https://learn.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+			src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
 			<p>Additional details might be listed here.</p>

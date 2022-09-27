@@ -21,7 +21,7 @@ This card type contains a super title labelled by the card's type, a title, an i
 		<img
 			alt="Write alt text here or if image is presentational only add aria-hidden attribute"
 			class="card-template-icon"
-			src="https://learn.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+			src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
 			<p>Place card details items here.</p>
