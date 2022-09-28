@@ -21,7 +21,7 @@ Also note that while many examples below use a width atomic, it's generally advi
 		<img
 			aria-hidden="true"
 			class="card-template-icon"
-			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+			src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
 			<p>Additional details or elements can be placed here.</p>
@@ -83,7 +83,7 @@ The following can be used only inside `.card-template`.
 		<img
 			aria-hidden="true"
 			class="card-template-icon"
-			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+			src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
 			<p>Additional details might be listed here.</p>
@@ -138,13 +138,13 @@ The optional `.card-header` class can be used as a container to display anything
 <article class="card width-350">
 	<div
 		class="card-header position-relative background-size-100 background-image-pattern background-color-body-accent"
-		style="--background-image-pattern: url('https://docs.microsoft.com/en-us/media/background-patterns/plus.svg')"
+		style="--background-image-pattern: url('https://learn.microsoft.com/en-us/media/background-patterns/plus.svg')"
 	>
 		<div class="card-header-image">
 			<img
 				aria-hidden="true"
 				class="card-template-icon"
-				src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+				src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 			/>
 		</div>
 		<div class="position-absolute top-0 right-0 margin-top-xs margin-right-xxs">
@@ -174,7 +174,7 @@ The prescriptive `.card-template` subcomponent grows and shrinks well in this sc
 		<img
 			aria-hidden="true"
 			class="card-template-icon"
-			src="https://docs.microsoft.com/en-us/learn/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+			src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
 		/>
 		<div class="card-template-detail">
 			<p>Additional details might be listed here.</p>

@@ -20,7 +20,7 @@ First in order to apply a background pattern, specify the `--background-image-pa
 ```html
 <section
 	class="padding-lg background-image-pattern background-color-primary color-primary-invert"
-	style="--background-image-pattern: url('https://docs.microsoft.com/en-us/media/background-patterns/pixie-sticks.svg')"
+	style="--background-image-pattern: url('https://learn.microsoft.com/en-us/media/background-patterns/pixie-sticks.svg')"
 >
 	<h2 class="font-size-h2">A confetti background</h2>
 	<p>with <code>fill-opacity=".1"</code> on an svg</p>
@@ -34,13 +34,13 @@ You can adjust the look and feel of your pattern with different `background-size
 ```html
 <section
 	class="background-size-100 background-image-pattern padding-lg background-color-primary color-primary-invert"
-	style="--background-image-pattern: url('https://docs.microsoft.com/en-us/media/background-patterns/plus.svg')"
+	style="--background-image-pattern: url('https://learn.microsoft.com/en-us/media/background-patterns/plus.svg')"
 >
 	<p><code>background-size-100</code></p>
 </section>
 <section
 	class="background-size-200 background-image-pattern padding-lg margin-top-xxs background-color-primary color-primary-invert"
-	style="--background-image-pattern: url('https://docs.microsoft.com/en-us/media/background-patterns/plus.svg')"
+	style="--background-image-pattern: url('https://learn.microsoft.com/en-us/media/background-patterns/plus.svg')"
 >
 	<p><code>background-size-200</code></p>
 </section>
@@ -53,7 +53,7 @@ Be aware that a transparent svg will not be themeable, so while background color
 ```html
 <section
 	class="padding-lg background-color-primary color-primary-invert background-image-pattern background-size-100"
-	style="--background-image-pattern: url('https://docs.microsoft.com/en-us/media/background-patterns/plus.svg')"
+	style="--background-image-pattern: url('https://learn.microsoft.com/en-us/media/background-patterns/plus.svg')"
 >
 	<p><code>background-size-100</code></p>
 </section>

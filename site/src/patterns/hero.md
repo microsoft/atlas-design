@@ -15,7 +15,7 @@ This page catalogues some of the common combinations that might be used with the
 This hero can be used on hub type pages, and provides quick feed of where the user has landed.
 
 ```html-no-indent
-<section class="hero hero-xs background-color-primary color-primary-invert background-image-pattern background-size-200" style="--background-image-pattern: url('https://docs.microsoft.com/en-us/media/background-patterns/pixie-sticks.svg')">
+<section class="hero hero-xs background-color-primary color-primary-invert background-image-pattern background-size-200" style="--background-image-pattern: url('https://learn.microsoft.com/en-us/media/background-patterns/pixie-sticks.svg')">
 	<div class="hero-content">
 		<p class="letter-spacing-wide text-transform-uppercase font-size-sm">LOREM IPSUM DOLOR SIT AMET</p>
 		<h1 class="font-size-h1 font-weight-semibold">Wayfinding hero</h1>
