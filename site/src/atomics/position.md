@@ -2,6 +2,13 @@
 title: Position Atomics
 description: Position related atomic css classes for the Atlas Design System
 template: standard
+classType: Atomics
+classPrefixes:
+  - position
+  - top
+  - right
+  - bottom
+  - left
 ---
 
 # Position Atomics

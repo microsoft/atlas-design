@@ -2,6 +2,9 @@
 title: Stretched link
 description: The stretched link component in the Atlas Design System
 template: standard
+classType: Component
+classPrefixes:
+  - stretched-link
 ---
 
 # Stretched link

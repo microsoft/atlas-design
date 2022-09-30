@@ -2,6 +2,9 @@
 title: Label
 description: Label component in the Atlas Design System
 template: standard
+classType: Component
+classPrefixes:
+  - label
 ---
 
 # Label

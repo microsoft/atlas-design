@@ -2,6 +2,9 @@
 title: Link button
 description: .link-button the Atlas Design System
 template: standard
+classType: Component
+classPrefixes:
+  - link-button
 ---
 
 # Link Button

@@ -2,6 +2,9 @@
 title: Shadow Atomics
 description: Shadow related atomic css classes for the Atlas Design System
 template: standard
+classType: Atomics
+classPrefixes:
+  - box-shadow
 ---
 
 # Shadow Atomics

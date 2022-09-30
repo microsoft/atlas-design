@@ -6,6 +6,8 @@ const frontMatter = require('front-matter');
 const siteDir = path.join(process.cwd(), '/src/');
 console.log(siteDir);
 
+const routesForClassPrefixes = {};
+
 const settings = normalizePaths({
 	/**
 	 * Folders to ignore
@@ -38,12 +40,17 @@ const settings = normalizePaths({
 		'/atomics/gap.md': 'Gap',
 		'/atomics/typography.md': 'Typography',
 		'/atomics/width.md': 'Width'
-	}
+	},
+	distFolder: path.resolve(process.cwd(), 'dist')
 });
 
-createToc().then(toc => {
-	const saveTo = settings.outFile;
+createToc().then(async toc => {
+	const { outFile, distFolder } = settings;
+	const saveTo = outFile;
 	fs.writeFile(saveTo, JSON.stringify(toc));
+	await fs.ensureDir(distFolder);
+	const classPrefixesOutFile = path.resolve(distFolder, 'routes-for-class-prefixes.json');
+	fs.writeFile(classPrefixesOutFile, JSON.stringify(routesForClassPrefixes));
 });
 
 /**
@@ -110,6 +117,10 @@ async function createToc(subDir) {
 		}
 
 		const name = await getName(settings, srcPath, isMarkdown, location, parsed);
+
+		if (isMarkdown) {
+			await getclassPrefixes(location, srcPath, name);
+		}
 		/**
 		 * The data structure
 		 */
@@ -151,4 +162,21 @@ async function getName(settings, srcPath, isMarkdown, location, parsed) {
 	}
 
 	return parsed.name;
+}
+
+async function getclassPrefixes(location, pagePath, pageName) {
+	const contents = await fs.readFile(location, 'utf-8');
+	const { attributes } = frontMatter(contents);
+	if (!Array.isArray(attributes.classPrefixes)) {
+		return;
+	}
+
+	for (const prefix of attributes.classPrefixes) {
+		const href = pagePath.replace('.md', '.html');
+		routesForClassPrefixes[prefix] = {
+			href,
+			title: pageName,
+			type: attributes.classType || undefined
+		};
+	}
 }

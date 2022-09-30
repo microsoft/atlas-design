@@ -2,6 +2,10 @@
 title: Spacing Atomics
 description: Spacing related atomic css classes for the Atlas Design System
 template: standard
+classType: Atomics
+classPrefixes:
+  - margin
+  - padding
 ---
 
 # Spacing Atomics
