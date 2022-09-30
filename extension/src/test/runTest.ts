@@ -1,3 +1,6 @@
+/**
+ * Note: this file is unchanged boilerplate from `yo code`
+ */
 import * as path from 'path';
 
 import { runTests } from '@vscode/test-electron';
