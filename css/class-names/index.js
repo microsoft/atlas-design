@@ -5,7 +5,6 @@
 // @ts-nocheck
 const fs = require('fs-extra');
 const path = require('path');
-// const AtlasTokenTypes = require('../dist/tokens');
 const atlasTokens = require('../dist/tokens.json');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
 const csstree = require('css-tree');
