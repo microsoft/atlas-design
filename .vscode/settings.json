@@ -8,5 +8,13 @@
 	"css.validate": false,
 	"less.validate": false,
 	"scss.validate": true,
-	"eslint.workingDirectories": [{ "directory": "site", "changeProcessCWD": true }]
+	"eslint.workingDirectories": [{ "directory": "site", "changeProcessCWD": true }],
+	"files.exclude": {
+		"out": false
+	},
+	"search.exclude": {
+		"out": true,
+		"dist": true
+	},
+	"typescript.tsc.autoDetect": "off"
 }
