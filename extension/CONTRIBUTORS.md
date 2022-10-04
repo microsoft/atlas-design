@@ -2,15 +2,14 @@
 
 Current functionality of the extension is to provide autocompletable snippets for Atlas class names.
 
-<!-- WHEE -->
 ## Running the Extension Locally
 
 1. **Clone this `atlas-design` repository locally.**
 1. In the root of the `atlas-design` repository, **run `npm install` to install your dependencies.**
 1. In the root of the `atlas-design` repository, **run `npm run prepare:extension`.** This will build the CSS workspace and the workspace for Atlas's documentation site, which both emit build artifacts that this extension depends on to run.
-    - Alternatively, to run the sub-scripts:
-        - You can run `npm run build:class-names` while editing `/css/class-names/index.js` to modify the CSS-related data structure generated for the extension to use.
-        - You can run `npm run toc` while editing `/site/toc.js` to modify the data structure used to append documentation links.
+   - Alternatively, to run the sub-scripts:
+     - You can run `npm run build:class-names` while editing `/css/class-names/index.js` to modify the CSS-related data structure generated for the extension to use.
+     - You can run `npm run toc` while editing `/site/toc.js` to modify the data structure used to append documentation links.
 1. **Open the `atlas-design` repository's `extension` directory in VS Code.**
 1. **Press `F5` to run the extension in a debug mode.**
    - If you've not run the extension before, you might get a list of options for how to debug it. **Choose the option to run the extension in an Extension Host.** This will open a new instance of VS Code that's running your extension locally.
