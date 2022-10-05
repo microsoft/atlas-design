@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.33.0
+
+### Minor Changes
+
+- bb88708: Generate data structure to map class prefixes to documentation pages.
+
+### Patch Changes
+
+- 337ad3c: Replace docs.microsoft.com references with learn.microsoft.com
+
 ## 0.32.3
 
 ### Patch Changes
