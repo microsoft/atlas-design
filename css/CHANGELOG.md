@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.26.0
+
+### Minor Changes
+
+- bb88708: Generate json data for all class names in dist bundle.
+
 ## 3.25.2
 
 ### Patch Changes
