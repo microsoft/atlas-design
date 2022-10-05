@@ -2,6 +2,9 @@
 title: Markdown
 description: An element to render html generated from markdown.
 template: standard
+classType: Component
+classPrefixes:
+  - markdown
 ---
 
 # Markdown

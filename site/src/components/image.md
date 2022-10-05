@@ -2,6 +2,9 @@
 title: Image
 description: Image component in the Atlas Design System
 template: standard
+classType: Component
+classPrefixes:
+  - image
 ---
 
 # Image

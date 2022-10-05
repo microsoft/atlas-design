@@ -2,6 +2,9 @@
 title: Lists
 description: List atomics in the Atlas Design system
 template: standard
+classType: Atomics
+classPrefixes:
+  - list-style
 ---
 
 # Lists

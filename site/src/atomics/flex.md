@@ -2,6 +2,16 @@
 title: Flex Atomics
 description: Flex related atomic css classes for the Atlas Design System
 template: standard
+classType: Atomics
+classPrefixes:
+  - align-content
+  - align-items
+  - align-self
+  - flex-direction
+  - flex-grow
+  - flex-shrink
+  - flex-wrap
+  - justify-content
 ---
 
 # Flex Atomics

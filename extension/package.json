@@ -1,9 +1,16 @@
 {
-	"name": "@microsoft/atlas-design-system-tools",
+	"name": "atlas-design-system-tools",
 	"displayName": "Atlas Design System Tools",
 	"description": "VSCode tooling for using the Atlas Design System.",
-	"version": "0.0.1",
-	"publisher": "@microsoft/atlas-design",
+	"version": "0.0.4",
+	"preview": true,
+	"private": true,
+	"publisher": "docsmsft",
+	"repository": {
+		"url": "https://github.com/microsoft/atlas-design/",
+		"type": "git"
+	},
+	"icon": "icons/atlas-icon-512.png",
 	"engines": {
 		"vscode": "^1.71.0"
 	},
@@ -11,21 +18,35 @@
 		"Other"
 	],
 	"activationEvents": [
-		"*"
+		"onStartupFinished"
 	],
-	"main": "./out/extension.js",
+	"keywords": [
+		"atlas",
+		"design-system",
+		"css",
+		"scss",
+		"classes"
+	],
+	"main": "./out/main.js",
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
+		"test-compile": "tsc -p ./",
 		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./out/test/runTest.js",
+		"vsce:package": "vsce package",
+		"vsce:publish": "vsce publish --no-dependencies",
+		"vsce:publish:dryrun": "vsce ls",
+		"vscode:prepublish": "npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
 	},
 	"dependencies": {
 		"@microsoft/atlas-css": "^3.25.2"
 	},
 	"devDependencies": {
+		"vsce": "^2.11.0",
+		"esbuild": "^0.15.8",
 		"@types/vscode": "^1.71.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",

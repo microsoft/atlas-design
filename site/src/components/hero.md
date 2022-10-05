@@ -2,6 +2,9 @@
 title: Hero
 description: Hero component in the Atlas Design System
 template: standard
+classType: Component
+classPrefixes:
+  - hero
 ---
 
 # Hero
