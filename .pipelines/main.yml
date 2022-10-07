@@ -15,7 +15,7 @@ steps:
     inputs:
       versionSpec: '16.17.x'
 
-  - script: npm ci --no-optional
+  - script: npm ci
     displayName: Install
 
   - script: npm run lint

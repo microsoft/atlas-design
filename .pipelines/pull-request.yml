@@ -23,7 +23,7 @@ steps:
   - script: npm -v
     displayName: View NPM Version
 
-  - script: npm ci --no-optional
+  - script: npm ci
     displayName: Install
 
   - script: npm run lint
