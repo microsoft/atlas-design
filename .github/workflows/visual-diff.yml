@@ -35,10 +35,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 16.6.X
+      - name: Use Node.js 16.17.X
         uses: actions/setup-node@v2
         with:
-          node-version: '16.6.X'
+          node-version: '16.17.X'
 
       # Monorepo installation
       - name: Npm install
