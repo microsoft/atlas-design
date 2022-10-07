@@ -42,6 +42,8 @@
 		"eslint-plugin-security": "^1.5.0",
 		"fs-extra": "^10.1.0",
 		"parcel": "^2.7.0",
+		"lightningcss": "1.16.0",
+		"lightningcss-cli-win32-x64-msvc": "1.16.0",
 		"prettier": "^2.7.1",
 		"quicktype-core": "^6.0.62",
 		"sass": "^1.55.0",
