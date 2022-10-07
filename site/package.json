@@ -6,8 +6,8 @@
 	"scripts": {
 		"prebuild": "node toc.js",
 		"prestart": "node toc.js",
-		"start": "parcel \"./src/**/*.md\" --port 1111 --no-cache --no-autoinstall",
-		"build": "parcel build \"./src/**/*.md\" --no-cache --no-autoinstall",
+		"start": "parcel \"./src/**/*.md\" --port 1111 --no-cache",
+		"build": "parcel build \"./src/**/*.md\" --no-cache",
 		"toc": "node toc.js",
 		"type-check": "tsc --noEmit",
 		"prelint": "npm run type-check",
