@@ -16,9 +16,9 @@ pool:
 # windows-latest included software: https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md
 steps:
   - task: NodeTool@0
-    displayName: Use node 16.17.x
+    displayName: Use node 16.13.x
     inputs:
-      versionSpec: '16.17.x'
+      versionSpec: '16.13.x'
 
   - script: npm -v
     displayName: View NPM Version
