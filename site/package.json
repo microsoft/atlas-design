@@ -22,6 +22,8 @@
 		"@microsoft/atlas-css": "^3.26.0",
 		"eslint-config-prettier": "^8.5.0",
 		"parcel": "^2.7.0",
+		"lightningcss": "1.16.0",
+		"lightningcss-cli-win32-x64-msvc": "1.16.0",
 		"@parcel/transformer-sass": "^2.7.0",
 		"@microsoft/parcel-transformer-markdown-html": "^2.6.0",
 		"fs-extra": "^10.1.0",
