@@ -43,7 +43,6 @@
 		"fs-extra": "^10.1.0",
 		"parcel": "^2.7.0",
 		"lightningcss": "1.16.0",
-		"lightningcss-cli-win32-x64-msvc": "1.16.0",
 		"prettier": "^2.7.1",
 		"quicktype-core": "^6.0.62",
 		"sass": "^1.55.0",
@@ -51,5 +50,8 @@
 		"stylelint": "^14.13.0",
 		"stylelint-config-prettier": "^9.0.3",
 		"stylelint-prettier": "^2.0.0"
+	},
+	"optionalDependencies": {
+		"lightningcss-win32-x64-msvc": "1.16.0"
 	}
 }
