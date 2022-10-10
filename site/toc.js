@@ -24,6 +24,7 @@ const settings = normalizePaths({
 	 */
 	names: {
 		'/index.md': '[hide]',
+		'/not-found.md': '[hide]',
 		'/tokens': 'Tokens',
 		'/components': 'Components',
 		'/patterns': 'Patterns',
