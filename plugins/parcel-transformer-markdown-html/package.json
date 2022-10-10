@@ -10,14 +10,14 @@
 	"main": "lib/index.js",
 	"engines": {
 		"node": ">= 13.0.0",
-		"parcel": "^2.0.1"
+		"parcel": "^2.7.0"
 	},
 	"dependencies": {
-		"@microsoft/atlas-css": "^3.21.0",
-		"@parcel/plugin": "^2.3.2",
-		"@parcel/utils": "^2.3.2",
-		"marked": "^4.0.12",
-		"highlight.js": "^11.5.0",
+		"@microsoft/atlas-css": "^3.26.0",
+		"@parcel/plugin": "^2.7.0",
+		"@parcel/utils": "^2.7.0",
+		"marked": "^4.1.1",
+		"highlight.js": "^11.6.0",
 		"front-matter": "^4.0.2",
 		"mustache": "^4.2.0"
 	}

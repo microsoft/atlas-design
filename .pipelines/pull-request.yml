@@ -12,16 +12,18 @@ pr:
 pool:
   vmImage: windows-2022
 
+# Issues? Check out
+# windows-latest included software: https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md
 steps:
   - task: NodeTool@0
-    displayName: Use node 16.6.x
+    displayName: Use node 16.13.x
     inputs:
-      versionSpec: '16.6.x'
+      versionSpec: '16.13.x'
 
   - script: npm -v
     displayName: View NPM Version
 
-  - script: npm ci --no-optional
+  - script: npm ci
     displayName: Install
 
   - script: npm run lint

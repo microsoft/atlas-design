@@ -6,9 +6,9 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "stylelint \"./src/**/*.scss\"",
 		"lint-fix": "stylelint \"./src/**/*.scss\" --fix",
-		"start": "parcel watch src/index.scss --no-autoinstall",
+		"start": "parcel watch src/index.scss",
 		"build": "npm run build:css && npm run tokens && npm run class-names",
-		"build:css": "parcel build src/index.scss --no-cache --no-autoinstall",
+		"build:css": "parcel build src/index.scss --no-cache",
 		"tokens": "node ./tokens/index.js",
 		"class-names": "node ./class-names/index.js",
 		"prepublishOnly": "npm run lint && npm run build"
@@ -36,18 +36,19 @@
 	"author": "Microsoft Corporation",
 	"license": "MIT",
 	"devDependencies": {
-		"parcel": "^2.3.2",
-		"@parcel/transformer-sass": "^2.3.2",
 		"@microsoft/stylelint-config-atlas": "4.0.2",
-		"prettier": "^2.6.0",
-		"sass": "^1.49.9",
-		"stylelint": "^14.6.0",
+		"@parcel/transformer-sass": "^2.7.0",
+		"css-tree": "^2.2.1",
+		"eslint-plugin-security": "^1.5.0",
+		"fs-extra": "^10.1.0",
+		"parcel": "^2.7.0",
+		"lightningcss": "1.16.0",
+		"prettier": "^2.7.1",
+		"quicktype-core": "^6.0.62",
+		"sass": "^1.55.0",
+		"sass-export": "^2.1.2",
+		"stylelint": "^14.13.0",
 		"stylelint-config-prettier": "^9.0.3",
-		"eslint-plugin-security": "^1.4.0",
-		"stylelint-prettier": "^2.0.0",
-		"fs-extra": "^10.0.1",
-		"quicktype-core": "^6.0.70",
-		"sass-export": "^2.1.0",
-		"css-tree": "^2.2.1"
+		"stylelint-prettier": "^2.0.0"
 	}
 }

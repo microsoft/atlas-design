@@ -21,6 +21,8 @@ module.exports = {
 		'function-url-quotes': 'always',
 		'selector-attribute-quotes': 'always',
 		'string-quotes': 'double',
+		'annotation-no-unknown': null,
+		'selector-not-notation': null,
 		'order/order': [
 			[
 				{

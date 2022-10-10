@@ -11,11 +11,11 @@ pool:
 
 steps:
   - task: NodeTool@0
-    displayName: Use node 16.6.x
+    displayName: Use node 16.13.x
     inputs:
-      versionSpec: '16.6.x'
+      versionSpec: '16.13.x'
 
-  - script: npm ci --no-optional
+  - script: npm ci
     displayName: Install
 
   - script: npm run lint

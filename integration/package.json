@@ -16,7 +16,7 @@
 	"author": "Microsoft Corporation",
 	"license": "ISC",
 	"devDependencies": {
-		"@playwright/test": "^1.26.0",
+		"@playwright/test": "^1.26.1",
 		"cross-env": "^7.0.3"
 	}
 }
