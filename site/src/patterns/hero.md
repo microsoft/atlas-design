@@ -36,7 +36,7 @@ Hero with a theme-aware companion image.
 <section
     class="hero hero-image background-color-body-accent gradient-border-right gradient-border-body-accent"
     style="
-        --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/home-and-directory/home-hero_light.png?branch=main');
+        --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/home-and-directory/home-hero_light.png');
         --hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/home-and-directory/home-hero_dark.png');
     ">
 	<div class="hero-content">
