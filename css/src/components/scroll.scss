@@ -29,4 +29,8 @@
 	&.is-current {
 		opacity: 1;
 	}
+
+	@include desktop {
+		min-width: 40%;
+	}
 }
