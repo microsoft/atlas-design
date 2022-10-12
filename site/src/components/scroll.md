@@ -79,7 +79,7 @@ Additionally, if your element is injected into the DOM after the `initSnapScroll
 
 ```html
 <section id="snap-scroll-1" class="width-full width-500-tablet display-none-widescreen" data-snap-scroll="first-one">
-	<div class="scroll-horizontal scroll-snap-container display-flex padding-bottom-xs" data-snap-scroll-slides>
+	<div class="scroll-horizontal scroll-snap-container padding-bottom-xs" data-snap-scroll-slides>
 		<article class="padding-sm border scroll-snap-item" id="one" data-snap-scroll-slide="first-one-1">
 			<h3 class="font-size-lg">1</h3>
 			<p>Description text is here and goes on for a little while.</p>

@@ -11,6 +11,7 @@
 }
 
 .scroll-snap-container {
+	display: flex;
 	gap: 1rem;
 	height: max-content;
 	margin-block: 1rem;
@@ -23,4 +24,9 @@
 	min-width: 80%;
 	height: auto;
 	scroll-snap-align: center;
+	opacity: 0.2;
+
+	&.is-current {
+		opacity: 1;
+	}
 }

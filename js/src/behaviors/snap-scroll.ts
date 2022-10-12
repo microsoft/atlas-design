@@ -46,9 +46,17 @@ export function initSnapScrollScrollListeners(element: HTMLElement) {
 			const anchor = element.querySelector(
 				`[data-snap-scroll-nav-item="${step}"]`
 			) as HTMLAnchorElement;
+			const slide = element.querySelector(`[data-snap-scroll-slide="${step}"]`) as HTMLElement;
+
 			if (!anchor) {
 				throw new Error('Anchor missing from snap scroll container');
 			}
+
+			if (!slide) {
+				throw new Error('Slide missing from snap scroll container');
+			}
+
+			updateSlideState(element, slide);
 			updatePaginationState(element, anchor);
 		}
 	}, options);
@@ -84,9 +92,10 @@ function initSnapScrollClickListeners() {
 			`[data-snap-scroll-slide="${snapScrollId}"]`
 		) as HTMLElement;
 
+		updateSlideState(parentElement, slide);
 		updatePaginationState(parentElement, target);
 
-		slide.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
+		slide.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
 
 		setTimeout(() => (snapScrollUpdating = false), 500);
 	});
@@ -102,4 +111,15 @@ function updatePaginationState(parentElement: HTMLElement, activeAnchor: HTMLAnc
 	}
 	// add one back
 	activeAnchor.classList.add('is-current');
+}
+function updateSlideState(parentElement: HTMLElement, activeSlide: HTMLElement) {
+	// remove is current from all slides in this container
+	const slides = Array.from(
+		parentElement.querySelectorAll('[data-snap-scroll-slide')
+	) as HTMLElement[];
+	for (const s of slides) {
+		s.classList.remove('is-current');
+	}
+	// add one back
+	activeSlide.classList.add('is-current');
 }
