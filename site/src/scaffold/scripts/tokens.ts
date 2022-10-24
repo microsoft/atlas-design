@@ -158,7 +158,6 @@ const renderColorsToHTML = (
 			<div class="color-swatch__value">${value}</div>
 		</div>`);
 	});
-	console.log(colorsDivs);
 	return (container.innerHTML = colorsDivs);
 };
 
