@@ -190,6 +190,7 @@ module.exports = new Transformer({
 			// we've specified a tokens file to load from @atlas-tokens
 			if (tokenSet) {
 				try {
+					tokens[`is${tokenSet.toLowerCase()}`] = true;
 					tokens = Object.entries(allTokens[tokenSet].tokens).map(item => {
 						return {
 							name: item[0],
