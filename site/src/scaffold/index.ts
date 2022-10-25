@@ -2,6 +2,7 @@ import { handleCodeFilters } from './scripts/code-filter';
 import { handleFigmaFullScreenRequest } from './scripts/figma-embed';
 import { initTheme } from './scripts/theming';
 import { handleMockFormSubmit } from './scripts/form-submit';
+import * as atlasTokens from '@microsoft/atlas-css/dist/tokens.json';
 
 import { initPopover, initSnapScroll } from '@microsoft/atlas-js/src/index';
 
@@ -12,6 +13,16 @@ handleFigmaFullScreenRequest();
 handleMockFormSubmit();
 initSnapScroll();
 initFullScreenToggle();
+
+// const main = document.querySelector('main');
+// if (main) {
+// 	let template = '';
+// 	const palette = JSON.stringify(atlasTokens.palette.tokens);
+// 	for (const key of Object.keys(palette)) {
+// 		template += `<p>${key}/${palette[key as keyof typeof palette]}</p>`;
+// 	}
+// 	main.innerHTML = template;
+// }
 
 function initFullScreenToggle() {
 	// eslint-disable-next-line @typescript-eslint/no-misused-promises

@@ -1,8 +1,8 @@
 ---
-title: Colors
+title: Palette
 description: Atlas CSS Theme Tokens
 template: token
-token: colors
+token: palette
 ---
 
-# Framework colors
+# Color Palette
