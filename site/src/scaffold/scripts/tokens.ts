@@ -153,7 +153,7 @@ const renderColorsToHTML = (
 	let colorsDivs = '';
 	colors.map(({ color, value }) => {
 		return (colorsDivs += `
-		<div style="background-color: ${value}; display: inline-block">
+		<div style="background-color: ${value}; display: block" class="border-radius padding-md margin-xxs">
 			<div class="color-swatch__label">${color}</div>
 			<div class="color-swatch__value">${value}</div>
 		</div>`);
