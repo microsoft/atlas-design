@@ -86,7 +86,7 @@ function initSnapScrollClickListeners() {
 
 		updatePaginationState(parentElement, target);
 
-		slide.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
+		slide.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
 
 		setTimeout(() => (snapScrollUpdating = false), 500);
 	});

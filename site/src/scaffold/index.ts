@@ -2,8 +2,9 @@ import { handleCodeFilters } from './scripts/code-filter';
 import { handleFigmaFullScreenRequest } from './scripts/figma-embed';
 import { initTheme } from './scripts/theming';
 import { handleMockFormSubmit } from './scripts/form-submit';
+import { initPopover, initSnapScroll, initTabs } from '@microsoft/atlas-js/src/index';
 
-import { initPopover, initSnapScroll } from '@microsoft/atlas-js/src/index';
+const tabAction = () => console.log('tab clicked');
 
 initTheme();
 initPopover();
@@ -11,6 +12,7 @@ handleCodeFilters();
 handleFigmaFullScreenRequest();
 handleMockFormSubmit();
 initSnapScroll();
+initTabs(null, tabAction);
 initFullScreenToggle();
 
 function initFullScreenToggle() {
