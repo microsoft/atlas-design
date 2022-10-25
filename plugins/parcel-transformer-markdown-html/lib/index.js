@@ -187,10 +187,14 @@ module.exports = new Transformer({
 			const tokenSet = attributes.token;
 			let tokens;
 			let cssTokenSource;
+			let tokenType;
 			// we've specified a tokens file to load from @atlas-tokens
 			if (tokenSet) {
 				try {
-					tokens[`is${tokenSet.toLowerCase()}`] = true;
+					const key = `is${tokenSet.toLowerCase()}`;
+					tokenType = {
+						[key]: true
+					};
 					tokens = Object.entries(allTokens[tokenSet].tokens).map(item => {
 						return {
 							name: item[0],
@@ -221,6 +225,7 @@ module.exports = new Transformer({
 					breadcrumbs: renderBreadcrumbsMarkup(tocEntries, asset.filePath),
 					...attributes,
 					tokens,
+					tokenType,
 					cssTokenSource,
 					figmaEmbed
 				})
