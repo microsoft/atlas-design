@@ -3,11 +3,7 @@
  * @param callback - function of what the should happen on change
  */
 
-export function initTabs(container?: HTMLElement, callback = () => {}) {
-	if (!container) {
-		container = document.querySelector('[data-tabs-group]') as HTMLElement;
-	}
-
+export function initTabs(container: HTMLElement, callback = () => {}) {
 	initTabControlClickListeners(container, callback);
 }
 

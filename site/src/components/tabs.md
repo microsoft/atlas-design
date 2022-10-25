@@ -7,7 +7,7 @@ classType: Component
 
 # Tabs
 
-The behaviors by default will update the active button. Additional funcationality will need to be passed to initTabs()
+The behaviors by default will update the active button. Additional functionality will need to be passed to initTabs()
 
 ```html
 <section class="display-flex justify-content-center align-items-center">

@@ -7,44 +7,42 @@ $tabs-link-active-background-color: $primary-active !default;
 $tabs-link-active-color: $primary-invert !default;
 
 .tabs {
-	align-items: stretch;
 	display: flex;
+	align-items: stretch;
 	justify-content: space-between;
-	background-color: $body-background-accent;
-	border-radius: $tabs-link-radius;
 	width: 100%;
+	border-radius: $tabs-link-radius;
+	background-color: $body-background-accent;
 
 	.tab-list {
-		align-items: center;
 		display: flex;
 		flex-grow: 1;
-		flex-shrink: 0;
+		align-items: center;
 		justify-content: flex-start;
 	}
 
 	.tab-control {
-		position: relative;
-		background-color: transparent;
-		border: none;
-		align-items: center;
-		color: $tabs-link-color;
 		display: flex;
 		flex-grow: 1;
-		flex-shrink: 0;
+		align-items: center;
 		justify-content: center;
+		border: none;
+		background-color: transparent;
+		color: $tabs-link-color;
 		padding-block: 1rem;
 		cursor: pointer;
 
 		&:hover {
-			color: $tabs-link-active-color;
 			border-radius: $tabs-link-radius;
 			background-color: $tabs-link-hover-background-color;
+			color: $tabs-link-active-color;
 		}
 
 		&.is-active {
-			color: $tabs-link-active-color;
-			background-color: $tabs-link-active-background-color;
 			border-radius: $tabs-link-radius;
+			background-color: $tabs-link-active-background-color;
+			color: $tabs-link-active-color;
+
 			&:hover {
 				background-color: $tabs-link-hover-background-color;
 			}

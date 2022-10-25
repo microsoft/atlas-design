@@ -5,6 +5,7 @@ import { handleMockFormSubmit } from './scripts/form-submit';
 import { initPopover, initSnapScroll, initTabs } from '@microsoft/atlas-js/src/index';
 
 const tabAction = () => console.log('tab clicked');
+const tabsContainer = document.querySelector('[data-tabs-group]') as HTMLElement;
 
 initTheme();
 initPopover();
@@ -12,7 +13,7 @@ handleCodeFilters();
 handleFigmaFullScreenRequest();
 handleMockFormSubmit();
 initSnapScroll();
-initTabs(null, tabAction);
+initTabs(tabsContainer, tabAction);
 initFullScreenToggle();
 
 function initFullScreenToggle() {
