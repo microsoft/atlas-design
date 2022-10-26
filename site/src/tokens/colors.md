@@ -40,13 +40,22 @@ Approved background colors.
 	<div class="width-full">
 		<h4 class="font-weight-bold font-size-h4 margin-bottom-xs"> Primary colors</h4>
 		<p>Approved background colors.</p>
-		<div id="blueList" class="display-inline-block"></div>
-		<div id="navyList" class="display-inline-block"></div>
-		<div id="grayList" class="display-inline-block"></div>
+		<div class="display-flex">
+			<div id="blueList" class="display-inline-block"></div>
+			<div id="navyList" class="display-inline-block"></div>
+			<div id="grayList" class="display-inline-block"></div>
+		</div>
 	</div>
 	<div class="width-full">
 		<h4 class="font-weight-bold font-size-h4 margin-bottom-xs"> Secondary colors</h4>
-		Secondary colors are used only for alerts.
+		<p>Secondary colors are used only for alerts.</p>
+		<div class="display-flex">
+			<div id="turquoiseList" class="display-inline-block"></div>
+			<div id="yellowList" class="display-inline-block"></div>
+			<div id="greenList" class="display-inline-block"></div>
+			<div id="redList" class="display-inline-block"></div>
+			<div id="purpleList" class="display-inline-block"></div>
+		</div>
 	</div>
 </div>
 
