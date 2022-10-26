@@ -75,22 +75,6 @@
 			<div class="padding-block-md">
 				<a href="https://github.com/microsoft/atlas-design/tree/main{{cssTokenSource}}">View on Github</a>
 			</div>
-			{{#tokenType}}
-				{{#ispalette}}
-					{{#tokens}}
-						<div style="background-color: {{value}}; ">
-							<span style="filter: invert(); mix-blend-mode: difference;">{{name}}</span>
-						</div>
-					{{/tokens}}
-				{{/ispalette}}
-				{{#iscolors}}
-					{{#tokens}}
-					<div style="background-color: {{value}}; ">
-						<span style="filter: invert(); mix-blend-mode: difference;">{{name}}</span>
-					</div>
-					{{/tokens}}
-				{{/iscolors}}
-			{{/tokenType}}
 			<div class="code-block">
 				{{#figmaEmbed}}
 				<div class="figma-embed-container padding-top-m">

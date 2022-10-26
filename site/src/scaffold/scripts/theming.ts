@@ -1,7 +1,7 @@
 import { prefersColorSchemeDarkQuery } from './match-media';
 import { localStorage } from './protected-storage';
 import { parseQueryString } from './query-string';
-import { atlasTokens } from './tokens';
+import * as atlasTokens from '@microsoft/atlas-css/dist/tokens.json';
 
 /**
  * The globally available descriptor of the current theme. It is updated each time setTheme is called.
