@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.34.0
+
+### Minor Changes
+
+- 884a338: Add a 404 page.
+- a1ab928: Ensure forced colors mode doesn't interfere with fill: currentColor
+
+### Patch Changes
+
+- 7ee045c: Add site favicon
+
 ## 0.33.0
 
 ### Minor Changes
