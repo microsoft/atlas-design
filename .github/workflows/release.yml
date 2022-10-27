@@ -41,7 +41,8 @@ jobs:
 
       # When changesets has published a new version of @microsoft/atlas-css, then we can attempt to publish a new extension version too.
       - name: Publish VSCode extension on version increment
-        if: steps.changesets.outputs.published == 'true' && contains(steps.changesets.outputs.publishedPackages.*.name, '@microsoft/atlas-css')
+        #
+        if: ${{ steps.changesets.outputs.published == 'true' && contains(steps.changesets.outputs.publishedPackages.*.name, '@microsoft/atlas-css') }}
         run: npm run publish:extension
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
