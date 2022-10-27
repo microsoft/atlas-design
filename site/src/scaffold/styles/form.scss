@@ -7,8 +7,8 @@
 	margin-inline-end: $spacer-3;
 
 	svg {
-		fill: currentColor;
-		forced-color-adjust: auto;
+		@include fill-current-color();
+
 		width: 1rem;
 		height: auto;
 	}
