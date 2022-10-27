@@ -86,7 +86,7 @@
 }
 
 .fill-current-color {
-	fill: currentColor !important;
+	@include fill-current-color();
 }
 
 .outline-color-text {
