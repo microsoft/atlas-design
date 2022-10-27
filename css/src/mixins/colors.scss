@@ -1,0 +1,6 @@
+@mixin fill-current-color {
+	fill: currentColor !important;
+
+	// Ensure SVG paths can adapt to forced colors theming
+	forced-color-adjust: auto;
+}
