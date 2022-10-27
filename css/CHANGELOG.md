@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.27.0
+
+### Minor Changes
+
+- a1ab928: Ensure forced colors mode doesn't interfere with fill: currentColor
+
 ## 3.26.0
 
 ### Minor Changes
