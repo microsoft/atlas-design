@@ -391,7 +391,27 @@ const colorsPurple = [
 	}
 ];
 
-const renderColorsToHTML = (
+const palette = atlasTokens.palette.tokens;
+
+const formatColorPalette = (palette: object) => {
+	return Object.keys(palette).reduce((acc, key) => {
+		key = key.replace('$palette-', '');
+		key = key.replaceAll('-', '');
+		acc[key] = palette[key] == palette[key];
+		return acc;
+	}, {});
+};
+
+const filterPaletteForAColor = (color: string, colorPalette: object) => {
+	return Object.keys(colorPalette).reduce((acc, key) => {
+		if (key.includes(color)) {
+			acc[key] = colorPalette[key];
+		}
+		return acc;
+	}, {});
+};
+
+const renderColorPalleteToHTML = (
 	colors: Array<{ color: string; value: string }>,
 	containerID: string
 ) => {
@@ -412,16 +432,18 @@ const renderColorsToHTML = (
 	return (container.innerHTML = colorsDivs);
 };
 
-// const palette = JSON.stringify(atlasTokens.palette.tokens);
+const newColorPalette = formatColorPalette(palette);
+console.log(newColorPalette);
+// console.log(filterPaletteForAColor('blue', newColorPalette));
 
 //Primary colors
-renderColorsToHTML(colorsBlue, 'blueList');
-renderColorsToHTML(colorsNavy, 'navyList');
-renderColorsToHTML(colorsGray, 'grayList');
+renderColorPalleteToHTML(colorsBlue, 'blueList');
+renderColorPalleteToHTML(colorsNavy, 'navyList');
+renderColorPalleteToHTML(colorsGray, 'grayList');
 
 //Secondary colors
-renderColorsToHTML(colorsTurquoise, 'turquoiseList');
-renderColorsToHTML(colorsYellow, 'yellowList');
-renderColorsToHTML(colorsGreen, 'greenList');
-renderColorsToHTML(colorsRed, 'redList');
-renderColorsToHTML(colorsPurple, 'purpleList');
+renderColorPalleteToHTML(colorsTurquoise, 'turquoiseList');
+renderColorPalleteToHTML(colorsYellow, 'yellowList');
+renderColorPalleteToHTML(colorsGreen, 'greenList');
+renderColorPalleteToHTML(colorsRed, 'redList');
+renderColorPalleteToHTML(colorsPurple, 'purpleList');
