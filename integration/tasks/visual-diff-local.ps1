@@ -2,7 +2,7 @@
 # Should be run from a feature branch
 
 # get to monorepo root
-Set-Location ../../
+Set-Location ../
 
 # Remove screenshots folder and content related folders
 Remove-Item -Path "./integration/visual-diff/screenshots/" -Recurse -Force -ErrorAction Ignore
