@@ -8,7 +8,7 @@ Set-Location ../
 Remove-Item -Path "./integration/visual-diff/screenshots/" -Recurse -Force -ErrorAction Ignore
 
 # checkout branch that will be used for baseline screenshots
-git checkout main
+git checkout wbb/visual-diff-local
 
 # take baseline screenshots
 npm run screenshots:light --workspace=@microsoft/atlas-integration
