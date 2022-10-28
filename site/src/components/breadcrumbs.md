@@ -16,7 +16,7 @@ Use breadcrumbs to show navigation from the current location to less specific lo
 <nav>
 	<ol class="breadcrumbs">
 		<li class="breadcrumbs-item">
-			<a href="#">Domain</a>
+			<a href="#">Cool!</a>
 		</li>
 		<li class="breadcrumbs-item">
 			<a href="#">Kingdom</a>
