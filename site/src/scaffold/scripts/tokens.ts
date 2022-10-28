@@ -395,9 +395,10 @@ const palette = atlasTokens.palette.tokens;
 
 const formatColorPalette = (palette: object) => {
 	return Object.keys(palette).reduce((acc, key) => {
+		const oldKey = key;
 		key = key.replace('$palette-', '');
 		key = key.replaceAll('-', '');
-		acc[key] = palette[key] == palette[key];
+		acc[key] = palette[oldKey];
 		return acc;
 	}, {});
 };
@@ -433,8 +434,8 @@ const renderColorPalleteToHTML = (
 };
 
 const newColorPalette = formatColorPalette(palette);
-console.log(newColorPalette);
-// console.log(filterPaletteForAColor('blue', newColorPalette));
+
+// const blueColorPalette = filterPaletteForAColor('blue', newColorPalette);
 
 //Primary colors
 renderColorPalleteToHTML(colorsBlue, 'blueList');
