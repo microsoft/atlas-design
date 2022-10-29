@@ -412,10 +412,28 @@ const filterPaletteForAColor = (color: string, colorPalette: object) => {
 	}, {});
 };
 
-const renderColorPalleteToHTML = (
-	colors: Array<{ color: string; value: string }>,
-	containerID: string
-) => {
+// const renderColorPalleteToHTML = (
+// 	colors: Array<{ color: string; value: string }>,
+// 	containerID: string
+// ) => {
+// 	const container = document.getElementById(`${containerID}`);
+// 	if (!container) {
+// 		return console.error(`Could not find container with ID ${containerID}`);
+// 	}
+// 	let colorsDivs = '';
+// 	colors.map(({ color, value }, index) => {
+// 		return (colorsDivs += `
+// 		<div style="background-color: ${value}; display: block; width: 120px; height: 70px; color: ${
+// 			index < 6 ? 'white' : 'black'
+// 		}" class="border-radius padding-left-xs padding-top-xs margin-xxs">
+// 			<h4 class="color-swatch__label padding-bottom-xxs">${color}</h4>
+// 			<p style="font-size: 12px" class="color-swatch__value">${value}</p>
+// 		</div>`);
+// 	});
+// 	return (container.innerHTML = colorsDivs);
+// };
+
+const renderColorPalleteToHTML = (colors: { [key: string]: string }, containerID: string) => {
 	const container = document.getElementById(`${containerID}`);
 	if (!container) {
 		return console.error(`Could not find container with ID ${containerID}`);
@@ -435,16 +453,16 @@ const renderColorPalleteToHTML = (
 
 const newColorPalette = formatColorPalette(palette);
 
-// const blueColorPalette = filterPaletteForAColor('blue', newColorPalette);
+const blueColorPalette = filterPaletteForAColor('blue', newColorPalette);
 
 //Primary colors
-renderColorPalleteToHTML(colorsBlue, 'blueList');
-renderColorPalleteToHTML(colorsNavy, 'navyList');
-renderColorPalleteToHTML(colorsGray, 'grayList');
+// renderColorPalleteToHTML(colorsBlue, 'blueList');
+// renderColorPalleteToHTML(colorsNavy, 'navyList');
+// renderColorPalleteToHTML(colorsGray, 'grayList');
 
 //Secondary colors
-renderColorPalleteToHTML(colorsTurquoise, 'turquoiseList');
-renderColorPalleteToHTML(colorsYellow, 'yellowList');
-renderColorPalleteToHTML(colorsGreen, 'greenList');
-renderColorPalleteToHTML(colorsRed, 'redList');
-renderColorPalleteToHTML(colorsPurple, 'purpleList');
+// renderColorPalleteToHTML(colorsTurquoise, 'turquoiseList');
+// renderColorPalleteToHTML(colorsYellow, 'yellowList');
+// renderColorPalleteToHTML(colorsGreen, 'greenList');
+// renderColorPalleteToHTML(colorsRed, 'redList');
+// renderColorPalleteToHTML(colorsPurple, 'purpleList');
