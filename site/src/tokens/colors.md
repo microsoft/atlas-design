@@ -43,7 +43,7 @@ Approved background colors.
 		<div class="display-flex">
 			<div id="blueList" class="display-inline-block"></div>
 			<div id="navyList" class="display-inline-block"></div>
-			<div id="grayList" class="display-inline-block"></div>
+			<div id="greyList" class="display-inline-block"></div>
 		</div>
 	</div>
 	<div class="width-full">
