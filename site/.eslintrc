@@ -2,7 +2,8 @@
 	"root": true,
 	"env": {
 		"browser": true,
-		"node": false
+		"node": false,
+		"es2021": true
 	},
 	"parser": "@typescript-eslint/parser",
 	"plugins": ["@typescript-eslint", "security"],

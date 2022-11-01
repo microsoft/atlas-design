@@ -7,23 +7,29 @@ export const atlasTokens = tokens as AtlasTokens;
 
 const palette = atlasTokens.palette.tokens;
 
-const formatColorPalette = (palette: object) => {
+// const listOfBlockedColors = ['BLUEBLACK', 'BLUEA', 'YELLOWSAND', 'PURPLEA',];
+
+const formatColorPalette = (palette: Record<string, string>) => {
 	return Object.keys(palette).reduce((acc, key) => {
 		const oldKey = key;
 		key = key.replace('$palette-', '');
-		key = key.replaceAll('-', '') as string;
-		acc[key] = palette[oldKey] as string;
+		key = key.replaceAll('-', '');
+		// generic object injection sink is the error. We know where the data is coming from (atlas tokens).
+		//eslint-disable-next-line
+		acc[key] = palette[oldKey];
 		return acc;
-	}, {});
+	}, {} as Record<string, string>);
 };
 
-const filterPaletteForAColor = (color: string, colorPalette: object) => {
+const filterPaletteForAColor = (color: string, colorPalette: Record<string, string>) => {
 	return Object.keys(colorPalette).reduce((acc, key) => {
 		if (key.includes(color) && !key.includes('opacity') && !key.includes('high')) {
-			acc[key] = colorPalette[key] as string;
+			// generic object injection sink is the error. We know where the data is coming from (atlas tokens).
+			//eslint-disable-next-line
+			acc[key] = colorPalette[key];
 		}
 		return acc;
-	}, {});
+	}, {} as Record<string, string>);
 };
 
 const renderColorPalleteToHTML = (colors: { [key: string]: string }, containerID: string) => {
@@ -36,7 +42,13 @@ const renderColorPalleteToHTML = (colors: { [key: string]: string }, containerID
 		const value = colors[key];
 		return (colorsDivs += `
 		<div style="background-color: ${value}; display: block; width: 120px; height: 70px; color: ${
-			key.includes('100') || key.includes('90') || key.includes('80') ? 'white' : 'black'
+			key.includes('120') ||
+			key.includes('110') ||
+			key.includes('100') ||
+			key.includes('90') ||
+			key.includes('80')
+				? 'white'
+				: 'black'
 		}" class="border-radius padding-left-xs padding-top-xs margin-xxs">
 			<h4 class="color-swatch__label padding-bottom-xxs">${key.toUpperCase()}</h4>
 			<p style="font-size: 12px" class="color-swatch__value">${value.toUpperCase()}</p>
@@ -46,7 +58,9 @@ const renderColorPalleteToHTML = (colors: { [key: string]: string }, containerID
 };
 
 //Format the palette to be more readable
+// console.log('palette', palette);
 const newColorPalette = formatColorPalette(palette);
+console.log('newColorPalette', newColorPalette);
 
 //Primary Colors
 const blueColorPalette = filterPaletteForAColor('blue', newColorPalette);
