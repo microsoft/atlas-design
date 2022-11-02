@@ -60,7 +60,7 @@ const renderColorPalleteToHTML = (colors: { [key: string]: string }, containerID
 				? 'white'
 				: 'black'
 		}" class="border-radius padding-left-xs padding-top-xs margin-xxs">
-			<h4 class="color-swatch__label padding-bottom-xxs">${key.toUpperCase()}</h4>
+			<h4 class="color-swatch__label padding-bottom-xxs" style="text-transform: capitalize";>${key}</h4>
 			<p style="font-size: 12px" class="color-swatch__value">${value.toUpperCase()}</p>
 		</div>`);
 	});
