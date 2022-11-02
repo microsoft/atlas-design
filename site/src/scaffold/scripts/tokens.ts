@@ -7,7 +7,15 @@ export const atlasTokens = tokens as AtlasTokens;
 
 const palette = atlasTokens.palette.tokens;
 
-// const listOfBlockedColors = ['BLUEBLACK', 'BLUEA', 'YELLOWSAND', 'PURPLEA',];
+const listOfBlockedColors = [
+	'blueblack',
+	'bluea',
+	'yellowsand',
+	'yellowhighcontrast',
+	'yellowhighcontrasthover',
+	'purplea',
+	'purpleb'
+];
 
 const formatColorPalette = (palette: Record<string, string>) => {
 	return Object.keys(palette).reduce((acc, key) => {
@@ -23,7 +31,7 @@ const formatColorPalette = (palette: Record<string, string>) => {
 
 const filterPaletteForAColor = (color: string, colorPalette: Record<string, string>) => {
 	return Object.keys(colorPalette).reduce((acc, key) => {
-		if (key.includes(color) && !key.includes('opacity') && !key.includes('high')) {
+		if (key.includes(color) && !key.includes('opacity') && !listOfBlockedColors.includes(key)) {
 			// generic object injection sink is the error. We know where the data is coming from (atlas tokens).
 			//eslint-disable-next-line
 			acc[key] = colorPalette[key];
@@ -46,7 +54,9 @@ const renderColorPalleteToHTML = (colors: { [key: string]: string }, containerID
 			key.includes('110') ||
 			key.includes('100') ||
 			key.includes('90') ||
-			key.includes('80')
+			key.includes('80') ||
+			key.includes('70') ||
+			key.includes('60')
 				? 'white'
 				: 'black'
 		}" class="border-radius padding-left-xs padding-top-xs margin-xxs">
