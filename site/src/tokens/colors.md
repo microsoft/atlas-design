@@ -11,7 +11,7 @@ Atlas currently supports three themes out of the box.
 
 ## Stops
 
-<div class="padding-top-sm">
+<div class="padding-top-sm margin-bottom-md">
 Atlas colors are available in a number of stops from dark to light—100 being the darkest, and 10 being the lightest.
 </div>
 
@@ -21,7 +21,7 @@ Atlas colors are available in a number of stops from dark to light—100 being t
 		<p class="font-weight-bold font-size-h6 margin-bottom-xs">aka “Black”</p>
 		<p><code>#000000</code></p>
 	</div>
-	<div class="padding-md background-color-white-static width-full border-radius border--color-black">
+	<div class="padding-md background-color-white-static color-black-static width-full border-radius border--color-black">
 		<p class="font-weight-bold font-size-h4 margin-bottom-xs">White</p>
 		<p class="font-weight-bold font-size-h6 margin-bottom-xs">aka "White"</p>
 		<p><code>#FFF</code></p>
@@ -70,14 +70,10 @@ There are specific light themes
 
 ## Typography
 
-| Typography        | Class              | Class                                                                                                  |
-| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------ |
-| Primary Text      | `.color-primary`   | <div class="padding-xs background-color-primary border-color-danger width-full border-radius"></div>   |
-| Secondary Text    | `.color-secondary` | <div class="padding-xs background-color-secondary border-color-danger width-full border-radius"></div> |
-| Disabled Text     | `.color-disabled`  | <div class="padding-xs background-color-disabled border-color-danger width-full border-radius"></div>  |
-| Hyperlink Text    | `.color-hyperlink` | <div class="padding-xs background-color-hyperlink border-color-danger width-full border-radius"></div> |
-| Hover Link Text   | `.color-hoverlink` | <div class="padding-xs background-color-hoverlink border-color-danger width-full border-radius"></div> |
-| Visited Link Text | `.color-visited`   | <div class="padding-xs background-color-visited border-color-danger width-full border-radius"></div>   |
+| Typography     | Class              | Class                                                                                                  |
+| -------------- | ------------------ | ------------------------------------------------------------------------------------------------------ |
+| Primary Text   | `.color-primary`   | <div class="padding-xs background-color-primary border-color-danger width-full border-radius"></div>   |
+| Secondary Text | `.color-secondary` | <div class="padding-xs background-color-secondary border-color-danger width-full border-radius"></div> |
 
 ## Semantic Color
 
@@ -108,17 +104,3 @@ Warning colors are yellow.
 | Type    | Class                                               | Background class                                                                 | Border class                                                                                                       |
 | ------- | --------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | Warning | `.background-color-warning` `.border-color-warning` | <div class="padding-xs background-color-warning width-full border-radius"></div> | <div class="padding-xs background-color-warning-light danger border-color-warning width-full border-radius"></div> |
-
-### Information
-
-Information colors are purple.
-
-| Type        | Class                                                       | Background class                                                                     | Border class                                                                                                               |
-| ----------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Information | `.background-color-information` `.border-color-information` | <div class="padding-xs background-color-information width-full border-radius"></div> | <div class="padding-xs background-color-information-light danger border-color-information width-full border-radius"></div> |
-
-### Hyperlinks
-
-| Type | Class                            | Default                                                                            | Hover                                                                                                          | Hover                                                                                                              |
-| ---- | -------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Link | `.hyperlink` `.hover` `.visited` | <div class="padding-xs background-color-hyperlink width-full border-radius"></div> | <div class="padding-xs background-color-hover-light danger border-color-hover width-full border-radius"></div> | <div class="padding-xs background-color-visited-light danger border-color-visited width-full border-radius"></div> |
