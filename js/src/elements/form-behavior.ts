@@ -182,7 +182,7 @@ export class FormBehaviorElement extends HTMLElement {
 			this.dispatchEvent(validationErrorEvent);
 			return;
 		}
-
+		let isLoading = false;
 		try {
 			this.submitting = true;
 			setBusySubmitButton(form, this.submitting);
@@ -230,6 +230,7 @@ export class FormBehaviorElement extends HTMLElement {
 			const request = new Request(beforeSubmitEvent.detail.url, beforeSubmitEvent.detail.init);
 			const response = await fetch(request);
 			if (response.ok) {
+				isLoading = true;
 				this.removeAttribute('new');
 				this.initialData = formData;
 				this.setDirty();
@@ -268,8 +269,10 @@ export class FormBehaviorElement extends HTMLElement {
 				errorAlert.focus();
 			}
 		} finally {
-			this.submitting = false;
-			setBusySubmitButton(form, this.submitting);
+			if (this.getAttribute('navigation') === null || !isLoading) {
+				this.submitting = false;
+				setBusySubmitButton(form, this.submitting);
+			}
 		}
 	}
 
