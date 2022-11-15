@@ -269,7 +269,7 @@ export class FormBehaviorElement extends HTMLElement {
 				errorAlert.focus();
 			}
 		} finally {
-			if (this.getAttribute('navigation') === null || !isLoading) {
+			if (!this.getAttribute('navigation') || !isLoading) {
 				this.submitting = false;
 				setBusySubmitButton(form, this.submitting);
 			}
