@@ -693,8 +693,9 @@ export function navigateAfterSubmit(href: string | null, navigationStep: Navigat
 		case 'follow':
 			if (href) {
 				location.href = href;
+				return true;
 			}
-			return true;
+			return false;
 		case 'hash-reload':
 			if (href) {
 				const search = href.includes('?') ? '' : window.location.search;
@@ -709,8 +710,9 @@ export function navigateAfterSubmit(href: string | null, navigationStep: Navigat
 		case 'replace':
 			if (href) {
 				location.replace(href);
+				return true;
 			}
-			return true;
+			return false;
 		case 'reload':
 			location.reload();
 			return true;
