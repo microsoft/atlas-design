@@ -5,18 +5,34 @@
 	"description": "",
 	"scripts": {
 		"codegen": "playwright codegen localhost:1111",
+		"compare": "node \"./tasks/dist/compare.js\" ",
+		"compile-tasks": "tsc -p \"./tasks/tsconfig.json\"",
 		"test": "playwright test --config=integration-tests.config.ts",
 		"test:debug": "playwright test --debug --config=integration-tests.config.ts",
 		"screenshots:all": "cross-env FULL_DIFF=true playwright test --config=visual-diff.config.ts",
 		"screenshots:light": "playwright test --config=visual-diff.config.ts",
 		"prescreenshots": "rimraf \"./visual-diff/visual-diff.spec.ts-screenshots\"",
 		"prescreenshots:all": "rimraf \"./visual-diff/visual-diff.spec.ts-screenshots\"",
-		"show-report": "playwright show-report"
+		"show-report": "playwright show-report",
+		"visual-diff:local": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./tasks/visual-diff-local.ps1 && npm run serve-report",
+		"serve-report": "parcel \"./visual-diff/screenshots/*.html\" --port 7777 --open Chrome --no-cache",
+		"build-report": "parcel build \"./visual-diff/screenshots/*.html\""
 	},
 	"author": "Microsoft Corporation",
 	"license": "ISC",
 	"devDependencies": {
 		"@playwright/test": "^1.26.1",
-		"cross-env": "^7.0.3"
+		"@types/fs-extra": "9.0.13",
+		"@types/normalize-path": "^3.0.0",
+		"@types/pixelmatch": "^5.2.4",
+		"@types/pngjs": "6.0.1",
+		"cross-env": "^7.0.3",
+		"fs-extra": "^10.1.0",
+		"glob": "^8.0.3",
+		"normalize-path": "^3.0.0",
+		"pixelmatch": "^5.3.0",
+		"pngjs": "^6.0.0",
+		"execa": "^5.1.1",
+		"parcel": "2.7.0"
 	}
 }
