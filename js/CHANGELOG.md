@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.5.4
+
+### Patch Changes
+
+- 88e2510: Update form submit is-loading class based on navigation
+
 ## 1.5.3
 
 ### Patch Changes
