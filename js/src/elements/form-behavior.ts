@@ -126,7 +126,8 @@ export class FormBehaviorElement extends HTMLElement {
 	}
 
 	navigate(href: string | null) {
-		navigateAfterSubmit(href, this.getAttribute('navigation') as NavigationSteps);
+		const navigate = navigateAfterSubmit(href, this.getAttribute('navigation') as NavigationSteps);
+		return navigate;
 	}
 
 	scheduleCommit(event: Event) {
@@ -182,7 +183,7 @@ export class FormBehaviorElement extends HTMLElement {
 			this.dispatchEvent(validationErrorEvent);
 			return;
 		}
-
+		let isNavigating = false;
 		try {
 			this.submitting = true;
 			setBusySubmitButton(form, this.submitting);
@@ -243,7 +244,9 @@ export class FormBehaviorElement extends HTMLElement {
 						bubbles: true
 					})
 				);
-				this.navigate(response.headers.get('location') ?? this.getAttribute('navigation-href'));
+				isNavigating = this.navigate(
+					response.headers.get('location') ?? this.getAttribute('navigation-href')
+				);
 			} else {
 				const { errorAlert, errorList } = this.getErrorAlert(form);
 				const errorText = document.createElement('li');
@@ -268,7 +271,7 @@ export class FormBehaviorElement extends HTMLElement {
 				errorAlert.focus();
 			}
 		} finally {
-			this.submitting = false;
+			this.submitting = isNavigating;
 			setBusySubmitButton(form, this.submitting);
 		}
 	}
@@ -686,12 +689,13 @@ export function navigateAfterSubmit(href: string | null, navigationStep: Navigat
 	switch (navigationStep) {
 		case null:
 			// do nothing.
-			break;
+			return false;
 		case 'follow':
 			if (href) {
 				location.href = href;
+				return true;
 			}
-			break;
+			return false;
 		case 'hash-reload':
 			if (href) {
 				const search = href.includes('?') ? '' : window.location.search;
@@ -700,16 +704,18 @@ export function navigateAfterSubmit(href: string | null, navigationStep: Navigat
 					window.history.pushState(state, document.title, window.location.pathname + search + href); // prevents scrolling to spot until reload
 				}
 				location.reload();
+				return true;
 			}
-			break;
+			return false;
 		case 'replace':
 			if (href) {
 				location.replace(href);
+				return true;
 			}
-			break;
+			return false;
 		case 'reload':
 			location.reload();
-			break;
+			return true;
 		default:
 			throw new Error(`Unexpected navigation attribute value.`);
 	}
