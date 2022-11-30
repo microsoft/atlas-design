@@ -1,5 +1,11 @@
 # @microsoft/atlas-integration
 
+## 1.3.0
+
+### Minor Changes
+
+- 9614cbf: Include a new visual diff task that can be run locally to compare a feature branch with the main branch.
+
 ## 1.2.0
 
 ### Minor Changes
