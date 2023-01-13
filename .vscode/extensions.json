@@ -3,6 +3,7 @@
 		"eamodio.gitlens",
 		"esbenp.prettier-vscode",
 		"stylelint.vscode-stylelint",
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"google.wireit"
 	]
 }
