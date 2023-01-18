@@ -9,6 +9,8 @@ classPrefixes:
 
 # Tabs
 
+Tabs component consists of navigating to the previous or next tab and well and clicking on a tab. The result will change the content in the `tab-item-container` to display the current selected item.
+
 ```html
 <section
 	id="tab-test"
