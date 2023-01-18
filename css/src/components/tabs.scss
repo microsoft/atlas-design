@@ -35,6 +35,8 @@ $tabs-active-color: $text-invert !default;
 
 	.tab-previous,
 	.tab-next {
+		display: flex;
+		align-items: center;
 		padding: $tabs-padding;
 		border: none;
 		border-radius: $border-radius-rounded;
