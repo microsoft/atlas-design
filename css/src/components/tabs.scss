@@ -14,56 +14,56 @@ $tabs-active-border-color: $primary-active !default;
 $tabs-active-color: $primary-active !default;
 
 .tabs {
-	align-items: stretch;
 	display: flex;
+	align-items: stretch;
 	justify-content: space-between;
+	margin: -#{$tabs-focus-outline-padding};
+	padding: $tabs-focus-outline-padding;
+	white-space: nowrap;
 	overflow: hidden;
 	overflow-x: auto;
-	white-space: nowrap;
-	padding: $tabs-focus-outline-padding;
-	margin: -#{$tabs-focus-outline-padding};
 
 	.tab-list {
-		align-items: center;
 		display: flex;
 		flex-grow: 1;
 		flex-shrink: 0;
+		align-items: center;
 		justify-content: flex-start;
-		border-radius: $border-radius-rounded;
 		border: $border-width solid $border !important;
+		border-radius: $border-radius-rounded;
 	}
 
 	.tab-previous,
 	.tab-next {
+		padding: $tabs-padding-small;
 		border: none;
 		border-radius: $border-radius-rounded;
 		background-color: $tabs-active-background-color;
-		padding: $tabs-padding-small;
 
 		&:hover {
-			background-color: $tabs-hover-background-color;
 			border-color: $tabs-hover-border-color;
+			background-color: $tabs-hover-background-color;
 			z-index: $zindex-hover;
 		}
 	}
 
 	.tab-control {
-		position: relative;
-		appearance: none;
-		background-color: transparent;
-		border: none;
-		align-items: center;
-		color: $button-color;
 		display: flex;
+		position: relative;
+		align-items: center;
 		justify-content: center;
-		vertical-align: top;
-		cursor: pointer;
-		border-radius: $border-radius-rounded;
 		padding: $tabs-padding-small;
+		border: none;
+		border-radius: $border-radius-rounded;
+		background-color: transparent;
+		color: $button-color;
+		cursor: pointer;
+		appearance: none;
+		vertical-align: top;
 
 		&:hover {
-			background-color: $tabs-hover-background-color;
 			border-color: $tabs-hover-border-color;
+			background-color: $tabs-hover-background-color;
 			z-index: $zindex-hover;
 		}
 
@@ -71,20 +71,20 @@ $tabs-active-color: $primary-active !default;
 			padding: $tabs-padding;
 		}
 	}
+}
 
-	.tab-parent {
-		&.is-active {
-			.tab-control {
-				background-color: $tabs-active-background-color;
-				border-color: $tabs-active-border-color;
-				color: $tabs-active-color;
-				z-index: $zindex-active;
+.tab-parent {
+	&.is-active {
+		.tab-control {
+			border-color: $tabs-active-border-color;
+			background-color: $tabs-active-background-color;
+			color: $tabs-active-color;
+			z-index: $zindex-active;
 
-				&:hover {
-					background-color: $tabs-hover-background-color;
-					border-color: $tabs-hover-border-color;
-					z-index: $zindex-hover;
-				}
+			&:hover {
+				border-color: $tabs-hover-border-color;
+				background-color: $tabs-hover-background-color;
+				z-index: $zindex-hover;
 			}
 		}
 	}
