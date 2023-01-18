@@ -1,44 +1,17 @@
-// Probably keep, will need some big changes.
-
-$tabs-border-bottom-thickness: 3px !default;
-$tabs-border-bottom-style: $tabs-border-bottom-thickness solid transparent !default;
-$tabs-border-bottom-style-active: $tabs-border-bottom-thickness solid $primary !default;
-$tabs-border-bottom-style-hover: $tabs-border-bottom-thickness solid $border !default;
-$tabs-border-bottom-width: 1px !default;
 $tabs-focus-outline-padding: $focus-outline-offset + $focus-width !default;
-$tabs-link-color: $text !default;
-$tabs-link-active-border-bottom-color: $text !default;
-$tabs-link-active-color: $text !default;
-$tabs-link-padding-small: 0.25em !default;
-$tabs-link-padding: 0.5em 1em !default;
+$tabs-active-border-bottom-color: $text !default;
 
-$tabs-boxed-link-radius: $border-radius !default;
-$tabs-boxed-link-hover-background-color: $body-background !default;
-$tabs-boxed-link-hover-border-bottom-color: $border !default;
+$tabs-active-color: $text !default;
+$tabs-padding-small: 0.5em 1.75em !default;
+$tabs-padding: 1em 1.5em !default;
+$tabs-color: $text !default;
+$tabs-radius: $border-radius !default;
 
-$tabs-boxed-link-active-background-color: $body-background !default;
-$tabs-boxed-link-active-border-color: $border !default;
-$tabs-boxed-link-active-border-bottom-color: $border !default;
-
-$tabs-toggle-link-color: $text !default;
-$tabs-toggle-link-border-color: $secondary !default;
-$tabs-toggle-link-border-style: solid !default;
-$tabs-toggle-link-border-width: 1px !default;
-$tabs-toggle-link-hover-background-color: $default-hover-invert !default;
-$tabs-toggle-link-hover-border-color: $default-hover !default;
-$tabs-toggle-link-radius: $border-radius !default;
-$tabs-toggle-link-active-background-color: $secondary;
-$tabs-toggle-link-active-border-color: $secondary;
-$tabs-toggle-link-active-color: $secondary-invert !default;
-
-// This component expects the following markup:
-// .tabs
-// 	> .tab-list[role="tablist"]
-// 		> .tab-parent
-// 			> .tab-control[role="tab"][aria-controls="unique-id-per-tab-content"]
-// div
-// 	> [role="tabpanel"][data-tab-content="unique-id-per-tab-content"]
-// 		> The content of each tab
+$tabs-hover-background-color: $primary-hover !default;
+$tabs-hover-border-color: $primary-hover !default;
+$tabs-active-background-color: $primary-background;
+$tabs-active-border-color: $primary-active !default;
+$tabs-active-color: $primary-active !default;
 
 .tabs {
 	align-items: stretch;
@@ -50,226 +23,67 @@ $tabs-toggle-link-active-color: $secondary-invert !default;
 	padding: $tabs-focus-outline-padding;
 	margin: -#{$tabs-focus-outline-padding};
 
-	.tab-control {
-		position: relative;
-		appearance: none;
-		background-color: transparent;
-		border-top: none;
-		border-left: none;
-		border-right: none;
-		border-bottom: $tabs-border-bottom-style;
-		align-items: center;
-		color: $tabs-link-color;
-		display: flex;
-		justify-content: center;
-		margin-bottom: -#{$tabs-border-bottom-width};
-		padding: $tabs-link-padding;
-		vertical-align: top;
-		cursor: pointer;
-	}
-
-	&:not(.is-toggle):not(.is-boxed) .tab-parent {
-		display: block;
-
-		&.is-active {
-			.tab-control {
-				color: $tabs-link-active-color;
-				border-bottom: $tabs-border-bottom-style-active;
-
-				// specific to achievements page - can be made global if we agree upon applying it to all tab controls
-				&#tab-learning-paths,
-				&#tab-modules-courses-more {
-					font-weight: $weight-semibold;
-				}
-			}
-		}
-
-		&:not(.is-active) {
-			.tab-control {
-				&:hover:after {
-					position: absolute;
-					content: '';
-					top: 0;
-					left: $tabs-focus-outline-padding;
-					right: $tabs-focus-outline-padding;
-					bottom: -#{$tabs-border-bottom-thickness};
-					border-bottom: $tabs-border-bottom-style-hover;
-				}
-			}
-
-			&:first-child .tab-control {
-				&:hover:after {
-					left: 0;
-				}
-			}
-
-			&:last-child .tab-control {
-				&:hover:after {
-					right: 0;
-				}
-			}
-		}
-	}
-
 	.tab-list {
 		align-items: center;
 		display: flex;
 		flex-grow: 1;
 		flex-shrink: 0;
 		justify-content: flex-start;
+		border-radius: $border-radius-rounded;
+		border: $border-width solid $border !important;
+	}
 
-		&.is-left {
-			padding-right: 0.75em;
-		}
+	.tab-previous,
+	.tab-next {
+		border: none;
+		border-radius: $border-radius-rounded;
+		background-color: $tabs-active-background-color;
+		padding: $tabs-padding-small;
 
-		&.is-center {
-			flex: none;
-			justify-content: center;
-			padding-left: 0.75em;
-			padding-right: 0.75em;
-		}
-
-		&.is-right {
-			justify-content: flex-end;
-			padding-left: 0.75em;
+		&:hover {
+			background-color: $tabs-hover-background-color;
+			border-color: $tabs-hover-border-color;
+			z-index: $zindex-hover;
 		}
 	}
 
-	.icon {
-		&:first-child {
-			margin-right: 0.5em;
+	.tab-control {
+		position: relative;
+		appearance: none;
+		background-color: transparent;
+		border: none;
+		align-items: center;
+		color: $button-color;
+		display: flex;
+		justify-content: center;
+		vertical-align: top;
+		cursor: pointer;
+		border-radius: $border-radius-rounded;
+		padding: $tabs-padding-small;
+
+		&:hover {
+			background-color: $tabs-hover-background-color;
+			border-color: $tabs-hover-border-color;
+			z-index: $zindex-hover;
 		}
 
-		&:last-child {
-			margin-left: 0.5em;
-		}
-	}
-
-	// Alignment
-
-	&.is-centered {
-		.tab-list {
-			justify-content: center;
-		}
-	}
-
-	&.is-right {
-		.tab-list {
-			justify-content: flex-end;
-		}
-	}
-
-	// Styles
-
-	&.is-boxed {
-		.tab-control {
-			border: 1px solid $border;
-			border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0;
-
-			&:hover {
-				background-color: $tabs-boxed-link-hover-background-color;
-				border-bottom-color: $tabs-boxed-link-hover-border-bottom-color;
-			}
-		}
-
-		.tab-parent {
-			&.is-active {
-				.tab-control {
-					background-color: $tabs-boxed-link-active-background-color;
-					border-color: $tabs-boxed-link-active-border-color;
-					border-bottom-color: $tabs-boxed-link-active-border-bottom-color !important;
-				}
-			}
+		@include tablet {
+			padding: $tabs-padding;
 		}
 	}
 
-	&.is-fullwidth {
-		.tab-parent {
-			flex-grow: 1;
-			flex-shrink: 0;
-		}
+	.tab-parent {
+		&.is-active {
+			.tab-control {
+				background-color: $tabs-active-background-color;
+				border-color: $tabs-active-border-color;
+				color: $tabs-active-color;
+				z-index: $zindex-active;
 
-		.tab-control {
-			border-radius: 0;
-			width: 100%;
-		}
-	}
-
-	&.is-fullwidth-mobile {
-		.tab-parent {
-			flex-grow: 1;
-			flex-shrink: 0;
-		}
-
-		.tab-control {
-			border-radius: 0;
-			width: 100%;
-		}
-	}
-
-	&.is-toggle {
-		.tab-control {
-			color: $tabs-toggle-link-color;
-			border-color: $tabs-toggle-link-border-color;
-			border-style: $tabs-toggle-link-border-style;
-			border-width: $tabs-toggle-link-border-width;
-			margin-bottom: 0;
-			padding: $tabs-link-padding-small;
-			position: relative;
-
-			&:hover {
-				background-color: $tabs-toggle-link-hover-background-color;
-				border-color: $tabs-toggle-link-hover-border-color;
-				z-index: $zindex-hover;
-			}
-
-			@include tablet {
-				padding: $tabs-link-padding;
-			}
-		}
-
-		.tab-parent {
-			& + .tab-parent {
-				margin-left: -#{$tabs-toggle-link-border-width};
-			}
-
-			&:first-child .tab-control {
-				border-radius: $tabs-toggle-link-radius 0 0 $tabs-toggle-link-radius;
-			}
-
-			&:last-child .tab-control {
-				border-radius: 0 $tabs-toggle-link-radius $tabs-toggle-link-radius 0;
-			}
-
-			&.is-active {
-				.tab-control {
-					background-color: $tabs-toggle-link-active-background-color;
-					border-color: $tabs-toggle-link-active-border-color;
-					border-style: $tabs-toggle-link-border-style;
-					border-width: $tabs-toggle-link-border-width;
-					color: $tabs-toggle-link-active-color;
-					z-index: $zindex-active;
-					border-width: $tabs-toggle-link-border-width;
-				}
-			}
-		}
-
-		.tab-list {
-			border-bottom: none;
-		}
-
-		&.is-toggle-rounded {
-			.tab-parent {
-				&:first-child .tab-control {
-					border-bottom-left-radius: $border-radius-rounded;
-					border-top-left-radius: $border-radius-rounded;
-					padding-left: 1.25em;
-				}
-
-				&:last-child .tab-control {
-					border-bottom-right-radius: $border-radius-rounded;
-					border-top-right-radius: $border-radius-rounded;
-					padding-right: 1.25em;
+				&:hover {
+					background-color: $tabs-hover-background-color;
+					border-color: $tabs-hover-border-color;
+					z-index: $zindex-hover;
 				}
 			}
 		}

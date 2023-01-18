@@ -24,16 +24,18 @@ function initTabNavClickListeners(container: HTMLElement = document.body) {
 		button.addEventListener('click', (e: Event) => {
 			e.preventDefault();
 			const b = e.target as HTMLButtonElement;
+			const direction = b.dataset.nav as string;
 			// get current activated tab
 			const currentActiveButton = container.querySelector('.is-active')
 				?.firstElementChild as HTMLButtonElement;
 			const index = parseInt(currentActiveButton.dataset.tabControl as string);
+			const buttons = Array.from(container.querySelectorAll('.tab-control')) as HTMLButtonElement[];
 
 			// update tab
-			if (b.className.includes('tab-previous')) {
+			if (index > 1 && direction === 'previous') {
 				updateTabState(container, `${index - 1}`);
 				updateTabItemState(container, `${index - 1}`);
-			} else if (b.className.includes('tab-next')) {
+			} else if (index < buttons.length && direction === 'next') {
 				updateTabState(container, `${index + 1}`);
 				updateTabItemState(container, `${index + 1}`);
 			}
