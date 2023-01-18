@@ -15,7 +15,7 @@ classPrefixes:
 	class="display-flex-tablet flex-direction-column justify-content-start align-items-center padding-block-lg"
 >
 	<div class="tabs">
-		<button role="nav" class="tab-nav tab-previous margin-right-sm" data-nav="previous">
+		<button role="nav" class="tab-nav tab-previous" data-nav="previous">
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 					<path
@@ -28,21 +28,36 @@ classPrefixes:
 		<div class="tab-list" role="tablist">
 			<div class="tab-parent is-active">
 				<button class="tab-control" role="tab" aria-controls="tab-control-1" data-tab-control="1">
-					Item 1
+					Define Strategy
 				</button>
 			</div>
 			<div class="tab-parent">
 				<button class="tab-control" role="tab" aria-controls="tab-item-2" data-tab-control="2">
-					Item 2
+					Plan
 				</button>
 			</div>
 			<div class="tab-parent">
 				<button class="tab-control" role="tab" aria-controls="tab-control-3" data-tab-control="3">
-					Item 3
+					Prepare
+				</button>
+			</div>
+			<div class="tab-parent">
+				<button class="tab-control" role="tab" aria-controls="tab-control-3" data-tab-control="4">
+					Adopt
+				</button>
+			</div>
+			<div class="tab-parent">
+				<button class="tab-control" role="tab" aria-controls="tab-control-3" data-tab-control="5">
+					Govern
+				</button>
+			</div>
+			<div class="tab-parent">
+				<button class="tab-control" role="tab" aria-controls="tab-control-3" data-tab-control="6">
+					Manage
 				</button>
 			</div>
 		</div>
-		<button role="nav" class="tab-nav tab-next margin-left-sm" data-nav="next">
+		<button role="nav" class="tab-nav tab-next" data-nav="next">
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
 					<path
@@ -53,10 +68,10 @@ classPrefixes:
 			</span>
 		</button>
 	</div>
-	<div id="tab-item-container" class="justify-content-center">
+	<div id="tab-item-container" class="tab-items justify-content-center">
 		<div
 			id="tab-item-1"
-			class="display-flex justify-content-start flex-direction-column flex-direction-row-tablet margin-bottom-none"
+			class="tab-item display-flex"
 			data-tab-item="tab-item-1"
 			aria-labelledby="tab-item-1"
 			role="tabpanel"
@@ -65,7 +80,7 @@ classPrefixes:
 		</div>
 		<div
 			id="tab-item-2"
-			class="display-none justify-content-start flex-direction-column flex-direction-row-tablet margin-bottom-none"
+			class="tab-item display-none"
 			data-tab-item="tab-item-2"
 			aria-labelledby="tab-item-2"
 			role="tabpanel"
@@ -74,12 +89,48 @@ classPrefixes:
 		</div>
 		<div
 			id="tab-item-3"
-			class="display-none justify-content-start flex-direction-column flex-direction-row-tablet margin-bottom-none"
+			class="tab-item display-none"
 			data-tab-item="tab-item-3"
 			aria-labelledby="tab-item-3"
 			role="tabpanel"
 		>
 			<p class="margin-sm">Tab Item 3</p>
+		</div>
+		<div
+			id="tab-item-4"
+			class="tab-item display-none"
+			data-tab-item="tab-item-4"
+			aria-labelledby="tab-item-4"
+			role="tabpanel"
+		>
+			<p class="margin-sm">Tab Item 4</p>
+		</div>
+		<div
+			id="tab-item-5"
+			class="tab-item display-none"
+			data-tab-item="tab-item-5"
+			aria-labelledby="tab-item-5"
+			role="tabpanel"
+		>
+			<p class="margin-sm">Tab Item 5</p>
+		</div>
+		<div
+			id="tab-item-6"
+			class="tab-item display-none"
+			data-tab-item="tab-item-6"
+			aria-labelledby="tab-item-6"
+			role="tabpanel"
+		>
+			<p class="margin-sm">Tab Item 6</p>
+		</div>
+		<div
+			id="tab-item-7"
+			class="tab-item display-none"
+			data-tab-item="tab-item-7"
+			aria-labelledby="tab-item-7"
+			role="tabpanel"
+		>
+			<p class="margin-sm">Tab Item 7</p>
 		</div>
 	</div>
 </section>

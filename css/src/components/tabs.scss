@@ -1,49 +1,51 @@
 $tabs-focus-outline-padding: $focus-outline-offset + $focus-width !default;
 $tabs-active-border-bottom-color: $text !default;
 
-$tabs-active-color: $text !default;
-$tabs-padding-small: 0.5em 1.75em !default;
-$tabs-padding: 1em 1.5em !default;
+$tabs-padding: 0.5em 1.25em !default;
+$tabs-padding-large: 1em 1.5em !default;
 $tabs-color: $text !default;
 $tabs-radius: $border-radius !default;
 
-$tabs-hover-background-color: $primary-hover !default;
+$tab-font-color: $primary !default;
+$tabs-hover-background-color: $primary-background !default;
 $tabs-hover-border-color: $primary-hover !default;
-$tabs-active-background-color: $primary-background;
+$tabs-active-hover-background-color: $primary-hover !default;
+$tabs-active-hover-border-color: $primary-hover !default;
+$tabs-active-background-color: $primary-active;
 $tabs-active-border-color: $primary-active !default;
-$tabs-active-color: $primary-active !default;
+$tabs-active-color: $text-invert !default;
 
 .tabs {
-	display: flex;
-	align-items: stretch;
-	justify-content: space-between;
-	margin: -#{$tabs-focus-outline-padding};
-	padding: $tabs-focus-outline-padding;
+	display: grid;
+	justify-content: center;
+	width: 100%;
+	grid-gap: 1em;
+	grid-template-columns: max-content auto max-content;
 	white-space: nowrap;
-	overflow: hidden;
-	overflow-x: auto;
 
 	.tab-list {
+		grid-column: 2;
 		display: flex;
-		flex-grow: 1;
-		flex-shrink: 0;
 		align-items: center;
 		justify-content: flex-start;
-		border: $border-width solid $border !important;
 		border-radius: $border-radius-rounded;
+		box-shadow: $box-shadow-medium;
+		overflow-x: hidden;
 	}
 
 	.tab-previous,
 	.tab-next {
-		padding: $tabs-padding-small;
+		padding: $tabs-padding;
 		border: none;
 		border-radius: $border-radius-rounded;
 		background-color: $tabs-active-background-color;
+		color: $tabs-active-color;
+		font-weight: 500;
+		box-shadow: $box-shadow-medium;
 
 		&:hover {
-			border-color: $tabs-hover-border-color;
-			background-color: $tabs-hover-background-color;
-			z-index: $zindex-hover;
+			border-color: $tabs-active-hover-border-color;
+			background-color: $tabs-active-hover-background-color;
 		}
 	}
 
@@ -52,11 +54,12 @@ $tabs-active-color: $primary-active !default;
 		position: relative;
 		align-items: center;
 		justify-content: center;
-		padding: $tabs-padding-small;
+		padding: $tabs-padding;
 		border: none;
 		border-radius: $border-radius-rounded;
 		background-color: transparent;
-		color: $button-color;
+		color: $tab-font-color;
+		font-weight: 500;
 		cursor: pointer;
 		appearance: none;
 		vertical-align: top;
@@ -71,6 +74,14 @@ $tabs-active-color: $primary-active !default;
 			padding: $tabs-padding;
 		}
 	}
+
+	&.tabs-lg {
+		.tab-control,
+		.tab-previous,
+		.tab-next {
+			padding: $tabs-padding-large;
+		}
+	}
 }
 
 .tab-parent {
@@ -82,10 +93,21 @@ $tabs-active-color: $primary-active !default;
 			z-index: $zindex-active;
 
 			&:hover {
-				border-color: $tabs-hover-border-color;
-				background-color: $tabs-hover-background-color;
+				border-color: $tabs-active-hover-border-color;
+				background-color: $tabs-active-hover-background-color;
 				z-index: $zindex-hover;
 			}
+		}
+	}
+}
+
+.tab-items {
+	.tab-item {
+		flex-direction: column;
+		justify-content: flex-start;
+
+		@include tablet {
+			flex-direction: row;
 		}
 	}
 }
