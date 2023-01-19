@@ -2,8 +2,10 @@ $tabs-padding: $font-size-9 $font-size-5 !default;
 $tabs-padding-lg: $font-size-7 $font-size-4 !default;
 
 $tab-font-color: $primary !default;
+$tab-border: $border-width solid transparent !default;
+$tabs-border: $border-width solid $border !default;
 $tabs-hover-background-color: $primary-background !default;
-$tabs-background-color: $secondary-background !default;
+$tabs-hover-border: $border-width solid $border !default;
 $tabs-hover-border-color: $primary-hover !default;
 $tabs-active-hover-background-color: $primary-hover !default;
 $tabs-active-hover-border-color: $primary-hover !default;
@@ -33,9 +35,14 @@ $tabs-active-color: $text-invert !default;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	border: $tabs-border;
 	border-radius: $border-radius-rounded;
 	box-shadow: $box-shadow-medium;
 	overflow-x: hidden;
+
+	@include forced-colors {
+		border: $tabs-border;
+	}
 }
 
 [role='tab'] {
@@ -44,7 +51,7 @@ $tabs-active-color: $text-invert !default;
 	align-items: center;
 	justify-content: center;
 	padding: $tabs-padding;
-	border: none;
+	border: $tab-border;
 	border-radius: $border-radius-rounded;
 	background-color: transparent;
 	color: $tab-font-color;
@@ -54,7 +61,7 @@ $tabs-active-color: $text-invert !default;
 	vertical-align: top;
 
 	&:hover {
-		border-color: $tabs-hover-border-color;
+		border-color: $tabs-hover-background-color;
 		background-color: $tabs-hover-background-color;
 		z-index: $zindex-hover;
 	}
