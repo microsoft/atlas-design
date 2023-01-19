@@ -1,7 +1,7 @@
 ---
-'@microsoft/atlas-css': major
-'@microsoft/atlas-js': major
-'@microsoft/atlas-site': major
+'@microsoft/atlas-css': minor
+'@microsoft/atlas-js': minor
+'@microsoft/atlas-site': minor
 ---
 
 add tabs

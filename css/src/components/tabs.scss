@@ -1,8 +1,9 @@
-$tabs-padding: 0.5em 1.25em !default;
-$tabs-padding-large: 1em 1.5em !default;
+$tabs-padding: $font-size-9 $font-size-5 !default;
+$tabs-padding-lg: $font-size-7 $font-size-4 !default;
 
 $tab-font-color: $primary !default;
 $tabs-hover-background-color: $primary-background !default;
+$tabs-background-color: $secondary-background !default;
 $tabs-hover-border-color: $primary-hover !default;
 $tabs-active-hover-background-color: $primary-hover !default;
 $tabs-active-hover-border-color: $primary-hover !default;
@@ -14,97 +15,78 @@ $tabs-active-color: $text-invert !default;
 	display: grid;
 	justify-content: center;
 	width: 100%;
-	grid-gap: 1em;
+	grid-gap: $font-size-7;
 	grid-template-columns: max-content auto max-content;
 	white-space: nowrap;
 
-	.tab-list {
-		grid-column: 2;
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		border-radius: $border-radius-rounded;
-		box-shadow: $box-shadow-medium;
-		overflow-x: hidden;
+	&.tabs-lg {
+		[role='tab'],
+		.tab-previous,
+		.tab-next {
+			padding: $tabs-padding-lg;
+		}
+	}
+}
+
+[role='navigation'] {
+	display: flex;
+	align-items: center;
+	padding: $tabs-padding;
+	border: none;
+	border-radius: $border-radius-rounded;
+	background-color: $tabs-active-background-color;
+	color: $tabs-active-color;
+	font-weight: $weight-semibold;
+	box-shadow: $box-shadow-medium;
+
+	&:hover {
+		border-color: $tabs-active-hover-border-color;
+		background-color: $tabs-active-hover-background-color;
+	}
+}
+
+[role='tablist'] {
+	grid-column: 2;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: $tabs-background-color;
+	border-radius: $border-radius-rounded;
+	box-shadow: $box-shadow-medium;
+	overflow-x: hidden;
+}
+
+[role='tab'] {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	padding: $tabs-padding;
+	border: none;
+	border-radius: $border-radius-rounded;
+	background-color: transparent;
+	color: $tab-font-color;
+	font-weight: $weight-semibold;
+	cursor: pointer;
+	appearance: none;
+	vertical-align: top;
+
+	&:hover {
+		border-color: $tabs-hover-border-color;
+		background-color: $tabs-hover-background-color;
+		z-index: $zindex-hover;
 	}
 
-	.tab-previous,
-	.tab-next {
-		display: flex;
-		align-items: center;
-		padding: $tabs-padding;
-		border: none;
-		border-radius: $border-radius-rounded;
+	&[aria-selected='true'] {
+		border-color: $tabs-active-border-color;
 		background-color: $tabs-active-background-color;
 		color: $tabs-active-color;
-		font-weight: 500;
-		box-shadow: $box-shadow-medium;
+		z-index: $zindex-active;
 
 		&:hover {
 			border-color: $tabs-active-hover-border-color;
 			background-color: $tabs-active-hover-background-color;
-		}
-	}
-
-	.tab-control {
-		display: flex;
-		position: relative;
-		align-items: center;
-		justify-content: center;
-		padding: $tabs-padding;
-		border: none;
-		border-radius: $border-radius-rounded;
-		background-color: transparent;
-		color: $tab-font-color;
-		font-weight: 500;
-		cursor: pointer;
-		appearance: none;
-		vertical-align: top;
-
-		&:hover {
-			border-color: $tabs-hover-border-color;
-			background-color: $tabs-hover-background-color;
 			z-index: $zindex-hover;
-		}
-
-		@include tablet {
-			padding: $tabs-padding;
-		}
-	}
-
-	&.tabs-lg {
-		.tab-control,
-		.tab-previous,
-		.tab-next {
-			padding: $tabs-padding-large;
-		}
-	}
-}
-
-.tab-parent {
-	&.is-active {
-		.tab-control {
-			border-color: $tabs-active-border-color;
-			background-color: $tabs-active-background-color;
-			color: $tabs-active-color;
-			z-index: $zindex-active;
-
-			&:hover {
-				border-color: $tabs-active-hover-border-color;
-				background-color: $tabs-active-hover-background-color;
-				z-index: $zindex-hover;
-			}
-		}
-	}
-}
-
-.tab-items {
-	.tab-item {
-		flex-direction: column;
-		justify-content: flex-start;
-
-		@include tablet {
-			flex-direction: row;
 		}
 	}
 }

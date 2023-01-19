@@ -41,5 +41,8 @@
 		"rimraf": "^3.0.2",
 		"tslib": "^2.4.0",
 		"typescript": "^4.8.4"
+	},
+	"dependencies": {
+		"@github/tab-container-element": "^3.2.0"
 	}
 }

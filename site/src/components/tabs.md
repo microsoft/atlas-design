@@ -9,15 +9,12 @@ classPrefixes:
 
 # Tabs
 
-Tabs component consists of navigating to the previous or next tab and well and clicking on a tab. The result will change the content in the `tab-item-container` to display the current selected item.
+Tabs component consists of navigating to the previous or next tab and well and clicking on a tab. The result will change the content in the `tab-item-container` to display the current selected item. To do this the `[data-tab-nav="1"]` and `[data-tab-item="1"]` must have matching numbers as these act as the index for navigation.
 
 ```html
-<section
-	id="tab-test"
-	class="display-flex-tablet flex-direction-column justify-content-start align-items-center padding-block-lg"
->
+<tab-container>
 	<div class="tabs">
-		<button role="nav" class="tab-nav tab-previous" data-nav="previous">
+		<button type="button" id="tab-previous" role="navigation" title="Previous tab">
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 					<path
@@ -27,39 +24,17 @@ Tabs component consists of navigating to the previous or next tab and well and c
 				</svg>
 			</span>
 		</button>
-		<div class="tab-list" role="tablist">
-			<div class="tab-parent is-active">
-				<button class="tab-control" role="tab" aria-controls="tab-control-1" data-tab-control="1">
-					Define Strategy
-				</button>
-			</div>
-			<div class="tab-parent">
-				<button class="tab-control" role="tab" aria-controls="tab-item-2" data-tab-control="2">
-					Plan
-				</button>
-			</div>
-			<div class="tab-parent">
-				<button class="tab-control" role="tab" aria-controls="tab-control-3" data-tab-control="3">
-					Prepare
-				</button>
-			</div>
-			<div class="tab-parent">
-				<button class="tab-control" role="tab" aria-controls="tab-control-3" data-tab-control="4">
-					Adopt
-				</button>
-			</div>
-			<div class="tab-parent">
-				<button class="tab-control" role="tab" aria-controls="tab-control-3" data-tab-control="5">
-					Govern
-				</button>
-			</div>
-			<div class="tab-parent">
-				<button class="tab-control" role="tab" aria-controls="tab-control-3" data-tab-control="6">
-					Manage
-				</button>
-			</div>
+		<div role="tablist">
+			<button type="button" id="tab-one" role="tab" aria-selected="true" data-tab-nav="1">
+				Define Strategy
+			</button>
+			<button type="button" id="tab-two" role="tab" data-tab-nav="2">Plan</button>
+			<button type="button" id="tab-three" role="tab" data-tab-nav="3">Prepare</button>
+			<button type="button" id="tab-four" role="tab" data-tab-nav="4">Adopt</button>
+			<button type="button" id="tab-five" role="tab" data-tab-nav="5">Govern</button>
+			<button type="button" id="tab-six" role="tab" data-tab-nav="6">Manage</button>
 		</div>
-		<button role="nav" class="tab-nav tab-next" data-nav="next">
+		<button type="button" id="tab-next" role="navigation" title="Next tab">
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
 					<path
@@ -70,70 +45,25 @@ Tabs component consists of navigating to the previous or next tab and well and c
 			</span>
 		</button>
 	</div>
-	<div id="tab-item-container" class="tab-items justify-content-center">
-		<div
-			id="tab-item-1"
-			class="tab-item display-flex"
-			data-tab-item="tab-item-1"
-			aria-labelledby="tab-item-1"
-			role="tabpanel"
-		>
-			<p class="margin-sm">Tab Item 1</p>
+	<div class="margin-block-md">
+		<div role="tabpanel" aria-labelledby="tab-one" data-tab-item="1">
+			<p>Tab Item 1</p>
 		</div>
-		<div
-			id="tab-item-2"
-			class="tab-item display-none"
-			data-tab-item="tab-item-2"
-			aria-labelledby="tab-item-2"
-			role="tabpanel"
-		>
-			<p class="margin-sm">Tab Item 2</p>
+		<div role="tabpanel" aria-labelledby="tab-two" data-tab-item="2" hidden>
+			<p>Tab Item 2</p>
 		</div>
-		<div
-			id="tab-item-3"
-			class="tab-item display-none"
-			data-tab-item="tab-item-3"
-			aria-labelledby="tab-item-3"
-			role="tabpanel"
-		>
-			<p class="margin-sm">Tab Item 3</p>
+		<div role="tabpanel" aria-labelledby="tab-three" data-tab-item="3" hidden>
+			<p>Tab Item 3</p>
 		</div>
-		<div
-			id="tab-item-4"
-			class="tab-item display-none"
-			data-tab-item="tab-item-4"
-			aria-labelledby="tab-item-4"
-			role="tabpanel"
-		>
-			<p class="margin-sm">Tab Item 4</p>
+		<div role="tabpanel" aria-labelledby="tab-four" data-tab-item="4" hidden>
+			<p>Tab Item 4</p>
 		</div>
-		<div
-			id="tab-item-5"
-			class="tab-item display-none"
-			data-tab-item="tab-item-5"
-			aria-labelledby="tab-item-5"
-			role="tabpanel"
-		>
-			<p class="margin-sm">Tab Item 5</p>
+		<div role="tabpanel" aria-labelledby="tab-five" data-tab-item="5" hidden>
+			<p>Tab Item 5</p>
 		</div>
-		<div
-			id="tab-item-6"
-			class="tab-item display-none"
-			data-tab-item="tab-item-6"
-			aria-labelledby="tab-item-6"
-			role="tabpanel"
-		>
-			<p class="margin-sm">Tab Item 6</p>
-		</div>
-		<div
-			id="tab-item-7"
-			class="tab-item display-none"
-			data-tab-item="tab-item-7"
-			aria-labelledby="tab-item-7"
-			role="tabpanel"
-		>
-			<p class="margin-sm">Tab Item 7</p>
+		<div role="tabpanel" aria-labelledby="tab-six" data-tab-item="6" hidden>
+			<p>Tab Item 6</p>
 		</div>
 	</div>
-</section>
+</tab-container>
 ```
