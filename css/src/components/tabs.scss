@@ -11,23 +11,6 @@ $tabs-active-background-color: $primary-active;
 $tabs-active-border-color: $primary-active !default;
 $tabs-active-color: $text-invert !default;
 
-.tabs {
-	display: grid;
-	justify-content: center;
-	width: 100%;
-	grid-gap: $font-size-7;
-	grid-template-columns: max-content auto max-content;
-	white-space: nowrap;
-
-	&.tabs-lg {
-		[role='tab'],
-		.tab-previous,
-		.tab-next {
-			padding: $tabs-padding-lg;
-		}
-	}
-}
-
 [role='navigation'] {
 	display: flex;
 	align-items: center;
@@ -50,8 +33,8 @@ $tabs-active-color: $text-invert !default;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	background-color: $tabs-background-color;
 	border-radius: $border-radius-rounded;
+	background-color: $tabs-background-color;
 	box-shadow: $box-shadow-medium;
 	overflow-x: hidden;
 }
@@ -87,6 +70,23 @@ $tabs-active-color: $text-invert !default;
 			border-color: $tabs-active-hover-border-color;
 			background-color: $tabs-active-hover-background-color;
 			z-index: $zindex-hover;
+		}
+	}
+}
+
+.tabs {
+	display: grid;
+	justify-content: center;
+	width: 100%;
+	grid-gap: $font-size-7;
+	grid-template-columns: max-content auto max-content;
+	white-space: nowrap;
+
+	&.tabs-lg {
+		[role='tab'],
+		.tab-previous,
+		.tab-next {
+			padding: $tabs-padding-lg;
 		}
 	}
 }
