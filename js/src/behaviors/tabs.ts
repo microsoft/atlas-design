@@ -62,6 +62,19 @@ function initTabControlClickListeners() {
 		const container = event.target.closest('tab-container') as HTMLElement;
 		updateTabNav(container);
 	});
+	window.addEventListener('keydown', (event: Event) => {
+		const target =
+			event.target instanceof Element &&
+			(event.target.closest('[role="tab"]') as HTMLButtonElement);
+
+		if (!target) {
+			return;
+		}
+
+		event.preventDefault();
+		const container = event.target.closest('tab-container') as HTMLElement;
+		updateTabNav(container);
+	});
 }
 
 function updateTabNav(container: HTMLElement = document.body) {
