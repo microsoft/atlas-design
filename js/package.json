@@ -30,6 +30,9 @@
 		"design-system",
 		"js"
 	],
+	"dependencies": {
+		"@github/tab-container-element": "^3.2.0"
+	},
 	"author": "Microsoft Corporation",
 	"license": "MIT",
 	"devDependencies": {
