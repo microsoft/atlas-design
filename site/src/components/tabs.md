@@ -9,12 +9,18 @@ classPrefixes:
 
 # Tabs
 
-Tabs component consists of navigating to the previous or next tab and well and clicking on a tab. The result will change the content in the `tab-item-container` to display the current selected item. To do this the `[data-tab-nav="1"]` and `[data-tab-item="1"]` must have matching numbers as these act as the index for navigation.
+Tabs component consists of navigating to the previous or next tab and well and clicking on a tab. The result will change the content in the `tab-item-container` to display the current selected item. To do this the `[data-tab-control="1"]` and `[data-tab-item="1"]` must have matching numbers as these act as the index for navigation.
 
 ```html
 <tab-container>
 	<div class="tabs">
-		<button type="button" id="tab-previous" role="navigation" title="Previous tab">
+		<button
+			type="button"
+			class="tab-previous"
+			role="navigation"
+			title="Previous tab"
+			data-tab-nav="previous"
+		>
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 					<path
@@ -25,16 +31,16 @@ Tabs component consists of navigating to the previous or next tab and well and c
 			</span>
 		</button>
 		<div role="tablist">
-			<button type="button" id="tab-one" role="tab" aria-selected="true" data-tab-nav="1">
+			<button type="button" id="tab-one" role="tab" aria-selected="true" data-tab-control="1">
 				Define Strategy
 			</button>
-			<button type="button" id="tab-two" role="tab" data-tab-nav="2">Plan</button>
-			<button type="button" id="tab-three" role="tab" data-tab-nav="3">Prepare</button>
-			<button type="button" id="tab-four" role="tab" data-tab-nav="4">Adopt</button>
-			<button type="button" id="tab-five" role="tab" data-tab-nav="5">Govern</button>
-			<button type="button" id="tab-six" role="tab" data-tab-nav="6">Manage</button>
+			<button type="button" id="tab-two" role="tab" data-tab-control="2">Plan</button>
+			<button type="button" id="tab-three" role="tab" data-tab-control="3">Prepare</button>
+			<button type="button" id="tab-four" role="tab" data-tab-control="4">Adopt</button>
+			<button type="button" id="tab-five" role="tab" data-tab-control="5">Govern</button>
+			<button type="button" id="tab-six" role="tab" data-tab-control="6">Manage</button>
 		</div>
-		<button type="button" id="tab-next" role="navigation" title="Next tab">
+		<button type="button" class="tab-next" role="navigation" title="Next tab" data-tab-nav="next">
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
 					<path

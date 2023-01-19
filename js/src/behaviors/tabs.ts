@@ -1,5 +1,3 @@
-export * from '@github/tab-container-element';
-
 /**
  * Tab control for assessment lens
  * @param container - Container of tab control component
@@ -7,11 +5,18 @@ export * from '@github/tab-container-element';
 /**
  * Tabs behaviors
  */
-export function initTabs(container: HTMLElement = document.body) {
-	initTabNavClickListeners(container);
+export function initTabs() {
+	initTabNavClickListeners();
+	initTabControlClickListeners();
+
+	// update when tabs into the view
+	const tabContainers = Array.from(document.querySelectorAll('tab-container')) as HTMLElement[];
+	for (const tc of tabContainers) {
+		updateTabNav(tc);
+	}
 }
 
-function initTabNavClickListeners(container: HTMLElement = document.body) {
+function initTabNavClickListeners() {
 	window.addEventListener('click', (event: Event) => {
 		const target =
 			event.target instanceof Element &&
@@ -22,19 +27,20 @@ function initTabNavClickListeners(container: HTMLElement = document.body) {
 		}
 
 		event.preventDefault();
+		const container = event.target.closest('tab-container') as HTMLElement;
 		const tabs = Array.from(container.querySelectorAll('[role="tab"]')) as HTMLButtonElement[];
 
 		// get current activated tab
 		const currentActiveButton = container.querySelector(
 			'[aria-selected="true"]'
 		) as HTMLButtonElement;
-		const index = parseInt(currentActiveButton?.dataset.tabNav as string);
+		const index = parseInt(currentActiveButton?.dataset.tabControl as string);
 
 		// update tab
-		if (index > 1 && target.id === 'tab-previous') {
+		if (index > 1 && target.dataset.tabNav === 'previous') {
 			updateTabState(container, currentActiveButton, index - 1);
 			updateTabPanel(container, index, index - 1);
-		} else if (index < tabs.length && target.id === 'tab-next') {
+		} else if (index < tabs.length && target.dataset.tabNav === 'next') {
 			updateTabState(container, currentActiveButton, index + 1);
 			updateTabPanel(container, index, index + 1);
 		}
@@ -42,14 +48,30 @@ function initTabNavClickListeners(container: HTMLElement = document.body) {
 	});
 }
 
+function initTabControlClickListeners() {
+	window.addEventListener('click', (event: Event) => {
+		const target =
+			event.target instanceof Element &&
+			(event.target.closest('[role="tab"]') as HTMLButtonElement);
+
+		if (!target) {
+			return;
+		}
+
+		event.preventDefault();
+		const container = event.target.closest('tab-container') as HTMLElement;
+		updateTabNav(container);
+	});
+}
+
 function updateTabNav(container: HTMLElement = document.body) {
 	const tabs = Array.from(container.querySelectorAll('[role="tab"]')) as HTMLButtonElement[];
-	const previousButton = container.querySelector('#tab-previous') as HTMLButtonElement;
-	const nextButton = container.querySelector('#tab-next') as HTMLButtonElement;
+	const previousButton = container.querySelector('.tab-previous') as HTMLButtonElement;
+	const nextButton = container.querySelector('.tab-next') as HTMLButtonElement;
 	const currentActiveButton = container.querySelector(
 		'[aria-selected="true"]'
 	) as HTMLButtonElement;
-	const index = parseInt(currentActiveButton?.dataset.tabNav as string);
+	const index = parseInt(currentActiveButton?.dataset.tabControl as string);
 
 	// slide active button into view
 	currentActiveButton.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
@@ -71,7 +93,9 @@ function updateTabState(
 	currentActiveButton: HTMLButtonElement,
 	updatedIndex: number
 ) {
-	const updatedTab = container.querySelector(`[data-tab="${updatedIndex}"]`) as HTMLButtonElement;
+	const updatedTab = container.querySelector(
+		`[data-tab-control="${updatedIndex}"]`
+	) as HTMLButtonElement;
 
 	currentActiveButton.setAttribute('aria-selected', 'false');
 	currentActiveButton.setAttribute('tabindex', '-1');
