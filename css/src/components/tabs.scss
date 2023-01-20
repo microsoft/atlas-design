@@ -76,8 +76,8 @@ $tabs-active-color: $text-invert !default;
 		z-index: $zindex-hover;
 
 		@include forced-colors {
-			background-color: SelectedItem;
-			color: SelectedItemText;
+			background-color: Highlight;
+			color: HighlightText;
 			forced-color-adjust: preserve-parent-color;
 		}
 	}
