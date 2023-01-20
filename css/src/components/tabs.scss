@@ -37,6 +37,13 @@ $tabs-active-color: $text-invert !default;
 	&:hover {
 		border-color: $tabs-active-hover-border-color;
 		background-color: $tabs-active-hover-background-color;
+
+		@include forced-colors {
+			border-color: Highlight;
+			background-color: Highlight;
+			color: HighlightText;
+			forced-color-adjust: preserve-parent-color;
+		}
 	}
 }
 
@@ -48,11 +55,6 @@ $tabs-active-color: $text-invert !default;
 	border-radius: $border-radius-rounded;
 	box-shadow: $box-shadow-medium;
 	overflow-x: hidden;
-
-	@include forced-colors {
-		border: $tabs-border;
-		forced-color-adjust: preserve-parent-color;
-	}
 }
 
 .tab-control {
@@ -76,6 +78,7 @@ $tabs-active-color: $text-invert !default;
 		z-index: $zindex-hover;
 
 		@include forced-colors {
+			border-color: Highlight;
 			background-color: Highlight;
 			color: HighlightText;
 			forced-color-adjust: preserve-parent-color;
@@ -95,6 +98,7 @@ $tabs-active-color: $text-invert !default;
 		}
 
 		@include forced-colors {
+			border-color: Highlight;
 			background-color: Highlight;
 			color: HighlightText;
 			forced-color-adjust: preserve-parent-color;
