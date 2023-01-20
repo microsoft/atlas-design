@@ -14,13 +14,7 @@ Tabs component consists of navigating to the previous or next tab and well and c
 ```html
 <tab-container>
 	<div class="tabs">
-		<button
-			type="button"
-			class="tab-previous"
-			role="navigation"
-			title="Previous tab"
-			data-tab-nav="previous"
-		>
+		<button type="button" class="tab-previous" title="Previous tab" data-tab-nav="previous">
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 					<path
@@ -30,17 +24,34 @@ Tabs component consists of navigating to the previous or next tab and well and c
 				</svg>
 			</span>
 		</button>
-		<div role="tablist">
-			<button type="button" id="tab-one" role="tab" aria-selected="true" data-tab-control="1">
+		<div class="tab-list" role="tablist">
+			<button
+				class="tab-control"
+				type="button"
+				id="tab-one"
+				role="tab"
+				aria-selected="true"
+				data-tab-control="1"
+			>
 				Define Strategy
 			</button>
-			<button type="button" id="tab-two" role="tab" data-tab-control="2">Plan</button>
-			<button type="button" id="tab-three" role="tab" data-tab-control="3">Prepare</button>
-			<button type="button" id="tab-four" role="tab" data-tab-control="4">Adopt</button>
-			<button type="button" id="tab-five" role="tab" data-tab-control="5">Govern</button>
-			<button type="button" id="tab-six" role="tab" data-tab-control="6">Manage</button>
+			<button class="tab-control" type="button" id="tab-two" role="tab" data-tab-control="2">
+				Plan
+			</button>
+			<button class="tab-control" type="button" id="tab-three" role="tab" data-tab-control="3">
+				Prepare
+			</button>
+			<button class="tab-control" type="button" id="tab-four" role="tab" data-tab-control="4">
+				Adopt
+			</button>
+			<button class="tab-control" type="button" id="tab-five" role="tab" data-tab-control="5">
+				Govern
+			</button>
+			<button class="tab-control" type="button" id="tab-six" role="tab" data-tab-control="6">
+				Manage
+			</button>
 		</div>
-		<button type="button" class="tab-next" role="navigation" title="Next tab" data-tab-nav="next">
+		<button type="button" class="tab-next" title="Next tab" data-tab-nav="next">
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
 					<path

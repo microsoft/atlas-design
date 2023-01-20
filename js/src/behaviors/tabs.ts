@@ -20,7 +20,7 @@ function initTabNavClickListeners() {
 	window.addEventListener('click', (event: Event) => {
 		const target =
 			event.target instanceof Element &&
-			(event.target.closest('[role="navigation"]') as HTMLButtonElement);
+			(event.target.closest('[data-tab-nav]') as HTMLButtonElement);
 
 		if (!target) {
 			return;
@@ -28,7 +28,7 @@ function initTabNavClickListeners() {
 
 		event.preventDefault();
 		const container = event.target.closest('tab-container') as HTMLElement;
-		const tabs = Array.from(container.querySelectorAll('[role="tab"]')) as HTMLButtonElement[];
+		const tabs = Array.from(container.querySelectorAll('.tab-control')) as HTMLButtonElement[];
 
 		// get current activated tab
 		const currentActiveButton = container.querySelector(
@@ -52,7 +52,7 @@ function initTabControlClickListeners() {
 	window.addEventListener('click', (event: Event) => {
 		const target =
 			event.target instanceof Element &&
-			(event.target.closest('[role="tab"]') as HTMLButtonElement);
+			(event.target.closest('.tab-control') as HTMLButtonElement);
 
 		if (!target) {
 			return;
@@ -65,7 +65,7 @@ function initTabControlClickListeners() {
 	window.addEventListener('keydown', (event: Event) => {
 		const target =
 			event.target instanceof Element &&
-			(event.target.closest('[role="tab"]') as HTMLButtonElement);
+			(event.target.closest('.tab-control') as HTMLButtonElement);
 
 		if (!target) {
 			return;
@@ -78,7 +78,7 @@ function initTabControlClickListeners() {
 }
 
 function updateTabNav(container: HTMLElement = document.body) {
-	const tabs = Array.from(container.querySelectorAll('[role="tab"]')) as HTMLButtonElement[];
+	const tabs = Array.from(container.querySelectorAll('.tab-control')) as HTMLButtonElement[];
 	const previousButton = container.querySelector('.tab-previous') as HTMLButtonElement;
 	const nextButton = container.querySelector('.tab-next') as HTMLButtonElement;
 	const currentActiveButton = container.querySelector(

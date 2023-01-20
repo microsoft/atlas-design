@@ -13,11 +13,29 @@ $tabs-active-background-color: $primary-active;
 $tabs-active-border-color: $primary-active !default;
 $tabs-active-color: $text-invert !default;
 
-[role='navigation'] {
+.tabs {
+	display: grid;
+	justify-content: center;
+	width: 100%;
+	grid-gap: $font-size-7;
+	grid-template-columns: max-content auto max-content;
+	white-space: nowrap;
+
+	&.tabs-lg {
+		.tab-control,
+		.tab-previous,
+		.tab-next {
+			padding: $tabs-padding-lg;
+		}
+	}
+}
+
+.tab-previous,
+.tab-next {
 	display: flex;
 	align-items: center;
 	padding: $tabs-padding;
-	border: none;
+	border: $tab-border;
 	border-radius: $border-radius-rounded;
 	background-color: $tabs-active-background-color;
 	color: $tabs-active-color;
@@ -30,22 +48,22 @@ $tabs-active-color: $text-invert !default;
 	}
 }
 
-[role='tablist'] {
+.tab-list {
 	grid-column: 2;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	border: $tabs-border;
 	border-radius: $border-radius-rounded;
 	box-shadow: $box-shadow-medium;
 	overflow-x: hidden;
 
 	@include forced-colors {
 		border: $tabs-border;
+		forced-color-adjust: preserve-parent-color;
 	}
 }
 
-[role='tab'] {
+.tab-control {
 	display: flex;
 	position: relative;
 	align-items: center;
@@ -64,6 +82,12 @@ $tabs-active-color: $text-invert !default;
 		border-color: $tabs-hover-background-color;
 		background-color: $tabs-hover-background-color;
 		z-index: $zindex-hover;
+
+		@include forced-colors {
+			background-color: SelectedItem;
+			color: SelectedItemText;
+			forced-color-adjust: preserve-parent-color;
+		}
 	}
 
 	&[aria-selected='true'] {
@@ -77,22 +101,11 @@ $tabs-active-color: $text-invert !default;
 			background-color: $tabs-active-hover-background-color;
 			z-index: $zindex-hover;
 		}
-	}
-}
 
-.tabs {
-	display: grid;
-	justify-content: center;
-	width: 100%;
-	grid-gap: $font-size-7;
-	grid-template-columns: max-content auto max-content;
-	white-space: nowrap;
-
-	&.tabs-lg {
-		[role='tab'],
-		.tab-previous,
-		.tab-next {
-			padding: $tabs-padding-lg;
+		@include forced-colors {
+			background-color: Highlight;
+			color: HighlightText;
+			forced-color-adjust: preserve-parent-color;
 		}
 	}
 }
