@@ -20,14 +20,6 @@ $tabs-active-color: $text-invert !default;
 	grid-gap: $font-size-7;
 	grid-template-columns: max-content auto max-content;
 	white-space: nowrap;
-
-	&.tabs-lg {
-		.tab-control,
-		.tab-previous,
-		.tab-next {
-			padding: $tabs-padding-lg;
-		}
-	}
 }
 
 .tab-previous,
@@ -107,5 +99,13 @@ $tabs-active-color: $text-invert !default;
 			color: HighlightText;
 			forced-color-adjust: preserve-parent-color;
 		}
+	}
+}
+
+.tabs.tabs-lg {
+	.tab-control,
+	.tab-previous,
+	.tab-next {
+		padding: $tabs-padding-lg;
 	}
 }
