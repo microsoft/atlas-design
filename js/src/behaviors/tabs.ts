@@ -62,7 +62,11 @@ function initTabControlClickListeners() {
 		const container = event.target.closest('tab-container') as HTMLElement;
 		updateTabNav(container);
 	});
-	window.addEventListener('keydown', (event: Event) => {
+	window.addEventListener('keydown', (event: KeyboardEvent) => {
+		if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+			return;
+		}
+
 		const target =
 			event.target instanceof Element &&
 			(event.target.closest('.tab-control') as HTMLButtonElement);
