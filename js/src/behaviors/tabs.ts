@@ -60,7 +60,6 @@ function initTabControlClickListeners() {
 		updateTabNav(container);
 	});
 	window.addEventListener('keydown', (event: KeyboardEvent) => {
-		event.preventDefault();
 		if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
 			return;
 		}
@@ -73,6 +72,7 @@ function initTabControlClickListeners() {
 			return;
 		}
 
+		event.preventDefault();
 		const container = event.target.closest('[data-tab-container]') as HTMLElement;
 		updateTabNav(container);
 	});

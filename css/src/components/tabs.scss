@@ -9,8 +9,8 @@ $tabs-hover-border: $border-width solid $border !default;
 $tabs-hover-border-color: $primary-hover !default;
 $tabs-active-hover-background-color: $primary-hover !default;
 $tabs-active-hover-border-color: $primary-hover !default;
-$tabs-active-background-color: $primary-active;
-$tabs-active-border-color: $primary-active !default;
+$tabs-active-background-color: $primary !default;
+$tabs-active-border-color: $primary !default;
 $tabs-active-color: $text-invert !default;
 
 .tabs {
