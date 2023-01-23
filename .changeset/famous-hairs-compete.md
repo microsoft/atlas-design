@@ -4,4 +4,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-add tabs
+add tabs styles and functionality

@@ -1,16 +1,11 @@
-/**
- * Tab control for assessment lens
- * @param container - Container of tab control component
- */
-/**
- * Tabs behaviors
- */
 export function initTabs() {
 	initTabNavClickListeners();
 	initTabControlClickListeners();
 
 	// update when tabs into the view
-	const tabContainers = Array.from(document.querySelectorAll('tab-container')) as HTMLElement[];
+	const tabContainers = Array.from(
+		document.querySelectorAll('[data-tab-container]')
+	) as HTMLElement[];
 	for (const tc of tabContainers) {
 		updateTabNav(tc);
 	}
@@ -27,8 +22,10 @@ function initTabNavClickListeners() {
 		}
 
 		event.preventDefault();
-		const container = event.target.closest('tab-container') as HTMLElement;
-		const tabs = Array.from(container.querySelectorAll('.tab-control')) as HTMLButtonElement[];
+		const container = event.target.closest('[data-tab-container]') as HTMLElement;
+		const tabs = Array.from(
+			container.querySelectorAll('[data-tab-control]')
+		) as HTMLButtonElement[];
 
 		// get current activated tab
 		const currentActiveButton = container.querySelector(
@@ -52,39 +49,39 @@ function initTabControlClickListeners() {
 	window.addEventListener('click', (event: Event) => {
 		const target =
 			event.target instanceof Element &&
-			(event.target.closest('.tab-control') as HTMLButtonElement);
+			(event.target.closest('[data-tab-control]') as HTMLButtonElement);
 
 		if (!target) {
 			return;
 		}
 
 		event.preventDefault();
-		const container = event.target.closest('tab-container') as HTMLElement;
+		const container = event.target.closest('[data-tab-container]') as HTMLElement;
 		updateTabNav(container);
 	});
 	window.addEventListener('keydown', (event: KeyboardEvent) => {
+		event.preventDefault();
 		if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
 			return;
 		}
 
 		const target =
 			event.target instanceof Element &&
-			(event.target.closest('.tab-control') as HTMLButtonElement);
+			(event.target.closest('[data-tab-control]') as HTMLButtonElement);
 
 		if (!target) {
 			return;
 		}
 
-		event.preventDefault();
-		const container = event.target.closest('tab-container') as HTMLElement;
+		const container = event.target.closest('[data-tab-container]') as HTMLElement;
 		updateTabNav(container);
 	});
 }
 
 function updateTabNav(container: HTMLElement = document.body) {
-	const tabs = Array.from(container.querySelectorAll('.tab-control')) as HTMLButtonElement[];
-	const previousButton = container.querySelector('.tab-previous') as HTMLButtonElement;
-	const nextButton = container.querySelector('.tab-next') as HTMLButtonElement;
+	const tabs = Array.from(container.querySelectorAll('[data-tab-control]')) as HTMLButtonElement[];
+	const previousButton = container.querySelector('[data-tab-nav="previous"]') as HTMLButtonElement;
+	const nextButton = container.querySelector('[data-tab-nav="next"]') as HTMLButtonElement;
 	const currentActiveButton = container.querySelector(
 		'[aria-selected="true"]'
 	) as HTMLButtonElement;

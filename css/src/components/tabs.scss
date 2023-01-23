@@ -1,5 +1,5 @@
-$tabs-padding: $font-size-9 $font-size-5 !default;
-$tabs-padding-lg: $font-size-7 $font-size-4 !default;
+$tabs-padding: 0.5em 1em !default;
+$tabs-padding-lg: 1em 1.5em !default;
 
 $tab-font-color: $primary !default;
 $tab-border: $border-width solid transparent !default;
@@ -17,9 +17,14 @@ $tabs-active-color: $text-invert !default;
 	display: grid;
 	justify-content: center;
 	width: 100%;
-	grid-gap: $font-size-7;
+	font-size: $font-size-7;
+	grid-gap: $spacer-5;
 	grid-template-columns: max-content auto max-content;
 	white-space: nowrap;
+
+	&.tab-lg {
+		font-size: $font-size-5;
+	}
 }
 
 .tab-previous,

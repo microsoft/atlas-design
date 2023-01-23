@@ -12,7 +12,7 @@ classPrefixes:
 Tabs component consists of navigating to the previous or next tab and well and clicking on a tab. The result will change the content in the `tab-item-container` to display the current selected item. To do this the `[data-tab-control="1"]` and `[data-tab-item="1"]` must have matching numbers as these act as the index for navigation.
 
 ```html
-<tab-container>
+<tab-container data-tab-container>
 	<div class="tabs">
 		<button type="button" class="tab-previous" title="Previous tab" data-tab-nav="previous">
 			<span class="icon" aria-hidden="true">
@@ -24,7 +24,7 @@ Tabs component consists of navigating to the previous or next tab and well and c
 				</svg>
 			</span>
 		</button>
-		<div class="tab-list" role="tablist">
+		<div class="tab-list" role="tablist" aria-orientation="horizontal">
 			<button
 				class="tab-control"
 				type="button"
@@ -90,7 +90,7 @@ Tabs component consists of navigating to the previous or next tab and well and c
 Using the `tabs-lg` will increase the padding of the buttons.
 
 ```html
-<tab-container>
+<tab-container data-tab-container>
 	<div class="tabs tabs-lg">
 		<button type="button" class="tab-previous" title="Previous tab" data-tab-nav="previous">
 			<span class="icon" aria-hidden="true">
@@ -102,7 +102,7 @@ Using the `tabs-lg` will increase the padding of the buttons.
 				</svg>
 			</span>
 		</button>
-		<div class="tab-list" role="tablist">
+		<div class="tab-list" role="tablist" aria-orientation="horizontal">
 			<button
 				class="tab-control"
 				type="button"
