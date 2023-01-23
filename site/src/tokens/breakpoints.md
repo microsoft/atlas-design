@@ -1,15 +1,15 @@
 ---
-title: Breakpoints and media queries
-description: Atlas CSS breakpoints tokens
+title: Breakpoints
+description: Atlas CSS breakpoints tokens and media queries tokens
 template: token
 token: breakpoints
 ---
 
 # Breakpoints and media queries
 
-Available media queries
+Available media queries:
 
-```css
+```scss
 @mixin tablet {
 	@media screen and (min-width: $breakpoint-tablet), print {
 		@content;
