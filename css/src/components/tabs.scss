@@ -17,9 +17,9 @@ $tabs-active-color: $text-invert !default;
 	display: grid;
 	justify-content: center;
 	width: 100%;
-	font-size: $font-size-7;
 	grid-gap: $spacer-5;
 	grid-template-columns: max-content auto max-content;
+	font-size: $font-size-7;
 	white-space: nowrap;
 
 	&.tab-lg {
