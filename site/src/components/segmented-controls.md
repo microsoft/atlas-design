@@ -7,7 +7,7 @@ classPrefixes:
   - segmented-controls
 ---
 
-## Segmented Control
+# Segmented Control
 
 Segmented control component consists of navigating to the previous or next segmented control item by using the arrow keys or clicking on a segmented control. The result will change the content to display the current selected item. To do this the `[data-segmented-control="1"]` and `[data-segmented-control-item="1"]` must have matching numbers as these act as the index for navigation.
 
@@ -19,6 +19,7 @@ Segmented control component consists of navigating to the previous or next segme
 			class="segmented-control-previous"
 			title="Previous segment"
 			data-segmented-control-nav="previous"
+      hidden
 		>
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
@@ -137,6 +138,7 @@ Using the `segmented-controls-md` or `segmented-controls-lg` will increase the p
 			class="segmented-control-previous"
 			title="Previous segment"
 			data-segmented-control-nav="previous"
+      hidden
 		>
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">

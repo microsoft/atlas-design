@@ -1,14 +1,6 @@
 export function initSegmentedControls() {
 	initSegmentedControlNavClickListeners();
 	initSegmentedControlClickListeners();
-
-	// update when tabs into the view
-	const segmentsContainers = Array.from(
-		document.querySelectorAll('[data-segmented-controls-container]')
-	) as HTMLElement[];
-	for (const sc of segmentsContainers) {
-		updateSegmentedControlNav(sc);
-	}
 }
 
 function initSegmentedControlNavClickListeners() {
