@@ -4,4 +4,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-add tabs styles and functionality
+add segmented control styles and functionality

@@ -1,0 +1,124 @@
+$sc-padding: 0.5em 1em !default;
+$sc-padding-md: 0.75em 1.25em !default;
+$sc-padding-lg: 1em 1.5em !default;
+
+$sc-font-color: $primary !default;
+$sc-border: $border-width solid $border !default;
+$sc-hover-background-color: $primary-background !default;
+$sc-hover-border: $border-width solid $border !default;
+$sc-hover-border-color: $primary-hover !default;
+$sc-active-hover-background-color: $primary-hover !default;
+$sc-active-hover-border-color: $primary-hover !default;
+$sc-active-background-color: $primary !default;
+$sc-active-border-color: $primary !default;
+$sc-active-color: $text-invert !default;
+
+.segmented-controls {
+	display: grid;
+	justify-content: center;
+	width: 100%;
+	grid-gap: $spacer-5;
+	grid-template-columns: max-content auto max-content;
+	font-size: $font-size-7;
+	white-space: nowrap;
+
+	&.segmented-lg {
+		font-size: $font-size-5;
+	}
+}
+
+.segmented-control-previous,
+.segmented-control-next {
+	display: flex;
+	align-items: center;
+	padding: $sc-padding;
+	border: $sc-border;
+	border-radius: $border-radius-rounded;
+	background-color: $sc-active-background-color;
+	color: $sc-active-color;
+	font-weight: $weight-semibold;
+	box-shadow: $box-shadow-medium;
+
+	&:hover {
+		border-color: $sc-active-hover-border-color;
+		background-color: $sc-active-hover-background-color;
+
+		@include forced-colors {
+			border-color: Highlight;
+			background-color: Highlight;
+			color: HighlightText;
+			forced-color-adjust: preserve-parent-color;
+		}
+	}
+}
+
+.segmented-control-list {
+	grid-column: 2;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border: $sc-border;
+	border-radius: $border-radius-rounded;
+	box-shadow: $box-shadow-medium;
+	overflow-x: hidden;
+}
+
+.segmented-control {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	padding: $sc-padding;
+	border: none;
+	border-radius: $border-radius-rounded;
+	background-color: transparent;
+	color: $sc-font-color;
+	font-weight: $weight-semibold;
+	cursor: pointer;
+	appearance: none;
+	vertical-align: top;
+
+	&:hover {
+		background-color: $sc-hover-background-color;
+		z-index: $zindex-hover;
+
+		@include forced-colors {
+			background-color: Highlight;
+			color: HighlightText;
+			forced-color-adjust: preserve-parent-color;
+		}
+	}
+
+	&[aria-selected='true'] {
+		background-color: $sc-active-background-color;
+		color: $sc-active-color;
+		z-index: $zindex-active;
+
+		&:hover {
+			background-color: $sc-active-hover-background-color;
+			z-index: $zindex-hover;
+		}
+
+		@include forced-colors {
+			background-color: Highlight;
+			color: HighlightText;
+			forced-color-adjust: preserve-parent-color;
+		}
+	}
+}
+
+.segmented-controls.segmented-controls-md {
+	.segmented-control,
+	.segmented-previous,
+	.segmented-next {
+		padding: $sc-padding-md;
+	}
+}
+
+.segmented-controls.segmented-controls-lg {
+	.segmented-control,
+	.segmented-previous,
+	.segmented-next {
+		padding: $sc-padding-lg;
+	}
+}
