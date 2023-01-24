@@ -37,6 +37,7 @@ $sc-active-color: $text-invert !default;
 	background-color: $sc-active-background-color;
 	color: $sc-active-color;
 	font-weight: $weight-semibold;
+	cursor: pointer;
 	box-shadow: $box-shadow-medium;
 
 	&:hover {
@@ -77,6 +78,10 @@ $sc-active-color: $text-invert !default;
 	cursor: pointer;
 	appearance: none;
 	vertical-align: top;
+
+	@include focus-visible() {
+		outline-offset: -$focus-width;
+	}
 
 	&:hover {
 		background-color: $sc-hover-background-color;
