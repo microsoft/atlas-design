@@ -19,7 +19,6 @@ Segmented control component consists of navigating to the previous or next segme
 			class="segmented-control-previous"
 			title="Previous segment"
 			data-segmented-control-nav="previous"
-      hidden
 		>
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
@@ -138,7 +137,6 @@ Using the `segmented-controls-md` or `segmented-controls-lg` will increase the p
 			class="segmented-control-previous"
 			title="Previous segment"
 			data-segmented-control-nav="previous"
-      hidden
 		>
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">

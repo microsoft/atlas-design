@@ -26,12 +26,14 @@ function initSegmentedControlNavClickListeners() {
 		const index = parseInt(currentActiveButton?.dataset.segmentedControl as string);
 
 		// update tab
-		if (index > 1 && target.dataset.segmentedControlNav === 'previous') {
-			updateSegmentedControlState(container, currentActiveButton, index - 1);
-			updateSegmentedControlItem(container, index, index - 1);
-		} else if (index < segments.length && target.dataset.segmentedControlNav === 'next') {
-			updateSegmentedControlState(container, currentActiveButton, index + 1);
-			updateSegmentedControlItem(container, index, index + 1);
+		if (target.dataset.segmentedControlNav === 'previous') {
+			const nextSegment = index === 1 ? segments.length : index - 1;
+			updateSegmentedControlState(container, currentActiveButton, nextSegment);
+			updateSegmentedControlItem(container, index, nextSegment);
+		} else if (target.dataset.segmentedControlNav === 'next') {
+			const nextSegment = index === segments.length ? 1 : index + 1;
+			updateSegmentedControlState(container, currentActiveButton, nextSegment);
+			updateSegmentedControlItem(container, index, nextSegment);
 		}
 		updateSegmentedControlNav(container);
 	});
@@ -71,33 +73,12 @@ function initSegmentedControlClickListeners() {
 }
 
 function updateSegmentedControlNav(container: HTMLElement = document.body) {
-	const segments = Array.from(
-		container.querySelectorAll('[data-segmented-control]')
-	) as HTMLButtonElement[];
-	const previousButton = container.querySelector(
-		'[data-segmented-control-nav="previous"]'
-	) as HTMLButtonElement;
-	const nextButton = container.querySelector(
-		'[data-segmented-control-nav="next"]'
-	) as HTMLButtonElement;
 	const currentActiveButton = container.querySelector(
 		'[aria-selected="true"]'
 	) as HTMLButtonElement;
-	const index = parseInt(currentActiveButton?.dataset.segmentedControl as string);
 
 	// slide active button into view
 	currentActiveButton.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
-
-	if (index <= 1) {
-		previousButton.hidden = true;
-		nextButton.hidden = false;
-	} else if (index >= segments.length) {
-		previousButton.hidden = false;
-		nextButton.hidden = true;
-	} else {
-		previousButton.hidden = false;
-		nextButton.hidden = false;
-	}
 }
 
 function updateSegmentedControlState(
