@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.27.1
+
+### Patch Changes
+
+- 40cd6f5: On light theme, darkens text from #171717 to #161616 in order to ensure adequate contrast (3:1) between hyperlink color and paragraph text color.
+
 ## 3.27.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.35.0
+
+### Minor Changes
+
+- a0dd25b: Adding token documentation pages.
+
 ## 0.34.0
 
 ### Minor Changes
