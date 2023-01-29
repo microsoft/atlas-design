@@ -92,16 +92,18 @@ $radio-spacing: 0.5em !default;
 
 	&.is-hovered,
 	&:hover:not([disabled]) {
-		.radio-dot:not(:checked) {
-			background: $radio-dot-hover-unchecked-color;
-			box-shadow: inset 0 0 0 0.25em $body-background;
+		@include tablet {
+			.radio-dot:not(:checked) {
+				background: $radio-dot-hover-unchecked-color;
+				box-shadow: inset 0 0 0 0.25em $body-background;
 
-			@include forced-colors {
-				background-color: unset !important;
-				box-shadow: none !important;
+				@include forced-colors {
+					background-color: unset !important;
+					box-shadow: none !important;
 
-				&::before {
-					background-color: CanvasText !important;
+					&::before {
+						background-color: CanvasText !important;
+					}
 				}
 			}
 		}
