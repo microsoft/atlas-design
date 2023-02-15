@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.27.2
+
+### Patch Changes
+
+- 68c9fb7: Disabled radio should not have hover styles.
+
 ## 3.27.1
 
 ### Patch Changes
