@@ -91,7 +91,7 @@ $radio-spacing: 0.5em !default;
 	}
 
 	&.is-hovered,
-	&:hover:not([disabled]) {
+	&:hover:not(:disabled) {
 		.radio-dot:not(:checked) {
 			background: $radio-dot-hover-unchecked-color;
 			box-shadow: inset 0 0 0 0.25em $body-background;
