@@ -1,0 +1,449 @@
+@use 'sass:math';
+
+$nav-bar-height: 54px !default;
+$nav-bar-font-size-mobile: 0.875rem !default;
+$nav-bar-font-size-desktop: 1rem !default;
+$nav-bar-horizontal-spacing: 0.5rem !default;
+
+$nav-bar-button-color: $text !default;
+$nav-bar-button-hover-background-color: $body-background-medium !default;
+$nav-bar-button-hover-color: $text !default;
+$nav-bar-button-active-background-color: $body-background-medium !default;
+
+$nav-bar-button-tag-margin: math.div(0.75rem, 3) !default;
+
+$nav-bar-chevron-font-size: 0.75rem !default;
+$nav-bar-chevron-color: $text-subtle !default;
+
+$nav-bar-hover-bottom-thickness: math.div(0.25rem, 2) !default;
+$nav-bar-border-bottom-style-hover: 2px solid $nav-bar-button-hover-color !default;
+
+$nav-bar-mobile-background-color: $body-background !default;
+
+$nav-bar-submenu-button-padding: 0.5rem 1rem !default;
+
+@mixin uhf-mobile {
+	@media screen and (max-width: $uhf-tablet-1px) {
+		@content;
+	}
+}
+
+@mixin uhf-tablet {
+	@media screen and (min-width: $uhf-tablet), print {
+		@content;
+	}
+}
+
+@mixin uhf-desktop {
+	@media screen and (min-width: $uhf-desktop), print {
+		@content;
+	}
+}
+
+@mixin uhf-widescreen {
+	@media screen and (min-width: $uhf-widescreen), print {
+		@content;
+	}
+}
+
+.nav-bar {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	height: $nav-bar-height;
+	min-height: $nav-bar-height;
+	justify-content: space-between;
+	padding-#{$user-left}: 0;
+	padding-#{$user-right}: 0;
+
+	box-sizing: border-box;
+	width: 100%;
+
+	@include uhf-tablet {
+		padding-inline: $uhf-gap;
+		padding-left: $uhf-gap;
+	}
+
+	@include uhf-widescreen {
+		padding-#{$user-left}: $uhf-widescreen-gap;
+		padding-#{$user-right}: $uhf-widescreen-gap;
+	}
+
+	.dropdown-menu {
+		background-color: $nav-bar-button-hover-background-color;
+
+		.nav-bar-button {
+			&.dropdown-trigger {
+				width: 100%;
+			}
+
+			&:hover,
+			&.focus-visible {
+				background-color: $nav-bar-button-active-background-color;
+				text-decoration: underline !important;
+				width: 100%;
+			}
+		}
+	}
+
+	> .nav-bar-brand {
+		padding-#{$user-left}: 1.125em;
+
+		> .nav-bar-button {
+			padding-#{$user-left}: 0 !important;
+		}
+
+		@include tablet {
+			padding-#{$user-left}: 0 !important;
+		}
+	}
+}
+
+.nav-bar-nav {
+	display: none;
+	@include tablet {
+		display: flex;
+	}
+	align-items: stretch;
+}
+
+.nav-bar-nav-list {
+	display: flex;
+	align-items: stretch;
+}
+
+.nav-bar-item {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+
+	&.has-spacing {
+		margin: 0 $nav-bar-horizontal-spacing;
+	}
+
+	&.is-category {
+		margin: 0 $nav-bar-horizontal-spacing;
+
+		> .nav-bar-button {
+			.tag {
+				margin-bottom: $nav-bar-button-tag-margin;
+			}
+		}
+		> .is-title {
+			padding-left: $nav-bar-horizontal-spacing;
+		}
+
+		&:before {
+			content: '';
+			display: inline-block;
+			height: $spacing-4;
+			border-left: 2px solid $text-subtle;
+			margin-#{$user-left}: $nav-bar-horizontal-spacing;
+			margin-#{$user-right}: 2 * $nav-bar-horizontal-spacing;
+		}
+	}
+}
+
+.nav-bar-search {
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+	flex-shrink: 1;
+	padding-#{$user-left}: 0.25rem;
+	margin-#{$user-right}: 0;
+
+	@include tablet {
+		padding: 0;
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+
+	@include desktop {
+		margin-#{$user-right}: 0.25rem;
+	}
+
+	&.is-expanded {
+		padding-#{$user-left}: 0;
+
+		@include mobile {
+			flex-grow: 0;
+			flex-shrink: 0;
+		}
+	}
+
+	.nav-bar-search-form {
+		display: flex;
+		padding-#{$user-left}: 0.25rem;
+
+		@include tablet {
+			padding-#{$user-left}: 0;
+		}
+	}
+
+	.nav-bar-button {
+		width: 100%;
+
+		@include tablet {
+			max-width: 120px;
+		}
+
+		@include desktop {
+			max-width: 75px;
+		}
+	}
+}
+
+.nav-bar-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	align-self: stretch;
+	flex-shrink: 0;
+	flex-grow: 0;
+
+	min-width: 54px;
+	padding: 0 $nav-bar-horizontal-spacing;
+
+	background-color: transparent; // override button default
+	color: $nav-bar-button-color;
+	border: none; // override button default
+
+	text-decoration: none !important;
+	white-space: nowrap;
+	font-size: $nav-bar-font-size-mobile;
+	line-height: normal;
+	cursor: pointer;
+	@include unselectable;
+	outline-offset: -1 * $focus-width !important; // inset focus outline.
+
+	.dropdown-menu &,
+	.nav-bar-mobile-nav & {
+		justify-content: flex-start;
+	}
+
+	.nav-bar-mobile-nav & {
+		padding: $nav-bar-horizontal-spacing * 2;
+	}
+
+	&:active,
+	&.is-active,
+	&:hover,
+	&.focus-visible {
+		color: $nav-bar-button-hover-color;
+
+		&.has-hover-underline:not([aria-expanded='true']) {
+			> :first-child {
+				position: relative;
+
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					border-bottom: $nav-bar-border-bottom-style-hover;
+					left: 0;
+					right: 0;
+					bottom: -#{$nav-bar-hover-bottom-thickness};
+				}
+			}
+		}
+	}
+
+	&:visited {
+		color: $nav-bar-button-color;
+	}
+
+	&.dropdown-trigger[aria-expanded='true'] {
+		background-color: $nav-bar-button-hover-background-color;
+	}
+
+	.dropdown-menu & {
+		padding: $nav-bar-submenu-button-padding;
+	}
+
+	&.is-title {
+		font-size: $nav-bar-font-size-desktop;
+		word-break: break-word;
+		padding: 0;
+		background-color: $body-background;
+		line-height: normal;
+
+		@include tablet {
+			font-size: $font-size-6;
+			font-weight: 600;
+			line-height: 1.125;
+			margin: 0;
+			padding: 0 $nav-bar-horizontal-spacing;
+		}
+	}
+
+	.tag {
+		margin-bottom: $nav-bar-button-tag-margin;
+		vertical-align: middle;
+		font-weight: inherit;
+	}
+
+	&.has-external-link-indicator {
+		@include external-indicator-flex;
+	}
+}
+
+.nav-bar-menu-title {
+	padding-left: $nav-bar-horizontal-spacing;
+	padding-bottom: 0.25rem;
+	font-weight: 600;
+}
+
+.nav-bar-search-form-expander {
+	width: 100%;
+	height: 100%;
+	justify-content: flex-end;
+
+	@include tablet {
+		justify-content: center;
+	}
+
+	&.is-expanded {
+		padding: 0;
+	}
+
+	.nav-bar-button {
+		padding: 1rem;
+		height: 100%;
+		justify-content: flex-end;
+
+		@include tablet {
+			justify-content: center;
+		}
+
+		&.is-expanded {
+			margin-#{$user-left}: 0.25rem;
+			padding: 1rem;
+			justify-content: center;
+
+			.nav-bar-button-text {
+				padding: 0.25rem 0;
+
+				@include tablet {
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+
+.nav-bar-button-chevron {
+	margin-#{$user-left}: auto;
+	padding-#{$user-left}: math.div($nav-bar-horizontal-spacing, 2);
+	font-size: $nav-bar-chevron-font-size;
+	color: $nav-bar-chevron-color;
+
+	.dropdown-menu & {
+		padding-#{$user-left}: $nav-bar-horizontal-spacing * 2;
+	}
+
+	.docon {
+		vertical-align: sub;
+	}
+}
+
+.nav-bar-brand {
+	display: flex;
+}
+
+// a sentinel... when it has shrunk to zero width we know we need
+// to collapse items into the "more" menu.
+.nav-bar-spacer {
+	display: none;
+
+	@include tablet {
+		display: block;
+	}
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+.nav-bar-logo {
+	width: 108px;
+	height: 23px;
+}
+
+.nav-bar-burger {
+	border: none;
+	outline-offset: -1 * $focus-width !important; // inset focus outline.
+	padding: 0;
+	height: 0;
+	@include hamburger($nav-bar-height);
+
+	@include tablet {
+		display: none;
+	}
+
+	&:hover {
+		background-color: $nav-bar-mobile-background-color;
+	}
+
+	.nav-bar-burger-label {
+		overflow: hidden;
+		border: 0;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		margin: -1px;
+		padding: 0;
+	}
+}
+
+.nav-bar-list {
+	display: flex;
+}
+
+.nav-bar-profile {
+	padding-#{$user-left}: 0.25rem;
+	font-size: $nav-bar-font-size-mobile;
+	display: none;
+	align-items: center;
+	flex-shrink: 0;
+
+	@include tablet {
+		display: flex;
+	}
+
+	.docs-sign-in {
+		color: $primary;
+		border: 1px solid transparent;
+		border-radius: 2px;
+		height: 2.25em;
+		line-height: 1.5;
+		padding-bottom: calc(0.375em - 1px);
+		padding-left: 0.75em;
+		padding-right: 0.75em;
+		padding-top: calc(0.375em - 1px);
+		position: relative;
+		align-self: center;
+
+		&:hover {
+			background-color: $nav-bar-button-hover-background-color;
+		}
+	}
+}
+
+.nav-bar-mobile-nav {
+	background-color: $nav-bar-mobile-background-color;
+}
+
+.nav-bar-mobile-nav-list {
+	.nav-bar-mobile-nav-list {
+		margin-#{$user-left}: $nav-bar-horizontal-spacing * 2;
+	}
+}
+
+.nav-bar-mobile-nav-item {
+	display: flex;
+	flex-direction: column;
+
+	> .nav-bar-button {
+		.tag {
+			margin-#{$user-left}: $nav-bar-button-tag-margin;
+		}
+	}
+}
