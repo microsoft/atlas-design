@@ -11,3 +11,27 @@ classPrefixes:
 # Pivot Stack
 
 Pivot Stack is a layout component that provides a tabbed interface to display multiple views of a page.
+
+```html
+<div class="pivot-stack">
+	<nav class="pivot-stack-nav" role="navigation">
+		<ul class="pivot-stack-nav-list">
+			<li class="pivot-stack-item is-active has-hover-bg">
+				<a id="profile-activity" class="pivot-stack-button" href="#">
+					<span>Activity</span>
+				</a>
+			</li>
+			<li class="pivot-stack-item has-hover-bg">
+				<a id="profile-training" class="pivot-stack-button" href="#">
+					<span>Training</span>
+				</a>
+			</li>
+			<li class="pivot-stack-item has-hover-bg">
+				<a id="profile-qna" class="pivot-stack-button" href="#">
+					<span>Q&A</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+```
