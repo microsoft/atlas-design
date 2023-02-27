@@ -9,7 +9,7 @@
 	},
 	"main": "lib/index.js",
 	"engines": {
-		"node": ">= 13.0.0",
+		"node": ">= 18.12.1",
 		"parcel": "^2.7.0"
 	},
 	"dependencies": {
