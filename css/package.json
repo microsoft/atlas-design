@@ -8,10 +8,43 @@
 		"lint-fix": "stylelint \"./src/**/*.scss\" --fix",
 		"start": "parcel watch src/index.scss",
 		"build": "npm run build:css && npm run tokens && npm run class-names",
-		"build:css": "parcel build src/index.scss --no-cache",
-		"tokens": "node ./tokens/index.js",
-		"class-names": "node ./class-names/index.js",
+		"build:css": "wireit",
+		"tokens": "wireit",
+		"class-names": "wireit",
 		"prepublishOnly": "npm run lint && npm run build"
+	},
+	"wireit": {
+		"build:css": {
+			"command": "parcel build src/index.scss --no-cache",
+			"files": [
+				"./src/**/*.scss"
+			],
+			"output": [
+				"./dist/**/*.css"
+			]
+		},
+		"tokens": {
+			"command": "node ./tokens/index.js",
+			"files": [
+				"./tokens/index.js",
+				"./src/tokens/**/*.scss"
+			],
+			"output": [
+				"./dist/tokens.json",
+				"./dist/tokens.ts"
+			]
+		},
+		"class-names": {
+			"command": "node ./class-names/index.js",
+			"files": [
+				"./class-names/index.js",
+				"./dist/index.css"
+			],
+			"dependencies": [
+				"build:css",
+				"tokens"
+			]
+		}
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"repository": {
@@ -33,6 +66,9 @@
 		"css",
 		"scss"
 	],
+	"resolutions": {
+		"sass": "grass"
+	},
 	"author": "Microsoft Corporation",
 	"license": "MIT",
 	"devDependencies": {
@@ -45,10 +81,11 @@
 		"lightningcss": "1.16.0",
 		"prettier": "^2.7.1",
 		"quicktype-core": "^6.0.62",
-		"sass": "^1.55.0",
+		"grass": "^1.0.2",
 		"sass-export": "^2.1.2",
 		"stylelint": "^14.13.0",
 		"stylelint-config-prettier": "^9.0.3",
-		"stylelint-prettier": "^2.0.0"
+		"stylelint-prettier": "^2.0.0",
+		"wireit": "^0.9.5"
 	}
 }
