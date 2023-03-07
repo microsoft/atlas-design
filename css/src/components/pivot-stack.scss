@@ -80,32 +80,9 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 		}
 	}
 
-	// &:hover {
-	// 	background-color: $body-background-medium;
-
-	// 	&.has-hover-bg:not([aria-expanded='true']) {
-	// 		> :first-child,
-	// 		&.is-active {
-	// 			position: relative;
-
-	// 			&:after {
-	// 				content: '';
-	// 				display: block;
-	// 				position: absolute;
-	// 				border-bottom: $ps-border-bottom-style-hover;
-	// 				left: 0;
-	// 				right: 0;
-	// 				bottom: -#{$ps-hover-bottom-thickness};
-	// 			}
-	// 		}
-	// 	}
-	// }
-
-	&:active,
-	&.is-active:not([aria-expanded='true']),
-	&.focus-visible:not([aria-expanded='true']) {
-		color: $ps-button-hover-color;
-		> :first-child {
+	&:hover {
+		background-color: $body-background-medium;
+		&.is-active {
 			position: relative;
 
 			&:after {
@@ -154,24 +131,24 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 		padding: $ps-horizontal-spacing * 2;
 	}
 
-	// &:active,
-	// &.is-active:not([aria-expanded='true']),
-	// &.focus-visible:not([aria-expanded='true']) {
-	// 	color: $ps-button-hover-color;
-	// 	> :first-child {
-	// 		position: relative;
+	:active &,
+	.is-active:not([aria-expanded='true']) &,
+	.focus-visible:not([aria-expanded='true']) & {
+		color: $ps-button-hover-color;
+		position: relative;
+		font-weight: $weight-semibold;
 
-	// 		&:after {
-	// 			content: '';
-	// 			display: block;
-	// 			position: absolute;
-	// 			border-bottom: $ps-border-bottom-style-hover;
-	// 			left: 0;
-	// 			right: 0;
-	// 			bottom: -#{$ps-hover-bottom-thickness};
-	// 		}
-	// 	}
-	// }
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			border-bottom: $ps-border-bottom-style-hover;
+			left: 0;
+			right: 0;
+			bottom: -#{$ps-hover-bottom-thickness};
+			margin: 0 $ps-horizontal-spacing;
+		}
+	}
 
 	&:visited {
 		color: $ps-button-color;
