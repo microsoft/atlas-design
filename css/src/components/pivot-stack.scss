@@ -7,18 +7,11 @@ $ps-horizontal-spacing: $spacer-3 !default;
 
 $ps-button-color: $text !default;
 $ps-button-hover-background-color: $body-background-medium !default;
-$ps-button-hover-color: $text !default;
-$ps-button-active-background-color: $body-background-medium !default;
 
 $ps-button-tag-margin: math.div($font-size-9, 3) !default;
 
-$ps-chevron-font-size: $font-size-9 !default;
-$ps-chevron-color: $text-subtle !default;
-
 $ps-hover-bottom-thickness: math.div($spacer-2, 2) !default;
 $ps-border-bottom-style-hover: 2px solid $primary !default;
-
-$ps-mobile-background-color: $body-background !default;
 
 $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 
@@ -81,7 +74,7 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 	}
 
 	&:hover {
-		background-color: $body-background-medium;
+		background-color: $ps-button-hover-background-color;
 		&.is-active {
 			position: relative;
 
@@ -134,7 +127,6 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 	:active &,
 	.is-active:not([aria-expanded='true']) &,
 	.focus-visible:not([aria-expanded='true']) & {
-		color: $ps-button-hover-color;
 		position: relative;
 		font-weight: $weight-semibold;
 
