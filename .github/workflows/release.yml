@@ -36,7 +36,7 @@ jobs:
           publish: npx changeset publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # When changesets has published a new version of @microsoft/atlas-css, then we can attempt to publish a new extension version too.
