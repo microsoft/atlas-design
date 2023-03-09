@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.28.0
+
+### Minor Changes
+
+- e517d9a: add a where(.is-focused) class to allow for programatic management of focus
+
 ## 3.27.2
 
 ### Patch Changes
