@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.35.1
+
+### Patch Changes
+
+- e517d9a: Full screen button needn't show up on mobile.
+
 ## 0.35.0
 
 ### Minor Changes
