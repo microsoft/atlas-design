@@ -66,6 +66,7 @@ export class FormBehaviorElement extends HTMLElement {
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
 		errorSummaryContainer.setAttribute('data-form-error-container', '');
+		if (form.hasAttribute('data-hide-validation-banner')) errorSummaryContainer.hidden = true;
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);
@@ -360,7 +361,7 @@ export class FormBehaviorElement extends HTMLElement {
 		const errors: FormValidationError[] = [];
 		const { errorAlert, errorList } = this.getErrorAlert(form);
 
-		if (displayValidity) {
+		if (displayValidity || form.hasAttribute('data-hide-validation-banner')) {
 			errorAlert.hidden = true;
 			errorList.innerHTML = '';
 		}
@@ -527,7 +528,11 @@ export class FormBehaviorElement extends HTMLElement {
 				errorList.appendChild(child);
 
 				if (!isCustomElement) {
-					input.classList.add(`${input.localName}-danger`);
+					if (input.type === 'checkbox') {
+						input.closest('label.checkbox')?.classList.add(`checkbox-danger`);
+					} else {
+						input.classList.add(`${input.localName}-danger`);
+					}
 				}
 			}
 
@@ -740,7 +745,11 @@ export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 }
 
 function clearInputErrorBorder(input: HTMLValueElement) {
-	input.classList.remove(`${input.localName}-danger`);
+	if (input.type === 'checkbox') {
+		input.closest('label.checkbox')?.classList.remove(`checkbox-danger`);
+	} else {
+		input.classList.remove(`${input.localName}-danger`);
+	}
 }
 
 function handleSubmitButtonAction(event: Event) {

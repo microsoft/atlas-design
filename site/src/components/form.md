@@ -92,6 +92,7 @@ The form behavior component can accept certain HTML attributes.
 #### Custom validation
 
 Aside from basic input validation, you can use event listeners to listen for the `form-validating` custom event to inject custom validation logic.
+
 If you want to skip the basic validation on an input, apply a `data-skip-validation` attribute.
 
 ##### Form with edits required
@@ -188,19 +189,98 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 		</div>
 	</div>
 	<div class="field">
-		<label class="field-label" for="sample-input">
+		<label class="field-label" for="sample-skip-input">
 			Input
 			<span class="required-indicator"></span>
 		</label>
 		<div class="field-body">
 			<input
-				id="skip-input"
-				name="skip-input"
+				id="sample-skip-input"
+				name="sample-skip-input"
 				class="input"
 				type="text"
 				value=""
+				required
 				data-skip-validation
 			/>
+		</div>
+	</div>
+	<div class="field">
+		<div class="field-body">
+			<label class="checkbox">
+				<input type="checkbox" name="checkbox-example" required id="sample-checkbox" />
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text">
+					Checkbox
+					<span class="required-indicator"></span>
+				</span>
+			</label>
+		</div>
+	</div>
+	<div class="display-flex">
+		<button type="submit" class="button button-primary button-filled">Submit form</button>
+	</div>
+	<div class="submitted-form-data-example"></div>
+</form>
+```
+
+If there is a need to hide the validation banner on top of the form apply a `data-hide-validation-banner` attribute to the `form`.
+
+```html
+<form
+	id="sample-form-hide-validation-banner"
+	data-form-type="question"
+	data-hide-validation-banner
+	action="#"
+	method="POST"
+	new=""
+	novalidate=""
+>
+	<form-behavior
+		new=""
+		navigation="follow"
+		header-content-type="application/json"
+		header-x-docsauth="cookie"
+		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
+		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
+		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
+		loc-input-required="{inputLabel} is required."
+		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
+		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
+	></form-behavior>
+	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
+	<div class="field">
+		<label class="field-label" for="sample-input-demo">
+			Input
+			<span class="required-indicator"></span>
+		</label>
+		<div class="field-body">
+			<input id="sample-input-demo" name="input" class="input" type="text" value="" required />
+		</div>
+	</div>
+	<div class="field">
+		<div class="field-body">
+			<label class="checkbox">
+				<input type="checkbox" name="checkbox-example" required id="required-checkbox-input-demo" />
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text">
+					Checkbox required
+					<span class="required-indicator"></span>
+				</span>
+			</label>
+		</div>
+	</div>
+	<div class="field">
+		<label class="label" for="sample-text-area-demo">Textarea</label>
+		<div class="field-body">
+			<textarea
+				id="sample-text-area-demo"
+				name="text-area"
+				class="textarea"
+				rows="4"
+				cols="30"
+			></textarea>
 		</div>
 	</div>
 	<div class="display-flex">

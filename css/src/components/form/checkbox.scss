@@ -15,6 +15,13 @@ $checkbox-timing-function: $input-timing-function !default;
 $checkbox-duration: $input-transition-duration !default;
 $checkbox-spacing: $spacer-3 !default;
 
+$checkbox-danger-border-color: $danger !default;
+$checkbox-success-border-color: $success !default;
+
+$checkbox-hover-border-color: $primary !default;
+$checkbox-focus-border-color: $primary !default;
+$checkbox-focus-box-shadow-size: 0 0 0 0.125rem !default;
+
 @mixin checkmark {
 	display: block;
 	position: absolute;
@@ -61,20 +68,24 @@ $checkbox-spacing: $spacer-3 !default;
 		}
 	}
 
-	&:hover .checkbox-check::before {
-		@include checkmark;
+	&:hover .checkbox-check {
+		border-color: $checkbox-hover-border-color;
+
+		&::before {
+			@include checkmark;
+		}
 	}
 
 	&.checkbox-sm {
-		font-size: $font-size-8;
+		@include control-sm;
+	}
+
+	&.checkbox-lg {
+		@include control-lg;
 	}
 
 	input[type='checkbox'] {
 		@include visually-hidden();
-
-		&:focus-visible + .checkbox-check {
-			@extend %focus;
-		}
 
 		&:checked + .checkbox-check {
 			border-color: $checkbox-color;
@@ -88,8 +99,23 @@ $checkbox-spacing: $spacer-3 !default;
 		}
 
 		&[disabled] + .checkbox-check {
+			border-color: $checkbox-unchecked-border-color;
 			opacity: 0.6;
 			cursor: not-allowed;
+		}
+
+		&:focus-visible {
+			+ .checkbox-check {
+				@extend %focus;
+			}
+
+			&:not(:checked) + .checkbox-check {
+				border-color: $checkbox-focus-border-color;
+				outline-color: transparent;
+				outline-offset: 0;
+				outline-style: solid;
+				box-shadow: $checkbox-focus-box-shadow-size $checkbox-focus-border-color;
+			}
 		}
 	}
 
@@ -114,6 +140,28 @@ $checkbox-spacing: $spacer-3 !default;
 			@include checkmark;
 
 			border-color: $checkbox-check-color;
+		}
+	}
+
+	/* stylelint-disable no-descending-specificity */
+
+	&.checkbox-danger input[type='checkbox']:not(:checked) {
+		+ .checkbox-check {
+			border-color: $checkbox-danger-border-color;
+		}
+
+		&:focus-visible + .checkbox-check {
+			box-shadow: $checkbox-focus-box-shadow-size $checkbox-danger-border-color;
+		}
+	}
+
+	&.checkbox-success input[type='checkbox']:not(:checked) {
+		+ .checkbox-check {
+			border-color: $checkbox-success-border-color;
+		}
+
+		&:focus-visible + .checkbox-check {
+			box-shadow: $checkbox-focus-box-shadow-size $checkbox-success-border-color;
 		}
 	}
 }

@@ -58,14 +58,41 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 </label>
 ```
 
-### Size
+### Sizes
 
-`.checkbox-sm` is used with `.checkbox` to display a smaller checkbox.
+`.checkbox-sm`/`.checkbox-lg` used in conjunction with `.checkbox` makes checkbox a little bigger or smaller than the default.
 
 ```html
 <label class="checkbox checkbox-sm">
-	<input type="checkbox" checked name="checkbox-small" />
+	<input type="checkbox" name="checkbox-size" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-	<span class="checkbox-text">Checked</span>
+	<span class="checkbox-text">Checkbox small</span>
+</label>
+<label class="checkbox">
+	<input type="checkbox" name="checkbox-size" />
+	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+	<span class="checkbox-text">Checkbox default</span>
+</label>
+<label class="checkbox checkbox-lg">
+	<input type="checkbox" name="checkbox-size" />
+	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+	<span class="checkbox-text">Checkbox large</span>
+</label>
+```
+
+### Validation states
+
+`checkbox-danger`/`checkbox-success` helps with visual reflection of validation states.
+
+| State   | Class                         |                                                                                                                                                                                                                             |
+| ------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Danger  | `.checkbox .checkbox-danger`  | <label class="checkbox checkbox-danger"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label>  |
+| Success | `.checkbox .checkbox-success` | <label class="checkbox checkbox-success"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label> |
+
+```html
+<label class="checkbox checkbox-danger">
+	<input type="checkbox" name="checkbox-validation-demo" />
+	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+	<span class="checkbox-text">Checkbox</span>
 </label>
 ```
