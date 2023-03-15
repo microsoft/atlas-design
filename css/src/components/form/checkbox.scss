@@ -143,8 +143,6 @@ $checkbox-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		}
 	}
 
-	/* stylelint-disable no-descending-specificity */
-
 	&.is-invalid input[type='checkbox']:not(:checked) {
 		+ .checkbox-check {
 			border-color: $checkbox-danger-border-color;
