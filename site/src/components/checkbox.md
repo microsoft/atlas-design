@@ -2,7 +2,7 @@
 title: Checkbox
 description: The checkbox component in the Atlas Design System
 template: standard
-figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fnode-id%3D855%253A1014"
+figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fnode-id%3D509%253A616%26t%3DMi9Bg3tcqIe8LtND-1
 classType: Component
 classPrefixes:
   - checkbox
@@ -82,15 +82,15 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 
 ### Validation states
 
-`checkbox-danger`/`checkbox-success` helps with visual reflection of validation states.
+`is-invalid`/`is-valid` helps with visual reflection of validation states.
 
-| State   | Class                         |                                                                                                                                                                                                                             |
-| ------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Danger  | `.checkbox .checkbox-danger`  | <label class="checkbox checkbox-danger"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label>  |
-| Success | `.checkbox .checkbox-success` | <label class="checkbox checkbox-success"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label> |
+| State   | Class                   |                                                                                                                                                                                                                       |
+| ------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Danger  | `.checkbox .is-invalid` | <label class="checkbox is-invalid"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label> |
+| Success | `.checkbox .is-valid`   | <label class="checkbox is-valid"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label>   |
 
 ```html
-<label class="checkbox checkbox-danger">
+<label class="checkbox is-invalid">
 	<input type="checkbox" name="checkbox-validation-demo" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 	<span class="checkbox-text">Checkbox</span>
