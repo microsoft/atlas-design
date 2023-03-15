@@ -150,8 +150,10 @@ $checkbox-focus-box-shadow-size: 0 0 0 0.125rem !default;
 			border-color: $checkbox-danger-border-color;
 		}
 
-		&:focus-visible + .checkbox-check {
-			box-shadow: $checkbox-focus-box-shadow-size $checkbox-danger-border-color;
+		@include focus-visible() {
+			+ .checkbox-check {
+				box-shadow: $checkbox-focus-box-shadow-size $checkbox-danger-border-color;
+			}
 		}
 	}
 
@@ -160,8 +162,10 @@ $checkbox-focus-box-shadow-size: 0 0 0 0.125rem !default;
 			border-color: $checkbox-success-border-color;
 		}
 
-		&:focus-visible + .checkbox-check {
-			box-shadow: $checkbox-focus-box-shadow-size $checkbox-success-border-color;
+		@include focus-visible() {
+			+ .checkbox-check {
+				box-shadow: $checkbox-focus-box-shadow-size $checkbox-success-border-color;
+			}
 		}
 	}
 }
