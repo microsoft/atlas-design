@@ -117,14 +117,6 @@ $checkbox-focus-box-shadow-size: 0 0 0 0.125rem !default;
 		}
 	}
 
-	&:hover input[type='checkbox']:not([disabled]) + .checkbox-check {
-		border-color: $checkbox-hover-border-color;
-
-		&::before {
-			@include checkmark;
-		}
-	}
-
 	&.checkbox-muted {
 		input[type='checkbox'] {
 			&:checked + .checkbox-check {
@@ -170,6 +162,18 @@ $checkbox-focus-box-shadow-size: 0 0 0 0.125rem !default;
 			+ .checkbox-check {
 				box-shadow: $checkbox-focus-box-shadow-size $checkbox-success-border-color;
 			}
+		}
+	}
+
+	&:hover {
+		&:not(.is-valid):not(.is-invalid) {
+			input[type='checkbox']:not(:checked):not([disabled]) + .checkbox-check {
+				border-color: $checkbox-hover-border-color;
+			}
+		}
+
+		input[type='checkbox']:not(:checked):not([disabled]) + .checkbox-check::before {
+			@include checkmark;
 		}
 	}
 }
