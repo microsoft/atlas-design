@@ -529,7 +529,7 @@ export class FormBehaviorElement extends HTMLElement {
 
 				if (!isCustomElement) {
 					if (input.type === 'checkbox') {
-						input.closest('label.checkbox')?.classList.add(`checkbox-danger`);
+						input.closest('label.checkbox')?.classList.add(`is-invalid`);
 					} else {
 						input.classList.add(`${input.localName}-danger`);
 					}
@@ -746,7 +746,7 @@ export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 
 function clearInputErrorBorder(input: HTMLValueElement) {
 	if (input.type === 'checkbox') {
-		input.closest('label.checkbox')?.classList.remove(`checkbox-danger`);
+		input.closest('label.checkbox')?.classList.remove(`is-invalid`);
 	} else {
 		input.classList.remove(`${input.localName}-danger`);
 	}
