@@ -265,7 +265,7 @@ If there is a need to hide the validation banner on top of the form apply a `dat
 				<input type="checkbox" name="checkbox-example" required id="required-checkbox-input-demo" />
 				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 				<span class="checkbox-text">
-					Checkbox required
+					Checkbox
 					<span class="required-indicator"></span>
 				</span>
 			</label>
