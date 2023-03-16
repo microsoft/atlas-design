@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.5.5
+
+### Patch Changes
+
+- 12ac95c: Updating form behavior validation so it validates checkboxes correctly and provides an option to hide an error banner.
+
 ## 1.5.4
 
 ### Patch Changes

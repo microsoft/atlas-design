@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.36.0
+
+### Minor Changes
+
+- 12ac95c: Updating website documentation to reflect recent changes.
+
 ## 0.35.1
 
 ### Patch Changes
