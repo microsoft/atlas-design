@@ -60,7 +60,7 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 
 ### Sizes
 
-`.checkbox-sm`/`.checkbox-lg` used in conjunction with `.checkbox` makes checkbox a little bigger or smaller than the default.
+`.checkbox-sm`/`.checkbox-lg` can be used to make a checkbox bigger or smaller than the default.
 
 ```html
 <label class="checkbox checkbox-sm">
