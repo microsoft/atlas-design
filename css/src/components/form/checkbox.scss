@@ -3,7 +3,7 @@
 $checkbox-border-radius: $border-radius-sm !default;
 $checkbox-border-width: 0.0625em !default;
 $checkbox-unchecked-border-color: $control-border !default;
-$checkbox-danger-border-color: $danger !default;
+$checkbox-invalid-border-color: $danger !default;
 $checkbox-color: $primary !default;
 $checkbox-check-color: $primary-invert !default;
 $checkbox-check-hover-color: $text-subtle !default;
@@ -129,7 +129,7 @@ $checkbox-spacing: $spacer-3 !default;
 
 	&.is-invalid {
 		input[type='checkbox']:not(:checked) + .checkbox-check {
-			border-color: $checkbox-danger-border-color;
+			border-color: $checkbox-invalid-border-color;
 		}
 	}
 
