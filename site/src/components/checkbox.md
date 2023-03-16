@@ -82,7 +82,7 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 
 ### Validation states
 
-`is-invalid` helps with visual reflection of invalid validation state.
+We can use `.is-invalid` to reflect an invalid validation state. Note that the state should also be display to the user in another way, since by itself color is not enough.
 
 | State   | Class                   |                                                                                                                                                                                                                       |
 | ------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

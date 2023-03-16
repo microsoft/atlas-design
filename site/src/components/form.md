@@ -226,7 +226,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 
 ##### Hiding the validation banner
 
-If there is a need to hide the validation banner on top of the form apply a `data-hide-validation-banner` attribute to the `form`.
+If there is a need to hide the validation banner on top of the form, we can apply the `data-hide-validation-banner` attribute to the `form`.
 
 ```html
 <form
