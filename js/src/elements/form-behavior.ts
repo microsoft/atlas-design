@@ -66,7 +66,9 @@ export class FormBehaviorElement extends HTMLElement {
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
 		errorSummaryContainer.setAttribute('data-form-error-container', '');
-		if (form.hasAttribute('data-hide-validation-banner')) errorSummaryContainer.hidden = true;
+		if (form.hasAttribute('data-hide-validation-banner')) {
+			errorSummaryContainer.hidden = true;
+		}
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);

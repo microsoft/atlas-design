@@ -82,12 +82,11 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 
 ### Validation states
 
-`is-invalid`/`is-valid` helps with visual reflection of validation states.
+`is-invalid` helps with visual reflection of invalid validation state.
 
 | State   | Class                   |                                                                                                                                                                                                                       |
 | ------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Invalid | `.checkbox .is-invalid` | <label class="checkbox is-invalid"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label> |
-| Valid   | `.checkbox .is-valid`   | <label class="checkbox is-valid"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label>   |
 
 ```html
 <label class="checkbox is-invalid">
