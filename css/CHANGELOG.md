@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.29.0
+
+### Minor Changes
+
+- 12ac95c: Updating checkbox component with validation colors and sizes.
+
 ## 3.28.0
 
 ### Minor Changes
