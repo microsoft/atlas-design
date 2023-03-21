@@ -17,16 +17,15 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 
 .pivot-stack {
 	display: flex;
-	justify-content: space-between;
-	align-items: stretch;
 	position: relative;
+	align-items: stretch;
+	justify-content: space-between;
+	box-sizing: border-box;
+	width: 100%;
 	height: $ps-height;
 	min-height: $ps-height;
 	padding-#{$user-left}: 0;
 	padding-#{$user-right}: 0;
-
-	box-sizing: border-box;
-	width: 100%;
 }
 
 .pivot-stack-nav {
@@ -34,6 +33,7 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 	@include tablet {
 		display: flex;
 	}
+
 	align-items: stretch;
 }
 
@@ -42,10 +42,71 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 	align-items: stretch;
 }
 
+.pivot-stack-button {
+	@include unselectable;
+
+	display: flex;
+	flex-grow: 0;
+	flex-shrink: 0;
+	align-items: center;
+	align-self: stretch;
+	justify-content: center;
+	min-width: 54px;
+	padding: 0 $ps-horizontal-spacing;
+	border: none; // override button default
+	outline-offset: -1 * $focus-width !important; // inset focus outline.
+	background-color: transparent; // override button default
+	color: $ps-button-color;
+	font-size: $ps-font-size-mobile;
+	line-height: normal;
+	text-decoration: none !important;
+	white-space: nowrap;
+	cursor: pointer;
+
+	.dropdown-menu &,
+	.pivot-stack-mobile-nav & {
+		justify-content: flex-start;
+	}
+
+	.pivot-stack-mobile-nav & {
+		padding: $ps-horizontal-spacing * 2;
+	}
+
+	&:visited {
+		color: $ps-button-color;
+	}
+
+	&.dropdown-trigger[aria-expanded='true'] {
+		background-color: $ps-button-hover-background-color;
+	}
+
+	.dropdown-menu & {
+		padding: $ps-submenu-button-padding;
+	}
+
+	:active &,
+	.is-active:not([aria-expanded='true']) &,
+	.focus-visible:not([aria-expanded='true']) & {
+		position: relative;
+		font-weight: $weight-semibold;
+
+		&::after {
+			display: block;
+			position: absolute;
+			right: 0;
+			bottom: -#{$ps-hover-bottom-thickness};
+			left: 0;
+			margin: 0 $ps-horizontal-spacing;
+			border-bottom: $ps-border-bottom-style-hover;
+			content: '';
+		}
+	}
+}
+
 .pivot-stack-item {
 	display: flex;
-	align-items: center;
 	flex-shrink: 0;
+	align-items: center;
 
 	&.has-spacing {
 		margin: 0 $ps-horizontal-spacing;
@@ -59,15 +120,16 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 				margin-bottom: $ps-button-tag-margin;
 			}
 		}
+
 		> .is-title {
 			padding-left: $ps-horizontal-spacing;
 		}
 
-		&:before {
-			content: '';
+		&::before {
 			display: inline-block;
 			height: $spacer-7;
 			border-left: 2px solid $text-subtle;
+			content: '';
 			margin-#{$user-left}: $ps-horizontal-spacing;
 			margin-#{$user-right}: 2 * $ps-horizontal-spacing;
 		}
@@ -75,82 +137,19 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 
 	&:hover {
 		background-color: $ps-button-hover-background-color;
+
 		&.is-active {
 			position: relative;
 
-			&:after {
-				content: '';
+			&::after {
 				display: block;
 				position: absolute;
-				border-bottom: $ps-border-bottom-style-hover;
-				left: 0;
 				right: 0;
 				bottom: -#{$ps-hover-bottom-thickness};
+				left: 0;
+				border-bottom: $ps-border-bottom-style-hover;
+				content: '';
 			}
 		}
-	}
-}
-
-.pivot-stack-button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	align-self: stretch;
-	flex-shrink: 0;
-	flex-grow: 0;
-
-	min-width: 54px;
-	padding: 0 $ps-horizontal-spacing;
-
-	background-color: transparent; // override button default
-	color: $ps-button-color;
-	border: none; // override button default
-
-	text-decoration: none !important;
-	white-space: nowrap;
-	font-size: $ps-font-size-mobile;
-	line-height: normal;
-	cursor: pointer;
-	@include unselectable;
-	outline-offset: -1 * $focus-width !important; // inset focus outline.
-
-	.dropdown-menu &,
-	.pivot-stack-mobile-nav & {
-		justify-content: flex-start;
-	}
-
-	.pivot-stack-mobile-nav & {
-		padding: $ps-horizontal-spacing * 2;
-	}
-
-	:active &,
-	.is-active:not([aria-expanded='true']) &,
-	.focus-visible:not([aria-expanded='true']) & {
-		position: relative;
-		font-weight: $weight-semibold;
-
-		&:after {
-			content: '';
-			display: block;
-			position: absolute;
-			border-bottom: $ps-border-bottom-style-hover;
-			left: 0;
-			right: 0;
-			bottom: -#{$ps-hover-bottom-thickness};
-			margin: 0 $ps-horizontal-spacing;
-		}
-	}
-
-	&:visited {
-		color: $ps-button-color;
-	}
-
-	&.dropdown-trigger[aria-expanded='true'] {
-		background-color: $ps-button-hover-background-color;
-	}
-
-	.dropdown-menu & {
-		padding: $ps-submenu-button-padding;
 	}
 }
