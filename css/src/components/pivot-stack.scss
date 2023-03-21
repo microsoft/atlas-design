@@ -1,6 +1,6 @@
 @use 'sass:math';
 
-$ps-height: 54px !default;
+$ps-height: 44px !default;
 $ps-font-size-mobile: $font-size-8 !default;
 $ps-font-size-desktop: $font-size-7 !default;
 $ps-horizontal-spacing: $spacer-3 !default;
@@ -62,6 +62,14 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 	text-decoration: none !important;
 	white-space: nowrap;
 	cursor: pointer;
+
+	> .icon:first-child {
+		margin-right: $spacer-2;
+	}
+
+	> .icon:last-child {
+		margin-left: $spacer-2;
+	}
 
 	.dropdown-menu &,
 	.pivot-stack-mobile-nav & {
