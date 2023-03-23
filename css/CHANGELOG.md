@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.30.0
+
+### Minor Changes
+
+- fff80fc: Updating buttons' icon sizes.
+
 ## 3.29.0
 
 ### Minor Changes
