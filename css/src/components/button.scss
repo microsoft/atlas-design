@@ -6,6 +6,10 @@ $button-background-color: $body-background !default;
 $button-lg-font-size: $font-size-6 !default;
 $button-sm-font-size: $font-size-8 !default;
 
+$button-icon-font-size: $font-size-8 !default;
+$button-icon-sm-font-size: $font-size-9 !default;
+$button-icon-lg-font-size: $font-size-7 !default;
+
 $button-border-color: $text-subtle !default;
 $button-border-width: $control-border-width !default;
 $button-border-radius: $control-radius !default;
@@ -48,6 +52,8 @@ $button-font-weight: $weight-semibold !default;
 	}
 
 	.icon {
+		font-size: $button-icon-font-size;
+
 		&:only-child {
 			margin: 0;
 		}
@@ -74,13 +80,25 @@ $button-font-weight: $weight-semibold !default;
 
 	// Sizes
 
+	/* stylelint-disable no-descending-specificity */
+
 	&.button-sm {
 		font-size: $button-sm-font-size;
+
+		.icon {
+			font-size: $button-icon-sm-font-size;
+		}
 	}
 
 	&.button-lg {
 		font-size: $button-lg-font-size;
+
+		.icon {
+			font-size: $button-icon-lg-font-size;
+		}
 	}
+
+	/* stylelint-enable no-descending-specificity */
 
 	// Modifiers
 
