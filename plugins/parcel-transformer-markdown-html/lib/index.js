@@ -51,10 +51,10 @@ const markedOptions = {
 		const id = text.toLowerCase().replace(/[^\w]+/g, '-');
 
 		return `<div class="markdown">
-			<h${level} id="${id}">
-			<a name="${id}" href="#${id}">
+			<a href="#${id}" aria-label="Section titled: ${text}">
 				<span class="heading-anchor"></span>
 			</a>
+			<h${level} id="${id}">
 				${text}
 			</h${level}>
 		</div>`;

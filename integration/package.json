@@ -10,7 +10,7 @@
 		"test": "playwright test --config=integration-tests.config.ts",
 		"test:debug": "playwright test --debug --config=integration-tests.config.ts",
 		"screenshots:all": "cross-env FULL_DIFF=true playwright test --config=visual-diff.config.ts",
-		"screenshots:light": "playwright test --config=visual-diff.config.ts",
+		"screenshots:light": "playwright test --config=visual-diff.config.tsf",
 		"prescreenshots": "rimraf \"./visual-diff/visual-diff.spec.ts-screenshots\"",
 		"prescreenshots:all": "rimraf \"./visual-diff/visual-diff.spec.ts-screenshots\"",
 		"show-report": "playwright show-report",
@@ -21,7 +21,8 @@
 	"author": "Microsoft Corporation",
 	"license": "ISC",
 	"devDependencies": {
-		"@playwright/test": "^1.29.2",
+		"@axe-core/playwright": "^4.6.1",
+		"@playwright/test": "^1.31.2",
 		"@types/fs-extra": "9.0.13",
 		"@types/normalize-path": "^3.0.0",
 		"@types/pixelmatch": "^5.2.4",
