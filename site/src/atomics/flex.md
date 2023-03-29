@@ -81,8 +81,8 @@ The following example uses a combination of mobile-first flex atomics to achieve
 .flex-wrap-wrap-reverse
 .align-content-flex-start
 .align-content-flex-end
-.align-content-flex-space-around
-.align-content-flex-space-between
+.align-content-space-around
+.align-content-space-between
 .align-content-stretch
 .flex-grow-0
 .flex-grow-1
@@ -113,8 +113,8 @@ The following example uses a combination of mobile-first flex atomics to achieve
 .flex-wrap-wrap-reverse-tablet
 .align-content-flex-start-tablet
 .align-content-flex-end-tablet
-.align-content-flex-space-around-tablet
-.align-content-flex-space-between-tablet
+.align-content-space-around-tablet
+.align-content-space-between-tablet
 .align-content-stretch-tablet
 .flex-grow-0-tablet
 .flex-grow-1-tablet
