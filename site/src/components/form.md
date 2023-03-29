@@ -291,6 +291,7 @@ If there is a need to hide the validation banner on top of the form, we can appl
 ```html
 <form id="sample-form-simple" data-form-type="question" action="#" method="POST" novalidate="">
 	<form-behavior
+		new
 		navigation="reload"
 		header-x-docsauth="cookie"
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
