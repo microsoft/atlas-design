@@ -25,7 +25,9 @@ Forms contain form control elements such as the following:
 ## Form field
 
 The `.field` component is a container for form control elements to provide consistency.
+
 It can be used to hold `.field-body` containers, which holds the individual elements.
+
 `field-label` is used for the element's label. Use `.field-label-inline` and `.field-body-inline` to display the label and body inline.
 
 ```html
@@ -73,7 +75,6 @@ For elements that are required for form submission, you can add a span element w
 ## Form behavior
 
 Use the `form-behavior` component within a form to ensure accessible form validation. Form elements should be contained by `.field` and `.field-body` class.
-When the form does not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
 
 `.field-error` is placed after the element for form validation error messages.
 
@@ -88,6 +89,7 @@ The form behavior component can accept certain HTML attributes.
 | navigation-href=         | The url to navigate to.                                                                                                                 |
 | header-\*=               | For attributes that start with `header-`, the name after `header-` and the attribute value is added to the submit request header.       |
 | nounload                 | Disables the browser warning message that appears when you try to navigate away from the current page with a partially filled out form. |
+| new                      | When the form does not require any edits (i.e the only action is to submit), adding the `new` attribute will override the validation.   |
 
 #### Custom validation
 
@@ -98,14 +100,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 ##### Form with edits required
 
 ```html
-<form
-	id="sample-form-complex"
-	data-form-type="question"
-	action="#"
-	method="POST"
-	new=""
-	novalidate=""
->
+<form id="sample-form-complex" data-form-type="question" action="#" method="POST" novalidate="">
 	<form-behavior
 		new=""
 		navigation="follow"
@@ -235,11 +230,10 @@ If there is a need to hide the validation banner on top of the form, we can appl
 	data-hide-validation-banner
 	action="#"
 	method="POST"
-	new=""
 	novalidate=""
 >
 	<form-behavior
-		new=""
+		new
 		navigation="follow"
 		header-content-type="application/json"
 		header-x-docsauth="cookie"
@@ -295,18 +289,11 @@ If there is a need to hide the validation banner on top of the form, we can appl
 ##### Simple form without edits
 
 ```html
-<form
-	id="sample-form-simple"
-	data-form-type="question"
-	action="#"
-	method="POST"
-	new=""
-	novalidate=""
->
+<form id="sample-form-simple" data-form-type="question" action="#" method="POST" novalidate="">
 	<form-behavior
+		new
 		navigation="reload"
 		header-x-docsauth="cookie"
-		new
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
