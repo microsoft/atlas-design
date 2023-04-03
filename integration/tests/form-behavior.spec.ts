@@ -1,9 +1,10 @@
+import AxeBuilder from '@axe-core/playwright';
 import { test as base, expect } from '@playwright/test';
 
 // form validation fixture
 export const test = base.extend({
-	page: async ({ baseURL, page }, use) => {
-		await page.goto(`${baseURL}/components/form.html`);
+	page: async ({ page }, use) => {
+		await page.goto('/components/form.html');
 		await use(page);
 	},
 	errorContainer: async ({ page }, use) => {
@@ -29,8 +30,13 @@ test.describe('form behavior validation', () => {
 		page.fill('#sample-input-min', 'Lorem');
 
 		await submitBtn.click();
+		const describedBy = await input.getAttribute('aria-describedby');
+		if (!describedBy) {
+			test.fail();
+			return;
+		}
+		const messageId = describedBy.split(' ')[0];
 
-		const messageId = (await input.getAttribute('aria-describedby')).split(' ')[0];
 		const message = await page.locator(`#${messageId}`);
 		expect(message).toContainText(`${label} must be at least ${minLength} characters.`);
 		expect(errorContainer).toContainText('Please fix the following issues to continue:');
@@ -52,7 +58,12 @@ test.describe('form behavior validation', () => {
 
 		await submitBtn.click();
 
-		const messageId = (await input.getAttribute('aria-describedby')).split(' ')[0];
+		const describedBy = await input.getAttribute('aria-describedby');
+		if (!describedBy) {
+			test.fail();
+			return;
+		}
+		const messageId = describedBy.split(' ')[0];
 		const message = await page.locator(`#${messageId}`);
 		expect(message).toContainText(`${label} is required.`);
 		expect(errorContainer).toContainText('Please fix the following issues to continue:');
@@ -64,11 +75,28 @@ test.describe('form behavior validation', () => {
 		errorContainer,
 		submitBtn
 	}) => {
-		const formBehavior = page.locator('form-behavior');
 		await page.$eval('form-behavior', el => el.removeAttribute('new'));
 		await submitBtn.click();
 
 		expect(errorContainer).toContainText('Please fix the following issues to continue:');
 		expect(errorContainer).toContainText(['There are no edits to submit.']);
+	});
+
+	test('axe finds no accessibility issues after form behavior validation has been triggered', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		page.fill('#sample-input-min', `Lorem ipsum`);
+		page.fill('#sample-text-area', 'Lorem ipsum');
+
+		await submitBtn.click();
+
+		// testing of what is displayed is carried out in previous tests
+		// now we just have to run against the elements that have appeared
+		const accessibilityScanResults = await new AxeBuilder({ page })
+			.include('#sample-form-complex [data-form-error-container]')
+			.analyze();
+		expect(accessibilityScanResults.violations).toEqual([]);
 	});
 });

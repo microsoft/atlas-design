@@ -19,7 +19,7 @@ Here is an example of a standard select usage paired with a label.
 ```html
 <label class="label margin-bottom-xxs" for="select-id-1">Label</label>
 <div class="select">
-	<select name="select-1" id="select-id-1">
+	<select name="select-1" id="select-id-1" aria-label="Default usage select example">
 		<option value="">Choose an option</option>
 		<option value="option-1">Option 1</option>
 		<option value="option-2">Option 2</option>
@@ -36,7 +36,12 @@ Hold down `Ctrl` button on Windows/`Command` button on Mac to select multiple op
 
 ```html
 <div class="select select-multiple">
-	<select name="select-2" id="select-id-2" multiple>
+	<select
+		name="select-2"
+		id="select-id-2"
+		aria-label="Multiselection enabled select example"
+		multiple
+	>
 		<option value="option-1">Option 1</option>
 		<option value="option-2">Option 2</option>
 		<option value="option-3">Option 3</option>
@@ -53,7 +58,7 @@ In order to achieve disabled styles, you'll need to add the `disabled` attribute
 
 ```html
 <div class="select select-disabled">
-	<select name="select-3" id="select-id-3" disabled>
+	<select name="select-3" id="select-id-3" aria-label="Disabled select example" disabled>
 		<option value="">Choose an option</option>
 		<option value="option-1">Option 1</option>
 		<option value="option-2">Option 2</option>
@@ -68,7 +73,7 @@ In order to achieve disabled styles, you'll need to add the `disabled` attribute
 
 ```html
 <div class="select select-sm">
-	<select name="select-4" id="select-id-4">
+	<select name="select-4" id="select-id-4" aria-label="Small select example">
 		<option value="">Choose an option</option>
 		<option value="option-1">Option 1</option>
 		<option value="option-2">Option 2</option>
@@ -76,7 +81,7 @@ In order to achieve disabled styles, you'll need to add the `disabled` attribute
 	</select>
 </div>
 <div class="select margin-top-xs">
-	<select name="select-5" id="select-id-5">
+	<select name="select-5" id="select-id-5" aria-label="Default size select example">
 		<option value="">Choose an option</option>
 		<option value="option-1">Option 1</option>
 		<option value="option-2">Option 2</option>
@@ -84,7 +89,7 @@ In order to achieve disabled styles, you'll need to add the `disabled` attribute
 	</select>
 </div>
 <div class="select select-lg margin-top-xs">
-	<select name="select-6" id="select-id-6">
+	<select name="select-6" id="select-id-6" aria-label="Large select example">
 		<option value="">Choose an option</option>
 		<option value="option-1">Option 1</option>
 		<option value="option-2">Option 2</option>
@@ -97,18 +102,7 @@ In order to achieve disabled styles, you'll need to add the `disabled` attribute
 
 `select-error`/`select-success` helps with visual reflection of validation states.
 
-| State   | Class                     |                                                                                                                                                                                                                                                                     |
-| ------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Danger  | `.select .select-danger`  | <div class="select select-danger"><select name="select-7" id="select-id-7"><option value="">Choose an option</option><option value="option-1">Option 1</option><option value="option-2">Option 2</option><option value="option-3">Option 3</option></select></div>  |
-| Success | `.select .select-success` | <div class="select select-success"><select name="select-8" id="select-id-8"><option value="">Choose an option</option><option value="option-1">Option 1</option><option value="option-2">Option 2</option><option value="option-3">Option 3</option></select></div> |
-
-```abut-html
-<div class="select select-danger">
-	<select name="select" id="select-id">
-		<option value="">Choose an option</option>
-		<option value="option-1">Option 1</option>
-		<option value="option-2">Option 2</option>
-		<option value="option-3">Option 3</option>
-	</select>
-</div>
-```
+| State   | Class                     | Code                                                                                                                                                                                                                                                                                                    |
+| ------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Danger  | `.select .select-danger`  | <div class="select select-danger"><select name="select-7" id="select-id-7" aria-label="Select danger example"><option value="">Choose an option</option><option value="option-1">Option 1</option><option value="option-2">Option 2</option><option value="option-3">Option 3</option></select></div>   |
+| Success | `.select .select-success` | <div class="select select-success"><select name="select-8" id="select-id-8" aria-label="Select success example"><option value="">Choose an option</option><option value="option-1">Option 1</option><option value="option-2">Option 2</option><option value="option-3">Option 3</option></select></div> |

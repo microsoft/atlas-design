@@ -15,7 +15,7 @@ There are two components that help modify the scroll direction of a particular c
 
 Force an elements overflow to be horizontally scrollable by using `.scroll-horizontal`.
 
-<div class="scroll-horizontal background-color-success padding-xl margin-top-md">
+<div class="scroll-horizontal background-color-success padding-xl margin-top-md inner-focus" data-focusable-if-scrollable>
 	<p class="color-success-invert font-size-xl">
 		This container has a horizontal scrollbar if the content exceeds its width.
 		<pre class="color-success-invert ">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------></pre>
@@ -26,7 +26,7 @@ Force an elements overflow to be horizontally scrollable by using `.scroll-horiz
 
 Force an elements overflow to be horizontally scrollable by using `.scroll-vertical`. Note that this will only occur if the elements height is constrained.
 
-<div class="scroll-vertical max-height-30vh background-color-success margin-top-md padding-xl">
+<div class="scroll-vertical max-height-30vh background-color-success margin-top-md padding-xl inner-focus" data-focusable-if-scrollable>
 	<p class="color-success-invert font-size-xl margin-bottom">
 		This container has a vertical scrollbar if its height is constrained.
 		<pre class="color-success-invert">
@@ -79,7 +79,7 @@ Additionally, if your element is injected into the DOM after the `initSnapScroll
 
 ```html
 <section id="snap-scroll-1" class="width-full width-500-tablet display-none-widescreen" data-snap-scroll="first-one">
-	<div class="scroll-horizontal scroll-snap-container display-flex padding-bottom-xs" data-snap-scroll-slides>
+	<div class="scroll-horizontal scroll-snap-container display-flex padding-bottom-xs" data-snap-scroll-slides data-focusable-if-scrollable>
 		<article class="padding-sm border scroll-snap-item" id="one" data-snap-scroll-slide="first-one-1">
 			<h3 class="font-size-lg">1</h3>
 			<p>Description text is here and goes on for a little while.</p>

@@ -47,7 +47,7 @@ jobs:
 
       - name: Integration Tests
         id: 'integration-tests'
-        run: npm run integration-tests
+        run: npm run integration
 
       - name: Upload test results
         if: always()
