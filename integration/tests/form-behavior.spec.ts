@@ -82,7 +82,7 @@ test.describe('form behavior validation', () => {
 		expect(errorContainer).toContainText(['There are no edits to submit.']);
 	});
 
-	test('axe finds no accessibility issues after form behavior validation has been triggered', async ({
+	test('axe finds no accessibility issues after form behavior validation has been triggered @accessibility', async ({
 		page,
 		errorContainer,
 		submitBtn
