@@ -53,7 +53,7 @@ Here is an example of a standard usage of input paired with a label.
 
 `input-danger`/`input-success` helps with visual reflection of validation states.
 
-| State   | Class                   | Code                                                                          |
+| State   | Class                   | Example                                                                       |
 | ------- | ----------------------- | ----------------------------------------------------------------------------- |
 | Danger  | `.input .input-danger`  | <input class="input input-danger" type="text" placeholder="Input danger" />   |
 | Success | `.input .input-success` | <input class="input input-success" type="text" placeholder="Input success" /> |

@@ -84,7 +84,7 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 
 We can use `.is-invalid` to reflect an invalid validation state. Note that the state should also be display to the user in another way, since by itself color is not enough.
 
-| State   | Class                   | Code                                                                                                                                                                                                                  |
+| State   | Class                   | Example                                                                                                                                                                                                               |
 | ------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Invalid | `.checkbox .is-invalid` | <label class="checkbox is-invalid"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label> |
 
