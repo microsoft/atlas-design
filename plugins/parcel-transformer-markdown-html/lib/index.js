@@ -37,7 +37,7 @@ function createFilterableCodeBlock(code, language, displayName) {
 			placeholder="Filter ..."
 			type="search" />
 		</div>
-		<div class="code-block-body max-height-30vh overflow-y-scroll">
+		<div class="code-block-body max-height-30vh overflow-y-scroll inner-focus" data-focusable-if-scrollable>
 			<pre><code data-code-filter-code="${filterIds}">${code}</code></pre>
 		</div>
 	</div>`;
@@ -51,10 +51,10 @@ const markedOptions = {
 		const id = text.toLowerCase().replace(/[^\w]+/g, '-');
 
 		return `<div class="markdown">
-			<h${level} id="${id}">
-			<a name="${id}" href="#${id}">
+			<a href="#${id}" aria-label="Section titled: ${text}">
 				<span class="heading-anchor"></span>
 			</a>
+			<h${level} id="${id}">
 				${text}
 			</h${level}>
 		</div>`;
@@ -81,8 +81,10 @@ const markedOptions = {
 				<div class="code-block-header">
 					<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
 				</div>
-				<div class="code-block-body">
-					<pre><code>${hljs.highlight(code, { language }).value}</code></pre>
+				<div class="code-block-body inner-focus">
+					<pre class="inner-focus" data-focusable-if-scrollable><code>${
+						hljs.highlight(code, { language }).value
+					}</code></pre>
 				</div>
 			</div>
 		`;
@@ -105,7 +107,7 @@ const markedOptions = {
 	},
 	table(header, body) {
 		return `
-			<div class="markdown table-wrapper margin-top-sm">
+			<div class="markdown table-wrapper margin-top-sm inner-focus" data-focusable-if-scrollable>
 				<table class="table">
 					<thead>${header}</thead>
 					<tbody>${body}</tbody>

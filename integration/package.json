@@ -21,7 +21,8 @@
 	"author": "Microsoft Corporation",
 	"license": "ISC",
 	"devDependencies": {
-		"@playwright/test": "^1.29.2",
+		"@axe-core/playwright": "^4.6.1",
+		"@playwright/test": "^1.31.2",
 		"@types/fs-extra": "9.0.13",
 		"@types/normalize-path": "^3.0.0",
 		"@types/pixelmatch": "^5.2.4",
