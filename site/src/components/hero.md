@@ -126,7 +126,7 @@ You can include a video or image by using the `.hero-background` sub-component, 
         <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
     <div class="hero-background">
-        <img src="https://via.placeholder.com/1920x1080/0000FF/808080">
+        <img alt="placeholder image" src="https://via.placeholder.com/1920x1080/0000FF/808080">
     </div>
 </section>
 ```

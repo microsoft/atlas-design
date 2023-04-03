@@ -45,7 +45,7 @@ These sizes are tied to the default heading sizes renderer within the [markdown 
 <p class="font-size-h6">Heading 6</p>
 ```
 
-#### Non-heading sizes
+## Non-heading sizes
 
 The following classes targets text that are not headings.
 
@@ -57,7 +57,7 @@ The following classes targets text that are not headings.
 <p class="font-size-xs">Extra small text</p>
 ```
 
-### Tablet sizes
+## Tablet sizes
 
 Appending `-tablet` to a font-size class will make that class applicable to tablet screen size and above. In this way, you may apply mobile-first font sizes, then apply a more fitting font-size for larger screens.
 

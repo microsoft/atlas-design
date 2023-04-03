@@ -91,13 +91,13 @@ The form behavior component can accept certain HTML attributes.
 | nounload                 | Disables the browser warning message that appears when you try to navigate away from the current page with a partially filled out form. |
 | new                      | When the form does not require any edits (i.e the only action is to submit), adding the `new` attribute will override the validation.   |
 
-#### Custom validation
+### Custom validation
 
 Aside from basic input validation, you can use event listeners to listen for the `form-validating` custom event to inject custom validation logic.
 
 If you want to skip the basic validation on an input, apply a `data-skip-validation` attribute.
 
-##### Form with edits required
+### Form with edits required
 
 ```html
 <form id="sample-form-complex" data-form-type="question" action="#" method="POST" novalidate="">
@@ -219,7 +219,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 </form>
 ```
 
-##### Hiding the validation banner
+### Hiding the validation banner
 
 If there is a need to hide the validation banner on top of the form, we can apply the `data-hide-validation-banner` attribute to the `form`.
 
@@ -286,7 +286,7 @@ If there is a need to hide the validation banner on top of the form, we can appl
 </form>
 ```
 
-##### Simple form without edits
+### Simple form without edits
 
 ```html
 <form id="sample-form-simple" data-form-type="question" action="#" method="POST" novalidate="">
