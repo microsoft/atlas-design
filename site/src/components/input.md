@@ -27,6 +27,8 @@ Here is an example of a standard usage of input paired with a label.
 </form>
 ```
 
+_Note: `aria-labels` are added in the examples below because we are giving partial markup. Consider using a visible label when creating a real experience._
+
 ### Sizes
 
 `input-sm`/`input-lg` makes input a little bigger or smaller than the default.
