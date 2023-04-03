@@ -33,3 +33,4 @@ Some major things to remember are:
 
 - We keep our list of pages on which we run accessibility checks in [accessibility.spec.ts](https://github.com/microsoft/atlas-design/tree/main/integration/tests/accessibility.spec.ts). If you've added a new documentation page, please to ensure it is added to the list
 - If you've written anything that injects new elements into the DOM, you should write a separate test case for that case and pass in the specific element with the `include` method (documented in Playwright and AXE link above).
+- In your test descriptor, add the `@accessibility` tag.
