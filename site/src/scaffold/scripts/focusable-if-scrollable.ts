@@ -4,10 +4,10 @@ export function handleFocusableIfScrollable(selectors = `[data-focusable-if-scro
 	setScrollableAttrs(elements);
 
 	window.addEventListener('resize', () => {
-		const codeBlocks: HTMLElement[] = Array.from(
+		const elements: HTMLElement[] = Array.from(
 			document.querySelectorAll('[data-focusable-if-scrollable]')
 		);
-		setScrollableAttrs(codeBlocks);
+		setScrollableAttrs(elements);
 	});
 }
 function setScrollableAttrs(elements: HTMLElement[]) {
@@ -20,7 +20,7 @@ function setScrollableAttrs(elements: HTMLElement[]) {
 			block.setAttribute('aria-label', 'Horizontally scrollable element');
 			block.tabIndex = 0;
 		} else if (isVerticallyScrollable) {
-			block.setAttribute('role', 'group'); // note group is set here
+			block.setAttribute('role', 'group');
 			block.setAttribute('aria-label', 'Vertically scrollable element');
 			block.tabIndex = 0;
 		} else {

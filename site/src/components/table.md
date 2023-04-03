@@ -57,6 +57,8 @@ Here is an example of applying `table` class to the table element:
 
 For cases in which a table has many columns, the `table-wrapper` class is available to handle the overflow. This class should be applied to the table's parent element.
 
+_Note: `data-focusable-if-scrollable`, the attribute we use to programaticaly make elements focusable if they are scrollable, is left to you to implement. Our implementation lives in [`/site/src/scaffold/scripts/focusable-if-scrollable.ts`](https://github.com/microsoft/atlas-design/tree/main/site/src/scaffold/scripts.focusable-if-scrollable.ts)_
+
 <div class="table-wrapper margin-top-sm" data-focusable-if-scrollable>
 	<table class="table">
 		<thead>
