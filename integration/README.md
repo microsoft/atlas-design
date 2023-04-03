@@ -27,10 +27,10 @@ Both of the above use [`@playwright/test`](https://playwright.dev/). Their docum
 
 ## Accessibility testing with Axe and Playwright
 
-Although we must rely primarily on careful functional testing and code review to ensure a high standard of accessibilty, we've also adopted automated accessibilty with [Playwright and AXE](https://playwright.dev/docs/accessibility-testing) testing in pipelines to ensure we don't forget to write accessible components and documentation examples.
+Although we must rely primarily on careful functional testing and code review to ensure a high standard of accessibility, we've also adopted automated accessibilty with [Playwright and AXE](https://playwright.dev/docs/accessibility-testing) testing in pipelines to ensure we don't forget to write accessible components and documentation examples.
 
 Some major things to remember are:
 
-- We keep our list of pages on which we run accessibility checks in [accessibility.spec.ts](https://github.com/microsoft/atlas-design/tree/main/integration/tests/accessibility.spec.ts). If you've added a new documentation page, please to ensure it is added to the list
+- We keep our list of pages on which we run accessibility checks in [accessibility.spec.ts](https://github.com/microsoft/atlas-design/tree/main/integration/tests/accessibility.spec.ts). If you've added a new documentation page, please ensure it is added to the list
 - If you've written anything that injects new elements into the DOM, you should write a separate test case for that case and pass in the specific element with the `include` method (documented in Playwright and AXE link above).
 - In your test descriptor, add the `@accessibility` tag.
