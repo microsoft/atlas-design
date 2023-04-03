@@ -13,7 +13,7 @@ You must [install Playwright and its dependencies on your machine](https://playw
 npx playwright install
 ```
 
-## Using Playwrightw
+## Using Playwright
 
 Both of the above use [`@playwright/test`](https://playwright.dev/). Their documentaton should be the primary source of information on how to write tests here. Because of our monorepo setup, we've taken the approach of referencing playwright commands via npm. The primary commands available at the root of the project are:
 
@@ -24,3 +24,9 @@ Both of the above use [`@playwright/test`](https://playwright.dev/). Their docum
 | `npm run codegen`           | `playwright codegen localhost:1111`                                       | Runs Playwright codegen for integration-tests. Must have local server running on port 1111 before starting. |
 | `screenshots:light`         | `playwright test --config=visual-diff.config.ts`                          | Take screenshots of images on light theme. Primarily for use on Github Actions.                             |
 | `screenshots:all`           | `cross-env FULL_DIFF=true playwright test --config=visual-diff.config.ts` | Take screenshots of images on light, dark, and high-contrast themes. Primarily for use on Github Actions.   |
+
+## Accessibility testing with Axe and Playwright
+
+Although we must rely primarily on careful functional testing and code review to ensure a high standard of accessibilty, we've also adopted automated accessibilty testing in pipelines to ensure we don't forget to write accessibile examples.
+
+https://playwright.dev/docs/accessibility-testing
