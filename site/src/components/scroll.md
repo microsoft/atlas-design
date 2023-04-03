@@ -77,7 +77,7 @@ A word of warning, if your inner elements contain focusable elements, you will n
 
 Additionally, if your element is injected into the DOM after the `initSnapScroll` function has been run initially, then you will need to manually run `initSnapScrollScrollListeners(yourElement)` to achieve correct pagination highlighting. See `js/behaviors/snap-scroll.ts` for relevant code.
 
-\*Note: `data-focusable-if-scrollable`, the attribute we use to programaticaly make elements focusable if they are scrollable, is left to you to implement. Our implementation lives in [`/site/src/scaffold/scripts/focusable-if-scrollable.ts`]()
+_Note: `data-focusable-if-scrollable`, the attribute we use to programaticaly make elements focusable if they are scrollable, is left to you to implement. Our implementation lives in [`/site/src/scaffold/scripts/focusable-if-scrollable.ts`](https://github.com/microsoft/atlas-design/)_
 
 ```html
 <section id="snap-scroll-1" class="width-full width-500-tablet display-none-widescreen" data-snap-scroll="first-one">
