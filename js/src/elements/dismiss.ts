@@ -1,3 +1,5 @@
+import { notifyContentUpdated } from '../utilities/notify-content-updated';
+
 export function initDismiss() {
 	window.addEventListener(
 		'click',
@@ -28,4 +30,5 @@ async function dismissElement(dismissTarget: Element) {
 
 	dismissTarget.classList.remove('disappearing');
 	dismissTarget.remove();
+	notifyContentUpdated();
 }
