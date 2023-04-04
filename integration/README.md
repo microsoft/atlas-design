@@ -27,7 +27,7 @@ Both of the above use [`@playwright/test`](https://playwright.dev/). Their docum
 
 ## Accessibility testing with Axe and Playwright
 
-Although we must rely primarily on careful functional testing and code review to ensure a high standard of accessibility, we've also adopted automated accessibilty with [Playwright and AXE](https://playwright.dev/docs/accessibility-testing) testing in pipelines to ensure we don't forget to write accessible components and documentation examples.
+Although we must rely primarily on careful functional testing and code review to ensure a high standard of accessibility, we've also adopted automated accessibility with [Playwright and AXE](https://playwright.dev/docs/accessibility-testing) testing in pipelines to ensure we don't forget to write accessible components and documentation examples.
 
 Some major things to remember are:
 
