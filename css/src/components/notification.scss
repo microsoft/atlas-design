@@ -11,20 +11,20 @@ $notification-border-radius: $border-radius !default;
 .notification {
 	display: block;
 	position: relative;
+	padding: $notification-padding;
 	border: $notification-border-width solid $notification-border-color;
 	border-radius: $notification-border-radius;
-	font-size: $notification-font-size;
-	padding: $notification-padding;
-	background-color: $notification-background;
 	outline-color: $text;
+	background-color: $notification-background;
 	color: $notification-color;
+	font-size: $notification-font-size;
 	word-wrap: break-word;
 	word-break: break-word;
 
 	&.is-loading {
 		color: transparent !important;
 
-		& > :first-child {
+		> :first-child {
 			margin-inline-start: calc($notification-padding + 0.375em);
 		}
 
@@ -44,8 +44,8 @@ $notification-border-radius: $border-radius !default;
 		$background: nth($color-set, $color-index-background);
 
 		&.notification-#{$name} {
-			background-color: $background;
 			border-color: $base;
+			background-color: $background;
 
 			@if $name == 'info' or $name == 'primary' {
 				color: $dark;
@@ -57,6 +57,8 @@ $notification-border-radius: $border-radius !default;
 				border-color: transparent transparent $dark $dark !important;
 			}
 
+			/* stylelint-disable max-nesting-depth */
+
 			.button-close {
 				color: inherit;
 
@@ -65,24 +67,26 @@ $notification-border-radius: $border-radius !default;
 					color: $dark;
 				}
 			}
+
+			/* stylelint-enable max-nesting-depth */
 		}
 	}
 
 	.notification-title,
 	a:not(.button) {
-		font-weight: $weight-semibold;
 		color: currentColor;
+		font-weight: $weight-semibold;
 	}
 
 	.notification-title {
 		display: flex;
-		justify-content: flex-start;
 		align-items: center;
+		justify-content: flex-start;
 
 		.icon {
+			flex-shrink: 0;
 			align-self: start;
 			margin-inline-end: 0.375em;
-			flex-shrink: 0;
 		}
 	}
 

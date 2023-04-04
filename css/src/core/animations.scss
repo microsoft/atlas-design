@@ -25,6 +25,7 @@
 	}
 }
 
+// stylelint-disable-next-line keyframes-name-pattern
 @keyframes slideUpOutFadeOut {
 	100% {
 		transform: translateY(-100%);
@@ -32,6 +33,7 @@
 	}
 }
 
+// stylelint-disable-next-line keyframes-name-pattern
 @keyframes fadeOut {
 	100% {
 		opacity: 0;
