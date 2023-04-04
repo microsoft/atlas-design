@@ -60,7 +60,7 @@ If `data-dismissable` attribute is also assigned a `dissapearing` value - banner
 			data-bi-name="close"
             data-dismiss
 			data-banner-dismiss="example-banner-uid"
-			class="button-reset button-close line-height-0 border-radius-rounded position-absolute top-0 right-0"
+			class="button-reset button-close line-height-1 border-radius-rounded position-absolute top-0 right-0"
 		>
 			<span class="visually-hidden">Dismiss banner</span>
 			<span class="icon" aria-hidden="true">
@@ -87,7 +87,7 @@ If `data-dismissable` attribute is also assigned a `dissapearing` value - banner
 			data-bi-name="close"
             data-dismiss
 			data-banner-dismiss="example-banner-uid-2"
-			class="button-reset button-close line-height-0 border-radius-rounded position-absolute top-0 right-0"
+			class="button-reset button-close line-height-1 border-radius-rounded position-absolute top-0 right-0"
 		>
 			<span class="visually-hidden">Dismiss banner</span>
 			<span class="icon" aria-hidden="true">
