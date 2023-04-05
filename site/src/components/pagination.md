@@ -19,8 +19,9 @@ The pagination component consists of several elements:
 All elements are optional so you can compose your pagination as you wish.
 
 ```html
-<nav class="pagination" role="navigation" aria-label="pagination">
-	<a class="pagination-previous" aria-label="previous">
+<nav aria-label="pagination example nav 1" class="pagination" role="navigation">
+	<a class="pagination-previous">
+		<span class="visually-hidden">Previous</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 				<path
@@ -30,7 +31,8 @@ All elements are optional so you can compose your pagination as you wish.
 			</svg>
 		</span>
 	</a>
-	<a class="pagination-next" aria-label="next">
+	<a class="pagination-next">
+		<span class="visually-hidden">Next</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
 				<path
@@ -66,13 +68,13 @@ All elements are optional so you can compose your pagination as you wish.
 </nav>
 ```
 
-### Disabling links and specifying page numbers available
+## Disabling links and specifying page numbers available
 
 You can disable some links if they are not active, or change the amount of page numbers available.
 
 ```html
-<nav class="pagination" role="navigation" aria-label="pagination">
-	<a href class="pagination-previous" aria-label="previous" title="This is the first page" disabled>
+<nav aria-label="pagination example nav 2" class="pagination" role="navigation" >
+	<a href class="pagination-previous" aria-label="previous (2)" title="This is the first page" disabled>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 				<path
@@ -117,11 +119,11 @@ The current page can be specified using the `is-current` modifier.
 By default on tablet, the list is located on the left, and the previous/next buttons on the right.
 But you can change the positioning and order of these elements by using the `pagination-center` modifier.
 
-#### Centered
+### Centered
 
 ```html
-<nav class="pagination pagination-center" role="navigation" aria-label="pagination">
-	<a href class="pagination-previous" aria-label="previous">
+<nav aria-label="pagination example nav 3" class="pagination pagination-center" role="navigation">
+	<a href class="pagination-previous" aria-label="previous (3)">
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 				<path
@@ -132,8 +134,8 @@ But you can change the positioning and order of these elements by using the `pag
 		</span>
 	</a>
 	<a href class="pagination-next" aria-label="next">
-		<span class="icon" aria-hidden="true">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
+		<span class="icon">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448" aria-hidden="true">
 				<path
 					class="fill-current-color"
 					d="M-253.625 281v-32H131.75L-16.938 100.313 5.687 77.688 193 265 5.687 452.313l-22.625-22.625L131.75 281h-385.375z"

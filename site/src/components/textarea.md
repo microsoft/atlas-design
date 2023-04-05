@@ -41,7 +41,7 @@ Here is an example of a standard textarea usage paired with a label.
 
 `textarea-danger`/`textarea-success` helps with visual reflection of validation states.
 
-| State   | Class                         |                                                                                   |
+| State   | Class                         | Example                                                                           |
 | ------- | ----------------------------- | --------------------------------------------------------------------------------- |
 | Danger  | `.textarea .textarea-danger`  | <textarea class="textarea textarea-danger" placeholder="Placeholder"></textarea>  |
 | Success | `.textarea .textarea-success` | <textarea class="textarea textarea-success" placeholder="Placeholder"></textarea> |

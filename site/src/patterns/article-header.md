@@ -24,7 +24,7 @@ Please note that, when dealing with a variable amount of breadcrumbs, you'll nee
 			</span>
 		</summary>
 		<ul class="popover-content">
-			<nav>
+			<nav aria-label="popover navigation">
 				<ul>
 					<li class="margin-bottom-sm"><a href="#">Domain</a></li>
 					<li class="margin-bottom-sm"><a href="#">Kingdom</a></li>
@@ -34,7 +34,7 @@ Please note that, when dealing with a variable amount of breadcrumbs, you'll nee
 		</ul>
 	</details>
 	<div class="overflow-hidden padding-block-sm flex-grow-1 margin-right-lg">
-		<nav>
+		<nav aria-label="breadcrumb navigation">
 			<ol class="breadcrumbs margin-none breadcrumbs-initial-slash">
 				<li class="breadcrumbs-item"><a href="#">Genus</a></li>
 				<li class="breadcrumbs-item"><a href="#">Species</a></li>
@@ -101,7 +101,7 @@ Please note that, when dealing with a variable amount of breadcrumbs, you'll nee
 				</span>
 			</summary>
 			<ul class="popover-content">
-				<nav>
+				<nav aria-label="popover-right-nav">
 					<ul>
 						<li class="margin-bottom-sm"><a href="#">Domain</a></li>
 						<li class="margin-bottom-sm"><a href="#">Kingdom</a></li>

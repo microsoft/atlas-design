@@ -15,7 +15,7 @@ There are two components that help modify the scroll direction of a particular c
 
 Force an elements overflow to be horizontally scrollable by using `.scroll-horizontal`.
 
-<div class="scroll-horizontal background-color-success padding-xl margin-top-md">
+<div class="scroll-horizontal background-color-success padding-xl margin-top-md inner-focus" data-focusable-if-scrollable>
 	<p class="color-success-invert font-size-xl">
 		This container has a horizontal scrollbar if the content exceeds its width.
 		<pre class="color-success-invert ">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------></pre>
@@ -26,7 +26,7 @@ Force an elements overflow to be horizontally scrollable by using `.scroll-horiz
 
 Force an elements overflow to be horizontally scrollable by using `.scroll-vertical`. Note that this will only occur if the elements height is constrained.
 
-<div class="scroll-vertical max-height-30vh background-color-success margin-top-md padding-xl">
+<div class="scroll-vertical max-height-30vh background-color-success margin-top-md padding-xl inner-focus" data-focusable-if-scrollable>
 	<p class="color-success-invert font-size-xl margin-bottom">
 		This container has a vertical scrollbar if its height is constrained.
 		<pre class="color-success-invert">
@@ -77,9 +77,11 @@ A word of warning, if your inner elements contain focusable elements, you will n
 
 Additionally, if your element is injected into the DOM after the `initSnapScroll` function has been run initially, then you will need to manually run `initSnapScrollScrollListeners(yourElement)` to achieve correct pagination highlighting. See `js/behaviors/snap-scroll.ts` for relevant code.
 
+_Note: `data-focusable-if-scrollable`, the attribute we use to programmatically make elements focusable if they are scrollable, is left to you to implement. Our implementation lives in [`/site/src/scaffold/scripts/focusable-if-scrollable.ts`](https://github.com/microsoft/atlas-design/tree/main/site/src/scaffold/scripts.focusable-if-scrollable.ts)_
+
 ```html
 <section id="snap-scroll-1" class="width-full width-500-tablet display-none-widescreen" data-snap-scroll="first-one">
-	<div class="scroll-horizontal scroll-snap-container display-flex padding-bottom-xs" data-snap-scroll-slides>
+	<div class="scroll-horizontal scroll-snap-container display-flex padding-bottom-xs" data-snap-scroll-slides data-focusable-if-scrollable>
 		<article class="padding-sm border scroll-snap-item" id="one" data-snap-scroll-slide="first-one-1">
 			<h3 class="font-size-lg">1</h3>
 			<p>Description text is here and goes on for a little while.</p>
