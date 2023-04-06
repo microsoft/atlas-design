@@ -1,0 +1,10 @@
+.button-close {
+	@include transparent-effects;
+
+	display: inline-block;
+	padding: 0;
+	border: 0;
+	border-radius: $border-radius-rounded;
+	line-height: 1;
+	cursor: pointer;
+}

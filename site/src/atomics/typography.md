@@ -11,7 +11,6 @@ classPrefixes:
   - text-align
   - text-decoration
   - text-transform
-  - line-height
 ---
 
 # Typography Atomics
@@ -27,7 +26,6 @@ The typography scale is designed for great readability across the platform. This
 | `letter-spacing`  | `wide`                                                           | N\A        |
 | `text-transform`  | `uppercase`                                                      | N\A        |
 | `text-align`      | `center`, `right`                                                | `tablet`   |
-| `line-height`     | `1`, `normal`                                                    | N\A        |
 
 ## Font size
 

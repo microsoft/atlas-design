@@ -48,8 +48,6 @@ Notifications can be dismissed by adding the `data-dismissable` attribute to the
 
 If `data-dismissable` attribute is also assigned a `dissapearing` value - notification would slowly fade out.
 
-**Note**: notification's content should be wrapped up with `notification-content` container which helps with correct positioning and spacing of content.
-
 ```html
 <div
 	class="notification notification-dismiss"
@@ -57,12 +55,7 @@ If `data-dismissable` attribute is also assigned a `dissapearing` value - notifi
 	data-dismissable="disappearing"
 >
 	<p>Dismissable notification. It would slowly fade out after closing.</p>
-	<button
-		type="button"
-		data-dismiss
-		aria-owns="example-notification-uid"
-		class="button-reset button-close line-height-1 border-radius-rounded"
-	>
+	<button type="button" data-dismiss aria-owns="example-notification-uid" class="button-close">
 		<span class="visually-hidden">Dismiss notification</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
@@ -79,12 +72,7 @@ If `data-dismissable` attribute is also assigned a `dissapearing` value - notifi
 	data-dismissable
 >
 	<p>Dismissable notification.</p>
-	<button
-		type="button"
-		data-dismiss
-		aria-owns="example-notification-uid-2"
-		class="button-reset button-close line-height-1 border-radius-rounded"
-	>
+	<button type="button" data-dismiss aria-owns="example-notification-uid-2" class="button-close">
 		<span class="visually-hidden">Dismiss notification</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
