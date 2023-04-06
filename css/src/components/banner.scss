@@ -42,10 +42,6 @@ $banner-border-width: $border-width !default;
 		}
 	}
 
-	.button-close {
-		color: currentColor;
-	}
-
 	a:not(.button) {
 		color: currentColor;
 		font-weight: $weight-semibold;
