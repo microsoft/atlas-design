@@ -1,8 +1,8 @@
-$banner-background: $secondary-background !default;
+$banner-background: $info-background !default;
 $banner-padding: $spacer-5 !default;
 
 $banner-font-size: $font-size-7 !default;
-$banner-color: $text !default;
+$banner-color: $info-dark !default;
 
 $banner-border-color: $border-white-high-contrast !default;
 $banner-border-width: $border-width !default;
@@ -21,8 +21,14 @@ $banner-border-width: $border-width !default;
 	word-break: break-word;
 	border-block: $banner-border-width solid $banner-border-color;
 
+	&.banner-dismiss {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
 	&.is-loading {
-		color: transparent !important;
+		color: transparent;
 
 		> :first-child {
 			margin-inline-start: calc($banner-padding + 0.375em);
@@ -31,70 +37,21 @@ $banner-border-width: $border-width !default;
 		&::before {
 			@include loader;
 
-			position: absolute !important;
-			inset-block-start: $banner-padding;
-			inset-inline-start: $banner-padding;
-			border-color: transparent transparent $banner-color $banner-color !important;
+			position: absolute;
+			border-color: transparent transparent $banner-color $banner-color;
 		}
 	}
 
-	@each $name, $color-set in $colors {
-		$base: nth($color-set, $color-index-base);
-		$dark: nth($color-set, $color-index-dark);
-		$background: nth($color-set, $color-index-background);
-
-		&.banner-#{$name} {
-			background-color: $background;
-
-			@if $name == 'info' or $name == 'primary' {
-				color: $dark;
-			} @else {
-				color: $base;
-			}
-
-			&.is-loading::before {
-				border-color: transparent transparent $dark $dark !important;
-			}
-
-			/* stylelint-disable max-nesting-depth */
-
-			.button-close {
-				color: inherit;
-
-				&:hover,
-				&.is-hovered {
-					color: $dark;
-				}
-			}
-
-			/* stylelint-enable max-nesting-depth */
-		}
+	.button-close {
+		color: currentColor;
 	}
 
-	.banner-title,
 	a:not(.button) {
 		color: currentColor;
 		font-weight: $weight-semibold;
 	}
 
-	.banner-title {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-
-		.icon {
-			flex-shrink: 0;
-			align-self: start;
-			margin-inline-end: 0.375em;
-		}
-	}
-
-	.banner-content {
-		padding-inline-end: $banner-padding;
-		position: relative;
-	}
-
 	&.disappearing {
-		animation: slideUpOutFadeOut 0.4s ease-in forwards;
+		animation: slide-up-out-fade-out 0.4s ease-in forwards;
 	}
 }

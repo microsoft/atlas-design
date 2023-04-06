@@ -4,7 +4,7 @@ $notification-padding: $spacer-5 !default;
 $notification-font-size: $font-size-7 !default;
 $notification-color: $text !default;
 
-$notification-border-color: $border-dark !default;
+$notification-border-color: $control-border !default;
 $notification-border-width: $border-width !default;
 $notification-border-radius: $border-radius !default;
 
@@ -21,23 +21,6 @@ $notification-border-radius: $border-radius !default;
 	word-wrap: break-word;
 	word-break: break-word;
 
-	&.is-loading {
-		color: transparent !important;
-
-		> :first-child {
-			margin-inline-start: calc($notification-padding + 0.375em);
-		}
-
-		&::before {
-			@include loader;
-
-			position: absolute !important;
-			inset-block-start: $notification-padding;
-			inset-inline-start: $notification-padding;
-			border-color: transparent transparent $notification-color $notification-color !important;
-		}
-	}
-
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
 		$dark: nth($color-set, $color-index-dark);
@@ -46,29 +29,38 @@ $notification-border-radius: $border-radius !default;
 		&.notification-#{$name} {
 			border-color: $base;
 			background-color: $background;
-
-			@if $name == 'info' or $name == 'primary' {
-				color: $dark;
-			} @else {
-				color: $base;
-			}
+			color: $dark;
 
 			&.is-loading::before {
-				border-color: transparent transparent $dark $dark !important;
+				border-color: transparent transparent $dark $dark;
 			}
-
-			/* stylelint-disable max-nesting-depth */
 
 			.button-close {
 				color: inherit;
-
-				&:hover,
-				&.is-hovered {
-					color: $dark;
-				}
 			}
+		}
+	}
 
-			/* stylelint-enable max-nesting-depth */
+	&.notification-dismiss {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	&.is-loading {
+		color: transparent;
+
+		> :first-child {
+			margin-inline-start: calc($notification-padding + 0.375em);
+		}
+
+		&::before {
+			@include loader;
+
+			position: absolute;
+			inset-block-start: $notification-padding;
+			inset-inline-start: $notification-padding;
+			border-color: transparent transparent $notification-color $notification-color;
 		}
 	}
 
@@ -82,6 +74,7 @@ $notification-border-radius: $border-radius !default;
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
+		margin-block-end: $layout-1;
 
 		.icon {
 			flex-shrink: 0;
@@ -90,12 +83,7 @@ $notification-border-radius: $border-radius !default;
 		}
 	}
 
-	.notification-content {
-		padding-inline-end: $notification-padding;
-		position: relative;
-	}
-
 	&.disappearing {
-		animation: fadeOut 0.4s ease-in forwards;
+		animation: fade-out 0.4s ease-in forwards;
 	}
 }
