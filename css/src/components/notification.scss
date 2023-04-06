@@ -1,0 +1,97 @@
+$notification-background: $secondary-background !default;
+$notification-padding: $spacer-5 !default;
+
+$notification-font-size: $font-size-7 !default;
+$notification-color: $text !default;
+
+$notification-border-color: $border-dark !default;
+$notification-border-width: $border-width !default;
+$notification-border-radius: $border-radius !default;
+
+.notification {
+	display: block;
+	position: relative;
+	border: $notification-border-width solid $notification-border-color;
+	border-radius: $notification-border-radius;
+	font-size: $notification-font-size;
+	padding: $notification-padding;
+	background-color: $notification-background;
+	outline-color: $text;
+	color: $notification-color;
+	word-wrap: break-word;
+	word-break: break-word;
+
+	&.is-loading {
+		color: transparent !important;
+
+		& > :first-child {
+			margin-inline-start: calc($notification-padding + 0.375em);
+		}
+
+		&::before {
+			@include loader;
+
+			position: absolute !important;
+			inset-block-start: $notification-padding;
+			inset-inline-start: $notification-padding;
+			border-color: transparent transparent $notification-color $notification-color !important;
+		}
+	}
+
+	@each $name, $color-set in $colors {
+		$base: nth($color-set, $color-index-base);
+		$dark: nth($color-set, $color-index-dark);
+		$background: nth($color-set, $color-index-background);
+
+		&.notification-#{$name} {
+			background-color: $background;
+			border-color: $base;
+
+			@if $name == 'info' or $name == 'primary' {
+				color: $dark;
+			} @else {
+				color: $base;
+			}
+
+			&.is-loading::before {
+				border-color: transparent transparent $dark $dark !important;
+			}
+
+			.button-close {
+				color: inherit;
+
+				&:hover,
+				&.is-hovered {
+					color: $dark;
+				}
+			}
+		}
+	}
+
+	.notification-title,
+	a:not(.button) {
+		font-weight: $weight-semibold;
+		color: currentColor;
+	}
+
+	.notification-title {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		.icon {
+			align-self: start;
+			margin-inline-end: 0.375em;
+			flex-shrink: 0;
+		}
+	}
+
+	.notification-content {
+		padding-inline-end: $notification-padding;
+		position: relative;
+	}
+
+	&.disappearing {
+		animation: fadeOut 0.4s ease-in forwards;
+	}
+}
