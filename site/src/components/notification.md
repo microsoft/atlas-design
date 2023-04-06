@@ -97,7 +97,7 @@ Ensure the user knows they need to wait for some event in order to interact with
 
 ## Semantic colors
 
-| State               | Class                                 |                                                                                                                                  |
+| State               | Class                                 | Example                                                                                                                          |
 | ------------------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | Secondary (default) | `.notification`                       | <div class="notification"><p class="margin-top-none">Default notification <a href="#">Link</a></p></div>                         |
 | Success             | `.notification .notification-success` | <div class="notification notification-success"><p class="margin-top-none">Success notification <a href="#">Link</a></p></div>    |
