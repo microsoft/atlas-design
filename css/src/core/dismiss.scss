@@ -1,0 +1,10 @@
+.banner[data-dismissable],
+.notification[data-dismissable] {
+	display: flex !important;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.disappearing {
+	animation: fade-out 0.4s ease-in forwards;
+}

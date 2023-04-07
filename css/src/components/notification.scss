@@ -27,7 +27,7 @@ $notification-border-radius: $border-radius !default;
 		$background: nth($color-set, $color-index-background);
 
 		&.notification-#{$name} {
-			border-color: $base;
+			border-color: $dark;
 			background-color: $background;
 			color: $dark;
 
@@ -35,12 +35,6 @@ $notification-border-radius: $border-radius !default;
 				border-color: transparent transparent $dark $dark;
 			}
 		}
-	}
-
-	&.notification-dismiss {
-		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
 	}
 
 	&.is-loading {
@@ -77,9 +71,5 @@ $notification-border-radius: $border-radius !default;
 			align-self: start;
 			margin-inline-end: 0.375em;
 		}
-	}
-
-	&.disappearing {
-		animation: fade-out 0.4s ease-in forwards;
 	}
 }

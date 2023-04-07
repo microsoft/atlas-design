@@ -21,12 +21,6 @@ $banner-border-width: $border-width !default;
 	word-break: break-word;
 	border-block: $banner-border-width solid $banner-border-color;
 
-	&.banner-dismiss {
-		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-	}
-
 	&.is-loading {
 		color: transparent;
 
