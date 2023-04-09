@@ -37,6 +37,10 @@ $notification-border-radius: $border-radius !default;
 		}
 	}
 
+	&[data-dismissable] {
+		@include dismiss;
+	}
+
 	&.is-loading {
 		color: transparent;
 

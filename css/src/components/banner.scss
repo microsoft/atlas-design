@@ -41,6 +41,10 @@ $banner-border-width: $border-width !default;
 		font-weight: $weight-semibold;
 	}
 
+	&[data-dismissable] {
+		@include dismiss;
+	}
+
 	&.disappearing {
 		animation: slide-up-out-fade-out 0.4s ease-in forwards;
 	}

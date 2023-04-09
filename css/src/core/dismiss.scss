@@ -1,5 +1,4 @@
-.banner[data-dismissable],
-.notification[data-dismissable] {
+@mixin dismiss {
 	display: flex !important;
 	align-items: flex-start;
 	justify-content: space-between;
