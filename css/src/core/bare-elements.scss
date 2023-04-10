@@ -32,3 +32,12 @@ fieldset {
 	min-width: 0; // as a replaced element min-width:0 is required to enable it to work in responsive layouts
 	border: none;
 }
+
+::target-text {
+	background-color: $info-background;
+	color: $info-dark;
+}
+
+a > ::target-text {
+	color: $info-dark;
+}
