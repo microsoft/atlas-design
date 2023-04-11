@@ -10,7 +10,7 @@ classPrefixes:
 
 # Notification
 
-Notification is a colored block meant to alert users of something.
+Notification is a colored block meant to inform users of something.
 
 ## Usage
 
@@ -18,7 +18,7 @@ Here is an example of a standard usage of notification component.
 
 ```html
 <div class="notification">
-	<p>A notification about something happening in the world <a href="#">Link Text</a></p>
+	<p>A notification about something happening in the world <a href="#">Link</a></p>
 </div>
 ```
 
@@ -74,13 +74,13 @@ Ensure the user knows they need to wait for some event in order to interact with
 
 ## Semantic colors
 
-| State               | Class                                 | Example                                                                                                                          |
-| ------------------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Secondary (default) | `.notification`                       | <div class="notification"><p class="margin-top-none">Default notification <a href="#">Link</a></p></div>                         |
-| Success             | `.notification .notification-success` | <div class="notification notification-success"><p class="margin-top-none">Success notification <a href="#">Link</a></p></div>    |
-| Danger              | `.notification .notification-danger`  | <div class="notification notification-danger"><p class="margin-top-none">Danger notification <a href="#">Link</a></p></div>      |
-| Info                | `.notification .notification-info`    | <div class="notification notification-info"><p class="margin-top-none">Informational notification <a href="#">Link</a></p></div> |
-| Primary             | `.notification .notification-primary` | <div class="notification notification-primary"><p class="margin-top-none">Primary notification <a href="#">Link</a></p></div>    |
+| State   | Class                                 | Example                                                                                                                          |
+| ------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Default | `.notification`                       | <div class="notification"><p class="margin-top-none">Default notification <a href="#">Link</a></p></div>                         |
+| Success | `.notification .notification-success` | <div class="notification notification-success"><p class="margin-top-none">Success notification <a href="#">Link</a></p></div>    |
+| Danger  | `.notification .notification-danger`  | <div class="notification notification-danger"><p class="margin-top-none">Danger notification <a href="#">Link</a></p></div>      |
+| Info    | `.notification .notification-info`    | <div class="notification notification-info"><p class="margin-top-none">Informational notification <a href="#">Link</a></p></div> |
+| Primary | `.notification .notification-primary` | <div class="notification notification-primary"><p class="margin-top-none">Primary notification <a href="#">Link</a></p></div>    |
 
 ```abut-html
 <div class="notification notification-success">

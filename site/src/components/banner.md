@@ -2,7 +2,7 @@
 title: Banner
 description: The Banner component in the Atlas Design System
 template: standard
-figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fnode-id%3D1002%253A7106%26t%3DWU64bU98uaT1nU7A-1
+figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fnode-id%3D35687%253A253899%26t%3DMgxlZCy8on3CKZ9O-1
 classType: Component
 classPrefixes:
   - banner
@@ -20,7 +20,7 @@ Here is an example of a standard usage of banner component.
 
 ```html-no-indent
 <div class="banner">
-	<p>A banner about something happening in the world <a href="#">Link Text</a></p>
+	<p>A banner about something happening in the world <a href="#">Link</a></p>
 </div>
 ```
 
@@ -30,7 +30,7 @@ Banners can be dismissed by adding the `data-dismissable` attribute to the `.ban
 
 ```html-no-indent
 <div class="banner" id="example-banner-id" data-dismissable>
-	<p>Dismissable banner. It would slowly slide up after closing.</p>
+	<p>Dismissable banner. It will slowly slide up after closing.</p>
 	<button type="button" class="button-close" data-bi-name="close" data-dismiss>
 		<span class="visually-hidden">Dismiss banner</span>
 		<span class="icon" aria-hidden="true">
