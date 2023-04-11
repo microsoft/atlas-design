@@ -38,7 +38,7 @@ You can add a title to the notification with an optional icon.
 		</span>
 		<span>Title</span>
 	</p>
-	<p>A notification about something happening in the world <a href="#">Link Text</a></p>
+	<p>A notification about something happening in the world <a href="#">Link</a></p>
 </div>
 ```
 
