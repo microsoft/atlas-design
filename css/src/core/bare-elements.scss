@@ -38,6 +38,10 @@ fieldset {
 	color: $info-dark;
 }
 
-a > ::target-text {
-	color: $info-dark;
+:where(a)::target-text {
+	color: $hyperlink;
+}
+
+:where(a:visited)::target-text {
+	color: $visited;
 }
