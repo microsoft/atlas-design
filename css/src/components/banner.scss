@@ -39,6 +39,10 @@ $banner-border-width: $border-width !default;
 	a:not(.button) {
 		color: currentColor;
 		font-weight: $weight-semibold;
+
+		.theme-high-contrast & {
+			color: $hyperlink;
+		}
 	}
 
 	&[data-dismissable] {

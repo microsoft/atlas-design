@@ -64,6 +64,12 @@ $notification-border-radius: $border-radius !default;
 		font-weight: $weight-semibold;
 	}
 
+	a:not(.button) {
+		.theme-high-contrast & {
+			color: $hyperlink;
+		}
+	}
+
 	.notification-title {
 		display: flex;
 		align-items: center;
