@@ -279,6 +279,7 @@ module.exports = {
 					'GrayText'
 				]
 			}
-		]
+		],
+		'import-notation': null
 	}
 };
