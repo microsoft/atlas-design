@@ -104,6 +104,7 @@ The following class is used to alter the letter spacing.
 The following classes can be used to align text.
 
 ```html
+<p class="text-align-left">Left aligned text</p>
 <p class="text-align-center">Center aligned text</p>
 <p class="text-align-right">Right aligned text</p>
 ```
