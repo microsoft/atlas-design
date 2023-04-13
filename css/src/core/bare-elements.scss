@@ -34,14 +34,5 @@ fieldset {
 }
 
 ::target-text {
-	background-color: $info-background;
-	color: $info-dark;
-}
-
-:where(a)::target-text {
-	color: $hyperlink;
-}
-
-:where(a:visited)::target-text {
-	color: $visited;
+	background-color: $code-highlight-background;
 }
