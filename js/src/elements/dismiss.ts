@@ -21,9 +21,9 @@ export function initDismiss() {
 }
 
 async function dismissElement(dismissTarget: Element) {
-	dismissTarget.classList.add('disappearing');
+	dismissTarget.classList.add('is-dismissed');
 	await new Promise(resolve => setTimeout(resolve, 500));
-	dismissTarget.classList.remove('disappearing');
+	dismissTarget.classList.remove('is-dismissed');
 	dismissTarget.remove();
 
 	// Notification about content update occurrence.

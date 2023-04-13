@@ -31,7 +31,7 @@ Banners can be dismissed by adding the `data-dismissable` attribute to the `.ban
 ```html-no-indent
 <div class="banner" id="example-banner-id" data-dismissable>
 	<p>Dismissable banner. It will slowly slide up after closing.</p>
-	<button type="button" class="button-close" data-bi-name="close" data-dismiss>
+	<button type="button" class="dismiss" data-bi-name="close" data-dismiss>
 		<span class="visually-hidden">Dismiss banner</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">

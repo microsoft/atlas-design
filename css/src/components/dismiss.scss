@@ -1,4 +1,4 @@
-.button-close {
+.dismiss {
 	@include transparent-effects;
 
 	display: inline-block;
@@ -8,4 +8,8 @@
 	color: currentColor;
 	line-height: 1;
 	cursor: pointer;
+}
+
+.is-dismissed {
+	animation: fade-out 0.4s ease-in forwards;
 }

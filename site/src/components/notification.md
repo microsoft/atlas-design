@@ -49,7 +49,7 @@ Notifications can be dismissed by adding the `data-dismissable` attribute to the
 ```html
 <div class="notification" id="example-notification-id" data-dismissable>
 	<p>Dismissable notification.</p>
-	<button type="button" data-dismiss data-bi-name="close" class="button-close">
+	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
 		<span class="visually-hidden">Dismiss notification</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
