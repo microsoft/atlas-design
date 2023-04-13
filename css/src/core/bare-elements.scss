@@ -34,8 +34,7 @@ fieldset {
 }
 
 ::target-text {
-	background-color: $info-background;
-	color: $info-dark;
+	background-color: $code-highlight-background;
 }
 
 :where(a)::target-text {
