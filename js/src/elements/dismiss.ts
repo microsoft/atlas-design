@@ -1,5 +1,3 @@
-import { notifyContentUpdated } from '../utilities/notify-content-updated';
-
 export function initDismiss() {
 	window.addEventListener(
 		'click',
@@ -27,5 +25,7 @@ async function dismissElement(dismissTarget: Element) {
 	await new Promise(resolve => setTimeout(resolve, 500));
 	dismissTarget.classList.remove('disappearing');
 	dismissTarget.remove();
-	notifyContentUpdated();
+
+	// Notification about content update occurrence.
+	window.dispatchEvent(new CustomEvent('dismiss-content-update'));
 }
