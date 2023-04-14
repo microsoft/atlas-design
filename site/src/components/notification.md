@@ -10,7 +10,7 @@ classPrefixes:
 
 # Notification
 
-Notification is a colored block meant to inform users of something.
+Notification is a colored block meant to inform users of something. It is intended for use within another element, such as the body of an article.
 
 ## Usage
 

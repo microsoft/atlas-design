@@ -24,16 +24,3 @@
 		transform: scale(1);
 	}
 }
-
-@keyframes slide-up-out-fade-out {
-	100% {
-		transform: translateY(-100%);
-		opacity: 0;
-	}
-}
-
-@keyframes fade-out {
-	100% {
-		opacity: 0;
-	}
-}

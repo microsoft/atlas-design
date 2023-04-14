@@ -10,7 +10,7 @@ classPrefixes:
 
 # Banner
 
-Banner component allows adding a full width message block to the page to notify user about something that’s not directly related to the page content.
+Banner component allows adding a full width message block to notify user about something that’s not directly related to the page content.
 
 **This page is best viewed with the content section full screened because banners are intended to be full width elements. Go full screen by clicking the button in the top right corner.**
 
