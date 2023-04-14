@@ -44,12 +44,4 @@ $banner-border-width: $border-width !default;
 			color: $hyperlink;
 		}
 	}
-
-	&[data-dismissable] {
-		@include dismiss;
-	}
-
-	&.is-dismissed {
-		animation: slide-up-out-fade-out 0.4s ease-in forwards;
-	}
 }

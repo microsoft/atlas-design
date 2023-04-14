@@ -42,26 +42,6 @@ You can add a title to the notification with an optional icon.
 </div>
 ```
 
-### Dismissing notification
-
-Notifications can be dismissed by adding the `data-dismissable` attribute to the `.notification` and `data-dismiss`to the closing button.
-
-```html
-<div class="notification" id="example-notification-id" data-dismissable>
-	<p>Dismissable notification.</p>
-	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
-		<span class="visually-hidden">Dismiss notification</span>
-		<span class="icon" aria-hidden="true">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
-				<path
-					d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"
-				/>
-			</svg>
-		</span>
-	</button>
-</div>
-```
-
 ### Loading notification
 
 Ensure the user knows they need to wait for some event in order to interact with a notification.
