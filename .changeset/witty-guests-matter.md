@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Adding banner component and relevant documentation.
+Adding notification component and relevant documentation.
