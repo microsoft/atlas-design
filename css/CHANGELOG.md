@@ -1,5 +1,19 @@
 # @microsoft/atlas-css
 
+## 3.31.0
+
+### Minor Changes
+
+- 5aebf54: Adding line-height-normal typography atomic and updating relevant documentation.
+- c9e0b4a: Adding banner component and relevant documentation.
+- 5aebf54: Adding text-align-left typography atomic and updating relevant documentation.
+- 86ac418: For browsers that support target-text, update the background color to make text and URLs more visible when highlighted
+- c9e0b4a: Adding notification component and relevant documentation.
+
+### Patch Changes
+
+- afc478a: Updating button's icon size.
+
 ## 3.30.0
 
 ### Minor Changes
