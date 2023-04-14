@@ -1,5 +1,20 @@
 # @microsoft/atlas-site
 
+## 0.37.0
+
+### Minor Changes
+
+- 5aebf54: Adding line-height-normal typography atomic and updating relevant documentation.
+- c9e0b4a: Adding banner component and relevant documentation.
+- 5aebf54: Adding text-align-left typography atomic and updating relevant documentation.
+- c9e0b4a: Adding notification component and relevant documentation.
+
+### Patch Changes
+
+- 380d6d4: Updating form documentation page.
+- d1e4404: Fix typos in flex.md.
+- 13bd1cf: Add various accessibility fixes as a result of running automated axe/playwright tests.
+
 ## 0.36.0
 
 ### Minor Changes
