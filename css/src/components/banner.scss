@@ -1,0 +1,47 @@
+$banner-background: $info-background !default;
+$banner-padding: $spacer-5 !default;
+
+$banner-font-size: $font-size-7 !default;
+$banner-color: $info-dark !default;
+
+$banner-border-color: $border-white-high-contrast !default;
+$banner-border-width: $border-width !default;
+
+.banner {
+	@extend %layout-gap;
+
+	display: block;
+	position: relative;
+	outline-color: $text;
+	background-color: $banner-background;
+	color: $banner-color;
+	font-size: $banner-font-size;
+	padding-block: $banner-padding;
+	word-wrap: break-word;
+	word-break: break-word;
+	border-block: $banner-border-width solid $banner-border-color;
+
+	&.is-loading {
+		color: transparent;
+
+		> :first-child {
+			margin-inline-start: calc($banner-padding + 0.375em);
+		}
+
+		&::before {
+			@include loader;
+
+			position: absolute;
+			border-color: transparent transparent $banner-color $banner-color;
+		}
+	}
+
+	a:not(.button) {
+		color: currentColor;
+		font-weight: $weight-semibold;
+
+		.theme-high-contrast & {
+			color: $hyperlink;
+		}
+	}
+}
