@@ -54,10 +54,15 @@ $notification-border-radius: $border-radius !default;
 		}
 	}
 
+	> :first-child {
+		margin-block-start: 0;
+	}
+
 	.notification-title,
 	a:not(.button) {
 		color: currentColor;
 		font-weight: $weight-semibold;
+		line-height: 1.15;
 	}
 
 	a:not(.button) {

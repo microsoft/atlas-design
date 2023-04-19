@@ -36,6 +36,10 @@ $banner-border-width: $border-width !default;
 		}
 	}
 
+	> :first-child {
+		margin-block-start: 0;
+	}
+
 	a:not(.button) {
 		color: currentColor;
 		font-weight: $weight-semibold;
