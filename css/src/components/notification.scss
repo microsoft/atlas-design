@@ -8,6 +8,9 @@ $notification-border-color: $control-border !default;
 $notification-border-width: $border-width !default;
 $notification-border-radius: $border-radius !default;
 
+$notification-icon-inline-spacing: 0.375em !default;
+$notification-icon-block-spacing: 0.1em !default;
+
 .notification {
 	display: block;
 	position: relative;
@@ -20,6 +23,7 @@ $notification-border-radius: $border-radius !default;
 	font-size: $notification-font-size;
 	word-wrap: break-word;
 	word-break: break-word;
+	line-height: $line-height-normal;
 
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
@@ -54,10 +58,6 @@ $notification-border-radius: $border-radius !default;
 		}
 	}
 
-	> :first-child {
-		margin-block-start: 0;
-	}
-
 	.notification-title,
 	a:not(.button) {
 		color: currentColor;
@@ -80,7 +80,8 @@ $notification-border-radius: $border-radius !default;
 		.icon {
 			flex-shrink: 0;
 			align-self: start;
-			margin-inline-end: 0.375em;
+			margin-inline-end: $notification-icon-inline-spacing;
+			margin-block-start: $notification-icon-block-spacing;
 		}
 	}
 }

@@ -20,6 +20,7 @@ $banner-border-width: $border-width !default;
 	word-wrap: break-word;
 	word-break: break-word;
 	border-block: $banner-border-width solid $banner-border-color;
+	line-height: $line-height-normal;
 
 	&.is-loading {
 		color: transparent;
@@ -34,10 +35,6 @@ $banner-border-width: $border-width !default;
 			position: absolute;
 			border-color: transparent transparent $banner-color $banner-color;
 		}
-	}
-
-	> :first-child {
-		margin-block-start: 0;
 	}
 
 	a:not(.button) {
