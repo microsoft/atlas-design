@@ -9,7 +9,7 @@ $notification-border-width: $border-width !default;
 $notification-border-radius: $border-radius !default;
 
 $notification-icon-inline-spacing: 0.375em !default;
-$notification-icon-block-spacing: 0.1em !default;
+$notification-icon-block-spacing: 0.2em !default;
 
 .notification {
 	display: block;
@@ -62,7 +62,6 @@ $notification-icon-block-spacing: 0.1em !default;
 	a:not(.button) {
 		color: currentColor;
 		font-weight: $weight-semibold;
-		line-height: 1.15;
 	}
 
 	a:not(.button) {
