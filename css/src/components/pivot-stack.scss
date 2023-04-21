@@ -1,9 +1,12 @@
 @use 'sass:math';
 
 $ps-height: 44px !default;
-$ps-font-size-mobile: $font-size-8 !default;
+$ps-font-size-large: $font-size-6 !default;
 $ps-font-size-desktop: $font-size-7 !default;
+$ps-font-size-mobile: $font-size-8 !default;
+
 $ps-horizontal-spacing: $spacer-3 !default;
+$ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 
 $ps-button-color: $text !default;
 $ps-button-hover-background-color: $body-background-medium !default;
@@ -12,8 +15,6 @@ $ps-button-tag-margin: math.div($font-size-9, 3) !default;
 
 $ps-hover-bottom-thickness: math.div($spacer-2, 2) !default;
 $ps-border-bottom-style-hover: 2px solid $primary !default;
-
-$ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 
 .pivot-stack {
 	display: flex;
@@ -42,6 +43,7 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 	align-items: stretch;
 }
 
+// TODO: add styling for "pressed" state
 .pivot-stack-button {
 	@include unselectable;
 
@@ -108,6 +110,10 @@ $ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
 			border-bottom: $ps-border-bottom-style-hover;
 			content: '';
 		}
+	}
+
+	&.is-large {
+		font-size: $ps-font-size-large;
 	}
 }
 

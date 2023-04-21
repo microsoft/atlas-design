@@ -110,3 +110,60 @@ Pivot stack buttons can be decorated with custom icons for a more elaborate repr
 	</div>
 </section>
 ```
+
+### With larger buttons
+
+Another variant of the Pivot stack is with bigger buttons. All you need to do is add the `is-large` class to the pivot stack button element. Here is an example.
+
+```html
+<section class="margin-bottom-md">
+	<div class="pivot-stack">
+		<nav class="pivot-stack-nav" role="navigation" aria-label="Site">
+			<ul class="pivot-stack-nav-list">
+				<li class="pivot-stack-item is-active">
+					<a id="item-1" class="pivot-stack-button is-large" href="#">
+						<span>Item 1</span>
+					</a>
+				</li>
+				<li class="pivot-stack-item">
+					<a id="item-2" class="pivot-stack-button is-large" href="#">
+						<span>Item 2</span>
+					</a>
+				</li>
+				<li class="pivot-stack-item">
+					<a id="item-3" class="pivot-stack-button is-large" href="#">
+						<span>Item 3</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</section>
+<section>
+	<h2>With icons</h2>
+	<div class="pivot-stack">
+		<nav class="pivot-stack-nav" role="navigation" aria-label="Site">
+			<ul class="pivot-stack-nav-list">
+				<li class="pivot-stack-item is-active">
+					<a id="item-1" class="pivot-stack-button is-large" href="#">
+						<span class="icon border"></span>
+						<span>Item 1</span>
+					</a>
+				</li>
+				<li class="pivot-stack-item">
+					<a id="item-2" class="pivot-stack-button is-large" href="#">
+						<span class="icon border"></span>
+						<span>Item 2</span>
+					</a>
+				</li>
+				<li class="pivot-stack-item">
+					<a id="item-3" class="pivot-stack-button is-large" href="#">
+						<span class="icon border"></span>
+						<span>Item 3</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</section>
+```
