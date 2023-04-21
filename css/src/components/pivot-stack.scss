@@ -1,0 +1,170 @@
+@use 'sass:math';
+
+$ps-height: 44px !default;
+$ps-font-size-large: $font-size-6 !default;
+$ps-font-size-desktop: $font-size-7 !default;
+$ps-font-size-mobile: $font-size-8 !default;
+
+$ps-horizontal-spacing: $spacer-3 !default;
+$ps-submenu-button-padding: $spacer-3 $spacer-5 !default;
+
+$ps-button-color: $text !default;
+$ps-button-hover-background-color: $body-background-medium !default;
+
+$ps-button-tag-margin: math.div($font-size-9, 3) !default;
+
+$ps-hover-bottom-thickness: math.div($spacer-2, 2) !default;
+$ps-border-bottom-style-hover: 2px solid $primary !default;
+
+.pivot-stack {
+	display: flex;
+	position: relative;
+	align-items: stretch;
+	justify-content: space-between;
+	box-sizing: border-box;
+	width: 100%;
+	height: $ps-height;
+	min-height: $ps-height;
+	padding-#{$user-left}: 0;
+	padding-#{$user-right}: 0;
+}
+
+.pivot-stack-nav {
+	display: none;
+	@include tablet {
+		display: flex;
+	}
+
+	align-items: stretch;
+}
+
+.pivot-stack-nav-list {
+	display: flex;
+	align-items: stretch;
+}
+
+// TODO: add styling for "pressed" state
+
+.pivot-stack-button {
+	@include unselectable;
+
+	display: flex;
+	flex-grow: 0;
+	flex-shrink: 0;
+	align-items: center;
+	align-self: stretch;
+	justify-content: center;
+	min-width: 54px;
+	padding: 0 $ps-horizontal-spacing;
+	border: none; // override button default
+	outline-offset: -1 * $focus-width !important; // inset focus outline.
+	background-color: transparent; // override button default
+	color: $ps-button-color;
+	font-size: $ps-font-size-mobile;
+	line-height: normal;
+	text-decoration: none !important;
+	white-space: nowrap;
+	cursor: pointer;
+
+	> .icon:first-child {
+		margin-right: $spacer-2;
+	}
+
+	> .icon:last-child {
+		margin-left: $spacer-2;
+	}
+
+	.dropdown-menu &,
+	.pivot-stack-mobile-nav & {
+		justify-content: flex-start;
+	}
+
+	.pivot-stack-mobile-nav & {
+		padding: $ps-horizontal-spacing * 2;
+	}
+
+	&:visited {
+		color: $ps-button-color;
+	}
+
+	&.dropdown-trigger[aria-expanded='true'] {
+		background-color: $ps-button-hover-background-color;
+	}
+
+	.dropdown-menu & {
+		padding: $ps-submenu-button-padding;
+	}
+
+	:active &,
+	.is-active:not([aria-expanded='true']) &,
+	.focus-visible:not([aria-expanded='true']) & {
+		position: relative;
+		font-weight: $weight-semibold;
+
+		&::after {
+			display: block;
+			position: absolute;
+			right: 0;
+			bottom: -#{$ps-hover-bottom-thickness};
+			left: 0;
+			margin: 0 $ps-horizontal-spacing;
+			border-bottom: $ps-border-bottom-style-hover;
+			content: '';
+		}
+	}
+
+	&.is-large {
+		font-size: $ps-font-size-large;
+	}
+}
+
+.pivot-stack-item {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+
+	&.has-spacing {
+		margin: 0 $ps-horizontal-spacing;
+	}
+
+	&.is-category {
+		margin: 0 $ps-horizontal-spacing;
+
+		> .pivot-stack-button {
+			.tag {
+				margin-bottom: $ps-button-tag-margin;
+			}
+		}
+
+		> .is-title {
+			padding-left: $ps-horizontal-spacing;
+		}
+
+		&::before {
+			display: inline-block;
+			height: $spacer-7;
+			border-left: 2px solid $text-subtle;
+			content: '';
+			margin-#{$user-left}: $ps-horizontal-spacing;
+			margin-#{$user-right}: 2 * $ps-horizontal-spacing;
+		}
+	}
+
+	&:hover {
+		background-color: $ps-button-hover-background-color;
+
+		&.is-active {
+			position: relative;
+
+			&::after {
+				display: block;
+				position: absolute;
+				right: 0;
+				bottom: -#{$ps-hover-bottom-thickness};
+				left: 0;
+				border-bottom: $ps-border-bottom-style-hover;
+				content: '';
+			}
+		}
+	}
+}
