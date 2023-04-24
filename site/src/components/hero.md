@@ -33,7 +33,7 @@ At its most basic, a hero is comprised of two elements, a container with the `.h
 
 ## Permutations of the hero component
 
-While at its core, the hero is a spacing element, it also has some extra functionality built into it. Combinations of these modifers and subcomponents can be used together. You can visit the [hero patterns page](../patterns/hero.md) to get inspiration or view common combinations.
+While at its core, the hero is a spacing element, it also has some extra functionality built into it. Combinations of these modifiers and subcomponents can be used together. You can visit the [hero patterns page](../patterns/hero.md) to get inspiration or view common combinations.
 
 ## Hero background colors and patterns
 
