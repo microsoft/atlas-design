@@ -4,6 +4,7 @@ description: Gradient related components in the Atlas Design System
 template: standard
 classType: Component
 classPrefixes:
+  - gradient-background
   - gradient-border
   - gradient-text
 ---
@@ -13,8 +14,8 @@ classPrefixes:
 There are three main types of gradients.
 
 1. Gradients displayed with font (`.gradient-text-`).
-2. Gradients for blending background colors between elements and contains (`.gradient-border-*`).
-3. Gradient border colors (`border-color-*-to-*`).
+2. Gradients for blending background colors between elements and contains (`.gradient-background-*`).
+3. Gradient border colors (`gradient-border*-to-*`).
 
 ## Text color gradients
 
@@ -39,7 +40,7 @@ Gradient color themes will be added as needed. Border gradient classes work with
 
 ```html
 <div
-	class="padding-sm font-size-sm border border-md border-radius-lg border-color-info-bright-to-primary"
+	class="padding-sm font-size-sm border border-md border-radius-lg gradient-border-info-bright-to-primary"
 >
 	A border gradient from purple to blue
 </div>
@@ -57,14 +58,14 @@ border-{gradientColors}-{direction}
 
 ## Gradient background usage
 
-The `.gradient-border` component is a moderately pluggable component used to blend the boundaries between colors. Because of the near-infinite number of steps, color variations, and gradient types involved in creating a gradient, we've scoped these to be linear gradients that transition between `transparent` and a given color represented by the `--border-gradient-end-color` custom property. Each gradient combination requires a minimum of two class, one specifying the color and one specifying the direction.
+The `.gradient-background` component is a moderately pluggable component used to blend the boundaries between colors. Because of the near-infinite number of steps, color variations, and gradient types involved in creating a gradient, we've scoped these to be linear gradients that transition between `transparent` and a given color represented by the `--border-gradient-end-color` custom property. Each gradient combination requires a minimum of two class, one specifying the color and one specifying the direction.
 
 Border gradients are hidden in forced colors mode.
 
-| base class name               | interpolated value    | screensize |
-| ----------------------------- | --------------------- | ---------- |
-| `gradient-border-<direction>` | `right`, `bottom`     | `tablet`   |
-| `gradient-border-<colorname>` | `body`, `body-accent` | n/a        |
+| base class name                   | interpolated value    | screensize |
+| --------------------------------- | --------------------- | ---------- |
+| `gradient-background-<direction>` | `right`, `bottom`     | `tablet`   |
+| `gradient-background-<colorname>` | `body`, `body-accent` | n/a        |
 
 Note: you can also view the [Accent hero on the hero patterns page](../patterns/hero.md) page to see an example that uses this gradient to blend an image to the background.
 
@@ -75,7 +76,7 @@ Here is a horizontal example. As you can see, not all colors look good with this
 ```html
 <div class="display-flex">
 	<div
-		class="gradient-border-right background-color-info color-primary-invert gradient-border-body padding-xl flex-grow-1"
+		class="gradient-background-right background-color-info color-primary-invert gradient-background-body padding-xl flex-grow-1"
 	>
 		A left gradient is applied and a different background color.
 	</div>
@@ -90,7 +91,7 @@ Here is a horizontal example. As you can see, not all colors look good with this
 The follow shows an example with two elements. The top element contains a bottom gradient that blends toward the bottom element, which has a matching background color class applied. _There is a middle border class applied that is purely used to show the distinction between the two elements._
 
 ```html
-<div class="gradient-border-bottom gradient-border-body-accent padding-xl">
+<div class="gradient-background-bottom gradient-background-body-accent padding-xl">
 	A bottom gradient is applied.
 </div>
 <div class="background-color-body-accent padding-xl">A background color is applied</div>
@@ -99,7 +100,9 @@ The follow shows an example with two elements. The top element contains a bottom
 The inverse ...
 
 ```html
-<div class="gradient-border-bottom background-color-body-accent gradient-border-body padding-xl">
+<div
+	class="gradient-background-bottom background-color-body-accent gradient-background-body padding-xl"
+>
 	A bottom gradient is applied.
 </div>
 <div class="padding-xl ">A background color is applied</div>
