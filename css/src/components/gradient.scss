@@ -87,7 +87,7 @@ $border-gradient-direction: (
 	}
 }
 
-@mixin border-fade($deg, $colorStart, $colorEnd) {
+@mixin border-gradient($deg, $colorStart, $colorEnd) {
 	border-color: transparent !important;
 	background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
 		linear-gradient(#{$deg}deg, $colorStart 0%, $colorEnd 100%) border-box !important;
@@ -95,15 +95,15 @@ $border-gradient-direction: (
 
 @each $name, $colorStart, $colorEnd in $border-gradient-themes {
 	.border.border-color-#{$name} {
-		@include border-fade(90, $colorStart, $colorEnd);
+		@include border-gradient(90, $colorStart, $colorEnd);
 	}
 	.border.border-color-#{$name}-inverse {
-		@include border-fade(270, $colorStart, $colorEnd);
+		@include border-gradient(270, $colorStart, $colorEnd);
 	}
 	.border.border-color-#{$name}-vertical {
-		@include border-fade(0, $colorStart, $colorEnd);
+		@include border-gradient(0, $colorStart, $colorEnd);
 	}
 	.border.border-color-#{$name}-vertical-inverse {
-		@include border-fade(180, $colorStart, $colorEnd);
+		@include border-gradient(180, $colorStart, $colorEnd);
 	}
 }
