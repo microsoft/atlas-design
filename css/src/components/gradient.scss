@@ -88,9 +88,9 @@ $border-gradient-direction: (
 }
 
 @mixin border-fade($deg, $colorStart, $colorEnd) {
+	border-color: transparent !important;
 	background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
 		linear-gradient(#{$deg}deg, $colorStart 0%, $colorEnd 100%) border-box !important;
-	border-color: transparent !important;
 }
 
 @each $name, $colorStart, $colorEnd in $border-gradient-themes {
