@@ -3,6 +3,9 @@ $border-gradient-colors: (
 	'body-accent': $body-background-accent
 ) !default;
 
+$border-gradient-themes: 'info-bright-to-primary' $info-bright $primary,
+	'warning-to-danger' $warning $danger;
+
 @each $name, $var in $border-gradient-colors {
 	// ex. .gradient-border-body { --border-gradient-end-color: var(--theme-body-background); }
 	.gradient-border-#{$name} {
@@ -81,5 +84,26 @@ $border-gradient-direction: (
 
 	.gradient-text-#{$name} {
 		@include gradient-text($colorStart, $colorEnd);
+	}
+}
+
+@mixin border-fade($deg, $colorStart, $colorEnd) {
+	background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
+		linear-gradient(#{$deg}deg, $colorStart 0%, $colorEnd 100%) border-box !important;
+	border-color: transparent !important;
+}
+
+@each $name, $colorStart, $colorEnd in $border-gradient-themes {
+	.border.border-color-#{$name} {
+		@include border-fade(90, $colorStart, $colorEnd);
+	}
+	.border.border-color-#{$name}-inverse {
+		@include border-fade(270, $colorStart, $colorEnd);
+	}
+	.border.border-color-#{$name}-vertical {
+		@include border-fade(0, $colorStart, $colorEnd);
+	}
+	.border.border-color-#{$name}-vertical-inverse {
+		@include border-fade(180, $colorStart, $colorEnd);
 	}
 }
