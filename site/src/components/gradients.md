@@ -10,10 +10,11 @@ classPrefixes:
 
 # Gradients
 
-There are two main types of gradients.
+There are three main types of gradients.
 
 1. Gradients displayed with font (`.gradient-text-`).
-2. Gradients for blending colors between elements and contains (`.gradient-border-*`).
+2. Gradients for blending background colors between elements and contains (`.gradient-border-*`).
+3. Gradient border colors (`border-color-*-to-*`).
 
 ## Text color gradients
 
@@ -32,7 +33,29 @@ Because gradient transitions take up the entire width of a particular element, i
 </h3>
 ```
 
-## Gradient borders usage
+## Border color gradients
+
+Gradient color themes will be added as needed. Border gradient classes work with existing border atomic classes.
+
+```html
+<div
+	class="padding-sm font-size-sm border border-md border-radius-lg border-color-info-bright-to-primary"
+>
+	A border gradient from purple to blue
+</div>
+```
+
+| modifiers | gradientColors                                | direction                                 |
+| --------- | --------------------------------------------- | ----------------------------------------- |
+| values    | `info-bright-to-primary`, `warning-to-danger` | `inverse`, `vertical`, `vertical-inverse` |
+
+Should be applied in this order:
+
+```css
+border-{gradientColors}-{direction}
+```
+
+## Gradient background usage
 
 The `.gradient-border` component is a moderately pluggable component used to blend the boundaries between colors. Because of the near-infinite number of steps, color variations, and gradient types involved in creating a gradient, we've scoped these to be linear gradients that transition between `transparent` and a given color represented by the `--border-gradient-end-color` custom property. Each gradient combination requires a minimum of two class, one specifying the color and one specifying the direction.
 
