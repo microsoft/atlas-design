@@ -123,15 +123,15 @@ The color of a border can be modified using the following classes.
 
 The gradient colors of a border can be modified using the following classes.
 
-| modifiers | color name         | direction |
+| modifiers | gradient name      | direction |
 | --------- | ------------------ | --------- |
-| values    | `argon`, `sunrise` | `inverse` |
+| values    | `argon`, `sunrise` | `invert`  |
 
 ```html
 <div class="border-color-argon border-md padding-block-md border-radius-lg margin-bottom-xs">
-	<p class="margin-inline-md">Gradient Color</p>
+	<p class="margin-inline-md">Border with gradient</p>
 </div>
-<div class="border-color-argon-inverse border-md padding-block-md border-radius-lg">
-	<p class="margin-inline-md">Inversed gradient Color</p>
+<div class="border-color-argon-invert border-md padding-block-md border-radius-lg">
+	<p class="margin-inline-md">Border with inverted gradient</p>
 </div>
 ```

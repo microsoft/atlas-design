@@ -125,7 +125,7 @@ $border-gradient-themes: 'argon' $info-vivid $primary, 'sunrise' $warning $dange
 	.border-color-#{$name} {
 		@include border-gradient(90, $colorStart, $colorEnd);
 	}
-	.border-color-#{$name}-inverse {
+	.border-color-#{$name}-invert {
 		@include border-gradient(270, $colorStart, $colorEnd);
 	}
 }
