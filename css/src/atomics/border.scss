@@ -111,3 +111,21 @@
 		border: $border-width solid $border-yellow-high-contrast !important;
 	}
 }
+
+// Gradients
+$border-gradient-themes: 'argon' $info-vivid $primary, 'sunrise' $warning $danger;
+
+@mixin border-gradient($deg, $colorStart, $colorEnd) {
+	border-color: transparent !important;
+	background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
+		linear-gradient(#{$deg}deg, $colorStart 0%, $colorEnd 100%) border-box !important;
+}
+
+@each $name, $colorStart, $colorEnd in $border-gradient-themes {
+	.border-color-#{$name} {
+		@include border-gradient(90, $colorStart, $colorEnd);
+	}
+	.border-color-#{$name}-inverse {
+		@include border-gradient(270, $colorStart, $colorEnd);
+	}
+}

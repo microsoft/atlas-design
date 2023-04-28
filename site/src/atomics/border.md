@@ -109,12 +109,29 @@ Additionally `-md` and `-lg` may be added for a thicker border.
 
 The color of a border can be modified using the following classes.
 
-| modifiers | color name                                                  | screensize |
-| --------- | ----------------------------------------------------------- | ---------- |
-| colors    | `primary`, `danger`, `warning`, `success`, `info`, `accent` | n/a        |
+| modifiers | color name                                                                      | screensize |
+| --------- | ------------------------------------------------------------------------------- | ---------- |
+| colors    | `primary`, `danger`, `warning`, `success`, `info`, `accent`, `argon`, `sunrise` | n/a        |
 
 ```html
 <div class="border-color-accent border-left-lg padding-block-md border-radius">
 	<p class="margin-inline-md">Custom Color</p>
+</div>
+```
+
+### Gradient colors
+
+The gradient colors of a border can be modified using the following classes.
+
+| modifiers | color name         | direction |
+| --------- | ------------------ | --------- |
+| values    | `argon`, `sunrise` | `inverse` |
+
+```html
+<div class="border-color-argon border-md padding-block-md border-radius-lg margin-bottom-xs">
+	<p class="margin-inline-md">Gradient Color</p>
+</div>
+<div class="border-color-argon-inverse border-md padding-block-md border-radius-lg">
+	<p class="margin-inline-md">Inversed gradient Color</p>
 </div>
 ```

@@ -1,28 +1,25 @@
-$gradient-background-colors: (
+$border-gradient-colors: (
 	'body': $body-background,
 	'body-accent': $body-background-accent
 ) !default;
 
-$gradient-border-themes: 'info-bright-to-primary' $info-bright $primary,
-	'warning-to-danger' $warning $danger;
-
-@each $name, $var in $gradient-background-colors {
-	// ex. .gradient-background-body { --gradient-background-end-color: var(--theme-body-background); }
-	.gradient-background-#{$name} {
-		--gradient-background-end-color: #{$var};
+@each $name, $var in $border-gradient-colors {
+	// ex. .gradient-border-body { --border-gradient-end-color: var(--theme-body-background); }
+	.gradient-border-#{$name} {
+		--border-gradient-end-color: #{$var};
 	}
 }
 
-$gradient-background-direction: (
+$border-gradient-direction: (
 	'right': 'inline-end',
 	'bottom': 'block-end'
 ) !default;
 
-@each $direction, $logical-side in $gradient-background-direction {
-	.gradient-background-#{$direction} {
+@each $direction, $logical-side in $border-gradient-direction {
+	.gradient-border-#{$direction} {
 		position: relative;
 	}
-	.gradient-background-#{$direction}:before {
+	.gradient-border-#{$direction}:before {
 		display: block;
 		position: absolute;
 		content: '';
@@ -30,7 +27,7 @@ $gradient-background-direction: (
 			to #{$direction},
 			transparent 0%,
 			transparent 92%,
-			var(--gradient-background-end-color, transparent) 100%
+			var(--border-gradient-end-color, transparent) 100%
 		);
 		border-#{$logical-side}-width: 320px;
 		border-#{$logical-side}-style: solid;
@@ -56,12 +53,12 @@ $gradient-background-direction: (
 	}
 
 	@include tablet {
-		.gradient-background-to-#{$direction}-tablet:before {
+		.gradient-border-to-#{$direction}-tablet:before {
 			border-image: linear-gradient(
 				to #{$direction},
 				transparent 0%,
 				transparent 92%,
-				var(--gradient-background-end-color) 100%
+				var(--border-gradient-end-color) 100%
 			);
 			border-#{$logical-side}-width: 320px;
 			border-#{$logical-side}-style: solid;
@@ -84,26 +81,5 @@ $gradient-background-direction: (
 
 	.gradient-text-#{$name} {
 		@include gradient-text($colorStart, $colorEnd);
-	}
-}
-
-@mixin gradient-border($deg, $colorStart, $colorEnd) {
-	border-color: transparent !important;
-	background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
-		linear-gradient(#{$deg}deg, $colorStart 0%, $colorEnd 100%) border-box !important;
-}
-
-@each $name, $colorStart, $colorEnd in $gradient-border-themes {
-	.border.gradient-border-#{$name} {
-		@include gradient-border(90, $colorStart, $colorEnd);
-	}
-	.border.gradient-border-#{$name}-inverse {
-		@include gradient-border(270, $colorStart, $colorEnd);
-	}
-	.border.gradient-border-#{$name}-vertical {
-		@include gradient-border(0, $colorStart, $colorEnd);
-	}
-	.border.gradient-border-#{$name}-vertical-inverse {
-		@include gradient-border(180, $colorStart, $colorEnd);
 	}
 }

@@ -1,6 +1,6 @@
 ---
-'@microsoft/atlas-site': major
+'@microsoft/atlas-site': minor
 '@microsoft/atlas-css': major
 ---
 
-Adds border gradient and color theme. Updates gradient background with breaking class name change.
+Adds border gradient and color theme.
