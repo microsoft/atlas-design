@@ -80,14 +80,23 @@
 
 .border-radius {
 	border-radius: $border-radius !important;
+	& > [class^='background-color-'] {
+		border-radius: $border-radius-sm !important;
+	}
 }
 
 .border-radius-lg {
 	border-radius: $border-radius-lg !important;
+	& > [class^='background-color-'] {
+		border-radius: $border-radius !important;
+	}
 }
 
 .border-radius-rounded {
-	border-radius: $border-radius-rounded !important;
+	&,
+	& > [class^='background-color-'] {
+		border-radius: $border-radius-rounded !important;
+	}
 }
 
 // Colors
@@ -113,19 +122,23 @@
 }
 
 // Gradients
-$border-gradient-themes: 'argon' $info-vivid $primary, 'sunrise' $warning $danger;
 
-@mixin border-gradient($deg, $colorStart, $colorEnd) {
+@mixin border-gradient($colorStart, $colorEnd) {
 	border-color: transparent !important;
 	background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
-		linear-gradient(#{$deg}deg, $colorStart 0%, $colorEnd 100%) border-box !important;
+		linear-gradient(90deg, $colorStart 0%, $colorEnd 100%) border-box !important;
+
+	&:has(> [class^='background-color-']) {
+		background: linear-gradient(transparent 0 0) padding-box,
+			linear-gradient(90deg, $colorStart 0%, $colorEnd 100%) border-box !important;
+	}
 }
 
-@each $name, $colorStart, $colorEnd in $border-gradient-themes {
+@each $name, $gradientSet in $gradients {
+	$colorStart: nth($gradientSet, $gradient-color-start-index);
+	$colorEnd: nth($gradientSet, $gradient-color-end-index);
+
 	.border-color-#{$name} {
-		@include border-gradient(90, $colorStart, $colorEnd);
-	}
-	.border-color-#{$name}-invert {
-		@include border-gradient(270, $colorStart, $colorEnd);
+		@include border-gradient($colorStart, $colorEnd);
 	}
 }
