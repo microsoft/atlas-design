@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Adds .border-color-\* Atomic class, which applies a gradient border to a container.
+Adds .gradient-card-\* Component, which applies a gradient border, border-width and border-radius to a container.
