@@ -96,23 +96,19 @@ $gradientCardColors: (
 $gradient-color-start-index: 1;
 $gradient-color-end-index: 2;
 
-@mixin border-gradient($colorStart, $colorEnd) {
-	border-radius: $border-radius-lg !important;
-	border: $border-width-md solid $border !important;
-	border-color: transparent !important;
-	background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
-		linear-gradient(90deg, $colorStart 0%, $colorEnd 100%) border-box !important;
-
-	.gradient-card-content {
-		border-radius: $border-radius !important;
-	}
-}
-
 @each $name, $gradientSet in $gradientCardColors {
 	$colorStart: nth($gradientSet, $gradient-color-start-index);
 	$colorEnd: nth($gradientSet, $gradient-color-end-index);
 
 	.gradient-card-#{$name} {
-		@include border-gradient($colorStart, $colorEnd);
+		border: $border-width-md solid $border !important;
+		border-radius: $border-radius-lg !important;
+		border-color: transparent !important;
+		background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
+			linear-gradient(90deg, $colorStart 0%, $colorEnd 100%) border-box !important;
+
+		.gradient-card-content {
+			border-radius: $border-radius !important;
+		}
 	}
 }
