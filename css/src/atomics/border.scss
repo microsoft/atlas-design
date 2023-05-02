@@ -111,37 +111,3 @@
 		border: $border-width solid $border-yellow-high-contrast !important;
 	}
 }
-
-// Gradients
-
-@mixin border-gradient($colorStart, $colorEnd) {
-	border-color: transparent !important;
-	background: linear-gradient(var(--theme-body-background) 0 0) padding-box,
-		linear-gradient(90deg, $colorStart 0%, $colorEnd 100%) border-box !important;
-
-	&:has(> [class^='background-color-']) {
-		background: linear-gradient(transparent 0 0) padding-box,
-			linear-gradient(90deg, $colorStart 0%, $colorEnd 100%) border-box !important;
-	}
-
-	&.border-radius > [class^='background-color-'] {
-		border-radius: $border-radius-sm !important;
-	}
-
-	&.border-radius-lg > [class^='background-color-'] {
-		border-radius: $border-radius !important;
-	}
-
-	&.border-radius-rounded > [class^='background-color-'] {
-		border-radius: $border-radius-rounded !important;
-	}
-}
-
-@each $name, $gradientSet in $gradients {
-	$colorStart: nth($gradientSet, $gradient-color-start-index);
-	$colorEnd: nth($gradientSet, $gradient-color-end-index);
-
-	.border-color-#{$name} {
-		@include border-gradient($colorStart, $colorEnd);
-	}
-}

@@ -6,6 +6,7 @@ classType: Component
 classPrefixes:
   - gradient-border
   - gradient-text
+  - gradient-card
 ---
 
 # Gradients
@@ -14,6 +15,7 @@ There are two main types of gradients.
 
 1. Gradients displayed with font (`.gradient-text-`).
 2. Gradients for blending colors between elements and contains (`.gradient-border-*`).
+3. Gradients bordering a card and contains (`.gradient-card-*`).
 
 ## Text color gradients
 
@@ -104,4 +106,30 @@ $border-gradient-direction: (
 	'bottom': 'block-end',
 	'top': 'block-start' // an additional direction
 ) !default;
+```
+
+## Gradient card
+
+The gradient colors of a border can be modified using the following classes.
+
+| base class name                | interpolated value |
+| ------------------------------ | ------------------ |
+| `gradient-card-<gradientname>` | `vivid`            |
+
+```html
+<div class="gradient-card-vivid">
+	<div class="gradient-card-content padding-block-md">
+		<p class="margin-inline-md">Gradient color with background color</p>
+	</div>
+</div>
+```
+
+With a background color...
+
+```html
+<div class="gradient-card-vivid">
+	<div class="gradient-card-content background-color-body-medium padding-block-md">
+		<p class="margin-inline-md">Gradient color with background color</p>
+	</div>
+</div>
 ```

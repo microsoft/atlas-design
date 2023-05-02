@@ -118,22 +118,3 @@ The color of a border can be modified using the following classes.
 	<p class="margin-inline-md">Custom Color</p>
 </div>
 ```
-
-### Gradient colors
-
-The gradient colors of a border can be modified using the following classes.
-
-| modifiers | gradient name |
-| --------- | ------------- |
-| values    | `vivid`       |
-
-```html
-<div class="border-color-vivid border-md padding-block-md border-radius-lg margin-bottom-xs">
-	<p class="margin-inline-md">Gradient color</p>
-</div>
-<div class="border-color-vivid border-md border-radius-lg">
-	<div class="background-color-body-accent padding-block-md">
-		<p class="margin-inline-md">Gradient color with background color</p>
-	</div>
-</div>
-```
