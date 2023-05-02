@@ -80,21 +80,24 @@
 
 .border-radius {
 	border-radius: $border-radius !important;
-	& > [class^='background-color-'] {
+
+	> [class^='background-color-'] {
 		border-radius: $border-radius-sm !important;
 	}
 }
 
 .border-radius-lg {
 	border-radius: $border-radius-lg !important;
-	& > [class^='background-color-'] {
+
+	> [class^='background-color-'] {
 		border-radius: $border-radius !important;
 	}
 }
 
 .border-radius-rounded {
-	&,
-	& > [class^='background-color-'] {
+	border-radius: $border-radius-rounded !important;
+
+	> [class^='background-color-'] {
 		border-radius: $border-radius-rounded !important;
 	}
 }
