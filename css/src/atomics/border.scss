@@ -80,26 +80,14 @@
 
 .border-radius {
 	border-radius: $border-radius !important;
-
-	> [class^='background-color-'] {
-		border-radius: $border-radius-sm !important;
-	}
 }
 
 .border-radius-lg {
 	border-radius: $border-radius-lg !important;
-
-	> [class^='background-color-'] {
-		border-radius: $border-radius !important;
-	}
 }
 
 .border-radius-rounded {
 	border-radius: $border-radius-rounded !important;
-
-	> [class^='background-color-'] {
-		border-radius: $border-radius-rounded !important;
-	}
 }
 
 // Colors
@@ -134,6 +122,18 @@
 	&:has(> [class^='background-color-']) {
 		background: linear-gradient(transparent 0 0) padding-box,
 			linear-gradient(90deg, $colorStart 0%, $colorEnd 100%) border-box !important;
+	}
+
+	&.border-radius > [class^='background-color-'] {
+		border-radius: $border-radius-sm !important;
+	}
+
+	&.border-radius-lg > [class^='background-color-'] {
+		border-radius: $border-radius !important;
+	}
+
+	&.border-radius-rounded > [class^='background-color-'] {
+		border-radius: $border-radius-rounded !important;
 	}
 }
 
