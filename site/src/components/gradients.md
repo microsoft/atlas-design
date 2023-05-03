@@ -107,25 +107,3 @@ $border-gradient-direction: (
 	'top': 'block-start' // an additional direction
 ) !default;
 ```
-
-## Gradient card
-
-The `.gradient-card` class contains a predefined gradient border, border width and border radius for consistency. The inner `.gradient-card-content` element handles the border radius size and default background color for the card content and may be modified by Atomic classes.
-
-```html
-<div class="gradient-card">
-	<div class="gradient-card-content padding-block-md">
-		<p class="margin-inline-md">Gradient color with background color</p>
-	</div>
-</div>
-```
-
-With background color...
-
-```html
-<div class="gradient-card">
-	<div class="gradient-card-content background-color-body-medium padding-block-md">
-		<p class="margin-inline-md">Gradient color with background color</p>
-	</div>
-</div>
-```

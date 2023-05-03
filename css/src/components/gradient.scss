@@ -83,15 +83,3 @@ $border-gradient-direction: (
 		@include gradient-text($colorStart, $colorEnd);
 	}
 }
-
-.gradient-card {
-	border: $border-width-md solid $border !important;
-	border-radius: $border-radius-lg !important;
-	border-color: transparent !important;
-	background: linear-gradient($body-background 0 0) padding-box,
-		linear-gradient(90deg, $gradient-vivid-start 0%, $gradient-vivid-end 100%) border-box !important;
-
-	.gradient-card-content {
-		border-radius: $border-radius !important;
-	}
-}
