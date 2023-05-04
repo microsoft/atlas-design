@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.32.0
+
+### Minor Changes
+
+- 7231abf: Adds gradient vivid colors.
+
 ## 3.31.0
 
 ### Minor Changes
