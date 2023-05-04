@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.32.1
+
+### Patch Changes
+
+- 5fdc26a: Fixing notification's icon position.
+- 5fdc26a: Fixing notification and banner components line-heights.
+
 ## 3.32.0
 
 ### Minor Changes

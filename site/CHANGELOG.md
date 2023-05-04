@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.37.1
+
+### Patch Changes
+
+- deb3462: Update typo in hero.md
+
 ## 0.37.0
 
 ### Minor Changes
