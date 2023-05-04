@@ -20,6 +20,7 @@ $banner-border-width: $border-width !default;
 	word-wrap: break-word;
 	word-break: break-word;
 	border-block: $banner-border-width solid $banner-border-color;
+	line-height: $line-height-normal;
 
 	&.is-loading {
 		color: transparent;
