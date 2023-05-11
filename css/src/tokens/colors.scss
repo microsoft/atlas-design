@@ -224,4 +224,27 @@ $color-index-background-glow-high-contrast: 8;
 // 	$box-shadow: nth($color-set, $color-index-box-shadow);
 //}
 
+$gradients: (
+	'vivid': (
+		$gradient-vivid-start,
+		$gradient-vivid-end
+	),
+	'purple-blue': (
+		$gradient-text-purple,
+		$gradient-text-blue
+	)
+);
+
+$gradient-color-start-index: 1;
+$gradient-color-end-index: 2;
+
+// @each $name, $gradient in $gradients {
+// 	$colorStart: nth($gradient, $gradient-color-start-index);
+// 	$colorEnd: nth($gradient, $gradient-color-end-index);
+
+// 	.border-color-#{$name} {
+// 		@include border-gradient($colorStart, $colorEnd);
+// 	}
+// }
+
 //@end-sass-export-section
