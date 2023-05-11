@@ -110,8 +110,8 @@ $button-font-weight: $weight-semibold !default;
 			@include center(1em);
 
 			position: absolute !important;
-			border-bottom-color: $text;
-			border-left-color: $text;
+			border-block-end-color: $text;
+			border-inline-start-color: $text;
 		}
 	}
 
