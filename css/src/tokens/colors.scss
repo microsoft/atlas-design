@@ -242,9 +242,8 @@ $gradient-color-end-index: 2;
 // 	$colorStart: nth($gradient, $gradient-color-start-index);
 // 	$colorEnd: nth($gradient, $gradient-color-end-index);
 
-// 	.border-color-#{$name} {
-// 		@include border-gradient($colorStart, $colorEnd);
-// 	}
+// 	.gradient-text-#{$name} {
+// 		@include gradient-text($colorStart, $colorEnd);
 // }
 
 //@end-sass-export-section
