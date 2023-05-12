@@ -17,7 +17,7 @@ There are two main types of gradients.
 
 ## Text color gradients
 
-Gradients transitions take up the entire width of a particular element, it's recommended to highlight inline elements, icons, or a portion of a heading, not the entire heading itself.
+Because gradient transitions take up the entire width of a particular element. It's recommended to highlight inline elements, icons, or a portion of a heading, and not the entire heading itself.
 
 | base class name             | interpolated value     |
 | --------------------------- | ---------------------- |
@@ -25,7 +25,7 @@ Gradients transitions take up the entire width of a particular element, it's rec
 
 ```html
 <h3 class="font-size-h3 font-weight-bold">
-	A dark gradient from <span class="gradient-text-purple-blue">purple to blue</span>
+	A muted gradient from <span class="gradient-text-purple-blue">purple to blue</span>
 </h3>
 <h3 class="font-size-h3 font-weight-bold">
 	A vivid gradient from <span class="gradient-text-vivid">purple to blue</span>
