@@ -6,7 +6,6 @@ classType: Component
 classPrefixes:
   - gradient-border
   - gradient-text
-  - gradient-card
 ---
 
 # Gradients
@@ -15,7 +14,6 @@ There are two main types of gradients.
 
 1. Gradients displayed with font (`.gradient-text-`).
 2. Gradients for blending colors between elements and contains (`.gradient-border-*`).
-3. Gradients bordering a card and contains (`.gradient-card`).
 
 ## Text color gradients
 
