@@ -7,7 +7,7 @@ classPrefixes:
   - gradient-card
 ---
 
-## Gradient card
+# Gradient card
 
 The `.gradient-card` class contains a predefined gradient border, border width and border radius for consistency. The inner `.gradient-card-content` element handles the border radius size and default background color for the card content and may be modified by Atomic classes.
 
