@@ -13,7 +13,7 @@ The `.gradient-card` class contains a predefined gradient border, border width a
 
 ```html
 <div class="gradient-card">
-	<div class="gradient-card-content padding-md">
+	<div class="gradient-card-content">
 		<p>Gradient card default</p>
 	</div>
 </div>
@@ -21,7 +21,7 @@ The `.gradient-card` class contains a predefined gradient border, border width a
 
 ```html
 <div class="gradient-card">
-	<div class="gradient-card-content padding-md background-color-body-medium">
+	<div class="gradient-card-content background-color-body-medium">
 		<p>Gradient card with background color</p>
 	</div>
 </div>
