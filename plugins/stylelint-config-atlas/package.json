@@ -22,7 +22,8 @@
 		"stylelint-order": "^6.0.3",
 		"stylelint-config-standard": "^29.0.0",
 		"stylelint-config-recommended-scss": "^8.0.0",
-		"stylelint": "^14.16.1"
+		"stylelint": "^14.16.1",
+		"stylelint-use-logical": "^2.1.0"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

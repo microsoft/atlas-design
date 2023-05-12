@@ -6,8 +6,8 @@
 	animation: spinAround 500ms infinite linear;
 	border: 2px solid $border;
 	border-radius: $border-radius-rounded;
-	border-top-color: transparent;
-	border-right-color: transparent;
+	border-block-start-color: transparent;
+	border-inline-end-color: transparent;
 	content: '';
 }
 

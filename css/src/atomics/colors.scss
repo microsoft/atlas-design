@@ -125,7 +125,7 @@
 }
 
 .background-color-alternating-grey {
-	border-top: 1px solid $border-white-high-contrast;
+	border-block-start: 1px solid $border-white-high-contrast;
 	outline-color: $text !important;
 
 	&:nth-of-type(even) {
@@ -140,7 +140,7 @@
 }
 
 .background-color-alternating-grey-reversed {
-	border-top: 1px solid $border-white-high-contrast;
+	border-block-start: 1px solid $border-white-high-contrast;
 	outline-color: $text !important;
 
 	&:nth-of-type(even) {
