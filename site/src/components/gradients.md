@@ -17,7 +17,7 @@ There are two main types of gradients.
 
 ## Text color gradients
 
-Because gradient transitions take up the entire width of a particular element. It's recommended to highlight inline elements, icons, or a portion of a heading, and not the entire heading itself.
+Because gradient transitions take up the entire width of a particular element, it's recommended to highlight inline elements, icons, or a portion of a heading, and not the entire heading itself.
 
 | base class name             | interpolated value     |
 | --------------------------- | ---------------------- |
