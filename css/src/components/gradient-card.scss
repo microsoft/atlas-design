@@ -8,7 +8,7 @@ $gradient-card-padding: $layout-2 !default;
 	overflow: hidden;
 
 	.gradient-card-content {
-		background-color: $body-background;
 		padding: $gradient-card-padding;
+		background-color: $body-background;
 	}
 }
