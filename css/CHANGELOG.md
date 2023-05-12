@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.32.2
+
+### Patch Changes
+
+- 6e9a8f3: Fix issue where border atomics did not use logical properties.
+- 855f61f: Adds new color theme to gradient-text-\* base class.
+
 ## 3.32.1
 
 ### Patch Changes

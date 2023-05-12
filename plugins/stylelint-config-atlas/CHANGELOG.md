@@ -1,5 +1,11 @@
 # @microsoft/stylelint-config-atlas
 
+## 4.1.0
+
+### Minor Changes
+
+- 6e9a8f3: Add linting for logical property usage.
+
 ## 4.0.2
 
 ### Patch Changes
