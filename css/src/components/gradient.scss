@@ -75,16 +75,11 @@ $border-gradient-direction: (
 	}
 }
 
-// Text color gradients cannot be quite so programmatic
+@each $name, $gradient in $gradients {
+	$colorStart: nth($gradient, $gradient-color-start-index);
+	$colorEnd: nth($gradient, $gradient-color-end-index);
 
-.gradient-text-purple-blue {
-	/* stylelint-disable */
-	-webkit-background-clip: text;
-	/* stylelint-enable */
-	background-clip: text;
-	background-color: $gradient-text-purple;
-	background-image: linear-gradient(90deg, $gradient-text-purple, $gradient-text-blue);
-	color: transparent;
-	-webkit-text-fill-color: transparent;
-	line-height: 1.4; // required because of background clip, avoid "g" and "y" getting cut off
+	.gradient-text-#{$name} {
+		@include gradient-text($colorStart, $colorEnd);
+	}
 }

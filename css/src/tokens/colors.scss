@@ -224,4 +224,16 @@ $color-index-background-glow-high-contrast: 8;
 // 	$box-shadow: nth($color-set, $color-index-box-shadow);
 //}
 
-//@end-sass-export-section
+$gradients: (
+	'vivid': (
+		$gradient-vivid-start,
+		$gradient-vivid-end
+	),
+	'purple-blue': (
+		$gradient-text-purple,
+		$gradient-text-blue
+	)
+);
+
+$gradient-color-start-index: 1;
+$gradient-color-end-index: 2;
