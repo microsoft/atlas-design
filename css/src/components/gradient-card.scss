@@ -17,7 +17,11 @@ $gradient-card-icon-block-spacing: 0.2em !default;
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
-			margin-block-end: $layout-1;
+			font-weight: $weight-semibold;
+
+			&:has(+ *) {
+				margin-block-end: $layout-2;
+			}
 
 			.icon {
 				flex-shrink: 0;
