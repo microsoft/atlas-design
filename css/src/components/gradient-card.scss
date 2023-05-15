@@ -1,5 +1,7 @@
 $gradient-card-border-radius: $border-radius-lg !default;
 $gradient-card-padding: $layout-2 !default;
+$gradient-card-icon-inline-spacing: 0.375em !default;
+$gradient-card-icon-block-spacing: 0.2em !default;
 
 .gradient-card {
 	border: $border-width-md solid transparent;
@@ -10,5 +12,19 @@ $gradient-card-padding: $layout-2 !default;
 	.gradient-card-content {
 		padding: $gradient-card-padding;
 		background-color: $body-background;
+
+		.gradient-card-title {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			margin-block-end: $layout-1;
+
+			.icon {
+				flex-shrink: 0;
+				align-self: start;
+				margin-inline-end: $gradient-card-icon-inline-spacing;
+				margin-block-start: $gradient-card-icon-block-spacing;
+			}
+		}
 	}
 }
