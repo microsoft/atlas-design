@@ -9,7 +9,7 @@ classPrefixes:
 
 # Gradient card
 
-The `.gradient-card` class contains a predefined gradient border, border width and border radius for consistency. The inner `.gradient-card-content` element handles the border radius size and default background color for the card content and may be modified by Atomic classes.
+The `.gradient-card` class contains a predefined gradient border, default border width and default border radius. The inner `.gradient-card-content` element has a default background color and padding but can be modified by Atomic classes.
 
 ```html
 <div class="gradient-card">
@@ -21,8 +21,23 @@ The `.gradient-card` class contains a predefined gradient border, border width a
 
 ```html
 <div class="gradient-card">
-	<div class="gradient-card-content background-color-body-medium">
-		<p>Gradient card with background color</p>
+	<div class="gradient-card-content background-color-body-medium padding-md">
+		<p>Gradient card with atomics</p>
+	</div>
+</div>
+```
+
+## Usage
+
+Gradient cards are used to bring attention to a section or for banners. Here is a common use case.
+
+```html
+<div class="gradient-card">
+	<div class="gradient-card-content">
+		<p>
+			<span class="icon border border-color-primary margin-right-xxs"></span>
+			The gradient card calls attention to the text. <a href="#">Call to action</a>
+		</p>
 	</div>
 </div>
 ```
