@@ -42,9 +42,9 @@ You can add a title to the gradient card with an optional icon.
                     </defs>
                 </svg>
             </span>
-    		<span>Here is a possible answer to your question<span>
+    		<span>Gradient card title<span>
         </p>
-		<p>A network interface card, or NIC, is the component that connects a device, such as a virtual machine (VM), to a network. In Azure, a NIC is the interconnection between a VM and a virtual network. Each VM created in the Azure portal has one NIC with default settings. However, you can also create NICs with custom settings and add them to a VM when or after you create it. A virtual machine can have more than one NIC, depending on the size of the VM you create.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis purus fringilla, tristique purus vel, hendrerit massa. Praesent elementum scelerisque convallis. Duis consectetur magna non sollicitudin consequat. Suspendisse eu ullamcorper sapien. Mauris nulla nunc, porttitor ut ipsum ac, porttitor gravida tortor.</p>
 	</div>
 </div>
 ```
