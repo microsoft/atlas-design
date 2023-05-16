@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.38.0
+
+### Minor Changes
+
+- f16147e: Adding gradient-card component and relevant documentation.
+
 ## 0.37.2
 
 ### Patch Changes
