@@ -9,7 +9,7 @@ classPrefixes:
 
 # Gradient card
 
-The `.gradient-card` and `.gradient-card-content` classes contain a predefined gradient border, default border radius and padding. Gradient cards are used to bring attention to the card content.
+Gradient card component is similar to the card component, in which it is used for representing data and actions. Use the gradient card component to add a predefined gradient border, to provide extra emphasis, and draw extra attention to the card content.
 
 ## Usage
 
