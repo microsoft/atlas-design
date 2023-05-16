@@ -22,6 +22,7 @@ const pathnames = [
 	'/components/checkbox.html',
 	'/components/form.html',
 	'/components/gradients.html',
+	'/components/gradient-card.html',
 	'/components/help.html',
 	'/components/hero.html',
 	'/components/icon.html',
