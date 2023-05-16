@@ -12,23 +12,5 @@ $gradient-card-icon-block-spacing: 0.2em !default;
 	.gradient-card-content {
 		padding: $gradient-card-padding;
 		background-color: $body-background;
-
-		.gradient-card-title {
-			display: flex;
-			align-items: center;
-			justify-content: flex-start;
-			font-weight: $weight-semibold;
-
-			&:has(+ *) {
-				margin-block-end: $layout-2;
-			}
-
-			.icon {
-				flex-shrink: 0;
-				align-self: start;
-				margin-inline-end: $gradient-card-icon-inline-spacing;
-				margin-block-start: $gradient-card-icon-block-spacing;
-			}
-		}
 	}
 }
