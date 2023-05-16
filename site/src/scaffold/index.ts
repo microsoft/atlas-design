@@ -15,3 +15,19 @@ handleMockFormSubmit();
 initSnapScroll();
 initFullScreenToggle();
 handleFocusableIfScrollable();
+
+let counter = 0;
+const classes = ['border-radius-sm', 'border-radius', 'border-radius-lg', 'border-radius-rounded'];
+setInterval(() => {
+	const gds = Array.from(document.querySelectorAll('.gradient-card'));
+	for (const gd of gds) {
+		counter++;
+
+		gd.classList.remove(...classes);
+		gd.classList.add(classes[counter % 4]);
+		const content = gd.querySelector('.gradient-card-content');
+		if (content) {
+			content.textContent = classes[counter % 4];
+		}
+	}
+}, 2000);

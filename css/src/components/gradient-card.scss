@@ -1,14 +1,24 @@
 $gradient-card-padding: $layout-2 !default;
-$gradient-card-border-radius: $border-radius-lg !default; //6px
+$gradient-card-icon-inline-spacing: 0.375em !default;
+$gradient-card-icon-block-spacing: 0.2em !default;
+$gradient-card-outer-border-radius-lg: $border-radius-lg !default; //6px
+$gradient-card-inner-border-radius-lg: $border-radius !default; // 4px
+$gradient-card-inner-border-radius: $border-radius-sm !default; // 2px
+$gradient-card-inner-border-radius-sm: 0.0625rem !default; // 1px
+$gradient-card-inner-border-radius-rounded: 290486px !default;
 
 .gradient-card {
-	border: $border-width-md solid transparent;
-	border-radius: $gradient-card-border-radius;
+	--border-radius: #{$gradient-card-outer-border-radius-lg};
+	border: $border-width-lg solid transparent;
+	border-radius: var(--border-radius);
 	background: linear-gradient(90deg, $gradient-vivid-start, $gradient-vivid-end) border-box;
 
 	.gradient-card-content {
 		padding: $gradient-card-padding;
-		border-radius: inherit;
+		border-radius: max(
+			calc(var(--border-radius) - 0.6125rem),
+			calc(var(--border-radius) - 0.125rem)
+		) !important;
 		background-color: $body-background;
 	}
 }
