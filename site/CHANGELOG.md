@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.37.2
+
+### Patch Changes
+
+- 855f61f: Adds new color theme to gradient-text-\* base class.
+
 ## 0.37.1
 
 ### Patch Changes

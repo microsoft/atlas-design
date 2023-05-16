@@ -48,7 +48,8 @@
 	"workspaces": {
 		"packages": [
 			"css",
-			"plugins/*",
+			"plugins/parcel-transformer-markdown-html",
+			"plugins/stylelint-config-atlas",
 			"site",
 			"js",
 			"integration",
