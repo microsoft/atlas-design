@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.33.0
+
+### Minor Changes
+
+- f16147e: Adding gradient-card component and relevant documentation.
+
 ## 3.32.2
 
 ### Patch Changes
