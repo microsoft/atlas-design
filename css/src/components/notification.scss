@@ -41,6 +41,12 @@ $notification-icon-block-spacing: 0.2em !default;
 		}
 	}
 
+	&[data-dismissable] {
+		display: flex !important;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
 	&.is-loading {
 		color: transparent;
 

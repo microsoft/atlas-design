@@ -22,6 +22,12 @@ $banner-border-width: $border-width !default;
 	border-block: $banner-border-width solid $banner-border-color;
 	line-height: $line-height-normal;
 
+	&[data-dismissable] {
+		display: flex !important;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
 	&.is-loading {
 		color: transparent;
 
