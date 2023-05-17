@@ -33,3 +33,23 @@ Ensure the user knows they need to wait for some event in order to interact with
 	<p>Loading banner.</p>
 </div>
 ```
+
+### Dismissing banner
+
+Banner can be dismissed in conjunction usage with `dismiss` component. Read more about it [here](./dismiss.md).
+
+```html
+<div class="banner" id="example-banner-id" data-dismissable disappearing="slide-up">
+	<p>Dismissable banner.</p>
+	<button type="button" class="dismiss" data-bi-name="close" data-dismiss>
+		<span class="visually-hidden">Dismiss banner</span>
+		<span class="icon" aria-hidden="true">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
+				<path
+					d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"
+				/>
+			</svg>
+		</span>
+	</button>
+</div>
+```

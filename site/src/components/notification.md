@@ -52,6 +52,26 @@ Ensure the user knows they need to wait for some event in order to interact with
 </div>
 ```
 
+### Dismissing notification
+
+Notification can be dismissed in conjunction usage with `dismiss` component. Read more about it [here](./dismiss.md).
+
+```html
+<div class="notification" id="example-notification-id" data-dismissable disappearing>
+	<p>Dismissable notification.</p>
+	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
+		<span class="visually-hidden">Dismiss notification</span>
+		<span class="icon" aria-hidden="true">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
+				<path
+					d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"
+				/>
+			</svg>
+		</span>
+	</button>
+</div>
+```
+
 ## Semantic colors
 
 | State   | Class                                 | Example                                                                                                                          |
