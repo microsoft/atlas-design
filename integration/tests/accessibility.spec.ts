@@ -20,6 +20,7 @@ const pathnames = [
 	'/components/button.html',
 	'/components/card.html',
 	'/components/checkbox.html',
+	'/components/dismiss.html',
 	'/components/form.html',
 	'/components/gradients.html',
 	'/components/gradient-card.html',

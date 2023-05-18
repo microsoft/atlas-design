@@ -1,0 +1,43 @@
+---
+title: Title
+description: Description
+template: standard
+figmaEmbed: <figma-url> allowfullscreen
+classType: Component
+classPrefixes:
+  - <component-name>
+---
+
+# Page title (component name)
+
+The first thing is the general description.
+
+Consider using tables to organize information if there are a lot of nuances.
+
+| cssproperty | value                           | screensize |
+| ----------- | ------------------------------- | ---------- |
+| `<name>`    | `<value>`, `<value>`, `<value>` | `<size>`   |
+
+| State       | Class                  | Example        |
+| ----------- | ---------------------- | -------------- |
+| `<name>`    | `<value>`              | html```Demo``` |
+
+## Usage
+
+Provide a focused example that displays this component's usage.
+
+```html
+<div>
+  <button class="button">Click me</button>
+</div>
+```
+
+### Modifier heading
+
+If there are components variations available such as different semantic colors on buttons, different hero sizes, loading states, etc., the next section(s) should be about them.
+
+```html
+<div class="notification is-loading">
+    <p>Loading notification.</p>
+</div>
+```
