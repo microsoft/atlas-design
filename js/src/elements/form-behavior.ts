@@ -626,13 +626,10 @@ function normalizeInputValue(target: EventTarget | null) {
 }
 
 function setBusySubmitButton(event: Event, form: HTMLFormElement, isLoading: boolean) {
-	const submitter =
-		(event as SubmitEvent).submitter instanceof HTMLButtonElement
-			? (event as SubmitEvent).submitter
-			: null;
+	const submitter = (event as SubmitEvent).submitter;
 	Array.from(form.elements).forEach(element => {
 		if (element instanceof HTMLButtonElement && element.type === 'submit') {
-			if (!submitter || submitter === element) {
+			if (submitter && submitter === element) {
 				element.classList.toggle('is-loading', isLoading);
 			} else {
 				element.disabled = isLoading;
