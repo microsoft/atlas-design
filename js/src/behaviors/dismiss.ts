@@ -22,14 +22,10 @@ export function initDismiss() {
 
 async function dismissElement(dismissTarget: Element) {
 	const prefersReducedMotionReduceQuery = window.matchMedia('(prefers-reduced-motion: reduced)');
+	const dismissAnimation = dismissTarget.getAttribute('data-dismiss-animation');
 
-	if (
-		dismissTarget.hasAttribute('data-dismiss-animation') &&
-		!prefersReducedMotionReduceQuery.matches
-	) {
+	if (dismissAnimation && !prefersReducedMotionReduceQuery.matches) {
 		dismissTarget.classList.add('is-dismissed');
-
-		const dismissAnimation = dismissTarget.getAttribute('data-dismiss-animation');
 		switch (dismissAnimation) {
 			case 'slide-up':
 				dismissTarget.classList.add('animation-slide-up');
