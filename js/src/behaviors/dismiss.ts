@@ -21,12 +21,22 @@ export function initDismiss() {
 }
 
 async function dismissElement(dismissTarget: Element) {
-	if (dismissTarget.hasAttribute('disappearing')) {
+	const prefersReducedMotionReduceQuery = window.matchMedia('(prefers-reduced-motion: reduced)');
+
+	if (
+		dismissTarget.hasAttribute('data-dismiss-animation') &&
+		!prefersReducedMotionReduceQuery.matches
+	) {
 		dismissTarget.classList.add('is-dismissed');
 
-		const disappearing = dismissTarget.getAttribute('disappearing');
-		if (disappearing === 'slide-up') {
-			dismissTarget.classList.add('animation-slide-up');
+		const dismissAnimation = dismissTarget.getAttribute('data-dismiss-animation');
+		switch (dismissAnimation) {
+			case 'slide-up':
+				dismissTarget.classList.add('animation-slide-up');
+				break;
+			case 'fade':
+				dismissTarget.classList.add('animation-fade');
+				break;
 		}
 
 		await new Promise(resolve => setTimeout(resolve, 500));

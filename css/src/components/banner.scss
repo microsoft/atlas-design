@@ -23,7 +23,7 @@ $banner-border-width: $border-width !default;
 	line-height: $line-height-normal;
 
 	&[data-dismissable] {
-		display: flex !important;
+		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
 	}

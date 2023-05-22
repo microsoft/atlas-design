@@ -36,10 +36,10 @@ Ensure the user knows they need to wait for some event in order to interact with
 
 ### Dismissing banner
 
-Banner can be dismissed in conjunction usage with `dismiss` component. Read more about it [here](./dismiss.md).
+Banner can be made dismissable with the [`dismiss` component](./dismiss.md).
 
 ```html
-<div class="banner" id="example-banner-id" data-dismissable disappearing="slide-up">
+<div class="banner" id="example-banner-id" data-dismissable data-dismiss-animation="slide-up">
 	<p>Dismissable banner.</p>
 	<button type="button" class="dismiss" data-bi-name="close" data-dismiss>
 		<span class="visually-hidden">Dismiss banner</span>

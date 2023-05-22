@@ -54,10 +54,15 @@ Ensure the user knows they need to wait for some event in order to interact with
 
 ### Dismissing notification
 
-Notification can be dismissed in conjunction usage with `dismiss` component. Read more about it [here](./dismiss.md).
+Notification can be made dismissable with the [`dismiss` component](./dismiss.md).
 
 ```html
-<div class="notification" id="example-notification-id" data-dismissable disappearing>
+<div
+	class="notification"
+	id="example-notification-id"
+	data-dismissable
+	data-dismiss-animation="fade"
+>
 	<p>Dismissable notification.</p>
 	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
 		<span class="visually-hidden">Dismiss notification</span>

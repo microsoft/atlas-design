@@ -26,10 +26,10 @@ Dismiss component can be used within any other component that can be removed fro
 
 ## Usage
 
-There are a few things to keep in mind when using dismiss component:
+Dismissal functionality requires two parts:
 
-- dismiss component has to have the `data-dismiss` attribute
-- the component it is used within has to have `data-dismissable` attribute
+1. The dismiss component, which has the `data-dismiss` attribute
+2. The parent element/container to dismiss, which has the `data-dismissable` attribute
 
 Below is an example usage with `notification` component.
 
@@ -57,12 +57,18 @@ Below is an example usage with `notification` component.
 
 ### Animating disappearance
 
-There are two options available to animate component's disappearance. Adding `disappearing` attribute to the dismissable component will make it slowly fade out.
+To animate component's disappearance, add `data-dismiss-animation` attribute to the dismissable component with one of these values:
 
-Assigning `slide-up` value to the `disappearing` attribute will make component fading while sliding up.
+- `fade` will make component slowly fade out.
+- `slide-up` will make component fading while sliding up.
 
 ```html
-<div class="notification" id="example-notification-02" data-dismissable disappearing>
+<div
+	class="notification"
+	id="example-notification-02"
+	data-dismissable
+	data-dismiss-animation="fade"
+>
 	<p>Dismissable notification that fades out.</p>
 	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
 		<span class="visually-hidden">Dismiss notification</span>
@@ -80,7 +86,7 @@ Assigning `slide-up` value to the `disappearing` attribute will make component f
 	class="notification margin-top-sm"
 	id="example-notification-03"
 	data-dismissable
-	disappearing="slide-up"
+	data-dismiss-animation="slide-up"
 >
 	<p>Dismissable notification that fades while sliding up.</p>
 	<button type="button" data-dismiss data-bi-name="close" class="dismiss">

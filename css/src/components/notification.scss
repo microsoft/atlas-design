@@ -42,7 +42,7 @@ $notification-icon-block-spacing: 0.2em !default;
 	}
 
 	&[data-dismissable] {
-		display: flex !important;
+		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
 	}
