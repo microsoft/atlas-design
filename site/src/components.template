@@ -34,7 +34,7 @@ Provide a focused example that displays this component's usage.
 
 ### Modifier heading
 
-If there are components variations available such as different semantic colors on buttons, different hero sizes, loading states, etc., the next section(s) should be about them.
+If there are components variations available such as different semantic colors, sizes, loading states, etc., the next section(s) should be about them.
 
 ```html
 <div class="notification is-loading">
