@@ -1,23 +1,19 @@
 export function initDismiss() {
-	window.addEventListener(
-		'click',
-		({ target }: Event) => {
-			const dismissButton = target instanceof Element && target.closest('[data-dismiss]');
+	window.addEventListener('click', ({ target }: Event) => {
+		const dismissButton = target instanceof Element && target.closest('[data-dismiss]');
 
-			if (!dismissButton) {
-				return;
-			}
+		if (!dismissButton) {
+			return;
+		}
 
-			const dismissTarget = dismissButton.closest('[data-dismissable]');
+		const dismissTarget = dismissButton.closest('[data-dismissable]');
 
-			if (!dismissTarget) {
-				return;
-			}
+		if (!dismissTarget) {
+			return;
+		}
 
-			dismissElement(dismissTarget);
-		},
-		{ passive: true }
-	);
+		dismissElement(dismissTarget);
+	});
 }
 
 async function dismissElement(dismissTarget: Element) {
