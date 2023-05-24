@@ -34,7 +34,7 @@ Dismissal functionality requires two parts:
 Below is an example usage with `notification` component.
 
 ```html
-<div class="notification" id="example-notification-01" data-dismissable>
+<div class="notification dismissable" id="example-notification-01" data-dismissable>
 	<p>Dismissable notification.</p>
 	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
 		<span class="visually-hidden">Dismiss notification</span>
@@ -58,7 +58,7 @@ To animate component's disappearance, add `data-dismiss-animation` attribute to 
 
 ```html
 <div
-	class="notification"
+	class="notification dismissable"
 	id="example-notification-02"
 	data-dismissable
 	data-dismiss-animation="fade"
@@ -77,7 +77,7 @@ To animate component's disappearance, add `data-dismiss-animation` attribute to 
 </div>
 
 <div
-	class="notification margin-top-sm"
+	class="notification dismissable margin-top-sm"
 	id="example-notification-03"
 	data-dismissable
 	data-dismiss-animation="slide-up"
