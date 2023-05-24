@@ -36,13 +36,7 @@ Below is an example usage with `notification` component.
 ```html
 <div class="notification" id="example-notification-01" data-dismissable>
 	<p>Dismissable notification.</p>
-	<button
-		type="button"
-		data-dismiss
-		data-bi-name="close"
-		class="dismiss"
-		data-testid="notification-dismiss"
-	>
+	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
 		<span class="visually-hidden">Dismiss notification</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
