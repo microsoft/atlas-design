@@ -14,10 +14,6 @@ The first thing is the general description.
 
 Consider using tables to organize information if there are a lot of nuances.
 
-| cssproperty | value                           | screensize |
-| ----------- | ------------------------------- | ---------- |
-| `<name>`    | `<value>`, `<value>`, `<value>` | `<size>`   |
-
 | State       | Class                  | Example        |
 | ----------- | ---------------------- | -------------- |
 | `<name>`    | `<value>`              | html```Demo``` |
