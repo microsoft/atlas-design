@@ -34,7 +34,7 @@ Dismissal functionality requires two parts:
 Below is an example usage with `notification` component.
 
 ```html
-<div class="notification" id="example-notification-01" data-dismissable data-testid="notification">
+<div class="notification" id="example-notification-01" data-dismissable>
 	<p>Dismissable notification.</p>
 	<button
 		type="button"
