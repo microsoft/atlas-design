@@ -58,7 +58,7 @@ Notification can be made dismissable with the [`dismiss` component](./dismiss.md
 
 ```html
 <div
-	class="notification dismissable"
+	class="notification notification-dismissable"
 	id="example-notification-id"
 	data-dismissable
 	data-dismiss-animation="fade"

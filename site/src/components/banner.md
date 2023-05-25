@@ -40,7 +40,7 @@ Banner can be made dismissable with the [`dismiss` component](./dismiss.md).
 
 ```html
 <div
-	class="banner dismissable"
+	class="banner banner-dismissable"
 	id="example-banner-id"
 	data-dismissable
 	data-dismiss-animation="slide-up"
