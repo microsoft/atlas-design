@@ -2,4 +2,4 @@
 '@microsoft/atlas-js': patch
 ---
 
-Update setBusySubmitButton to check for submitter button
+Add submitter check to ensure only one submit button displays loading state on forms with multiple submit buttons.
