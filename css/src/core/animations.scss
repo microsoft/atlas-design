@@ -37,3 +37,11 @@
 		opacity: 0;
 	}
 }
+
+.animation-fade {
+	animation: fade-out 0.4s ease-in forwards;
+}
+
+.animation-slide-up {
+	animation: slide-up-fade-out 0.4s ease-in forwards;
+}

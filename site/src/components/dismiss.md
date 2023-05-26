@@ -9,34 +9,23 @@ classPrefixes:
 
 # Dismiss
 
-Dismiss component can be used within any other component that can be removed from the page. For example, modal, notification, banner, etc.
-
-```html
-<button type="button" class="dismiss" data-dismiss data-bi-name="close">
-	<span class="visually-hidden">Dismiss</span>
-	<span class="icon" aria-hidden="true">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
-			<path
-				d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"
-			/>
-		</svg>
-	</span>
-</button>
-```
+Dismiss is a subcomponent can be used within any other component that can be removed from the page. For example, modal, notification, banner, etc.
 
 ## Usage
 
 Dismissal functionality requires two parts:
 
 1. The dismiss component, which has the `data-dismiss` attribute
-2. The parent element/container to dismiss, which has the `data-dismissable` attribute
+2. The parent component to dismiss, which has the `data-dismissable` attribute
 
 Below is an example usage with `notification` component.
 
 ```html
-<div class="notification notification-dismissable" id="example-notification-01" data-dismissable>
-	<p>Dismissable notification.</p>
-	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
+<div class="notification" id="example-notification-01" data-dismissable>
+	<div class="notification-content">
+		<p>Dismissable notification.</p>
+	</div>
+	<button type="button" class="notification-dismiss" data-bi-name="close" data-dismiss>
 		<span class="visually-hidden">Dismiss notification</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
@@ -58,13 +47,15 @@ To animate component's disappearance, add `data-dismiss-animation` attribute to 
 
 ```html
 <div
-	class="notification notification-dismissable"
+	class="notification"
 	id="example-notification-02"
 	data-dismissable
 	data-dismiss-animation="fade"
 >
-	<p>Dismissable notification that fades out.</p>
-	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
+	<div class="notification-content">
+		<p>Dismissable notification that fades out.</p>
+	</div>
+	<button type="button" class="notification-dismiss" data-bi-name="close" data-dismiss>
 		<span class="visually-hidden">Dismiss notification</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
@@ -77,13 +68,15 @@ To animate component's disappearance, add `data-dismiss-animation` attribute to 
 </div>
 
 <div
-	class="notification notification-dismissable margin-top-sm"
+	class="notification margin-top-sm"
 	id="example-notification-03"
 	data-dismissable
 	data-dismiss-animation="slide-up"
 >
-	<p>Dismissable notification that fades while sliding up.</p>
-	<button type="button" data-dismiss data-bi-name="close" class="dismiss">
+	<div class="notification-content">
+		<p>Dismissable notification that fades while sliding up.</p>
+	</div>
+	<button type="button" class="notification-dismiss" data-bi-name="close" data-dismiss>
 		<span class="visually-hidden">Dismiss notification</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">

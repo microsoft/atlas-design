@@ -7,11 +7,11 @@ test('dismiss removes parent component from the DOM after clicked', async ({ pag
 	const notificationEl = page.locator('#example-notification-01');
 	expect(notificationEl).toHaveCount(1);
 	expect(notificationEl).toHaveAttribute('data-dismissable', '');
-	expect(notificationEl).toHaveClass('notification notification-dismissable');
+	expect(notificationEl).toHaveClass('notification');
 
 	const dismissEl = notificationEl.locator('[data-dismiss]');
 	expect(dismissEl).toHaveAttribute('type', 'button');
-	expect(dismissEl).toHaveClass('dismiss');
+	expect(dismissEl).toHaveClass('notification-dismiss');
 
 	await dismissEl.click();
 

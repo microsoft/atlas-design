@@ -20,7 +20,9 @@ Here is an example of a standard usage of banner component.
 
 ```html-no-indent
 <div class="banner">
-	<p>A banner about something happening in the world <a href="#">Link</a></p>
+    <div class="banner-content">
+	    <p>A banner about something happening in the world <a href="#">Link</a></p>
+    </div>
 </div>
 ```
 
@@ -30,23 +32,27 @@ Ensure the user knows they need to wait for some event in order to interact with
 
 ```html-no-indent
 <div class="banner is-loading">
-	<p>Loading banner.</p>
+    <div class="banner-content">
+	    <p>Loading banner.</p>
+    </div>
 </div>
 ```
 
 ### Dismissing banner
 
-Banner can be made dismissable with the [`dismiss` component](./dismiss.md).
+Banner can be made dismissable with the [`dismiss` subcomponent](./dismiss.md).
 
-```html
+```html-no-indent
 <div
 	class="banner banner-dismissable"
 	id="example-banner-id"
 	data-dismissable
 	data-dismiss-animation="slide-up"
 >
-	<p>Dismissable banner.</p>
-	<button type="button" class="dismiss" data-bi-name="close" data-dismiss>
+    <div class="banner-content">
+    	<p>Dismissable banner.</p>
+    </div>
+	<button type="button" class="banner-dismiss" data-bi-name="close" data-dismiss>
 		<span class="visually-hidden">Dismiss banner</span>
 		<span class="icon" aria-hidden="true">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">

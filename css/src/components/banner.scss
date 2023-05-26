@@ -7,26 +7,24 @@ $banner-color: $info-dark !default;
 $banner-border-color: $border-white-high-contrast !default;
 $banner-border-width: $border-width !default;
 
+$banner-dismiss-margin: $spacer-2 !default;
+
 .banner {
 	@extend %layout-gap;
 
-	display: block;
+	display: grid;
 	position: relative;
+	grid-template: auto / 1fr auto;
+	grid-template-areas: 'banner-content dismiss';
 	outline-color: $text;
 	background-color: $banner-background;
 	color: $banner-color;
 	font-size: $banner-font-size;
+	line-height: $line-height-normal;
 	padding-block: $banner-padding;
 	word-wrap: break-word;
 	word-break: break-word;
 	border-block: $banner-border-width solid $banner-border-color;
-	line-height: $line-height-normal;
-
-	&.banner-dismissable {
-		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-	}
 
 	&.is-loading {
 		color: transparent;
@@ -39,16 +37,33 @@ $banner-border-width: $border-width !default;
 			@include loader;
 
 			position: absolute;
+			inset-block-start: $banner-padding;
+			inset-inline-start: $layout-gap;
 			border-color: transparent transparent $banner-color $banner-color;
+
+			@include widescreen {
+				inset-inline-start: $layout-widescreen-gap;
+			}
 		}
 	}
 
-	a:not(.button) {
-		color: currentColor;
-		font-weight: $weight-semibold;
+	.banner-content {
+		grid-area: banner-content;
 
-		.theme-high-contrast & {
-			color: $hyperlink;
+		a:not(.button) {
+			color: currentColor;
+			font-weight: $weight-semibold;
+
+			.theme-high-contrast & {
+				color: $hyperlink;
+			}
 		}
+	}
+
+	.banner-dismiss {
+		@include dismiss-square;
+
+		grid-area: dismiss;
+		margin-inline-start: $banner-dismiss-margin;
 	}
 }
