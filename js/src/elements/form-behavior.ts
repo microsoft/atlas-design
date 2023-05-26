@@ -189,7 +189,7 @@ export class FormBehaviorElement extends HTMLElement {
 		let isNavigating = false;
 		try {
 			this.submitting = true;
-			setBusySubmitButton(form, this.submitting);
+			setBusySubmitButton(event, form, this.submitting);
 			const result = await this.validateForm(form);
 			if (!result.valid) {
 				return;
@@ -275,7 +275,7 @@ export class FormBehaviorElement extends HTMLElement {
 			}
 		} finally {
 			this.submitting = isNavigating;
-			setBusySubmitButton(form, this.submitting);
+			setBusySubmitButton(event, form, this.submitting);
 		}
 	}
 
@@ -625,10 +625,15 @@ function normalizeInputValue(target: EventTarget | null) {
 	}
 }
 
-function setBusySubmitButton(form: HTMLFormElement, isLoading: boolean) {
+function setBusySubmitButton(event: Event, form: HTMLFormElement, isLoading: boolean) {
+	const submitter = (event as SubmitEvent).submitter;
 	Array.from(form.elements).forEach(element => {
 		if (element instanceof HTMLButtonElement && element.type === 'submit') {
-			element.classList.toggle('is-loading', isLoading);
+			if (submitter && submitter === element) {
+				element.classList.toggle('is-loading', isLoading);
+			} else {
+				element.disabled = isLoading;
+			}
 		}
 	});
 }
