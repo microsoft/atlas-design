@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.38.1
+
+### Patch Changes
+
+- 9aff14d: Add figma design to gradient-card component page
+
 ## 0.38.0
 
 ### Minor Changes

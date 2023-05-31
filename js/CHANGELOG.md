@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.5.6
+
+### Patch Changes
+
+- 081512f: Add submitter check to ensure only one submit button displays loading state on forms with multiple submit buttons.
+
 ## 1.5.5
 
 ### Patch Changes
