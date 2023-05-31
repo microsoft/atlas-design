@@ -40,8 +40,16 @@
 
 .animation-fade {
 	animation: fade-out 0.4s ease-in forwards;
+
+	@include prefers-reduced-motion {
+		animation-duration: 0s;
+	}
 }
 
 .animation-slide-up {
 	animation: slide-up-fade-out 0.4s ease-in forwards;
+
+	@include prefers-reduced-motion {
+		animation-duration: 0s;
+	}
 }

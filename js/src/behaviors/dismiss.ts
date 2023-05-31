@@ -17,11 +17,13 @@ export function initDismiss() {
 }
 
 async function dismissElement(dismissTarget: Element) {
-	const prefersReducedMotionReduceQuery = window.matchMedia('(prefers-reduced-motion: reduced)');
+	dismissTarget.addEventListener('animationend', () => {
+		dismissTarget.remove();
+	});
+
 	const dismissAnimation = dismissTarget.getAttribute('data-dismiss-animation');
 
-	if (dismissAnimation && !prefersReducedMotionReduceQuery.matches) {
-		dismissTarget.classList.add('is-dismissed');
+	if (dismissAnimation) {
 		switch (dismissAnimation) {
 			case 'slide-up':
 				dismissTarget.classList.add('animation-slide-up');
@@ -30,12 +32,7 @@ async function dismissElement(dismissTarget: Element) {
 				dismissTarget.classList.add('animation-fade');
 				break;
 		}
-
-		await new Promise(resolve => setTimeout(resolve, 500));
 	}
-
-	dismissTarget.classList.remove('is-dismissed');
-	dismissTarget.remove();
 
 	// Notification about content update occurrence.
 	window.dispatchEvent(new CustomEvent('dismiss-content-update'));
