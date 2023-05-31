@@ -17,13 +17,13 @@ export function initDismiss() {
 }
 
 async function dismissElement(dismissTarget: Element) {
-	dismissTarget.addEventListener('animationend', () => {
-		dismissTarget.remove();
-	});
-
 	const dismissAnimation = dismissTarget.getAttribute('data-dismiss-animation');
 
 	if (dismissAnimation) {
+		dismissTarget.addEventListener('animationend', () => {
+			dismissTarget.remove();
+		});
+
 		switch (dismissAnimation) {
 			case 'slide-up':
 				dismissTarget.classList.add('animation-slide-up');
@@ -32,6 +32,8 @@ async function dismissElement(dismissTarget: Element) {
 				dismissTarget.classList.add('animation-fade');
 				break;
 		}
+	} else {
+		dismissTarget.remove();
 	}
 
 	// Notification about content update occurrence.
