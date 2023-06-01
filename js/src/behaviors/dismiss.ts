@@ -16,7 +16,7 @@ export function initDismiss() {
 	});
 }
 
-async function dismissElement(dismissTarget: Element) {
+function dismissElement(dismissTarget: Element) {
 	const dismissAnimation = dismissTarget.getAttribute('data-dismiss-animation');
 
 	if (dismissAnimation) {
