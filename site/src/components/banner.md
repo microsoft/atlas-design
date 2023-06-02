@@ -40,7 +40,7 @@ Ensure the user knows they need to wait for some event in order to interact with
 
 ### Dismissing banner
 
-Banner can be made dismissable with the [`dismiss` subcomponent](./dismiss.md).
+Banner can be made dismissable with the [`dismiss` component](./dismiss.md).
 
 ```html-no-indent
 <div

@@ -60,7 +60,7 @@ Ensure the user knows they need to wait for some event in order to interact with
 
 ### Dismissing notification
 
-Notification can be made dismissable with the [`dismiss` subcomponent](./dismiss.md).
+Notification can be made dismissable with the [`dismiss` component](./dismiss.md).
 
 ```html
 <div
