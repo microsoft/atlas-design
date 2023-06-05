@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.34.0
+
+### Minor Changes
+
+- ce5e971: Adding .dismiss component and relevant documentation.
+- ce5e971: Updating .notification and .banner components to show .dismiss component within nicely.
+
 ## 3.33.0
 
 ### Minor Changes

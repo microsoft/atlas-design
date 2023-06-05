@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.39.0
+
+### Minor Changes
+
+- ce5e971: Adding .dismiss component and relevant documentation.
+
+### Patch Changes
+
+- Updated dependencies [ce5e971]
+  - @microsoft/atlas-js@1.6.0
+
 ## 0.38.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.6.0
+
+### Minor Changes
+
+- ce5e971: Adding .dismiss component and relevant documentation.
+
 ## 1.5.6
 
 ### Patch Changes
