@@ -34,7 +34,7 @@ Here is an example of a basic usage of dismiss component.
 To animate component's disappearance, add `data-dismiss-animation` attribute to the dismissable component with one of these values:
 
 - `fade` will make component slowly fade out.
-- `slide-up` will make component fading while sliding up.
+- `slide-up` will make component fade while sliding up.
 
 ```html
 <div
