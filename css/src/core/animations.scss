@@ -24,3 +24,32 @@
 		transform: scale(1);
 	}
 }
+
+@keyframes slide-up-fade-out {
+	100% {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+}
+
+@keyframes fade-out {
+	100% {
+		opacity: 0;
+	}
+}
+
+.animation-fade {
+	animation: fade-out 0.4s ease-in forwards;
+
+	@include prefers-reduced-motion {
+		animation-duration: 0s;
+	}
+}
+
+.animation-slide-up {
+	animation: slide-up-fade-out 0.4s ease-in forwards;
+
+	@include prefers-reduced-motion {
+		animation-duration: 0s;
+	}
+}

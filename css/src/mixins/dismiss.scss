@@ -1,0 +1,22 @@
+%dismiss {
+	@include transparent-effects;
+
+	display: inline-block;
+	color: currentColor;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+@mixin dismiss {
+	@extend %dismiss;
+}
+
+@mixin dismiss-square {
+	@extend %dismiss;
+
+	width: 1em;
+	height: 1em;
+	padding: 0;
+	border: 0;
+	border-radius: $border-radius-rounded;
+}
