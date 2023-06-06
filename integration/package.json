@@ -23,7 +23,6 @@
 	"devDependencies": {
 		"@axe-core/playwright": "^4.6.1",
 		"@playwright/test": "^1.32.3",
-		"@types/fs-extra": "11.0.1",
 		"@types/normalize-path": "^3.0.0",
 		"@types/pixelmatch": "^5.2.4",
 		"@types/pngjs": "6.0.1",
