@@ -9,12 +9,20 @@
 	$invert: nth($color-set, $color-index-invert);
 
 	.color-#{$name} {
-		color: $base !important;
+		@if $name == 'warning' {
+			color: $dark;
+		} @else {
+			color: $base !important;
+		}
 	}
 
 	a.color-#{$name} {
 		&:hover {
-			color: $hover !important;
+			@if $name == 'warning' {
+				color: $active !important;
+			} @else {
+				color: $hover !important;
+			}
 		}
 
 		@include focus-visible {
