@@ -143,7 +143,7 @@ The default clear button picks up the color the text set on a container. It is b
 Note! These buttons are not intended to be full featured, but rather to work when our typical themed buttons won't satisfy color requirements for non-standard background. Use with care, and _always test for a contrast ratio of greater than 4.5:1 between foreground and background_. When using them, it is recommended that you use a static text color, or to use in conjuction with a theme class to prevent accidental effects on other themes.
 
 ```html
-<div class="padding-lg theme-light background-color-body-medium color-warning">
+<div class="padding-lg theme-light background-color-body-medium color-success">
 	<button class="button button-clear">Adaptive clear</button>
 	<button class="button button-clear border">Adaptive with border</button>
 	<button class="button button-clear border" disabled>Adaptive disabled</button>
