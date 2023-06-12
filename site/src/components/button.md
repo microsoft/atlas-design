@@ -136,11 +136,12 @@ Ensure the user knows they need to wait for some event (like a fetch request) in
 <button class="button button-primary button-filled is-loading">Loading</button>
 ```
 
+<!--
 ## Adaptive buttons
 
 The default clear button picks up the color the text set on a container. It is best used as an color-accessible button on a color not part of one of the Atlas themes. These button do not support loading states.
 
-Note! These buttons are not intended to be full featured, but rather to work when our typical themed buttons won't satisfy color requirements for non-standard background. Use with care, and _always test for a contrast ratio of greater than 4.5:1 between foreground and background_. When using them, it is recommended that you use a static text color, or to use in conjuction with a theme class to prevent accidental effects on other themes.
+Note! These buttons are not intended to be full featured, but rather to work when our typical themed buttons won't satisfy color requirements for non-standard background. Use with care, and _always test for a contrast ratio of greater than 4.5:1 between foreground and background_. When using them, it is recommended that you use a static text color, or to use in conjunction with a theme class to prevent accidental effects on other themes.
 
 ```html
 <div class="padding-lg theme-light background-color-alternate color-warning">
@@ -149,3 +150,4 @@ Note! These buttons are not intended to be full featured, but rather to work whe
 	<button class="button button-clear border" disabled>Adaptive disabled</button>
 </div>
 ```
+-->
