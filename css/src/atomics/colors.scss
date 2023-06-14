@@ -10,7 +10,7 @@
 
 	.color-#{$name} {
 		@if $name == 'warning' {
-			color: $active;
+			color: $active !important;
 		} @else {
 			color: $base !important;
 		}
