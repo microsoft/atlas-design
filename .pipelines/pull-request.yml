@@ -32,6 +32,19 @@ steps:
   - script: npm run build:site -- -- --dist-dir "dist/pulls/$(System.PullRequest.PullRequestNumber)" --public-url "/pulls/$(System.PullRequest.PullRequestNumber)/"
     displayName: Build site
 
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    inputs:
+      BuildDropPath: '$(System.DefaultWorkingDirectory)' # generating a manifest that contains all dependencies, not just what is included in the deployed bundles
+    displayName: 'Generate SBOM'
+
+  - task: PublishBuildArtifacts@1
+    condition: succeeded()
+    inputs:
+      ArtifactName: _manifest
+      ArtifactType: Container
+      PathtoPublish: $(System.DefaultWorkingDirectory)/_manifest
+    displayName: Publish SBOM
+
   - task: AzureFileCopy@4
     displayName: Deploy site
     inputs:
