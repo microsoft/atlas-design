@@ -11,7 +11,7 @@ export const defaultMessageStrings = {
 		'You are not authorized to make this response. If you believe this to be in error please refresh the page and try again.',
 	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
 	thereAreNoEditsToSubmit: 'There are no edits to submit.',
-	tooManyRequests: 'You have sent too many requests, please wait a few minutes and try again.',
+	tooManyRequests: 'You have sent too many requests. Please wait a few minutes and try again.',
 	weEncounteredAnUnexpectedError:
 		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
