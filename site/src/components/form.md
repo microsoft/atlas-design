@@ -110,8 +110,11 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
 		loc-input-required="{inputLabel} is required."
+		loc-not-authenicated="You are not authenticated, please refresh the page and try again. If this issue persists please log out and log back in."
+		loc-not-authorized="You are not authorized to make this response, if you believe this to be in error please refresh the page and try again."
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-too-many-requests="You have sent too many requests, please wait a few minutes and try again."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 	></form-behavior>
 	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
@@ -241,8 +244,11 @@ If there is a need to hide the validation banner on top of the form, we can appl
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
 		loc-input-required="{inputLabel} is required."
+		loc-not-authenicated="You are not authenticated, please refresh the page and try again. If this issue persists please log out and log back in."
+		loc-not-authorized="You are not authorized to make this response, if you believe this to be in error please refresh the page and try again."
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-too-many-requests="You have sent too many requests, please wait a few minutes and try again."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 	></form-behavior>
 	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
@@ -298,8 +304,11 @@ If there is a need to hide the validation banner on top of the form, we can appl
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
 		loc-input-required="{inputLabel} is required."
+		loc-not-authenicated="You are not authenticated, please refresh the page and try again. If this issue persists please log out and log back in."
+		loc-not-authorized="You are not authorized to make this response, if you believe this to be in error please refresh the page and try again."
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-too-many-requests="You have sent too many requests, please wait a few minutes and try again."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 	></form-behavior>
 	<div class="field">
