@@ -255,8 +255,17 @@ export class FormBehaviorElement extends HTMLElement {
 				const errorText = document.createElement('li');
 				errorText.innerText = this.locStrings.weEncounteredAnUnexpectedError;
 				// custom text for version mismatch
+				if (response.status === 401) {
+					errorText.innerText = this.locStrings.notAuthenticated;
+				}
+				if (response.status === 403) {
+					errorText.innerText = this.locStrings.notAuthorized;
+				}
 				if (response.status === 412) {
 					errorText.innerText = this.locStrings.contentHasChanged;
+				}
+				if (response.status === 429) {
+					errorText.innerText = this.locStrings.tooManyRequests;
 				}
 				this.dispatchEvent(
 					new CustomEvent('submission-error', {
