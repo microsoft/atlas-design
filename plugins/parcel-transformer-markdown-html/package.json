@@ -14,8 +14,8 @@
 	},
 	"dependencies": {
 		"@microsoft/atlas-css": "^3.34.0",
-		"@parcel/plugin": "^2.9.2",
-		"@parcel/utils": "^2.9.2",
+		"@parcel/plugin": "^2.9.3",
+		"@parcel/utils": "^2.9.3",
 		"marked": "^5.1.0",
 		"highlight.js": "^11.8.0",
 		"front-matter": "^4.0.2",
