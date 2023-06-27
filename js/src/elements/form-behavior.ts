@@ -8,7 +8,7 @@ export const defaultMessageStrings = {
 	notAuthenticated:
 		'You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in.',
 	notAuthorized:
-		'You are not authorized to make this response. If you believe this to be in error please refresh the page and try again.',
+		'You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again.',
 	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
 	thereAreNoEditsToSubmit: 'There are no edits to submit.',
 	tooManyRequests: 'You have sent too many requests. Please wait a few minutes and try again.',
