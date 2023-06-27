@@ -126,7 +126,8 @@ marked.use({
 	smartLists: true,
 	smartypants: false,
 	xhtml: false,
-	langPrefix: 'lang'
+	headerIds: false,
+	mangle: false
 });
 
 module.exports = new Transformer({
