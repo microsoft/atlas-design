@@ -15,19 +15,19 @@
 		"lint-fix": "eslint . --ext .ts --fix"
 	},
 	"devDependencies": {
-		"eslint": "^8.38.0",
-		"@typescript-eslint/eslint-plugin": "^5.58.0",
-		"@typescript-eslint/parser": "^5.58.0",
+		"eslint": "^8.43.0",
+		"@typescript-eslint/eslint-plugin": "^5.60.1",
+		"@typescript-eslint/parser": "^5.60.1",
 		"eslint-plugin-import": "^2.27.5",
 		"@microsoft/atlas-css": "^3.34.0",
 		"eslint-config-prettier": "^8.8.0",
-		"parcel": "^2.8.3",
-		"lightningcss": "1.19.0",
-		"@parcel/transformer-sass": "^2.8.3",
+		"parcel": "^2.9.3",
+		"lightningcss": "1.21.1",
+		"@parcel/transformer-sass": "^2.9.3",
 		"@microsoft/parcel-transformer-markdown-html": "^2.6.0",
 		"fs-extra": "^11.1.1",
 		"front-matter": "^4.0.2",
-		"typescript": "^5.0.4"
+		"typescript": "^5.1.5"
 	},
 	"dependencies": {
 		"@microsoft/atlas-js": "^1.6.0"
