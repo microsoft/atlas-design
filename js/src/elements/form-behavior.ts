@@ -5,8 +5,13 @@ export const defaultMessageStrings = {
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
 	inputRequired: '{inputLabel} is required.',
+	notAuthenticated:
+		'You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in.',
+	notAuthorized:
+		'You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again.',
 	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
 	thereAreNoEditsToSubmit: 'There are no edits to submit.',
+	tooManyRequests: 'You have sent too many requests. Please wait a few minutes and try again.',
 	weEncounteredAnUnexpectedError:
 		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
@@ -255,8 +260,17 @@ export class FormBehaviorElement extends HTMLElement {
 				const errorText = document.createElement('li');
 				errorText.innerText = this.locStrings.weEncounteredAnUnexpectedError;
 				// custom text for version mismatch
+				if (response.status === 401) {
+					errorText.innerText = this.locStrings.notAuthenticated;
+				}
+				if (response.status === 403) {
+					errorText.innerText = this.locStrings.notAuthorized;
+				}
 				if (response.status === 412) {
 					errorText.innerText = this.locStrings.contentHasChanged;
+				}
+				if (response.status === 429) {
+					errorText.innerText = this.locStrings.tooManyRequests;
 				}
 				this.dispatchEvent(
 					new CustomEvent('submission-error', {
