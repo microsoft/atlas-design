@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.7.0
+
+### Minor Changes
+
+- 047d7be: Add handling of form submission error state in form behavior
+
 ## 1.6.0
 
 ### Minor Changes
