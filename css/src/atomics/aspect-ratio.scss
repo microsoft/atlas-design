@@ -1,4 +1,4 @@
-@each $name, $ratio in $ratios {
+@each $name, $ratio in $aspect-ratios {
 	.aspect-ratio-#{$name} {
 		aspect-ratio: #{$ratio};
 		width: 100% !important; // must override width to fill ratio
