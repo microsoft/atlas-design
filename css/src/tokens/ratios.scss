@@ -1,0 +1,10 @@
+/**
+ * @sass-export-section="ratios"
+ */
+
+$ratios: (
+	'16-9': '16 / 9',
+	'4-3': '4 / 3',
+	'square': '1 / 1',
+	'vertical': '9 / 16'
+) !default;
