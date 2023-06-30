@@ -1,5 +1,5 @@
 ---
-title: Ratio Atomics
+title: Ratio
 description: Aspect ratio related atomic css classes for the Atlas Design System
 template: standard
 classType: Atomics
@@ -33,6 +33,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 		src="~/src/scaffold/media/sample-learn-vertical-video.mp4"
 		title="Vertical video player"
 		frameborder="0"
+		sandbox
 	></iframe>
 </div>
 ```
