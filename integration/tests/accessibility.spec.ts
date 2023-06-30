@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 const pathnames = [
 	'/atomics/overview.html',
+	'/atomics/aspect-ratio.html',
 	'/atomics/background.html',
 	'/atomics/border.html',
 	'/atomics/display.html',
