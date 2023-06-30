@@ -40,13 +40,28 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 
 ```html
 <div class="width-350 padding-xxs">
-	<img class="aspect-ratio-16-9" src="~/src/scaffold/media/learn-training.jpg" />
+	<img
+		class="aspect-ratio-16-9"
+		alt=""
+		role="presentation"
+		src="~/src/scaffold/media/learn-training.jpg"
+	/>
 </div>
 <div class="width-350 padding-xxs">
-	<img class="aspect-ratio-4-3" src="~/src/scaffold/media/learn-training.jpg" />
+	<img
+		class="aspect-ratio-4-3"
+		alt=""
+		role="presentation"
+		src="~/src/scaffold/media/learn-training.jpg"
+	/>
 </div>
 <div class="width-350 padding-xxs">
-	<img class="aspect-ratio-square" src="~/src/scaffold/media/learn-training.jpg" />
+	<img
+		class="aspect-ratio-square"
+		alt=""
+		role="presentation"
+		src="~/src/scaffold/media/learn-training.jpg"
+	/>
 </div>
 ```
 
