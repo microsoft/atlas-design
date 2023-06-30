@@ -1,5 +1,5 @@
 ---
-title: Ratio
+title: Aspect ratio
 description: Aspect ratio related atomic css classes for the Atlas Design System
 template: standard
 classType: Atomics
@@ -7,7 +7,7 @@ classPrefixes:
   - aspect-ratio
 ---
 
-# Ratio Atomics
+# Aspect ratio Atomics
 
 Ratio atomics are used to add a fluid aspect ratio to an element. The element will scale to fill 100% width of the container while matching the height to the defined aspect ratio.
 

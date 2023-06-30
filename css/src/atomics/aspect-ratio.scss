@@ -1,8 +1,8 @@
 @each $name, $ratio in $ratios {
-	.ratio-#{$name} {
+	.aspect-ratio-#{$name} {
 		aspect-ratio: #{$ratio};
 		width: 100% !important; // must override width to fill ratio
 		height: 100% !important; // must override height to fill ratio
-		object-fit: cover;
+		// object-fit: cover;
 	}
 }
