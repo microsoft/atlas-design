@@ -4,16 +4,16 @@ description: Aspect ratio related atomic css classes for the Atlas Design System
 template: standard
 classType: Atomics
 classPrefixes:
-  - ratio
+  - aspect-ratio
 ---
 
 # Ratio Atomics
 
 Ratio atomics are used to add a fluid aspect ratio to an element. The element will scale to fill 100% width of the container while matching the height to the defined aspect ratio.
 
-| modifiers | ratio                               |
-| --------- | ----------------------------------- |
-| values    | `16-9`, `4-3`, `square`, `vertical` |
+| modifiers | ratio                          |
+| --------- | ------------------------------ |
+| values    | `16-9`,`9-16`, `4-3`, `square` |
 
 ## Usage
 
@@ -21,7 +21,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 
 ```html
   <div class="padding-sm width-500-desktop">
-  	<video controls name="media" class="width-500 ratio-16-9" poster="~/src/scaffold/media/sample-learn-video-thumbnail.jpg" src="~/src/scaffold/media/sample-learn-video.mp4" type="video/mp4" />
+  	<video controls name="media" class="width-500 aspect-ratio-16-9" poster="~/src/scaffold/media/sample-learn-video-thumbnail.jpg" src="~/src/scaffold/media/sample-learn-video.mp4" type="video/mp4" />
   	</video>
   </div>
 ```
@@ -29,7 +29,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 ```html
 <div class="width-250 padding-sm">
 	<iframe
-		class="ratio-vertical"
+		class="aspect-ratio-9-16"
 		src="~/src/scaffold/media/sample-learn-vertical-video.mp4"
 		title="Vertical video player"
 		frameborder="0"
@@ -40,13 +40,13 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 
 ```html
 <div class="width-350 padding-sm">
-	<img class="ratio-16-9" src="~/src/scaffold/media/learn-training.jpg" />
+	<img class="aspect-ratio-16-9" src="~/src/scaffold/media/learn-training.jpg" />
 </div>
 <div class="width-350 padding-sm">
-	<img class="ratio-4-3" src="~/src/scaffold/media/learn-training.jpg" />
+	<img class="aspect-ratio-4-3" src="~/src/scaffold/media/learn-training.jpg" />
 </div>
 <div class="width-350 padding-sm">
-	<img class="ratio-square" src="~/src/scaffold/media/learn-training.jpg" />
+	<img class="aspect-ratio-square" src="~/src/scaffold/media/learn-training.jpg" />
 </div>
 ```
 
@@ -55,8 +55,8 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 List of all available classes:
 
 ```atomics-filter
-.ratio-16-9
-.ratio-4-3
-.ratio-square
-.ratio-vertical
+.aspect-ratio-16-9
+.aspect-ratio-4-3
+.aspect-ratio-square
+.aspect-ratio-9-16
 ```

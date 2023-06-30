@@ -1,5 +1,5 @@
 ---
-'@microsoft/atlas-css': major
+'@microsoft/atlas-css': minor
 ---
 
 Adding new ratio atomic
