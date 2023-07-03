@@ -21,7 +21,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 
 ```html
   <div class="padding-sm width-500-desktop">
-  	<video controls name="media" class="width-500 aspect-ratio-16-9" src="~/src/scaffold/media/sample-video.mp4" type="video/mp4" />
+  	<video controls name="media" class="width-500 aspect-ratio-16-9" src="~/src/scaffold/media/aspect-ratio-video-16-9.mp4" type="video/mp4" />
   	</video>
   </div>
 ```
@@ -30,7 +30,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 <div class="width-250 padding-sm">
 	<iframe
 		class="aspect-ratio-9-16"
-		src="~/src/scaffold/media/sample-video-vertical.mp4"
+		src="~/src/scaffold/media/aspect-ratio-video-9-16.mp4"
 		title="Vertical video player"
 		frameborder="0"
 		sandbox
@@ -39,28 +39,28 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 ```
 
 ```html
-<div class="width-350 padding-xxs">
-	<img
-		class="aspect-ratio-16-9"
-		alt=""
-		role="presentation"
-		src="~/src/scaffold/media/learn-training.jpg"
-	/>
-</div>
-<div class="width-350 padding-xxs">
-	<img
-		class="aspect-ratio-4-3"
-		alt=""
-		role="presentation"
-		src="~/src/scaffold/media/learn-training.jpg"
-	/>
-</div>
-<div class="width-350 padding-xxs">
+<div class="width-100 padding-xxs">
 	<img
 		class="aspect-ratio-square"
 		alt=""
 		role="presentation"
-		src="~/src/scaffold/media/learn-training.jpg"
+		src="~/src/scaffold/media/aspect-ratio-square.png"
+	/>
+</div>
+<div class="width-200 padding-xxs">
+	<img
+		class="aspect-ratio-16-9"
+		alt=""
+		role="presentation"
+		src="~/src/scaffold/media/aspect-ratio-16-9.png"
+	/>
+</div>
+<div class="width-350 padding-xxs">
+	<img
+		class="aspect-ratio-4-1"
+		alt=""
+		role="presentation"
+		src="~/src/scaffold/media/aspect-ratio-4-1.png"
 	/>
 </div>
 ```
