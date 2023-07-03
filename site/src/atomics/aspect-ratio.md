@@ -13,7 +13,7 @@ Ratio atomics are used to add a fluid aspect ratio to an element. The element wi
 
 | modifiers | ratio                                                                                   |
 | --------- | --------------------------------------------------------------------------------------- |
-| values    | `square`, `1-2`, `2-1`, `2-3`, `3-1`, `3-2`, `4-3`, `4-5`, `3-4`, `5-4`, `9-16`, `16-9` |
+| values    | `square`, `1-2`, `2-1`, `2-3`, `3-1`, `3-2`, `3-4`, `4-3`, `4-5`, `5-4`, `9-16`, `16-9` |
 
 ## Usage
 
@@ -21,7 +21,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 
 ```html
   <div class="padding-sm width-500-desktop">
-  	<video controls name="media" class="width-500 aspect-ratio-16-9" poster="~/src/scaffold/media/sample-learn-video-thumbnail.jpg" src="~/src/scaffold/media/sample-learn-video.mp4" type="video/mp4" />
+  	<video controls name="media" class="width-500 aspect-ratio-16-9" src="~/src/scaffold/media/sample-video.mp4" type="video/mp4" />
   	</video>
   </div>
 ```
@@ -30,7 +30,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 <div class="width-250 padding-sm">
 	<iframe
 		class="aspect-ratio-9-16"
-		src="~/src/scaffold/media/sample-learn-vertical-video.mp4"
+		src="~/src/scaffold/media/sample-video-vertical.mp4"
 		title="Vertical video player"
 		frameborder="0"
 		sandbox
@@ -76,9 +76,9 @@ List of all available classes:
 .aspect-ratio-2-3
 .aspect-ratio-3-1
 .aspect-ratio-3-2
+.aspect-ratio-3-4
 .aspect-ratio-4-3
 .aspect-ratio-4-5
-.aspect-ratio-3-4
 .aspect-ratio-5-4
 .aspect-ratio-9-16
 .aspect-ratio-16-9
