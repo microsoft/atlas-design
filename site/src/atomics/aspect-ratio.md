@@ -11,9 +11,9 @@ classPrefixes:
 
 Ratio atomics are used to add a fluid aspect ratio to an element. The element will scale to fill 100% width of the container while matching the height to the defined aspect ratio.
 
-| modifiers | ratio                                                                                   |
-| --------- | --------------------------------------------------------------------------------------- |
-| values    | `square`, `1-2`, `2-1`, `2-3`, `3-1`, `3-2`, `3-4`, `4-3`, `4-5`, `5-4`, `9-16`, `16-9` |
+| cssproperty  | ratio                                                    | screensize |
+| ------------ | -------------------------------------------------------- | ---------- |
+| aspect-ratio | `1-1`, `2-1`, `3-2`, `4-1`, `4-3`, `5-3`, `9-16`, `16-9` | N/A        |
 
 ## Usage
 
@@ -42,7 +42,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 ```html
 <div class="width-100 padding-xxs">
 	<img
-		class="aspect-ratio-square"
+		class="aspect-ratio-1-1"
 		alt=""
 		role="presentation"
 		src="~/src/scaffold/media/aspect-ratio-square.png"
@@ -74,13 +74,10 @@ List of all available classes:
 .aspect-ratio-square
 .aspect-ratio-1-2
 .aspect-ratio-2-1
-.aspect-ratio-2-3
-.aspect-ratio-3-1
 .aspect-ratio-3-2
-.aspect-ratio-3-4
+.aspect-ratio-4-1
 .aspect-ratio-4-3
-.aspect-ratio-4-5
-.aspect-ratio-5-4
+.aspect-ratio-5-3
 .aspect-ratio-9-16
 .aspect-ratio-16-9
 ```
