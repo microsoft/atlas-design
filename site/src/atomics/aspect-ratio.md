@@ -7,7 +7,7 @@ classPrefixes:
   - aspect-ratio
 ---
 
-# Aspect ratio Atomics
+# Aspect Ratio Atomics
 
 Ratio atomics are used to add a fluid aspect ratio to an element. The element will scale to fill 100% width of the container while matching the height to the defined aspect ratio.
 
