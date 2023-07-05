@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Adding new ratio atomic
+Adding new aspect ratio atomic
