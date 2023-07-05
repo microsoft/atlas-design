@@ -586,8 +586,11 @@ interface LocStrings {
 	inputMaxLength: string;
 	inputMinLength: string;
 	inputRequired: string;
+	notAuthenticated: string;
+	notAuthorized: string;
 	pleaseFixTheFollowingIssues: string;
 	thereAreNoEditsToSubmit: string;
+	tooManyRequests: string;
 	weEncounteredAnUnexpectedError: string;
 }
 
