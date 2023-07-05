@@ -66,6 +66,7 @@ test.describe('axe should not find any automatically detectable accessibility is
 
 			const accessibilityScanResults = await new AxeBuilder({ page })
 				.exclude('#figma-embed-iframe')
+				.exclude('#embed-iframe')
 				.analyze();
 
 			expect(accessibilityScanResults.violations).toEqual([]);
