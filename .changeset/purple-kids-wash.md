@@ -1,5 +1,5 @@
 ---
-'@microsoft/atlas-js': minor
+'@microsoft/atlas-js': patch
 ---
 
-Update loale interface to include added error states
+Update LocStrings interface to include added error states.
