@@ -27,3 +27,22 @@ This post provides some contribution guidelines for CSS/Scss in Atlas.
 ## When updating existing Scss
 
 - try using [`npm link`](https://docs.npmjs.com/cli/v7/commands/npm-link) to view the impact on existing systems that import Atlas.
+
+## Enable the Changeset bot with a fine-grain PAT
+
+The changeset bot needs some permissions in order to access our repo to help us with releases. If the release action begins to fail, it may be due to an expired token.
+
+1. In Github, go to your settings
+1. Go to Developer Settings
+1. Select Personal Access Tokens, and Fine-grained tokens
+1. Note! You can just click "Regenerate token" if you have an existing one already.
+1. Name the token something like "changeset-bot-token-[createdate]", where [createdate] follows the following format: "12-31-2023" as represents the date you made this token.
+1. Changesets requires the following permissions:
+   - Read access to actions variables, metadata, and secrets
+   - Read and Write access to actions, code, discussions, and pull requests
+1. Select a date for its expiration.
+1. Submit form.
+1. Copy value of token. It will looks something like `github_pat_*********************************`
+1. Got to Atlas settings, Secrets, Actions.
+1. Edit value of "RELEASE_GITHUB" with value of created token.
+1. Save.
