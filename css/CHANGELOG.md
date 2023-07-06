@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.34.1
+
+### Patch Changes
+
+- 5c3b764: Adding !important to the color atomic class.
+- b3bca12: Updating warning text color to pass color contrast requirements.
+
 ## 3.34.0
 
 ### Minor Changes

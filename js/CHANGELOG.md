@@ -1,5 +1,15 @@
 # @microsoft/atlas-js
 
+## 1.7.0
+
+### Minor Changes
+
+- 047d7be: Add handling of form submission error state in form behavior
+
+### Patch Changes
+
+- ecd4287: Update LocStrings interface to include added error states.
+
 ## 1.6.0
 
 ### Minor Changes
