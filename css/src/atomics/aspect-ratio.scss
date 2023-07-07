@@ -1,16 +1,14 @@
 $aspect-ratios: (
 	'1-1': '1 / 1',
 	'2-1': '2 / 1',
-	'3-2': '3 / 2',
 	'4-3': '4 / 3',
-	'5-3': '5 / 3',
 	'9-16': '9 / 16',
 	'16-9': '16 / 9'
 ) !default;
 
 @each $name, $ratio in $aspect-ratios {
 	.aspect-ratio-#{$name} {
-		aspect-ratio: #{$ratio};
+		aspect-ratio: #{$ratio} !important;
 		width: 100% !important; // must override width to fill container
 		height: 100% !important; // must override height to set correct ratio
 	}

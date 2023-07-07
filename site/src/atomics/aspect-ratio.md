@@ -20,22 +20,14 @@ Ratio atomics are used to add a fluid aspect ratio to an element. The element wi
 Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements to scale elements. When used on a `video` element or `iframe` video with the matching aspect ratio, it will remove the black bars and scale responsively.
 
 ```html
-  <div class="padding-sm width-500-desktop">
-  	<video controls name="media" class="width-500 aspect-ratio-16-9" src="~/src/scaffold/media/aspect-ratio-video-16-9.mp4" type="video/mp4" />
-  	</video>
-  </div>
-```
-
-```html
-<div class="width-250 padding-sm">
-	<iframe
-		id="embed-iframe"
-		class="aspect-ratio-9-16"
-		src="~/src/scaffold/media/aspect-ratio-video-9-16.mp4"
-		title="Vertical video player"
-		frameborder="0"
-		sandbox
-	></iframe>
+<div class="padding-sm width-500-desktop">
+	<video
+		controls
+		name="media"
+		class="aspect-ratio-16-9"
+		src="~/src/scaffold/media/aspect-ratio-video-16-9.mp4"
+		type="video/mp4"
+	></video>
 </div>
 ```
 
@@ -43,16 +35,14 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 <div class="width-100 padding-xxs">
 	<img
 		class="aspect-ratio-1-1"
-		alt=""
-		role="presentation"
+		alt="An example image use to show an aspect ratio of 1 by 1"
 		src="~/src/scaffold/media/aspect-ratio-square.png"
 	/>
 </div>
 <div class="width-200 padding-xxs">
 	<img
 		class="aspect-ratio-16-9"
-		alt=""
-		role="presentation"
+		alt="An example image use to show an aspect ratio of 16 by 9"
 		src="~/src/scaffold/media/aspect-ratio-16-9.png"
 	/>
 </div>
