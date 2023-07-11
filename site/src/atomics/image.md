@@ -18,6 +18,7 @@ List of all available classes:
 
 ```atomics-filter
 object-fit-contain
+object-fit-cover
 object-fit-fill
 object-position-top
 ```
