@@ -18,7 +18,7 @@ export class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
-	locStrings = defaultMessageStrings;
+	locStrings = this.getLocaleStrings(this);
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
