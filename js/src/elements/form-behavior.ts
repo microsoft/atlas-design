@@ -22,16 +22,7 @@ export class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
-	locStrings = Object.assign(
-		{},
-		defaultMessageStrings,
-		Array.from(this.attributes)
-			.filter(a => a.name.startsWith('loc-'))
-			.reduce((map: { [key: string]: string }, a) => {
-				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
-				return map;
-			}, {})
-	);
+	locStrings = defaultMessageStrings;
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
@@ -68,6 +59,7 @@ export class FormBehaviorElement extends HTMLElement {
 			return;
 		}
 
+		this.locStrings = this.getLocaleStrings();
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
 		errorSummaryContainer.setAttribute('data-form-error-container', '');
@@ -95,6 +87,17 @@ export class FormBehaviorElement extends HTMLElement {
 		for (const dispose of this.toDispose) {
 			dispose();
 		}
+	}
+
+	getLocaleStrings() {
+		const formLocaleStrings = Array.from(this.attributes)
+			.filter(a => a.name.startsWith('loc-'))
+			.reduce((map: { [key: string]: string }, a) => {
+				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
+				return map;
+			}, {});
+
+		return Object.assign({}, defaultMessageStrings, formLocaleStrings);
 	}
 
 	subscribe(target: EventTarget, type: string, listener: EventListenerObject) {
