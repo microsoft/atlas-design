@@ -18,7 +18,7 @@ export class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
-	locStrings = this.getLocaleStrings(this);
+	locStrings = this.getLocaleStrings();
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
@@ -53,7 +53,7 @@ export class FormBehaviorElement extends HTMLElement {
 		if (!(form instanceof HTMLFormElement)) {
 			return;
 		}
-		this.locStrings = this.getLocaleStrings(this);
+		this.locStrings = this.getLocaleStrings();
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
 		errorSummaryContainer.setAttribute('data-form-error-container', '');
@@ -83,8 +83,8 @@ export class FormBehaviorElement extends HTMLElement {
 		}
 	}
 
-	getLocaleStrings(form: FormBehaviorElement) {
-		const formLocaleStrings = Array.from(form.attributes)
+	getLocaleStrings() {
+		const formLocaleStrings = Array.from(this.attributes)
 			.filter(a => a.name.startsWith('loc-'))
 			.reduce((map: { [key: string]: string }, a) => {
 				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
