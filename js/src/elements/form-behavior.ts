@@ -90,7 +90,7 @@ export class FormBehaviorElement extends HTMLElement {
 				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
 				return map;
 			}, {});
-			
+
 		return Object.assign({}, defaultMessageStrings, formLocaleStrings);
 	}
 
