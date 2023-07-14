@@ -1,20 +1,16 @@
 import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
-export const defaultMessageStrings = {
+const defaultMessageStrings = {
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
 	inputRequired: '{inputLabel} is required.',
-	notAuthenticated:
-		'You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in.',
-	notAuthorized:
-		'You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again.',
 	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
 	thereAreNoEditsToSubmit: 'There are no edits to submit.',
-	tooManyRequests: 'You have sent too many requests. Please wait a few minutes and try again.',
 	weEncounteredAnUnexpectedError:
 		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
+
 // <form-behavior>
 export class FormBehaviorElement extends HTMLElement {
 	submitting = false as boolean;
@@ -22,16 +18,7 @@ export class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
-	locStrings = Object.assign(
-		{},
-		defaultMessageStrings,
-		Array.from(this.attributes)
-			.filter(a => a.name.startsWith('loc-'))
-			.reduce((map: { [key: string]: string }, a) => {
-				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
-				return map;
-			}, {})
-	);
+	locStrings = defaultMessageStrings;
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
@@ -41,7 +28,6 @@ export class FormBehaviorElement extends HTMLElement {
 
 	constructor() {
 		super();
-		this.locStrings = this.locStrings;
 	}
 
 	get canSave() {
@@ -67,7 +53,7 @@ export class FormBehaviorElement extends HTMLElement {
 		if (!(form instanceof HTMLFormElement)) {
 			return;
 		}
-
+		this.locStrings = this.getLocaleStrings(this);
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
 		errorSummaryContainer.setAttribute('data-form-error-container', '');
@@ -95,6 +81,17 @@ export class FormBehaviorElement extends HTMLElement {
 		for (const dispose of this.toDispose) {
 			dispose();
 		}
+	}
+
+	getLocaleStrings(form: FormBehaviorElement) {
+		const formLocaleStrings = Array.from(form.attributes)
+			.filter(a => a.name.startsWith('loc-'))
+			.reduce((map: { [key: string]: string }, a) => {
+				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
+				return map;
+			}, {});
+			
+		return Object.assign({}, defaultMessageStrings, formLocaleStrings);
 	}
 
 	subscribe(target: EventTarget, type: string, listener: EventListenerObject) {
