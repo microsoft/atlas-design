@@ -5,8 +5,13 @@ const defaultMessageStrings = {
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
 	inputRequired: '{inputLabel} is required.',
+	notAuthenticated:
+		'You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in.',
+	notAuthorized:
+		'You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again.',
 	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
 	thereAreNoEditsToSubmit: 'There are no edits to submit.',
+	tooManyRequests: 'You have sent too many requests. Please wait a few minutes and try again.',
 	weEncounteredAnUnexpectedError:
 		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
@@ -18,7 +23,7 @@ export class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
-	locStrings = this.getLocaleStrings();
+	locStrings = defaultMessageStrings;
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
