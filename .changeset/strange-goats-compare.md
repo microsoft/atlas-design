@@ -2,4 +2,4 @@
 '@microsoft/atlas-js': patch
 ---
 
-Update when the locale strings get updated during initization
+Defer form behavior locale strings from loading until after being added to the DOM.
