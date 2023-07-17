@@ -9,7 +9,5 @@ $aspect-ratios: (
 @each $name, $ratio in $aspect-ratios {
 	.aspect-ratio-#{$name} {
 		aspect-ratio: #{$ratio} !important;
-		width: 100% !important; // must override width to fill container
-		height: 100% !important; // must override height to set correct ratio
 	}
 }

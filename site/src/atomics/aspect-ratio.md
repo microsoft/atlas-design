@@ -53,7 +53,7 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 List of all available classes:
 
 ```atomics-filter
-.aspect-ratio-square
+.aspect-ratio-1-1
 .aspect-ratio-1-2
 .aspect-ratio-2-1
 .aspect-ratio-4-3
