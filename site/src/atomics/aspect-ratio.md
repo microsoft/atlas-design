@@ -9,7 +9,7 @@ classPrefixes:
 
 # Aspect Ratio Atomics
 
-Ratio atomics are used to add a fluid aspect ratio to an element. The element will scale to fill 100% width of the container while matching the height to the defined aspect ratio.
+Aspect ratio atomics are used to set the width-to-height ratio of an element, even if the parent container or viewport size changes.
 
 | cssproperty  | ratio                               | screensize |
 | ------------ | ----------------------------------- | ---------- |
@@ -17,7 +17,7 @@ Ratio atomics are used to add a fluid aspect ratio to an element. The element wi
 
 ## Usage
 
-Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements to scale elements. When used on a `video` element or `iframe` video with the matching aspect ratio, it will remove the black bars and scale responsively.
+Here are examples of aspect ratio atomics being applied to `video` and `img` elements. When used on `video` or `iframe` elements with the matching aspect ratio, it will remove the black bars and scale responsively.
 
 ```html
 <div class="padding-sm width-500-desktop">
@@ -35,14 +35,14 @@ Here are examples of ratio atomics, used on `iframe`, `video` and `img` elements
 <div class="width-100 padding-xxs">
 	<img
 		class="aspect-ratio-1-1"
-		alt="An example image use to show an aspect ratio of 1 by 1"
+		alt="An example image with an aspect ratio of 1 by 1"
 		src="~/src/scaffold/media/aspect-ratio-square.png"
 	/>
 </div>
 <div class="width-200 padding-xxs">
 	<img
-		class="aspect-ratio-16-9"
-		alt="An example image use to show an aspect ratio of 16 by 9"
+		class="aspect-ratio-2-1 object-fit-cover"
+		alt="An example image resized to an aspect ratio of 2 by 1"
 		src="~/src/scaffold/media/aspect-ratio-16-9.png"
 	/>
 </div>
@@ -54,7 +54,6 @@ List of all available classes:
 
 ```atomics-filter
 .aspect-ratio-1-1
-.aspect-ratio-1-2
 .aspect-ratio-2-1
 .aspect-ratio-4-3
 .aspect-ratio-9-16
