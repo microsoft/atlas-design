@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.7.1
+
+### Patch Changes
+
+- 5380254: Defer form behavior locale strings from loading until after being added to the DOM.
+
 ## 1.7.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.34.2
+
+### Patch Changes
+
+- 5d1ccfc: Adds object-fit-cover css class to image atomics
+
 ## 3.34.1
 
 ### Patch Changes
