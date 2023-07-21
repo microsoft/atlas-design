@@ -31,14 +31,26 @@ Here are examples of aspect ratio atomics being applied to `video` and `img` ele
 </div>
 ```
 
+## Additional information
+
+In some scenarios an element's intrincis size is smaller than it's container size, so the ratio isn't calculated. These elements will need to have `width: 100%` or set to calculate the height. This can be done with the use of [width atomics](./width.md) or [ image components](../components/image.md).
+
 ```html
-<div class="width-100 padding-xxs">
-	<img
-		class="aspect-ratio-1-1"
-		alt="An example image with an aspect ratio of 1 by 1"
-		src="~/src/scaffold/media/aspect-ratio-square.png"
-	/>
+<div class="width-150 padding-xxs">
+	<div class="image">
+		<img
+			class="aspect-ratio-1-1"
+			alt="An example image with an aspect ratio of 1 by 1"
+			src="~/src/scaffold/media/aspect-ratio-square.png"
+		/>
+	</div>
 </div>
+```
+
+In other scenarios an element has a different intrinsic aspect ratio. Change the ratio without
+squishing the image can be done with [image atomic](../atomics/image.md) `object-fit-cover`.
+
+```html
 <div class="width-200 padding-xxs">
 	<img
 		class="aspect-ratio-2-1 object-fit-cover"
