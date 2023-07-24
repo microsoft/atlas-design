@@ -17,10 +17,26 @@ Aspect ratio atomics are used to set the width-to-height ratio of an element, ev
 
 ## Usage
 
-Here are examples of aspect ratio atomics being applied to `video` and `img` elements. When used on `video` or `iframe` elements with the matching aspect ratio, it will remove the black bars and scale responsively.
+The `aspect-ratio` atomic allows you to define a predetermined width-to-height ratio of an element's box. The specified aspect ratio is used in the calculation of auto sizes and some other layout functions.
+
+At least one of the box's sizes needs to be automatic in order for aspect-ratio to have any effect. If neither the width nor height is an automatic size, then the provided aspect ratio has no effect on the box's preferred sizes.
 
 ```html
-<div class="padding-sm width-500-desktop">
+<div class="padding-sm width-500-tablet">
+	<img
+		alt="An example image with an aspect ratio of 2 by 1"
+		class="aspect-ratio-2-1"
+		src="~/src/scaffold/media/aspect-ratio-2-1.png"
+	/>
+</div>
+```
+
+## Additional information
+
+`video` or `iframe` elements should use a matching aspect ratio of 16:9 or 4:3. If a `video` or `iframe`'s container is wider or taller than the video content, it will fill the remaining space with black bars. Using `aspect-ratio-16-9` will remove the black bars and scale the element responsively.
+
+```html
+<div class="padding-sm width-500">
 	<video
 		controls
 		name="media"
@@ -31,30 +47,26 @@ Here are examples of aspect ratio atomics being applied to `video` and `img` ele
 </div>
 ```
 
-## Additional information
-
-In some scenarios an element's intrincis size is smaller than it's container size, so the ratio isn't calculated. These elements will need to have `width: 100%` or set to calculate the height. This can be done with the use of [width atomics](./width.md) or [ image components](../components/image.md).
+In some scenarios, an element's intrinsic size is smaller than its container size, so the ratio isn't calculated. These elements will need to have its width set to `width: 100%` to calculate the height. This can be done with the use of [width atomics](./width.md) or [ image components](../components/image.md).
 
 ```html
-<div class="width-150 padding-xxs">
-	<div class="image">
-		<img
-			class="aspect-ratio-1-1"
-			alt="An example image with an aspect ratio of 1 by 1"
-			src="~/src/scaffold/media/aspect-ratio-square.png"
-		/>
-	</div>
+<div class="width-150 image padding-xxs">
+	<img
+		class="aspect-ratio-1-1"
+		alt="An example image with an aspect ratio of 1 by 1"
+		src="~/src/scaffold/media/aspect-ratio-1-1.png"
+	/>
 </div>
 ```
 
-In other scenarios an element has a different intrinsic aspect ratio. Change the ratio without
+In other scenarios, the source image has a different intrinsic aspect ratio. Changing the ratio without
 squishing the image can be done with [image atomic](../atomics/image.md) `object-fit-cover`.
 
 ```html
-<div class="width-200 padding-xxs">
+<div class="padding-xxs width-350">
 	<img
-		class="aspect-ratio-2-1 object-fit-cover"
-		alt="An example image resized to an aspect ratio of 2 by 1"
+		class="aspect-ratio-4-3 object-fit-cover"
+		alt="An example image resized to an aspect ratio of 4 by 3"
 		src="~/src/scaffold/media/aspect-ratio-16-9.png"
 	/>
 </div>
