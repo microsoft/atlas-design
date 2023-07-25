@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.8.0
+
+### Minor Changes
+
+- 334a98f: Add a nosubmit attribute to form-behavior
+
 ## 1.7.1
 
 ### Patch Changes
