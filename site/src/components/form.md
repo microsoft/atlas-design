@@ -90,6 +90,7 @@ The form behavior component can accept certain HTML attributes.
 | header-\*=               | For attributes that start with `header-`, the name after `header-` and the attribute value is added to the submit request header.       |
 | nounload                 | Disables the browser warning message that appears when you try to navigate away from the current page with a partially filled out form. |
 | new                      | When the form does not require any edits (i.e the only action is to submit), adding the `new` attribute will override the validation.   |
+| nosubmit                 | Use the `nosubmit` attibute to bypass automatic form submission if a form contains a body but does not need to send a POST request.     |
 
 ### Custom validation
 

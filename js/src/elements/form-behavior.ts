@@ -53,6 +53,12 @@ export class FormBehaviorElement extends HTMLElement {
 		return this.hasAttribute('new');
 	}
 
+	// Currently only used for Feedback form-behavior.
+	// Use the `nosubmit` attibute to bypass automatic form submission if a form contains a body but does not need to send a POST request.
+	get noSubmit() {
+		return this.hasAttribute('nosubmit');
+	}
+
 	connectedCallback() {
 		const form = this.parentElement;
 		if (!(form instanceof HTMLFormElement)) {
@@ -199,7 +205,7 @@ export class FormBehaviorElement extends HTMLElement {
 			this.submitting = true;
 			setBusySubmitButton(event, form, this.submitting);
 			const result = await this.validateForm(form);
-			if (!result.valid) {
+			if (!result.valid || this.noSubmit) {
 				return;
 			}
 
