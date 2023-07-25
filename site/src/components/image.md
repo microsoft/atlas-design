@@ -13,7 +13,7 @@ The image component parents an image tag or svg and provides width based classes
 
 ## Usage
 
-The default image class takes up the full width of its container, but various sizes and screensizes modifiers are available.
+The default image class takes up the full width of its container, but various sizes and screensizes modifiers are available. Image width to height ratios can be set with [aspect ratio atomics](../atomics/aspect-ratio.md).
 
 | Class pattern         | Sizes                                                                                       | screensize          |
 | --------------------- | ------------------------------------------------------------------------------------------- | ------------------- |
