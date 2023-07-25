@@ -17,9 +17,7 @@ Aspect ratio atomics are used to set the width-to-height ratio of an element, ev
 
 ## Usage
 
-The `aspect-ratio` atomic allows you to define a predetermined width-to-height ratio of an element's box. The specified aspect ratio is used in the calculation of auto sizes and some other layout functions.
-
-At least one of the box's sizes needs to be automatic in order for aspect-ratio to have any effect. If neither the width nor height is an automatic size, then the provided aspect ratio has no effect on the box's preferred sizes.
+Aspect ratio atomics are used to set the width-to-height ratio of an element, even if the parent container or viewport size changes.
 
 ```html
 <div class="padding-sm width-500-tablet">
@@ -33,7 +31,7 @@ At least one of the box's sizes needs to be automatic in order for aspect-ratio 
 
 ## Additional information
 
-`video` or `iframe` elements should use a matching aspect ratio of 16:9 or 4:3. If a `video` or `iframe`'s container is wider or taller than the video content, it will fill the remaining space with black bars. Using `aspect-ratio-16-9` will remove the black bars and scale the element responsively.
+If the `video` or `iframe` container is wider or taller than the video content, the remaining space is filled with a black background. Using the most common video ratio `aspect-ratio-16-9` will remove the black background and scale the element responsively.
 
 ```html
 <div class="padding-sm width-500">
@@ -47,7 +45,7 @@ At least one of the box's sizes needs to be automatic in order for aspect-ratio 
 </div>
 ```
 
-In some scenarios, an element's intrinsic size is smaller than its container size, so the ratio isn't calculated. These elements will need to have its width set to `width: 100%` to calculate the height. This can be done with the use of [width atomics](./width.md) or [ image components](../components/image.md).
+If the element's intrinsic size is smaller than its container size, the ratio isn't calculated. These elements will need to have its width set to `width: 100%` to calculate the height. This can be done with the use of [width atomics](./width.md) or [ image components](../components/image.md).
 
 ```html
 <div class="width-150 image padding-xxs">
@@ -59,8 +57,7 @@ In some scenarios, an element's intrinsic size is smaller than its container siz
 </div>
 ```
 
-In other scenarios, the source image has a different intrinsic aspect ratio. Changing the ratio without
-squishing the image can be done with [image atomic](../atomics/image.md) `object-fit-cover`.
+If the source image has a different intrinsic aspect ratio than the atomic ratio the image will be stretched. This scenario can be prevented with [image atomic](../atomics/image.md) `object-fit-cover`.
 
 ```html
 <div class="padding-xxs width-350">
