@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.40.0
+
+### Minor Changes
+
+- 334a98f: Add a nosubmit attribute to form-behavior
+
+### Patch Changes
+
+- Updated dependencies [334a98f]
+  - @microsoft/atlas-js@1.8.0
+
 ## 0.39.1
 
 ### Patch Changes

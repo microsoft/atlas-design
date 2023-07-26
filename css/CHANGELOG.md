@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.35.0
+
+### Minor Changes
+
+- ced713d: Adding new aspect ratio atomic
+
 ## 3.34.2
 
 ### Patch Changes
