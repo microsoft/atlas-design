@@ -4,12 +4,19 @@
 	gap: $layout-4;
 }
 
+.chat-bubble {
+	padding: $spacer-4;
+	border: $border-width solid $border !important;
+	border-radius: $border-radius !important;
+	box-shadow: $box-shadow-light !important;
+}
+
 .message {
 	display: flex;
 	flex-direction: column;
 
 	.message-time {
-		padding-bottom: 1rem;
+		padding-block-end: 1rem;
 		color: $text-subtle;
 	}
 
@@ -35,15 +42,8 @@
 	}
 }
 
-.chat-bubble {
-	border: $border-width solid $border !important;
-	border-radius: $border-radius !important;
-	padding: $spacer-4;
-	box-shadow: $box-shadow-light !important;
-}
-
 .chat-header {
-	margin-bottom: $spacer-4;
+	margin-block-end: $spacer-4;
 }
 
 .chat-title {
@@ -57,11 +57,11 @@
 
 	.more-options {
 		justify-self: flex-end;
-		margin-right: $spacer-4;
+		margin-inline-end: $spacer-4;
 	}
 }
 
 .user-title {
-	font-size: $font-size-8;
 	color: $text-subtle;
+	font-size: $font-size-8;
 }
