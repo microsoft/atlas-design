@@ -1,0 +1,50 @@
+.message {
+	display: grid;
+	grid-template:
+		'. message-time'
+		'message-persona message-content';
+	grid-template-columns: max-content 1fr;
+	gap: $layout-1;
+
+	.message-time {
+		grid-area: message-time;
+		font-size: $font-size-9;
+	}
+
+	.message-persona {
+		grid-area: message-persona;
+		margin-block-start: $spacer-3;
+	}
+
+	.message-content {
+		grid-area: message-content;
+		padding: $spacer-5;
+		border: $border-width solid $border;
+		border-radius: $border-radius-lg;
+
+		.message-content-header {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			margin-block-end: $spacer-2;
+
+			.message-content-display-name {
+				font-size: $font-size-7;
+				font-weight: $weight-semibold;
+			}
+
+			.message-content-options {
+				justify-self: flex-end;
+				margin-inline-end: $spacer-3;
+			}
+		}
+	}
+
+	&.message-sender {
+		justify-self: flex-end;
+		width: 85%;
+
+		.message-content {
+			background-color: $primary-background;
+		}
+	}
+}
