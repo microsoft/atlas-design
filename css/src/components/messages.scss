@@ -1,6 +1,7 @@
 .messages {
 	display: flex;
 	flex-direction: column;
+	max-width: 100%;
 	gap: $layout-4;
 }
 
@@ -11,38 +12,19 @@
 	box-shadow: $box-shadow-light !important;
 }
 
-.message {
-	display: flex;
-	flex-direction: column;
-
-	.message-time {
-		padding-block-end: 1rem;
-		color: $text-subtle;
-	}
-
-	&.mine {
-		align-items: flex-end;
-
-		.chat-bubble {
-			background-color: $primary-background;
-			box-shadow: $box-shadow-light !important;
-		}
-
-		.chat-bubble,
-		.message-time {
-			width: 80%;
-		}
-	}
-
-	&.theirs {
-		.chat-bubble,
-		.message-time {
-			width: 80%;
-		}
-	}
+.chat-bubble,
+.message-time {
+	width: 80%;
 }
 
-.chat-header {
+.message-time,
+.user-title {
+	color: $text-subtle;
+	font-size: $font-size-8;
+}
+
+.chat-header,
+.message-time {
 	margin-block-end: $spacer-4;
 }
 
@@ -61,7 +43,16 @@
 	}
 }
 
-.user-title {
-	color: $text-subtle;
-	font-size: $font-size-8;
+.message {
+	display: flex;
+	flex-direction: column;
+
+	&.mine {
+		align-items: flex-end;
+
+		.chat-bubble {
+			background-color: $primary-background;
+			box-shadow: $box-shadow-light !important;
+		}
+	}
 }
