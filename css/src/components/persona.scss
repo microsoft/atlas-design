@@ -1,0 +1,82 @@
+$persona-avatar-dimensions: 16 24 32 36 48 !default;
+$persona-avatar-background-color: $alternate-background-medium !default;
+$persona-avatar-font-color: $text-invert !default;
+$persona-default-size: 32px !default;
+$persona-font-size: $font-size-7 !default;
+$persona-gap-size: $layout-1 !default;
+$persona-metadata-font-size: $font-size-9 !default;
+$persona-metadata-font-color: $text-subtle !default;
+$persona-dimension-font-size-ratio: 0.45;
+
+.persona {
+	display: flex;
+	position: relative;
+	gap: $persona-gap-size;
+	font-size: $persona-font-size;
+
+	.persona-avatar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: $persona-default-size;
+		height: $persona-default-size;
+		border-radius: $border-radius-rounded;
+		background-color: $persona-avatar-background-color;
+		color: $persona-avatar-font-color;
+		font-size: $persona-default-size * $persona-dimension-font-size-ratio;
+		overflow: hidden;
+
+		img,
+		svg {
+			display: block;
+			width: 100%;
+			height: auto;
+			max-height: 100%;
+		}
+
+		span {
+			line-height: 1;
+			text-transform: uppercase;
+		}
+	}
+
+	.persona-description :not(:first-child) {
+		color: $persona-metadata-font-color;
+		font-size: $persona-metadata-font-size;
+	}
+
+	// Sizes
+
+	/* stylelint-disable declaration-property-unit-allowed-list, max-nesting-depth */
+	@each $dimension in $persona-avatar-dimensions {
+		&.persona-#{$dimension}x#{$dimension} {
+			.persona-avatar {
+				width: $dimension * 1px;
+				height: $dimension * 1px;
+				font-size: $dimension * $persona-dimension-font-size-ratio * 1px;
+			}
+		}
+
+		@include tablet {
+			&.persona-#{$dimension}x#{$dimension}-tablet {
+				.persona-avatar {
+					width: $dimension * 1px;
+					height: $dimension * 1px;
+					font-size: $dimension * $persona-dimension-font-size-ratio * 1px;
+				}
+			}
+		}
+
+		@include desktop {
+			&.persona-#{$dimension}x#{$dimension}-desktop {
+				.persona-avatar {
+					width: $dimension * 1px;
+					height: $dimension * 1px;
+					font-size: $dimension * $persona-dimension-font-size-ratio * 1px;
+				}
+			}
+		}
+	}
+
+	/* stylelint-enable */
+}
