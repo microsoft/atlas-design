@@ -3,6 +3,7 @@
 	grid-template:
 		'. time'
 		'avatar main';
+	grid-template-columns: max-content 1fr;
 	gap: $layout-1;
 
 	.message-time {
