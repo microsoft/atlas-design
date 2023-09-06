@@ -30,17 +30,27 @@ Here is an example of a standard usage of messages component.
 				<div class="margin-bottom-xxs">
 					<div class="message-content-header">
 						<p class="message-content-display-name">Q&A Moderator</p>
-						<details class="message-content-options popover">
+						<details class="message-content-options popover popover-right">
 							<summary>
-								<span class="icon primary-dark">
+								<span class="icon color-primary">
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="1.5 1.5 13 13">
 										<path
 											d="M8 5.25C7.30964 5.25 6.75 4.69036 6.75 4C6.75 3.30964 7.30964 2.75 8 2.75C8.69036 2.75 9.25 3.30964 9.25 4C9.25 4.69036 8.69036 5.25 8 5.25ZM8 9.25C7.30964 9.25 6.75 8.69036 6.75 8C6.75 7.30964 7.30964 6.75 8 6.75C8.69036 6.75 9.25 7.30964 9.25 8C9.25 8.69036 8.69036 9.25 8 9.25ZM6.75 12C6.75 12.6904 7.30964 13.25 8 13.25C8.69036 13.25 9.25 12.6904 9.25 12C9.25 11.3096 8.69036 10.75 8 10.75C7.30964 10.75 6.75 11.3096 6.75 12Z"
-											fill="#212121"
+											fill="#75b6e7"
 										/>
 									</svg>
 								</span>
 							</summary>
+							<div class="popover-content">
+								<ul>
+									<li>
+										<a href="#">Edit Item</a>
+									</li>
+									<li>
+										<a href="#">Remove item</a>
+									</li>
+								</ul>
+							</div>
 						</details>
 					</div>
 					<p class="font-size-xs">Moderator</p>
@@ -58,7 +68,7 @@ Here is an example of a standard usage of messages component.
 		<div class="message message-sender">
 			<p class="message-time">May 29, 2023, 4:55PM</p>
 			<div class="persona message-persona">
-				<figure class="persona-avatar">
+				<figure class="persona-avatar image image-36x36">
 					<img src="~/src/scaffold/media/video-media.png" alt="username" />
 				</figure>
 			</div>
@@ -66,20 +76,27 @@ Here is an example of a standard usage of messages component.
 				<div class="margin-bottom-xxs">
 					<div class="message-content-header">
 						<p class="message-content-display-name">Kay Smith</p>
-						<details class="message-content-options popover">
+						<details class="message-content-options popover popover-right">
 							<summary>
 								<span class="icon color-primary">
-									<svg
-										class="fill-current-color"
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 2048 2048"
-									>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="1.5 1.5 13 13">
 										<path
-											d="M256 896q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm768 0q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm768 0q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10z"
+											d="M8 5.25C7.30964 5.25 6.75 4.69036 6.75 4C6.75 3.30964 7.30964 2.75 8 2.75C8.69036 2.75 9.25 3.30964 9.25 4C9.25 4.69036 8.69036 5.25 8 5.25ZM8 9.25C7.30964 9.25 6.75 8.69036 6.75 8C6.75 7.30964 7.30964 6.75 8 6.75C8.69036 6.75 9.25 7.30964 9.25 8C9.25 8.69036 8.69036 9.25 8 9.25ZM6.75 12C6.75 12.6904 7.30964 13.25 8 13.25C8.69036 13.25 9.25 12.6904 9.25 12C9.25 11.3096 8.69036 10.75 8 10.75C7.30964 10.75 6.75 11.3096 6.75 12Z"
+											fill="#75b6e7"
 										/>
 									</svg>
 								</span>
 							</summary>
+							<div class="popover-content">
+								<ul>
+									<li>
+										<a href="#">Edit Item</a>
+									</li>
+									<li>
+										<a href="#">Remove item</a>
+									</li>
+								</ul>
+							</div>
 						</details>
 					</div>
 				</div>
