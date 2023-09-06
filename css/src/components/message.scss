@@ -1,29 +1,28 @@
 .message {
 	display: grid;
 	grid-template:
-		'. time'
-		'avatar main';
+		'. message-time'
+		'message-persona message-content';
 	grid-template-columns: max-content 1fr;
 	gap: $layout-1;
 
 	.message-time {
-		grid-area: time;
+		grid-area: message-time;
 		font-size: $font-size-9;
 	}
 
-	.message-avatar {
-		grid-area: avatar;
+	.message-persona {
+		grid-area: message-persona;
 		margin-block-start: $spacer-3;
 	}
 
 	.message-content {
-		grid-area: main;
+		grid-area: message-content;
 		padding: $spacer-5;
 		border: $border-width solid $border;
 		border-radius: $border-radius-lg;
-		box-shadow: $box-shadow-light;
 
-		.message-content-head {
+		.message-content-header {
 			display: grid;
 			grid-template-columns: 1fr auto;
 			margin-block-end: $spacer-2;
@@ -40,13 +39,12 @@
 		}
 	}
 
-	&.message-right {
+	&.message-sender {
 		justify-self: flex-end;
 		width: 85%;
 
 		.message-content {
 			background-color: $primary-background;
-			box-shadow: $box-shadow-light;
 		}
 	}
 }
