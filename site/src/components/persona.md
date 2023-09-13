@@ -56,7 +56,7 @@ Persona component might contain a link to user's profile, with help of the [`.st
 </div>
 ```
 
-Persona might have both avatar and description presetned at the same time or just one of them.
+Persona might have both avatar and description presented at the same time or just one of them.
 
 ```html
 <div class="persona">
