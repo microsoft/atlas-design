@@ -12,9 +12,9 @@ classPrefixes:
 
 Persona component comes in handy for user's representation. It consists of two parts - user's avatar and description. Description has their name and optional metadata.
 
-| Class pattern             | Sizes                                             | screensize          |
-| ------------------------- | ------------------------------------------------- | ------------------- |
-| `.persona.persona-<size>` | `16x16` `24x24` `32x32 (default)` `36x36` `48x48` | `tablet`, `desktop` |
+| Class pattern             | Sizes                              | screensize          |
+| ------------------------- | ---------------------------------- | ------------------- |
+| `.persona.persona-<size>` | `xs` `sm` `md (default)` `lg` `xl` | `tablet`, `desktop` |
 
 ## Usage
 
@@ -75,31 +75,39 @@ Persona might have both avatar and description presented at the same time or jus
 
 ### Sizes
 
-The following classes are available for resizing avatar.
+The following classes are available for resizing avatar: `persona-xs` (28x28px), `persona-sm`, `persona-md`, `persona-lg`, `persona-xl`.
+
+| Class        | Avatar's size in px |
+| ------------ | ------------------- |
+| `persona-xs` | 28px                |
+| `persona-sm` | 32px                |
+| `persona-md` | 36px                |
+| `persona-lg` | 42px                |
+| `persona-xl` | 48px                |
 
 ```html
 <div class="display-flex flex-wrap-wrap gap-xxs">
-	<div class="persona persona-16x16">
+	<div class="persona persona-xs">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
 		</figure>
 	</div>
-	<div class="persona persona-24x24">
+	<div class="persona persona-sm">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
 		</figure>
 	</div>
-	<div class="persona persona-32x32">
+	<div class="persona persona-md">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
 		</figure>
 	</div>
-	<div class="persona persona-36x36">
+	<div class="persona persona-lg">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
 		</figure>
 	</div>
-	<div class="persona persona-48x48">
+	<div class="persona persona-xl">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
 		</figure>
@@ -107,27 +115,27 @@ The following classes are available for resizing avatar.
 </div>
 
 <div class="display-flex flex-wrap-wrap gap-xxs margin-top-md">
-	<div class="persona persona-16x16">
+	<div class="persona persona-xs">
 		<div class="persona-avatar">
 			<span>ww</span>
 		</div>
 	</div>
-	<div class="persona persona-24x24">
+	<div class="persona persona-sm">
 		<div class="persona-avatar">
 			<span>ww</span>
 		</div>
 	</div>
-	<div class="persona persona-32x32">
+	<div class="persona persona-md">
 		<div class="persona-avatar">
 			<span>ww</span>
 		</div>
 	</div>
-	<div class="persona persona-36x36">
+	<div class="persona persona-lg">
 		<div class="persona-avatar">
 			<span>ww</span>
 		</div>
 	</div>
-	<div class="persona persona-48x48">
+	<div class="persona persona-xl">
 		<div class="persona-avatar">
 			<span>ww</span>
 		</div>
@@ -140,7 +148,7 @@ The following classes are available for resizing avatar.
 Tablet and desktop versions of all classes are also available. Resize your browser window to see the differences in sizes.
 
 ```html
-<div class="persona persona-16x16 persona-32x32-tablet persona-48x48-desktop">
+<div class="persona persona-xs persona-md-tablet persona-xl-desktop">
 	<figure class="persona-avatar">
 		<img src="~/src/scaffold/media/avatar.png" alt="User name" />
 	</figure>

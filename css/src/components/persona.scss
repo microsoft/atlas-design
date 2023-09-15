@@ -1,12 +1,18 @@
-$persona-avatar-dimensions: 16 24 32 36 48 !default;
+$persona-avatar-xs: 28px !default;
+$persona-avatar-sm: 32px !default;
+$persona-avatar-md: 36px !default;
+$persona-avatar-lg: 42px !default;
+$persona-avatar-xl: 48px !default;
+
+$persona-avatar-font-size-ratio: 0.45;
 $persona-avatar-background-color: $alternate-background-medium !default;
 $persona-avatar-font-color: $text-invert !default;
-$persona-default-size: 32px !default;
-$persona-font-size: $font-size-7 !default;
-$persona-gap-size: $layout-1 !default;
+
 $persona-metadata-font-size: $font-size-9 !default;
 $persona-metadata-font-color: $text-subtle !default;
-$persona-dimension-font-size-ratio: 0.45;
+
+$persona-font-size: $font-size-7 !default;
+$persona-gap-size: $layout-1 !default;
 
 .persona {
 	display: flex;
@@ -18,12 +24,12 @@ $persona-dimension-font-size-ratio: 0.45;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: $persona-default-size;
-		height: $persona-default-size;
+		width: $persona-avatar-md;
+		height: $persona-avatar-md;
 		border-radius: $border-radius-rounded;
 		background-color: $persona-avatar-background-color;
 		color: $persona-avatar-font-color;
-		font-size: $persona-default-size * $persona-dimension-font-size-ratio;
+		font-size: $persona-avatar-md * $persona-avatar-font-size-ratio;
 		overflow: hidden;
 
 		img,
@@ -47,36 +53,127 @@ $persona-dimension-font-size-ratio: 0.45;
 
 	// Sizes
 
-	/* stylelint-disable declaration-property-unit-allowed-list, max-nesting-depth */
-	@each $dimension in $persona-avatar-dimensions {
-		&.persona-#{$dimension}x#{$dimension} {
+	&.persona-xs {
+		.persona-avatar {
+			width: $persona-avatar-xs;
+			height: $persona-avatar-xs;
+			font-size: $persona-avatar-xs * $persona-avatar-font-size-ratio;
+		}
+	}
+
+	&.persona-sm {
+		.persona-avatar {
+			width: $persona-avatar-sm;
+			height: $persona-avatar-sm;
+			font-size: $persona-avatar-sm * $persona-avatar-font-size-ratio;
+		}
+	}
+
+	&.persona-md {
+		.persona-avatar {
+			width: $persona-avatar-md;
+			height: $persona-avatar-md;
+			font-size: $persona-avatar-md * $persona-avatar-font-size-ratio;
+		}
+	}
+
+	&.persona-lg {
+		.persona-avatar {
+			width: $persona-avatar-lg;
+			height: $persona-avatar-lg;
+			font-size: $persona-avatar-lg * $persona-avatar-font-size-ratio;
+		}
+	}
+
+	&.persona-xl {
+		.persona-avatar {
+			width: $persona-avatar-xl;
+			height: $persona-avatar-xl;
+			font-size: $persona-avatar-xl * $persona-avatar-font-size-ratio;
+		}
+	}
+
+	@include tablet {
+		&.persona-xs-tablet {
 			.persona-avatar {
-				width: $dimension * 1px;
-				height: $dimension * 1px;
-				font-size: $dimension * $persona-dimension-font-size-ratio * 1px;
+				width: $persona-avatar-xs;
+				height: $persona-avatar-xs;
+				font-size: $persona-avatar-xs * $persona-avatar-font-size-ratio;
 			}
 		}
 
-		@include tablet {
-			&.persona-#{$dimension}x#{$dimension}-tablet {
-				.persona-avatar {
-					width: $dimension * 1px;
-					height: $dimension * 1px;
-					font-size: $dimension * $persona-dimension-font-size-ratio * 1px;
-				}
+		&.persona-sm-tablet {
+			.persona-avatar {
+				width: $persona-avatar-sm;
+				height: $persona-avatar-sm;
+				font-size: $persona-avatar-sm * $persona-avatar-font-size-ratio;
 			}
 		}
 
-		@include desktop {
-			&.persona-#{$dimension}x#{$dimension}-desktop {
-				.persona-avatar {
-					width: $dimension * 1px;
-					height: $dimension * 1px;
-					font-size: $dimension * $persona-dimension-font-size-ratio * 1px;
-				}
+		&.persona-md-tablet {
+			.persona-avatar {
+				width: $persona-avatar-md;
+				height: $persona-avatar-md;
+				font-size: $persona-avatar-md * $persona-avatar-font-size-ratio;
+			}
+		}
+
+		&.persona-lg-tablet {
+			.persona-avatar {
+				width: $persona-avatar-lg;
+				height: $persona-avatar-lg;
+				font-size: $persona-avatar-lg * $persona-avatar-font-size-ratio;
+			}
+		}
+
+		&.persona-xl-tablet {
+			.persona-avatar {
+				width: $persona-avatar-xl;
+				height: $persona-avatar-xl;
+				font-size: $persona-avatar-xl * $persona-avatar-font-size-ratio;
 			}
 		}
 	}
 
-	/* stylelint-enable */
+	@include desktop {
+		&.persona-xs-desktop {
+			.persona-avatar {
+				width: $persona-avatar-xs;
+				height: $persona-avatar-xs;
+				font-size: $persona-avatar-xs * $persona-avatar-font-size-ratio;
+			}
+		}
+
+		&.persona-sm-desktop {
+			.persona-avatar {
+				width: $persona-avatar-sm;
+				height: $persona-avatar-sm;
+				font-size: $persona-avatar-sm * $persona-avatar-font-size-ratio;
+			}
+		}
+
+		&.persona-md-desktop {
+			.persona-avatar {
+				width: $persona-avatar-md;
+				height: $persona-avatar-md;
+				font-size: $persona-avatar-md * $persona-avatar-font-size-ratio;
+			}
+		}
+
+		&.persona-lg-desktop {
+			.persona-avatar {
+				width: $persona-avatar-lg;
+				height: $persona-avatar-lg;
+				font-size: $persona-avatar-lg * $persona-avatar-font-size-ratio;
+			}
+		}
+
+		&.persona-xl-desktop {
+			.persona-avatar {
+				width: $persona-avatar-xl;
+				height: $persona-avatar-xl;
+				font-size: $persona-avatar-xl * $persona-avatar-font-size-ratio;
+			}
+		}
+	}
 }
