@@ -42,7 +42,7 @@ Below are examples of the most common persona component use-cases - one with an 
 </div>
 ```
 
-Persona component might contain a link to user's profile, with help of the [`.stretched-link` component](../components/stretched-link.md) the whole area persona takes becomes clickable:
+Persona component might contain a link to user's profile, and with help of the [`.stretched-link` component](../components/stretched-link.md) the whole area persona takes becomes clickable:
 
 ```html
 <div class="persona position-relative">
@@ -56,7 +56,7 @@ Persona component might contain a link to user's profile, with help of the [`.st
 </div>
 ```
 
-Persona might have both avatar and description presented at the same time or just one of them.
+Persona might have both avatar and description parts presented at the same time or just one of them.
 
 ```html
 <div class="persona">
