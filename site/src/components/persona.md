@@ -10,7 +10,7 @@ classPrefixes:
 
 # Persona
 
-Persona component comes in handy for user's representation. It consists of two parts - user's avatar and description. Description has their name and optional metadata.
+Persona component comes in handy for user's representation. It consists of two parts - user's avatar and details. Details has their name and optional metadata.
 
 | Class pattern             | Sizes                              | screensize          |
 | ------------------------- | ---------------------------------- | ------------------- |
@@ -25,8 +25,8 @@ Below are examples of the most common persona component use-cases - one with an 
 	<figure class="persona-avatar">
 		<img src="~/src/scaffold/media/avatar.png" alt="username" />
 	</figure>
-	<div class="persona-description">
-		<p>Jane Doe</p>
+	<div class="persona-details">
+		<p class="persona-name">Jane Doe</p>
 		<p>Software Engineer</p>
 	</div>
 </div>
@@ -35,8 +35,8 @@ Below are examples of the most common persona component use-cases - one with an 
 	<div class="persona-avatar">
 		<span>JD</span>
 	</div>
-	<div class="persona-description">
-		<p>John Doe</p>
+	<div class="persona-details">
+		<p class="persona-name">John Doe</p>
 		<p>Software Engineer</p>
 	</div>
 </div>
@@ -49,14 +49,14 @@ Persona component might contain a link to user's profile, and with help of the [
 	<div class="persona-avatar">
 		<span>JD</span>
 	</div>
-	<div class="persona-description">
-		<a class="justify-self-stretch stretched-link" href="#">John Doe</a>
+	<div class="persona-details">
+		<a class="persona-name justify-self-stretch stretched-link" href="#">John Doe</a>
 		<p>Software Engineer</p>
 	</div>
 </div>
 ```
 
-Persona might have both avatar and description parts presented at the same time or just one of them.
+Persona might have both avatar and details parts presented at the same time or just one of them.
 
 ```html
 <div class="persona">
@@ -66,8 +66,8 @@ Persona might have both avatar and description parts presented at the same time 
 </div>
 
 <div class="persona margin-top-md">
-	<div class="persona-description">
-		<p>John Doe</p>
+	<div class="persona-details">
+		<p class="persona-name">John Doe</p>
 		<p>Software Engineer</p>
 	</div>
 </div>
@@ -75,7 +75,7 @@ Persona might have both avatar and description parts presented at the same time 
 
 ### Sizes
 
-The following classes are available for resizing avatar: `persona-xs` (28x28px), `persona-sm`, `persona-md`, `persona-lg`, `persona-xl`.
+The following classes are available for resizing avatar:
 
 | Class        | Avatar's size in px |
 | ------------ | ------------------- |

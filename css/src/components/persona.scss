@@ -4,21 +4,24 @@ $persona-avatar-md: 36px !default;
 $persona-avatar-lg: 42px !default;
 $persona-avatar-xl: 48px !default;
 
-$persona-avatar-font-size-ratio: 0.45;
+$persona-avatar-font-size: 0.45em;
 $persona-avatar-background-color: $alternate-background-medium !default;
 $persona-avatar-font-color: $text-invert !default;
+$persona-avatar-border-radius: $border-radius-rounded;
+
+$persona-name-font-size: $font-size-7 !default;
+$persona-name-font-color: $text !default;
 
 $persona-metadata-font-size: $font-size-9 !default;
 $persona-metadata-font-color: $text-subtle !default;
 
-$persona-font-size: $font-size-7 !default;
 $persona-gap-size: $layout-1 !default;
 
 .persona {
 	display: flex;
 	position: relative;
 	gap: $persona-gap-size;
-	font-size: $persona-font-size;
+	font-size: $persona-avatar-md;
 
 	.persona-avatar {
 		display: flex;
@@ -26,11 +29,12 @@ $persona-gap-size: $layout-1 !default;
 		justify-content: center;
 		width: $persona-avatar-md;
 		height: $persona-avatar-md;
-		border-radius: $border-radius-rounded;
+		border-radius: $persona-avatar-border-radius;
 		background-color: $persona-avatar-background-color;
 		color: $persona-avatar-font-color;
-		font-size: $persona-avatar-md * $persona-avatar-font-size-ratio;
-		overflow: hidden;
+		font-size: $persona-avatar-font-size;
+		line-height: 1;
+		text-transform: uppercase;
 
 		img,
 		svg {
@@ -38,141 +42,161 @@ $persona-gap-size: $layout-1 !default;
 			width: 100%;
 			height: auto;
 			max-height: 100%;
-		}
-
-		span {
-			line-height: 1;
-			text-transform: uppercase;
+			border-radius: $persona-avatar-border-radius;
 		}
 	}
 
-	.persona-description :not(:first-child) {
+	.persona-details {
+		align-self: center;
 		color: $persona-metadata-font-color;
 		font-size: $persona-metadata-font-size;
+
+		.persona-name {
+			font-size: $persona-name-font-size;
+
+			&:not(a) {
+				color: $persona-name-font-color;
+			}
+		}
 	}
 
 	// Sizes
 
 	&.persona-xs {
+		font-size: $persona-avatar-xs;
+
 		.persona-avatar {
 			width: $persona-avatar-xs;
 			height: $persona-avatar-xs;
-			font-size: $persona-avatar-xs * $persona-avatar-font-size-ratio;
 		}
 	}
 
 	&.persona-sm {
+		font-size: $persona-avatar-sm;
+
 		.persona-avatar {
 			width: $persona-avatar-sm;
 			height: $persona-avatar-sm;
-			font-size: $persona-avatar-sm * $persona-avatar-font-size-ratio;
 		}
 	}
 
 	&.persona-md {
+		font-size: $persona-avatar-md;
+
 		.persona-avatar {
 			width: $persona-avatar-md;
 			height: $persona-avatar-md;
-			font-size: $persona-avatar-md * $persona-avatar-font-size-ratio;
 		}
 	}
 
 	&.persona-lg {
+		font-size: $persona-avatar-lg;
+
 		.persona-avatar {
 			width: $persona-avatar-lg;
 			height: $persona-avatar-lg;
-			font-size: $persona-avatar-lg * $persona-avatar-font-size-ratio;
 		}
 	}
 
 	&.persona-xl {
+		font-size: $persona-avatar-xl;
+
 		.persona-avatar {
 			width: $persona-avatar-xl;
 			height: $persona-avatar-xl;
-			font-size: $persona-avatar-xl * $persona-avatar-font-size-ratio;
 		}
 	}
 
 	@include tablet {
 		&.persona-xs-tablet {
+			font-size: $persona-avatar-xs;
+
 			.persona-avatar {
 				width: $persona-avatar-xs;
 				height: $persona-avatar-xs;
-				font-size: $persona-avatar-xs * $persona-avatar-font-size-ratio;
 			}
 		}
 
 		&.persona-sm-tablet {
+			font-size: $persona-avatar-sm;
+
 			.persona-avatar {
 				width: $persona-avatar-sm;
 				height: $persona-avatar-sm;
-				font-size: $persona-avatar-sm * $persona-avatar-font-size-ratio;
 			}
 		}
 
 		&.persona-md-tablet {
+			font-size: $persona-avatar-md;
+
 			.persona-avatar {
 				width: $persona-avatar-md;
 				height: $persona-avatar-md;
-				font-size: $persona-avatar-md * $persona-avatar-font-size-ratio;
 			}
 		}
 
 		&.persona-lg-tablet {
+			font-size: $persona-avatar-lg;
+
 			.persona-avatar {
 				width: $persona-avatar-lg;
 				height: $persona-avatar-lg;
-				font-size: $persona-avatar-lg * $persona-avatar-font-size-ratio;
 			}
 		}
 
 		&.persona-xl-tablet {
+			font-size: $persona-avatar-xl;
+
 			.persona-avatar {
 				width: $persona-avatar-xl;
 				height: $persona-avatar-xl;
-				font-size: $persona-avatar-xl * $persona-avatar-font-size-ratio;
 			}
 		}
 	}
 
 	@include desktop {
 		&.persona-xs-desktop {
+			font-size: $persona-avatar-xs;
+
 			.persona-avatar {
 				width: $persona-avatar-xs;
 				height: $persona-avatar-xs;
-				font-size: $persona-avatar-xs * $persona-avatar-font-size-ratio;
 			}
 		}
 
 		&.persona-sm-desktop {
+			font-size: $persona-avatar-sm;
+
 			.persona-avatar {
 				width: $persona-avatar-sm;
 				height: $persona-avatar-sm;
-				font-size: $persona-avatar-sm * $persona-avatar-font-size-ratio;
 			}
 		}
 
 		&.persona-md-desktop {
+			font-size: $persona-avatar-md;
+
 			.persona-avatar {
 				width: $persona-avatar-md;
 				height: $persona-avatar-md;
-				font-size: $persona-avatar-md * $persona-avatar-font-size-ratio;
 			}
 		}
 
 		&.persona-lg-desktop {
+			font-size: $persona-avatar-lg;
+
 			.persona-avatar {
 				width: $persona-avatar-lg;
 				height: $persona-avatar-lg;
-				font-size: $persona-avatar-lg * $persona-avatar-font-size-ratio;
 			}
 		}
 
 		&.persona-xl-desktop {
+			font-size: $persona-avatar-xl;
+
 			.persona-avatar {
 				width: $persona-avatar-xl;
 				height: $persona-avatar-xl;
-				font-size: $persona-avatar-xl * $persona-avatar-font-size-ratio;
 			}
 		}
 	}
