@@ -2,4 +2,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Adding doc page for persona component.
+Adding documentation page for persona component.
