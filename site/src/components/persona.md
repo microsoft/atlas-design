@@ -42,7 +42,7 @@ Below are examples of the most common persona component use-cases - one with an 
 </div>
 ```
 
-Persona component might contain a link to user's profile, and with help of the [`.stretched-link` component](../components/stretched-link.md) the whole area persona takes becomes clickable:
+Persona's details may contain a link to user's profile, and with help of the [`.stretched-link` component](../components/stretched-link.md) the whole area persona takes becomes clickable:
 
 ```html
 <div class="persona position-relative">
@@ -89,27 +89,27 @@ The following classes are available for resizing avatar:
 <div class="display-flex flex-wrap-wrap gap-xxs">
 	<div class="persona persona-xs">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
+			<img src="~/src/scaffold/media/avatar.png" alt="username" />
 		</figure>
 	</div>
 	<div class="persona persona-sm">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
+			<img src="~/src/scaffold/media/avatar.png" alt="username" />
 		</figure>
 	</div>
 	<div class="persona persona-md">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
+			<img src="~/src/scaffold/media/avatar.png" alt="username" />
 		</figure>
 	</div>
 	<div class="persona persona-lg">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
+			<img src="~/src/scaffold/media/avatar.png" alt="username" />
 		</figure>
 	</div>
 	<div class="persona persona-xl">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="User name" />
+			<img src="~/src/scaffold/media/avatar.png" alt="username" />
 		</figure>
 	</div>
 </div>
@@ -150,7 +150,7 @@ Tablet and desktop versions of all classes are also available. Resize your brows
 ```html
 <div class="persona persona-xs persona-md-tablet persona-xl-desktop">
 	<figure class="persona-avatar">
-		<img src="~/src/scaffold/media/avatar.png" alt="User name" />
+		<img src="~/src/scaffold/media/avatar.png" alt="username" />
 	</figure>
 </div>
 ```
