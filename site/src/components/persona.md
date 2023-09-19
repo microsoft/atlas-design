@@ -47,7 +47,7 @@ Persona's details may contain a link to user's profile, and with help of the [`.
 ```html
 <div class="persona position-relative">
 	<div class="persona-avatar">
-		<span>JD</span>
+		<span role="img" aria-label="Avatar for John Doe">JD</span>
 	</div>
 	<div class="persona-details">
 		<a class="persona-name justify-self-stretch stretched-link" href="#">John Doe</a>
@@ -61,7 +61,7 @@ Persona might have both avatar and details parts presented at the same time or j
 ```html
 <div class="persona">
 	<figure class="persona-avatar">
-		<img src="~/src/scaffold/media/avatar.png" alt="username" />
+		<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 	</figure>
 </div>
 
@@ -81,27 +81,27 @@ The following classes are available for resizing avatar: `persona-xs`, `persona-
 <div class="display-flex flex-wrap-wrap gap-xxs">
 	<div class="persona persona-xs">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="username" />
+			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="persona persona-sm">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="username" />
+			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="persona">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="username" />
+			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="persona persona-lg">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="username" />
+			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="persona persona-xl">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="username" />
+			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 </div>
@@ -109,27 +109,27 @@ The following classes are available for resizing avatar: `persona-xs`, `persona-
 <div class="display-flex flex-wrap-wrap gap-xxs margin-top-md">
 	<div class="persona persona-xs">
 		<div class="persona-avatar">
-			<span>ww</span>
+			<span role="img" aria-label="Avatar for WW">ww</span>
 		</div>
 	</div>
 	<div class="persona persona-sm">
 		<div class="persona-avatar">
-			<span>ww</span>
+			<span role="img" aria-label="Avatar for WW">ww</span>
 		</div>
 	</div>
 	<div class="persona">
 		<div class="persona-avatar">
-			<span>ww</span>
+			<span role="img" aria-label="Avatar for WW">ww</span>
 		</div>
 	</div>
 	<div class="persona persona-lg">
 		<div class="persona-avatar">
-			<span>ww</span>
+			<span role="img" aria-label="Avatar for WW">ww</span>
 		</div>
 	</div>
 	<div class="persona persona-xl">
 		<div class="persona-avatar">
-			<span>ww</span>
+			<span role="img" aria-label="Avatar for WW">ww</span>
 		</div>
 	</div>
 </div>
