@@ -1,10 +1,9 @@
-$persona-avatar-xs: 28px !default;
-$persona-avatar-sm: 32px !default;
-$persona-avatar-md: 36px !default;
-$persona-avatar-lg: 42px !default;
-$persona-avatar-xl: 48px !default;
+$persona-font-size-xs: $font-size-9 !default;
+$persona-font-size-sm: $font-size-8 !default;
+$persona-font-size-md: $font-size-7 !default;
+$persona-font-size-lg: $font-size-6 !default;
+$persona-font-size-xl: $font-size-5 !default;
 
-$persona-avatar-font-size: 0.45em;
 $persona-avatar-background-color: $alternate-background-medium !default;
 $persona-avatar-font-color: $text-invert !default;
 $persona-avatar-border-radius: $border-radius-rounded;
@@ -21,18 +20,17 @@ $persona-gap-size: $layout-1 !default;
 	display: flex;
 	position: relative;
 	gap: $persona-gap-size;
-	font-size: $persona-avatar-md;
 
 	.persona-avatar {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: $persona-avatar-md;
-		height: $persona-avatar-md;
+		width: 2.35em;
+		height: 2.35em;
 		border-radius: $persona-avatar-border-radius;
 		background-color: $persona-avatar-background-color;
 		color: $persona-avatar-font-color;
-		font-size: $persona-avatar-font-size;
+		font-size: $persona-font-size-md;
 		line-height: 1;
 		text-transform: uppercase;
 
@@ -62,142 +60,23 @@ $persona-gap-size: $layout-1 !default;
 
 	// Sizes
 
-	&.persona-xs {
-		font-size: $persona-avatar-xs;
-
-		.persona-avatar {
-			width: $persona-avatar-xs;
-			height: $persona-avatar-xs;
-		}
+	&.persona-xs .persona-avatar {
+		font-size: $persona-font-size-xs;
 	}
 
-	&.persona-sm {
-		font-size: $persona-avatar-sm;
-
-		.persona-avatar {
-			width: $persona-avatar-sm;
-			height: $persona-avatar-sm;
-		}
+	&.persona-sm .persona-avatar {
+		font-size: $persona-font-size-sm;
 	}
 
-	&.persona-md {
-		font-size: $persona-avatar-md;
-
-		.persona-avatar {
-			width: $persona-avatar-md;
-			height: $persona-avatar-md;
-		}
+	&.persona-md .persona-avatar {
+		font-size: $persona-font-size-md;
 	}
 
-	&.persona-lg {
-		font-size: $persona-avatar-lg;
-
-		.persona-avatar {
-			width: $persona-avatar-lg;
-			height: $persona-avatar-lg;
-		}
+	&.persona-lg .persona-avatar {
+		font-size: $persona-font-size-lg;
 	}
 
-	&.persona-xl {
-		font-size: $persona-avatar-xl;
-
-		.persona-avatar {
-			width: $persona-avatar-xl;
-			height: $persona-avatar-xl;
-		}
-	}
-
-	@include tablet {
-		&.persona-xs-tablet {
-			font-size: $persona-avatar-xs;
-
-			.persona-avatar {
-				width: $persona-avatar-xs;
-				height: $persona-avatar-xs;
-			}
-		}
-
-		&.persona-sm-tablet {
-			font-size: $persona-avatar-sm;
-
-			.persona-avatar {
-				width: $persona-avatar-sm;
-				height: $persona-avatar-sm;
-			}
-		}
-
-		&.persona-md-tablet {
-			font-size: $persona-avatar-md;
-
-			.persona-avatar {
-				width: $persona-avatar-md;
-				height: $persona-avatar-md;
-			}
-		}
-
-		&.persona-lg-tablet {
-			font-size: $persona-avatar-lg;
-
-			.persona-avatar {
-				width: $persona-avatar-lg;
-				height: $persona-avatar-lg;
-			}
-		}
-
-		&.persona-xl-tablet {
-			font-size: $persona-avatar-xl;
-
-			.persona-avatar {
-				width: $persona-avatar-xl;
-				height: $persona-avatar-xl;
-			}
-		}
-	}
-
-	@include desktop {
-		&.persona-xs-desktop {
-			font-size: $persona-avatar-xs;
-
-			.persona-avatar {
-				width: $persona-avatar-xs;
-				height: $persona-avatar-xs;
-			}
-		}
-
-		&.persona-sm-desktop {
-			font-size: $persona-avatar-sm;
-
-			.persona-avatar {
-				width: $persona-avatar-sm;
-				height: $persona-avatar-sm;
-			}
-		}
-
-		&.persona-md-desktop {
-			font-size: $persona-avatar-md;
-
-			.persona-avatar {
-				width: $persona-avatar-md;
-				height: $persona-avatar-md;
-			}
-		}
-
-		&.persona-lg-desktop {
-			font-size: $persona-avatar-lg;
-
-			.persona-avatar {
-				width: $persona-avatar-lg;
-				height: $persona-avatar-lg;
-			}
-		}
-
-		&.persona-xl-desktop {
-			font-size: $persona-avatar-xl;
-
-			.persona-avatar {
-				width: $persona-avatar-xl;
-				height: $persona-avatar-xl;
-			}
-		}
+	&.persona-xl .persona-avatar {
+		font-size: $persona-font-size-xl;
 	}
 }
