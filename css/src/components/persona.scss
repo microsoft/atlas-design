@@ -23,13 +23,12 @@ $persona-gap-size: $layout-1 !default;
 		flex-shrink: 0;
 		align-items: center;
 		justify-content: center;
-		width: 2.7em;
-		height: 2.7em;
+		width: 2.6666em;
+		height: 2.6666em;
 		border-radius: $persona-avatar-border-radius;
 		background-color: $persona-avatar-background-color;
 		color: $persona-avatar-font-color;
 		line-height: 1;
-		text-transform: uppercase;
 
 		img,
 		svg {
@@ -46,7 +45,7 @@ $persona-gap-size: $layout-1 !default;
 		color: $persona-details-font-color;
 
 		.persona-name {
-			font-size: 1.35em;
+			font-size: 1.3333em;
 
 			&:not(a) {
 				color: $persona-name-font-color;

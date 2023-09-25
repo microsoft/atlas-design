@@ -10,7 +10,7 @@ classPrefixes:
 
 # Persona
 
-We use the persona to represent users. It consists of two parts - user's avatar and details. Both subcomponents can be used independent of one another. Details has their name and optional metadata.
+We use the persona to represent users. It consists of two parts - a user's avatar and details. Both subcomponents can be used independent of one another. Details has their name and optional metadata.
 
 | Class pattern             | Sizes      |
 | ------------------------- | ---------- |
@@ -46,7 +46,7 @@ Persona's details may contain a link to user's profile, and with help of the [`.
 </div>
 ```
 
-Persona might have both avatar and details parts presented at the same time or just one of them.
+Persona might have both avatar and details presented at the same time or just one of them.
 
 ```html
 <div class="persona">
@@ -57,7 +57,7 @@ Persona might have both avatar and details parts presented at the same time or j
 
 <div class="persona margin-top-md">
 	<div class="persona-details">
-		<p class="persona-name">John Doe</p>
+		<p class="persona-name">Jane Doe</p>
 		<p>Software Engineer</p>
 	</div>
 </div>
