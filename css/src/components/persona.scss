@@ -1,18 +1,14 @@
-$persona-font-size-xs: $font-size-9 !default;
-$persona-font-size-sm: $font-size-8 !default;
-$persona-font-size-md: $font-size-7 !default;
-$persona-font-size-lg: $font-size-6 !default;
-$persona-font-size-xl: $font-size-5 !default;
+$persona-font-size-sm: $font-size-9 !default;
+$persona-font-size-md: $font-size-8 !default;
+$persona-font-size-lg: $font-size-7 !default;
 
 $persona-avatar-background-color: $alternate-background-medium !default;
 $persona-avatar-font-color: $text-invert !default;
 $persona-avatar-border-radius: $border-radius-rounded;
 
+$persona-details-font-color: $text-subtle !default;
 $persona-name-font-size: $font-size-7 !default;
 $persona-name-font-color: $text !default;
-
-$persona-metadata-font-size: $font-size-9 !default;
-$persona-metadata-font-color: $text-subtle !default;
 
 $persona-gap-size: $layout-1 !default;
 
@@ -20,17 +16,18 @@ $persona-gap-size: $layout-1 !default;
 	display: flex;
 	position: relative;
 	gap: $persona-gap-size;
+	font-size: $persona-font-size-md;
 
 	.persona-avatar {
 		display: flex;
+		flex-shrink: 0;
 		align-items: center;
 		justify-content: center;
-		width: 2.35em;
-		height: 2.35em;
+		width: 2.7em;
+		height: 2.7em;
 		border-radius: $persona-avatar-border-radius;
 		background-color: $persona-avatar-background-color;
 		color: $persona-avatar-font-color;
-		font-size: $persona-font-size-md;
 		line-height: 1;
 		text-transform: uppercase;
 
@@ -46,11 +43,10 @@ $persona-gap-size: $layout-1 !default;
 
 	.persona-details {
 		align-self: center;
-		color: $persona-metadata-font-color;
-		font-size: $persona-metadata-font-size;
+		color: $persona-details-font-color;
 
 		.persona-name {
-			font-size: $persona-name-font-size;
+			font-size: 1.35em;
 
 			&:not(a) {
 				color: $persona-name-font-color;
@@ -60,23 +56,11 @@ $persona-gap-size: $layout-1 !default;
 
 	// Sizes
 
-	&.persona-xs .persona-avatar {
-		font-size: $persona-font-size-xs;
-	}
-
-	&.persona-sm .persona-avatar {
+	&.persona-sm {
 		font-size: $persona-font-size-sm;
 	}
 
-	&.persona-md .persona-avatar {
-		font-size: $persona-font-size-md;
-	}
-
-	&.persona-lg .persona-avatar {
+	&.persona-lg {
 		font-size: $persona-font-size-lg;
-	}
-
-	&.persona-xl .persona-avatar {
-		font-size: $persona-font-size-xl;
 	}
 }

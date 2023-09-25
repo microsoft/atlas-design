@@ -12,13 +12,13 @@ classPrefixes:
 
 We use the persona to represent users. It consists of two parts - user's avatar and details. Both subcomponents can be used independent of one another. Details has their name and optional metadata.
 
-| Class pattern             | Sizes                  |
-| ------------------------- | ---------------------- |
-| `.persona.persona-<size>` | `xs`, `sm`, `lg`, `xl` |
+| Class pattern             | Sizes      |
+| ------------------------- | ---------- |
+| `.persona.persona-<size>` | `sm`, `lg` |
 
 ## Usage
 
-Below are examples of the most common persona component use-cases - one with an image avatar and another with user's initials.
+Below is an example of the most common persona component use-case.
 
 ```html
 <div class="persona">
@@ -30,27 +30,17 @@ Below are examples of the most common persona component use-cases - one with an 
 		<p>Software Engineer</p>
 	</div>
 </div>
-
-<div class="persona margin-top-md">
-	<div class="persona-avatar">
-		<span role="img" aria-label="Avatar for John Doe">JD</span>
-	</div>
-	<div class="persona-details">
-		<p class="persona-name">John Doe</p>
-		<p>Software Engineer</p>
-	</div>
-</div>
 ```
 
 Persona's details may contain a link to user's profile, and with help of the [`.stretched-link` component](../components/stretched-link.md) the whole area persona takes becomes clickable:
 
 ```html
 <div class="persona position-relative">
-	<div class="persona-avatar">
-		<span role="img" aria-label="Avatar for John Doe">JD</span>
-	</div>
+	<figure class="persona-avatar">
+		<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+	</figure>
 	<div class="persona-details">
-		<a class="persona-name justify-self-stretch stretched-link" href="#">John Doe</a>
+		<a class="persona-name justify-self-stretch stretched-link" href="#">Jane Doe</a>
 		<p>Software Engineer</p>
 	</div>
 </div>
@@ -75,61 +65,35 @@ Persona might have both avatar and details parts presented at the same time or j
 
 ### Sizes
 
-The following classes are available for resizing avatar: `persona-xs`, `persona-sm`, `persona-lg`, `persona-xl`.
+The following classes are available for resizing: `persona-sm`, `persona-lg`.
 
 ```html
-<div class="display-flex flex-wrap-wrap gap-xxs">
-	<div class="persona persona-xs">
-		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
-		</figure>
-	</div>
+<div class="display-flex flex-direction-column gap-sm">
 	<div class="persona persona-sm">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
+		<div class="persona-details">
+			<p class="persona-name">Jane Doe</p>
+			<p>Software Engineer</p>
+		</div>
 	</div>
 	<div class="persona">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
+		<div class="persona-details">
+			<p class="persona-name">Jane Doe</p>
+			<p>Software Engineer</p>
+		</div>
 	</div>
 	<div class="persona persona-lg">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
-	</div>
-	<div class="persona persona-xl">
-		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
-		</figure>
-	</div>
-</div>
-
-<div class="display-flex flex-wrap-wrap gap-xxs margin-top-md">
-	<div class="persona persona-xs">
-		<div class="persona-avatar">
-			<span role="img" aria-label="Avatar for WW">ww</span>
-		</div>
-	</div>
-	<div class="persona persona-sm">
-		<div class="persona-avatar">
-			<span role="img" aria-label="Avatar for WW">ww</span>
-		</div>
-	</div>
-	<div class="persona">
-		<div class="persona-avatar">
-			<span role="img" aria-label="Avatar for WW">ww</span>
-		</div>
-	</div>
-	<div class="persona persona-lg">
-		<div class="persona-avatar">
-			<span role="img" aria-label="Avatar for WW">ww</span>
-		</div>
-	</div>
-	<div class="persona persona-xl">
-		<div class="persona-avatar">
-			<span role="img" aria-label="Avatar for WW">ww</span>
+		<div class="persona-details">
+			<p class="persona-name">Jane Doe</p>
+			<p>Software Engineer</p>
 		</div>
 	</div>
 </div>
