@@ -10,7 +10,7 @@ classPrefixes:
 
 # Persona
 
-Persona component comes in handy for user's representation. It consists of two parts - user's avatar and details. Details has their name and optional metadata.
+We use the persona to represent users. It consists of two parts - user's avatar and details. Both subcomponents can be used independent of one another. Details has their name and optional metadata.
 
 | Class pattern             | Sizes                  |
 | ------------------------- | ---------------------- |
