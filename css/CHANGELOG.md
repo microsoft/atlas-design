@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.36.0
+
+### Minor Changes
+
+- beef07a: Adding persona component.
+
 ## 3.35.0
 
 ### Minor Changes
