@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.41.0
+
+### Minor Changes
+
+- beef07a: Adding documentation page for persona component.
+
 ## 0.40.0
 
 ### Minor Changes
