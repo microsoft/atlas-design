@@ -40,11 +40,8 @@ $persona-gap-size: $layout-1 !default;
 		color: $persona-details-font-color;
 
 		.persona-name {
+			color: $persona-name-font-color;
 			font-size: 1.3333em;
-
-			&:not(a) {
-				color: $persona-name-font-color;
-			}
 		}
 	}
 
