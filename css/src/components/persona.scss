@@ -1,0 +1,57 @@
+$persona-font-size-sm: $font-size-9 !default;
+$persona-font-size-md: $font-size-8 !default;
+$persona-font-size-lg: $font-size-7 !default;
+
+$persona-avatar-background-color: $alternate-background-medium !default;
+$persona-avatar-font-color: $text-invert !default;
+$persona-avatar-border-radius: $border-radius-rounded;
+
+$persona-details-font-color: $text-subtle !default;
+$persona-name-font-size: $font-size-7 !default;
+$persona-name-font-color: $text !default;
+
+$persona-gap-size: $layout-1 !default;
+
+.persona {
+	display: flex;
+	position: relative;
+	gap: $persona-gap-size;
+	font-size: $persona-font-size-md;
+
+	.persona-avatar {
+		flex-shrink: 0;
+		width: 2.6666em;
+		height: 2.6666em;
+		border-radius: $persona-avatar-border-radius;
+		background-color: $persona-avatar-background-color;
+		color: $persona-avatar-font-color;
+
+		img,
+		svg {
+			width: 100%;
+			height: auto;
+			border-radius: $persona-avatar-border-radius;
+			aspect-ratio: 1 / 1;
+		}
+	}
+
+	.persona-details {
+		align-self: center;
+		color: $persona-details-font-color;
+
+		.persona-name {
+			color: $persona-name-font-color;
+			font-size: 1.3333em;
+		}
+	}
+
+	// Sizes
+
+	&.persona-sm {
+		font-size: $persona-font-size-sm;
+	}
+
+	&.persona-lg {
+		font-size: $persona-font-size-lg;
+	}
+}
