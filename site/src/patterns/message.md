@@ -3,18 +3,11 @@ title: Message
 description: The message component in the Atlas Design System
 template: standard
 figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FamgDNGgGYy2v2Unc6Eet46%2FQ%2526A-Private-Messages%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D337-533145%26viewport%3D-15969%252C-17033%252C0.75%26scaling%3Dmin-zoom%26starting-point-node-id%3D337%253A548136%26show-proto-sidebar%3D1%26mode%3Ddesign%26t%3DXzNRwbG95jzc2Fvd-1
-classType: Component
-classPrefixes:
-  - messages
 ---
 
-# Message
+# Message Pattern
 
-Use messages component for chat or messaging communications.
-
-## Usage
-
-Here is an example of a standard usage of messages component.
+The message conversation would be used in the following manner.
 
 ```html
 <section class="display-grid gap-sm">
@@ -22,9 +15,9 @@ Here is an example of a standard usage of messages component.
 		<div class="message">
 			<p class="message-time">May 29, 2023, 4:50PM</p>
 			<div class="persona message-persona">
-				<div class="persona-avatar">
-					<span>QA</span>
-				</div>
+				<figure class="persona-avatar">
+					<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+				</figure>
 			</div>
 			<div class="message-content">
 				<div class="margin-bottom-xxs">
@@ -68,8 +61,8 @@ Here is an example of a standard usage of messages component.
 		<div class="message message-sender">
 			<p class="message-time">May 29, 2023, 4:55PM</p>
 			<div class="persona message-persona">
-				<figure class="persona-avatar image image-36x36">
-					<img src="~/src/scaffold/media/video-media.png" alt="username" />
+				<figure class="persona-avatar">
+					<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 				</figure>
 			</div>
 			<div class="message-content">
