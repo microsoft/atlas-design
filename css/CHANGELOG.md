@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.36.1
+
+### Patch Changes
+
+- 131a22d: Updating line-height value in persona component.
+
 ## 3.36.0
 
 ### Minor Changes
