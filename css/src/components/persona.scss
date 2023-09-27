@@ -17,6 +17,7 @@ $persona-gap-size: $layout-1 !default;
 	position: relative;
 	gap: $persona-gap-size;
 	font-size: $persona-font-size-md;
+	line-height: $line-height-normal;
 
 	.persona-avatar {
 		flex-shrink: 0;
