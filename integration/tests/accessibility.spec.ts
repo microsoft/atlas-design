@@ -34,6 +34,7 @@ const pathnames = [
 	'/components/link-button.html',
 	'/components/markdown.html',
 	'/components/media.html',
+	'/components/message.html',
 	'/components/notification.html',
 	'/components/pagination.html',
 	'/components/popover.html',
