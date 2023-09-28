@@ -37,14 +37,32 @@ The message conversation would be used in the following manner.
 								</span>
 							</summary>
 							<div class="popover-content">
-								<ul>
-									<li>
-										<a href="#">Edit Item</a>
-									</li>
-									<li>
-										<a href="#">Remove item</a>
-									</li>
-								</ul>
+								<button
+									data-page-action-item="overflow-mobile"
+									type="button"
+									class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear"
+									data-bi-name="contents-expand"
+									data-contents-button=""
+									data-popover-close=""
+								>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span>
+									<span class="contents-expand-title">Edit message</span>
+								</button>
+								<button
+									data-page-action-item="overflow-mobile"
+									type="button"
+									class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear"
+									data-bi-name="contents-expand"
+									data-contents-button=""
+									data-popover-close=""
+								>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span>
+									<span class="contents-expand-title">Delete message</span>
+								</button>
 							</div>
 						</details>
 					</div>
@@ -84,14 +102,32 @@ The message conversation would be used in the following manner.
 								</span>
 							</summary>
 							<div class="popover-content">
-								<ul>
-									<li>
-										<a href="#">Edit Item</a>
-									</li>
-									<li>
-										<a href="#">Remove item</a>
-									</li>
-								</ul>
+							<button
+									data-page-action-item="overflow-mobile"
+									type="button"
+									class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear"
+									data-bi-name="contents-expand"
+									data-contents-button=""
+									data-popover-close=""
+								>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span>
+									<span class="contents-expand-title">Edit message</span>
+								</button>
+								<button
+									data-page-action-item="overflow-mobile"
+									type="button"
+									class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear"
+									data-bi-name="contents-expand"
+									data-contents-button=""
+									data-popover-close=""
+								>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span>
+									<span class="contents-expand-title">Delete message</span>
+								</button>
 							</div>
 						</details>
 					</div>
