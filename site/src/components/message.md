@@ -26,12 +26,14 @@ Here is an example of a standard usage of message component.
 	<div class="message-content">
 		<div class="margin-bottom-xxs">
 			<div class="message-content-header">
-				<p class="message-content-display-name">Q&A Moderator</p>
+				<div class="display-grid align-items-center">
+					<p class="message-content-display-name">Q&A Moderator</p>
+					<p class="font-size-xs">Moderator</p>
+				</div>
 				<div class="message-content-options">
 					<span>⋮</span>
 				</div>
 			</div>
-			<p class="font-size-xs">Moderator</p>
 		</div>
 		<p class="font-size-md">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -55,7 +57,9 @@ Use the `message-sender` class to indicate message sent by the user.
 	<div class="message-content">
 		<div class="margin-bottom-xxs">
 			<div class="message-content-header">
-				<p class="message-content-display-name">Kay Smith</p>
+				<div class="display-grid align-items-center">
+					<p class="message-content-display-name">Kay Smith</p>
+				</div>
 				<div class="message-content-options">
 					<span>⋮</span>
 				</div>
