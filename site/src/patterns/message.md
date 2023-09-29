@@ -36,7 +36,7 @@ The message conversation would be used in the following manner.
 									</svg>
 								</span>
 							</summary>
-							<div class="popover-content">
+							<div class="popover-content padding-none">
 								<button
 									data-page-action-item="overflow-mobile"
 									type="button"
@@ -45,9 +45,6 @@ The message conversation would be used in the following manner.
 									data-contents-button=""
 									data-popover-close=""
 								>
-									<span class="icon">
-										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
-									</span>
 									<span class="contents-expand-title">Edit message</span>
 								</button>
 								<button
@@ -58,9 +55,6 @@ The message conversation would be used in the following manner.
 									data-contents-button=""
 									data-popover-close=""
 								>
-									<span class="icon">
-										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
-									</span>
 									<span class="contents-expand-title">Delete message</span>
 								</button>
 							</div>
@@ -101,8 +95,8 @@ The message conversation would be used in the following manner.
 									</svg>
 								</span>
 							</summary>
-							<div class="popover-content">
-							<button
+							<div class="popover-content padding-none">
+								<button
 									data-page-action-item="overflow-mobile"
 									type="button"
 									class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear"
@@ -110,9 +104,6 @@ The message conversation would be used in the following manner.
 									data-contents-button=""
 									data-popover-close=""
 								>
-									<span class="icon">
-										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
-									</span>
 									<span class="contents-expand-title">Edit message</span>
 								</button>
 								<button
@@ -123,9 +114,6 @@ The message conversation would be used in the following manner.
 									data-contents-button=""
 									data-popover-close=""
 								>
-									<span class="icon">
-										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
-									</span>
 									<span class="contents-expand-title">Delete message</span>
 								</button>
 							</div>
