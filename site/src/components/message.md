@@ -2,6 +2,7 @@
 title: Message
 description: The message component in the Atlas Design System
 template: standard
+figmaEmbed: https://www.figma.com/proto/amgDNGgGYy2v2Unc6Eet46/Q%26A-Private-Messages?page-id=0%3A1&type=design&node-id=337-533145&viewport=-15969%2C-17033%2C0.75&scaling=min-zoom&starting-point-node-id=337%3A548136&show-proto-sidebar=1 allowfullscreen
 classType: Component
 classPrefixes:
   - message
@@ -24,18 +25,16 @@ Here is an example of a standard usage of message component.
 		</figure>
 	</div>
 	<div class="message-content">
-		<div class="margin-bottom-xxs">
-			<div class="message-content-header">
-				<div class="display-grid align-items-center">
-					<p class="message-content-display-name">Q&A Moderator</p>
-					<p class="font-size-xs">Moderator</p>
-				</div>
-				<div class="message-content-options">
-					<span>⋮</span>
-				</div>
+		<div class="persona message-content-header">
+			<div class="persona-details">
+				<p class="persona-name font-weight-semibold">Q&A Moderator</p>
+				<p class="font-size-xs">Moderator</p>
+			</div>
+			<div class="message-content-options">
+				<span>⋮</span>
 			</div>
 		</div>
-		<p class="font-size-md">
+		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 			labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa
 			eget egestas. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat.
@@ -55,14 +54,12 @@ Use the `message-sender` class to indicate message sent by the user.
 		</figure>
 	</div>
 	<div class="message-content">
-		<div class="margin-bottom-xxs">
-			<div class="message-content-header">
-				<div class="display-grid align-items-center">
-					<p class="message-content-display-name">Kay Smith</p>
-				</div>
-				<div class="message-content-options">
-					<span>⋮</span>
-				</div>
+		<div class="persona message-content-header">
+			<div class="persona-details">
+				<p class="persona-name font-weight-semibold">Kay Smith</p>
+			</div>
+			<div class="message-content-options">
+				<span>⋮</span>
 			</div>
 		</div>
 		<p>
