@@ -2,7 +2,7 @@
 title: Message
 description: The message component in the Atlas Design System
 template: standard
-figmaEmbed: https://www.figma.com/proto/amgDNGgGYy2v2Unc6Eet46/Q%26A-Private-Messages?page-id=0%3A1&type=design&node-id=337-533145&viewport=-15969%2C-17033%2C0.75&scaling=min-zoom&starting-point-node-id=337%3A548136&show-proto-sidebar=1 allowfullscreen
+figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/amgDNGgGYy2v2Unc6Eet46/Q%26A-Private-Messages?page-id=0%3A1&type=design&node-id=337-533145&viewport=-15969%2C-17033%2C0.75&scaling=min-zoom&starting-point-node-id=337%3A548136&show-proto-sidebar=1 allowfullscreen
 classType: Component
 classPrefixes:
   - message
@@ -30,9 +30,11 @@ Here is an example of a standard usage of message component.
 				<p class="persona-name font-weight-semibold">Q&A Moderator</p>
 				<p class="font-size-xs">Moderator</p>
 			</div>
-			<div class="message-content-options">
-				<span>⋮</span>
-			</div>
+			<details class="message-content-options">
+				<summary>
+					<span>⋮</span>
+				</summary>
+			</details>
 		</div>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -58,9 +60,11 @@ Use the `message-sender` class to indicate message sent by the user.
 			<div class="persona-details">
 				<p class="persona-name font-weight-semibold">Kay Smith</p>
 			</div>
-			<div class="message-content-options">
-				<span>⋮</span>
-			</div>
+			<details class="message-content-options">
+				<summary>
+					<span>⋮</span>
+				</summary>
+			</details>
 		</div>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
