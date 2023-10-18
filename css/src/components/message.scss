@@ -8,8 +8,8 @@ $message-spacer-lg: $spacer-5 !default;
 $message-sender-width: 85% !default;
 $message-sender-background-color: $primary-background !default;
 
-$message-border-radius: $border-radius-lg;
-$message-border: $border-width solid $border;
+$message-border-radius: $border-radius-lg !default;
+$message-border: $border-width solid $border !default;
 
 .message {
 	display: grid;

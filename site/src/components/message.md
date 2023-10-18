@@ -25,15 +25,16 @@ Here is an example of a standard usage of message component.
 		</figure>
 	</div>
 	<div class="message-content">
-		<div class="persona message-content-header">
-			<div class="persona-details">
-				<p class="persona-name font-weight-semibold">Q&A Moderator</p>
-				<p class="font-size-xs">Moderator</p>
+		<div class="message-content-header">
+			<div class="persona">
+				<div class="persona-details">
+					<p class="persona-name font-weight-semibold">Q&A Moderator</p>
+					<p class="font-size-xs">Moderator</p>
+				</div>
 			</div>
-			<details class="message-content-options">
-				<summary>
-					<span>⋮</span>
-				</summary>
+			<details class="message-content-options popover popover-right">
+				<summary class="button button-clear button-primary">⋮</summary>
+				<div class="popover-content">Popover content.</div>
 			</details>
 		</div>
 		<p>
@@ -56,14 +57,15 @@ Use the `message-sender` class to indicate message sent by the user.
 		</figure>
 	</div>
 	<div class="message-content">
-		<div class="persona message-content-header">
-			<div class="persona-details">
-				<p class="persona-name font-weight-semibold">Kay Smith</p>
+		<div class="message-content-header">
+			<div class="persona">
+				<div class="persona-details">
+					<p class="persona-name font-weight-semibold">Kay Smith</p>
+				</div>
 			</div>
-			<details class="message-content-options">
-				<summary>
-					<span>⋮</span>
-				</summary>
+			<details class="message-content-options popover popover-right">
+				<summary class="button button-clear">⋮</summary>
+				<div class="popover-content">Popover content.</div>
 			</details>
 		</div>
 		<p>
