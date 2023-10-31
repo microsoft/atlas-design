@@ -9,6 +9,7 @@ $persona-avatar-border-radius: $border-radius-rounded;
 $persona-details-font-color: $text-subtle !default;
 $persona-name-font-size: $font-size-7 !default;
 $persona-name-font-color: $text !default;
+$persona-name-font-weight: $weight-semibold !default;
 
 $persona-gap-size: $layout-1 !default;
 
@@ -43,6 +44,7 @@ $persona-gap-size: $layout-1 !default;
 		.persona-name {
 			color: $persona-name-font-color;
 			font-size: 1.3333em;
+			font-weight: $persona-name-font-weight;
 		}
 	}
 
