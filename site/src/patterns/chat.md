@@ -6,7 +6,7 @@ template: standard
 
 # Chat Pattern
 
-The message conversation would be used in the following manner.
+The following markup utilizes various components and atomics to create a chat experience. As you can see from the example below, we create a grid container and place several `.message` components within. In each message we make use of `.persona` to display a user's information, and a `popover` to house the overflow menu and its contents.
 
 ```html
 <section class="display-grid gap-sm">
