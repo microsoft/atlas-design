@@ -1,6 +1,7 @@
 $message-font-size-sm: $font-size-9 !default;
 $message-font-size-md: $font-size-7 !default;
 
+$message-background-color: $body-background !default;
 $message-gap-size: $layout-1 !default;
 $message-spacer-md: $spacer-3 !default;
 $message-spacer-lg: $spacer-5 !default;
@@ -27,7 +28,7 @@ $message-border: $border-width solid $border !default;
 
 	.message-persona {
 		grid-area: message-persona;
-		margin-block-start: $message-spacer-md;
+		margin-block-start: $message-spacer-lg;
 	}
 
 	.message-content {
@@ -35,6 +36,7 @@ $message-border: $border-width solid $border !default;
 		padding: $message-spacer-lg;
 		border: $message-border;
 		border-radius: $message-border-radius;
+		background-color: $message-background-color;
 
 		.message-content-header {
 			display: grid;

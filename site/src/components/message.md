@@ -28,8 +28,8 @@ Here is an example of a standard usage of message component.
 		<div class="message-content-header">
 			<div class="persona">
 				<div class="persona-details">
-					<p class="persona-name font-weight-semibold">Q&A Moderator</p>
-					<p class="font-size-xs">Moderator</p>
+					<p class="persona-name">Q&A Moderator</p>
+					<p>Moderator</p>
 				</div>
 			</div>
 			<details class="message-content-options popover popover-right">
@@ -60,7 +60,7 @@ Use the `message-sender` class to indicate message sent by the user.
 		<div class="message-content-header">
 			<div class="persona">
 				<div class="persona-details">
-					<p class="persona-name font-weight-semibold">Kay Smith</p>
+					<p class="persona-name">Kay Smith</p>
 				</div>
 			</div>
 			<details class="message-content-options popover popover-right">
