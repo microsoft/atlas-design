@@ -1,5 +1,11 @@
 # @microsoft/atlas-integration
 
+## 1.5.0
+
+### Minor Changes
+
+- ae05959: Add standardized message styles
+
 ## 1.4.0
 
 ### Minor Changes

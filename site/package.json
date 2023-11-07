@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-site",
-	"version": "0.41.0",
+	"version": "0.42.0",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
@@ -19,7 +19,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
 		"eslint-plugin-import": "^2.27.5",
-		"@microsoft/atlas-css": "^3.36.0",
+		"@microsoft/atlas-css": "^3.37.0",
 		"eslint-config-prettier": "^8.8.0",
 		"parcel": "^2.9.3",
 		"lightningcss": "1.21.1",
