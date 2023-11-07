@@ -100,7 +100,7 @@ In order to achieve disabled styles, you'll need to add the `disabled` attribute
 
 ### Validation states
 
-`select-error`/`select-success` helps with visual reflection of validation states.
+`select-danger`/`select-success` helps with visual reflection of validation states.
 
 | State   | Class                     | Example                                                                                                                                                                                                                                                                                                 |
 | ------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
