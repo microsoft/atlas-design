@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 3.37.0
+
+### Minor Changes
+
+- ae05959: Add standardized message styles
+
+### Patch Changes
+
+- 9a4479a: Updating persona's name font-weight.
+
 ## 3.36.1
 
 ### Patch Changes

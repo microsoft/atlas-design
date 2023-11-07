@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.42.0
+
+### Minor Changes
+
+- ae05959: Add standardized chat styles
+
+### Patch Changes
+
+- 4b0e01e: Fix typo in select.md
+
 ## 0.41.0
 
 ### Minor Changes
