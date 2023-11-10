@@ -1,9 +1,10 @@
 $message-font-size-sm: $font-size-9 !default;
-$message-font-size-md: $font-size-7 !default;
+$message-font-size-md: $font-size-8 !default;
 
 $message-background-color: $body-background !default;
 $message-gap-size: $layout-1 !default;
-$message-spacer-md: $spacer-3 !default;
+$message-spacer-sm: $spacer-3 !default;
+$message-spacer-md: $spacer-4 !default;
 $message-spacer-lg: $spacer-5 !default;
 
 $message-sender-width: 85% !default;
@@ -24,6 +25,8 @@ $message-border: $border-width solid $border !default;
 	.message-time {
 		grid-area: message-time;
 		font-size: $message-font-size-sm;
+		line-height: 1;
+		color: $text-subtle;
 	}
 
 	.message-persona {
@@ -33,19 +36,21 @@ $message-border: $border-width solid $border !default;
 
 	.message-content {
 		grid-area: message-content;
-		padding: $message-spacer-lg;
+		padding: $message-spacer-md $message-spacer-lg;
 		border: $message-border;
 		border-radius: $message-border-radius;
 		background-color: $message-background-color;
+		font-size: $message-font-size-md;
+		line-height: 1.25;
 
 		.message-content-header {
 			display: grid;
 			grid-template-columns: 1fr auto;
-			margin-block-end: $message-spacer-md;
+			margin-block-end: $message-spacer-sm;
 
 			.message-content-options {
 				justify-self: flex-end;
-				margin-inline-end: $message-spacer-md;
+				margin-inline-end: $message-spacer-sm;
 			}
 		}
 	}
