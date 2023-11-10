@@ -25,8 +25,8 @@ $message-border: $border-width solid $border !default;
 	.message-time {
 		grid-area: message-time;
 		font-size: $message-font-size-sm;
-		line-height: 1;
 		color: $text-subtle;
+		line-height: 1;
 	}
 
 	.message-persona {
