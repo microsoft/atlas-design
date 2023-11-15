@@ -82,7 +82,7 @@ Use the `message-sender` class to indicate message sent by the user.
 `message-size-sm` is available for resizing.
 
 ```html
-<article class="message message-size-sm message-size-sm">
+<article class="message message-size-sm">
 	<p class="message-time">May 29, 2023, 4:50PM</p>
 	<div class="persona message-persona">
 		<figure class="persona-avatar">
