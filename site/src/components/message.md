@@ -84,7 +84,7 @@ Use the `message-sender` class to indicate message sent by the user.
 ```html
 <article class="message message-sm">
 	<p class="message-time">May 29, 2023, 4:50PM</p>
-	<div class="persona persona-sm  message-persona">
+	<div class="persona persona-sm message-persona">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
