@@ -116,7 +116,6 @@ export function handleNavCollapse(
 	nav.dataset.isFullScreened = 'false';
 	navContent.classList.remove('padding-inline-lg');
 	navContent.classList.remove('padding-block-md');
-
 	nav.style.cssText = '';
 	void document.exitFullscreen().then(() => {
 		trigger.focus();

@@ -155,6 +155,12 @@ Grid areas, the CSS feature powering the layout component, have the potential to
 
 See WCAG on [Making the DOM order match the visual order](https://www.w3.org/TR/WCAG20-TECHS/C27.html) for more information on this topic.
 
+=======
+| Desktop | Menu, main, aside are side by side. Main is widest than menu. |
+| Widescreen | Same as desktop with scaling gutter that keeps combined width of menu, main, aside to the width of the widescreen breakpoint. |
+
+> > > > > > > a07477b (add single and holy-grail layout component, update site to use holy-grail)
+
 ## Advanced topic - switching layouts on the fly
 
 Because layouts generally contain the same elements and because the current layout is determined by a singular class on the `.layout` element, changing layout is as easy as swapping out a class.

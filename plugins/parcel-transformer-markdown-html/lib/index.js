@@ -277,8 +277,13 @@ function extractH1AndFirstP(htmlString) {
 		/<!-- heading-capture-text-begin -->\s*([\s\S]*?)\s*<!-- heading-capture-text-end -->/i
 	);
 	const h1 = h1Match ? h1Match[1].toString() : null;
+<<<<<<< HEAD
 	const html = htmlString
 		.replaceAll(entireh1Match, '')
 		.replace(p, '<div class="h1-inverse-spacer"></div>');
+=======
+	// for morning, why isn't string replace working
+	const html = htmlString.replaceAll(entireh1Match, '').replace(pMatch, '');
+>>>>>>> a07477b (add single and holy-grail layout component, update site to use holy-grail)
 	return { h1, p, html };
 }
