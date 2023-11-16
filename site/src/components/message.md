@@ -79,19 +79,19 @@ Use the `message-sender` class to indicate message sent by the user.
 ```
 
 ## Sizes
-`message-size-sm` is available for resizing.
+`message-sm` is available for resizing.
 
 ```html
-<article class="message message-size-sm">
+<article class="message message-sm">
 	<p class="message-time">May 29, 2023, 4:50PM</p>
-	<div class="persona message-persona">
+	<div class="persona persona-sm  message-persona">
 		<figure class="persona-avatar">
 			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="message-content">
 		<div class="message-content-header">
-			<div class="persona">
+			<div class="persona persona-sm ">
 				<div class="persona-details">
 					<p class="persona-name">Q&A Moderator</p>
 					<p class="font-size-xs">Moderator</p>

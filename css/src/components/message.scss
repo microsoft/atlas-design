@@ -35,7 +35,7 @@ $message-border: $border-width solid $border !default;
 
 	.message-content {
 		grid-area: message-content;
-		padding: $message-spacer-lg;
+		padding: 1em;
 		border: $message-border;
 		border-radius: $message-border-radius;
 		background-color: $message-background-color;
@@ -61,15 +61,7 @@ $message-border: $border-width solid $border !default;
 		}
 	}
 
-	&.message-size-sm {
+	&.message-sm {
 		font-size: $message-font-size-sm;
-
-		.persona-details .persona-name {
-			font-size: $message-font-size-sm;
-		}
-
-		.message-content {
-			padding: 0.875rem;
-		}
 	}
 }
