@@ -91,7 +91,7 @@ Use the `message-sender` class to indicate message sent by the user.
 	</div>
 	<div class="message-content">
 		<div class="message-content-header">
-			<div class="persona persona-sm ">
+			<div class="persona persona-sm">
 				<div class="persona-details">
 					<p class="persona-name">Q&A Moderator</p>
 					<p class="font-size-xs">Moderator</p>
