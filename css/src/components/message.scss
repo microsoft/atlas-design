@@ -13,6 +13,8 @@ $message-sender-background-color: $primary-background !default;
 $message-border-radius: $border-radius-lg !default;
 $message-border: $border-width solid $border !default;
 
+$message-content-padding: 1em !default;
+
 .message {
 	display: grid;
 	grid-template:
@@ -21,7 +23,7 @@ $message-border: $border-width solid $border !default;
 	grid-template-columns: max-content 1fr;
 	gap: $message-gap-size;
 	font-size: $message-font-size-md;
-	line-height: 1.4;
+	line-height: $line-height-normal;
 
 	.message-time {
 		grid-area: message-time;
@@ -35,7 +37,7 @@ $message-border: $border-width solid $border !default;
 
 	.message-content {
 		grid-area: message-content;
-		padding: 1em;
+		padding: $message-content-padding;
 		border: $message-border;
 		border-radius: $message-border-radius;
 		background-color: $message-background-color;
