@@ -19,6 +19,7 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
 <div class="buttons buttons-addons margin-top-sm display-inline-flex">
   <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
   <button class="button" data-set-layout="layout-single">Single</button>
+  <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
 </div>
 <button class="button margin-top-sm" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 
@@ -68,6 +69,7 @@ There are two available layouts.
 
 - [`layout-single`](#layout-single)
 - [`layout-holy-grail`](#holy-grail-layout)
+- [`layout-sidecar-left`](#sidecar-left-layout)
 
 ### Layout Single
 
@@ -75,7 +77,7 @@ The `layout-single` class provides a simple stacked layout. It is equivalent to 
 
 How do I apply it? `layout-single` to the `layout` element.
 
-Required elements: all, except `layout-body-hero`.
+Required elements: all except `layout-body-hero`.
 
 Allowed elements: all.
 
@@ -106,7 +108,7 @@ The specification for this layout is as follows.
 Named after a layout that [historically was difficult to implement](<https://en.wikipedia.org/wiki/Holy_grail_(web_design)>) the holy grail is stacked on narrow widths and progressively shows up to three columns as the screen widens.
 
 How do I apply it? `layout-holy-grail` to the `layout` element.
-Required elements: all, except `layout-body-hero`.
+Required elements: all except `layout-body-hero`.
 Allowed elements: all.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
@@ -136,6 +138,42 @@ The specification for this layout is as follows.
 | Desktop    | Menu, main, aside are side by side. Main is wider than menu.                                                                  |
 | Widescreen | Same as desktop with scaling gutter that keeps combined width of menu, main, aside to the width of the widescreen breakpoint. |
 
+### Sidecar left layout
+
+A "sidecar" is a smaller companion container that sits beside the main content container on tablet screens and wider. In `layout-sidecar-left` the sidecar refers to the `layout-body-menu` element, which sits to the left of `layout-body-main`. Unlike other layouts, this layout does not allow the usage of the `layout-body-aside` containers.
+
+How do I apply it? `layout-sidecar-left` to the `layout` element.
+Required elements: all except `layout-body-hero` and `layout-body-aside` (see allowed elements).
+Allowed elements: all except `layout-body-aside`.
+
+The following block is arranged from narrow widths on the left to wider widths on the right.
+
+```txt
+  ┌────────────┐   ┌──────────────┐ ┌──────────────────────┐
+  │ Header     │   │Header        │ │ Header               │
+  ├────────────┤   ├──────────────┤ ├──────────────────────┤
+  │ Hero       │   │Hero          │ │ Hero                 │
+  ├────────────┤   ├─────┬────────┤ ├──────┬───────────────┤
+  │ Menu       │   │Menu │ Main   │ │ Menu │ Main          │
+  ├────────────┤   │     │        │ │      │               │
+  │ Main       │   │     │        │ │      │               │
+  │            │   │     │        │ │      │               │
+  │            │   │     │        │ │      │               │
+  ├────────────┤   ├─────┴────────┤ ├──────┴───────────────┤
+  │ Footer     │   │Footer        │ │ Footer               │
+  └────────────┘   └──────────────┘ └──────────────────────┘
+```
+
+The specification for this layout is as follows.
+
+| Screensize       | Behavior                                                                                                                         |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Narrow           | All elements are stacked.                                                                                                        |
+| Tablet - desktop | Menu and main are side by side. Main is wider than menu.                                                                         |
+| Widescreen       | Same as tablet-desktop with scaling gutter that keeps combined width of menu and main to the width of the widescreen breakpoint. |
+
+## Accessibility and ARIA landmarks
+
 ## Accessibility Concerns
 
 ### ARIA landmarks
@@ -158,10 +196,11 @@ See WCAG on [Making the DOM order match the visual order](https://www.w3.org/TR/
 ## Advanced topic - switching layouts on the fly
 
 Because layouts generally contain the same elements and because the current layout is determined by a singular class on the `.layout` element, changing layout is as easy as swapping out a class.
+s
 
 ```JavaScript
 document.documentElement.classList.remove('layout-single');
-document.documentElement.classList.remove('layout-holy-grail');
+document.documentElement.classList.add('layout-holy-grail');
 ```
 
 You'll seldom have occasion to do this in the middle of a user's visit, but it can be useful for things like opening a code editor in a wider layout or adopting a focused reading mode.
