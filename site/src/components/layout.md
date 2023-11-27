@@ -17,7 +17,7 @@ The layout component provides a flexible and efficient way to structure the majo
 This page is utilizing the holy grail layout, but you can use the buttons below to toggle layouts and test them out by resizing the screen. Try the "Toggle container labels" button below to see the css classes on each of the containers inside `.layout`.
 
 <div class="buttons buttons-addons margin-top-sm display-inline-flex">
-  <button class="button" data-set-layout="layout-holy-grail">Holy grail</button>
+  <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
   <button class="button" data-set-layout="layout-single">Single</button>
 </div>
 <button class="button margin-top-sm" data-toggle-debug>Toggle container labels</button>
@@ -38,8 +38,8 @@ The basic boilerplate for a layout is as follows:
 <html class="layout layout-{nameoflayout}">
 	<body class="layout-body">
 		<header style="layout-body-header">Header</header>
-		<div class="layout-body-hero">Hero</div>
-		<nav class="layout-body-nav">Menu</nav>
+		<section aria-label="hero" class="layout-body-hero">Hero</section>
+		<nav class="layout-body-menu">Menu</nav>
 		<main class="layout-body-main">Main</main>
 		<aside class="layout-body-aside">Aside</aside>
 		<footer class="layout-body-footer">Footer</footer>
@@ -53,7 +53,7 @@ The `$layout-gap` token is used to generate two separate classes that can be use
 
 | Class name        | Use case                             | Examples of use case                                                                  |
 | ----------------- | ------------------------------------ | ------------------------------------------------------------------------------------- |
-| `.layout-padding` | Layout areas that are not full width | The menu and aside areas. The main area when no in a single layout                    |
+| `.layout-padding` | Layout areas that are not full width | The menu and aside areas. The main area when not in a single layout                   |
 | `.layout-margin`  | Full width layout areas              | The header, footer, and hero. The main area when it is full width in a single layout. |
 
 Why not use gap? You certainly can apply any [gap atomics](../atomics/gap.md) to the `layout-body` to change spacing as you see fit. However, to provide adequate space to display focus rectangles and to ensure enough space to render dynamic inline elements (like heading anchors), spacing applied to an inner container is still the best choice.
@@ -133,8 +133,12 @@ The specification for this layout is as follows.
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | Narrow     | All elements are stacked.                                                                                                     |
 | Tablet     | Menu and main are side by side. Main is wider than menu. Aside has a collapsed height and is tucked under main.               |
-| Desktop    | Menu, main, aside are side by side. Main is widest than menu.                                                                 |
+| Desktop    | Menu, main, aside are side by side. Main is wider than menu.                                                                  |
 | Widescreen | Same as desktop with scaling gutter that keeps combined width of menu, main, aside to the width of the widescreen breakpoint. |
+
+## Accessibility and ARIA landmarks
+
+Due to the [recommendation that all content be rendering into ARIA landmark regions](https://dequeuniversity.com/rules/axe/4.7/region), the hero element should be a `<section>` element with an unique aria-label (or aria-labelled by).
 
 ## Advanced topic - switching layouts on the fly
 

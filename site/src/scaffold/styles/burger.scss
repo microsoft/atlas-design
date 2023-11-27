@@ -20,7 +20,7 @@
 	.burger-top,
 	.burger-middle,
 	.burger-bottom {
-		transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.175);
+		transition: transform 3s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 		display: block;
 		border-radius: 4px;
 		border-top: 4px solid $text;

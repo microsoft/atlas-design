@@ -59,7 +59,23 @@
 			</div>
 		</header>
 
-		<nav id="nav" class="layout-body-menu background-color-body">
+		{{#hero}}
+		<section id="hero" class="layout-body-hero border-bottom background-color-body-accent" aria-label="hero">
+			<div class="hero hero-sm">
+				<div class="hero-content">
+					{{#h1}}
+					<h1 class="font-size-h1 font-weight-semibold">{{h1}}</h1>
+					{{/h1}}
+					{{^h1}}
+					<h1 class="font-size-h1 font-weight-semibold">Missing h1</h1>
+					{{/h1}}
+					<p class="margin-top-md font-size-lg line-height-normal">{{description}}</p>
+				</div>
+			</div>
+		</section>
+		{{/hero}}
+
+		<nav id="menu" class="layout-body-menu background-color-body">
 			{{#toc}}
 				<div id="nav-content" class="display-none display-block-tablet layout-padding padding-block-md">
 					<button data-full-screen-nav class="display-none burger button button-clear position-fixed margin-right-sm margin-top-sm top-0 right-0" aria-label="Mobile menu toggle">
@@ -88,21 +104,6 @@
 
 		</nav>
 
-		{{#hero}}
-		<div id="" class="layout-body-hero border-bottom background-color-body-accent">
-			<section class="hero hero-sm">
-				<div class="hero-content">
-					{{#h1}}
-					<h1 class="font-size-h1 font-weight-semibold">{{h1}}</h1>
-					{{/h1}}
-					{{^h1}}
-					<h1 class="font-size-h1 font-weight-semibold">Missing h1</h1>
-					{{/h1}}
-					<p class="margin-top-md font-size-lg line-height-normal">{{description}}</p>
-				</div>
-			</section>
-		</div>
-		{{/hero}}
 		<main id="main" class="layout-body-main">
 			{{{breadcrumbs}}}
 

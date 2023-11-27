@@ -59,7 +59,6 @@ html {
 // For debugging layout purposes only
 
 @mixin debug($content, $right-align: false) {
-	outline: 1px solid $border;
 	position: relative;
 	&::after {
 		inset-block-start: 0;

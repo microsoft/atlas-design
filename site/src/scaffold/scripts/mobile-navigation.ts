@@ -24,6 +24,42 @@ export function handleFullScreenNavButton() {
 		}
 	});
 
+	document.addEventListener(
+		'fullscreenchange',
+		() => {
+			const nav = document.getElementById('nav');
+			if (!nav) {
+				throw new Error('Need an element with an id of #nav before we can show a mobile menu');
+			}
+
+			// logic is odd because of timing, this will run after a full screen exits
+			const notFullScreen = document.fullscreenElement;
+			if (notFullScreen) {
+				return;
+			}
+
+			const trigger = document.querySelector('[data-full-screen-nav]') as HTMLElement;
+			if (!trigger) {
+				return;
+			}
+
+			const navContent = document.getElementById('nav-content') as HTMLElement;
+			if (!navContent) {
+				throw new Error('Trying to modify classes on #nav-content, which does not exist.');
+			}
+
+			const innerNavButton = nav.querySelector('[data-full-screen-nav]') as HTMLElement;
+			if (!innerNavButton) {
+				throw new Error(
+					'Trying to modify classes on nav > [data-full-screen-nav], which does not exist.'
+				);
+			}
+
+			handleNavCollapse(navContent, nav, innerNavButton, trigger);
+		},
+		false
+	);
+
 	window.addEventListener('click', (e: MouseEvent) => {
 		const trigger =
 			e.target instanceof HTMLElement &&
@@ -48,12 +84,11 @@ export function handleFullScreenNavButton() {
 			);
 		}
 
-		const isFullScreened = nav.dataset.isFullScreened === 'true';
+		// logic is odd because of timing, this will run before a full screen is requested
+		const isFullScreened = document.fullscreenElement;
 		if (isFullScreened) {
 			handleNavCollapse(navContent, nav, innerNavButton, trigger);
 		} else {
-			innerNavButton.classList.remove('display-none');
-			innerNavButton.classList.add('burger-expanded');
 			navContent.classList.remove('display-none');
 			navContent.classList.add('padding-inline-lg');
 			navContent.classList.add('padding-block-md');
@@ -61,8 +96,9 @@ export function handleFullScreenNavButton() {
 			nav.style.overflowX = 'auto';
 
 			void nav.requestFullscreen({ navigationUI: 'show' }).then(() => {
-				innerNavButton.classList.add('burger-expanded');
+				innerNavButton.classList.remove('display-none');
 				innerNavButton.focus();
+				innerNavButton.classList.add('burger-expanded');
 			});
 		}
 	});
@@ -74,15 +110,13 @@ export function handleNavCollapse(
 	innerNavButton: HTMLElement,
 	trigger: HTMLElement
 ) {
-	if (!document.fullscreenElement) {
-		return;
-	}
 	innerNavButton.classList.add('display-none');
 	innerNavButton.classList.remove('burger-expanded');
 	navContent.classList.add('display-none');
 	nav.dataset.isFullScreened = 'false';
 	navContent.classList.remove('padding-inline-lg');
 	navContent.classList.remove('padding-block-md');
+
 	nav.style.cssText = '';
 	void document.exitFullscreen().then(() => {
 		trigger.focus();

@@ -1,10 +1,12 @@
-$side-bar-width-wide: 4fr !default;
+@use 'sass:math';
 
 .layout {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+	// min-inline-size: 100vh;
+	max-inline-size: 100vw;
 	overflow-x: hidden;
+	overflow-inline: hidden;
 
 	// --layout-gutter by default, see tokens/layout.scss
 	#{$layout-gap-custom-property-name}: $layout-gap;
@@ -16,18 +18,9 @@ $side-bar-width-wide: 4fr !default;
 }
 
 .layout-body {
+	display: grid;
+	width: 100%;
 	max-width: 100%;
-	overflow: hidden;
-}
-
-.layout-body-hero,
-.layout-body-main,
-.layout-body-footer,
-.layout-body-aside,
-.layout-body-menu {
-	&:empty {
-		display: none;
-	}
 }
 
 // grid-area values
@@ -59,7 +52,6 @@ $side-bar-width-wide: 4fr !default;
 .layout,
 .layout.layout-single {
 	.layout-body {
-		display: grid;
 		grid-template: auto auto auto 1fr auto auto / 1fr;
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
 	}
@@ -67,11 +59,10 @@ $side-bar-width-wide: 4fr !default;
 
 .layout.layout-holy-grail {
 	.layout-body {
-		display: grid;
 		grid-template: auto auto auto 1fr auto auto / 1fr;
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
 
-		@media screen and (min-width: #{$breakpoint-tablet}) {
+		@include tablet {
 			grid-template: auto auto 1fr auto auto / 1fr 2fr;
 			grid-template-areas:
 				'header header'
@@ -81,7 +72,7 @@ $side-bar-width-wide: 4fr !default;
 				'footer footer';
 		}
 
-		@media screen and (min-width: #{$breakpoint-desktop}) {
+		@include desktop {
 			grid-template: auto auto 1fr auto / 1fr 2fr 1fr;
 			grid-template-areas:
 				'header header header'
@@ -90,8 +81,11 @@ $side-bar-width-wide: 4fr !default;
 				'footer footer footer';
 		}
 
-		@media screen and (min-width: #{$breakpoint-widescreen}) {
-			grid-template: auto auto 1fr auto / auto 450px 900px 450px auto;
+		$widescreen-side-columns-width: math.div($breakpoint-widescreen, 4);
+		$widescreen-main-width: math.div($breakpoint-widescreen, 2);
+
+		@include widescreen {
+			grid-template: auto auto 1fr auto / auto #{$widescreen-side-columns-width} #{$widescreen-main-width} #{$widescreen-side-columns-width} auto;
 			grid-template-areas:
 				'header header header header header'
 				'hero hero hero hero hero'
@@ -107,4 +101,14 @@ $side-bar-width-wide: 4fr !default;
 
 .layout-margin {
 	margin-inline: var(#{$layout-gap-scalable-custom-property-name}) !important;
+}
+
+.layout-body-hero,
+.layout-body-main,
+.layout-body-footer,
+.layout-body-aside,
+.layout-body-menu {
+	&:empty {
+		display: none;
+	}
 }

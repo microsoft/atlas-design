@@ -32,6 +32,7 @@ const pathnames = [
 	'/components/image.html',
 	'/components/input.html',
 	'/components/label.html',
+	'/components/layout.html',
 	'/components/link-button.html',
 	'/components/markdown.html',
 	'/components/media.html',
