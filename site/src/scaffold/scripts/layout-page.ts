@@ -26,9 +26,9 @@ export function initLayoutPageControls() {
 
 		const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
 		for (const button of setThemeButtons) {
-			button.setAttribute('aria-selected', 'false');
+			button.setAttribute('aria-pressed', 'false');
 		}
-		target.setAttribute('aria-selected', 'true');
+		target.setAttribute('aria-pressed', 'true');
 	});
 
 	window.addEventListener('click', (e: MouseEvent) => {
