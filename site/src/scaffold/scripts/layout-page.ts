@@ -23,6 +23,12 @@ export function initLayoutPageControls() {
 		}
 		setLayoutClass(layoutToSet);
 		scrollTo({ behavior: 'smooth', top: target.getBoundingClientRect().top - 200 });
+
+		const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
+		for (const button of setThemeButtons) {
+			button.setAttribute('aria-pressed', 'false');
+		}
+		target.setAttribute('aria-pressed', 'true');
 	});
 
 	window.addEventListener('click', (e: MouseEvent) => {
@@ -32,11 +38,6 @@ export function initLayoutPageControls() {
 			return;
 		}
 		target.classList.toggle('button-filled');
-		const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
-		for (const button of setThemeButtons) {
-			button.setAttribute('aria-pressed', 'false');
-		}
-		target.setAttribute('aria-pressed', 'true');
 		document.documentElement.classList.toggle('debug');
 	});
 }
