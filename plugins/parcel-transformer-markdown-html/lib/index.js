@@ -278,6 +278,8 @@ function extractH1AndFirstP(htmlString) {
 	);
 	const h1 = h1Match ? h1Match[1].toString() : null;
 	// for morning, why isn't string replace working
-	const html = htmlString.replaceAll(entireh1Match, '').replace(pMatch, '');
+	const html = htmlString
+		.replaceAll(entireh1Match, '')
+		.replace(p, '<div class="h1-inverse-spacer"></div>');
 	return { h1, p, html };
 }

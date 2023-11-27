@@ -39,6 +39,10 @@ html {
 	justify-content: flex-end;
 }
 
+.h1-inverse-spacer {
+	margin-block-end: -2rem;
+}
+
 #article {
 	grid-area: article;
 	overflow: hidden;
