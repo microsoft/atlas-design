@@ -38,6 +38,11 @@ export function initLayoutPageControls() {
 			return;
 		}
 		target.classList.toggle('button-filled');
+		const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
+		for (const button of setThemeButtons) {
+			button.setAttribute('aria-pressed', 'false');
+		}
+		target.setAttribute('aria-pressed', 'true');
 		document.documentElement.classList.toggle('debug');
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
 	});
