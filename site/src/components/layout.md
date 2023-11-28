@@ -136,9 +136,24 @@ The specification for this layout is as follows.
 | Desktop    | Menu, main, aside are side by side. Main is wider than menu.                                                                  |
 | Widescreen | Same as desktop with scaling gutter that keeps combined width of menu, main, aside to the width of the widescreen breakpoint. |
 
-## Accessibility and ARIA landmarks
+## Accessibility Concerns
+
+### ARIA landmarks
 
 Due to the [recommendation that all content be rendering into ARIA landmark regions](https://dequeuniversity.com/rules/axe/4.7/region), the hero element should be a `<section>` element with an unique aria-label (or aria-labelled by).
+
+### DOM order should reflect visual hierarchy
+
+Grid areas, the CSS feature powering the layout component, have the potential to make DOM order different from visual hierarchy (i.e. which element seems like it is first on the page). This can cause confusion for keyboard users who use <kbd>tab</kbd> to navigate through web pages. The recommended order of elements within `layout-body` is as follows:
+
+1. Header
+1. Hero (if present)
+1. Menu (if present)
+1. Main
+1. Aside (if present)
+1. Footer
+
+See WCAG on [Making the DOM order match the visual order](https://www.w3.org/TR/WCAG20-TECHS/C27.html) for more information on this topic.
 
 ## Advanced topic - switching layouts on the fly
 
