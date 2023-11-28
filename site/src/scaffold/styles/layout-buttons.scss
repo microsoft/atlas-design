@@ -1,4 +1,4 @@
-$layouts: 'single', 'holy-grail', 'sidecar-left', 'sidecar-right';
+$layouts: 'single', 'holy-grail', 'sidecar-left';
 
 @each $layout in $layouts {
 	.layout-#{$layout} {
