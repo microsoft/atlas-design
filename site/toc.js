@@ -83,6 +83,11 @@ async function createToc(subDir) {
 	 */
 	const scaffold = [];
 
+	/**
+	 * Whether this is the first TOC entry. Useful for apply spacing differently.
+	 */
+	let isFirst = true;
+
 	// get stats on everything in this folder
 	for (const item of items) {
 		/**
@@ -132,7 +137,8 @@ async function createToc(subDir) {
 			// https://v2.parceljs.org/features/module-resolution/#tilde-paths
 			href: `~/src${srcPath}`,
 			isDirectory,
-			isHidden: name === '[hide]'
+			isHidden: name === '[hide]',
+			isFirst
 		};
 
 		if (entry.isDirectory) {
@@ -143,6 +149,8 @@ async function createToc(subDir) {
 		}
 
 		scaffold.push(entry);
+
+		isFirst = false;
 	}
 
 	return scaffold;

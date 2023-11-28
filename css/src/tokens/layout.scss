@@ -4,9 +4,14 @@
 // Layout
 $column-gap: 0.75rem !default;
 $large-column-gap: 1.5rem !default;
-$reading-max-width: 50rem;
+$reading-max-width: 50rem !default;
 
-$layout-gap: 16px !default;
+$layout-gap: 24px !default;
 $layout-widescreen-width: $breakpoint-widescreen - $layout-gap * 2 !default;
-$layout-widescreen-gap: calc(50% - #{$layout-widescreen-width} / 2) !default;
+$layout-widescreen-gap: calc(
+	50% - #{$layout-widescreen-width} / 2
+) !default; // $layout-widescreen-gap is a naming error, keeping for backwards compat
+
+$layout-gap-custom-property-name: '--layout-gap' !default;
+$layout-gap-scalable-custom-property-name: '--layout-gap-scalable' !default;
 //@end-sass-export-section
