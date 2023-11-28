@@ -51,6 +51,16 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	grid-area: footer;
 }
 
+.layout-body-hero,
+.layout-body-main,
+.layout-body-footer,
+.layout-body-aside,
+.layout-body-menu {
+	&:empty {
+		display: none;
+	}
+}
+
 .layout,
 .layout.layout-single {
 	.layout-body {
@@ -176,14 +186,4 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 
 .layout-margin {
 	margin-inline: var(#{$layout-gap-scalable-custom-property-name}) !important;
-}
-
-.layout-body-hero,
-.layout-body-main,
-.layout-body-footer,
-.layout-body-aside,
-.layout-body-menu {
-	&:empty {
-		display: none;
-	}
 }
