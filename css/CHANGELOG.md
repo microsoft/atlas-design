@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.37.1
+
+### Patch Changes
+
+- 1c892d1: Update message styles to support smaller size messages.
+
 ## 3.37.0
 
 ### Minor Changes
