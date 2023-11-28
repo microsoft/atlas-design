@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.42.1
+
+### Patch Changes
+
+- 1c892d1: Update message styles to support smaller size messages.
+
 ## 0.42.0
 
 ### Minor Changes
