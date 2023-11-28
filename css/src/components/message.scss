@@ -13,7 +13,8 @@ $message-sender-background-color: $primary-background !default;
 $message-border-radius: $border-radius-lg !default;
 $message-border: $border-width solid $border !default;
 
-$message-content-padding: 1em !default;
+$message-content-padding: $spacer-5 !default;
+$message-content-padding-sm: 0.875rem !default;
 
 .message {
 	display: grid;
@@ -65,5 +66,9 @@ $message-content-padding: 1em !default;
 
 	&.message-sm {
 		font-size: $message-font-size-sm;
+
+		.message-content {
+			padding: $message-content-padding-sm;
+		}
 	}
 }
