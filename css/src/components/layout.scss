@@ -1,5 +1,9 @@
 @use 'sass:math';
 
+$quarter-widescreen: math.div($breakpoint-widescreen, 4);
+$half-widescreen: math.div($breakpoint-widescreen, 2);
+$three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
+
 .layout {
 	display: flex;
 	flex-direction: column;
@@ -79,11 +83,8 @@
 				'footer footer footer';
 		}
 
-		$widescreen-side-columns-width: math.div($breakpoint-widescreen, 4);
-		$widescreen-main-width: math.div($breakpoint-widescreen, 2);
-
 		@include widescreen {
-			grid-template: auto auto 1fr auto / auto #{$widescreen-side-columns-width} #{$widescreen-main-width} #{$widescreen-side-columns-width} auto;
+			grid-template: auto auto 1fr auto / auto #{quarter-widescreen} #{$half-widescreen} #{quarter-widescreen} auto;
 			grid-template-areas:
 				'header header header header header'
 				'hero hero hero hero hero'
@@ -120,15 +121,50 @@
 				'footer footer';
 		}
 
-		$widescreen-side-columns-width: math.div($breakpoint-widescreen, 4);
-		$widescreen-main-width: math.div($breakpoint-widescreen, 4) * 3;
-
 		@include widescreen {
-			grid-template: auto auto 1fr auto / auto #{$widescreen-side-columns-width} #{$widescreen-main-width} auto;
+			grid-template: auto auto 1fr auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
 				'. menu main .'
+				'footer footer footer footer';
+		}
+	}
+}
+
+.layout.layout-sidecar-right {
+	.layout-body-menu {
+		display: none;
+	}
+
+	.layout-body {
+		grid-template: auto auto auto 1fr auto / 1fr;
+		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
+
+		@include tablet {
+			grid-template: auto auto 1fr auto / 2fr 1fr;
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'main aside '
+				'footer footer';
+		}
+
+		@include desktop {
+			grid-template: auto auto 1fr auto / 3fr 1fr;
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'main aside '
+				'footer footer';
+		}
+
+		@include widescreen {
+			grid-template: auto auto 1fr auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
+			grid-template-areas:
+				'header header header header'
+				'hero hero hero hero'
+				'. main aside .'
 				'footer footer footer footer';
 		}
 	}

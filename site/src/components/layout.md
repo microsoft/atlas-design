@@ -20,6 +20,7 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
   <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
   <button class="button" data-set-layout="layout-single">Single</button>
   <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
+  <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
 </div>
 <button class="button margin-top-sm" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 
@@ -70,6 +71,7 @@ There are two available layouts.
 - [`layout-single`](#layout-single)
 - [`layout-holy-grail`](#holy-grail-layout)
 - [`layout-sidecar-left`](#sidecar-left-layout)
+- [`layout-sidecar-right`](#sidecar-right-layout)
 
 ### Layout Single
 
@@ -172,6 +174,40 @@ The specification for this layout is as follows.
 | Tablet - desktop | Menu and main are side by side. Main is wider than menu.                                                                         |
 | Widescreen       | Same as tablet-desktop with scaling gutter that keeps combined width of menu and main to the width of the widescreen breakpoint. |
 
+### Sidecar right layout
+
+The "sidecar" remains as defined in the section above, but in `layout-sidecar-left` the sidecar refers to the `layout-body-aside` element, which sits to the right of `layout-body-main` on tablet screens and wider. Unlike other layouts, this layout does not allow the usage of the `layout-body-menu` containers.
+
+How do I apply it? `layout-sidecar-right` to the `layout` element.
+Required elements: all except `layout-body-hero` and `layout-body-menu` (see allowed elements).
+Allowed elements: all except `layout-body-menu`.
+
+The following block is arranged from narrow widths on the left to wider widths on the right.
+
+```txt
+ ┌──────────────┐ ┌──────────────────────┐ ┌──────────────────────┐
+ │Header        │ │ Header               │ │ Header               │
+ ├──────────────┤ ├──────────────────────┤ ├──────────────────────┤
+ │Hero          │ │ Hero                 │ │ Hero                 │
+ ├────────┬─────┤ ├───────────────┬──────┤ ├───────────────┬──────┤
+ │Main    │Aside│ │ Main          │ Aside│ │ Main          │ Aside│
+ │        │     │ │               │      │ │               │      │
+ │        │     │ │               │      │ │               │      │
+ │        │     │ │               │      │ │               │      │
+ │        │     │ │               │      │ │               │      │
+ ├────────┴─────┤ ├───────────────┴──────┤ ├───────────────┴──────┤
+ │Footer        │ │ Footer               │ │ Footer               │
+ └──────────────┘ └──────────────────────┘ └──────────────────────┘
+```
+
+The specification for this layout is as follows.
+
+| Screensize       | Behavior                                                                                                                          |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Narrow           | All elements are stacked.                                                                                                         |
+| Tablet - desktop | Main and aside are side by side. Main is wider than aside.                                                                        |
+| Widescreen       | Same as tablet-desktop with scaling gutter that keeps combined width of main and aside to the width of the widescreen breakpoint. |
+
 ## Accessibility and ARIA landmarks
 
 ## Accessibility Concerns
@@ -196,7 +232,6 @@ See WCAG on [Making the DOM order match the visual order](https://www.w3.org/TR/
 ## Advanced topic - switching layouts on the fly
 
 Because layouts generally contain the same elements and because the current layout is determined by a singular class on the `.layout` element, changing layout is as easy as swapping out a class.
-s
 
 ```JavaScript
 document.documentElement.classList.remove('layout-single');
