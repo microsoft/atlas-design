@@ -73,7 +73,7 @@ There are two available layouts.
 
 The `layout-single` class provides a simple stacked layout. It is equivalent to a series of marginless and paddingless stacked block level elements. All elements in a single layout should set their own margin somewhere within their nested containers. Most likely, you'll want to apply `.layout-margin` or some other container-like class to elements within the single layout. This is also the default layout that will render if no other class is provide.
 
-How do I apply it? `layout-holy-grail` to the `layout` element.
+How do I apply it? `layout-single` to the `layout` element.
 
 Required elements: all, except `layout-body-hero`.
 
