@@ -28,7 +28,7 @@ Thankfully, no one needs to be expert to use the `.layout` element. But it does 
 
 ### Markup structure
 
-The `.layout` class is designed to be place on the `<html>` element itself, while the `layout-body` element is designed to be place on the `<body>` element. All other element are children of `layout-body`. Specific layouts are applied by adding a class with the format `layout-{nameoflayout}` to the `html.layout` element.
+The `.layout` class is designed to be placed on the `<html>` element itself, while the `layout-body` element is designed to be placed on the `<body>` element. All other elements are children of `layout-body`. Specific layouts are applied by adding a class with the format `layout-{nameoflayout}` to the `html.layout` element.
 
 Nearly all layouts have the same eight elements, and the `layout-body-hero` element is always optional. While the `layout`, `layout-body`, `layout-body-header`, `layout-body-footer`, and `layout-body-main` elements are always required. The behavior of `layout-body-menu` and `layout-body-aside` depend on the layout.
 
