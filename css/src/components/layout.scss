@@ -19,6 +19,14 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	}
 }
 
+.layout-padding {
+	padding-inline: var(#{$layout-gap-custom-property-name}) !important;
+}
+
+.layout-margin {
+	margin-inline: var(#{$layout-gap-scalable-custom-property-name}) !important;
+}
+
 .layout-body {
 	display: grid;
 	width: 100%;
@@ -178,12 +186,4 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 				'footer footer footer footer';
 		}
 	}
-}
-
-.layout-padding {
-	padding-inline: var(#{$layout-gap-custom-property-name}) !important;
-}
-
-.layout-margin {
-	margin-inline: var(#{$layout-gap-scalable-custom-property-name}) !important;
 }
