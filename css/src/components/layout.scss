@@ -3,10 +3,8 @@
 .layout {
 	display: flex;
 	flex-direction: column;
-	// min-inline-size: 100vh;
 	max-inline-size: 100vw;
 	overflow-x: hidden;
-	overflow-inline: hidden;
 
 	// --layout-gutter by default, see tokens/layout.scss
 	#{$layout-gap-custom-property-name}: $layout-gap;
