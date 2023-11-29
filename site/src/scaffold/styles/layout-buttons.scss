@@ -1,6 +1,4 @@
-$layouts: 'single', 'holy-grail', 'sidecar-left', 'sidecar-right';
-
-[data-set-layout][aria-pressed="true"] {
+[data-set-layout][aria-pressed='true'] {
 	@extend .button-primary;
 	@extend .button-filled;
 }
