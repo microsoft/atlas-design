@@ -176,7 +176,7 @@ The specification for this layout is as follows.
 
 ### Sidecar right layout
 
-The "sidecar" remains as defined in the section above, but in `layout-sidecar-left` the sidecar refers to the `layout-body-aside` element, which sits to the right of `layout-body-main` on tablet screens and wider. Unlike other layouts, this layout does not allow the usage of the `layout-body-menu` containers.
+The "sidecar" remains as defined in the section above, but in `layout-sidecar-right` the sidecar refers to the `layout-body-aside` element, which sits to the right of `layout-body-main` on tablet screens and wider. Unlike other layouts, this layout does not allow the usage of the `layout-body-menu` containers.
 
 How do I apply it? `layout-sidecar-right` to the `layout` element.
 Required elements: all except `layout-body-hero` and `layout-body-menu` (see allowed elements).
