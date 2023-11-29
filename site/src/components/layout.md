@@ -84,6 +84,7 @@ Required elements: all except `layout-body-hero`.
 Allowed elements: all.
 
 ```Text
+   Narrow
   ┌────────────┐
   │ Header     │
   ├────────────┤
@@ -110,12 +111,15 @@ The specification for this layout is as follows.
 Named after a layout that [historically was difficult to implement](<https://en.wikipedia.org/wiki/Holy_grail_(web_design)>) the holy grail is stacked on narrow widths and progressively shows up to three columns as the screen widens.
 
 How do I apply it? `layout-holy-grail` to the `layout` element.
+
 Required elements: all except `layout-body-hero`.
+
 Allowed elements: all.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```Text
+   Narrow         Tablet           Widescreen
   ┌────────────┐ ┌──────────────┐ ┌──────────────────────┐
   │ Header     │ │Header        │ │ Header               │
   ├────────────┤ ├──────────────┤ ├──────────────────────┤
@@ -145,12 +149,15 @@ The specification for this layout is as follows.
 A "sidecar" is a smaller companion container that sits beside the main content container on tablet screens and wider. In `layout-sidecar-left` the sidecar refers to the `layout-body-menu` element, which sits to the left of `layout-body-main`. Unlike other layouts, this layout does not allow the usage of the `layout-body-aside` containers.
 
 How do I apply it? `layout-sidecar-left` to the `layout` element.
+
 Required elements: all except `layout-body-hero` and `layout-body-aside` (see allowed elements).
+
 Allowed elements: all except `layout-body-aside`.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```txt
+   Narrow           Tablet           Widescreen
   ┌────────────┐   ┌──────────────┐ ┌──────────────────────┐
   │ Header     │   │Header        │ │ Header               │
   ├────────────┤   ├──────────────┤ ├──────────────────────┤
@@ -179,12 +186,15 @@ The specification for this layout is as follows.
 The "sidecar" remains as defined in the section above, but in `layout-sidecar-right` the sidecar refers to the `layout-body-aside` element, which sits to the right of `layout-body-main` on tablet screens and wider. Unlike other layouts, this layout does not allow the usage of the `layout-body-menu` containers.
 
 How do I apply it? `layout-sidecar-right` to the `layout` element.
+
 Required elements: all except `layout-body-hero` and `layout-body-menu` (see allowed elements).
+
 Allowed elements: all except `layout-body-menu`.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```txt
+  Narrow           Tablet                   Widescreen
  ┌──────────────┐ ┌──────────────────────┐ ┌──────────────────────┐
  │Header        │ │ Header               │ │ Header               │
  ├──────────────┤ ├──────────────────────┤ ├──────────────────────┤
@@ -207,8 +217,6 @@ The specification for this layout is as follows.
 | Narrow           | All elements are stacked.                                                                                                         |
 | Tablet - desktop | Main and aside are side by side. Main is wider than aside.                                                                        |
 | Widescreen       | Same as tablet-desktop with scaling gutter that keeps combined width of main and aside to the width of the widescreen breakpoint. |
-
-## Accessibility and ARIA landmarks
 
 ## Accessibility Concerns
 
