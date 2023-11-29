@@ -1,13 +1,13 @@
 export function handleFullScreenNavButton() {
 	addEventListener('fullscreenchange', () => {
 		const isFullScreened = !document.fullscreenElement;
-		const navContent = document.getElementById('nav-content') as HTMLElement;
+		const navContent = document.getElementById('menu-content') as HTMLElement;
 		const nav = document.getElementById('menu');
 		if (!nav) {
 			throw new Error('Need an element with an id of #nav before we can show a mobile menu');
 		}
 		if (!navContent) {
-			throw new Error('Trying to modify classes on #nav-content, which does not exist.');
+			throw new Error('Trying to modify classes on #menu-content, which does not exist.');
 		}
 		const innerNavButton = nav.querySelector('[data-full-screen-nav]') as HTMLElement;
 		if (!innerNavButton) {
@@ -43,9 +43,9 @@ export function handleFullScreenNavButton() {
 				return;
 			}
 
-			const navContent = document.getElementById('nav-content') as HTMLElement;
+			const navContent = document.getElementById('menu-content') as HTMLElement;
 			if (!navContent) {
-				throw new Error('Trying to modify classes on #nav-content, which does not exist.');
+				throw new Error('Trying to modify classes on #menu-content, which does not exist.');
 			}
 
 			const innerNavButton = nav.querySelector('[data-full-screen-nav]') as HTMLElement;
@@ -72,9 +72,9 @@ export function handleFullScreenNavButton() {
 			throw new Error('Need an element with an id of #nav before we can show a mobile menu');
 		}
 
-		const navContent = document.getElementById('nav-content') as HTMLElement;
+		const navContent = document.getElementById('menu-content') as HTMLElement;
 		if (!navContent) {
-			throw new Error('Trying to modify classes on #nav-content, which does not exist.');
+			throw new Error('Trying to modify classes on #menu-content, which does not exist.');
 		}
 
 		const innerNavButton = nav.querySelector('[data-full-screen-nav]') as HTMLElement;
