@@ -2,7 +2,7 @@ export function handleFullScreenNavButton() {
 	addEventListener('fullscreenchange', () => {
 		const isFullScreened = !document.fullscreenElement;
 		const navContent = document.getElementById('nav-content') as HTMLElement;
-		const nav = document.getElementById('nav');
+		const nav = document.getElementById('menu');
 		if (!nav) {
 			throw new Error('Need an element with an id of #nav before we can show a mobile menu');
 		}
@@ -27,7 +27,7 @@ export function handleFullScreenNavButton() {
 	document.addEventListener(
 		'fullscreenchange',
 		() => {
-			const nav = document.getElementById('nav');
+			const nav = document.getElementById('menu');
 			if (!nav) {
 				throw new Error('Need an element with an id of #nav before we can show a mobile menu');
 			}
@@ -67,7 +67,7 @@ export function handleFullScreenNavButton() {
 		if (!trigger) {
 			return;
 		}
-		const nav = document.getElementById('nav');
+		const nav = document.getElementById('menu');
 		if (!nav) {
 			throw new Error('Need an element with an id of #nav before we can show a mobile menu');
 		}
