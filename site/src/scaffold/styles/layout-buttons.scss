@@ -1,10 +1,6 @@
 $layouts: 'single', 'holy-grail', 'sidecar-left', 'sidecar-right';
 
-@each $layout in $layouts {
-	.layout-#{$layout} {
-		[data-set-layout='layout-#{$layout}'] {
-			@extend .button-primary;
-			@extend .button-filled;
-		}
-	}
+[data-set-layout][aria-pressed="true"] {
+	@extend .button-primary;
+	@extend .button-filled;
 }
