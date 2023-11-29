@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.43.0
+
+### Minor Changes
+
+- 5708e1f: Document the layout component in /components/layout.
+- 46e987b: Add sidecar-left and sidecar-right layouts and relevant documentation.
+- 5708e1f: Add new code fense label html-no-example which does not render an example.
+- 5708e1f: Add a mobile navigation menu.
+- 5708e1f: Apply the holy grail layout from the new layout component to the site.
+
 ## 0.42.1
 
 ### Patch Changes
