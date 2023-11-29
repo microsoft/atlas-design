@@ -102,7 +102,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		}
 
 		@include widescreen {
-			grid-template: auto auto 1fr auto / auto #{quarter-widescreen} #{$half-widescreen} #{quarter-widescreen} auto;
+			grid-template: auto auto 1fr auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
 			grid-template-areas:
 				'header header header header header'
 				'hero hero hero hero hero'
