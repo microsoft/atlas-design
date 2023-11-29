@@ -1,4 +1,9 @@
-const layoutsClasses = ['layout-single', 'layout-holy-grail'];
+const layoutsClasses = [
+	'layout-single',
+	'layout-holy-grail',
+	'layout-sidecar-left',
+	'layout-sidecar-right'
+];
 
 // A function that removes all classes that begin with layout- on the html element
 function setLayoutClass(layoutToSet: string) {
