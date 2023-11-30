@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.38.0
+
+### Minor Changes
+
+- 46e987b: Add sidecar-left and sidecar-right layouts and relevant documentation.
+- 5708e1f: Add a layout component to provide a flexible way of specifying a site's layout with minimal nesting.
+
 ## 3.37.1
 
 ### Patch Changes
