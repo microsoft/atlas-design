@@ -234,13 +234,18 @@ export class FormBehaviorElement extends HTMLElement {
 				detail: {
 					url,
 					init,
-					form
+					form,
+					callback: async () => {}
 				},
 				bubbles: true,
 				cancelable: true
 			});
 
 			const cancelled = !this.dispatchEvent(beforeSubmitEvent);
+			if (beforeSubmitEvent.detail.callback) {
+				await beforeSubmitEvent.detail.callback();
+			}
+
 			if (cancelled) {
 				return;
 			}

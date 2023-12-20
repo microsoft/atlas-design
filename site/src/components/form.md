@@ -326,3 +326,60 @@ If there is a need to hide the validation banner on top of the form, we can appl
 	<div class="submitted-form-data-example"></div>
 </form>
 ```
+
+### Async beforesubmit handler
+
+To ensure that a submit event waits for an asynchronous beforesubmit handler to finish, you can set the event's detail callback property to your asynchronous logic. This will allow the event to wait for the completion of the asynchronous operation before proceeding with the submission.
+
+```typescript
+form.addEventListener(
+	'beforesubmit',
+	(event: CustomEventInit<{ callback: () => Promise<void> }>) => {
+		if (event.detail) {
+			event.detail.callback = async () => {
+				// TODO: Your async logic here.
+				return new Promise(resolve => setTimeout(resolve, 3000));
+			};
+		}
+	}
+);
+```
+
+```html
+<form
+	id="sample-form-simple"
+	data-form-type="question"
+	action="#"
+	method="POST"
+	novalidate=""
+	test-async-before-submit
+>
+	<form-behavior
+		new
+		navigation="reload"
+		header-x-docsauth="cookie"
+		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
+		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
+		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
+		loc-input-required="{inputLabel} is required."
+		loc-not-authenticated="You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in."
+		loc-not-authorized="You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again."
+		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
+		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-too-many-requests="You have sent too many requests. Please wait a few minutes and try again."
+		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
+	></form-behavior>
+	<div class="field">
+		<button
+			type="submit"
+			class="button button-primary button-filled"
+			value="yes"
+			name="simple-form"
+			formaction="{some_url}"
+		>
+			Yes
+		</button>
+	</div>
+	<div class="submitted-form-data-example"></div>
+</form>
+```
