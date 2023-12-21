@@ -347,7 +347,7 @@ form.addEventListener(
 
 ```html
 <form
-	id="sample-form-simple"
+	id="sample-async-form-simple"
 	data-form-type="question"
 	action="#"
 	method="POST"
