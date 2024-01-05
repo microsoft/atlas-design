@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.38.1
+
+### Patch Changes
+
+- c5e15e6: Prevent message content from expanding grid items
+
 ## 3.38.0
 
 ### Minor Changes

@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.44.0
+
+### Minor Changes
+
+- 0996a70: Support async form before submit handler
+
+### Patch Changes
+
+- Updated dependencies [0996a70]
+  - @microsoft/atlas-js@1.9.0
+
 ## 0.43.0
 
 ### Minor Changes
