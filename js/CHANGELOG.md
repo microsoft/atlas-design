@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.9.0
+
+### Minor Changes
+
+- 0996a70: Support async form before submit handler
+
 ## 1.8.0
 
 ### Minor Changes
