@@ -21,7 +21,7 @@ $message-content-padding-sm: 0.875rem !default;
 	grid-template:
 		'. message-time'
 		'message-persona message-content';
-	grid-template-columns: max-content 1fr;
+	grid-template-columns: max-content minmax(0, 1fr);
 	gap: $message-gap-size;
 	font-size: $message-font-size-md;
 	line-height: $line-height-normal;
