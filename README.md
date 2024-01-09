@@ -31,6 +31,9 @@ Looking for information about the Atlas CSS framework? Start in `/css`!
 | **Release Pipeline**     | [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml)                                |
 | **PR Builds**            | [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml)                                |
 
+![Atlas-css package size (gzip)](https://img.badgesize.io/https:/unpkg.com/@microsoft/atlas-css/dist/index.css?label=css%20gzip%20size&compression=gzip)
+![Atlas-css package size (uncompressed)](<https://img.badgesize.io/https:/unpkg.com/@microsoft/atlas-css/dist/index.css?label=css%20size%20(uncompressed)>)
+
 ## Development
 
 - Ensure [git](https://git-scm.com/) is installed.
