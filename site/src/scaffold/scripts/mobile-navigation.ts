@@ -91,7 +91,6 @@ export function handleFullScreenNavButton() {
 		} else {
 			navContent.classList.remove('display-none');
 			navContent.classList.add('padding-inline-lg');
-			navContent.classList.add('padding-block-md');
 			nav.dataset.isFullScreened = 'true';
 			nav.style.overflowX = 'auto';
 
@@ -115,7 +114,6 @@ export function handleNavCollapse(
 	navContent.classList.add('display-none');
 	nav.dataset.isFullScreened = 'false';
 	navContent.classList.remove('padding-inline-lg');
-	navContent.classList.remove('padding-block-md');
 
 	nav.style.cssText = '';
 	void document.exitFullscreen().then(() => {
