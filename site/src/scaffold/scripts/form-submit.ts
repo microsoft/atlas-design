@@ -56,7 +56,7 @@ export function handleMockFormSubmit() {
 					const customEvent = e as CustomEventInit<{ callback: () => Promise<void> }>;
 					if (customEvent.detail) {
 						customEvent.detail.callback = async () => {
-							await new Promise(resolve => setTimeout(resolve, 2000));
+							await new Promise(resolve => setTimeout(resolve, 3000));
 							const formData = new FormData(form);
 							populateSubmittedFormData(formData, form);
 						};
