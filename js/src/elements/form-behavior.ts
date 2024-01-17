@@ -1,6 +1,7 @@
 import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
 export const defaultMessageStrings = {
+	beforeSubmitFailure: 'You must complete the challenge to submit your request.',
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
@@ -243,7 +244,29 @@ export class FormBehaviorElement extends HTMLElement {
 
 			const cancelled = !this.dispatchEvent(beforeSubmitEvent);
 			if (beforeSubmitEvent.detail.callback) {
-				await beforeSubmitEvent.detail.callback();
+				try {
+					await beforeSubmitEvent.detail.callback();
+				} catch (error) {
+					const { errorAlert, errorList } = this.getErrorAlert(form);
+					const errorText = document.createElement('li');
+					errorText.innerText = this.locStrings.weEncounteredAnUnexpectedError;
+					// custom text for version mismatch
+					if (error === 'before-submit-failure') {
+						errorText.innerText = this.locStrings.beforeSubmitFailure;
+					}
+					this.dispatchEvent(
+						new CustomEvent('submission-error', {
+							detail: {
+								form
+							},
+							bubbles: true
+						})
+					);
+
+					errorList.appendChild(errorText);
+					errorAlert.hidden = false;
+					errorAlert.focus();
+				}
 			}
 
 			if (cancelled) {

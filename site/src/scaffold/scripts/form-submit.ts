@@ -56,9 +56,18 @@ export function handleMockFormSubmit() {
 					const customEvent = e as CustomEventInit<{ callback: () => Promise<void> }>;
 					if (customEvent.detail) {
 						customEvent.detail.callback = async () => {
-							await new Promise(resolve => setTimeout(resolve, 3000));
+							await new Promise(resolve => setTimeout(resolve, 2000));
 							const formData = new FormData(form);
 							populateSubmittedFormData(formData, form);
+						};
+					}
+				} else if (form.hasAttribute('test-async-before-submit-failure')) {
+					const customEvent = e as CustomEventInit<{ callback: () => Promise<void> }>;
+					if (customEvent.detail) {
+						customEvent.detail.callback = async () => {
+							await new Promise((resolve, reject) =>
+								setTimeout(() => reject('before-submit-failure'), 2000)
+							);
 						};
 					}
 				} else {
