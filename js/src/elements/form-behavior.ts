@@ -243,7 +243,12 @@ export class FormBehaviorElement extends HTMLElement {
 
 			const cancelled = !this.dispatchEvent(beforeSubmitEvent);
 			if (beforeSubmitEvent.detail.callback) {
-				await beforeSubmitEvent.detail.callback();
+				try {
+					await beforeSubmitEvent.detail.callback();
+				} catch (error) {
+					// on error return and allow for custom error handling
+					return;
+				}
 			}
 
 			if (cancelled) {
