@@ -1,7 +1,7 @@
 import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
 export const defaultMessageStrings = {
-	beforeSubmitFailure: 'You must complete the challenge to submit your request.',
+	beforeSubmitFailure: 'There was a problem with the before submit.',
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',

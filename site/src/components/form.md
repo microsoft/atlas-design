@@ -415,7 +415,7 @@ form.addEventListener(
 		new
 		navigation="reload"
 		header-x-docsauth="cookie"
-		loc-before-submit-failure="There was a problem with the before submit."
+		loc-before-submit-failure="You must complete the challenge to submit your request."
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
