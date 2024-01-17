@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.9.1
+
+### Patch Changes
+
+- 2dd481b: Add try catch to async before submit to avoid the console errors
+
 ## 1.9.0
 
 ### Minor Changes
