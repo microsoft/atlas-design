@@ -393,7 +393,9 @@ form.addEventListener(
 		if (event.detail) {
 			event.detail.callback = async () => {
 				// TODO: Your async logic here.
-				return new Promise((resolve, reject) => setTimeout(() => reject('arkose-failure'), 3000));
+				return new Promise((resolve, reject) =>
+					setTimeout(() => reject('before-submit-failure'), 3000)
+				);
 			};
 		}
 	}
@@ -402,7 +404,7 @@ form.addEventListener(
 
 ```html
 <form
-	id="sample-async-form-simple"
+	id="sample-async-form-failure"
 	data-form-type="question"
 	action="#"
 	method="POST"
