@@ -167,6 +167,17 @@
 	background-color: $body-background-accent !important;
 }
 
+.background-color-body-accent-onhover {
+	&:hover,
+	&:focus-within {
+		background-color: $body-background-accent !important;
+	}
+}
+
+.background-color-transparent {
+	background-color: transparent !important;
+}
+
 // Static colors - do not change with theme
 
 .color-white-static {
