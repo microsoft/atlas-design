@@ -100,6 +100,12 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		}
 	}
 
+	&.hero-image {
+		// Set direction to prevent image flip for rtl
+
+		direction: ltr;
+	}
+
 	&.hero-image::before {
 		display: none;
 		position: absolute;
