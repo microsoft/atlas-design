@@ -30,7 +30,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			width: $hero-content-fluid-width;
 			min-height: $hero-min-height-default;
 			padding-block: $hero-padding-default;
-			padding-right: $hero-padding-sm;
+			padding-right: $hero-padding-sm; /* stylelint-disable-line csstools/use-logical */
 		}
 	}
 
@@ -106,21 +106,21 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		display: none;
 		position: absolute;
 		inset-block-start: 0;
+		right: $layout-gap;	/* stylelint-disable-line csstools/use-logical */
 		width: $hero-image-width;
 		height: 100%;
 		background-image: var(--hero-background-image);
 		background-repeat: no-repeat;
 		background-size: cover;
 		content: ' ';
-		right: $layout-gap;
 
 		@include desktop {
 			display: block;
 		}
 
 		@include widescreen {
+			right: $layout-widescreen-gap; /* stylelint-disable-line csstools/use-logical */
 			width: $hero-image-width-widescreen;
-			right: $layout-widescreen-gap;
 		}
 
 		@media (forced-colors: active) {
