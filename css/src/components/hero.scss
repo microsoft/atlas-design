@@ -10,6 +10,7 @@ $hero-min-height-lg: 500px !default;
 
 $hero-content-width: $reading-max-width !default;
 $hero-content-fluid-width: 45% !default;
+$hero-content-fluid-width-rtl: 55% !default;
 $hero-image-width: calc((100% - 2 * $layout-gap) * 0.55) !default;
 $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !default;
 
@@ -106,7 +107,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		display: none;
 		position: absolute;
 		inset-block-start: 0;
-		right: $layout-gap;	/* stylelint-disable-line csstools/use-logical */
+		right: $layout-gap; /* stylelint-disable-line csstools/use-logical */
 		width: $hero-image-width;
 		height: 100%;
 		background-image: var(--hero-background-image);
