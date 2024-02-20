@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Set hero image direction as ltr to prevent image flipping for rtl
+Set hero image direction to prevent image flipping for rtl
