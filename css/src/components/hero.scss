@@ -148,4 +148,12 @@ $hero-direction: ltr !default;
 			--hero-background-image: none;
 		}
 	}
+
+	&.hero-image:dir(rtl) {
+		direction: ltr;
+
+		.hero-content {
+			direction: rtl;
+		}
+	}
 }
