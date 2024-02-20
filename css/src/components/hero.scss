@@ -30,7 +30,8 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			width: $hero-content-fluid-width;
 			min-height: $hero-min-height-default;
 			padding-block: $hero-padding-default;
-			padding-inline-end: $hero-padding-sm;
+			// not using logical properties here to avoid spacing issues for RTL
+			padding-right: $hero-padding-sm; /* stylelint-disable-line csstools/use-logical */
 		}
 	}
 
