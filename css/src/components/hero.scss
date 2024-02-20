@@ -30,15 +30,12 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			width: $hero-content-fluid-width;
 			min-height: $hero-min-height-default;
 			padding-block: $hero-padding-default;
-			// not using logical properties here to avoid spacing issues for RTL
-			padding-right: $hero-padding-sm; /* stylelint-disable-line csstools/use-logical */
+			padding-inline-end: $hero-padding-sm;
 		}
 	}
 
 	&:not(.hero-image) {
 		.hero-content {
-			margin: auto;
-
 			@include desktop {
 				width: 100%;
 				max-width: $hero-content-width;
@@ -148,6 +145,11 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 
 		.hero-content {
 			direction: rtl;
+
+			@include desktop {
+				padding-inline-end: unset;
+				padding-inline-start: $hero-padding-sm;
+			}
 		}
 	}
 }
