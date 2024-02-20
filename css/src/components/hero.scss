@@ -37,6 +37,8 @@ $hero-direction: ltr !default;
 
 	&:not(.hero-image) {
 		.hero-content {
+			margin: auto;
+
 			@include desktop {
 				width: 100%;
 				max-width: $hero-content-width;
@@ -101,16 +103,6 @@ $hero-direction: ltr !default;
 		}
 	}
 
-	&.hero-image {
-		// Set direction to prevent image flip for rtl
-
-		direction: $hero-direction;
-
-		.hero-content {
-			direction: $user-text-direction;
-		}
-	}
-
 	&.hero-image::before {
 		display: none;
 		position: absolute;
@@ -148,6 +140,8 @@ $hero-direction: ltr !default;
 			--hero-background-image: none;
 		}
 	}
+
+	// Set direction to prevent image flip for rtl
 
 	&.hero-image:dir(rtl) {
 		direction: ltr;
