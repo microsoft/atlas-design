@@ -10,12 +10,12 @@ on:
 
 jobs:
   release:
+    if: github.repository == 'microsoft/atlas-design'
+    permissions:
+      contents: write # to create release (changesets/action)
+      pull-requests: write # to create pull request (changesets/action)
     name: Release
     runs-on: ubuntu-latest
-    permissions:
-      actions: write
-      deployments: write
-      pull-requests: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
