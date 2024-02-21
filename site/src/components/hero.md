@@ -98,6 +98,8 @@ Hero images are hidden in forced colors mode.
 
 **Images are currently not intended to scale or shrink. They are not shown on smaller or zoomed screens. For this reason, it's required that these images are presentational only. They should not contain words, subjects that might look naff if cut off, or anything essential to understanding the material of the page.**
 
+On pages with right to left direction, the position of the hero image will remain on the right. The text within the hero content will be right aligned. This behavior prevents any unintended negative side effects when the position of the image and content is reversed. 
+
 ```html-no-indent
 <section
     class="hero hero-image border"

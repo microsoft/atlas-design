@@ -137,4 +137,19 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			--hero-background-image: none;
 		}
 	}
+
+	// Set direction to prevent image flip for rtl
+
+	&.hero-image:dir(rtl) {
+		direction: ltr;
+
+		.hero-content {
+			direction: rtl;
+
+			@include desktop {
+				padding-inline-end: unset;
+				padding-inline-start: $hero-padding-sm;
+			}
+		}
+	}
 }
