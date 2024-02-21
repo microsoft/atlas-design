@@ -4,6 +4,7 @@ $site-header-border: 1px solid $border !default;
 
 $site-header-font-size: $font-size-7 !default;
 $site-header-brand-font-size: 1.25em !default;
+$site-header-brand-font-size-sm: 1.15em !default;
 
 $site-header-control-color: $text !default;
 
@@ -125,6 +126,11 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 		height: auto;
 	}
 
+	.site-header-logo-centered {
+		position: absolute;
+		inset-inline-start: calc(50% - $site-header-logo-width / 2);
+	}
+
 	.site-header-divider {
 		display: inline-block;
 		height: $site-header-divider-height;
@@ -136,7 +142,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 		@extend %site-header-control;
 
 		display: inline-block;
-		font-size: $site-header-brand-font-size;
+		font-size: $site-header-brand-font-size-sm;
 		font-weight: $weight-semibold;
 
 		&:active,
@@ -145,6 +151,10 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 		&.is-hovered,
 		&:focus-visible {
 			@extend %site-header-hover-underline;
+		}
+
+		@include tablet {
+			font-size: $site-header-brand-font-size;
 		}
 	}
 
@@ -207,10 +217,13 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 
 		.site-header-panel-links {
 			display: grid;
-			grid-auto-flow: column;
 			grid-gap: $site-header-panel-content-gap;
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: repeat(11, auto);
+
+			@include tablet {
+				grid-auto-flow: column;
+				grid-template-columns: repeat(2, 1fr);
+				grid-template-rows: repeat(11, auto);
+			}
 
 			@include desktop {
 				grid-template-columns: repeat(3, 1fr);
@@ -220,10 +233,13 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 
 		.site-header-panel-cards {
 			display: grid;
-			grid-auto-flow: column;
 			grid-gap: $site-header-panel-content-gap;
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: repeat(5, auto);
+
+			@include tablet {
+				grid-auto-flow: column;
+				grid-template-columns: repeat(2, 1fr);
+				grid-template-rows: repeat(5, auto);
+			}
 
 			@include desktop {
 				grid-template-columns: repeat(3, 1fr);

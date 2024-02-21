@@ -31,7 +31,7 @@ Below is the example of the site header with logo, brand and navigation links.
 
 ```html-no-indent
 <div class="site-header">
-	<!-- MS logo -->
+	<!-- Microsoft logo -->
 	<a href="https://www.microsoft.com" aria-label="Microsoft">
 		<svg
 			class="site-header-logo"
@@ -75,6 +75,39 @@ Below is the example of the site header with logo, brand and navigation links.
 			</li>
 		</ul>
 	</nav>
+</div>
+```
+
+### Logo
+
+There is an atomic available to position the logo right in the middle of header - `site-header-logo-centered`.
+
+```html-no-indent
+<div class="site-header justify-content-space-between">
+	<!-- Brand -->
+	<a href="~/src/index.md" class="site-header-brand">
+		<span>Brand</span>
+	</a>
+
+    <!-- Microsoft logo -->
+	<a href="https://www.microsoft.com" aria-label="Microsoft" class="site-header-logo-centered">
+		<svg
+			class="site-header-logo"
+			aria-hidden="true"
+			viewBox="0 0 25 25"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path d="M11.5216 0.5H0V11.9067H11.5216V0.5Z" fill="#f25022" />
+			<path d="M24.2418 0.5H12.7202V11.9067H24.2418V0.5Z" fill="#7fba00" />
+			<path d="M11.5216 13.0933H0V24.5H11.5216V13.0933Z" fill="#00a4ef" />
+			<path d="M24.2418 13.0933H12.7202V24.5H24.2418V13.0933Z" fill="#ffb900" />
+		</svg>
+	</a>
+
+	<a href="#!" class="link-button font-size-sm">
+		<span>Link</span>
+	</a>
 </div>
 ```
 
