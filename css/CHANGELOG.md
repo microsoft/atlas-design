@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.39.0
+
+### Minor Changes
+
+- cac3567: Set hero image direction to prevent image flipping for rtl
+
 ## 3.38.1
 
 ### Patch Changes
