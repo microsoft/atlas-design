@@ -200,6 +200,9 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 			grid-area: panel-featured-section;
 			border-block-start: $site-header-panel-featured-section-border;
 			padding-block-start: $site-header-panel-gap;
+			display: flex;
+			gap: $site-header-panel-gap;
+			flex-direction: column;
 
 			@include tablet {
 				border-inline-start: $site-header-panel-featured-section-border;

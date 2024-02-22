@@ -128,7 +128,7 @@ Below are the examples of both content options - with a set of links and a set o
 <div class="site-header example full-width padding-block-md border-none" style="height: auto;">
     <div class="site-header-panel" style="position: unset;">
 		<div class="site-header-panel-content">
-			<ul class="site-header-panel-cards site-header-panel-links">
+			<ul class="site-header-panel-cards">
 				<li>
 					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
 						<div class="card-content">
@@ -274,7 +274,7 @@ Below are the examples of both content options - with a set of links and a set o
     <div class="site-header-panel">
 		<div class="site-header-panel-content">
             <!-- 9 cards max -->
-			<ul class="site-header-panel-cards site-header-panel-links">
+			<ul class="site-header-panel-cards">
 				<li>
 					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
 						<div class="card-content">
@@ -314,7 +314,7 @@ Below are the examples of both content options - with a set of links and a set o
 <div class="site-header example full-width padding-block-md border-none" style="height: auto;">
     <div class="site-header-panel" style="position: unset;">
 		<div class="site-header-panel-content">
-			<ul class="site-header-panel-links site-header-panel-links">
+			<ul class="site-header-panel-links">
 				<li>
 					<a href="#!"class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover">
 						Link 1
