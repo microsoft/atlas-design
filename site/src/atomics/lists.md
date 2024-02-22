@@ -15,6 +15,8 @@ This page details any Atomics css classes that target list styles.
 | ------------ | ------ | ---------- |
 | `list-style` | `none` | n/a        |
 
+*Note that the default bullet point/numbered style will not take effect unless the list is wrapped in a element with the `content` class.*
+
 ## Usage
 
 If a list is displaying list styles when you don't want it to, reset it with the `.list-style-none` class.
