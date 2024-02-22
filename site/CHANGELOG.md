@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.45.0
+
+### Minor Changes
+
+- cac3567: Update hero documentation
+
 ## 0.44.0
 
 ### Minor Changes
