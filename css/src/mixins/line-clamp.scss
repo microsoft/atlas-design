@@ -5,7 +5,11 @@
 	overflow: hidden;
 }
 
-@mixin line-clamp($lines: 1) {
+@mixin line-clamp($lines: 1, $important: false) {
 	@extend %line-clamp;
-	-webkit-line-clamp: $lines !important;
+	@if $important {
+		-webkit-line-clamp: $lines !important;
+	} @else {
+		-webkit-line-clamp: $lines;
+	}
 }
