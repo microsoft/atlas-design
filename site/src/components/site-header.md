@@ -27,7 +27,7 @@ The site header is composed of the following elements:
 | `site-header-nav`     | The navigation container within the site header.            |
 | `site-header-panel`   | A panel that can be expanded to display additional content. |
 
-Below is the example of the site header with logo, brand and navigation links.
+Below is the example of the site header with logo, brand, and navigation links.
 
 ```html-no-indent
 <div class="site-header">
