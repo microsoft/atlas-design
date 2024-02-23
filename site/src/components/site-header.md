@@ -113,7 +113,7 @@ You can use ` site-header-logo-centered` subcomponent class to center the logo.
 
 ### Panel
 
-There is a Panel sub-component available to use within site header. Panel provides additional space to hold more content. Panel is composed of the following elements:
+There is a panel sub-component available to use within site header. Panel provides additional space to hold more content. Atlas does not implement logic to show and hide this panel, which requires JavaScript to be accessible. Panel is composed of the following elements:
 
 | Component                            | Description                                                                                          |
 | ------------------------------------ | ---------------------------------------------------------------------------------------------------- |
