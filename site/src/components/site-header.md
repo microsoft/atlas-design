@@ -80,7 +80,7 @@ Below is the example of the site header with logo, brand and navigation links.
 
 ### Logo
 
-There is an atomic available to position the logo right in the middle of header - `site-header-logo-centered`.
+You can use ` site-header-logo-centered` subcomponent class to center the logo.
 
 ```html-no-indent
 <div class="site-header justify-content-space-between">
