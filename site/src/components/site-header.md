@@ -11,8 +11,6 @@ classPrefixes:
 
 Site header component allows adding full width container to hold everything site's header might need - the logo, brand link, navigation, and other controls.
 
-**This page is best viewed with the content section full screened because banners are intended to be full width elements. Go full screen by clicking the button in the top right corner.**
-
 ## Usage
 
 The site header is composed of the following elements:
@@ -20,11 +18,11 @@ The site header is composed of the following elements:
 | Component             | Description                                                 |
 | --------------------- | ----------------------------------------------------------- |
 | `site-header`         | The main container for the site header.                     |
-| `site-header-button`  | Buttons within the site header.                             |
 | `site-header-logo`    | The logo displayed in the site header.                      |
 | `site-header-divider` | A vertical divider between elements.                        |
 | `site-header-brand`   | The brand name or title in the site header.                 |
 | `site-header-nav`     | The navigation container within the site header.            |
+| `site-header-button`  | Buttons within the site header.                             |
 | `site-header-panel`   | A panel that can be expanded to display additional content. |
 
 Below is the example of the site header with logo, brand, and navigation links.
@@ -80,7 +78,7 @@ Below is the example of the site header with logo, brand, and navigation links.
 
 ### Logo
 
-You can use ` site-header-logo-centered` subcomponent class to center the logo.
+You can use `site-header-logo-centered` subcomponent class to center the logo.
 
 ```html-no-indent
 <div class="site-header justify-content-space-between">
