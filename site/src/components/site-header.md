@@ -123,7 +123,7 @@ There is a panel sub-component available to use within site header. Panel provid
 | `site-header-panel-links`            | Section with set of links. Recommended to have up to 21 links.                                       |
 | `site-header-panel-cards`            | Section with set of cards. Recommended to have up to 9 cards.                                        |
 
-Below are the examples of both content options - with a set of links and a set of cards:
+Below are the examples of both content options, with a set of links and a set of cards:
 
 <div class="site-header example full-width padding-block-md border-none" style="height: auto;">
     <div class="site-header-panel" style="position: unset;">
