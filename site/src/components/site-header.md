@@ -54,7 +54,7 @@ Below is the example of the site header with logo, brand, and navigation links.
 	</a>
 
 	<!-- Navigation -->
-	<nav class="site-header-nav">
+	<nav aria-label="site header nav example" class="site-header-nav">
 		<ul class="display-flex gap-xxs">
 			<li>
 				<a href="#!" class="site-header-button">
@@ -421,7 +421,7 @@ Below are the examples of both content options, with a set of links and a set of
 			</ul>
 			<a
 				href="#!"
-				class="button button-clear button-sm color-primary background-color-transparent justify-content-flex-start border-none margin-top-sm"
+				class="button button-clear button-sm color-hyperlink background-color-transparent justify-content-flex-start border-none margin-top-sm"
 			>
 				Panel link
 			</a>
@@ -471,7 +471,7 @@ Below are the examples of both content options, with a set of links and a set of
 			</ul>
 
             <!-- Optional panel CTA -->
-			<a href="#!" class="button button-clear button-sm color-primary background-color-transparent justify-content-flex-start border-none margin-top-sm">
+			<a href="#!" class="button button-clear button-sm color-hyperlink background-color-transparent justify-content-flex-start border-none margin-top-sm">
 				Panel link
 			</a>
 		</div>

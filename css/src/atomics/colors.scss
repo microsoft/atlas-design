@@ -93,6 +93,10 @@
 	color: currentColor !important;
 }
 
+.color-hyperlink {
+	color: $hyperlink !important;
+}
+
 .fill-current-color {
 	@include fill-current-color();
 }
