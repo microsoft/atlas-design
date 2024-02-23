@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Adding a few more background color atomics. Changing card's title background color to transparent.
+Adding a few more background color atomics - background-color-transparent, background-color-body-accent-onhover.

@@ -97,13 +97,12 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 				margin: 0;
 			}
 
-			// stylelint-disable-next-line selector-max-specificity
-
+			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
 			&:first-child:not(:only-child) {
 				margin-inline-end: $site-header-button-icon-spacing;
 			}
 
-			// stylelint-disable-next-line selector-max-specificity
+			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
 			&:last-child:not(:only-child) {
 				margin-inline-start: $site-header-button-icon-spacing;
 			}

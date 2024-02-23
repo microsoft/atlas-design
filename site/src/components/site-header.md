@@ -421,7 +421,7 @@ Below are the examples of both content options, with a set of links and a set of
 			</ul>
 			<a
 				href="#!"
-				class="button button-clear button-sm color-primary justify-content-flex-start border-none margin-top-sm"
+				class="button button-clear button-sm color-primary background-color-transparent justify-content-flex-start border-none margin-top-sm"
 			>
 				Panel link
 			</a>
@@ -471,7 +471,7 @@ Below are the examples of both content options, with a set of links and a set of
 			</ul>
 
             <!-- Optional panel CTA -->
-			<a href="#!" class="button button-clear button-sm color-primary justify-content-flex-start border-none margin-top-sm">
+			<a href="#!" class="button button-clear button-sm color-primary background-color-transparent justify-content-flex-start border-none margin-top-sm">
 				Panel link
 			</a>
 		</div>
