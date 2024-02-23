@@ -124,7 +124,7 @@ There is a panel sub-component available to use within site header. Panel provid
 Below are the examples of both content options, with a set of links and a set of cards:
 
 <div class="site-header example full-width padding-block-md border-none" style="height: auto;">
-    <div class="site-header-panel" style="position: unset;">
+    <div class="site-header-panel">
 		<div class="site-header-panel-content">
 			<ul class="site-header-panel-cards">
 				<li>
@@ -310,7 +310,7 @@ Below are the examples of both content options, with a set of links and a set of
 ```
 
 <div class="site-header example full-width padding-block-md border-none" style="height: auto;">
-    <div class="site-header-panel" style="position: unset;">
+    <div class="site-header-panel">
 		<div class="site-header-panel-content">
 			<ul class="site-header-panel-links">
 				<li>
