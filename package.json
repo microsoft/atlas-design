@@ -68,7 +68,7 @@
 	],
 	"devDependencies": {
 		"@changesets/cli": "^2.26.2",
-		"@parcel/transformer-sass": "^2.9.3",
+		"@parcel/transformer-sass": "^2.11.0",
 		"@playwright/test": "^1.35.1",
 		"husky": "4.3.8",
 		"lightningcss": "1.21.1",
