@@ -116,7 +116,7 @@ There is a panel sub-component available to use within site header. Panel provid
 | Component                            | Description                                                                                          |
 | ------------------------------------ | ---------------------------------------------------------------------------------------------------- |
 | `site-header-panel`                  | The main container for the site header panel.                                                        |
-| `site-header-panel-featured-content` | Featured section in the panel. Located on the right side and it's recommended to hold up to 2 cards. |
+| `site-header-panel-featured-content` | Featured section in the panel. Located on the right side, this component holds up to two cards.|
 | `site-header-panel-content`          | Container that holds the main content. It should be either the set of links or cards.                |
 | `site-header-panel-links`            | Section with set of links. Recommended to have up to 21 links.                                       |
 | `site-header-panel-cards`            | Section with set of cards. Recommended to have up to 9 cards.                                        |
