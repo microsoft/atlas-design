@@ -5,4 +5,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Update dependencies
+Updating dependencies
