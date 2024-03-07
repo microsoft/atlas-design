@@ -178,9 +178,11 @@
 }
 
 .background-color-white-static {
+	outline-color: $black-static !important;
 	background-color: $white-static !important;
 }
 
 .background-color-black-static {
+	outline-color: $white-static !important;
 	background-color: $black-static !important;
 }
