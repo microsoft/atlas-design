@@ -1,5 +1,11 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.7.1
+
+### Patch Changes
+
+- 26c9089: Updating dependencies
+
 ## 2.7.0
 
 ### Minor Changes
