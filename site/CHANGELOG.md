@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.45.1
+
+### Patch Changes
+
+- 26c9089: Updating dependencies
+
 ## 0.45.0
 
 ### Minor Changes

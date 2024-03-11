@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.39.1
+
+### Patch Changes
+
+- 523688a: Supply a contrasting outline-color for background-color-white-static and background-color-black-static atomics
+- 26c9089: Updating dependencies
+
 ## 3.39.0
 
 ### Minor Changes

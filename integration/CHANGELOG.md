@@ -1,5 +1,11 @@
 # @microsoft/atlas-integration
 
+## 1.5.1
+
+### Patch Changes
+
+- 26c9089: Updating dependencies
+
 ## 1.5.0
 
 ### Minor Changes
