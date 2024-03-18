@@ -113,18 +113,18 @@ You can use `site-header-logo-centered` subcomponent class to center the logo.
 
 There is a panel sub-component available to use within site header. Panel provides additional space to hold more content. Atlas does not implement logic to show and hide this panel, which requires JavaScript to be accessible. Panel is composed of the following elements:
 
-| Component                            | Description                                                                                          |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| `site-header-panel`                  | The main container for the site header panel.                                                        |
-| `site-header-panel-featured-content` | Featured section in the panel. Located on the right side, this component holds up to two cards.|
-| `site-header-panel-content`          | Container that holds the main content. It should be either a set of links or cards.                |
-| `site-header-panel-links`            | Section with set of links. Recommended to have up to 21 links.                                       |
-| `site-header-panel-cards`            | Section with set of cards. Recommended to have up to 9 cards.                                        |
+| Component                            | Description                                                                                     |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `site-header-panel`                  | The main container for the site header panel.                                                   |
+| `site-header-panel-featured-content` | Featured section in the panel. Located on the right side, this component holds up to two cards. |
+| `site-header-panel-content`          | Container that holds the main content. It should be either a set of links or cards.             |
+| `site-header-panel-links`            | Section with set of links. Recommended to have up to 21 links.                                  |
+| `site-header-panel-cards`            | Section with set of cards. Recommended to have up to 9 cards.                                   |
 
 Below are the examples of both content options, with a set of links and a set of cards:
 
 <div class="site-header example full-width padding-block-md border-none" style="height: auto;">
-    <div class="site-header-panel">
+    <div class="site-header-panel position-relative top-0">
 		<div class="site-header-panel-content">
 			<ul class="site-header-panel-cards">
 				<li>
@@ -310,7 +310,7 @@ Below are the examples of both content options, with a set of links and a set of
 ```
 
 <div class="site-header example full-width padding-block-md border-none" style="height: auto;">
-    <div class="site-header-panel">
+    <div class="site-header-panel position-relative top-0">
 		<div class="site-header-panel-content">
 			<ul class="site-header-panel-links">
 				<li>

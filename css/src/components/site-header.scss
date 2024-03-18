@@ -166,6 +166,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 
 	.site-header-panel {
 		display: grid;
+		position: absolute;
 		width: 100%;
 		min-height: $site-header-panel-min-height;
 		grid-gap: $site-header-panel-gap;
@@ -174,6 +175,8 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 		text-wrap: wrap;
 		box-shadow: $site-header-panel-shadow;
 		z-index: $zindex-dropdown;
+		inset-inline-start: 0;
+		inset-block-start: calc($site-header-height - 1px);
 		border-block-start: $site-header-panel-border;
 		border-block-end: $site-header-panel-border;
 		padding-block: $site-header-panel-block-padding;
