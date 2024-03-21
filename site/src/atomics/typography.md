@@ -121,7 +121,7 @@ Appending with `-tablet` to a text-align class will make that class applicable t
 
 The `.text-wrap-pretty` atomic can be used to prevent [orphans](https://en.wikipedia.org/wiki/Widows_and_orphans), or situations where a line breaks and just one small word ends up on the next line. When the `.text-wrap-pretty` atomic is applied, the browser will instead try to cut the line so the break looks a little more balanced.
 
-Resize your browser, and notice the differences between how these two paragraphs break.
+If your browser supports pretty text-wrapping, resize your browser window and notice the differences between how these two paragraphs break.
 
 ```html
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
