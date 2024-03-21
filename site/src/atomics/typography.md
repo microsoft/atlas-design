@@ -132,5 +132,5 @@ If your browser supports pretty text-wrapping, resize your browser window and no
 
 `.text-wrap-pretty` has two caveats:
 
-- **Support:** As of March 2024, [support is mainly available in Chromium browsers](https://en.wikipedia.org/wiki/Widows_and_orphans). Browsers which don't support this rule will ignore it and break lines as usual. Treat this as a progressive enhancement.
+- **Support:** As of March 2024, [support is mainly available in Chromium browsers](https://caniuse.com/mdn-css_properties_text-wrap_pretty). Browsers which don't support this rule will ignore it and break lines as usual. Treat this as a progressive enhancement.
 - **Performance:** Calculating optimal line breaks can be expensive, especially for larger blocks of text. Use, but use sparingly.
