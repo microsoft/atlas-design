@@ -28,7 +28,7 @@ The typography scale is designed for great readability across the platform. This
 | `letter-spacing`  | `wide`                                                           | N\A        |
 | `text-transform`  | `uppercase`                                                      | N\A        |
 | `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
-| `text-wrap`       | `pretty`                                                         |
+| `text-wrap`       | `pretty`                                                         | N\A        |
 | `line-height`     | `normal`                                                         | N\A        |
 
 ## Font size
@@ -125,7 +125,7 @@ If your browser supports pretty text-wrapping, resize your browser window and no
 
 ```html
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
-<p class="text-wrap-pretty">
+<p class="text-wrap-pretty margin-top-xxs">
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
 </p>
 ```
