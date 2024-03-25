@@ -28,7 +28,6 @@ Looking for information about the Atlas CSS framework? Start in `/css`!
 | **@microsoft/atlas-css** | [![@microsoft/atlas-css npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)                                                         |
 | **@microsoft/atlas-js**  | [![@microsoft/atlas-js npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-js.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-js)                                                            |
 | **Site build**           | [![Site](https://dev.azure.com/ceapex/Engineering/_apis/build/status/microsoft.atlas-design?branchName=main)](https://dev.azure.com/ceapex/Engineering/_build/latest?definitionId=3602&branchName=main) |
-| **Release Pipeline**     | [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml)                                |
 | **PR Builds**            | [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml)                                |
 
 ## Development
