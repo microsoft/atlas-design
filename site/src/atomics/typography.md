@@ -11,6 +11,7 @@ classPrefixes:
   - text-align
   - text-decoration
   - text-transform
+  - text-wrap
   - line-height
 ---
 
@@ -27,6 +28,7 @@ The typography scale is designed for great readability across the platform. This
 | `letter-spacing`  | `wide`                                                           | N\A        |
 | `text-transform`  | `uppercase`                                                      | N\A        |
 | `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
+| `text-wrap`       | `pretty`                                                         | N\A        |
 | `line-height`     | `normal`                                                         | N\A        |
 
 ## Font size
@@ -114,3 +116,21 @@ Appending with `-tablet` to a text-align class will make that class applicable t
 ```html
 <p class="text-align-center-tablet">Text is centered on tablet size and above.</p>
 ```
+
+## Text wrapping
+
+The `.text-wrap-pretty` atomic can be used to prevent [orphans](https://en.wikipedia.org/wiki/Widows_and_orphans), or situations where a line breaks and just one small word ends up on the next line. When the `.text-wrap-pretty` atomic is applied, the browser will instead try to cut the line so the break looks a little more balanced.
+
+If your browser supports pretty text-wrapping, resize your browser window and notice the differences between how these two paragraphs break.
+
+```html
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+<p class="text-wrap-pretty margin-top-xxs">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
+</p>
+```
+
+`.text-wrap-pretty` has two caveats:
+
+- **Support:** As of March 2024, [support is mainly available in Chromium browsers](https://caniuse.com/mdn-css_properties_text-wrap_pretty). Browsers which don't support this rule will ignore it and break lines as usual. Treat this as a progressive enhancement.
+- **Performance:** Calculating optimal line breaks can be expensive, especially for larger blocks of text. Use, but use sparingly.
