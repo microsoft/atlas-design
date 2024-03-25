@@ -12,11 +12,5 @@ export const indexHTMLOnlyRoutes: ObjectifiedPlayWrightRouteArgs[] = [
 		handler: (route, _request) => {
 			route.abort('aborted');
 		}
-	},
-	{
-		url: 'https://dev.azure.com/ceapex/Engineering/_apis/build/status/microsoft.atlas-design?branchName=main',
-		handler: (route, _request) => {
-			route.abort('aborted');
-		}
 	}
 ];
