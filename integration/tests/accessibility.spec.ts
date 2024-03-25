@@ -43,6 +43,7 @@ const pathnames = [
 	'/components/radio.html',
 	'/components/scroll.html',
 	'/components/select.html',
+	'/components/site-header.html',
 	'/components/stretched-link.html',
 	'/components/table.html',
 	'/components/textarea.html',
