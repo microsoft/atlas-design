@@ -1,5 +1,17 @@
 # @microsoft/atlas-css
 
+## 3.40.0
+
+### Minor Changes
+
+- ba94377: Updating line-clamp mixin so important flag doesn't applied by default.
+- ba94377: Removing background color from card's title.
+- ba94377: Adding site-header component and relevant documentation.
+- 57d1883: Introduce a .text-wrap-pretty typography atomic
+- ba94377: Applying !important flag to position atomics.
+- ba94377: Adding a few color atomics - color-hyperlink, background-color-transparent, background-color-body-accent-onhover.
+- 7f14950: Update the default font on Windows from Segoe UI to Segoe UI Variable
+
 ## 3.39.1
 
 ### Patch Changes
