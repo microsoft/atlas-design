@@ -120,14 +120,17 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 	}
 
 	.site-header-logo {
-		display: block;
-		width: $site-header-logo-width;
-		height: auto;
-	}
+		> svg,
+		> img {
+			display: block;
+			width: $site-header-logo-width;
+			height: auto;
+		}
 
-	.site-header-logo-centered {
-		position: absolute;
-		inset-inline-start: calc(50% - $site-header-logo-width / 2);
+		&.site-header-logo-centered {
+			position: absolute;
+			inset-inline-start: calc(50% - $site-header-logo-width / 2);
+		}
 	}
 
 	.site-header-divider {

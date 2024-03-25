@@ -30,9 +30,8 @@ Below is the example of the site header with logo, brand, and navigation links.
 ```html-no-indent
 <div class="site-header">
 	<!-- Microsoft logo -->
-	<a href="https://www.microsoft.com" aria-label="Microsoft">
+	<a href="https://www.microsoft.com" aria-label="Microsoft" class="site-header-logo">
 		<svg
-			class="site-header-logo"
 			aria-hidden="true"
 			viewBox="0 0 25 25"
 			fill="none"
@@ -88,9 +87,8 @@ You can use `site-header-logo-centered` subcomponent class to center the logo.
 	</a>
 
     <!-- Microsoft logo -->
-	<a href="https://www.microsoft.com" aria-label="Microsoft" class="site-header-logo-centered">
+	<a href="https://www.microsoft.com" aria-label="Microsoft" class="site-header-logo site-header-logo-centered">
 		<svg
-			class="site-header-logo"
 			aria-hidden="true"
 			viewBox="0 0 25 25"
 			fill="none"
