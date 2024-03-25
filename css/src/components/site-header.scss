@@ -29,7 +29,7 @@ $site-header-panel-border: 1px solid $border-white-high-contrast !default;
 $site-header-panel-featured-section-border: 1px solid $table-border-dark !default;
 
 %site-header-hover-underline {
-	> :not(.icon) {
+	> :not(.icon):not(.image) {
 		position: relative;
 
 		&::after {
