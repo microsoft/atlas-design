@@ -6,29 +6,18 @@ Welcome to the Atlas Design project! This repository holds the source code backi
 
 ## Our mission
 
-The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and consistent experiences at scale across the Microsoft Skilling web properties. Atlas powers [Microsoft Learn](https://learn.microsoft.com) 🤓!
+The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and consistent experiences at scale across the DevRel web properties.
 
 Looking for information about the Atlas CSS framework? Start in `/css`!
 
-## What we do
-
-- We care deeply about accessibility. Microsoft Learn is one of the very few large Grade B websites.
-- We are a low-level design system that focuses on CSS and only uses zero-dependency JS when required for good interactions or accessibility.
-- We are compatible with right-to-left reading direction thanks to our use of logical properties.
-- We are themeable, with three themes right out of the box (Light, Dark, and High Contrast), and we support an unlimited number of themes.
-- We provide example markup. Our website is spartan compared to many design system websites. Its main purpose is for atomic/component documentation and to provide accessible code snippets.
-- We have atomics for flexibility and components for consistency.
-- We have a VSCode extension that provides helpful IntelliSense and class completion in the IDE.
-- We publish to NPM.
-
 ## Version and status
 
-| Name                     | Status                                                                                                                                                                                                  |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **@microsoft/atlas-css** | [![@microsoft/atlas-css npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)                                                         |
-| **@microsoft/atlas-js**  | [![@microsoft/atlas-js npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-js.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-js)                                                            |
-| **Site build**           | [![Site](https://dev.azure.com/ceapex/Engineering/_apis/build/status/microsoft.atlas-design?branchName=main)](https://dev.azure.com/ceapex/Engineering/_build/latest?definitionId=3602&branchName=main) |
-| **PR Builds**            | [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml)                                |
+| Name                     | Status                                                                                                                                                                   |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **@microsoft/atlas-css** | [![@microsoft/atlas-css npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)                          |
+| **@microsoft/atlas-js**  | [![@microsoft/atlas-js npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-js.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-js)                             |
+| **Release Pipeline**     | [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml) |
+| **PR Builds**            | [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml) |
 
 ## Development
 
