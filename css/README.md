@@ -18,7 +18,7 @@ npm install --save @microsoft/atlas-css
 Alternatively, you may access our scss directly for prototyping purposes at the following url:
 
 ```http
-https://unpkg.com/browse/@microsoft/atlas-css/index.scss
+https://unpkg.com/@microsoft/atlas-css/dist/index.css
 ```
 
 ## Project Structure
