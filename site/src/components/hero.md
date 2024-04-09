@@ -98,7 +98,7 @@ Hero images are hidden in forced colors mode.
 
 **Images are currently not intended to scale or shrink. They are not shown on smaller or zoomed screens. For this reason, it's required that these images are presentational only. They should not contain words, subjects that might look naff if cut off, or anything essential to understanding the material of the page.**
 
-On pages with right to left direction, the position of the hero image will remain on the right. The text within the hero content will be right aligned. This behavior prevents any unintended negative side effects when the position of the image and content is reversed. 
+On pages with right to left direction, the position of the hero image will remain on the right. The text within the hero content will be right aligned. This behavior prevents any unintended negative side effects when the position of the image and content is reversed.
 
 ```html-no-indent
 <section
@@ -110,6 +110,30 @@ On pages with right to left direction, the position of the hero image will remai
 	<div class="hero-content">
 		<h2 class="font-size-h2">Hero</h2>
         <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	</div>
+</section>
+```
+
+Hero images with the ability to contain right info card
+
+```html-no-indent
+<section
+    class="hero hero-image border hero-right-content flex-direction-row-tablet"
+	style="
+        --hero-background-image-light: url('https://via.placeholder.com/1000x400');
+		--hero-background-image-dark: url('https://learn.microsoft.com/ar-sa/media/learn/plans/skilling_plan_hero.png?branch=main');
+    ">
+	<div class="hero-content">
+		<h2 class="font-size-h2">Hero</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	</div>
+	<div class="hero-content-right">
+		<div class="theme-light border border-radius-lg padding-sm align-self-flex-start  width-full width-500-desktop align-self-end-tablet content">
+
+		<p class="font-weight-bold">Some titles</p>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+
 	</div>
 </section>
 ```

@@ -32,6 +32,35 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			padding-block: $hero-padding-default;
 			padding-inline-end: $hero-padding-sm;
 		}
+
+		&-right {
+			display: flex;
+			flex-grow: 1;
+
+			@include tablet {
+				justify-content: flex-end;
+				padding-block: $hero-padding-sm;
+			}
+
+			@include desktop {
+				width: $hero-content-fluid-width;
+				min-height: $hero-min-height-default;
+				padding-block: $hero-padding-default;
+				padding-inline-start: $hero-padding-sm;
+				padding-inline-end: $hero-padding-sm;
+			}
+
+			div {
+				margin-inline-start: $hero-padding-xs;
+				background: linear-gradient(
+					116deg,
+					rgba(255, 255, 255, 0.85) 13.94%,
+					rgba(255, 255, 255, 0.35) 111.37%
+				);
+				box-shadow: 0px 0px 50px 0px rgba(23, 23, 23, 0.15);
+				backdrop-filter: blur(20px);
+			}
+		}
 	}
 
 	&:not(.hero-image) {
@@ -139,10 +168,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 	}
 
 	// Set direction to prevent image flip for rtl
-
 	&.hero-image:dir(rtl) {
-		direction: ltr;
-
 		.hero-content {
 			direction: rtl;
 
