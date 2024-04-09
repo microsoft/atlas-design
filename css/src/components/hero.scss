@@ -13,6 +13,9 @@ $hero-content-fluid-width: 45% !default;
 $hero-image-width: calc((100% - 2 * $layout-gap) * 0.55) !default;
 $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !default;
 
+$outcomes-white-bg-color: rgb($white-static / 85%);
+$outcomes-offwhite-bg-color: rgb($white-static / 35%);
+
 .hero {
 	@extend %layout-gap;
 
@@ -54,10 +57,10 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 				margin-inline-start: $hero-padding-xs;
 				background: linear-gradient(
 					116deg,
-					rgba(255, 255, 255, 0.85) 13.94%,
-					rgba(255, 255, 255, 0.35) 111.37%
+					$outcomes-white-bg-color 13.94%,
+					$outcomes-offwhite-bg-color 111.37%
 				);
-				box-shadow: 0px 0px 50px 0px rgba(23, 23, 23, 0.15);
+				box-shadow: 0 0 50px 0 $box-shadow-color-light;
 				backdrop-filter: blur(20px);
 			}
 		}
@@ -168,6 +171,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 	}
 
 	// Set direction to prevent image flip for rtl
+
 	&.hero-image:dir(rtl) {
 		.hero-content {
 			direction: rtl;
