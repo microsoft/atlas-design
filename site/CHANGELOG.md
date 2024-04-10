@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.46.0
+
+### Minor Changes
+
+- ba94377: Updated header with site-header component.
+- 57d1883: Document new .text-wrap-pretty typography atomic
+
 ## 0.45.1
 
 ### Patch Changes

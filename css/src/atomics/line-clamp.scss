@@ -1,15 +1,15 @@
 .line-clamp-1 {
-	@include line-clamp(1);
+	@include line-clamp(1, true);
 }
 
 .line-clamp-2 {
-	@include line-clamp(2);
+	@include line-clamp(2, true);
 }
 
 .line-clamp-3 {
-	@include line-clamp(3);
+	@include line-clamp(3, true);
 }
 
 .line-clamp-4 {
-	@include line-clamp(4);
+	@include line-clamp(4, true);
 }

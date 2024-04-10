@@ -93,6 +93,10 @@
 	color: currentColor !important;
 }
 
+.color-hyperlink {
+	color: $hyperlink !important;
+}
+
 .fill-current-color {
 	@include fill-current-color();
 }
@@ -165,6 +169,18 @@
 .background-color-body-accent {
 	outline-color: $text !important;
 	background-color: $body-background-accent !important;
+}
+
+.background-color-body-accent-onhover {
+	&:hover,
+	&:focus-within {
+		outline-color: $text !important;
+		background-color: $body-background-accent !important;
+	}
+}
+
+.background-color-transparent {
+	background-color: transparent !important;
 }
 
 // Static colors - do not change with theme
