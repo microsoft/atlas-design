@@ -57,10 +57,10 @@ Hero with a theme-aware companion image.
 
 ```html-no-indent
 <section
-    class="hero hero-image background-color-body-accent gradient-border-right gradient-border-body-accent"
+    class="hero hero-image hero-right-content border background-color-body-accent gradient-border-right gradient-border-body-accent"
     style="
-        --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/home-and-directory/home-hero_light.png');
-        --hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/home-and-directory/home-hero_dark.png');
+        --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
+		--hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
     ">
 	<div class="hero-content">
 		<p class="letter-spacing-wide text-transform-uppercase font-size-sm">LOREM IPSUM DOLOR SIT AMET</p>
@@ -69,6 +69,12 @@ Hero with a theme-aware companion image.
 		<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 		<div class="buttons margin-top-md">
 			<button class="button border button-clear">Click me</button>
+		</div>
+	</div>
+	<div class="hero-content-right">
+		<div class="hero-right-card border border-radius-lg padding-sm">
+			<p class="font-weight-bold">Some titles</p>
+			<p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 		</div>
 	</div>
 </section>

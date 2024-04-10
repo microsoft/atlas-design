@@ -13,9 +13,6 @@ $hero-content-fluid-width: 45% !default;
 $hero-image-width: calc((100% - 2 * $layout-gap) * 0.55) !default;
 $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !default;
 
-$outcomes-white-bg-color: rgb($white-static / 85%);
-$outcomes-offwhite-bg-color: rgb($white-static / 35%);
-
 .hero {
 	@extend %layout-gap;
 
@@ -35,34 +32,51 @@ $outcomes-offwhite-bg-color: rgb($white-static / 35%);
 			padding-block: $hero-padding-default;
 			padding-inline-end: $hero-padding-sm;
 		}
+	}
 
-		&-right {
-			display: flex;
-			flex-grow: 1;
+	.hero-content-right {
+		display: flex;
+		flex-grow: 1;
+		padding-block: $hero-padding-xs;
 
-			@include tablet {
-				justify-content: flex-end;
-				padding-block: $hero-padding-sm;
+		@include tablet {
+			justify-content: flex-end;
+			padding-block: $hero-padding-sm;
+			padding-inline-start: $hero-padding-xs;
+		}
+
+		@include desktop {
+			width: $hero-content-fluid-width;
+			min-height: $hero-min-height-default;
+			padding-block: $hero-padding-default;
+			padding-inline-start: $hero-padding-sm;
+			padding-inline-end: $hero-padding-sm;
+		}
+
+		.hero-right-card {
+			align-self: flex-start;
+			background: #ffffffd9;
+			color: $black-static;
+			box-shadow: 0 0 50px 0 #17171726;
+			backdrop-filter: blur(20px);
+
+			.theme-high-contrast & {
+				background: #ffffffd9;
 			}
 
 			@include desktop {
-				width: $hero-content-fluid-width;
-				min-height: $hero-min-height-default;
-				padding-block: $hero-padding-default;
-				padding-inline-start: $hero-padding-sm;
-				padding-inline-end: $hero-padding-sm;
-			}
-
-			div {
+				background: linear-gradient(116deg, #ffffffd9 13.94%, #ffffff59 111.37%);
 				margin-inline-start: $hero-padding-xs;
-				background: linear-gradient(
-					116deg,
-					$outcomes-white-bg-color 13.94%,
-					$outcomes-offwhite-bg-color 111.37%
-				);
-				box-shadow: 0 0 50px 0 $box-shadow-color-light;
-				backdrop-filter: blur(20px);
 			}
+		}
+	}
+
+	&.hero-right-content {
+		@include tablet {
+			flex-direction: row;
+		}
+		@include desktop {
+			flex-direction: row;
 		}
 	}
 
@@ -173,6 +187,12 @@ $outcomes-offwhite-bg-color: rgb($white-static / 35%);
 	// Set direction to prevent image flip for rtl
 
 	&.hero-image:dir(rtl) {
+		// Flip the image for backgrounds
+
+		&::before {
+			transform: scaleX(-1);
+		}
+
 		.hero-content {
 			direction: rtl;
 

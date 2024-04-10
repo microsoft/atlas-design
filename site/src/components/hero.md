@@ -118,20 +118,19 @@ Hero images with the ability to contain right info card
 
 ```html-no-indent
 <section
-    class="hero hero-image border hero-right-content flex-direction-row-tablet"
+    class="hero hero-image hero-right-content border background-color-body-accent gradient-border-right gradient-border-body-accent"
 	style="
-        --hero-background-image-light: url('https://via.placeholder.com/1000x400');
-		--hero-background-image-dark: url('https://learn.microsoft.com/ar-sa/media/learn/plans/skilling_plan_hero.png?branch=main');
+        --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
+		--hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
     ">
 	<div class="hero-content">
 		<h2 class="font-size-h2">Hero</h2>
         <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 	<div class="hero-content-right">
-		<div class="theme-light border border-radius-lg padding-sm align-self-flex-start  width-full width-500-desktop align-self-end-tablet content">
-
-		<p class="font-weight-bold">Some titles</p>
-        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		<div class="hero-right-card border border-radius-lg padding-sm">
+			<p class="font-weight-bold">Some titles</p>
+			<p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 		</div>
 
 	</div>
