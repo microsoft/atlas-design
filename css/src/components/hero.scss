@@ -34,7 +34,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		}
 	}
 
-	.hero-content-right {
+	.hero-details {
 		display: flex;
 		flex-grow: 1;
 		padding-block: $hero-padding-xs;
@@ -53,7 +53,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			padding-inline-end: $hero-padding-sm;
 		}
 
-		.hero-right-card {
+		.hero-details-card {
 			align-self: flex-start;
 			background: #ffffffd9;
 			color: $black-static;
@@ -71,11 +71,8 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		}
 	}
 
-	&.hero-right-content {
+	&.hero-with-details {
 		@include tablet {
-			flex-direction: row;
-		}
-		@include desktop {
 			flex-direction: row;
 		}
 	}
@@ -191,6 +188,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 
 		&::before {
 			transform: scaleX(-1);
+			inset-inline-end: 0;
 		}
 
 		.hero-content {

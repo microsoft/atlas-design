@@ -57,7 +57,7 @@ Hero with a theme-aware companion image.
 
 ```html-no-indent
 <section
-    class="hero hero-image hero-right-content border background-color-body-accent gradient-border-right gradient-border-body-accent"
+    class="hero hero-image hero-with-details border background-color-body-accent gradient-border-right gradient-border-body-accent"
     style="
         --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
 		--hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
@@ -71,8 +71,8 @@ Hero with a theme-aware companion image.
 			<button class="button border button-clear">Click me</button>
 		</div>
 	</div>
-	<div class="hero-content-right">
-		<div class="hero-right-card border border-radius-lg padding-sm">
+	<div class="hero-details">
+		<div class="hero-details-card border border-radius-lg padding-sm">
 			<p class="font-weight-bold">Some titles</p>
 			<p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 		</div>
