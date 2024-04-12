@@ -55,17 +55,20 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 
 		.hero-details-card {
 			align-self: flex-start;
-			background: #ffffffd9;
-			color: $black-static;
-			box-shadow: 0 0 50px 0 #17171726;
 			backdrop-filter: blur(20px);
 
 			.theme-high-contrast & {
-				background: #ffffffd9;
+				background: unset;
+				background-color: var(--theme-body-background);
+				opacity: 1;
 			}
 
 			@include desktop {
-				background: linear-gradient(116deg, #ffffffd9 13.94%, #ffffff59 111.37%);
+				background: linear-gradient(
+					116deg,
+					var(--theme-body-background) 23.94%,
+					var(--theme-border-white-high-contrast) 200%
+				);
 				margin-inline-start: $hero-padding-xs;
 			}
 		}
@@ -184,20 +187,27 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 	// Set direction to prevent image flip for rtl
 
 	&.hero-image:dir(rtl) {
-		// Flip the image for backgrounds
+		direction: ltr;
 
-		&::before {
-			transform: scaleX(-1);
-			inset-inline-end: 0;
-		}
-
-		.hero-content {
+		.hero-content,
+		.hero-details {
 			direction: rtl;
 
 			@include desktop {
 				padding-inline-end: unset;
 				padding-inline-start: $hero-padding-sm;
 			}
+		}
+
+		&.hero-with-details {
+			direction: rtl;
+		}
+
+		&.gradient-border-right::before {
+			border-inline-end-width: unset;
+			border-inline-end-style: unset;
+			border-inline-start-style: solid;
+			border-inline-start-width: 320px;
 		}
 	}
 }

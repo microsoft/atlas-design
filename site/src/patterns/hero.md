@@ -72,7 +72,7 @@ Hero with a theme-aware companion image.
 		</div>
 	</div>
 	<div class="hero-details">
-		<div class="hero-details-card border border-radius-lg padding-sm">
+		<div class="hero-details-card border border-radius-lg box-shadow-heavy padding-sm">
 			<p class="font-weight-bold">Some titles</p>
 			<p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 		</div>
