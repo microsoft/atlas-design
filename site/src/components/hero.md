@@ -114,7 +114,7 @@ On pages with right to left direction, the position of the hero image will remai
 </section>
 ```
 
-Hero images with the ability to contain right info card
+Hero images with details
 
 ```html-no-indent
 <section
