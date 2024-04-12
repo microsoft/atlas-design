@@ -53,7 +53,7 @@ Hero with a theme-aware companion image.
 
 ## Accent hero with right content
 
-Hero with a theme-aware companion image.
+Accent hero with content details overlaying the hero image.
 
 ```html-no-indent
 <section
