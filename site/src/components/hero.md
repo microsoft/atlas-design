@@ -115,7 +115,9 @@ On pages with right to left direction, the position of the hero image will remai
 ```
 
 This component variant overlays content details on hero images and aligns the content area to the right. It's currently utilized in plans to display learning outcomes. While its use is somewhat limited, it can accommodate more content within the hero section if necessary.
+Hero images with details
 
+This component variant overlays content details on hero images and aligns the content area to the right. It can be used to accommodate more content within the hero section if necessary.
 ```html-no-indent
 <section
     class="hero hero-image hero-with-details border background-color-body-accent gradient-border-right gradient-border-body-accent"
