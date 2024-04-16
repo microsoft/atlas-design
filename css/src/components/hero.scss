@@ -10,6 +10,7 @@ $hero-min-height-lg: 500px !default;
 
 $hero-content-width: $reading-max-width !default;
 $hero-content-fluid-width: 45% !default;
+$hero-details-content-fluid-width: 35% !default;
 $hero-image-width: calc((100% - 2 * $layout-gap) * 0.55) !default;
 $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !default;
 
@@ -22,6 +23,10 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 	align-items: stretch;
 	justify-content: space-between;
 
+	@include tablet {
+		flex-direction: row;
+	}
+
 	.hero-content {
 		z-index: $zindex-active;
 		padding-block: $hero-padding-sm;
@@ -32,6 +37,10 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			padding-block: $hero-padding-default;
 			padding-inline-end: $hero-padding-sm;
 		}
+	}
+
+	.theme-high-contrast & .hero-details-card {
+		background: unset !important;
 	}
 
 	.hero-details {
@@ -46,7 +55,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		}
 
 		@include desktop {
-			width: $hero-content-fluid-width;
+			width: $hero-details-content-fluid-width;
 			min-height: $hero-min-height-default;
 			padding-block: $hero-padding-default;
 			padding-inline-start: $hero-padding-sm;
@@ -56,27 +65,16 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		.hero-details-card {
 			align-self: flex-start;
 			backdrop-filter: blur(20px);
-
-			.theme-high-contrast & {
-				background: unset;
-				background-color: var(--theme-body-background);
-				opacity: 1;
-			}
+			background-color: #{$body-background};
 
 			@include desktop {
 				background: linear-gradient(
 					116deg,
-					var(--theme-body-background) 23.94%,
-					var(--theme-border-white-high-contrast) 200%
+					#{$body-background} 23.94%,
+					#{$border-white-high-contrast} 200%
 				);
 				margin-inline-start: $hero-padding-xs;
 			}
-		}
-	}
-
-	&.hero-with-details {
-		@include tablet {
-			flex-direction: row;
 		}
 	}
 
