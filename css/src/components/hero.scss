@@ -184,6 +184,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 
 	// Set direction to prevent image flip for rtl
 
+	[dir='rtl'] &.hero-image,
 	&.hero-image:dir(rtl) {
 		direction: ltr;
 
@@ -201,11 +202,8 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			direction: rtl;
 		}
 
-		&.gradient-border-right::before {
-			border-inline-end-width: unset;
-			border-inline-end-style: unset;
-			border-inline-start-style: solid;
-			border-inline-start-width: 320px;
+		&[class^='gradient-border-'] {
+			direction: ltr;
 		}
 	}
 }
