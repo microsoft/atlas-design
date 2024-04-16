@@ -53,7 +53,7 @@ Hero with a theme-aware companion image.
 
 ## Accent hero with right content
 
-This component variant, known as 'Accent Hero w/details', overlays content details on hero images and aligns the content area to the right. It's currently utilized in plans to display learning outcomes. While its use is somewhat limited, it can accommodate more content within the hero section if necessary.
+This component variant, known as 'Accent Hero with Details', overlays an element on top of the hero's image.
 
 ```html-no-indent
 <section
