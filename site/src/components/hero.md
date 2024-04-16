@@ -116,7 +116,7 @@ On pages with right to left direction, the position of the hero image will remai
 
 Hero images with details
 
-This component variant overlays content details on hero images and aligns the content area to the right. It can be used to accommodate more content within the hero section if necessary.
+This component variant overlays a container the side opposite the hero content. It can be used to accommodate more content within the hero section if necessary.
 
 ```html-no-indent
 <section
