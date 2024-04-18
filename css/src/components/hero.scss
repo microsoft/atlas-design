@@ -7,10 +7,12 @@ $hero-min-height-xs: 200px !default;
 $hero-min-height-sm: 300px !default;
 $hero-min-height-default: 400px !default;
 $hero-min-height-lg: 500px !default;
-
-$hero-content-width: $reading-max-width !default;
+$hero-detail-max-width: 500px !default;
+$hero-content-half-width: 50% !default;
 $hero-content-fluid-width: 45% !default;
 $hero-details-content-fluid-width: 35% !default;
+$hero-content-width: $reading-max-width !default;
+
 $hero-image-width: calc((100% - 2 * $layout-gap) * 0.55) !default;
 $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !default;
 
@@ -31,6 +33,10 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		z-index: $zindex-active;
 		padding-block: $hero-padding-sm;
 
+		@include tablet {
+			max-width: $hero-content-half-width;
+		}
+
 		@include desktop {
 			width: $hero-content-fluid-width;
 			min-height: $hero-min-height-default;
@@ -45,7 +51,6 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 
 	.hero-details {
 		display: flex;
-		flex-grow: 1;
 		padding-block: $hero-padding-xs;
 
 		@include tablet {
@@ -55,7 +60,6 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		}
 
 		@include desktop {
-			width: $hero-details-content-fluid-width;
 			min-height: $hero-min-height-default;
 			padding-block: $hero-padding-default;
 			padding-inline-start: $hero-padding-sm;
@@ -68,6 +72,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 			background-color: #{$body-background};
 
 			@include desktop {
+				max-width: $hero-detail-max-width;
 				background: linear-gradient(
 					116deg,
 					#{$body-background} 23.94%,
@@ -189,16 +194,7 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		direction: ltr;
 
 		.hero-content,
-		.hero-details {
-			direction: rtl;
-
-			@include desktop {
-				padding-inline-end: unset;
-				padding-inline-start: $hero-padding-sm;
-			}
-		}
-
-		&.hero-with-details {
+		.hero-details-card {
 			direction: rtl;
 		}
 
