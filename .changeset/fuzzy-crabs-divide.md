@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Added the `.hero-with-details` hero component variant.
+Added the `.hero-details` hero component variant.

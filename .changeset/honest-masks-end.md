@@ -2,4 +2,4 @@
 '@microsoft/atlas-site': patch
 ---
 
-Added documentation for the `.hero-with-details` hero component variant.
+Added documentation for the `.hero-details` hero component variant.
