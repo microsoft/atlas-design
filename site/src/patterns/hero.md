@@ -51,7 +51,7 @@ Hero with a theme-aware companion image.
 </section>
 ```
 
-## Accent hero with right content
+## Accent hero with details
 
 This component variant, known as 'Accent Hero with Details', overlays an element on top of the hero's image.
 
