@@ -50,3 +50,32 @@ Hero with a theme-aware companion image.
 	</div>
 </section>
 ```
+
+## Accent hero with details
+
+This component variant, known as 'Accent Hero with Details', overlays an element on top of the hero's image.
+
+```html-no-indent
+<section
+    class="hero hero-image hero-with-details border background-color-body-accent gradient-border-right gradient-border-body-accent"
+    style="
+        --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
+		--hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
+    ">
+	<div class="hero-content">
+		<p class="letter-spacing-wide text-transform-uppercase font-size-sm">LOREM IPSUM DOLOR SIT AMET</p>
+		<h1 class="font-size-h1 font-weight-semibold">Hero</h1>
+		<p class="font-size-lg font-weight-semibold margin-block-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+		<div class="buttons margin-top-md">
+			<button class="button border button-clear">Click me</button>
+		</div>
+	</div>
+	<div class="hero-details">
+		<div class="hero-details-card border border-radius-lg box-shadow-heavy padding-sm">
+			<p class="font-weight-bold">Some titles</p>
+			<p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+	</div>
+</section>
+```
