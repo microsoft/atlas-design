@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.41.0
+
+### Minor Changes
+
+- bbf8d69: Added the `.hero-details` hero component variant.
+
 ## 3.40.0
 
 ### Minor Changes
