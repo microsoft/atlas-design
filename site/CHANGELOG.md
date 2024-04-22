@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.46.1
+
+### Patch Changes
+
+- bbf8d69: Added documentation for the `.hero-details` hero component variant.
+
 ## 0.46.0
 
 ### Minor Changes
