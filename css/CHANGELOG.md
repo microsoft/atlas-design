@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.42.0
+
+### Minor Changes
+
+- 19ea734: Removing a superfluous width property on hero-content
+
 ## 3.41.0
 
 ### Minor Changes
