@@ -57,7 +57,7 @@ This component variant, known as 'Accent Hero with Details', overlays an element
 
 ```html-no-indent
 <section
-    class="hero hero-image hero-with-details border background-color-body-accent gradient-border-right gradient-border-body-accent"
+    class="hero hero-image flex-direction-row-tablet border background-color-body-accent gradient-border-right gradient-border-body-accent"
     style="
         --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
 		--hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
