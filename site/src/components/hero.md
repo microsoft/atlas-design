@@ -116,7 +116,7 @@ On pages with right to left direction, the position of the hero image will remai
 
 Hero images with details
 
-This component variant overlays a container on the opposite side of the hero content. It can be used to accommodate more content within the hero section if necessary.
+This component variant overlays a container on the opposite side of the hero content. It can be used to accommodate more content within the hero section if necessary. `.hero-details` will require the use of `.flex-direction-row-tablet` to be applied to the `.hero` markup.
 
 ```html-no-indent
 <section
