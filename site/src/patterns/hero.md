@@ -52,8 +52,7 @@ Hero with a theme-aware companion image.
 ```
 
 ## Accent hero with details
-
-This component variant, known as 'Accent Hero with Details', overlays an element on top of the hero's image. `.hero-details` will require the use of `.flex-direction-row-tablet` to be applied to the `.hero` markup.
+This component variant, known as 'Accent Hero with Details', overlays an element on top of the hero's image. Note that to lay out the hero's children correctly across screen sizes, the hero component should also have the `.flex-direction-row-tablet` atomic.
 
 ```html-no-indent
 <section
