@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Updating the hero specific css to accomodate flex-direction prop when `.hero-details` is present. Otherwise the hero will not change flex-direction.
+Removing the flex-direction from the hero component and will apply the direction manually via templates and scripts
