@@ -116,11 +116,11 @@ On pages with right to left direction, the position of the hero image will remai
 
 Hero images with details
 
-This component variant overlays a container on the opposite side of the hero content. It can be used to accommodate more content within the hero section if necessary.
+This component variant overlays a container on the opposite side of the hero content. It can be used to accommodate more content within the hero section if necessary.  Note that to lay out the hero's children correctly across screen sizes, the hero component should also have the `.flex-direction-row-tablet` atomic.
 
 ```html-no-indent
 <section
-    class="hero hero-image hero-with-details border background-color-body-accent gradient-border-right gradient-border-body-accent"
+    class="hero hero-image flex-direction-row-tablet border background-color-body-accent gradient-border-right gradient-border-body-accent"
 	style="
         --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
 		--hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');

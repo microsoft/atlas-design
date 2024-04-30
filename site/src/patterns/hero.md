@@ -52,12 +52,11 @@ Hero with a theme-aware companion image.
 ```
 
 ## Accent hero with details
-
-This component variant, known as 'Accent Hero with Details', overlays an element on top of the hero's image.
+This component variant, known as 'Accent Hero with Details', overlays an element on top of the hero's image. Note that to lay out the hero's children correctly across screen sizes, the hero component should also have the `.flex-direction-row-tablet` atomic.
 
 ```html-no-indent
 <section
-    class="hero hero-image hero-with-details border background-color-body-accent gradient-border-right gradient-border-body-accent"
+    class="hero hero-image flex-direction-row-tablet border background-color-body-accent gradient-border-right gradient-border-body-accent"
     style="
         --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
 		--hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
