@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.46.2
+
+### Patch Changes
+
+- b4c3129: Updated markup for hero-details. Removing an unneeded class and adding an atomic for the hero-details use case.
+
 ## 0.46.1
 
 ### Patch Changes

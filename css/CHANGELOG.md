@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.42.1
+
+### Patch Changes
+
+- b4c3129: Removed explicit flex-direction from the hero component in favor of atomics.
+
 ## 3.42.0
 
 ### Minor Changes
