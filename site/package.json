@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-site",
-	"version": "0.46.1",
+	"version": "0.46.2",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
