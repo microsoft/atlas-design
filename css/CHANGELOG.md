@@ -1,5 +1,185 @@
 # @microsoft/atlas-css
 
+## 3.42.1
+
+### Patch Changes
+
+- b4c3129: Removed explicit flex-direction from the hero component in favor of atomics.
+
+## 3.42.0
+
+### Minor Changes
+
+- 19ea734: Removing a superfluous width property on hero-content
+
+## 3.41.0
+
+### Minor Changes
+
+- bbf8d69: Added the `.hero-details` hero component variant.
+
+## 3.40.0
+
+### Minor Changes
+
+- ba94377: Updating line-clamp mixin so important flag doesn't applied by default.
+- ba94377: Removing background color from card's title.
+- ba94377: Adding site-header component and relevant documentation.
+- 57d1883: Introduce a .text-wrap-pretty typography atomic
+- ba94377: Applying !important flag to position atomics.
+- ba94377: Adding a few color atomics - color-hyperlink, background-color-transparent, background-color-body-accent-onhover.
+- 7f14950: Update the default font on Windows from Segoe UI to Segoe UI Variable
+
+## 3.39.1
+
+### Patch Changes
+
+- 523688a: Supply a contrasting outline-color for background-color-white-static and background-color-black-static atomics
+- 26c9089: Updating dependencies
+
+## 3.39.0
+
+### Minor Changes
+
+- cac3567: Set hero image direction to prevent image flipping for rtl
+
+## 3.38.1
+
+### Patch Changes
+
+- c5e15e6: Prevent message content from expanding grid items
+
+## 3.38.0
+
+### Minor Changes
+
+- 46e987b: Add sidecar-left and sidecar-right layouts and relevant documentation.
+- 5708e1f: Add a layout component to provide a flexible way of specifying a site's layout with minimal nesting.
+
+## 3.37.1
+
+### Patch Changes
+
+- 1c892d1: Update message styles to support smaller size messages.
+
+## 3.37.0
+
+### Minor Changes
+
+- ae05959: Add standardized message styles
+
+### Patch Changes
+
+- 9a4479a: Updating persona's name font-weight.
+
+## 3.36.1
+
+### Patch Changes
+
+- 131a22d: Updating line-height value in persona component.
+
+## 3.36.0
+
+### Minor Changes
+
+- beef07a: Adding persona component.
+
+## 3.35.0
+
+### Minor Changes
+
+- ced713d: Adding new aspect ratio atomic
+
+## 3.34.2
+
+### Patch Changes
+
+- 5d1ccfc: Adds object-fit-cover css class to image atomics
+
+## 3.34.1
+
+### Patch Changes
+
+- 5c3b764: Adding !important to the color atomic class.
+- b3bca12: Updating warning text color to pass color contrast requirements.
+
+## 3.34.0
+
+### Minor Changes
+
+- ce5e971: Adding .dismiss component and relevant documentation.
+- ce5e971: Updating .notification and .banner components to show .dismiss component within nicely.
+
+## 3.33.0
+
+### Minor Changes
+
+- f16147e: Adding gradient-card component and relevant documentation.
+
+## 3.32.2
+
+### Patch Changes
+
+- 6e9a8f3: Fix issue where border atomics did not use logical properties.
+- 855f61f: Adds new color theme to gradient-text-\* base class.
+
+## 3.32.1
+
+### Patch Changes
+
+- 5fdc26a: Fixing notification's icon position.
+- 5fdc26a: Fixing notification and banner components line-heights.
+
+## 3.32.0
+
+### Minor Changes
+
+- 7231abf: Adds gradient vivid colors.
+
+## 3.31.0
+
+### Minor Changes
+
+- 5aebf54: Adding line-height-normal typography atomic and updating relevant documentation.
+- c9e0b4a: Adding banner component and relevant documentation.
+- 5aebf54: Adding text-align-left typography atomic and updating relevant documentation.
+- 86ac418: For browsers that support target-text, update the background color to make text and URLs more visible when highlighted
+- c9e0b4a: Adding notification component and relevant documentation.
+
+### Patch Changes
+
+- afc478a: Updating button's icon size.
+
+## 3.30.0
+
+### Minor Changes
+
+- fff80fc: Updating buttons' icon sizes.
+
+## 3.29.0
+
+### Minor Changes
+
+- 12ac95c: Updating checkbox component with validation colors and sizes.
+
+## 3.28.0
+
+### Minor Changes
+
+- e517d9a: add a where(.is-focused) class to allow for programatic management of focus
+
+## 3.27.2
+
+### Patch Changes
+
+- 68c9fb7: Disabled radio should not have hover styles.
+
+## 3.27.1
+
+### Patch Changes
+
+- 40cd6f5: On light theme, darkens text from #171717 to #161616 in order to ensure adequate contrast (3:1) between hyperlink color and paragraph text color.
+
 ## 3.27.0
 
 ### Minor Changes

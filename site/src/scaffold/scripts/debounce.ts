@@ -36,10 +36,10 @@ export const debounce = {
 		handler: T,
 		timeout?: number
 	) => CancellableFunction,
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
 	animationFrame: debounceScheduler.bind(
 		null,
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		window.requestAnimationFrame,
 		window.cancelAnimationFrame
 		// eslint-disable-next-line @typescript-eslint/ban-types

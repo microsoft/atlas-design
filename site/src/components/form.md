@@ -25,7 +25,9 @@ Forms contain form control elements such as the following:
 ## Form field
 
 The `.field` component is a container for form control elements to provide consistency.
+
 It can be used to hold `.field-body` containers, which holds the individual elements.
+
 `field-label` is used for the element's label. Use `.field-label-inline` and `.field-body-inline` to display the label and body inline.
 
 ```html
@@ -73,7 +75,6 @@ For elements that are required for form submission, you can add a span element w
 ## Form behavior
 
 Use the `form-behavior` component within a form to ensure accessible form validation. Form elements should be contained by `.field` and `.field-body` class.
-When the form does not require any edits (i.e the only action is to submit), you can add a `new` attribute to override the validation.
 
 `.field-error` is placed after the element for form validation error messages.
 
@@ -88,23 +89,19 @@ The form behavior component can accept certain HTML attributes.
 | navigation-href=         | The url to navigate to.                                                                                                                 |
 | header-\*=               | For attributes that start with `header-`, the name after `header-` and the attribute value is added to the submit request header.       |
 | nounload                 | Disables the browser warning message that appears when you try to navigate away from the current page with a partially filled out form. |
+| new                      | When the form does not require any edits (i.e the only action is to submit), adding the `new` attribute will override the validation.   |
+| nosubmit                 | Use the `nosubmit` attibute to bypass automatic form submission if a form contains a body but does not need to send a POST request.     |
 
-#### Custom validation
+### Custom validation
 
 Aside from basic input validation, you can use event listeners to listen for the `form-validating` custom event to inject custom validation logic.
+
 If you want to skip the basic validation on an input, apply a `data-skip-validation` attribute.
 
-##### Form with edits required
+### Form with edits required
 
 ```html
-<form
-	id="sample-form-complex"
-	data-form-type="question"
-	action="#"
-	method="POST"
-	new=""
-	novalidate=""
->
+<form id="sample-form-complex" data-form-type="question" action="#" method="POST" novalidate="">
 	<form-behavior
 		new=""
 		navigation="follow"
@@ -114,8 +111,11 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
 		loc-input-required="{inputLabel} is required."
+		loc-not-authenticated="You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in."
+		loc-not-authorized="You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again."
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-too-many-requests="You have sent too many requests. Please wait a few minutes and try again."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 	></form-behavior>
 	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
@@ -188,19 +188,32 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 		</div>
 	</div>
 	<div class="field">
-		<label class="field-label" for="sample-input">
+		<label class="field-label" for="sample-skip-input">
 			Input
 			<span class="required-indicator"></span>
 		</label>
 		<div class="field-body">
 			<input
-				id="skip-input"
-				name="skip-input"
+				id="sample-skip-input"
+				name="sample-skip-input"
 				class="input"
 				type="text"
 				value=""
+				required
 				data-skip-validation
 			/>
+		</div>
+	</div>
+	<div class="field">
+		<div class="field-body">
+			<label class="checkbox">
+				<input type="checkbox" name="checkbox-example" required id="sample-checkbox" />
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text">
+					Checkbox
+					<span class="required-indicator"></span>
+				</span>
+			</label>
 		</div>
 	</div>
 	<div class="display-flex">
@@ -210,27 +223,150 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 </form>
 ```
 
-##### Simple form without edits
+### Hiding the validation banner
+
+If there is a need to hide the validation banner on top of the form, we can apply the `data-hide-validation-banner` attribute to the `form`.
 
 ```html
 <form
-	id="sample-form-simple"
+	id="sample-form-hide-validation-banner"
 	data-form-type="question"
+	data-hide-validation-banner
 	action="#"
 	method="POST"
-	new=""
 	novalidate=""
 >
 	<form-behavior
-		navigation="reload"
-		header-x-docsauth="cookie"
 		new
+		navigation="follow"
+		header-content-type="application/json"
+		header-x-docsauth="cookie"
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
 		loc-input-required="{inputLabel} is required."
+		loc-not-authenticated="You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in."
+		loc-not-authorized="You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again."
 		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
 		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-too-many-requests="You have sent too many requests. Please wait a few minutes and try again."
+		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
+	></form-behavior>
+	<p class="visually-hidden">Required fields are marked with asterisk/star</p>
+	<div class="field">
+		<label class="field-label" for="sample-input-demo">
+			Input
+			<span class="required-indicator"></span>
+		</label>
+		<div class="field-body">
+			<input id="sample-input-demo" name="input" class="input" type="text" value="" required />
+		</div>
+	</div>
+	<div class="field">
+		<div class="field-body">
+			<label class="checkbox">
+				<input type="checkbox" name="checkbox-example" required id="required-checkbox-input-demo" />
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text">
+					Checkbox
+					<span class="required-indicator"></span>
+				</span>
+			</label>
+		</div>
+	</div>
+	<div class="field">
+		<label class="label" for="sample-text-area-demo">Textarea</label>
+		<div class="field-body">
+			<textarea
+				id="sample-text-area-demo"
+				name="text-area"
+				class="textarea"
+				rows="4"
+				cols="30"
+			></textarea>
+		</div>
+	</div>
+	<div class="display-flex">
+		<button type="submit" class="button button-primary button-filled">Submit form</button>
+	</div>
+	<div class="submitted-form-data-example"></div>
+</form>
+```
+
+### Simple form without edits
+
+```html
+<form id="sample-form-simple" data-form-type="question" action="#" method="POST" novalidate="">
+	<form-behavior
+		new
+		navigation="reload"
+		header-x-docsauth="cookie"
+		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
+		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
+		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
+		loc-input-required="{inputLabel} is required."
+		loc-not-authenticated="You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in."
+		loc-not-authorized="You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again."
+		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
+		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-too-many-requests="You have sent too many requests. Please wait a few minutes and try again."
+		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
+	></form-behavior>
+	<div class="field">
+		<button
+			type="submit"
+			class="button button-primary button-filled"
+			value="yes"
+			name="simple-form"
+			formaction="{some_url}"
+		>
+			Yes
+		</button>
+	</div>
+	<div class="submitted-form-data-example"></div>
+</form>
+```
+
+### Async beforesubmit handler
+
+To ensure that a submit event waits for an asynchronous beforesubmit handler to finish, you can set the event's detail callback property to your asynchronous logic. This will allow the event to wait for the completion of the asynchronous operation before proceeding with the submission.
+
+```typescript
+form.addEventListener(
+	'beforesubmit',
+	(event: CustomEventInit<{ callback: () => Promise<void> }>) => {
+		if (event.detail) {
+			event.detail.callback = async () => {
+				// TODO: Your async logic here.
+				return new Promise(resolve => setTimeout(resolve, 3000));
+			};
+		}
+	}
+);
+```
+
+```html
+<form
+	id="sample-async-form-simple"
+	data-form-type="question"
+	action="#"
+	method="POST"
+	novalidate=""
+	test-async-before-submit
+>
+	<form-behavior
+		new
+		navigation="reload"
+		header-x-docsauth="cookie"
+		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
+		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
+		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
+		loc-input-required="{inputLabel} is required."
+		loc-not-authenticated="You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in."
+		loc-not-authorized="You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again."
+		loc-please-fix-the-following-issues="Please fix the following issues to continue:"
+		loc-there-are-no-edits-to-submit="There are no edits to submit."
+		loc-too-many-requests="You have sent too many requests. Please wait a few minutes and try again."
 		loc-we-encountered-an-unexpected-error="We encountered an unexpected error. Please try again later. If this issue continues, please contact site support."
 	></form-behavior>
 	<div class="field">

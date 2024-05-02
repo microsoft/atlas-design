@@ -13,7 +13,7 @@ classPrefixes:
 Use breadcrumbs to show navigation from the current location to less specific locations. Note that the final item representing the current page is not presented.
 
 ```html
-<nav>
+<nav aria-label="breadcrumb example">
 	<ol class="breadcrumbs">
 		<li class="breadcrumbs-item">
 			<a href="#">Domain</a>
@@ -48,7 +48,7 @@ Use breadcrumbs to show navigation from the current location to less specific lo
 The final item representing the current page is omitted in the default example. If for some reason it must be included add `.breadcrumbs-item-slashless` to the final item to remove slash along with `aria-current="page"` attribute and wrap it into `span` instead of an `anchor` tag.
 
 ```html
-<nav>
+<nav aria-label="breadcrumb example highlighting current location">
 	<ol class="breadcrumbs">
 		<li class="breadcrumbs-item">
 			<a href="#">Family</a>
@@ -67,7 +67,7 @@ The final item representing the current page is omitted in the default example. 
 
 Some situations may require the inclusion of a slash previous the first breadcrumb item. If this is the case, you can achieve this with `.breadcrumbs.breadcrumbs-initial-slash`.
 
-<nav class="margin-top-md">
+<nav class="margin-top-md" aria-label="breadcrumb example initial slash">
 	<ol class="breadcrumbs breadcrumbs-initial-slash">
 		<li class="breadcrumbs-item">
 			<a href="#">Genus</a>
@@ -83,7 +83,7 @@ Some situations may require the inclusion of a slash previous the first breadcru
 By default `.breadcrumbs` are just slightly smaller than the document's font size. However, you may use [font size atomics](~/src/atomics/typography.md) to easily change the size of all the breadcrumbs. See example below, where `font-size-xl` is applied the the `.breadcrumbs` element.
 
 ```html
-<nav>
+<nav aria-label="breadcrumb example with size modification">
 	<ol class="breadcrumbs font-size-xl">
 		<li class="breadcrumbs-item">
 			<a href="#">Domain</a>

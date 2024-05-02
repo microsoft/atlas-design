@@ -10,7 +10,7 @@ classPrefixes:
 
 # Image
 
-Image atomics are used to set the image behavior of an element.
+Image atomics are used to set the image behavior of an element. Image width to height ratios can be set with [aspect ratio atomics](./aspect-ratio.md).
 
 ## Available classes
 
@@ -18,6 +18,7 @@ List of all available classes:
 
 ```atomics-filter
 object-fit-contain
+object-fit-cover
 object-fit-fill
 object-position-top
 ```

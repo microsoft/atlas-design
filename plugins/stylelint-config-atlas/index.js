@@ -1,10 +1,14 @@
 'use strict';
 
 module.exports = {
-	plugins: ['stylelint-scss', 'stylelint-order'],
+	plugins: ['stylelint-scss', 'stylelint-order', 'stylelint-use-logical'],
 	extends: ['stylelint-config-standard', 'stylelint-config-recommended-scss'],
 	customSyntax: 'postcss-scss',
 	rules: {
+		'csstools/use-logical': [
+			'always',
+			{ except: ['width', 'height', 'max-height', 'min-height', 'max-width', 'min-width'] }
+		],
 		'number-leading-zero': 'never',
 		'selector-list-comma-newline-after': 'always',
 		'rule-empty-line-before': ['always', { except: ['first-nested'] }],
@@ -279,6 +283,7 @@ module.exports = {
 					'GrayText'
 				]
 			}
-		]
+		],
+		'import-notation': null
 	}
 };

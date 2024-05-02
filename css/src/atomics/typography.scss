@@ -164,6 +164,10 @@
 
 // Alignment
 
+.text-align-left {
+	text-align: start !important;
+}
+
 .text-align-center {
 	text-align: center !important;
 }
@@ -173,6 +177,10 @@
 }
 
 @include tablet {
+	.text-align-left-tablet {
+		text-align: start !important;
+	}
+
 	.text-align-center-tablet {
 		text-align: center !important;
 	}
@@ -180,4 +188,16 @@
 	.text-align-right-tablet {
 		text-align: end !important;
 	}
+}
+
+// Text wrapping behavior
+
+.text-wrap-pretty {
+	text-wrap: pretty !important;
+}
+
+// Line height
+
+.line-height-normal {
+	line-height: $line-height-normal;
 }

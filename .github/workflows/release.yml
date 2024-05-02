@@ -10,19 +10,23 @@ on:
 
 jobs:
   release:
+    if: github.repository == 'microsoft/atlas-design'
+    permissions:
+      contents: write # to create release (changesets/action)
+      pull-requests: write # to create pull request (changesets/action)
     name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
 
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.6.X
+          node-version: 18.12.1
           registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
@@ -36,7 +40,7 @@ jobs:
           publish: npx changeset publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # When changesets has published a new version of @microsoft/atlas-css, then we can attempt to publish a new extension version too.

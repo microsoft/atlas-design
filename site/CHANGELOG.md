@@ -1,5 +1,164 @@
 # @microsoft/atlas-site
 
+## 0.46.2
+
+### Patch Changes
+
+- b4c3129: Updated markup for hero-details. Removing an unneeded class and adding an atomic for the hero-details use case.
+
+## 0.46.1
+
+### Patch Changes
+
+- bbf8d69: Added documentation for the `.hero-details` hero component variant.
+
+## 0.46.0
+
+### Minor Changes
+
+- ba94377: Updated header with site-header component.
+- 57d1883: Document new .text-wrap-pretty typography atomic
+
+## 0.45.1
+
+### Patch Changes
+
+- 26c9089: Updating dependencies
+
+## 0.45.0
+
+### Minor Changes
+
+- cac3567: Update hero documentation
+
+## 0.44.0
+
+### Minor Changes
+
+- 0996a70: Support async form before submit handler
+
+### Patch Changes
+
+- Updated dependencies [0996a70]
+  - @microsoft/atlas-js@1.9.0
+
+## 0.43.0
+
+### Minor Changes
+
+- 5708e1f: Document the layout component in /components/layout.
+- 46e987b: Add sidecar-left and sidecar-right layouts and relevant documentation.
+- 5708e1f: Add new code fense label html-no-example which does not render an example.
+- 5708e1f: Add a mobile navigation menu.
+- 5708e1f: Apply the holy grail layout from the new layout component to the site.
+
+## 0.42.1
+
+### Patch Changes
+
+- 1c892d1: Update message styles to support smaller size messages.
+
+## 0.42.0
+
+### Minor Changes
+
+- ae05959: Add standardized chat styles
+
+### Patch Changes
+
+- 4b0e01e: Fix typo in select.md
+
+## 0.41.0
+
+### Minor Changes
+
+- beef07a: Adding documentation page for persona component.
+
+## 0.40.0
+
+### Minor Changes
+
+- 334a98f: Add a nosubmit attribute to form-behavior
+
+### Patch Changes
+
+- Updated dependencies [334a98f]
+  - @microsoft/atlas-js@1.8.0
+
+## 0.39.1
+
+### Patch Changes
+
+- 5d1ccfc: Adds object-fit-cover css class to image atomics
+
+## 0.39.0
+
+### Minor Changes
+
+- ce5e971: Adding .dismiss component and relevant documentation.
+
+### Patch Changes
+
+- Updated dependencies [ce5e971]
+  - @microsoft/atlas-js@1.6.0
+
+## 0.38.1
+
+### Patch Changes
+
+- 9aff14d: Add figma design to gradient-card component page
+
+## 0.38.0
+
+### Minor Changes
+
+- f16147e: Adding gradient-card component and relevant documentation.
+
+## 0.37.2
+
+### Patch Changes
+
+- 855f61f: Adds new color theme to gradient-text-\* base class.
+
+## 0.37.1
+
+### Patch Changes
+
+- deb3462: Update typo in hero.md
+
+## 0.37.0
+
+### Minor Changes
+
+- 5aebf54: Adding line-height-normal typography atomic and updating relevant documentation.
+- c9e0b4a: Adding banner component and relevant documentation.
+- 5aebf54: Adding text-align-left typography atomic and updating relevant documentation.
+- c9e0b4a: Adding notification component and relevant documentation.
+
+### Patch Changes
+
+- 380d6d4: Updating form documentation page.
+- d1e4404: Fix typos in flex.md.
+- 13bd1cf: Add various accessibility fixes as a result of running automated axe/playwright tests.
+
+## 0.36.0
+
+### Minor Changes
+
+- 12ac95c: Updating website documentation to reflect recent changes.
+
+## 0.35.1
+
+### Patch Changes
+
+- e517d9a: Full screen button needn't show up on mobile.
+
+## 0.35.0
+
+### Minor Changes
+
+- a0dd25b: Adding token documentation pages.
+
 ## 0.34.0
 
 ### Minor Changes

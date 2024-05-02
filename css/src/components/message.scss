@@ -1,0 +1,74 @@
+$message-font-size-xs: $font-size-9 !default;
+$message-font-size-sm: $font-size-8 !default;
+$message-font-size-md: $font-size-7 !default;
+
+$message-background-color: $body-background !default;
+$message-gap-size: $layout-1 !default;
+$message-spacer-md: $spacer-3 !default;
+$message-spacer-lg: $spacer-5 !default;
+
+$message-sender-width: 85% !default;
+$message-sender-background-color: $primary-background !default;
+
+$message-border-radius: $border-radius-lg !default;
+$message-border: $border-width solid $border !default;
+
+$message-content-padding: $spacer-5 !default;
+$message-content-padding-sm: 0.875rem !default;
+
+.message {
+	display: grid;
+	grid-template:
+		'. message-time'
+		'message-persona message-content';
+	grid-template-columns: max-content minmax(0, 1fr);
+	gap: $message-gap-size;
+	font-size: $message-font-size-md;
+	line-height: $line-height-normal;
+
+	.message-time {
+		grid-area: message-time;
+		font-size: $message-font-size-xs;
+	}
+
+	.message-persona {
+		grid-area: message-persona;
+		margin-block-start: $message-spacer-lg;
+	}
+
+	.message-content {
+		grid-area: message-content;
+		padding: $message-content-padding;
+		border: $message-border;
+		border-radius: $message-border-radius;
+		background-color: $message-background-color;
+
+		.message-content-header {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			margin-block-end: $message-spacer-md;
+
+			.message-content-options {
+				justify-self: flex-end;
+				margin-inline-end: $message-spacer-md;
+			}
+		}
+	}
+
+	&.message-sender {
+		justify-self: flex-end;
+		width: $message-sender-width;
+
+		.message-content {
+			background-color: $message-sender-background-color;
+		}
+	}
+
+	&.message-sm {
+		font-size: $message-font-size-sm;
+
+		.message-content {
+			padding: $message-content-padding-sm;
+		}
+	}
+}

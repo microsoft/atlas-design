@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-site",
-	"version": "0.34.0",
+	"version": "0.46.2",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
@@ -15,21 +15,21 @@
 		"lint-fix": "eslint . --ext .ts --fix"
 	},
 	"devDependencies": {
-		"eslint": "^8.24.0",
-		"@typescript-eslint/eslint-plugin": "^5.39.0",
-		"@typescript-eslint/parser": "^5.39.0",
-		"eslint-plugin-import": "^2.26.0",
-		"@microsoft/atlas-css": "^3.27.0",
-		"eslint-config-prettier": "^8.5.0",
-		"parcel": "^2.7.0",
-		"lightningcss": "1.16.0",
-		"@parcel/transformer-sass": "^2.7.0",
-		"@microsoft/parcel-transformer-markdown-html": "^2.6.0",
-		"fs-extra": "^10.1.0",
+		"eslint": "^8.43.0",
+		"@typescript-eslint/eslint-plugin": "^5.60.1",
+		"@typescript-eslint/parser": "^5.60.1",
+		"eslint-plugin-import": "^2.27.5",
+		"@microsoft/atlas-css": "^3.41.0",
+		"eslint-config-prettier": "^8.8.0",
+		"parcel": "^2.11.0",
+		"lightningcss": "1.21.1",
+		"@parcel/transformer-sass": "^2.11.0",
+		"@microsoft/parcel-transformer-markdown-html": "^2.7.0",
+		"fs-extra": "^11.1.1",
 		"front-matter": "^4.0.2",
-		"typescript": "^4.8.4"
+		"typescript": "^5.1.5"
 	},
 	"dependencies": {
-		"@microsoft/atlas-js": "^1.5.3"
+		"@microsoft/atlas-js": "^1.9.0"
 	}
 }

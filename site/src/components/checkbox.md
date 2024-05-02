@@ -2,7 +2,7 @@
 title: Checkbox
 description: The checkbox component in the Atlas Design System
 template: standard
-figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fnode-id%3D855%253A1014"
+figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fnode-id%3D509%253A616%26t%3DMi9Bg3tcqIe8LtND-1
 classType: Component
 classPrefixes:
   - checkbox
@@ -58,14 +58,40 @@ Here is an example of a group of checkboxes. Default spacing is added between ea
 </label>
 ```
 
-### Size
+### Sizes
 
-`.checkbox-sm` is used with `.checkbox` to display a smaller checkbox.
+`.checkbox-sm`/`.checkbox-lg` can be used to make a checkbox bigger or smaller than the default.
 
 ```html
 <label class="checkbox checkbox-sm">
-	<input type="checkbox" checked name="checkbox-small" />
+	<input type="checkbox" name="checkbox-size" />
 	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-	<span class="checkbox-text">Checked</span>
+	<span class="checkbox-text">Checkbox small</span>
+</label>
+<label class="checkbox">
+	<input type="checkbox" name="checkbox-size" />
+	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+	<span class="checkbox-text">Checkbox default</span>
+</label>
+<label class="checkbox checkbox-lg">
+	<input type="checkbox" name="checkbox-size" />
+	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+	<span class="checkbox-text">Checkbox large</span>
+</label>
+```
+
+### Validation states
+
+We can use `.is-invalid` to reflect an invalid validation state. Note that the state should also be display to the user in another way, since by itself color is not enough.
+
+| State   | Class                   | Example                                                                                                                                                                                                               |
+| ------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Invalid | `.checkbox .is-invalid` | <label class="checkbox is-invalid"><input type="checkbox" name="checkbox-validation" /><span class="checkbox-check" role="presentation" aria-hidden="true"></span><span class="checkbox-text">Checkbox</span></label> |
+
+```html
+<label class="checkbox is-invalid">
+	<input type="checkbox" name="checkbox-validation-demo" />
+	<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+	<span class="checkbox-text">Checkbox</span>
 </label>
 ```

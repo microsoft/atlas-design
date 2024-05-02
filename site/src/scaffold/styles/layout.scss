@@ -4,78 +4,16 @@ html {
 	font-size: $document-font-size;
 }
 
-$size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
-
-#body {
-	width: 100%;
-	height: 100%;
-	max-width: 100%;
-	overflow-x: hidden;
-
-	@include tablet {
-		display: grid;
-		grid-template: auto 1fr auto auto / $size-bar-width 1fr; // [ rows / columns ]
-		grid-template-areas:
-			'header header'
-			'nav main'
-			'nav aside'
-			'footer footer';
-	}
-
-	@include desktop {
-		display: grid;
-		grid-template: auto 1fr auto auto / $size-bar-width 1fr $size-bar-width; // [ rows / columns ]
-
-		grid-template-areas:
-			'header header header'
-			'nav main aside'
-			'footer footer footer';
-	}
-
-	@include widescreen {
-		grid-template: auto 1fr auto auto / auto $size-bar-width #{$breakpoint-widescreen - $size-bar-width * 2} $size-bar-width auto; // [ rows / columns ]
-
-		grid-template-areas:
-			'header header header header header'
-			'. nav main aside .'
-			'footer footer footer footer footer';
-	}
-}
-
-#header,
-#nav,
-#aside,
-#footer {
+#header-body {
 	padding-block: $layout-2;
-	padding-inline: $gap-size;
 }
-
-#header {
-	grid-area: header;
-}
-
-#nav {
-	grid-area: nav;
-	padding-inline-end: 0;
-}
-
-#aside {
-	grid-area: aside;
-	padding-inline-start: 0;
-}
-
-#footer {
-	grid-area: footer;
-	background-color: $secondary-background;
-}
-
-// Inside #main
 
 #main {
 	display: grid;
 	grid-area: main;
 	min-height: 90vh;
-	padding: $layout-3;
+	padding-block: $layout-3;
+	padding: $layout-gap;
 	background-color: $body-background;
 	gap: $layout-3;
 	grid-template: auto 1fr / 9fr 1fr;
@@ -92,15 +30,17 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 }
 
 #breadcrumbs-holder {
-	grid-area: breadcrumbs;
 	display: flex;
 	align-items: center;
 }
 
 #actions-holder {
-	grid-area: actions;
 	display: flex;
 	justify-content: flex-end;
+}
+
+.h1-inverse-spacer {
+	margin-block-end: -2rem;
 }
 
 #article {
@@ -122,94 +62,59 @@ $size-bar-width: 300px - strip-units($gap-size) * $document-font-size;
 
 // For debugging layout purposes only
 
-@mixin debug($content) {
+@mixin debug($content, $right-align: false) {
 	position: relative;
 	&::after {
+		inset-block-start: 0;
+		@if $right-align {
+			inset-inline-end: 0;
+		} @else {
+			inset-inline-start: 0;
+		}
 		padding: 4px 8px;
 		border-radius: 1px;
 		position: absolute;
-		top: 0;
-		left: 0;
-		background-color: red;
-		color: white;
-		font-size: 12px;
+
+		background-color: $success;
+		color: $success-invert;
+		font-family: monospace;
+		font-size: 18px;
 		content: $content;
 	}
 }
 
 html.debug {
-	#header,
-	#main,
-	#body,
-	#nav,
-	#aside,
-	#footer,
-	#breadcrumbs-holder,
-	#actions-holder,
-	#article {
-		outline: 1px solid $border;
+	.layout-body {
+		@include debug('.layout-body', true);
 	}
 
-	#header {
-		@include debug('header');
+	.layout-body-main {
+		@include debug('.layout-body-main');
 	}
 
-	#main {
-		@include debug('main');
+	.layout-body-menu {
+		@include debug('.layout-body-menu');
 	}
 
-	#breadcrumbs-holder {
-		@include debug('breadcrumbs-holder');
+	.layout-body-aside {
+		@include debug('.layout-body-aside');
 	}
 
-	#actions-holder {
-		@include debug('actions-holder');
+	.layout-body-header {
+		@include debug('.layout-body-header');
 	}
 
-	#body {
-		@include debug('body');
+	.layout-body-footer {
+		@include debug('.layout-body-footer');
 	}
 
-	#article {
-		@include debug('article');
-	}
-
-	#nav {
-		@include debug('nav');
-		// to animate the placement of the navigation
-		// transform: translate(calc(-100% + 2rem), 0);
-		// transition: transform 200ms linear;
-	}
-
-	#aside {
-		@include debug('aside');
-	}
-
-	#footer {
-		@include debug('footer');
-	}
-}
-
-#header {
-	display: grid;
-	grid-template-areas: 'header-body header-body header-body header-body header-body';
-
-	@include widescreen {
-		grid-template-columns: auto $size-bar-width #{$breakpoint-widescreen - $size-bar-width * 2} $size-bar-width auto;
-		grid-template-areas: '. header-body header-body header-body header-body';
-	}
-}
-
-#header-body {
-	grid-area: header-body;
-	@include widescreen {
-		padding-inline: 1.5rem;
+	.layout-body-hero {
+		@include debug('.layout-body-hero');
 	}
 }
 
 .header-spacer {
 	width: 2px;
-
 	height: 100%;
 	border-left: 2px solid $text-subtle;
 	display: inline-block;

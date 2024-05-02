@@ -1,0 +1,101 @@
+$notification-background: $secondary-background !default;
+$notification-padding: $spacer-5 !default;
+
+$notification-font-size: $font-size-7 !default;
+$notification-color: $text !default;
+
+$notification-border-color: $control-border !default;
+$notification-border-width: $border-width !default;
+$notification-border-radius: $border-radius !default;
+
+$notification-icon-inline-spacing: 0.375em !default;
+$notification-icon-block-spacing: 0.2em !default;
+
+$notification-dismiss-margin: $spacer-2 !default;
+
+.notification {
+	display: grid;
+	position: relative;
+	padding: $notification-padding;
+	grid-template: auto / 1fr auto;
+	grid-template-areas: 'notification-content dismiss';
+	border: $notification-border-width solid $notification-border-color;
+	border-radius: $notification-border-radius;
+	outline-color: $text;
+	background-color: $notification-background;
+	color: $notification-color;
+	font-size: $notification-font-size;
+	line-height: $line-height-normal;
+	word-wrap: break-word;
+	word-break: break-word;
+
+	@each $name, $color-set in $colors {
+		$base: nth($color-set, $color-index-base);
+		$dark: nth($color-set, $color-index-dark);
+		$background: nth($color-set, $color-index-background);
+
+		&.notification-#{$name} {
+			border-color: $dark;
+			background-color: $background;
+			color: $dark;
+
+			&.is-loading::before {
+				border-color: transparent transparent $dark $dark;
+			}
+		}
+	}
+
+	&.is-loading {
+		color: transparent;
+
+		> :first-child {
+			margin-inline-start: calc($notification-padding + 0.375em);
+		}
+
+		&::before {
+			@include loader;
+
+			position: absolute;
+			inset-block-start: $notification-padding;
+			inset-inline-start: $notification-padding;
+			border-color: transparent transparent $notification-color $notification-color;
+		}
+	}
+
+	.notification-content {
+		grid-area: notification-content;
+
+		.notification-title,
+		a:not(.button) {
+			color: currentColor;
+			font-weight: $weight-semibold;
+		}
+
+		a:not(.button) {
+			.theme-high-contrast & {
+				color: $hyperlink;
+			}
+		}
+
+		.notification-title {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			margin-block-end: $layout-1;
+
+			.icon {
+				flex-shrink: 0;
+				align-self: start;
+				margin-inline-end: $notification-icon-inline-spacing;
+				margin-block-start: $notification-icon-block-spacing;
+			}
+		}
+	}
+
+	.notification-dismiss {
+		@include dismiss-square;
+
+		grid-area: dismiss;
+		margin-inline-start: $notification-dismiss-margin;
+	}
+}

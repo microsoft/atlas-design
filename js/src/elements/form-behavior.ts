@@ -5,8 +5,13 @@ export const defaultMessageStrings = {
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
 	inputRequired: '{inputLabel} is required.',
+	notAuthenticated:
+		'You are not authenticated. Please refresh the page and try again. If this issue persists, please log out and log back in.',
+	notAuthorized:
+		'You are not authorized to make this response. If you believe this to be in error, please refresh the page and try again.',
 	pleaseFixTheFollowingIssues: 'Please fix the following issues to continue:',
 	thereAreNoEditsToSubmit: 'There are no edits to submit.',
+	tooManyRequests: 'You have sent too many requests. Please wait a few minutes and try again.',
 	weEncounteredAnUnexpectedError:
 		'We encountered an unexpected error. Please try again later. If this issue continues, please contact site support.'
 };
@@ -17,16 +22,7 @@ export class FormBehaviorElement extends HTMLElement {
 	toDispose: (() => void)[] = [];
 	isDirty = false;
 	commitTimeout = 0;
-	locStrings = Object.assign(
-		{},
-		defaultMessageStrings,
-		Array.from(this.attributes)
-			.filter(a => a.name.startsWith('loc-'))
-			.reduce((map: { [key: string]: string }, a) => {
-				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
-				return map;
-			}, {})
-	);
+	locStrings = defaultMessageStrings;
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
@@ -57,15 +53,25 @@ export class FormBehaviorElement extends HTMLElement {
 		return this.hasAttribute('new');
 	}
 
+	// Currently only used for Feedback form-behavior.
+	// Use the `nosubmit` attibute to bypass automatic form submission if a form contains a body but does not need to send a POST request.
+	get noSubmit() {
+		return this.hasAttribute('nosubmit');
+	}
+
 	connectedCallback() {
 		const form = this.parentElement;
 		if (!(form instanceof HTMLFormElement)) {
 			return;
 		}
 
+		this.locStrings = this.getLocaleStrings();
 		form.setAttribute('novalidate', '');
 		const errorSummaryContainer = document.createElement('div');
 		errorSummaryContainer.setAttribute('data-form-error-container', '');
+		if (form.hasAttribute('data-hide-validation-banner')) {
+			errorSummaryContainer.hidden = true;
+		}
 		this.insertAdjacentElement('afterend', errorSummaryContainer);
 
 		this.initialData = new FormData(form);
@@ -87,6 +93,17 @@ export class FormBehaviorElement extends HTMLElement {
 		for (const dispose of this.toDispose) {
 			dispose();
 		}
+	}
+
+	getLocaleStrings() {
+		const formLocaleStrings = Array.from(this.attributes)
+			.filter(a => a.name.startsWith('loc-'))
+			.reduce((map: { [key: string]: string }, a) => {
+				map[kebabToCamelCase(a.name.substring(4)) as keyof LocStrings] = a.value;
+				return map;
+			}, {});
+
+		return Object.assign({}, defaultMessageStrings, formLocaleStrings);
 	}
 
 	subscribe(target: EventTarget, type: string, listener: EventListenerObject) {
@@ -186,9 +203,9 @@ export class FormBehaviorElement extends HTMLElement {
 		let isNavigating = false;
 		try {
 			this.submitting = true;
-			setBusySubmitButton(form, this.submitting);
+			setBusySubmitButton(event, form, this.submitting);
 			const result = await this.validateForm(form);
-			if (!result.valid) {
+			if (!result.valid || this.noSubmit) {
 				return;
 			}
 
@@ -217,13 +234,23 @@ export class FormBehaviorElement extends HTMLElement {
 				detail: {
 					url,
 					init,
-					form
+					form,
+					callback: async () => {}
 				},
 				bubbles: true,
 				cancelable: true
 			});
 
 			const cancelled = !this.dispatchEvent(beforeSubmitEvent);
+			if (beforeSubmitEvent.detail.callback) {
+				try {
+					await beforeSubmitEvent.detail.callback();
+				} catch (error) {
+					// on error return and allow for custom error handling
+					return;
+				}
+			}
+
 			if (cancelled) {
 				return;
 			}
@@ -252,8 +279,17 @@ export class FormBehaviorElement extends HTMLElement {
 				const errorText = document.createElement('li');
 				errorText.innerText = this.locStrings.weEncounteredAnUnexpectedError;
 				// custom text for version mismatch
+				if (response.status === 401) {
+					errorText.innerText = this.locStrings.notAuthenticated;
+				}
+				if (response.status === 403) {
+					errorText.innerText = this.locStrings.notAuthorized;
+				}
 				if (response.status === 412) {
 					errorText.innerText = this.locStrings.contentHasChanged;
+				}
+				if (response.status === 429) {
+					errorText.innerText = this.locStrings.tooManyRequests;
 				}
 				this.dispatchEvent(
 					new CustomEvent('submission-error', {
@@ -272,7 +308,7 @@ export class FormBehaviorElement extends HTMLElement {
 			}
 		} finally {
 			this.submitting = isNavigating;
-			setBusySubmitButton(form, this.submitting);
+			setBusySubmitButton(event, form, this.submitting);
 		}
 	}
 
@@ -360,7 +396,7 @@ export class FormBehaviorElement extends HTMLElement {
 		const errors: FormValidationError[] = [];
 		const { errorAlert, errorList } = this.getErrorAlert(form);
 
-		if (displayValidity) {
+		if (displayValidity || form.hasAttribute('data-hide-validation-banner')) {
 			errorAlert.hidden = true;
 			errorList.innerHTML = '';
 		}
@@ -527,7 +563,11 @@ export class FormBehaviorElement extends HTMLElement {
 				errorList.appendChild(child);
 
 				if (!isCustomElement) {
-					input.classList.add(`${input.localName}-danger`);
+					if (input.type === 'checkbox') {
+						input.closest('label.checkbox')?.classList.add(`is-invalid`);
+					} else {
+						input.classList.add(`${input.localName}-danger`);
+					}
 				}
 			}
 
@@ -565,8 +605,11 @@ interface LocStrings {
 	inputMaxLength: string;
 	inputMinLength: string;
 	inputRequired: string;
+	notAuthenticated: string;
+	notAuthorized: string;
 	pleaseFixTheFollowingIssues: string;
 	thereAreNoEditsToSubmit: string;
+	tooManyRequests: string;
 	weEncounteredAnUnexpectedError: string;
 }
 
@@ -618,10 +661,15 @@ function normalizeInputValue(target: EventTarget | null) {
 	}
 }
 
-function setBusySubmitButton(form: HTMLFormElement, isLoading: boolean) {
+function setBusySubmitButton(event: Event, form: HTMLFormElement, isLoading: boolean) {
+	const submitter = (event as SubmitEvent).submitter;
 	Array.from(form.elements).forEach(element => {
 		if (element instanceof HTMLButtonElement && element.type === 'submit') {
-			element.classList.toggle('is-loading', isLoading);
+			if (submitter && submitter === element) {
+				element.classList.toggle('is-loading', isLoading);
+			} else {
+				element.disabled = isLoading;
+			}
 		}
 	});
 }
@@ -740,7 +788,11 @@ export function collectCustomElementsByName(form: HTMLFormElement): Element[] {
 }
 
 function clearInputErrorBorder(input: HTMLValueElement) {
-	input.classList.remove(`${input.localName}-danger`);
+	if (input.type === 'checkbox') {
+		input.closest('label.checkbox')?.classList.remove(`is-invalid`);
+	} else {
+		input.classList.remove(`${input.localName}-danger`);
+	}
 }
 
 function handleSubmitButtonAction(event: Event) {

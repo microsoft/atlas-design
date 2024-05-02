@@ -116,7 +116,6 @@ $card-column-gap: $spacer-5 !default;
 		margin: 0;
 		padding: 0;
 		border: none;
-		background-color: $card-background;
 		color: $primary;
 		font-size: $font-size-7;
 		font-weight: $weight-semibold;
@@ -127,7 +126,7 @@ $card-column-gap: $spacer-5 !default;
 		grid-area: title;
 
 		&:first-child {
-			margin-top: none;
+			margin-block-start: none;
 		}
 
 		&:only-child {
@@ -169,7 +168,7 @@ $card-column-gap: $spacer-5 !default;
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: space-between;
-		border-top: 1px solid $border;
+		border-block-start: 1px solid $border;
 		margin-inline: $card-padding;
 
 		// Artificial alignment of card item, intended for use on when there's only a single .card-footer-items

@@ -3,7 +3,7 @@
  */
 $themes: (
 	'light': (
-		'text': $palette-grey-120,
+		'text': $palette-grey-130,
 		'text-subtle': $palette-grey-90,
 		'text-invert': $palette-white,
 		'text-glow-high-contrast': $palette-grey-120,
@@ -102,7 +102,9 @@ $themes: (
 		'facepile-teal': $palette-turqoise-60,
 		'facepile-blue': $palette-blue-50,
 		'gradient-text-purple': $palette-purple-b,
-		'gradient-text-blue': $palette-blue-70
+		'gradient-text-blue': $palette-blue-70,
+		'gradient-vivid-start': $palette-purple-c,
+		'gradient-vivid-end': $palette-blue-50
 	),
 	'dark': (
 		'text': $palette-grey-30,
@@ -204,7 +206,9 @@ $themes: (
 		'facepile-teal': $palette-turqoise-40,
 		'facepile-blue': $palette-blue-40,
 		'gradient-text-purple': $palette-purple-a,
-		'gradient-text-blue': $palette-blue-a
+		'gradient-text-blue': $palette-blue-a,
+		'gradient-vivid-start': $palette-purple-c,
+		'gradient-vivid-end': $palette-blue-30
 	),
 	'high-contrast': (
 		'text': $palette-white,
@@ -306,7 +310,9 @@ $themes: (
 		'facepile-teal': $palette-turqoise-30,
 		'facepile-blue': $palette-blue-30,
 		'gradient-text-purple': $white-static,
-		'gradient-text-blue': $white-static
+		'gradient-text-blue': $white-static,
+		'gradient-vivid-start': $white-static,
+		'gradient-vivid-end': $white-static
 	)
 ) !default;
 //@end-sass-export-section

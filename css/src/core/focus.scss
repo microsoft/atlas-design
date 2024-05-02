@@ -33,3 +33,13 @@
 		}
 	}
 }
+
+:where(.is-focused) {
+	@extend %focus;
+
+	&.has-inner-focus,
+	&.inner-focus {
+		outline-color: currentColor;
+		outline-offset: -$focus-width;
+	}
+}

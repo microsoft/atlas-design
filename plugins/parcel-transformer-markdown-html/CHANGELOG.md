@@ -1,5 +1,36 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.7.1
+
+### Patch Changes
+
+- 26c9089: Updating dependencies
+
+## 2.7.0
+
+### Minor Changes
+
+- 5708e1f: Update to allow a hero element to be rendered if yaml front matter containers `hero: true`.
+
+### Patch Changes
+
+- Updated dependencies [46e987b]
+- Updated dependencies [5708e1f]
+  - @microsoft/atlas-css@3.38.0
+
+## 2.6.1
+
+### Patch Changes
+
+- 13bd1cf: Add various accessibility fixes as a result of running automated axe/playwright tests.
+- Updated dependencies [5aebf54]
+- Updated dependencies [afc478a]
+- Updated dependencies [c9e0b4a]
+- Updated dependencies [5aebf54]
+- Updated dependencies [86ac418]
+- Updated dependencies [c9e0b4a]
+  - @microsoft/atlas-css@3.31.0
+
 ## 2.6.0
 
 ### Minor Changes

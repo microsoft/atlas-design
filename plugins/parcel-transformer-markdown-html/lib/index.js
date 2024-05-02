@@ -20,7 +20,8 @@ const languageDisplayNames = {
 	'atomics-filter': 'Atomics',
 	atomics: 'Atomics',
 	'abut-html': 'HTML',
-	'html-no-indent': 'HTML'
+	'html-no-indent': 'HTML',
+	'html-no-example': 'HTML'
 };
 
 let filterIds = 0;
@@ -37,7 +38,7 @@ function createFilterableCodeBlock(code, language, displayName) {
 			placeholder="Filter ..."
 			type="search" />
 		</div>
-		<div class="code-block-body max-height-30vh overflow-y-scroll">
+		<div class="code-block-body max-height-30vh overflow-y-scroll inner-focus" data-focusable-if-scrollable>
 			<pre><code data-code-filter-code="${filterIds}">${code}</code></pre>
 		</div>
 	</div>`;
@@ -50,17 +51,26 @@ const markedOptions = {
 	heading(text, level) {
 		const id = text.toLowerCase().replace(/[^\w]+/g, '-');
 
-		return `<div class="markdown">
-			<h${level} id="${id}">
-			<a name="${id}" href="#${id}">
+		return `
+		<!-- heading-capture-outer-begin -->
+		<div class="markdown">
+			<a href="#${id}" aria-label="Section titled: ${text}">
 				<span class="heading-anchor"></span>
 			</a>
-				${text}
+			<h${level} id="${id}">
+				<!-- heading-capture-text-begin -->${text}<!-- heading-capture-text-end -->
 			</h${level}>
-		</div>`;
+		</div>
+		<!-- heading-capture-outer-end -->
+		`;
 	},
 	code(code, language) {
 		const fullWidth = language === 'html-no-indent';
+		let provideExample = true;
+		if (language === 'html-no-example') {
+			language = 'html';
+			provideExample = false;
+		}
 		let spacing = 'margin-top-sm';
 		if (language === 'abut-html' || language === 'html-no-indent') {
 			language = 'html';
@@ -68,7 +78,7 @@ const markedOptions = {
 		if (language === 'abut-html') {
 			spacing = '';
 		}
-		const elementExample = createExample(language, code, fullWidth);
+		const elementExample = provideExample ? createExample(language, code, fullWidth) : '';
 
 		const displayName =
 			language in languageDisplayNames ? languageDisplayNames[language] : language;
@@ -81,8 +91,10 @@ const markedOptions = {
 				<div class="code-block-header">
 					<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
 				</div>
-				<div class="code-block-body">
-					<pre><code>${hljs.highlight(code, { language }).value}</code></pre>
+				<div class="code-block-body inner-focus">
+					<pre class="inner-focus" data-focusable-if-scrollable><code>${
+						hljs.highlight(code, { language }).value
+					}</code></pre>
 				</div>
 			</div>
 		`;
@@ -105,7 +117,7 @@ const markedOptions = {
 	},
 	table(header, body) {
 		return `
-			<div class="markdown table-wrapper margin-top-sm">
+			<div class="markdown table-wrapper margin-top-sm inner-focus" data-focusable-if-scrollable>
 				<table class="table">
 					<thead>${header}</thead>
 					<tbody>${body}</tbody>
@@ -124,7 +136,8 @@ marked.use({
 	smartLists: true,
 	smartypants: false,
 	xhtml: false,
-	langPrefix: 'lang'
+	headerIds: false,
+	mangle: false
 });
 
 module.exports = new Transformer({
@@ -158,7 +171,7 @@ module.exports = new Transformer({
 		const code = await asset.getCode();
 		const { body, attributes } = frontMatter(code);
 
-		const parsedCode = attributes.import
+		let parsedCode = attributes.import
 			? await options.inputFS
 					.readFile(path.join(process.cwd(), attributes.import), 'utf-8')
 					.then(content => marked(content))
@@ -210,6 +223,13 @@ module.exports = new Transformer({
 				asset.invalidateOnFileChange(tocFilename);
 			}
 
+			let hero = false;
+			if (attributes.hero) {
+				const { h1, p, html } = extractH1AndFirstP(parsedCode);
+				parsedCode = html;
+				hero = { h1, description: p };
+			}
+
 			asset.invalidateOnFileChange(templateFilename);
 			const githubLink = buildGithubLink(asset.filePath);
 			asset.setCode(
@@ -221,7 +241,8 @@ module.exports = new Transformer({
 					...attributes,
 					tokens,
 					cssTokenSource,
-					figmaEmbed
+					figmaEmbed,
+					hero
 				})
 			);
 		} else {
@@ -240,4 +261,24 @@ function createExample(language, code, noIndent = false) {
 		return `<div class="example padding-block-md">${marked(code)}</div>`;
 	}
 	return '';
+}
+
+function extractH1AndFirstP(htmlString) {
+	const entireH1Regexp =
+		/<!-- heading-capture-outer-begin -->\s*([\s\S]*?)\s*<!-- heading-capture-outer-end -->/i;
+	const entireH1 = htmlString.match(entireH1Regexp);
+	const entireh1Match = entireH1 ? entireH1[1].toString() : null;
+
+	// For now, only matchin the text in the first full paragraph.
+	const pMatch = htmlString.match(/<p>(.*?)<\/p>/);
+	const p = pMatch ? pMatch[1] : null;
+
+	const h1Match = htmlString.match(
+		/<!-- heading-capture-text-begin -->\s*([\s\S]*?)\s*<!-- heading-capture-text-end -->/i
+	);
+	const h1 = h1Match ? h1Match[1].toString() : null;
+	const html = htmlString
+		.replaceAll(entireh1Match, '')
+		.replace(p, '<div class="h1-inverse-spacer"></div>');
+	return { h1, p, html };
 }

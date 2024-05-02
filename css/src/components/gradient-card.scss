@@ -1,0 +1,14 @@
+$gradient-card-padding: $layout-2 !default;
+$gradient-card-border-radius: $border-radius-lg !default; //6px
+
+.gradient-card {
+	border: $border-width-md solid transparent;
+	border-radius: $gradient-card-border-radius;
+	background: linear-gradient(90deg, $gradient-vivid-start, $gradient-vivid-end) border-box;
+
+	.gradient-card-content {
+		padding: $gradient-card-padding;
+		border-radius: inherit;
+		background-color: $body-background;
+	}
+}

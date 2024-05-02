@@ -37,7 +37,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		display: table-cell;
 		word-wrap: break-word;
 		padding: $table-cell-vertical-padding $table-cell-horizontal-padding;
-		border-top: 1px solid $table-border-dark;
+		border-block-start: 1px solid $table-border-dark;
 		line-height: 1.5;
 		vertical-align: top;
 	}
@@ -62,11 +62,11 @@ $table-caption-spacing: $letter-spacing-medium !default;
 
 			thead tr:nth-child(1) th,
 			tbody tr:nth-child(1) td {
-				border-top: none;
+				border-block-start: none;
 			}
 
 			thead tr > th:last-child {
-				border-bottom: 1px solid $table-border-dark;
+				border-block-end: 1px solid $table-border-dark;
 			}
 		}
 	}

@@ -1,5 +1,57 @@
 # @microsoft/atlas-js
 
+## 1.9.1
+
+### Patch Changes
+
+- 2dd481b: Add try catch to async before submit to avoid the console errors
+
+## 1.9.0
+
+### Minor Changes
+
+- 0996a70: Support async form before submit handler
+
+## 1.8.0
+
+### Minor Changes
+
+- 334a98f: Add a nosubmit attribute to form-behavior
+
+## 1.7.1
+
+### Patch Changes
+
+- 5380254: Defer form behavior locale strings from loading until after being added to the DOM.
+
+## 1.7.0
+
+### Minor Changes
+
+- 047d7be: Add handling of form submission error state in form behavior
+
+### Patch Changes
+
+- ecd4287: Update LocStrings interface to include added error states.
+
+## 1.6.0
+
+### Minor Changes
+
+- ce5e971: Adding .dismiss component and relevant documentation.
+
+## 1.5.6
+
+### Patch Changes
+
+- 081512f: Add submitter check to ensure only one submit button displays loading state on forms with multiple submit buttons.
+
+## 1.5.5
+
+### Patch Changes
+
+- 12ac95c: Updating form behavior validation so it validates checkboxes correctly and provides an option to hide an error banner.
+
 ## 1.5.4
 
 ### Patch Changes

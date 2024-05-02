@@ -1,22 +1,22 @@
 // Orientation
 
 @mixin orientation-portrait {
-	@media screen and (max-aspect-ratio: 1/1),
-		screen and (min-resolution: 120dpi) and (max-aspect-ratio: 1/1) {
+	@media screen and (aspect-ratio <= 1/1),
+		screen and (resolution >= 120dpi) and (aspect-ratio <= 1/1) {
 		@content;
 	}
 }
 
 @mixin orientation-landscape {
-	@media screen and (min-aspect-ratio: 1/1),
-		screen and (min-resolution: 120dpi) and (min-aspect-ratio: 1/1) {
+	@media screen and (aspect-ratio >= 1/1),
+		screen and (resolution >= 120dpi) and (aspect-ratio >= 1/1) {
 		@content;
 	}
 }
 
 @mixin orientation-square {
-	@media screen and (aspect-ratio: 1/1),
-		screen and (min-resolution: 120dpi) and (aspect-ratio: 1/1) {
+	@media screen and (aspect-ratio <= 1/1),
+		screen and (resolution >= 120dpi) and (aspect-ratio <= 1/1) {
 		@content;
 	}
 }
@@ -43,13 +43,19 @@
 
 // Please avoid using this mixin if possible. It doesn't follow the mobile-first approach to writing CSS.
 @mixin discouraged-mobile {
-	@media screen and (max-width: $breakpoint-tablet - 1px) {
+	@media screen and (max-width: ($breakpoint-tablet - 1px)) {
 		@content;
 	}
 }
 
 @mixin print {
 	@media print {
+		@content;
+	}
+}
+
+@mixin prefers-reduced-motion {
+	@media (prefers-reduced-motion: reduce) {
 		@content;
 	}
 }

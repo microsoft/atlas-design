@@ -1,0 +1,48 @@
+.burger {
+	display: block;
+	appearance: none;
+	border: none;
+	background: transparent;
+	width: 48px;
+	height: 48px;
+	border-radius: $border-radius;
+	outline-color: $text;
+	cursor: pointer;
+
+	&[aria-expanded='true'] {
+		outline-color: $text-invert;
+	}
+
+	&:not(.burger-expanded):hover {
+		background-color: $body-background-medium;
+	}
+
+	.burger-top,
+	.burger-middle,
+	.burger-bottom {
+		transition: transform 3s cubic-bezier(0.175, 0.885, 0.32, 1.175);
+		display: block;
+		border-radius: 4px;
+		border-top: 4px solid $text;
+	}
+
+	.burger-middle {
+		margin-top: 4px;
+	}
+
+	.burger-bottom {
+		margin-top: 4px;
+	}
+
+	&.burger-expanded {
+		.burger-top {
+			transform: rotate(45deg) translate(5px, 5px);
+		}
+		.burger-middle {
+			opacity: 0;
+		}
+		.burger-bottom {
+			transform: rotate(135deg) translate(-6px, 7px);
+		}
+	}
+}

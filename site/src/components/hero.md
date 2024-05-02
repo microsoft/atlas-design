@@ -33,7 +33,7 @@ At its most basic, a hero is comprised of two elements, a container with the `.h
 
 ## Permutations of the hero component
 
-While at its core, the hero is a spacing element, it also has some extra functionality built into it. Combinations of these modifers and subcomponents can be used together. You can visit the [hero patterns page](../patterns/hero.md) to get inspiration or view common combinations.
+While at its core, the hero is a spacing element, it also has some extra functionality built into it. Combinations of these modifiers and subcomponents can be used together. You can visit the [hero patterns page](../patterns/hero.md) to get inspiration or view common combinations.
 
 ## Hero background colors and patterns
 
@@ -98,6 +98,8 @@ Hero images are hidden in forced colors mode.
 
 **Images are currently not intended to scale or shrink. They are not shown on smaller or zoomed screens. For this reason, it's required that these images are presentational only. They should not contain words, subjects that might look naff if cut off, or anything essential to understanding the material of the page.**
 
+On pages with right to left direction, the position of the hero image will remain on the right. The text within the hero content will be right aligned. This behavior prevents any unintended negative side effects when the position of the image and content is reversed.
+
 ```html-no-indent
 <section
     class="hero hero-image border"
@@ -108,6 +110,31 @@ Hero images are hidden in forced colors mode.
 	<div class="hero-content">
 		<h2 class="font-size-h2">Hero</h2>
         <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	</div>
+</section>
+```
+
+Hero images with details
+
+This component variant overlays a container on the opposite side of the hero content. It can be used to accommodate more content within the hero section if necessary.  Note that to lay out the hero's children correctly across screen sizes, the hero component should also have the `.flex-direction-row-tablet` atomic.
+
+```html-no-indent
+<section
+    class="hero hero-image flex-direction-row-tablet border background-color-body-accent gradient-border-right gradient-border-body-accent"
+	style="
+        --hero-background-image-light: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
+		--hero-background-image-dark: url('https://learn.microsoft.com/en-us/media/learn/plans/skilling_plan_hero.png?branch=main');
+    ">
+	<div class="hero-content">
+		<h2 class="font-size-h2">Hero</h2>
+        <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	</div>
+	<div class="hero-details">
+		<div class="hero-details-card border border-radius-lg box-shadow-heavy padding-sm">
+			<p class="font-weight-bold">Some titles</p>
+			<p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+
 	</div>
 </section>
 ```
@@ -126,7 +153,7 @@ You can include a video or image by using the `.hero-background` sub-component, 
         <p class="margin-top-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
     <div class="hero-background">
-        <img src="https://via.placeholder.com/1920x1080/0000FF/808080">
+        <img alt="placeholder image" src="https://via.placeholder.com/1920x1080/0000FF/808080">
     </div>
 </section>
 ```

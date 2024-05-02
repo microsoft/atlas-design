@@ -27,8 +27,8 @@
 		"serve:css": "npm run start --workspace=@microsoft/atlas-css",
 		"screenshots:light": "npm run screenshots:light --workspace=@microsoft/atlas-integration",
 		"screenshots:all": "npm run screenshots:all --workspace=@microsoft/atlas-integration",
-		"integration-tests": "npm run test --workspace=@microsoft/atlas-integration",
-		"integration-tests:debug": "npm run test:debug --workspace=@microsoft/atlas-integration",
+		"integration": "npm run test --workspace=@microsoft/atlas-integration",
+		"integration:debug": "npm run test:debug --workspace=@microsoft/atlas-integration",
 		"show-report": "npm run show-report --workspace=@microsoft/atlas-integration",
 		"toc": "npm run toc --workspace=@microsoft/atlas-site",
 		"prettier": "prettier --write \"**/*.{scss,ts,js,json,yml,md}\"",
@@ -48,7 +48,8 @@
 	"workspaces": {
 		"packages": [
 			"css",
-			"plugins/*",
+			"plugins/parcel-transformer-markdown-html",
+			"plugins/stylelint-config-atlas",
 			"site",
 			"js",
 			"integration",
@@ -66,11 +67,12 @@
 		"scss"
 	],
 	"devDependencies": {
-		"@changesets/cli": "^2.25.0",
-		"@playwright/test": "^1.26.1",
+		"@changesets/cli": "^2.26.2",
+		"@parcel/transformer-sass": "^2.11.0",
+		"@playwright/test": "^1.35.1",
 		"husky": "4.3.8",
-		"lightningcss": "1.16.0",
-		"prettier": "^2.7.1",
+		"lightningcss": "1.21.1",
+		"prettier": "^2.8.8",
 		"pretty-quick": "^3.1.3"
 	},
 	"husky": {

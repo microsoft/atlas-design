@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-js",
-	"version": "1.5.4",
+	"version": "1.9.1",
 	"public": true,
 	"description": "Scripts backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"main": "dist/index.js",
@@ -33,16 +33,13 @@
 	"author": "Microsoft Corporation",
 	"license": "MIT",
 	"devDependencies": {
-		"eslint": "^8.24.0",
-		"eslint-plugin-import": "^2.26.0",
+		"eslint": "^8.43.0",
+		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-jasmine": "^4.1.3",
-		"eslint-plugin-jsdoc": "^39.3.6",
-		"eslint-plugin-security": "^1.5.0",
-		"rimraf": "^3.0.2",
-		"tslib": "^2.4.0",
-		"typescript": "^4.8.4"
-	},
-	"dependencies": {
-		"@github/tab-container-element": "^3.2.0"
+		"eslint-plugin-jsdoc": "^46.3.0",
+		"eslint-plugin-security": "^1.7.1",
+		"rimraf": "^5.0.1",
+		"tslib": "^2.6.0",
+		"typescript": "^5.1.5"
 	}
 }

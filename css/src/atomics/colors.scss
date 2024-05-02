@@ -9,12 +9,20 @@
 	$invert: nth($color-set, $color-index-invert);
 
 	.color-#{$name} {
-		color: $base !important;
+		@if $name == 'warning' {
+			color: $active !important;
+		} @else {
+			color: $base !important;
+		}
 	}
 
 	a.color-#{$name} {
 		&:hover {
-			color: $hover !important;
+			@if $name == 'warning' {
+				color: $active !important;
+			} @else {
+				color: $hover !important;
+			}
 		}
 
 		@include focus-visible {
@@ -85,6 +93,10 @@
 	color: currentColor !important;
 }
 
+.color-hyperlink {
+	color: $hyperlink !important;
+}
+
 .fill-current-color {
 	@include fill-current-color();
 }
@@ -125,7 +137,7 @@
 }
 
 .background-color-alternating-grey {
-	border-top: 1px solid $border-white-high-contrast;
+	border-block-start: 1px solid $border-white-high-contrast;
 	outline-color: $text !important;
 
 	&:nth-of-type(even) {
@@ -140,7 +152,7 @@
 }
 
 .background-color-alternating-grey-reversed {
-	border-top: 1px solid $border-white-high-contrast;
+	border-block-start: 1px solid $border-white-high-contrast;
 	outline-color: $text !important;
 
 	&:nth-of-type(even) {
@@ -159,6 +171,18 @@
 	background-color: $body-background-accent !important;
 }
 
+.background-color-body-accent-onhover {
+	&:hover,
+	&:focus-within {
+		outline-color: $text !important;
+		background-color: $body-background-accent !important;
+	}
+}
+
+.background-color-transparent {
+	background-color: transparent !important;
+}
+
 // Static colors - do not change with theme
 
 .color-white-static {
@@ -170,9 +194,11 @@
 }
 
 .background-color-white-static {
+	outline-color: $black-static !important;
 	background-color: $white-static !important;
 }
 
 .background-color-black-static {
+	outline-color: $white-static !important;
 	background-color: $black-static !important;
 }

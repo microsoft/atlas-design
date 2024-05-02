@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/parcel-transformer-markdown-html",
-	"version": "2.6.0",
+	"version": "2.7.1",
 	"license": "MIT",
 	"private": true,
 	"repository": {
@@ -9,15 +9,15 @@
 	},
 	"main": "lib/index.js",
 	"engines": {
-		"node": ">= 13.0.0",
+		"node": ">= 18.12.1",
 		"parcel": "^2.7.0"
 	},
 	"dependencies": {
-		"@microsoft/atlas-css": "^3.26.0",
-		"@parcel/plugin": "^2.7.0",
-		"@parcel/utils": "^2.7.0",
-		"marked": "^4.1.1",
-		"highlight.js": "^11.6.0",
+		"@microsoft/atlas-css": "^3.38.0",
+		"@parcel/plugin": "^2.11.0",
+		"@parcel/utils": "^2.11.0",
+		"marked": "^5.1.0",
+		"highlight.js": "^11.8.0",
 		"front-matter": "^4.0.2",
 		"mustache": "^4.2.0"
 	}

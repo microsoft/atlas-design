@@ -1,5 +1,23 @@
 # @microsoft/atlas-integration
 
+## 1.5.1
+
+### Patch Changes
+
+- 26c9089: Updating dependencies
+
+## 1.5.0
+
+### Minor Changes
+
+- ae05959: Add standardized message styles
+
+## 1.4.0
+
+### Minor Changes
+
+- 13bd1cf: Add automated accessibility testing to integration pipeline.
+
 ## 1.3.0
 
 ### Minor Changes

@@ -52,8 +52,19 @@ export function handleMockFormSubmit() {
 			e => {
 				e.preventDefault();
 
-				const formData = new FormData(form);
-				populateSubmittedFormData(formData, form);
+				if (form.hasAttribute('test-async-before-submit')) {
+					const customEvent = e as CustomEventInit<{ callback: () => Promise<void> }>;
+					if (customEvent.detail) {
+						customEvent.detail.callback = async () => {
+							await new Promise(resolve => setTimeout(resolve, 3000));
+							const formData = new FormData(form);
+							populateSubmittedFormData(formData, form);
+						};
+					}
+				} else {
+					const formData = new FormData(form);
+					populateSubmittedFormData(formData, form);
+				}
 			},
 			{ capture: true }
 		);

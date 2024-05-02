@@ -1,0 +1,189 @@
+@use 'sass:math';
+
+$quarter-widescreen: math.div($breakpoint-widescreen, 4);
+$half-widescreen: math.div($breakpoint-widescreen, 2);
+$three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
+
+.layout {
+	display: flex;
+	flex-direction: column;
+	max-inline-size: 100vw;
+	overflow-x: hidden;
+
+	// --layout-gutter by default, see tokens/layout.scss
+	#{$layout-gap-custom-property-name}: $layout-gap;
+	#{$layout-gap-scalable-custom-property-name}: $layout-gap;
+
+	@include widescreen {
+		#{$layout-gap-scalable-custom-property-name}: $layout-widescreen-gap;
+	}
+}
+
+.layout-padding {
+	padding-inline: var(#{$layout-gap-custom-property-name}) !important;
+}
+
+.layout-margin {
+	margin-inline: var(#{$layout-gap-scalable-custom-property-name}) !important;
+}
+
+.layout-body {
+	display: grid;
+	width: 100%;
+	max-width: 100%;
+}
+
+// grid-area values
+
+.layout-body-header {
+	grid-area: header;
+}
+
+.layout-body-hero {
+	grid-area: hero;
+}
+
+.layout-body-menu {
+	grid-area: menu;
+}
+
+.layout-body-main {
+	grid-area: main;
+}
+
+.layout-body-aside {
+	grid-area: aside;
+}
+
+.layout-body-footer {
+	grid-area: footer;
+}
+
+.layout-body-hero,
+.layout-body-main,
+.layout-body-footer,
+.layout-body-aside,
+.layout-body-menu {
+	&:empty {
+		display: none;
+	}
+}
+
+.layout,
+.layout.layout-single {
+	.layout-body {
+		grid-template: auto auto auto 1fr auto auto / 1fr;
+		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
+	}
+}
+
+.layout.layout-holy-grail {
+	.layout-body {
+		grid-template: auto auto auto 1fr auto auto / 1fr;
+		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
+
+		@include tablet {
+			grid-template: auto auto 1fr auto auto / 1fr 2fr;
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'menu main'
+				'menu aside'
+				'footer footer';
+		}
+
+		@include desktop {
+			grid-template: auto auto 1fr auto / 1fr 2fr 1fr;
+			grid-template-areas:
+				'header header header'
+				'hero hero hero'
+				'menu main aside'
+				'footer footer footer';
+		}
+
+		@include widescreen {
+			grid-template: auto auto 1fr auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
+			grid-template-areas:
+				'header header header header header'
+				'hero hero hero hero hero'
+				'. menu main aside .'
+				'footer footer footer footer footer';
+		}
+	}
+}
+
+.layout.layout-sidecar-left {
+	.layout-body-aside {
+		display: none;
+	}
+
+	.layout-body {
+		grid-template: auto auto auto 1fr auto / 1fr;
+		grid-template-areas: 'header' 'hero' 'menu' 'main' 'footer';
+
+		@include tablet {
+			grid-template: auto auto 1fr auto / 1fr 2fr;
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'menu main'
+				'footer footer';
+		}
+
+		@include desktop {
+			grid-template: auto auto 1fr auto / 1fr 3fr;
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'menu main'
+				'footer footer';
+		}
+
+		@include widescreen {
+			grid-template: auto auto 1fr auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
+			grid-template-areas:
+				'header header header header'
+				'hero hero hero hero'
+				'. menu main .'
+				'footer footer footer footer';
+		}
+	}
+}
+
+.layout.layout-sidecar-right {
+	.layout-body-menu {
+		display: none;
+	}
+
+	.layout-body {
+		grid-template: auto auto auto 1fr auto / 1fr;
+		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
+
+		@include tablet {
+			grid-template: auto auto 1fr auto / 2fr 1fr;
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'main aside '
+				'footer footer';
+		}
+
+		@include desktop {
+			grid-template: auto auto 1fr auto / 3fr 1fr;
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'main aside '
+				'footer footer';
+		}
+
+		@include widescreen {
+			grid-template: auto auto 1fr auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
+			grid-template-areas:
+				'header header header header'
+				'hero hero hero hero'
+				'. main aside .'
+				'footer footer footer footer';
+		}
+	}
+}
