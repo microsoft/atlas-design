@@ -1,5 +1,5 @@
-$sc-padding: 0.5em 1em !default;
-$sc-padding-md: 0.75em 1.25em !default;
+$sc-padding-sm: 0.5em 1em !default;
+$sc-padding: 0.75em 1.25em !default;
 $sc-padding-lg: 1em 1.5em !default;
 
 $sc-font-color: $primary !default;
@@ -112,11 +112,11 @@ $sc-active-color: $text-invert !default;
 	}
 }
 
-.segmented-controls.segmented-controls-md {
+.segmented-controls.segmented-controls-sm {
 	.segmented-control,
 	.segmented-previous,
 	.segmented-next {
-		padding: $sc-padding-md;
+		padding: $sc-padding-sm;
 	}
 }
 
