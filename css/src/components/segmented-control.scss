@@ -31,7 +31,7 @@ $sc-active-color: $text-invert !default;
 .segmented-control-next {
 	display: flex;
 	align-items: center;
-	padding: $sc-padding;
+	padding: $sc-padding-sm;
 	border: $sc-border;
 	border-radius: $border-radius-rounded;
 	background-color: $sc-active-background-color;
@@ -69,7 +69,7 @@ $sc-active-color: $text-invert !default;
 	position: relative;
 	align-items: center;
 	justify-content: center;
-	padding: $sc-padding;
+	padding: $sc-padding-sm;
 	border: none;
 	border-radius: $border-radius-rounded;
 	background-color: transparent;
@@ -112,18 +112,22 @@ $sc-active-color: $text-invert !default;
 	}
 }
 
-.segmented-controls.segmented-controls-sm {
-	.segmented-control,
-	.segmented-previous,
-	.segmented-next {
-		padding: $sc-padding-sm;
+@include tablet {
+	.segmented-controls {
+		.segmented-control,
+		.segmented-previous,
+		.segmented-next {
+			padding: $sc-padding;
+		}
 	}
 }
 
-.segmented-controls.segmented-controls-lg {
-	.segmented-control,
-	.segmented-previous,
-	.segmented-next {
-		padding: $sc-padding-lg;
+@include desktop {
+	.segmented-controls {
+		.segmented-control,
+		.segmented-previous,
+		.segmented-next {
+			padding: $sc-padding-lg;
+		}
 	}
 }
