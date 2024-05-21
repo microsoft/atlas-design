@@ -38,7 +38,6 @@ $sc-active-color: $text-invert !default;
 	color: $sc-active-color;
 	font-weight: $weight-semibold;
 	cursor: pointer;
-	box-shadow: $box-shadow-medium;
 
 	&:hover {
 		border-color: $sc-active-hover-border-color;
