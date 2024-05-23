@@ -1,6 +1,6 @@
 Task: task-[work-item-number]
 
-Link: preview-[pull-request-number]
+Link: [preview](http://localhost:1111/)
 
 [Explain the context of this pull request here]
 
