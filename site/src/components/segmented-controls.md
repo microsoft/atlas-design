@@ -13,7 +13,7 @@ Segmented control component consists of navigating to the previous or next segme
 
 ```html
 <tab-container data-segmented-controls-container>
-	<div class="segmented-controls">
+	<div class="segmented-controls" slot="tablist-wrapper">
 		<button
 			type="button"
 			class="segmented-control-previous"
@@ -29,6 +29,7 @@ Segmented control component consists of navigating to the previous or next segme
 				</svg>
 			</span>
 		</button>
+
 		<div class="segmented-control-list" role="tablist" aria-orientation="horizontal">
 			<button
 				class="segmented-control"
@@ -102,23 +103,33 @@ Segmented control component consists of navigating to the previous or next segme
 			</span>
 		</button>
 	</div>
-	<div class="margin-block-md text-align-center">
-		<div role="tabpanel" aria-labelledby="sc-one-1" data-segmented-control-item="1">
+	<div role="tabpanel" aria-labelledby="sc-one-1" data-segmented-control-item="1">
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 1</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-one-2" data-segmented-control-item="2" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-2" data-segmented-control-item="2" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 2</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-one-3" data-segmented-control-item="3" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-3" data-segmented-control-item="3" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 3</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-one-4" data-segmented-control-item="4" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-4" data-segmented-control-item="4" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 4</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-one-5" data-segmented-control-item="5" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-5" data-segmented-control-item="5" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 5</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-one-6" data-segmented-control-item="6" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-6" data-segmented-control-item="6" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 6</p>
 		</div>
 	</div>
@@ -127,11 +138,11 @@ Segmented control component consists of navigating to the previous or next segme
 
 ## Size modification
 
-Using the `segmented-controls-md` or `segmented-controls-lg` will increase the padding of the buttons.
+Using the `segmented-controls-lg` will increase the padding of the buttons.
 
 ```html
 <tab-container data-segmented-controls-container>
-	<div class="segmented-controls segmented-controls-lg">
+	<div class="segmented-controls segmented-controls-lg" slot="tablist-wrapper">
 		<button
 			type="button"
 			class="segmented-control-previous"
@@ -220,23 +231,33 @@ Using the `segmented-controls-md` or `segmented-controls-lg` will increase the p
 			</span>
 		</button>
 	</div>
-	<div class="margin-block-md text-align-center">
-		<div role="tabpanel" aria-labelledby="sc-two-1" data-segmented-control-item="1">
+	<div role="tabpanel" aria-labelledby="sc-one-1" data-segmented-control-item="1">
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 1</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-two-2" data-segmented-control-item="2" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-2" data-segmented-control-item="2" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 2</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-two-3" data-segmented-control-item="3" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-3" data-segmented-control-item="3" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 3</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-two-4" data-segmented-control-item="4" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-4" data-segmented-control-item="4" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 4</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-two-5" data-segmented-control-item="5" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-5" data-segmented-control-item="5" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 5</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-two-6" data-segmented-control-item="6" hidden>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-one-6" data-segmented-control-item="6" hidden>
+		<div class="margin-block-md text-align-center">
 			<p>Tab Item 6</p>
 		</div>
 	</div>

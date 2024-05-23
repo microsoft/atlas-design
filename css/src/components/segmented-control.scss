@@ -4,6 +4,7 @@ $sc-padding-lg: 1em 1.5em !default;
 
 $sc-font-color: $primary !default;
 $sc-border: $border-width solid $border !default;
+$sc-border-radius-rounded: $border-radius-rounded;
 $sc-hover-background-color: $primary-background !default;
 $sc-hover-border: $border-width solid $border !default;
 $sc-hover-border-color: $primary-hover !default;
@@ -22,32 +23,32 @@ $sc-active-color: $text-invert !default;
 	font-size: $font-size-7;
 	white-space: nowrap;
 
-	&.segmented-lg {
+	&.segmented-controls-lg {
 		font-size: $font-size-5;
 	}
-}
 
-.segmented-control-previous,
-.segmented-control-next {
-	display: flex;
-	align-items: center;
-	padding: $sc-padding-sm;
-	border: $sc-border;
-	border-radius: $border-radius-rounded;
-	background-color: $sc-active-background-color;
-	color: $sc-active-color;
-	font-weight: $weight-semibold;
-	cursor: pointer;
+	.segmented-control-previous,
+	.segmented-control-next {
+		display: flex;
+		align-items: center;
+		padding: $sc-padding-sm;
+		border: $sc-border;
+		border-radius: $sc-border-radius-rounded;
+		background-color: $sc-active-background-color;
+		color: $sc-active-color;
+		font-weight: $weight-semibold;
+		cursor: pointer;
 
-	&:hover {
-		border-color: $sc-active-hover-border-color;
-		background-color: $sc-active-hover-background-color;
+		&:hover {
+			border-color: $sc-active-hover-border-color;
+			background-color: $sc-active-hover-background-color;
 
-		@include forced-colors {
-			border-color: Highlight;
-			background-color: Highlight;
-			color: HighlightText;
-			forced-color-adjust: preserve-parent-color;
+			@include forced-colors {
+				border-color: Highlight;
+				background-color: Highlight;
+				color: HighlightText;
+				forced-color-adjust: preserve-parent-color;
+			}
 		}
 	}
 }
@@ -58,7 +59,7 @@ $sc-active-color: $text-invert !default;
 	align-items: center;
 	justify-content: flex-start;
 	border: $sc-border;
-	border-radius: $border-radius-rounded;
+	border-radius: $sc-border-radius-rounded;
 	overflow-x: hidden;
 }
 
@@ -69,7 +70,7 @@ $sc-active-color: $text-invert !default;
 	justify-content: center;
 	padding: $sc-padding-sm;
 	border: none;
-	border-radius: $border-radius-rounded;
+	border-radius: $sc-border-radius-rounded;
 	background-color: transparent;
 	color: $sc-font-color;
 	font-weight: $weight-semibold;

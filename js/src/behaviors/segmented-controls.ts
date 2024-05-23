@@ -1,9 +1,11 @@
+import { TabContainerElement, TabContainerChangeEvent } from '@github/tab-container-element';
+
 export function initSegmentedControls() {
-	initSegmentedControlNavClickListeners();
-	initSegmentedControlClickListeners();
+	initSegmentedControlChangeListener();
+	initSegmentedControlNavClickListener();
 }
 
-function initSegmentedControlNavClickListeners() {
+function initSegmentedControlNavClickListener() {
 	window.addEventListener('click', (event: Event) => {
 		const target =
 			event.target instanceof Element &&
@@ -13,101 +15,36 @@ function initSegmentedControlNavClickListeners() {
 			return;
 		}
 
-		event.preventDefault();
-		const container = event.target.closest('[data-segmented-controls-container]') as HTMLElement;
-		const segments = Array.from(
-			container.querySelectorAll('[data-segmented-control]')
-		) as HTMLButtonElement[];
+		const tabContainer = event.target.closest('tab-container');
+		if (!tabContainer || !(tabContainer instanceof TabContainerElement)) {
+			return;
+		}
 
-		// get current activated tab
-		const currentActiveButton = container.querySelector(
-			'[aria-selected="true"]'
-		) as HTMLButtonElement;
-		const index = parseInt(currentActiveButton?.dataset.segmentedControl as string);
+		const tabs = Array.from(
+			tabContainer.querySelectorAll<HTMLButtonElement>('[data-segmented-control]')
+		);
+		const currentTabIndex = tabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
 
-		// update tab
 		if (target.dataset.segmentedControlNav === 'previous') {
-			const nextSegment = index === 1 ? segments.length : index - 1;
-			updateSegmentedControlState(container, currentActiveButton, nextSegment);
-			updateSegmentedControlItem(container, index, nextSegment);
+			const newTabIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
+			tabContainer.selectTab(newTabIndex);
 		} else if (target.dataset.segmentedControlNav === 'next') {
-			const nextSegment = index === segments.length ? 1 : index + 1;
-			updateSegmentedControlState(container, currentActiveButton, nextSegment);
-			updateSegmentedControlItem(container, index, nextSegment);
+			const newTabIndex = (currentTabIndex + 1) % tabs.length;
+			tabContainer.selectTab(newTabIndex);
 		}
-		updateSegmentedControlNav(container);
 	});
 }
 
-function initSegmentedControlClickListeners() {
-	window.addEventListener('click', (event: Event) => {
-		const target =
-			event.target instanceof Element &&
-			(event.target.closest('[data-segmented-control]') as HTMLButtonElement);
-
-		if (!target) {
-			return;
+function initSegmentedControlChangeListener() {
+	window.addEventListener('tab-container-change', event => {
+		if (event instanceof TabContainerChangeEvent) {
+			if (event.tab) {
+				(event.tab as HTMLElement).scrollIntoView({
+					behavior: 'auto',
+					block: 'nearest',
+					inline: 'center'
+				});
+			}
 		}
-
-		event.preventDefault();
-		const container = event.target.closest('[data-segmented-controls-container]') as HTMLElement;
-		updateSegmentedControlNav(container);
 	});
-	window.addEventListener('keydown', (event: KeyboardEvent) => {
-		if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
-			return;
-		}
-
-		const target =
-			event.target instanceof Element &&
-			(event.target.closest('[data-segmented-control]') as HTMLButtonElement);
-
-		if (!target) {
-			return;
-		}
-
-		event.preventDefault();
-		const container = event.target.closest('[data-segmented-controls-container]') as HTMLElement;
-		updateSegmentedControlNav(container);
-	});
-}
-
-function updateSegmentedControlNav(container: HTMLElement = document.body) {
-	const currentActiveButton = container.querySelector(
-		'[aria-selected="true"]'
-	) as HTMLButtonElement;
-
-	// slide active button into view
-	currentActiveButton.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
-}
-
-function updateSegmentedControlState(
-	container: HTMLElement,
-	currentActiveButton: HTMLButtonElement,
-	updatedIndex: number
-) {
-	const updatedSegment = container.querySelector(
-		`[data-segmented-control="${updatedIndex}"]`
-	) as HTMLButtonElement;
-
-	currentActiveButton.setAttribute('aria-selected', 'false');
-	currentActiveButton.setAttribute('tabindex', '-1');
-	updatedSegment.setAttribute('aria-selected', 'true');
-	updatedSegment.setAttribute('tabindex', '0');
-}
-
-function updateSegmentedControlItem(
-	container: HTMLElement,
-	currentIndex: number,
-	updatedIndex: number
-) {
-	const currentPanel = container.querySelector(
-		`[data-segmented-control-item="${currentIndex}"]`
-	) as HTMLElement;
-	const updatedPanel = container.querySelector(
-		`[data-segmented-control-item="${updatedIndex}"]`
-	) as HTMLElement;
-
-	currentPanel.hidden = true;
-	updatedPanel.hidden = false;
 }
