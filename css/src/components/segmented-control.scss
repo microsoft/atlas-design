@@ -20,9 +20,9 @@ $sc-active-color: $text-invert !default;
 	width: 100%;
 	grid-gap: $spacer-5;
 	grid-template-columns: max-content auto max-content;
+	outline-color: $text;
 	font-size: $font-size-7;
 	white-space: nowrap;
-	outline-color: $text;
 
 	&.segmented-controls-lg {
 		font-size: $font-size-5;
@@ -78,9 +78,10 @@ $sc-active-color: $text-invert !default;
 	vertical-align: top;
 
 	@include focus-visible() {
-		outline-offset: -$focus-outline-offset;
 		outline-color: $text-invert;
+		outline-offset: -$focus-outline-offset;
 	}
+
 	&:hover {
 		background-color: $sc-hover-background-color;
 		z-index: $zindex-hover;
