@@ -29,7 +29,6 @@ Segmented control component consists of navigating to the previous or next segme
 				</svg>
 			</span>
 		</button>
-
 		<div class="segmented-control-list" role="tablist" aria-orientation="horizontal">
 			<button
 				class="segmented-control"

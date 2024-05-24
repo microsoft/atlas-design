@@ -22,6 +22,7 @@ $sc-active-color: $text-invert !default;
 	grid-template-columns: max-content auto max-content;
 	font-size: $font-size-7;
 	white-space: nowrap;
+	outline-color: $text;
 
 	&.segmented-controls-lg {
 		font-size: $font-size-5;
@@ -29,15 +30,10 @@ $sc-active-color: $text-invert !default;
 
 	.segmented-control-previous,
 	.segmented-control-next {
-		display: flex;
-		align-items: center;
 		padding: $sc-padding-sm;
 		border: $sc-border;
-		border-radius: $sc-border-radius-rounded;
 		background-color: $sc-active-background-color;
 		color: $sc-active-color;
-		font-weight: $weight-semibold;
-		cursor: pointer;
 
 		&:hover {
 			border-color: $sc-active-hover-border-color;
@@ -50,6 +46,14 @@ $sc-active-color: $text-invert !default;
 				forced-color-adjust: preserve-parent-color;
 			}
 		}
+	}
+
+	button {
+		display: flex;
+		align-items: center;
+		border-radius: $sc-border-radius-rounded;
+		font-weight: $weight-semibold;
+		cursor: pointer;
 	}
 }
 
@@ -64,24 +68,19 @@ $sc-active-color: $text-invert !default;
 }
 
 .segmented-control {
-	display: flex;
 	position: relative;
-	align-items: center;
 	justify-content: center;
 	padding: $sc-padding-sm;
 	border: none;
-	border-radius: $sc-border-radius-rounded;
 	background-color: transparent;
 	color: $sc-font-color;
-	font-weight: $weight-semibold;
-	cursor: pointer;
 	appearance: none;
 	vertical-align: top;
 
 	@include focus-visible() {
-		outline-offset: -$focus-width;
+		outline-offset: -$focus-outline-offset;
+		outline-color: $text-invert;
 	}
-
 	&:hover {
 		background-color: $sc-hover-background-color;
 		z-index: $zindex-hover;
