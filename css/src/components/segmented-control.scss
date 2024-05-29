@@ -126,3 +126,62 @@ $sc-active-color: $text-invert !default;
 		}
 	}
 }
+
+.segmented-controlz {
+	inline-size: 100%;
+
+	.segmented-control-controls {
+		display: grid;
+		grid-template-columns: auto max-content auto;
+		gap: $spacer-5;
+		margin-inline: auto;
+
+		.segmented-control-previous {
+			grid-column: 1;
+		}
+
+		.segmented-control-next {
+			grid-column: 3;
+		}
+
+		.segmented-control-previous,
+		.segmented-control-next {
+			padding: $sc-padding-sm;
+			border: $sc-border;
+			border-radius: $sc-border-radius-rounded;
+			background-color: $sc-active-background-color;
+			color: $sc-active-color;
+
+			&:hover {
+				border-color: $sc-active-hover-border-color;
+				background-color: $sc-active-hover-background-color;
+
+				@include forced-colors {
+					border-color: Highlight;
+					background-color: Highlight;
+					color: HighlightText;
+					forced-color-adjust: preserve-parent-color;
+				}
+			}
+		}
+
+		.segmented-control-list {
+			grid-column: 2;
+
+			display: flex;
+			gap: $spacer-5;
+			align-items: center;
+			justify-content: flex-start;
+			border: $sc-border;
+			border-radius: $sc-border-radius-rounded;
+			overflow-x: hidden;
+		}
+	}
+
+	.segmented-control {
+		justify-content: center;
+		padding: $sc-padding-sm;
+		border: none;
+		border-radius: $sc-border-radius-rounded;
+	}
+}
