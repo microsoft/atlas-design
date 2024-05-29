@@ -28,18 +28,11 @@ $sc-active-color: $text-invert !default;
 		font-size: $font-size-5;
 	}
 
-	&.segmented-controls-flex {
-		display: flex;
-
-		footer button {
-			border-radius: unset;
-		}
-	}
-
 	.segmented-control-previous,
 	.segmented-control-next {
 		padding: $sc-padding-sm;
 		border: $sc-border;
+		border-radius: $sc-border-radius-rounded;
 		background-color: $sc-active-background-color;
 		color: $sc-active-color;
 
@@ -59,7 +52,6 @@ $sc-active-color: $text-invert !default;
 	button {
 		display: flex;
 		align-items: center;
-		border-radius: $sc-border-radius-rounded;
 		font-weight: $weight-semibold;
 		cursor: pointer;
 	}
@@ -79,6 +71,7 @@ $sc-active-color: $text-invert !default;
 		justify-content: center;
 		padding: $sc-padding-sm;
 		border: none;
+		border-radius: $sc-border-radius-rounded;
 		background-color: transparent;
 		color: $sc-font-color;
 		appearance: none;
@@ -117,6 +110,7 @@ $sc-active-color: $text-invert !default;
 			}
 		}
 	}
+
 	@include tablet {
 		.segmented-control,
 		.segmented-previous,

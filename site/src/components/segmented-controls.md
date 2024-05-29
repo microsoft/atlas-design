@@ -16,7 +16,7 @@ Segmented control component consists of navigating to the previous or next segme
 	<div class="segmented-controls" slot="tablist-wrapper">
 		<button
 			type="button"
-			class="segmented-control-previous"
+			class="segmented-control-previous margin-right-xxs"
 			title="Previous segment"
 			data-segmented-control-nav="previous"
 		>
@@ -89,7 +89,7 @@ Segmented control component consists of navigating to the previous or next segme
 		</div>
 		<button
 			type="button"
-			class="segmented-control-next"
+			class="segmented-control-next margin-left-xxs"
 			title="Next segment"
 			data-segmented-control-nav="next"
 		>
@@ -142,7 +142,7 @@ Segmented control component consists of navigating to the previous or next segme
 Removing the next and previous buttons will still provide a seamless experience on the tabs control. Small restructuring allows for the tabs-container component to allocate the `after-tabpanel` footer.
 
 ```html
-<div class="segmented-controls segmented-controls-flex">
+<div class="segmented-controls">
 	<tab-container>
 		<div class="segmented-control-list" role="tablist" aria-orientation="horizontal">
 			<button
@@ -234,10 +234,10 @@ Removing the next and previous buttons will still provide a seamless experience 
 		</div>
 
 		<!-- After Tabpanels -->
-		<footer class="border-top display-flex padding-top-sm">
+		<div class="border-top display-flex padding-top-sm">
 			<button
 				type="button"
-				class="segmented-control-previous"
+				class="button button-sm button-primary margin-right-sm"
 				title="Previous segment"
 				data-segmented-control-nav="previous"
 			>
@@ -253,7 +253,7 @@ Removing the next and previous buttons will still provide a seamless experience 
 			</button>
 			<button
 				type="button"
-				class="segmented-control-previous"
+				class="button button-primary button-filled"
 				title="Next segment"
 				data-segmented-control-nav="next"
 			>
@@ -267,7 +267,7 @@ Removing the next and previous buttons will still provide a seamless experience 
 					</svg>
 				</span>
 			</button>
-		</footer>
+		</div>
 	</tab-container>
 </div>
 ```
@@ -281,7 +281,7 @@ Using the `segmented-controls-lg` will increase the padding of the buttons.
 	<div class="segmented-controls segmented-controls-lg" slot="tablist-wrapper">
 		<button
 			type="button"
-			class="segmented-control-previous"
+			class="segmented-control-previous margin-right-xxs"
 			title="Previous segment"
 			data-segmented-control-nav="previous"
 		>
@@ -353,7 +353,7 @@ Using the `segmented-controls-lg` will increase the padding of the buttons.
 		</div>
 		<button
 			type="button"
-			class="segmented-control-next"
+			class="segmented-control-next margin-left-xxs"
 			title="Next segment"
 			data-segmented-control-nav="next"
 		>
