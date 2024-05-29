@@ -132,7 +132,7 @@ $sc-active-color: $text-invert !default;
 
 	.segmented-control-controls {
 		display: grid;
-		grid-template-columns: auto max-content auto;
+		grid-template-columns: auto 1fr auto;
 		gap: $spacer-5;
 		margin-inline: auto;
 
