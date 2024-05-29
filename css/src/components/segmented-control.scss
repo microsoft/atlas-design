@@ -28,6 +28,14 @@ $sc-active-color: $text-invert !default;
 		font-size: $font-size-5;
 	}
 
+	&.segmented-controls-flex {
+		display: flex;
+
+		footer button {
+			border-radius: unset;
+		}
+	}
+
 	.segmented-control-previous,
 	.segmented-control-next {
 		padding: $sc-padding-sm;
@@ -55,74 +63,68 @@ $sc-active-color: $text-invert !default;
 		font-weight: $weight-semibold;
 		cursor: pointer;
 	}
-}
 
-.segmented-control-list {
-	grid-column: 2;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	border: $sc-border;
-	border-radius: $sc-border-radius-rounded;
-	overflow-x: hidden;
-}
-
-.segmented-control {
-	position: relative;
-	justify-content: center;
-	padding: $sc-padding-sm;
-	border: none;
-	background-color: transparent;
-	color: $sc-font-color;
-	appearance: none;
-	vertical-align: top;
-
-	@include focus-visible() {
-		outline-color: $text-invert;
-		outline-offset: -$focus-outline-offset;
+	.segmented-control-list {
+		grid-column: 2;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		border: $sc-border;
+		border-radius: $sc-border-radius-rounded;
+		overflow-x: hidden;
 	}
 
-	&:hover {
-		background-color: $sc-hover-background-color;
-		z-index: $zindex-hover;
+	.segmented-control {
+		position: relative;
+		justify-content: center;
+		padding: $sc-padding-sm;
+		border: none;
+		background-color: transparent;
+		color: $sc-font-color;
+		appearance: none;
+		vertical-align: top;
 
-		@include forced-colors {
-			background-color: Highlight;
-			color: HighlightText;
-			forced-color-adjust: preserve-parent-color;
+		@include focus-visible() {
+			outline-color: $text-invert;
+			outline-offset: -$focus-outline-offset;
 		}
-	}
-
-	&[aria-selected='true'] {
-		background-color: $sc-active-background-color;
-		color: $sc-active-color;
-		z-index: $zindex-active;
 
 		&:hover {
-			background-color: $sc-active-hover-background-color;
+			background-color: $sc-hover-background-color;
 			z-index: $zindex-hover;
+
+			@include forced-colors {
+				background-color: Highlight;
+				color: HighlightText;
+				forced-color-adjust: preserve-parent-color;
+			}
 		}
 
-		@include forced-colors {
-			background-color: Highlight;
-			color: HighlightText;
-			forced-color-adjust: preserve-parent-color;
+		&[aria-selected='true'] {
+			background-color: $sc-active-background-color;
+			color: $sc-active-color;
+			z-index: $zindex-active;
+
+			&:hover {
+				background-color: $sc-active-hover-background-color;
+				z-index: $zindex-hover;
+			}
+
+			@include forced-colors {
+				background-color: Highlight;
+				color: HighlightText;
+				forced-color-adjust: preserve-parent-color;
+			}
 		}
 	}
-}
-
-@include tablet {
-	.segmented-controls {
+	@include tablet {
 		.segmented-control,
 		.segmented-previous,
 		.segmented-next {
 			padding: $sc-padding;
 		}
 	}
-}
-
-@include desktop {
-	.segmented-controls {
+	@include desktop {
 		.segmented-control,
 		.segmented-previous,
 		.segmented-next {
