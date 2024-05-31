@@ -6,7 +6,7 @@ classType: Component
 classPrefixes:
   - segmented-control
   - segmented-controls
-  - segmented-controls-after
+  - segmented-controls-footer
 ---
 
 ## Segmented Control
