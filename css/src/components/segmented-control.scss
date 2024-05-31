@@ -24,10 +24,6 @@ $sc-active-color: $text-invert !default;
 	font-size: $font-size-7;
 	white-space: nowrap;
 
-	&.segmented-controls-lg {
-		font-size: $font-size-5;
-	}
-
 	.segmented-control-previous,
 	.segmented-control-next {
 		padding: $sc-padding-sm;
@@ -109,6 +105,10 @@ $sc-active-color: $text-invert !default;
 				forced-color-adjust: preserve-parent-color;
 			}
 		}
+	}
+
+	&.segmented-controls-lg {
+		font-size: $font-size-5;
 	}
 
 	@include tablet {

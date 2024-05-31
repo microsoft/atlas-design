@@ -142,9 +142,9 @@ Segmented control component consists of navigating to the previous or next segme
 Removing the next and previous buttons will still provide a seamless experience on the tabs control. Small restructuring allows for the tabs-container component to allocate the `after-tabpanel` footer.
 
 ```html
-<div class="segmented-controls">
-	<tab-container>
-		<div class="segmented-control-list" role="tablist" aria-orientation="horizontal">
+<tab-container data-segmented-controls-container>
+	<div class="segmented-controls" role="tablist" aria-orientation="horizontal">
+		<div class="segmented-control-list">
 			<button
 				class="segmented-control"
 				type="button"
@@ -201,75 +201,75 @@ Removing the next and previous buttons will still provide a seamless experience 
 				Manage
 			</button>
 		</div>
+	</div>
 
-		<div role="tabpanel" aria-labelledby="sc-three-1">
-			<div class="margin-block-md text-align-center">
-				<p>Tab Item 1</p>
-			</div>
+	<div role="tabpanel" aria-labelledby="sc-three-1">
+		<div class="margin-block-md text-align-center">
+			<p>Tab Item 1</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-three-2" hidden>
-			<div class="margin-block-md text-align-center">
-				<p>Tab Item 2</p>
-			</div>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-three-2" hidden>
+		<div class="margin-block-md text-align-center">
+			<p>Tab Item 2</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-three-3" hidden>
-			<div class="margin-block-md text-align-center">
-				<p>Tab Item 3</p>
-			</div>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-three-3" hidden>
+		<div class="margin-block-md text-align-center">
+			<p>Tab Item 3</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-three-4" hidden>
-			<div class="margin-block-md text-align-center">
-				<p>Tab Item 4</p>
-			</div>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-three-4" hidden>
+		<div class="margin-block-md text-align-center">
+			<p>Tab Item 4</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-three-5" hidden>
-			<div class="margin-block-md text-align-center">
-				<p>Tab Item 5</p>
-			</div>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-three-5" hidden>
+		<div class="margin-block-md text-align-center">
+			<p>Tab Item 5</p>
 		</div>
-		<div role="tabpanel" aria-labelledby="sc-three-6" hidden>
-			<div class="margin-block-md text-align-center">
-				<p>Tab Item 6</p>
-			</div>
+	</div>
+	<div role="tabpanel" aria-labelledby="sc-three-6" hidden>
+		<div class="margin-block-md text-align-center">
+			<p>Tab Item 6</p>
 		</div>
+	</div>
 
-		<!-- After Tabpanels -->
-		<div class="border-top display-flex padding-top-sm">
-			<button
-				type="button"
-				class="button button-sm button-primary margin-right-sm"
-				title="Previous segment"
-				data-segmented-control-nav="previous"
-			>
-				<span class="icon" aria-hidden="true">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
-						<path
-							class="fill-current-color"
-							d="M448 224H62.625l148.688 148.688-22.625 22.625L1.375 208 188.688 20.688l22.625 22.625L62.625 192H448v32z"
-						/>
-					</svg>
-				</span>
-				Previous
-			</button>
-			<button
-				type="button"
-				class="button button-primary button-filled"
-				title="Next segment"
-				data-segmented-control-nav="next"
-			>
-				Next
-				<span class="icon" aria-hidden="true">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
-						<path
-							class="fill-current-color"
-							d="M-253.625 281v-32H131.75L-16.938 100.313 5.687 77.688 193 265 5.687 452.313l-22.625-22.625L131.75 281h-385.375z"
-						/>
-					</svg>
-				</span>
-			</button>
-		</div>
-	</tab-container>
-</div>
+	<!-- After Tabpanels -->
+	<div class="border-top display-flex padding-top-sm">
+		<button
+			type="button"
+			class="button button-sm button-primary margin-right-sm"
+			title="Previous segment"
+			data-segmented-control-nav="previous"
+		>
+			<span class="icon" aria-hidden="true">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
+					<path
+						class="fill-current-color"
+						d="M448 224H62.625l148.688 148.688-22.625 22.625L1.375 208 188.688 20.688l22.625 22.625L62.625 192H448v32z"
+					/>
+				</svg>
+			</span>
+			Previous
+		</button>
+		<button
+			type="button"
+			class="button button-primary button-filled"
+			title="Next segment"
+			data-segmented-control-nav="next"
+		>
+			Next
+			<span class="icon" aria-hidden="true">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
+					<path
+						class="fill-current-color"
+						d="M-253.625 281v-32H131.75L-16.938 100.313 5.687 77.688 193 265 5.687 452.313l-22.625-22.625L131.75 281h-385.375z"
+					/>
+				</svg>
+			</span>
+		</button>
+	</div>
+</tab-container>
 ```
 
 ## Size modification
