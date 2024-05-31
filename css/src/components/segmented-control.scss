@@ -20,22 +20,19 @@ $sc-active-color: $text-invert !default;
 	width: 100%;
 	grid-gap: $spacer-3;
 	grid-template-columns: max-content auto max-content;
-
-	// Provided explicitly because outline-color isn't passing through tab-container's shadow DOM
-	outline-color: $text;
-
+	outline-color: $text; // Provided explicitly because outline-color isn't passing through tab-container's shadow DOM
 	font-size: $font-size-7;
 	white-space: nowrap;
 
 	.segmented-control-previous,
 	.segmented-control-next {
+		display: flex;
+		align-items: center;
 		padding: $sc-padding-sm;
 		border: $sc-border;
 		border-radius: $sc-border-radius-rounded;
 		background-color: $sc-active-background-color;
 		color: $sc-active-color;
-		display: flex;
-		align-items: center;
 		font-weight: $weight-semibold;
 		cursor: pointer;
 
@@ -63,19 +60,19 @@ $sc-active-color: $text-invert !default;
 	}
 
 	.segmented-control {
+		display: flex;
 		position: relative;
+		align-items: center;
 		justify-content: center;
 		padding: $sc-padding-sm;
 		border: none;
 		border-radius: $sc-border-radius-rounded;
 		background-color: transparent;
 		color: $sc-font-color;
-		appearance: none;
-		vertical-align: top;
-		display: flex;
-		align-items: center;
 		font-weight: $weight-semibold;
 		cursor: pointer;
+		appearance: none;
+		vertical-align: top;
 
 		@include focus-visible() {
 			outline-color: $text-invert;
@@ -132,7 +129,7 @@ $sc-active-color: $text-invert !default;
 }
 
 // After Tabpanels footer content
+
 .segmented-control-footer {
-	// Provided explicitly because outline-color isn't passing through tab-container's shadow DOM
-	outline-color: $text;
+	outline-color: $text; // Provided explicitly because outline-color isn't passing through tab-container's shadow DOM
 }
