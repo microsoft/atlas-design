@@ -18,9 +18,12 @@ $sc-active-color: $text-invert !default;
 	display: grid;
 	justify-content: center;
 	width: 100%;
-	grid-gap: $spacer-5;
+	grid-gap: $spacer-3;
 	grid-template-columns: max-content auto max-content;
+
+	// Provided explicitly because outline-color isn't passing through tab-container's shadow DOM
 	outline-color: $text;
+
 	font-size: $font-size-7;
 	white-space: nowrap;
 
@@ -31,6 +34,10 @@ $sc-active-color: $text-invert !default;
 		border-radius: $sc-border-radius-rounded;
 		background-color: $sc-active-background-color;
 		color: $sc-active-color;
+		display: flex;
+		align-items: center;
+		font-weight: $weight-semibold;
+		cursor: pointer;
 
 		&:hover {
 			border-color: $sc-active-hover-border-color;
@@ -43,13 +50,6 @@ $sc-active-color: $text-invert !default;
 				forced-color-adjust: preserve-parent-color;
 			}
 		}
-	}
-
-	button {
-		display: flex;
-		align-items: center;
-		font-weight: $weight-semibold;
-		cursor: pointer;
 	}
 
 	.segmented-control-list {
@@ -72,6 +72,10 @@ $sc-active-color: $text-invert !default;
 		color: $sc-font-color;
 		appearance: none;
 		vertical-align: top;
+		display: flex;
+		align-items: center;
+		font-weight: $weight-semibold;
+		cursor: pointer;
 
 		@include focus-visible() {
 			outline-color: $text-invert;
@@ -125,9 +129,10 @@ $sc-active-color: $text-invert !default;
 			padding: $sc-padding-lg;
 		}
 	}
+}
 
-	// After Tabpanels content
-	&-after {
-		outline-color: $text;
-	}
+// After Tabpanels footer content
+.segmented-control-footer {
+	// Provided explicitly because outline-color isn't passing through tab-container's shadow DOM
+	outline-color: $text;
 }

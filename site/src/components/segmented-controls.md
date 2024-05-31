@@ -18,7 +18,7 @@ The segmented controls component is a tabs-like widget, containing a list of but
 	<div class="segmented-controls" slot="tablist-wrapper">
 		<button
 			type="button"
-			class="segmented-control-previous margin-right-xxs"
+			class="segmented-control-previous"
 			title="Previous segment"
 			data-segmented-control-nav="previous"
 		>
@@ -91,7 +91,7 @@ The segmented controls component is a tabs-like widget, containing a list of but
 		</div>
 		<button
 			type="button"
-			class="segmented-control-next margin-left-xxs"
+			class="segmented-control-next"
 			title="Next segment"
 			data-segmented-control-nav="next"
 		>
@@ -237,7 +237,7 @@ Removing the next and previous buttons will still provide a seamless experience 
 	</div>
 
 	<!-- After Tabpanels -->
-	<div class="border-top display-flex padding-top-sm segmented-controls-after">
+	<div class="segmented-controls-footer border-top display-flex padding-top-sm">
 		<button
 			class="button button-sm button-primary margin-right-sm"
 			title="Previous segment"
@@ -368,6 +368,7 @@ Using the `segmented-controls-lg` will increase the padding of the buttons.
 			</span>
 		</button>
 	</div>
+
 	<div role="tabpanel" aria-labelledby="sc-one-1">
 		<div class="margin-block-md text-align-center">
 			<p>Tab Item 1</p>
