@@ -4,12 +4,14 @@ description: Segmented controls component in the Atlas Design System
 template: standard
 classType: Component
 classPrefixes:
+  - segmented-control
   - segmented-controls
+  - segmented-controls-after
 ---
 
 ## Segmented Control
 
-Segmented control component consists of navigating to the previous or next segmented control item by using the arrow keys or clicking on a segmented control. The result will change the content to display the current selected item.
+The segmented controls component is a tabs-like widget, containing a list of buttons for toggling an active view from a list. The view can be set by clicking the appropriate segmented control button, pressing the left or right arrow keys, or by clicking an optional previous or next button.
 
 ```html
 <tab-container data-segmented-controls-container>
@@ -139,7 +141,7 @@ Segmented control component consists of navigating to the previous or next segme
 
 ## Segmented Control with footer Next/Prev
 
-Removing the next and previous buttons will still provide a seamless experience on the tabs control. Small restructuring allows for the tabs-container component to allocate the `after-tabpanel` footer.
+Removing the next and previous buttons will still provide a seamless experience on the tabs control. Small restructuring allows for the tabs-container component to allocate a footer to show after the tabpanel. The key difference is that of the `div.segmented-controls` taking on the `role=tablist` and `aria-orientation` attributes. This restructuring provides the grid responsiveness without buttons next to the control-list.
 
 ```html
 <tab-container data-segmented-controls-container>
@@ -235,9 +237,8 @@ Removing the next and previous buttons will still provide a seamless experience 
 	</div>
 
 	<!-- After Tabpanels -->
-	<div class="border-top display-flex padding-top-sm">
+	<div class="border-top display-flex padding-top-sm segmented-controls-after">
 		<button
-			type="button"
 			class="button button-sm button-primary margin-right-sm"
 			title="Previous segment"
 			data-segmented-control-nav="previous"
@@ -252,8 +253,8 @@ Removing the next and previous buttons will still provide a seamless experience 
 			</span>
 			Previous
 		</button>
+
 		<button
-			type="button"
 			class="button button-primary button-filled"
 			title="Next segment"
 			data-segmented-control-nav="next"
