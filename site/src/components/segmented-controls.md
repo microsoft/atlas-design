@@ -237,12 +237,8 @@ Removing the next and previous buttons will still provide a seamless experience 
 	</div>
 
 	<!-- After Tabpanels -->
-	<div class="segmented-controls-footer border-top display-flex padding-top-sm">
-		<button
-			class="button button-sm button-primary margin-right-sm"
-			title="Previous segment"
-			data-segmented-control-nav="previous"
-		>
+	<div class="segmented-controls-footer border-top buttons padding-top-sm">
+		<button class="button button-sm button-primary" data-segmented-control-nav="previous">
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 					<path
@@ -251,15 +247,11 @@ Removing the next and previous buttons will still provide a seamless experience 
 					/>
 				</svg>
 			</span>
-			Previous
+			<span>Previous</span>
 		</button>
 
-		<button
-			class="button button-primary button-filled"
-			title="Next segment"
-			data-segmented-control-nav="next"
-		>
-			Next
+		<button class="button button-sm button-primary button-filled" data-segmented-control-nav="next">
+			<span>Next</span>
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
 					<path
@@ -275,7 +267,7 @@ Removing the next and previous buttons will still provide a seamless experience 
 
 ## Size modification
 
-Using the `segmented-controls-lg` will increase the padding of the buttons.
+Using the `segmented-controls-lg` can be used to make segmented control bigger than the default.
 
 ```html
 <tab-container data-segmented-controls-container>
