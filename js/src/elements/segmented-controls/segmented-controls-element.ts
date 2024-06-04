@@ -321,8 +321,8 @@ export class TabContainerElement extends HTMLElement {
 	}
 
 	initSegmentedControlNavClickListener() {
-		this.#next?.addEventListener('click', this.handleSegmentedControlNavClick.bind(this));
-		this.#prev?.addEventListener('click', this.handleSegmentedControlNavClick.bind(this));
+		this.#next?.addEventListener('click', this.handleTabContainerNavClick.bind(this));
+		this.#prev?.addEventListener('click', this.handleTabContainerNavClick.bind(this));
 	}
 
 	handleTabContainerChange(event: TabContainerChangeEvent) {
@@ -338,7 +338,7 @@ export class TabContainerElement extends HTMLElement {
 		});
 	}
 
-	handleSegmentedControlNavClick(event: Event) {
+	handleTabContainerNavClick(event: Event) {
 		const target =
 			event.target instanceof Element &&
 			(event.target.closest('[data-segmented-control-nav]') as HTMLButtonElement);
