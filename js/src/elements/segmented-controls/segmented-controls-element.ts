@@ -240,8 +240,8 @@ export class TabContainerElement extends HTMLElement {
 		this.selectTab(-1);
 		this.#setupComplete = true;
 
-		this.initSegmentedControlChangeListener();
-		this.initSegmentedControlNavClickListener();
+		this.initTabContainerChangeListener();
+		this.initTabContainerNavClickListener();
 	}
 
 	attributeChangedCallback(name: string) {
@@ -316,11 +316,11 @@ export class TabContainerElement extends HTMLElement {
 		this.setAttribute('default-tab', String(index));
 	}
 
-	initSegmentedControlChangeListener() {
+	initTabContainerChangeListener() {
 		this.addEventListener('tab-container-change', this.handleTabContainerChange.bind(this));
 	}
 
-	initSegmentedControlNavClickListener() {
+	initTabContainerNavClickListener() {
 		this.#next?.addEventListener('click', this.handleTabContainerNavClick.bind(this));
 		this.#prev?.addEventListener('click', this.handleTabContainerNavClick.bind(this));
 	}
@@ -339,30 +339,21 @@ export class TabContainerElement extends HTMLElement {
 	}
 
 	handleTabContainerNavClick(event: Event) {
-		const target =
-			event.target instanceof Element &&
-			(event.target.closest('[data-segmented-control-nav]') as HTMLButtonElement);
+		const target = event.currentTarget as HTMLButtonElement;
 
 		if (!target) {
 			return;
 		}
 
-		const tabContainer = event.target.closest('tab-container');
-		if (!target || !tabContainer || !(tabContainer instanceof TabContainerElement)) {
-			return;
-		}
-
-		const tabs = Array.from(
-			tabContainer.querySelectorAll<HTMLButtonElement>('[data-segmented-control]')
-		);
+		const tabs = Array.from(this.querySelectorAll<HTMLButtonElement>('[data-segmented-control]'));
 		const currentTabIndex = tabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
 
 		if (target.dataset.segmentedControlNav === 'previous') {
 			const newTabIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
-			tabContainer.selectTab(newTabIndex);
+			this.selectTab(newTabIndex);
 		} else if (target.dataset.segmentedControlNav === 'next') {
 			const newTabIndex = (currentTabIndex + 1) % tabs.length;
-			tabContainer.selectTab(newTabIndex);
+			this.selectTab(newTabIndex);
 		}
 	}
 
