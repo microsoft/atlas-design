@@ -1,4 +1,4 @@
-import { TabContainerChangeEvent, TabContainerElement } from './segmented-controls-element';
+import { TabContainerChangeEvent, TabContainerElement } from './element';
 
 const root = (typeof globalThis !== 'undefined' ? globalThis : window) as typeof window;
 try {
@@ -39,4 +39,4 @@ declare global {
 }
 
 export default TabContainerElement;
-export * from './segmented-controls-element';
+export * from './element';
