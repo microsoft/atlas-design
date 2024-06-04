@@ -20,7 +20,6 @@ $sc-active-color: $text-invert !default;
 	width: 100%;
 	grid-gap: $spacer-3;
 	grid-template-columns: max-content auto max-content;
-	outline-color: $text; // Provided explicitly because outline-color isn't passing through tab-container's shadow DOM
 	font-size: $font-size-7;
 	white-space: nowrap;
 
@@ -46,6 +45,11 @@ $sc-active-color: $text-invert !default;
 				color: HighlightText;
 				forced-color-adjust: preserve-parent-color;
 			}
+		}
+
+		@include focus-visible() {
+			outline-color: $text-invert;
+			outline-offset: -$focus-outline-offset;
 		}
 	}
 
@@ -106,10 +110,6 @@ $sc-active-color: $text-invert !default;
 				forced-color-adjust: preserve-parent-color;
 			}
 		}
-	}
-
-	&.segmented-controls-lg {
-		font-size: $font-size-5;
 	}
 
 	@include tablet {
