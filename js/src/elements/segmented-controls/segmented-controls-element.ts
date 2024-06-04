@@ -33,12 +33,6 @@ export class TabContainerChangeEvent extends Event {
 		this.#panel = panel || null;
 	}
 
-	get detail() {
-		// eslint-disable-next-line no-console
-		console.warn('TabContainerElement.detail is deprecated, please use .panel instead');
-		return { relatedTarget: this.#panel };
-	}
-
 	#tabIndex: number | null = null;
 	get tabIndex(): number | null {
 		return this.#tabIndex;
@@ -172,6 +166,13 @@ export class TabContainerElement extends HTMLElement {
 		return Array.from<HTMLElement>(this.#tabList?.querySelectorAll('[role="tab"]') || []).filter(
 			tab => tab instanceof HTMLElement && tab.closest(this.tagName) === this
 		);
+	}
+
+	get #next(): HTMLButtonElement {
+		return this.querySelector<HTMLButtonElement>('[data-segmented-control-nav="next"]')!;
+	}
+	get #prev(): HTMLButtonElement {
+		return this.querySelector<HTMLButtonElement>('[data-segmented-control-nav="previous"]')!;
 	}
 
 	get activeTab() {
@@ -320,14 +321,11 @@ export class TabContainerElement extends HTMLElement {
 	}
 
 	initSegmentedControlNavClickListener() {
-		this.addEventListener('click', this.handleSegmentedControlNavClick.bind(this));
+		this.#next?.addEventListener('click', this.handleSegmentedControlNavClick.bind(this));
+		this.#prev?.addEventListener('click', this.handleSegmentedControlNavClick.bind(this));
 	}
 
-	handleTabContainerChange(event: Event) {
-		if (!(event instanceof TabContainerChangeEvent)) {
-			return;
-		}
-
+	handleTabContainerChange(event: TabContainerChangeEvent) {
 		const { tab } = event;
 		if (!tab) {
 			return;
@@ -344,12 +342,13 @@ export class TabContainerElement extends HTMLElement {
 		const target =
 			event.target instanceof Element &&
 			(event.target.closest('[data-segmented-control-nav]') as HTMLButtonElement);
+
 		if (!target) {
 			return;
 		}
 
 		const tabContainer = event.target.closest('tab-container');
-		if (!tabContainer || !(tabContainer instanceof TabContainerElement)) {
+		if (!target || !tabContainer || !(tabContainer instanceof TabContainerElement)) {
 			return;
 		}
 
