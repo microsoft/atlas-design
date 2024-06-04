@@ -14,13 +14,13 @@ classPrefixes:
 The segmented controls component is a tabs-like widget, containing a list of buttons for toggling an active view from a list. The view can be set by clicking the appropriate segmented control button, pressing the left or right arrow keys, or by clicking an optional previous or next button.
 
 ```html
-<tab-container data-segmented-controls-container>
+<tab-container>
 	<div class="segmented-controls" slot="tablist-wrapper">
 		<button
 			type="button"
 			class="segmented-control-previous"
 			title="Previous segment"
-			data-segmented-control-nav="previous"
+			data-tab-container-nav="previous"
 		>
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
@@ -93,7 +93,7 @@ The segmented controls component is a tabs-like widget, containing a list of but
 			type="button"
 			class="segmented-control-next"
 			title="Next segment"
-			data-segmented-control-nav="next"
+			data-tab-container-nav="next"
 		>
 			<span class="icon" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">

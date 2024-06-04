@@ -169,10 +169,10 @@ export class TabContainerElement extends HTMLElement {
 	}
 
 	get #next(): HTMLButtonElement {
-		return this.querySelector<HTMLButtonElement>('[data-segmented-control-nav="next"]')!;
+		return this.querySelector<HTMLButtonElement>('[data-tab-container-nav="next"]')!;
 	}
 	get #prev(): HTMLButtonElement {
-		return this.querySelector<HTMLButtonElement>('[data-segmented-control-nav="previous"]')!;
+		return this.querySelector<HTMLButtonElement>('[data-tab-container-nav="previous"]')!;
 	}
 
 	get activeTab() {
@@ -345,14 +345,15 @@ export class TabContainerElement extends HTMLElement {
 			return;
 		}
 
-		const tabs = Array.from(this.querySelectorAll<HTMLButtonElement>('[data-segmented-control]'));
-		const currentTabIndex = tabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
+		const currentTabIndex = this.#tabs.findIndex(
+			tab => tab.getAttribute('aria-selected') === 'true'
+		);
 
-		if (target.dataset.segmentedControlNav === 'previous') {
-			const newTabIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
+		if (target.dataset.tabContainerNav === 'previous') {
+			const newTabIndex = (currentTabIndex - 1 + this.#tabs.length) % this.#tabs.length;
 			this.selectTab(newTabIndex);
-		} else if (target.dataset.segmentedControlNav === 'next') {
-			const newTabIndex = (currentTabIndex + 1) % tabs.length;
+		} else if (target.dataset.tabContainerNav === 'next') {
+			const newTabIndex = (currentTabIndex + 1) % this.#tabs.length;
 			this.selectTab(newTabIndex);
 		}
 	}
