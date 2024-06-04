@@ -238,10 +238,12 @@ export class TabContainerElement extends HTMLElement {
 		this.addEventListener('click', this);
 
 		this.selectTab(-1);
-		this.#setupComplete = true;
 
-		this.initTabContainerChangeListener();
-		this.initTabContainerNavClickListener();
+		this.addEventListener('tab-container-change', this.#scrollToTab);
+		this.#next?.addEventListener('click', this.#handleNavClick.bind(this));
+		this.#prev?.addEventListener('click', this.#handleNavClick.bind(this));
+
+		this.#setupComplete = true;
 	}
 
 	attributeChangedCallback(name: string) {
@@ -329,32 +331,31 @@ export class TabContainerElement extends HTMLElement {
 		this.setAttribute('default-tab', String(index));
 	}
 
-	initTabContainerChangeListener() {
-		this.addEventListener('tab-container-change', this.#scrollToTab);
-	}
-
-	initTabContainerNavClickListener() {
-		this.#next?.addEventListener('click', this.handleTabContainerNavClick.bind(this));
-		this.#prev?.addEventListener('click', this.handleTabContainerNavClick.bind(this));
-	}
-
-	handleTabContainerNavClick(event: Event) {
-		const target = event.currentTarget as HTMLButtonElement;
-
+	#handleNavClick(event: MouseEvent) {
+		const target =
+			event.target instanceof Element &&
+			(event.target.closest('[data-tab-container-nav]') as HTMLElement);
 		if (!target) {
 			return;
 		}
+		const action =
+			(target.dataset.tabContainerNav === 'next' ||
+				target.dataset.tabContainerNav === 'previous') &&
+			target.dataset.tabContainerNav;
+		if (!action) {
+			throw new Error('Supported values of [data-tab-container-nav] are "previous" and "next"');
+		}
 
-		const currentTabIndex = this.#tabs.findIndex(
-			tab => tab.getAttribute('aria-selected') === 'true'
-		);
+		const currentIndex = this.selectedTabIndex;
 
-		if (target.dataset.tabContainerNav === 'previous') {
-			const newTabIndex = (currentTabIndex - 1 + this.#tabs.length) % this.#tabs.length;
-			this.selectTab(newTabIndex);
-		} else if (target.dataset.tabContainerNav === 'next') {
-			const newTabIndex = (currentTabIndex + 1) % this.#tabs.length;
-			this.selectTab(newTabIndex);
+		if (action === 'next') {
+			let index = currentIndex + 1;
+			if (index >= this.#tabs.length) index = 0;
+			this.selectTab(index);
+		} else {
+			let index = currentIndex - 1;
+			if (index < 0) index = this.#tabs.length - 1;
+			this.selectTab(index);
 		}
 	}
 
