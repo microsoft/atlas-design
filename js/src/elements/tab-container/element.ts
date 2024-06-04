@@ -252,7 +252,7 @@ export class TabContainerElement extends HTMLElement {
 	}
 
 	handleEvent(event: Event) {
-		if (event.type === 'click') return this.#handleClick(event as MouseEvent);
+		if (event.type === 'click') return this.#handleTabClick(event as MouseEvent);
 		if (event.type === 'keydown') return this.#handleKeydown(event as KeyboardEvent);
 	}
 
@@ -285,7 +285,7 @@ export class TabContainerElement extends HTMLElement {
 		}
 	}
 
-	#handleClick(event: MouseEvent) {
+	#handleTabClick(event: MouseEvent) {
 		const tab = (event.target as HTMLElement)?.closest?.('[role=tab]');
 		if (!tab) return;
 		const tabs = this.#tabs;
@@ -298,6 +298,19 @@ export class TabContainerElement extends HTMLElement {
 			node.setAttribute(name, this.getAttribute(name)!);
 			this.removeAttribute(name);
 		}
+	}
+
+	#scrollToTab(event: TabContainerChangeEvent) {
+		const { tab } = event;
+		if (!tab) {
+			return;
+		}
+
+		(tab as HTMLElement).scrollIntoView({
+			behavior: 'auto',
+			block: 'nearest',
+			inline: 'center'
+		});
 	}
 
 	get selectedTabIndex(): number {
@@ -317,25 +330,12 @@ export class TabContainerElement extends HTMLElement {
 	}
 
 	initTabContainerChangeListener() {
-		this.addEventListener('tab-container-change', this.handleTabContainerChange.bind(this));
+		this.addEventListener('tab-container-change', this.#scrollToTab);
 	}
 
 	initTabContainerNavClickListener() {
 		this.#next?.addEventListener('click', this.handleTabContainerNavClick.bind(this));
 		this.#prev?.addEventListener('click', this.handleTabContainerNavClick.bind(this));
-	}
-
-	handleTabContainerChange(event: TabContainerChangeEvent) {
-		const { tab } = event;
-		if (!tab) {
-			return;
-		}
-
-		(tab as HTMLElement).scrollIntoView({
-			behavior: 'auto',
-			block: 'nearest',
-			inline: 'center'
-		});
 	}
 
 	handleTabContainerNavClick(event: Event) {
