@@ -127,9 +127,3 @@ $sc-active-color: $text-invert !default;
 		}
 	}
 }
-
-// After Tabpanels footer content
-
-.segmented-controls-footer {
-	outline-color: $text; // Provided explicitly because outline-color isn't passing through tab-container's shadow DOM
-}

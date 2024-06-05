@@ -241,7 +241,6 @@ export class TabContainerElement extends HTMLElement {
 
 		this.addEventListener('tab-container-change', this.#scrollToTab);
 		this.addEventListener('click', this.#handleNavClick);
-		this.addEventListener('click', this.#handleNavClick);
 
 		this.#setupComplete = true;
 	}
