@@ -3,4 +3,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Add new tab-container custom element
+Add new segmented-control component and relevant documentation.
