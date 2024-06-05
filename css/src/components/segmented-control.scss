@@ -36,14 +36,13 @@ $sc-active-color: $text-invert !default;
 		cursor: pointer;
 
 		&:hover {
-			border-color: $sc-active-hover-border-color;
 			background-color: $sc-active-hover-background-color;
 
 			@include forced-colors {
 				border-color: Highlight;
 				background-color: Highlight;
 				color: HighlightText;
-				forced-color-adjust: preserve-parent-color;
+				forced-color-adjust: none;
 			}
 		}
 
@@ -90,7 +89,7 @@ $sc-active-color: $text-invert !default;
 			@include forced-colors {
 				background-color: Highlight;
 				color: HighlightText;
-				forced-color-adjust: preserve-parent-color;
+				forced-color-adjust: none;
 			}
 		}
 
@@ -107,7 +106,7 @@ $sc-active-color: $text-invert !default;
 			@include forced-colors {
 				background-color: Highlight;
 				color: HighlightText;
-				forced-color-adjust: preserve-parent-color;
+				forced-color-adjust: none;
 			}
 		}
 	}
