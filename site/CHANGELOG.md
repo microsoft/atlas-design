@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.47.0
+
+### Minor Changes
+
+- 501e8fd: Add new segmented-control component and relevant documentation.
+
+### Patch Changes
+
+- Updated dependencies [501e8fd]
+  - @microsoft/atlas-js@1.10.0
+
 ## 0.46.2
 
 ### Patch Changes

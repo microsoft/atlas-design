@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.43.0
+
+### Minor Changes
+
+- 501e8fd: Add new segmented-control component and relevant documentation.
+
 ## 3.42.1
 
 ### Patch Changes
