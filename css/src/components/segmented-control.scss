@@ -1,0 +1,128 @@
+$sc-padding-sm: 0.5em 1em !default;
+$sc-padding: 0.75em 1.25em !default;
+$sc-padding-lg: 1em 1.5em !default;
+
+$sc-font-color: $primary !default;
+$sc-border: $border-width solid $border !default;
+$sc-border-radius-rounded: $border-radius-rounded;
+$sc-hover-background-color: $primary-background !default;
+$sc-hover-border: $border-width solid $border !default;
+$sc-hover-border-color: $primary-hover !default;
+$sc-active-hover-background-color: $primary-hover !default;
+$sc-active-hover-border-color: $primary-hover !default;
+$sc-active-background-color: $primary !default;
+$sc-active-border-color: $primary !default;
+$sc-active-color: $text-invert !default;
+
+.segmented-controls {
+	display: grid;
+	justify-content: center;
+	width: 100%;
+	grid-gap: $spacer-3;
+	grid-template-columns: max-content auto max-content;
+	font-size: $font-size-7;
+	white-space: nowrap;
+
+	.segmented-control-previous,
+	.segmented-control-next {
+		display: flex;
+		align-items: center;
+		padding: $sc-padding-sm;
+		border: $sc-border;
+		border-radius: $sc-border-radius-rounded;
+		background-color: $sc-active-background-color;
+		color: $sc-active-color;
+		font-weight: $weight-semibold;
+		cursor: pointer;
+
+		&:hover {
+			background-color: $sc-active-hover-background-color;
+
+			@include forced-colors {
+				border-color: Highlight;
+				background-color: Highlight;
+				color: HighlightText;
+				forced-color-adjust: none;
+			}
+		}
+
+		@include focus-visible() {
+			outline-color: $text-invert;
+			outline-offset: -$focus-outline-offset;
+		}
+	}
+
+	.segmented-control-list {
+		grid-column: 2;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		border: $sc-border;
+		border-radius: $sc-border-radius-rounded;
+		overflow-x: hidden;
+	}
+
+	.segmented-control {
+		display: flex;
+		position: relative;
+		align-items: center;
+		justify-content: center;
+		padding: $sc-padding-sm;
+		border: none;
+		border-radius: $sc-border-radius-rounded;
+		background-color: transparent;
+		color: $sc-font-color;
+		font-weight: $weight-semibold;
+		cursor: pointer;
+		appearance: none;
+		vertical-align: top;
+
+		@include focus-visible() {
+			outline-color: $text-invert;
+			outline-offset: -$focus-outline-offset;
+		}
+
+		&:hover {
+			background-color: $sc-hover-background-color;
+			z-index: $zindex-hover;
+
+			@include forced-colors {
+				background-color: Highlight !important;
+				color: HighlightText !important;
+				forced-color-adjust: none;
+			}
+		}
+
+		&[aria-selected='true'] {
+			background-color: $sc-active-background-color;
+			color: $sc-active-color;
+			z-index: $zindex-active;
+
+			&:hover {
+				background-color: $sc-active-hover-background-color;
+				z-index: $zindex-hover;
+			}
+
+			@include forced-colors {
+				background-color: SelectedItem;
+				color: SelectedItemText;
+				forced-color-adjust: none;
+			}
+		}
+	}
+
+	@include tablet {
+		.segmented-control,
+		.segmented-previous,
+		.segmented-next {
+			padding: $sc-padding;
+		}
+	}
+	@include desktop {
+		.segmented-control,
+		.segmented-previous,
+		.segmented-next {
+			padding: $sc-padding-lg;
+		}
+	}
+}
