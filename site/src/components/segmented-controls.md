@@ -22,9 +22,8 @@ The segmented controls component is a tabs-like widget, containing a list of but
 			data-tab-container-nav="previous"
 		>
 			<span class="icon" aria-hidden="true">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
+				<svg class="fill-current-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448">
 					<path
-						class="fill-current-color"
 						d="M448 224H62.625l148.688 148.688-22.625 22.625L1.375 208 188.688 20.688l22.625 22.625L62.625 192H448v32z"
 					/>
 				</svg>
@@ -48,9 +47,12 @@ The segmented controls component is a tabs-like widget, containing a list of but
 			data-tab-container-nav="next"
 		>
 			<span class="icon" aria-hidden="true">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="-255 57 448 448">
+				<svg
+					class="fill-current-color"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="-255 57 448 448"
+				>
 					<path
-						class="fill-current-color"
 						d="M-253.625 281v-32H131.75L-16.938 100.313 5.687 77.688 193 265 5.687 452.313l-22.625-22.625L131.75 281h-385.375z"
 					/>
 				</svg>

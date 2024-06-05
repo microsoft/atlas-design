@@ -87,8 +87,8 @@ $sc-active-color: $text-invert !default;
 			z-index: $zindex-hover;
 
 			@include forced-colors {
-				background-color: Highlight;
-				color: HighlightText;
+				background-color: Highlight !important;
+				color: HighlightText !important;
 				forced-color-adjust: none;
 			}
 		}
@@ -104,8 +104,8 @@ $sc-active-color: $text-invert !default;
 			}
 
 			@include forced-colors {
-				background-color: Highlight;
-				color: HighlightText;
+				background-color: SelectedItem;
+				color: SelectedItemText;
 				forced-color-adjust: none;
 			}
 		}
