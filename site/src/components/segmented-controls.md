@@ -6,7 +6,6 @@ classType: Component
 classPrefixes:
   - segmented-control
   - segmented-controls
-  - segmented-controls-footer
 ---
 
 ## Segmented Control
@@ -33,61 +32,14 @@ The segmented controls component is a tabs-like widget, containing a list of but
 		</button>
 
 		<div class="segmented-control-list" role="tablist" aria-orientation="horizontal">
-			<button
-				class="segmented-control"
-				type="button"
-				id="sc-one-1"
-				role="tab"
-				aria-selected="true"
-				data-segmented-control
-			>
+			<button class="segmented-control" type="button" id="sc-one-1" role="tab" aria-selected="true">
 				Define Strategy
 			</button>
-			<button
-				class="segmented-control"
-				type="button"
-				id="sc-one-2"
-				role="tab"
-				data-segmented-control
-			>
-				Plan
-			</button>
-			<button
-				class="segmented-control"
-				type="button"
-				id="sc-one-3"
-				role="tab"
-				data-segmented-control
-			>
-				Prepare
-			</button>
-			<button
-				class="segmented-control"
-				type="button"
-				id="sc-one-4"
-				role="tab"
-				data-segmented-control
-			>
-				Adopt
-			</button>
-			<button
-				class="segmented-control"
-				type="button"
-				id="sc-one-5"
-				role="tab"
-				data-segmented-control
-			>
-				Govern
-			</button>
-			<button
-				class="segmented-control"
-				type="button"
-				id="sc-one-6"
-				role="tab"
-				data-segmented-control
-			>
-				Manage
-			</button>
+			<button class="segmented-control" type="button" id="sc-one-2" role="tab">Plan</button>
+			<button class="segmented-control" type="button" id="sc-one-3" role="tab">Prepare</button>
+			<button class="segmented-control" type="button" id="sc-one-4" role="tab">Adopt</button>
+			<button class="segmented-control" type="button" id="sc-one-5" role="tab">Govern</button>
+			<button class="segmented-control" type="button" id="sc-one-6" role="tab">Manage</button>
 		</div>
 		<button
 			type="button"
