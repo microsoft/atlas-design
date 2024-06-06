@@ -10,7 +10,7 @@
 	"main": "lib/index.js",
 	"engines": {
 		"node": ">= 18.12.1",
-		"parcel": "^2.7.0"
+		"parcel": "^2.12.0"
 	},
 	"dependencies": {
 		"@microsoft/atlas-css": "^3.38.0",
