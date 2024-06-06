@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.10.1
+
+### Patch Changes
+
+- 49b8e1a: Fixed two linting errors on the typescript
+
 ## 1.10.0
 
 ### Minor Changes
