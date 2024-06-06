@@ -39,6 +39,7 @@ jobs:
         with:
           publish: npx changeset publish
         env:
+          HOME: ${{ github.workspace }} # https://github.com/changesets/action/issues/147
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
