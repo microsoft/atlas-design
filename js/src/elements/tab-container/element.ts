@@ -168,13 +168,6 @@ export class TabContainerElement extends HTMLElement {
 		);
 	}
 
-	get #next(): HTMLButtonElement {
-		return this.querySelector<HTMLButtonElement>('[data-tab-container-nav="next"]')!;
-	}
-	get #prev(): HTMLButtonElement {
-		return this.querySelector<HTMLButtonElement>('[data-tab-container-nav="previous"]')!;
-	}
-
 	get activeTab() {
 		return this.#tabs[this.selectedTabIndex];
 	}
