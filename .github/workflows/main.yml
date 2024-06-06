@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build Site and CSS
+name: Ensure build and lint
 
 # Controls when the action will run.
 on:
