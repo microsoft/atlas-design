@@ -26,7 +26,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 20.9.0
           registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
