@@ -26,7 +26,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 20.9.0
           registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
@@ -39,6 +39,7 @@ jobs:
         with:
           publish: npx changeset publish
         env:
+          HOME: ${{ github.workspace }} # https://github.com/changesets/action/issues/147
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
