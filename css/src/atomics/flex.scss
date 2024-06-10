@@ -50,6 +50,11 @@ $flex-atomics: (
 		0,
 		1
 	)
+	'flex-basis':
+	(
+		0,
+		1
+	)
 ) !default;
 
 @each $key in map.keys($flex-atomics) {
