@@ -10,6 +10,7 @@ classPrefixes:
   - flex-direction
   - flex-grow
   - flex-shrink
+  - flex-basis
   - flex-wrap
   - justify-content
 ---
@@ -28,6 +29,7 @@ Flex atomics are useful when composing layouts and patterns containing other com
 | `align-content`   | `flex-start`, `flex-end`, `space-around`, `space-between`, `stretch`                | `tablet`   |
 | `flex-grow`       | `0`, `1`                                                                            | `tablet`   |
 | `flex-shrink`     | `0`, `1`                                                                            | `tablet`   |
+| `flex-basis`      | `0`, `auto`                                                                         | `tablet`   |
 
 ## Usage
 
@@ -88,6 +90,8 @@ The following example uses a combination of mobile-first flex atomics to achieve
 .flex-grow-1
 .flex-shrink-0
 .flex-shrink-1
+.flex-basis-0
+.flex-basis-auto
 .flex-direction-row-tablet
 .flex-direction-column-tablet
 .flex-direction-row-reverse-tablet
@@ -120,4 +124,6 @@ The following example uses a combination of mobile-first flex atomics to achieve
 .flex-grow-1-tablet
 .flex-shrink-0-tablet
 .flex-shrink-1-tablet
+.flex-basis-0-tablet
+.flex-basis-auto-tablet
 ```
