@@ -8,3 +8,4 @@ toc.json
 test-results/
 playwright-report/
 .wireit
+.netrc
