@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.44.0
+
+### Minor Changes
+
+- a9df9d9: remove flex-basis-auto
+- b9993a0: add support for flex-basis
+
 ## 3.43.0
 
 ### Minor Changes
