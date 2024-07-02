@@ -10,8 +10,10 @@ This post provides some contribution guidelines for CSS/Scss in Atlas.
   - if so, and the change is to our styles, please ensure that you make a documentation change in the same pull request.
   - if so, and the change is to our development environment, please make sure the appropriate readme file is updated/created.
 - fill out a **changeset** using the [changeset cli](https://github.com/atlassian/changesets/blob/main/docs/intro-to-using-changesets.md).
-  - if the change is to styles, you must fill out a changeset.
+  - if the change is to styles (`/css`) or scripts (`/js`), you must fill out a changeset.
+  - `npx changeset add` will get you started.
   - if the change is to the site's infrastructure, you should fill out a changeset. _Note: we do not need semver for the site, but changesets will also provide a nicely organized changelog for improvements across the site._
+  - semver primer -> major = "breaking change", minor = "new functionality," patch = "fix" to existing functionality.
 - make a pull request and whenever possible...
   - include a work item number.
   - include a preview link to PR version of the site for easier functional reviewing of your code. (`preview-<pr-number>` or `<origin>/pulls/<pr-number>/path/to/page/`).
