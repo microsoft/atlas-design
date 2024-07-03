@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.44.1
+
+### Patch Changes
+
+- 93044c9: Update list-style-none to impact markers in iOS mobile.
+
 ## 3.44.0
 
 ### Minor Changes
