@@ -226,10 +226,10 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 	<div class="field">
 		<legend class="field-label">Radio Field label</legend>
 		<div class="field-body">
-			<label class="radio" for="question-1-1">
+			<label class="radio" for="question-id-1">
 				<input
 					name="question-1"
-					id="question-1-1"
+					id="question-id-1"
 					type="radio"
 					class="radio-dot"
 					value="Yes"
