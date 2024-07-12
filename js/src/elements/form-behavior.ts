@@ -683,36 +683,17 @@ function setBusySubmitButton(event: Event, form: HTMLFormElement, isLoading: boo
 }
 
 export function getLabel(input: HTMLValueElement): string {
-	// Get input type
-	const type = input.getAttribute('type');
-
-	// Define a function to get the label based on input type
-	const getLabelBasedOnType = (): string | null => {
-		// If the input is a radio or checkbox, use the 'error-label' attribute.
-		if (type === 'radio' || type === 'checkbox') {
-			return input.getAttribute('data-error-label') || null;
-		}
-
-		// Use the first label's text content if available
-		if (input.labels && input.labels.length > 0) {
-			return input.labels[0].textContent;
-		}
-
-		// Fallback to 'aria-label' attribute if present
-		return input.getAttribute('aria-label');
-	};
-
-	// Call the function to get the label
-	const label = getLabelBasedOnType();
-
-	// Check if label is found, if not throw an error
-	if (label === null || label.trim() === '') {
+	const label =
+		input.type === 'radio'
+			? input.getAttribute('data-error-label')
+			: input.labels && input.labels.length
+			? input.labels[0].textContent
+			: input.getAttribute('aria-label');
+	if (!label) {
 		throw new Error(
 			`${input.nodeName} name="${input.name}" id="${input.id}" has no associated label.`
 		);
 	}
-
-	// Return the trimmed label
 	return label.trim();
 }
 
