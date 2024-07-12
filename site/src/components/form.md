@@ -205,14 +205,62 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 		</div>
 	</div>
 	<div class="field">
+		<legend class="field-label">Checkbox Field label</legend>
 		<div class="field-body">
 			<label class="checkbox">
-				<input type="checkbox" name="checkbox-example" required id="sample-checkbox" />
+				<input
+					type="checkbox"
+					name="checkbox-example"
+					required
+					id="sample-checkbox"
+					data-error-label="Checkbox Example"
+				/>
 				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 				<span class="checkbox-text">
 					Checkbox
 					<span class="required-indicator"></span>
 				</span>
+			</label>
+		</div>
+	</div>
+	<div class="field">
+		<legend class="field-label">Radio Field label</legend>
+		<div class="field-body">
+			<label class="radio" for="question-1-1">
+				<input
+					name="question-1"
+					id="question-1-1"
+					type="radio"
+					class="radio-dot"
+					value="Yes"
+					data-error-label="Challenge Collection selection"
+					required
+				/>
+				<span class="radio-label-text">Yes</span>
+			</label>
+			<label class="radio" for="question-id-2">
+				<input name="question-1" id="question-id-2" type="radio" class="radio-dot" value="No" />
+				<span class="radio-label-text">No</span>
+			</label>
+			<label class="radio" for="question-id-3">
+				<input
+					name="question-1"
+					id="question-id-3"
+					type="radio"
+					class="radio-dot"
+					value="Option 3"
+				/>
+				<span class="radio-label-text">Option 3</span>
+			</label>
+			<label class="radio" for="question-id-4">
+				<input
+					name="question-1"
+					id="question-id-4"
+					type="radio"
+					class="radio-dot"
+					value="Option 4"
+				/>
+				<span class="radio-label-text">Option 4</span>
 			</label>
 		</div>
 	</div>
