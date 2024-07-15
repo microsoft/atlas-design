@@ -683,12 +683,16 @@ function setBusySubmitButton(event: Event, form: HTMLFormElement, isLoading: boo
 }
 
 export function getLabel(input: HTMLValueElement): string {
-	const label =
-		input.type === 'radio'
-			? input.getAttribute('data-error-label')
-			: input.labels && input.labels.length
-			? input.labels[0].textContent
-			: input.getAttribute('aria-label');
+	let label: string | null = null;
+
+	if (input.type === 'radio') {
+		label = input.getAttribute('data-error-label');
+	} else if (input.labels?.length) {
+		label = input.labels[0].textContent;
+	} else {
+		label = input.getAttribute('aria-label');
+	}
+
 	if (!label) {
 		throw new Error(
 			`${input.nodeName} name="${input.name}" id="${input.id}" has no associated label.`
