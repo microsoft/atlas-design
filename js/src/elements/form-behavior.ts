@@ -686,7 +686,7 @@ export function getLabel(input: HTMLValueElement): string {
 	let label: string | null = null;
 
 	if (input.type === 'radio') {
-		label = input.getAttribute('data-error-label');
+		label = input.getAttribute('data-validation-label');
 	} else if (input.labels?.length) {
 		label = input.labels[0].textContent;
 	} else {

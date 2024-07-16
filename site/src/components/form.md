@@ -233,7 +233,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 					type="radio"
 					class="radio-dot"
 					value="Yes"
-					data-error-label="Radio Input selection"
+					data-validation-label="Radio Input selection"
 					required
 				/>
 				<span class="radio-label-text">Yes</span>
