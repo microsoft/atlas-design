@@ -1,6 +1,6 @@
 ---
-'@microsoft/atlas-site': patch
-'@microsoft/atlas-js': patch
+'@microsoft/atlas-site': minor
+'@microsoft/atlas-js': minor
 ---
 
-Minor update to the form behavior scripts that improves error messaging on radio input
+Added form behavior radio group labeling and error handling.
