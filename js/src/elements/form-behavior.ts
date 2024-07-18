@@ -2,6 +2,7 @@ import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
 export const defaultMessageStrings = {
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
+	inputGroupRequired: 'At least one selection for {inputLabel} is required.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
 	inputRequired: '{inputLabel} is required.',
@@ -27,6 +28,7 @@ export class FormBehaviorElement extends HTMLElement {
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
 		this.validateRequired.bind(this),
+		this.validateGroupRequired.bind(this), // Checkbox or Radio groups
 		this.validateMaxLength.bind(this)
 	];
 
@@ -364,6 +366,16 @@ export class FormBehaviorElement extends HTMLElement {
 		return null;
 	}
 
+	validateGroupRequired(input: HTMLValueElement, label: string): string | null {
+		const group = getField(input);
+		const inputs = Array.from(group.querySelectorAll<HTMLInputElement>('input'));
+		const selected = inputs.some(input => input.checked);
+		if (!selected) {
+			return `${this.locStrings.inputGroupRequired.replace('{inputLabel}', label)}`;
+		}
+		return null;
+	}
+
 	validateMinLength(input: HTMLValueElement | HTMLInputElement, label: string): string | null {
 		if (
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
@@ -395,7 +407,6 @@ export class FormBehaviorElement extends HTMLElement {
 	): Promise<FormValidationResult> {
 		const errors: FormValidationError[] = [];
 		const { errorAlert, errorList } = this.getErrorAlert(form);
-		let prevInputName: string = ''; // Used for Radios that share the same name
 
 		if (displayValidity || form.hasAttribute('data-hide-validation-banner')) {
 			errorAlert.hidden = true;
@@ -406,6 +417,13 @@ export class FormBehaviorElement extends HTMLElement {
 		for (const input of [...form.elements, ...customElements]) {
 			if (!scope.contains(input) || !canValidate(input, form)) {
 				continue;
+			}
+
+			if (input.type === 'radio') {
+				const radioGroup = form.querySelectorAll<HTMLInputElement>(`input[name="${input.name}"]`);
+				if (radioGroup.length > 1 && radioGroup[0] !== input) {
+					continue;
+				}
 			}
 
 			if (input.hasAttribute('aria-hidden') === true) {
@@ -422,11 +440,6 @@ export class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
-			// For Radios where name is the same across options, only validate the first one
-			if (prevInputName !== undefined && input.name === prevInputName) {
-				continue;
-			}
-
 			if (input.hasAttribute('data-skip-validation')) {
 				const validationErrorEvent = new CustomEvent('form-validating', {
 					detail: {
@@ -440,9 +453,7 @@ export class FormBehaviorElement extends HTMLElement {
 			}
 
 			const isCustomElement = !!customElements.find(el => el === input);
-
 			this.runBasicValidation(input, displayValidity, errors, errorList, isCustomElement);
-			prevInputName = input.name;
 			const validationErrorEvent = new CustomEvent('form-validating', {
 				detail: {
 					errors,
@@ -524,6 +535,7 @@ export class FormBehaviorElement extends HTMLElement {
 			return;
 		}
 
+		// TODO make label aware of radio and where label can live.
 		const label = getLabel(input);
 		const group = getField(input);
 
@@ -573,6 +585,8 @@ export class FormBehaviorElement extends HTMLElement {
 				if (!isCustomElement) {
 					if (input.type === 'checkbox') {
 						input.closest('label.checkbox')?.classList.add(`is-invalid`);
+					} else if (input.type === 'radio') {
+						input.closest('label.radio')?.classList.add(`is-invalid`);
 					} else {
 						input.classList.add(`${input.localName}-danger`);
 					}
@@ -686,7 +700,13 @@ export function getLabel(input: HTMLValueElement): string {
 	let label: string | null = null;
 
 	if (input.type === 'radio') {
-		label = input.getAttribute('data-validation-label');
+		const group = getField(input);
+		const groupLabel = group.querySelector('.field-label');
+		if (groupLabel) {
+			label = groupLabel.textContent;
+		} else {
+			label = input.getAttribute('aria-label');
+		}
 	} else if (input.labels?.length) {
 		label = input.labels[0].textContent;
 	} else {

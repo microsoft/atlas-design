@@ -108,6 +108,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 		header-content-type="application/json"
 		header-x-docsauth="cookie"
 		loc-content-has-changed="Content has changed, please reload the page to get the latest changes."
+		loc-input-group-required="At least one selection from {inputGroup} is required."
 		loc-input-max-length="{inputLabel} cannot be longer than {maxLength} characters."
 		loc-input-min-length="{inputLabel} must be at least {minLength} characters."
 		loc-input-required="{inputLabel} is required."
@@ -128,6 +129,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 			<input id="sample-input" name="input" class="input" type="text" value="" required />
 		</div>
 	</div>
+
 	<div class="field">
 		<label class="field-label" for="sample-input-min">
 			Input with min/max length
@@ -151,6 +153,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 			/>
 		</div>
 	</div>
+
 	<div class="field">
 		<label class="field-label" for="sample-select">
 			Select
@@ -170,6 +173,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 			</select>
 		</div>
 	</div>
+
 	<div class="field">
 		<label class="label" for="sample-text-area">
 			Textarea
@@ -187,6 +191,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 			></textarea>
 		</div>
 	</div>
+
 	<div class="field">
 		<label class="field-label" for="sample-skip-input">
 			Input
@@ -204,25 +209,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 			/>
 		</div>
 	</div>
-	<div class="field">
-		<legend class="field-label">Checkbox Field label</legend>
-		<div class="field-body">
-			<label class="checkbox">
-				<input
-					type="checkbox"
-					name="checkbox-example"
-					required
-					id="sample-checkbox"
-					data-error-label="Checkbox Example"
-				/>
-				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
-				<span class="checkbox-text">
-					Checkbox
-					<span class="required-indicator"></span>
-				</span>
-			</label>
-		</div>
-	</div>
+
 	<div class="field">
 		<legend class="field-label">Radio Field label</legend>
 		<div class="field-body">
@@ -233,13 +220,19 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 					type="radio"
 					class="radio-dot"
 					value="Yes"
-					data-validation-label="Radio Input selection"
+					aria-label="Radio Field secondary label"
 					required
 				/>
 				<span class="radio-label-text">Yes</span>
 			</label>
 			<label class="radio" for="question-id-2">
-				<input name="question-1" id="question-id-2" type="radio" class="radio-dot" value="No" />
+				<input
+					name="question-1"
+					id="question-id-2"
+					type="radio"
+					class="radio-dot"
+					value="option-No"
+				/>
 				<span class="radio-label-text">No</span>
 			</label>
 			<label class="radio" for="question-id-3">
@@ -264,6 +257,27 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 			</label>
 		</div>
 	</div>
+
+	<div class="field">
+		<legend class="field-label">Checkbox Field label</legend>
+		<div class="field-body">
+			<label class="checkbox">
+				<input
+					type="checkbox"
+					name="checkbox-example"
+					required
+					id="sample-checkbox"
+					data-error-label="Checkbox Example"
+				/>
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text">
+					Checkbox
+					<span class="required-indicator"></span>
+				</span>
+			</label>
+		</div>
+	</div>
+
 	<div class="display-flex">
 		<button type="submit" class="button button-primary button-filled">Submit form</button>
 	</div>
