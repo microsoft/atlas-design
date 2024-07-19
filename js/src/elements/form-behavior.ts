@@ -419,6 +419,8 @@ export class FormBehaviorElement extends HTMLElement {
 				continue;
 			}
 
+			// Apply validation to the first radio in a group
+			// This is to prevent duplicate validation messages for each radio in a group
 			if (input.type === 'radio') {
 				const radioGroup = form.querySelectorAll<HTMLInputElement>(`input[name="${input.name}"]`);
 				if (radioGroup.length > 1 && radioGroup[0] !== input) {
