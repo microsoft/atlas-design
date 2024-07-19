@@ -27,8 +27,8 @@ export class FormBehaviorElement extends HTMLElement {
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
-		this.validateRequired.bind(this),
 		this.validateGroupRequired.bind(this), // Checkbox or Radio groups
+		this.validateRequired.bind(this),
 		this.validateMaxLength.bind(this)
 	];
 
@@ -367,11 +367,18 @@ export class FormBehaviorElement extends HTMLElement {
 	}
 
 	validateGroupRequired(input: HTMLValueElement, label: string): string | null {
-		const group = getField(input);
-		const inputs = Array.from(group.querySelectorAll<HTMLInputElement>('input'));
-		const hasCheckedInput = inputs.some(input => input.checked);
-		if (!hasCheckedInput) {
-			return this.locStrings.inputGroupRequired.replace('{inputGroup}', label);
+		if (input.type === 'radio' || input.type === 'checkbox') {
+			const group = getField(input);
+			const inputs = Array.from(group.querySelectorAll<HTMLInputElement>('input'));
+			// Return null if a single checkbox, so that validateRequired can handle it
+			if (inputs.length === 1 && inputs[0].type === 'checkbox') {
+				return null;
+			}
+
+			const hasCheckedInput = inputs.some(input => input.checked);
+			if (!hasCheckedInput) {
+				return this.locStrings.inputGroupRequired.replace('{inputGroup}', label);
+			}
 		}
 		return null;
 	}
