@@ -262,13 +262,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 		<legend class="field-label">Checkbox Field label</legend>
 		<div class="field-body">
 			<label class="checkbox">
-				<input
-					type="checkbox"
-					name="checkbox-example"
-					required
-					id="sample-checkbox"
-					data-error-label="Checkbox Example"
-				/>
+				<input type="checkbox" name="checkbox-example" required id="sample-checkbox" />
 				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 				<span class="checkbox-text">
 					Checkbox

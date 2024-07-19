@@ -2,7 +2,7 @@ import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
 export const defaultMessageStrings = {
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
-	inputGroupRequired: 'At least one selection for {inputLabel} is required.',
+	inputGroupRequired: 'At least one selection for {inputGroup} is required.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
 	inputRequired: '{inputLabel} is required.',
@@ -358,10 +358,10 @@ export class FormBehaviorElement extends HTMLElement {
 
 	validateRequired(input: HTMLValueElement, label: string): string | null {
 		if (input.validity.valueMissing) {
-			return `${this.locStrings.inputRequired.replace(
+			return this.locStrings.inputRequired.replace(
 				'{inputLabel}',
 				customElements.get(input.localName) ? `A selection for "${label}"` : label
-			)}`;
+			);
 		}
 		return null;
 	}
@@ -369,9 +369,9 @@ export class FormBehaviorElement extends HTMLElement {
 	validateGroupRequired(input: HTMLValueElement, label: string): string | null {
 		const group = getField(input);
 		const inputs = Array.from(group.querySelectorAll<HTMLInputElement>('input'));
-		const selected = inputs.some(input => input.checked);
-		if (!selected) {
-			return `${this.locStrings.inputGroupRequired.replace('{inputLabel}', label)}`;
+		const hasCheckedInput = inputs.some(input => input.checked);
+		if (!hasCheckedInput) {
+			return this.locStrings.inputGroupRequired.replace('{inputGroup}', label);
 		}
 		return null;
 	}
@@ -381,9 +381,9 @@ export class FormBehaviorElement extends HTMLElement {
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
 			(input.validity.tooShort || (input.minLength > 0 && input.value.length < input.minLength))
 		) {
-			return `${this.locStrings.inputMinLength
+			return this.locStrings.inputMinLength
 				.replace('{inputLabel}', label)
-				.replace('{minLength}', input.minLength.toString())}`;
+				.replace('{minLength}', input.minLength.toString());
 		}
 		return null;
 	}
@@ -393,9 +393,9 @@ export class FormBehaviorElement extends HTMLElement {
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
 			(input.validity.tooLong || (input.maxLength > 0 && input.value.length > input.maxLength))
 		) {
-			return `${this.locStrings.inputMaxLength
+			return this.locStrings.inputMaxLength
 				.replace('{inputLabel}', label)
-				.replace('{maxLength}', input.maxLength.toString())}`;
+				.replace('{maxLength}', input.maxLength.toString());
 		}
 		return null;
 	}
