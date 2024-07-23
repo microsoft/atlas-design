@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.44.2
+
+### Patch Changes
+
+- 79f1152: Remove buttons' Firefox-only tiny focus rings, which would sometimes beat out Atlas's default focus outlines
+
 ## 3.44.1
 
 ### Patch Changes
