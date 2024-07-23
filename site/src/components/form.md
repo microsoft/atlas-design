@@ -210,7 +210,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 		</div>
 	</div>
 
-	<div class="field">
+	<fieldset class="field">
 		<legend class="field-label">Radio Example</legend>
 		<div class="field-body">
 			<label class="radio" for="question-id-1">
@@ -256,9 +256,9 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 				<span class="radio-label-text">Option 4</span>
 			</label>
 		</div>
-	</div>
+	</fieldset>
 
-	<div class="field">
+	<fieldset class="field">
 		<legend class="field-label">Checkbox Field label</legend>
 		<div class="field-body">
 			<label class="checkbox">
@@ -270,7 +270,54 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 				</span>
 			</label>
 		</div>
-	</div>
+	</fieldset>
+	<fieldset class="field">
+		<legend class="field-label">Multiple Checkbox Field label</legend>
+		<div class="field-body">
+			<label class="checkbox">
+				<input type="checkbox" name="multi-checkbox-example-1" id="sample-multi-checkbox-1" />
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text"> Checkbox 1 </span>
+			</label>
+		</div>
+		<div class="field-body">
+			<label class="checkbox">
+				<input
+					type="checkbox"
+					name="multi-checkbox-example-2"
+					id="sample-multi-checkbox-2"
+					aria-label="Checkbox 2 (required)"
+					required
+				/>
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text">
+					Checkbox 2 (required)
+					<span class="required-indicator"></span>
+				</span>
+			</label>
+		</div>
+		<div class="field-body">
+			<label class="checkbox">
+				<input type="checkbox" name="multi-checkbox-example-3" id="sample-multi-checkbox-3" />
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text"> Checkbox 3 </span>
+			</label>
+		</div>
+		<div class="field-body">
+			<label class="checkbox">
+				<input type="checkbox" name="multi-checkbox-example-4" id="sample-multi-checkbox-4" />
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text"> Checkbox 4 </span>
+			</label>
+		</div>
+		<div class="field-body">
+			<label class="checkbox">
+				<input type="checkbox" name="multi-checkbox-example-5" id="sample-multi-checkbox-5" />
+				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
+				<span class="checkbox-text"> Last Checkbox </span>
+			</label>
+		</div>
+	</fieldset>
 
 	<div class="display-flex">
 		<button type="submit" class="button button-primary button-filled">Submit form</button>

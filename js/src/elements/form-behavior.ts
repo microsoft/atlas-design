@@ -27,7 +27,7 @@ export class FormBehaviorElement extends HTMLElement {
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
-		this.validateGroupRequired.bind(this), // Checkbox or Radio groups
+		// this.validateGroupRequired.bind(this), // Checkbox or Radio groups
 		this.validateRequired.bind(this),
 		this.validateMaxLength.bind(this)
 	];
@@ -360,25 +360,10 @@ export class FormBehaviorElement extends HTMLElement {
 		if (input.validity.valueMissing) {
 			return this.locStrings.inputRequired.replace(
 				'{inputLabel}',
-				customElements.get(input.localName) ? `A selection for "${label}"` : label
+				customElements.get(input.localName) || input.type === 'radio' || input.type === 'checkbox'
+					? `A selection for "${label}"`
+					: label
 			);
-		}
-		return null;
-	}
-
-	validateGroupRequired(input: HTMLValueElement, label: string): string | null {
-		if (input.type === 'radio' || input.type === 'checkbox') {
-			const group = getField(input);
-			const inputs = Array.from(group.querySelectorAll<HTMLInputElement>('input'));
-			// Return null if a single checkbox, so that validateRequired can handle it
-			if (inputs.length === 1 && inputs[0].type === 'checkbox') {
-				return null;
-			}
-
-			const hasCheckedInput = inputs.some(input => input.checked);
-			if (!hasCheckedInput) {
-				return this.locStrings.inputGroupRequired.replace('{inputGroup}', label);
-			}
 		}
 		return null;
 	}
@@ -544,7 +529,6 @@ export class FormBehaviorElement extends HTMLElement {
 			return;
 		}
 
-		// TODO make label aware of radio and where label can live.
 		const label = getLabel(input);
 		const group = getField(input);
 

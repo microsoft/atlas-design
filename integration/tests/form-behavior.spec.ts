@@ -81,9 +81,21 @@ test.describe('form behavior validation', () => {
 		await submitBtn.click();
 
 		expect(errorContainer).toContainText('Please fix the following issues to continue:');
-		expect(errorContainer).toContainText([
-			`At least one selection from ${groupLabel} is required.`
-		]);
+		expect(errorContainer).toContainText([`A selection for "${groupLabel}" is required.`]);
+	});
+
+	test('show inputGroupRequired message when checkbox group is missing a selection', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		const input = page.locator('#sample-multi-checkbox-2');
+		const groupLabel = await input.getAttribute('aria-label');
+
+		await submitBtn.click();
+
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText([`A selection for "${groupLabel}" is required.`]);
 	});
 
 	test('show thereAreNoEditsToSubmit message when no edits are made on the form', async ({
