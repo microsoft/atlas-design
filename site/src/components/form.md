@@ -280,8 +280,6 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 				<span class="checkbox-text"> Checkbox 1 </span>
 			</label>
-		</div>
-		<div class="field-body">
 			<label class="checkbox">
 				<input
 					type="checkbox"
@@ -296,22 +294,16 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 					<span class="required-indicator"></span>
 				</span>
 			</label>
-		</div>
-		<div class="field-body">
 			<label class="checkbox">
 				<input type="checkbox" name="multi-checkbox-example-3" id="sample-multi-checkbox-3" />
 				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 				<span class="checkbox-text"> Checkbox 3 </span>
 			</label>
-		</div>
-		<div class="field-body">
 			<label class="checkbox">
 				<input type="checkbox" name="multi-checkbox-example-4" id="sample-multi-checkbox-4" />
 				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>
 				<span class="checkbox-text"> Checkbox 4 </span>
 			</label>
-		</div>
-		<div class="field-body">
 			<label class="checkbox">
 				<input type="checkbox" name="multi-checkbox-example-5" id="sample-multi-checkbox-5" />
 				<span class="checkbox-check" role="presentation" aria-hidden="true"></span>

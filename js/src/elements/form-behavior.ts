@@ -531,10 +531,10 @@ export class FormBehaviorElement extends HTMLElement {
 		const label = getLabel(input);
 		const group = getField(input);
 
-		if (displayValidity) {
-			setValidationMessage(input, '');
-			group.classList.remove('errored');
-		}
+		// if (displayValidity) {
+		// 	setValidationMessage(input, '');
+		// 	group.classList.remove('errored');
+		// }
 
 		for (const validator of this.validators) {
 			const message = validator(input, label);
