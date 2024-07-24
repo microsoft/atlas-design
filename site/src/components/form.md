@@ -271,6 +271,7 @@ If you want to skip the basic validation on an input, apply a `data-skip-validat
 			</label>
 		</div>
 	</fieldset>
+
 	<fieldset class="field">
 		<legend class="field-label">Multiple Checkbox Field label</legend>
 		<div class="field-body">

@@ -27,7 +27,6 @@ export class FormBehaviorElement extends HTMLElement {
 
 	validators: Validator[] = [
 		this.validateMinLength.bind(this), // min length before required
-		// this.validateGroupRequired.bind(this), // Checkbox or Radio groups
 		this.validateRequired.bind(this),
 		this.validateMaxLength.bind(this)
 	];

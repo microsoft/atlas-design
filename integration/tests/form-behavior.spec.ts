@@ -70,18 +70,54 @@ test.describe('form behavior validation', () => {
 		expect(errorContainer).toContainText([`${label} is required.`]);
 	});
 
-	test('show inputGroupRequired message when radio group is missing a selection', async ({
+	test('show required message with label from legend when radio group is missing a selection', async ({
 		page,
 		errorContainer,
 		submitBtn
 	}) => {
-		const input = page.locator('#question-id-1');
-		const groupLabel = await input.getAttribute('aria-label');
+		const input = await page.locator('#question-id-1');
+		const inputField = page.locator('fieldset', { has: input });
+		const groupLabel = inputField.locator('legend');
+		const label = (await groupLabel.textContent())?.trim();
 
 		await submitBtn.click();
 
 		expect(errorContainer).toContainText('Please fix the following issues to continue:');
-		expect(errorContainer).toContainText([`A selection for "${groupLabel}" is required.`]);
+		expect(errorContainer).toContainText([`A selection for "${label}" is required.`]);
+	});
+
+	test('show required message with label from aria-label when radio group is missing a selection', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		const input = await page.locator('#question-id-1');
+		const inputField = page.locator('fieldset', { has: input });
+
+		// remove legend from inputField
+		const inputLabel = inputField.locator('legend');
+		inputLabel.evaluate(el => el.remove());
+		const label = await input.getAttribute('aria-label');
+
+		await submitBtn.click();
+
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText([`A selection for "${label}" is required.`]);
+	});
+
+	// Checkbox
+	test('show inputGroupRequired field label message when checkbox group is missing a aria-label', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		const inputLabel = page.locator('label', { has: page.locator('#sample-checkbox') });
+		const label = (await inputLabel.textContent())?.trim();
+
+		await submitBtn.click();
+
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText([`A selection for "${label}" is required.`]);
 	});
 
 	test('show inputGroupRequired message when checkbox group is missing a selection', async ({
