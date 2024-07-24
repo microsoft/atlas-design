@@ -11,9 +11,10 @@ classPrefixes:
 
 At times, you'll need to determine the overflow behavior of an element. Atlas provides several classes to do this.
 
-| cssproperty | value    | screensize |
-| ----------- | -------- | ---------- |
-| `overflow`  | `hidden` | `tablet`   |
+| cssproperty  | value    | screensize |
+| ------------ | -------- | ---------- |
+| `overflow`   | `hidden` | `tablet`   |
+| `overflow-x` | `hidden` | N/A        |
 
 ## Usage
 
