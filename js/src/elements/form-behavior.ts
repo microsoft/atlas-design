@@ -359,7 +359,7 @@ export class FormBehaviorElement extends HTMLElement {
 		if (input.validity.valueMissing) {
 			return this.locStrings.inputRequired.replace(
 				'{inputLabel}',
-				customElements.get(input.localName) || input.type === 'radio' || input.type === 'checkbox'
+				customElements.get(input.localName) || input.type === 'radio'
 					? `A selection for "${label}"`
 					: label
 			);

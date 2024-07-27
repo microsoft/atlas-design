@@ -117,7 +117,7 @@ test.describe('form behavior validation', () => {
 		await submitBtn.click();
 
 		expect(errorContainer).toContainText('Please fix the following issues to continue:');
-		expect(errorContainer).toContainText([`A selection for "${label}" is required.`]);
+		expect(errorContainer).toContainText([`${label} is required.`]);
 	});
 
 	test('show inputGroupRequired message when checkbox group is missing a selection', async ({
@@ -131,7 +131,7 @@ test.describe('form behavior validation', () => {
 		await submitBtn.click();
 
 		expect(errorContainer).toContainText('Please fix the following issues to continue:');
-		expect(errorContainer).toContainText([`A selection for "${groupLabel}" is required.`]);
+		expect(errorContainer).toContainText([`${groupLabel} is required.`]);
 	});
 
 	test('show thereAreNoEditsToSubmit message when no edits are made on the form', async ({
