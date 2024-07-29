@@ -2,6 +2,7 @@ import { generateElementId, kebabToCamelCase } from '../utilities/util';
 
 export const defaultMessageStrings = {
 	contentHasChanged: 'Content has changed, please reload the page to get the latest changes.',
+	inputGroupRequired: 'At least one selection for {inputGroup} is required.',
 	inputMaxLength: '{inputLabel} cannot be longer than {maxLength} characters.',
 	inputMinLength: '{inputLabel} must be at least {minLength} characters.',
 	inputRequired: '{inputLabel} is required.',
@@ -356,10 +357,12 @@ export class FormBehaviorElement extends HTMLElement {
 
 	validateRequired(input: HTMLValueElement, label: string): string | null {
 		if (input.validity.valueMissing) {
-			return `${this.locStrings.inputRequired.replace(
+			return this.locStrings.inputRequired.replace(
 				'{inputLabel}',
-				customElements.get(input.localName) ? `A selection for "${label}"` : label
-			)}`;
+				customElements.get(input.localName) || input.type === 'radio'
+					? `A selection for "${label}"`
+					: label
+			);
 		}
 		return null;
 	}
@@ -369,9 +372,9 @@ export class FormBehaviorElement extends HTMLElement {
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
 			(input.validity.tooShort || (input.minLength > 0 && input.value.length < input.minLength))
 		) {
-			return `${this.locStrings.inputMinLength
+			return this.locStrings.inputMinLength
 				.replace('{inputLabel}', label)
-				.replace('{minLength}', input.minLength.toString())}`;
+				.replace('{minLength}', input.minLength.toString());
 		}
 		return null;
 	}
@@ -381,9 +384,9 @@ export class FormBehaviorElement extends HTMLElement {
 			(input instanceof HTMLTextAreaElement || input instanceof HTMLInputElement) &&
 			(input.validity.tooLong || (input.maxLength > 0 && input.value.length > input.maxLength))
 		) {
-			return `${this.locStrings.inputMaxLength
+			return this.locStrings.inputMaxLength
 				.replace('{inputLabel}', label)
-				.replace('{maxLength}', input.maxLength.toString())}`;
+				.replace('{maxLength}', input.maxLength.toString());
 		}
 		return null;
 	}
@@ -405,6 +408,15 @@ export class FormBehaviorElement extends HTMLElement {
 		for (const input of [...form.elements, ...customElements]) {
 			if (!scope.contains(input) || !canValidate(input, form)) {
 				continue;
+			}
+
+			// Apply validation to the first radio in a group
+			// This is to prevent duplicate validation messages for each radio in a group
+			if (input.type === 'radio') {
+				const radioGroup = form.querySelectorAll<HTMLInputElement>(`input[name="${input.name}"]`);
+				if (radioGroup.length > 1 && radioGroup[0] !== input) {
+					continue;
+				}
 			}
 
 			if (input.hasAttribute('aria-hidden') === true) {
@@ -519,11 +531,6 @@ export class FormBehaviorElement extends HTMLElement {
 		const label = getLabel(input);
 		const group = getField(input);
 
-		if (displayValidity) {
-			setValidationMessage(input, '');
-			group.classList.remove('errored');
-		}
-
 		for (const validator of this.validators) {
 			const message = validator(input, label);
 			if (!message) {
@@ -565,6 +572,8 @@ export class FormBehaviorElement extends HTMLElement {
 				if (!isCustomElement) {
 					if (input.type === 'checkbox') {
 						input.closest('label.checkbox')?.classList.add(`is-invalid`);
+					} else if (input.type === 'radio') {
+						input.closest('label.radio')?.classList.add(`is-invalid`);
 					} else {
 						input.classList.add(`${input.localName}-danger`);
 					}
@@ -675,10 +684,22 @@ function setBusySubmitButton(event: Event, form: HTMLFormElement, isLoading: boo
 }
 
 export function getLabel(input: HTMLValueElement): string {
-	const label =
-		input.labels && input.labels.length
-			? input.labels[0].textContent
-			: input.getAttribute('aria-label');
+	let label: string | null = null;
+
+	if (input.type === 'radio') {
+		const group = getField(input);
+		const groupLabel = group.querySelector('.field-label');
+		if (groupLabel) {
+			label = groupLabel.textContent;
+		} else {
+			label = input.getAttribute('aria-label');
+		}
+	} else if (input.labels?.length) {
+		label = input.labels[0].textContent;
+	} else {
+		label = input.getAttribute('aria-label');
+	}
+
 	if (!label) {
 		throw new Error(
 			`${input.nodeName} name="${input.name}" id="${input.id}" has no associated label.`
