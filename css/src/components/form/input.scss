@@ -4,7 +4,7 @@ $input-border-color: $control-border !default;
 $input-placeholder-color: $text-subtle !default;
 
 $input-hover-color: $text !default;
-$input-hover-border-color: $primary !default;
+$input-hover-border-color: $secondary !default;
 $input-focus-border-color: $primary !default;
 
 $input-disabled-color: $text-subtle !default;
@@ -14,7 +14,7 @@ $input-disabled-border-color: $table-border-dark !default;
 $input-danger-border-color: $danger !default;
 $input-success-border-color: $success !default;
 
-$input-focus-box-shadow-size: 0 0 0 0.125rem !default;
+$input-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 
 $input-icon-size: 2.25em !default;
 $input-icon-color: $text-subtle !default;
@@ -46,7 +46,7 @@ $input-icon-active-color: $secondary !default;
 	@include focus-visible {
 		@extend %focus;
 
-		border-color: $input-focus-border-color;
+		border-bottom-color: $input-focus-border-color;
 		outline-color: transparent;
 		outline-offset: 0;
 		outline-style: solid;
