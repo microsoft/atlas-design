@@ -46,7 +46,7 @@ $input-icon-active-color: $secondary !default;
 	@include focus-visible {
 		@extend %focus;
 
-		border-bottom-color: $input-focus-border-color;
+		border-block-end-color: $input-focus-border-color;
 		outline-color: transparent;
 		outline-offset: 0;
 		outline-style: solid;
