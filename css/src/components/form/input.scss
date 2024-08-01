@@ -1,6 +1,7 @@
 $input-color: $text !default;
 $input-background-color: $body-background !default;
 $input-border-color: $control-border !default;
+$input-border-bottom-color: $control-border-bottom !default;
 $input-placeholder-color: $text-subtle !default;
 
 $input-hover-color: $text !default;
@@ -26,6 +27,7 @@ $input-icon-active-color: $secondary !default;
 	width: 100%;
 	max-width: 100%;
 	border-color: $input-border-color;
+	border-block-end-color: $input-border-bottom-color;
 	background-color: $input-background-color;
 	color: $input-color !important;
 
@@ -35,6 +37,7 @@ $input-icon-active-color: $secondary !default;
 
 	&:hover {
 		border-color: $input-hover-border-color;
+		border-block-end-color: $input-border-bottom-color;
 	}
 
 	&[disabled] {
