@@ -70,6 +70,7 @@ There are a few classes available to set border radius:
 | `border-radius`         | `0.25rem`  |
 | `border-radius-lg`      | `0.375rem` |
 | `border-radius-rounded` | `290486px` |
+| `border-radius-none`    | `0px`      |
 
 ```html
 <div class="border border-radius-sm padding-sm">
