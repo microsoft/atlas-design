@@ -45,7 +45,7 @@ By default, badges are secondary badges.
 
 ### Badge with icon
 
-Badges can include the icon:
+Badges can include the icons. To do this, nest the [icon component](/components/icon.html) inside a badge.
 
 ```html
 <span class="badge">
