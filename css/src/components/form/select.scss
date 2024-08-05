@@ -3,10 +3,11 @@
 $select-color: $text !default;
 $select-background-color: $body-background !default;
 $select-border-color: $control-border !default;
+$select-border-bottom-color: $control-border-bottom !default;
 $select-placeholder-color: $text-subtle !default;
 
 $select-hover-color: $text !default;
-$select-hover-border-color: $primary !default;
+$select-hover-border-color: $secondary !default;
 $select-focus-border-color: $primary !default;
 
 $select-disabled-color: $text-subtle !default;
@@ -16,7 +17,7 @@ $select-disabled-border-color: $table-border-dark !default;
 $select-danger-border-color: $danger !default;
 $select-success-border-color: $success !default;
 
-$select-focus-box-shadow-size: 0 0 0 0.125rem !default;
+$select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 
 $select-arrow-size: 0.525em !default;
 $select-arrow-border-width: 1px !default;
@@ -32,6 +33,7 @@ $select-arrow-actual-width: 0.75em !default;
 		width: 100%;
 		max-width: 100%;
 		border-color: $select-border-color;
+		border-block-end-color: $select-border-bottom-color;
 		background-color: $select-background-color;
 		color: $select-color;
 		font-size: 1em;
@@ -46,6 +48,11 @@ $select-arrow-actual-width: 0.75em !default;
 			}
 		}
 
+		&:hover {
+			border-color: $select-hover-border-color;
+			border-block-end-color: $select-border-bottom-color;
+		}
+
 		&[disabled] {
 			border-color: $select-disabled-border-color;
 			background-color: $select-disabled-background-color;
@@ -55,7 +62,7 @@ $select-arrow-actual-width: 0.75em !default;
 		@include focus-visible {
 			@extend %focus;
 
-			border-color: $select-focus-border-color;
+			border-block-end-color: $select-focus-border-color;
 			outline-color: transparent;
 			outline-offset: 0;
 			outline-style: solid;
