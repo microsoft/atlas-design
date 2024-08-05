@@ -1,0 +1,87 @@
+$badge-padding-block: 0.2em !default;
+$badge-padding-inline: 0.5em !default;
+
+$badge-gap-size: 0.375em !default;
+
+$badge-font-size: $font-size-8 !default;
+$badge-font-size-sm: $font-size-9 !default;
+$badge-font-size-lg: $font-size-7 !default;
+$badge-font-weight: $weight-semibold !default;
+
+$badge-icon-font-size: 0.875em !default;
+
+$badge-border-width: $border-width !default;
+$badge-border-radius: $border-radius-rounded !default;
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: $badge-padding-block $badge-padding-inline;
+	border: $badge-border-width solid $border-white-high-contrast;
+	border-radius: $badge-border-radius;
+	font-size: $badge-font-size;
+	font-weight: $badge-font-weight;
+	line-height: $line-height-normal;
+	white-space: nowrap;
+	gap: $badge-gap-size;
+
+	@each $name, $color-set in $colors {
+		$base: nth($color-set, $color-index-base);
+		$invert: nth($color-set, $color-index-invert);
+		$dark: nth($color-set, $color-index-dark);
+		$background: nth($color-set, $color-index-background);
+
+		@if $name == 'secondary' {
+			border-color: $dark;
+			background-color: $background;
+			color: $dark;
+		} @else {
+			&.badge-#{$name} {
+				border-color: $dark;
+				background-color: $background;
+				color: $dark;
+			}
+		}
+	}
+
+	&.badge-clear {
+		border-color: transparent;
+		background-color: transparent;
+	}
+
+	&.badge-filled {
+		@each $name, $color-set in $colors {
+			$base: nth($color-set, $color-index-base);
+			$invert: nth($color-set, $color-index-invert);
+			$dark: nth($color-set, $color-index-dark);
+			$background: nth($color-set, $color-index-background);
+
+			@if $name == 'secondary' {
+				border-color: $base;
+				background-color: $base;
+				color: $invert;
+			} @else {
+				&.badge-#{$name} {
+					border-color: $base;
+					background-color: $base;
+					color: $invert;
+				}
+			}
+		}
+	}
+
+	.icon {
+		font-size: $badge-icon-font-size;
+	}
+
+	// Sizes
+
+	&.badge-sm {
+		font-size: $badge-font-size-sm;
+	}
+
+	&.badge-lg {
+		font-size: $badge-font-size-lg;
+	}
+}
