@@ -14,7 +14,7 @@ Badges are informative, non-interactive components that add extra context around
 
 ## Usage
 
-Badge use short text, color, and an optional icon for quick recognition.
+Badges use short text, color, and an optional icon for quick recognition.
 
 ```html
 <span class="badge">Badge</span>
