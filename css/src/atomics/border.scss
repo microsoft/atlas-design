@@ -90,6 +90,10 @@
 	border-radius: $border-radius-rounded !important;
 }
 
+.border-radius-none {
+	border-radius: 0 !important;
+}
+
 // Colors
 
 @each $name, $color-set in $colors {
