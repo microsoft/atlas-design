@@ -68,7 +68,9 @@ $input-icon-active-color: $secondary !default;
 		border-color: $input-danger-border-color;
 
 		@include focus-visible() {
-			box-shadow: $input-focus-box-shadow-size $input-danger-border-color;
+			border-color: $input-border-color;
+			border-block-end-color: $input-focus-border-color;
+			box-shadow: $input-focus-box-shadow-size $input-focus-border-color;
 		}
 	}
 
@@ -76,7 +78,9 @@ $input-icon-active-color: $secondary !default;
 		border-color: $input-success-border-color;
 
 		@include focus-visible() {
-			box-shadow: $input-focus-box-shadow-size $input-success-border-color;
+			border-color: $input-border-color;
+			border-block-end-color: $input-focus-border-color;
+			box-shadow: $input-focus-box-shadow-size $input-focus-border-color;
 		}
 	}
 
