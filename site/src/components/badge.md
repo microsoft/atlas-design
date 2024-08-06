@@ -10,7 +10,7 @@ classPrefixes:
 
 # Badge
 
-Badges are informative, non-interactive components that add extra context around the assoiciated component.
+Badges are informative, non-interactive components that add extra context around the associated component.
 
 ## Usage
 
