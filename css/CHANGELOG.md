@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 3.45.0
+
+### Minor Changes
+
+- d0f3993: Adding badge component and relevant documentation.
+
+### Patch Changes
+
+- a208e58: Update the border radius on controls from 2 to 4 px
+- 7a2a402: Adding border-radius-none atomic and updating relevant documentation.
+
 ## 3.44.2
 
 ### Patch Changes

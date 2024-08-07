@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-js",
-	"version": "1.10.1",
+	"version": "1.11.0",
 	"public": true,
 	"description": "Scripts backing the Atlas Design System used by Microsoft's Developer Relations.",
 	"main": "dist/index.js",
