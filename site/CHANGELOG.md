@@ -1,5 +1,18 @@
 # @microsoft/atlas-site
 
+## 0.48.0
+
+### Minor Changes
+
+- d21e04e: Added form behavior radio group labeling and error handling.
+
+### Patch Changes
+
+- d0f3993: Increasing space between figma section and the rest of the content on a page.
+- 7a2a402: Adding border-radius-none atomic and updating relevant documentation.
+- Updated dependencies [d21e04e]
+  - @microsoft/atlas-js@1.11.0
+
 ## 0.47.0
 
 ### Minor Changes
