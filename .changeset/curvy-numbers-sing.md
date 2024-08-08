@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Update toggle and checkbox to match fluent 2
+Update icons in toggle, checkbox, and radio components.

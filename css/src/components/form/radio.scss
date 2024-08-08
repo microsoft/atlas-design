@@ -23,7 +23,7 @@ $radio-spacing: 0.5em !default;
 
 @mixin radio-dot-checked {
 	background: $radio-dot-checked-color;
-	box-shadow: inset 0 0 0 0.25em $body-background;
+	box-shadow: inset 0 0 0 0.15em $body-background;
 }
 
 .radio {
