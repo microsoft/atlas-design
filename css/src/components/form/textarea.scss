@@ -16,7 +16,7 @@ $textarea-success-border-color: $success !default;
 
 $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 
-.textarea {
+@mixin textarea {
 	@include control;
 
 	display: block;
@@ -79,4 +79,8 @@ $textarea-focus-box-shadow-size: 0 0 0 0.125rem !default;
 			box-shadow: $textarea-focus-box-shadow-size $textarea-success-border-color;
 		}
 	}
+}
+
+.textarea {
+	@include textarea;
 }

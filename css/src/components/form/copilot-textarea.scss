@@ -1,0 +1,30 @@
+@import './textarea.scss';
+
+.copilot-textarea {
+	position: relative;
+
+	textarea {
+		@include textarea;
+	}
+
+	button {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		color: $primary;
+		font-size: 16px;
+
+		&:hover {
+			color: #005a9e; // Darker shade for hover state
+		}
+
+		&:focus {
+			outline: none;
+			color: #003a75;
+		}
+	}
+}
