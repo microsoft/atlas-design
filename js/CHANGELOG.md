@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.11.0
+
+### Minor Changes
+
+- d21e04e: Added form behavior radio group labeling and error handling.
+
 ## 1.10.1
 
 ### Patch Changes
