@@ -1,0 +1,97 @@
+$tag-padding-block: 0.4em !default;
+$tag-padding-inline: 0.65em !default;
+
+$tag-gap-size: 0.375em !default;
+
+$tag-font-size: $font-size-8 !default;
+$tag-font-size-sm: $font-size-9 !default;
+$tag-font-size-lg: $font-size-7 !default;
+$tag-font-weight: $weight-semibold !default;
+
+$tag-icon-font-size: 0.875em !default;
+
+$tag-border-width: $border-width !default;
+$tag-border-radius: $border-radius !default;
+$tag-border-color: $secondary-dark !default;
+
+.tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: $tag-padding-block $tag-padding-inline;
+	border: $tag-border-width solid $tag-border-color;
+	border-radius: $tag-border-radius;
+	border-color: $secondary-dark;
+	background-color: $secondary-background;
+	color: $secondary-dark;
+	font-size: $tag-font-size;
+	font-weight: $tag-font-weight;
+	line-height: $line-height-normal;
+	white-space: nowrap;
+	gap: $tag-gap-size;
+
+	&:where(button) {
+		cursor: pointer;
+	}
+
+	.tag-close {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&:hover,
+	&.is-hovered {
+		.tag-close {
+			color: $primary-dark;
+		}
+	}
+
+	&.tag-primary {
+		border-color: $primary-background;
+		background-color: $primary-background;
+		color: $primary-active;
+
+		&:hover,
+		&.is-hovered {
+			.tag-close {
+				color: $primary-dark;
+			}
+		}
+	}
+
+	&.tag-filled {
+		@each $name, $color-set in $colors {
+			$base: nth($color-set, $color-index-base);
+			$invert: nth($color-set, $color-index-invert);
+			$dark: nth($color-set, $color-index-dark);
+			$background: nth($color-set, $color-index-background);
+
+			@if $name == 'secondary' {
+				border-color: $base;
+				background-color: $base;
+				color: $invert;
+			} @else {
+				&.tag-#{$name} {
+					border-color: $base;
+					background-color: $base;
+					color: $invert;
+				}
+			}
+		}
+	}
+
+	.icon {
+		font-size: $tag-icon-font-size;
+	}
+
+	// Sizes
+
+	&.tag-sm {
+		font-size: $tag-font-size-sm;
+	}
+
+	&.tag-lg {
+		font-size: $tag-font-size-lg;
+	}
+}
