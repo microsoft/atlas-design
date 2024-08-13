@@ -21,7 +21,7 @@ For a copilot-friendly input, with a series of buttons placed within the visual 
 	></textarea>
 	<div class="textarea-form-footer">
 		<div class="textarea-form-footer-left">
-			<span class="margin-left-xxs">0 / 500</span>
+			<span class="margin-left-xxs color-text-subtle">0 / 500</span>
 		</div>
 		<div class="textarea-form-footer-right">
 			<button class="button button-clear" aria-label="Attach (non functional)">

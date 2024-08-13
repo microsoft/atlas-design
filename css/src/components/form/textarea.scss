@@ -102,18 +102,20 @@ $textarea-divider-radius: 0.5rem !default;
 	background-color: $textarea-background-color;
 	font-size: $control-font-size;
 	border-block-end-color: $textarea-border-bottom-color;
+	outline-color: transparent;
+	transition: box-shadow 300ms linear;
 
-	&:has(.textarea:focus-visible) {
+	@include prefers-reduced-motion {
+		animation-duration: 0s;
+	}
+
+	&:has(.textarea:focus-visible),
+	&:has(.textarea:hover) {
 		border-block-end-color: $textarea-focus-border-color;
 		outline-color: transparent;
 		outline-offset: 0;
 		outline-style: solid;
 		box-shadow: $textarea-focus-box-shadow-size $textarea-focus-border-color;
-	}
-
-	&:has(.textarea:hover) {
-		border-color: $textarea-hover-border-color;
-		border-block-end-color: $textarea-border-bottom-color;
 	}
 
 	.textarea {

@@ -52,7 +52,7 @@ Here is an example of a standard textarea usage paired with a label.
 
 ## Textarea with footer
 
-For some experiences, it might be render a text area coupled with other content controls, such as attaching an image or sending the content of a form. In cases such as this, use an outer `textarea-form` class, with a nested `textarea` and `textarea-form-footer`.
+For some experiences, it might be necessary to render a textarea coupled with other content controls, such as attaching an image or submitting the content of a form. In cases such as this, use an outer `textarea-form` class, with a nested `textarea` and `textarea-form-footer`.
 
 ```html
 <div class="textarea-form">
@@ -63,7 +63,7 @@ For some experiences, it might be render a text area coupled with other content 
 	></textarea>
 	<div class="textarea-form-footer">
 		<div class="textarea-form-footer-left">
-			<span class="margin-left-xxs">0 / 500</span>
+			<span class="margin-left-xxs color-text-subtle">0 / 500</span>
 		</div>
 		<div class="textarea-form-footer-right">
 			<button class="button button-clear" aria-label="Attach (non functional)">
@@ -102,7 +102,7 @@ The `.textarea-form-footer` has two default child elements, `.textarea-form-foot
 <div class="textarea-form">
 	<div class="textarea-form-footer">
 		<div class="textarea-form-footer-left">
-			<span class="margin-left-xxs">0 / 500</span>
+			<span class="margin-left-xxs color-text-subtle">0 / 500</span>
 		</div>
 		<div class="textarea-form-footer-right">
 			<button class="button button-clear" aria-label="Attach (non functional)">
