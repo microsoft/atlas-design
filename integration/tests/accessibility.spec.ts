@@ -49,6 +49,7 @@ const pathnames = [
 	'/components/textarea.html',
 	'/components/toggle.html',
 	'/patterns/article-header.html',
+	'/patterns/chat.html',
 	'/tokens/overview.html',
 	'/tokens/animation.html',
 	'/tokens/border.html',

@@ -8,9 +8,9 @@ template: standard
 
 The chat pattern is one that composes an input with messages between the user and one or more other entities.
 
-## Copilot input
+## Chat input
 
-For a copilot friendly input, with a series of buttons placed within the visual (not semantic) boundaries of the textarea, use the [textarea-form](../components/textarea.md#textarea-with-footer) component.
+For a copilot-friendly input, with a series of buttons placed within the visual (not semantic) boundaries of the textarea, use the [.textarea-form](../components/textarea.md#textarea-with-footer) component.
 
 ```html
 <div class="textarea-form">
