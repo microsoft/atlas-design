@@ -110,8 +110,8 @@ $select-arrow-actual-width: 0.75em !default;
 
 		@include focus-visible() {
 			border-color: $select-border-color;
-			border-block-end-color: $select-focus-border-color;
-			box-shadow: $select-focus-box-shadow-size $select-focus-border-color;
+			border-block-end-color: $select-danger-border-color;
+			box-shadow: $select-focus-box-shadow-size $select-danger-border-color;
 		}
 	}
 
@@ -120,8 +120,8 @@ $select-arrow-actual-width: 0.75em !default;
 
 		@include focus-visible() {
 			border-color: $select-border-color;
-			border-block-end-color: $select-focus-border-color;
-			box-shadow: $select-focus-box-shadow-size $select-focus-border-color;
+			border-block-end-color: $select-success-border-color;
+			box-shadow: $select-focus-box-shadow-size $select-success-border-color;
 		}
 	}
 }
