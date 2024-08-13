@@ -87,3 +87,60 @@ $textarea-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 		}
 	}
 }
+
+$textarea-form-gap: 0.25em !default;
+$textarea-divider-radius: 0.5rem !default;
+
+.textarea-form {
+	display: grid;
+	gap: $textarea-form-gap;
+
+	padding-block: $control-padding-vertical;
+	padding-inline: $control-padding-horizontal;
+	border: $control-border-width solid transparent;
+	font-size: $control-font-size;
+
+	border-radius: $border-radius-lg;
+	border-color: $textarea-border-color;
+	border-block-end-color: $textarea-border-bottom-color;
+	background-color: $textarea-background-color;
+
+	&:has(.textarea:focus-visible) {
+		border-block-end-color: $textarea-focus-border-color;
+		outline-color: transparent;
+		outline-offset: 0;
+		outline-style: solid;
+		box-shadow: $textarea-focus-box-shadow-size $textarea-focus-border-color;
+	}
+
+	&:has(.textarea:hover) {
+		border-color: $textarea-hover-border-color;
+		border-block-end-color: $textarea-border-bottom-color;
+	}
+
+	.textarea {
+		box-shadow: none !important;
+		border: none !important;
+		resize: none;
+	}
+
+	.textarea-form-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: $textarea-form-gap;
+	}
+
+	.textarea-form-footer-divider {
+		height: 80%;
+		border: 1px solid $control-border;
+		border-radius: $textarea-divider-radius;
+	}
+
+	.textarea-form-footer-left,
+	.textarea-form-footer-right {
+		display: flex;
+		height: 100%;
+		align-items: center;
+	}
+}
