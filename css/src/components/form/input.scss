@@ -1,10 +1,11 @@
 $input-color: $text !default;
 $input-background-color: $body-background !default;
 $input-border-color: $control-border !default;
+$input-border-bottom-color: $control-border-bottom !default;
 $input-placeholder-color: $text-subtle !default;
 
 $input-hover-color: $text !default;
-$input-hover-border-color: $primary !default;
+$input-hover-border-color: $secondary !default;
 $input-focus-border-color: $primary !default;
 
 $input-disabled-color: $text-subtle !default;
@@ -14,7 +15,7 @@ $input-disabled-border-color: $table-border-dark !default;
 $input-danger-border-color: $danger !default;
 $input-success-border-color: $success !default;
 
-$input-focus-box-shadow-size: 0 0 0 0.125rem !default;
+$input-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 
 $input-icon-size: 2.25em !default;
 $input-icon-color: $text-subtle !default;
@@ -26,6 +27,7 @@ $input-icon-active-color: $secondary !default;
 	width: 100%;
 	max-width: 100%;
 	border-color: $input-border-color;
+	border-block-end-color: $input-border-bottom-color;
 	background-color: $input-background-color;
 	color: $input-color !important;
 
@@ -35,6 +37,7 @@ $input-icon-active-color: $secondary !default;
 
 	&:hover {
 		border-color: $input-hover-border-color;
+		border-block-end-color: $input-border-bottom-color;
 	}
 
 	&[disabled] {
@@ -46,7 +49,7 @@ $input-icon-active-color: $secondary !default;
 	@include focus-visible {
 		@extend %focus;
 
-		border-color: $input-focus-border-color;
+		border-block-end-color: $input-focus-border-color;
 		outline-color: transparent;
 		outline-offset: 0;
 		outline-style: solid;
@@ -65,6 +68,8 @@ $input-icon-active-color: $secondary !default;
 		border-color: $input-danger-border-color;
 
 		@include focus-visible() {
+			border-color: $input-border-color;
+			border-block-end-color: $input-danger-border-color;
 			box-shadow: $input-focus-box-shadow-size $input-danger-border-color;
 		}
 	}
@@ -73,6 +78,8 @@ $input-icon-active-color: $secondary !default;
 		border-color: $input-success-border-color;
 
 		@include focus-visible() {
+			border-color: $input-border-color;
+			border-block-end-color: $input-success-border-color;
 			box-shadow: $input-focus-box-shadow-size $input-success-border-color;
 		}
 	}
