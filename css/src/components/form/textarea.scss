@@ -24,6 +24,7 @@ $textarea-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 	width: 100%;
 	max-width: 100%;
 	resize: vertical;
+	transition: box-shadow 300ms linear;
 	border-color: $textarea-border-color;
 	border-block-end-color: $textarea-border-bottom-color;
 	background-color: $textarea-background-color;
@@ -96,14 +97,14 @@ $textarea-divider-radius: 0.5rem !default;
 	gap: $textarea-form-gap;
 	padding-block: $control-padding-vertical;
 	padding-inline: $control-padding-horizontal;
+	transition: box-shadow 300ms linear;
 	border: $control-border-width solid transparent;
 	border-radius: $border-radius-lg;
 	border-color: $textarea-border-color;
+	outline-color: transparent;
 	background-color: $textarea-background-color;
 	font-size: $control-font-size;
 	border-block-end-color: $textarea-border-bottom-color;
-	outline-color: transparent;
-	transition: box-shadow 300ms linear;
 
 	@include prefers-reduced-motion {
 		animation-duration: 0s;
