@@ -63,7 +63,7 @@ By default, tags are secondary badges.
 The only possible action that can be taken is dismissal.
 
 ```html
-<button type="button" class="tag" data-bi-name="close">
+<button type="button" class="tag">
 	<span>Tag</span>
 	<span class="tag-close">
 		<span class="icon" aria-hidden="true">

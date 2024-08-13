@@ -6,13 +6,24 @@ $tag-gap-size: 0.375em !default;
 $tag-font-size: $font-size-8 !default;
 $tag-font-size-sm: $font-size-9 !default;
 $tag-font-size-lg: $font-size-7 !default;
-$tag-font-weight: $weight-semibold !default;
+$tag-font-weight: $weight-normal !default;
 
 $tag-icon-font-size: 0.875em !default;
 
 $tag-border-width: $border-width !default;
 $tag-border-radius: $border-radius !default;
 $tag-border-color: $secondary-dark !default;
+
+$tag-color: $secondary-dark;
+$tag-color-hover: $primary-dark;
+$tag-background: $secondary-background;
+
+$tag-color-filled: $secondary-invert;
+$tag-background-filled: $secondary;
+
+$tag-color-primary: $primary-active;
+$tag-color-primary-hover: $primary-dark;
+$tag-background-primary: $primary-background;
 
 .tag {
 	display: inline-flex;
@@ -21,9 +32,8 @@ $tag-border-color: $secondary-dark !default;
 	padding: $tag-padding-block $tag-padding-inline;
 	border: $tag-border-width solid $tag-border-color;
 	border-radius: $tag-border-radius;
-	border-color: $secondary-dark;
-	background-color: $secondary-background;
-	color: $secondary-dark;
+	background-color: $tag-background;
+	color: $tag-color;
 	font-size: $tag-font-size;
 	font-weight: $tag-font-weight;
 	line-height: $line-height-normal;
@@ -43,42 +53,27 @@ $tag-border-color: $secondary-dark !default;
 	&:hover,
 	&.is-hovered {
 		.tag-close {
-			color: $primary-dark;
+			color: $tag-color-hover;
 		}
 	}
 
 	&.tag-primary {
-		border-color: $primary-background;
-		background-color: $primary-background;
-		color: $primary-active;
+		border-color: $tag-background-primary;
+		background-color: $tag-background-primary;
+		color: $tag-color-primary;
 
 		&:hover,
 		&.is-hovered {
 			.tag-close {
-				color: $primary-dark;
+				color: $tag-color-primary-hover;
 			}
 		}
 	}
 
 	&.tag-filled {
-		@each $name, $color-set in $colors {
-			$base: nth($color-set, $color-index-base);
-			$invert: nth($color-set, $color-index-invert);
-			$dark: nth($color-set, $color-index-dark);
-			$background: nth($color-set, $color-index-background);
-
-			@if $name == 'secondary' {
-				border-color: $base;
-				background-color: $base;
-				color: $invert;
-			} @else {
-				&.tag-#{$name} {
-					border-color: $base;
-					background-color: $base;
-					color: $invert;
-				}
-			}
-		}
+		border-color: $tag-background-filled;
+		background-color: $tag-background-filled;
+		color: $tag-color-filled;
 	}
 
 	.icon {
