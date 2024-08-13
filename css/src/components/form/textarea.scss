@@ -94,16 +94,14 @@ $textarea-divider-radius: 0.5rem !default;
 .textarea-form {
 	display: grid;
 	gap: $textarea-form-gap;
-
 	padding-block: $control-padding-vertical;
 	padding-inline: $control-padding-horizontal;
 	border: $control-border-width solid transparent;
-	font-size: $control-font-size;
-
 	border-radius: $border-radius-lg;
 	border-color: $textarea-border-color;
-	border-block-end-color: $textarea-border-bottom-color;
 	background-color: $textarea-background-color;
+	font-size: $control-font-size;
+	border-block-end-color: $textarea-border-bottom-color;
 
 	&:has(.textarea:focus-visible) {
 		border-block-end-color: $textarea-focus-border-color;
@@ -119,15 +117,15 @@ $textarea-divider-radius: 0.5rem !default;
 	}
 
 	.textarea {
-		box-shadow: none !important;
-		border: none !important;
 		resize: none;
+		border: none !important;
+		box-shadow: none !important;
 	}
 
 	.textarea-form-footer {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
+		justify-content: space-between;
 		gap: $textarea-form-gap;
 	}
 
@@ -140,7 +138,7 @@ $textarea-divider-radius: 0.5rem !default;
 	.textarea-form-footer-left,
 	.textarea-form-footer-right {
 		display: flex;
-		height: 100%;
 		align-items: center;
+		height: 100%;
 	}
 }
