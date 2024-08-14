@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 3.46.0
+
+### Minor Changes
+
+- f116517: Add .textarea-form component for copilot-like chat experiences and update relevant documentation.
+
+### Patch Changes
+
+- 5bb9a72: Update the bottom border on input, textarea, and select components.
+
 ## 3.45.0
 
 ### Minor Changes

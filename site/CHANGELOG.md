@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.49.0
+
+### Minor Changes
+
+- f116517: Add .textarea-form component for copilot-like chat experiences and update relevant documentation.
+
 ## 0.48.0
 
 ### Minor Changes
