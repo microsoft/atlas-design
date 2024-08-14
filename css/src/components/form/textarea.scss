@@ -15,7 +15,7 @@ $textarea-disabled-border-color: $table-border-dark !default;
 $textarea-danger-border-color: $danger !default;
 $textarea-success-border-color: $success !default;
 
-$textarea-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
+$textarea-focus-box-shadow-size: 0 0.125rem 0 0 !default;
 
 .textarea {
 	@include control;
@@ -98,10 +98,9 @@ $textarea-divider-radius: 0.5rem !default;
 	padding-block: $control-padding-vertical;
 	padding-inline: $control-padding-horizontal;
 	transition: box-shadow 300ms linear;
-	border: $control-border-width solid transparent;
-	border-radius: $border-radius-lg;
+	border-width: $control-border-width solid transparent;
+	border-radius: $border-radius;
 	border-color: $textarea-border-color;
-	outline-color: transparent;
 	background-color: $textarea-background-color;
 	font-size: $control-font-size;
 	border-block-end-color: $textarea-border-bottom-color;
@@ -121,19 +120,19 @@ $textarea-divider-radius: 0.5rem !default;
 
 	.textarea {
 		resize: none;
-		border: none !important;
-		box-shadow: none !important;
+		border: none;
+		box-shadow: none;
 	}
 
 	.textarea-form-footer {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: $textarea-form-gap;
+		outline-color: currentColor;
 	}
 
 	.textarea-form-footer-divider {
-		height: 80%;
+		height: 70%;
 		border: 1px solid $control-border;
 		border-radius: $textarea-divider-radius;
 	}
@@ -142,6 +141,7 @@ $textarea-divider-radius: 0.5rem !default;
 	.textarea-form-footer-right {
 		display: flex;
 		align-items: center;
+		gap: $textarea-form-gap;
 		height: 100%;
 	}
 }
