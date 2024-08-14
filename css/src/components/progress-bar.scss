@@ -17,6 +17,10 @@ $progress-bar-animation-duration: 2s;
 	background-color: $progress-bar-background;
 	overflow: hidden;
 
+	.theme-high-contrast & {
+		background-color: $secondary-background-glow-high-contrast;
+	}
+
 	&.progress-bar-md {
 		height: $progress-bar-height-medium;
 	}
