@@ -79,6 +79,7 @@ Use the `message-sender` class to indicate message sent by the user.
 ```
 
 ## Sizes
+
 `message-sm` is available for resizing.
 
 ```html
