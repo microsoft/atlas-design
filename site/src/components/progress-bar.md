@@ -18,7 +18,7 @@ Here is an example of a standard usage of the progress bar component.
 
 ```html
 <div class="progress-bar-container progress-bar-md">
-	<div class="progress-bar" style="width: 15%;"></div>
+	<div class="progress-bar" style="width: 45%;"></div>
 </div>
 ```
 
@@ -33,12 +33,12 @@ There are two sizes of the progress bar: `progress-bar-md` / `progress-bar-lg`.
 ```html
 <label class="label margin-bottom-xxs" for="progress-bar-md">Medium</label>
 <div id="progress-bar-md" class="progress-bar-container progress-bar-md">
-	<div class="progress-bar"></div>
+	<div class="progress-bar" style="width: 75%;"></div>
 </div>
 <br />
 <label class="label margin-bottom-xxs" for="progress-bar-lg">Large</label>
 <div id="progress-bar-lg" class="progress-bar-container progress-bar-lg">
-	<div class="progress-bar"></div>
+	<div class="progress-bar" style="width: 75%;"></div>
 </div>
 ```
 
