@@ -15,7 +15,7 @@ $textarea-disabled-border-color: $table-border-dark !default;
 $textarea-danger-border-color: $danger !default;
 $textarea-success-border-color: $success !default;
 
-$textarea-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
+$textarea-focus-box-shadow-size: 0 0.125rem 0 0 !default;
 
 .textarea {
 	@include control;
@@ -24,6 +24,7 @@ $textarea-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 	width: 100%;
 	max-width: 100%;
 	resize: vertical;
+	transition: box-shadow 300ms linear;
 	border-color: $textarea-border-color;
 	border-block-end-color: $textarea-border-bottom-color;
 	background-color: $textarea-background-color;
@@ -85,5 +86,63 @@ $textarea-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 			border-block-end-color: $textarea-success-border-color;
 			box-shadow: $textarea-focus-box-shadow-size $textarea-success-border-color;
 		}
+	}
+}
+
+$textarea-form-gap: 0.25em !default;
+$textarea-divider-radius: 0.5rem !default;
+
+.textarea-form {
+	display: grid;
+	gap: $textarea-form-gap;
+	padding-block: $control-padding-vertical;
+	padding-inline: $control-padding-horizontal;
+	transition: box-shadow 300ms linear;
+	border-width: $control-border-width;
+	border-style: solid;
+	border-radius: $border-radius;
+	border-color: $textarea-border-color;
+	background-color: $textarea-background-color;
+	font-size: $control-font-size;
+	border-block-end-color: $textarea-border-bottom-color;
+
+	@include prefers-reduced-motion {
+		animation-duration: 0s;
+	}
+
+	&:has(.textarea:focus-visible),
+	&:has(.textarea:hover) {
+		border-block-end-color: $textarea-focus-border-color;
+		outline-color: transparent;
+		outline-offset: 0;
+		outline-style: solid;
+		box-shadow: $textarea-focus-box-shadow-size $textarea-focus-border-color;
+	}
+
+	.textarea {
+		resize: none;
+		border: none;
+		box-shadow: none;
+	}
+
+	.textarea-form-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		outline-color: currentColor;
+	}
+
+	.textarea-form-footer-divider {
+		height: 70%;
+		border: 1px solid $control-border;
+		border-radius: $textarea-divider-radius;
+	}
+
+	.textarea-form-footer-left,
+	.textarea-form-footer-right {
+		display: flex;
+		align-items: center;
+		gap: $textarea-form-gap;
+		height: 100%;
 	}
 }
