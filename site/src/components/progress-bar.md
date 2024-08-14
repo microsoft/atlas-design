@@ -22,9 +22,13 @@ Here is an example of a standard usage of the progress bar component.
 </div>
 ```
 
+Set the size and the shape of the progress bar on the container. Nest the progress bar within the `progress-bar-container` and optionally set the color and indeterminate property on the `progress-bar`.
+
+See below for more examples.
+
 ## Size
 
-There are two sizes of the progress bar, `progress-bar-md` / `progress-bar-lg`.
+There are two sizes of the progress bar: `progress-bar-md` / `progress-bar-lg`.
 
 ```html
 <label class="label margin-bottom-xxs" for="progress-bar-md">Medium</label>
@@ -54,7 +58,7 @@ Progress bars can have rounded corners or sharp corners: `progress-bar-rounded` 
 </div>
 ```
 
-## Determinate vs Indeterminate
+## Indeterminate
 
 Use an indeterminate progress bar to show that an operation is being executed. An indeterminate bar will continue to cycle on repeat, unlike a determinate progress bar.
 
@@ -75,16 +79,16 @@ Use an indeterminate progress bar to show that an operation is being executed. A
 ```html
 <label class="label margin-bottom-xxs" for="progress-bar-danger">Danger</label>
 <div id="progress-bar-danger" class="progress-bar-container progress-bar-lg progress-bar-square">
-	<div class="progress-bar progress-bar-danger" style="width: 25%;"></div>
+	<div class="progress-bar progress-bar-danger indeterminate"></div>
 </div>
 <br />
 <label class="label margin-bottom-xxs" for="progress-bar-warning">Warning</label>
 <div id="progress-bar-warning" class="progress-bar-container progress-bar-lg progress-bar-square">
-	<div class="progress-bar progress-bar-warning" style="width: 50%;"></div>
+	<div class="progress-bar progress-bar-warning indeterminate"></div>
 </div>
 <br />
 <label class="label margin-bottom-xxs" for="progress-bar-success">Success</label>
 <div id="progress-bar-success" class="progress-bar-container progress-bar-lg progress-bar-square">
-	<div class="progress-bar progress-bar-success" style="width: 75%;"></div>
+	<div class="progress-bar progress-bar-success indeterminate"></div>
 </div>
 ```

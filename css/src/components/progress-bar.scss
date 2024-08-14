@@ -1,14 +1,15 @@
-// Variables for Fluent 2 colors and dimensions
 $progress-bar-height-medium: 2px;
 $progress-bar-height-large: 4px;
-$progress-bar-background: #e1e1e1;
-$progress-bar-color: #0078d4;
-$progress-bar-success-color: #107c10;
-$progress-bar-warning-color: #ffb900;
-$progress-bar-danger-color: #d83b01;
+
+$progress-bar-background: $secondary-background !default;
+$progress-bar-color: $primary !default;
+$progress-bar-success-color: $success !default;
+$progress-bar-warning-color: $warning !default;
+$progress-bar-danger-color: $danger !default;
+$progress-bar-border-radius: $control-radius !default;
+$progress-bar-border-radius-rounded: $border-radius-rounded !default;
+
 $progress-bar-animation-duration: 2s;
-$progress-bar-border-radius: 2px;
-$progress-bar-border-radius-rounded: 50px;
 
 .progress-bar-container {
 	width: 100%;
@@ -34,6 +35,15 @@ $progress-bar-border-radius-rounded: 50px;
 	}
 }
 
+@mixin indeterminate-gradient($color) {
+	background: linear-gradient(to right, transparent 0%, $color 50%, transparent 100%);
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation: indeterminate-animation $progress-bar-animation-duration infinite linear;
+}
+
 .progress-bar {
 	height: 100%;
 	background-color: $progress-bar-color;
@@ -41,38 +51,30 @@ $progress-bar-border-radius-rounded: 50px;
 
 	&.progress-bar-success {
 		background-color: $progress-bar-success-color;
+
+		&.indeterminate {
+			@include indeterminate-gradient($progress-bar-success-color);
+		}
 	}
 
 	&.progress-bar-warning {
 		background-color: $progress-bar-warning-color;
+
+		&.indeterminate {
+			@include indeterminate-gradient($progress-bar-warning-color);
+		}
 	}
 
 	&.progress-bar-danger {
 		background-color: $progress-bar-danger-color;
-	}
 
-	&.determinate {
-		&.static {
-			width: 100%;
-		}
-
-		&.dynamic {
-			width: 0; // Initial width for dynamic progress
+		&.indeterminate {
+			@include indeterminate-gradient($progress-bar-danger-color);
 		}
 	}
 
 	&.indeterminate {
-		background: linear-gradient(
-			to right,
-			rgba(0, 120, 212, 0) 0%,
-			rgba(0, 120, 212, 1) 50%,
-			rgba(0, 120, 212, 0) 100%
-		);
-		width: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		animation: indeterminate-animation $progress-bar-animation-duration infinite linear;
+		@include indeterminate-gradient($progress-bar-color);
 	}
 }
 
