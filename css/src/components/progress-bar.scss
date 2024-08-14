@@ -5,7 +5,7 @@ $progress-bar-background: #e1e1e1;
 $progress-bar-color: #0078d4;
 $progress-bar-success-color: #107c10;
 $progress-bar-warning-color: #ffb900;
-$progress-bar-error-color: #d83b01;
+$progress-bar-danger-color: #d83b01;
 $progress-bar-animation-duration: 2s;
 $progress-bar-border-radius: 2px;
 $progress-bar-border-radius-rounded: 50px;
@@ -17,19 +17,19 @@ $progress-bar-border-radius-rounded: 50px;
 	overflow: hidden;
 	position: relative;
 
-	&.progress-bar-medium {
+	&.progress-bar-md {
 		height: $progress-bar-height-medium;
 	}
 
-	&.progress-bar-large {
+	&.progress-bar-lg {
 		height: $progress-bar-height-large;
 	}
 
-	&.shape-square {
+	&.progress-bar-square {
 		border-radius: 0;
 	}
 
-	&.shape-rounded {
+	&.progress-bar-rounded {
 		border-radius: $progress-bar-border-radius-rounded;
 	}
 }
@@ -47,8 +47,8 @@ $progress-bar-border-radius-rounded: 50px;
 		background-color: $progress-bar-warning-color;
 	}
 
-	&.progress-bar-error {
-		background-color: $progress-bar-error-color;
+	&.progress-bar-danger {
+		background-color: $progress-bar-danger-color;
 	}
 
 	&.determinate {
