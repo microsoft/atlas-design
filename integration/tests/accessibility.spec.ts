@@ -7,6 +7,7 @@ const pathnames = [
 	'/atomics/background.html',
 	'/atomics/border.html',
 	'/atomics/display.html',
+	'/atomics/height.html',
 	'/atomics/image.html',
 	'/atomics/line-clamp.html',
 	'/atomics/lists.html',

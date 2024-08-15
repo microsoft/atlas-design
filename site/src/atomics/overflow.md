@@ -14,6 +14,7 @@ At times, you'll need to determine the overflow behavior of an element. Atlas pr
 | cssproperty | value    | screensize |
 | ----------- | -------- | ---------- |
 | `overflow`  | `hidden` | `tablet`   |
+| `overflow-x`  | `hidden` | `tablet`   |
 
 ## Usage
 
@@ -26,5 +27,21 @@ As an example we'll use a parent element's border radius in combination with `.o
 			This box's borders are rounded because we gave the parent container overflow-hidden
 		</p>
 	</div>
+</div>
+```
+
+## Direction
+
+You can use `.overflow-x-hidden` to set the clipping behavior for the left/right edges of the content only.
+
+```html
+<div class="border-radius-lg">
+    <div class="">
+        <div class="overflow-x-hidden" style="width: 100px">
+          <p class="font-size-xl" style="width: 150px">
+            This text is clipped on its right edge because we gave the parent container overflow-hidden.
+          </p>
+        </div>
+    </div>
 </div>
 ```

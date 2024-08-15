@@ -40,7 +40,8 @@ const settings = normalizePaths({
 		'/atomics/spacing.md': 'Spacing',
 		'/atomics/gap.md': 'Gap',
 		'/atomics/typography.md': 'Typography',
-		'/atomics/width.md': 'Width'
+		'/atomics/width.md': 'Width',
+		'/atomics/height.md': 'Height'
 	},
 	distFolder: path.resolve(process.cwd(), 'dist')
 });
