@@ -1,21 +1,26 @@
-$progress-bar-height-medium: 2px;
-$progress-bar-height-large: 4px;
+$progress-bar-height-medium: 0.125rem !default;
+$progress-bar-height-large: 0.25rem !default;
 
-$progress-bar-background: $secondary-background !default;
-$progress-bar-color: $primary !default;
-$progress-bar-success-color: $success !default;
-$progress-bar-warning-color: $warning !default;
-$progress-bar-danger-color: $danger !default;
+$progress-bar-container-background-color: $secondary-background !default;
+$progress-bar-background-color: $primary !default;
+$progress-bar-success-background-color: $success !default;
+$progress-bar-warning-background-color: $warning !default;
+$progress-bar-danger-background-color: $danger !default;
 $progress-bar-border-radius-rounded: $border-radius-rounded !default;
 
-$progress-bar-animation-duration: 2s;
+$progress-bar-animation-duration: 2s !default;
+$progress-bar-transition-duration: 0.3s !default;
 
 .progress-bar-container {
 	position: relative;
 	width: 100%;
-	border-radius: $progress-bar-border-radius-rounded;
-	background-color: $progress-bar-background;
+	height: $progress-bar-height-medium;
+	background-color: $progress-bar-container-background-color;
 	overflow: hidden;
+
+	@include forced-colors {
+		background-color: CanvasText !important;
+	}
 
 	.theme-high-contrast & {
 		background-color: $secondary-background-glow-high-contrast;
@@ -28,14 +33,6 @@ $progress-bar-animation-duration: 2s;
 	&.progress-bar-lg {
 		height: $progress-bar-height-large;
 	}
-
-	&.progress-bar-square {
-		border-radius: 0;
-	}
-
-	&.progress-bar-rounded {
-		border-radius: $progress-bar-border-radius-rounded;
-	}
 }
 
 @mixin indeterminate-gradient($color) {
@@ -43,57 +40,53 @@ $progress-bar-animation-duration: 2s;
 	width: 100%;
 	animation: indeterminate-animation $progress-bar-animation-duration infinite linear;
 	background: linear-gradient(to right, transparent 0%, $color 50%, transparent 100%);
+
+	@include prefers-reduced-motion {
+		animation-duration: 0s;
+	}
+
+	&:dir(rtl) {
+		background: linear-gradient(to left, transparent 0%, $color 50%, transparent 100%);
+	}
+
 	inset-block-start: 0;
 	inset-inline-start: 0;
 }
 
 .progress-bar {
 	height: 100%;
-	transition: width 0.3s ease;
-	background-color: $progress-bar-color;
+	transition: width $progress-bar-transition-duration ease;
+	background-color: $progress-bar-background-color;
+
+	@include forced-colors {
+		background-color: Highlight !important;
+	}
 
 	&.progress-bar-success {
-		background-color: $progress-bar-success-color;
+		background-color: $progress-bar-success-background-color;
 
 		&.indeterminate {
-			@include indeterminate-gradient($progress-bar-success-color);
+			@include indeterminate-gradient($progress-bar-success-background-color);
 		}
 	}
 
 	&.progress-bar-warning {
-		background-color: $progress-bar-warning-color;
+		background-color: $progress-bar-warning-background-color;
 
 		&.indeterminate {
-			@include indeterminate-gradient($progress-bar-warning-color);
+			@include indeterminate-gradient($progress-bar-warning-background-color);
 		}
 	}
 
 	&.progress-bar-danger {
-		background-color: $progress-bar-danger-color;
+		background-color: $progress-bar-danger-background-color;
 
 		&.indeterminate {
-			@include indeterminate-gradient($progress-bar-danger-color);
+			@include indeterminate-gradient($progress-bar-danger-background-color);
 		}
 	}
 
 	&.indeterminate {
-		@include indeterminate-gradient($progress-bar-color);
-	}
-}
-
-@keyframes indeterminate-animation {
-	0% {
-		inset-inline-start: -50%;
-		width: 50%;
-	}
-
-	50% {
-		inset-inline-start: 25%;
-		width: 50%;
-	}
-
-	100% {
-		inset-inline-start: 100%;
-		width: 50%;
+		@include indeterminate-gradient($progress-bar-background-color);
 	}
 }

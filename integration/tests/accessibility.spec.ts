@@ -40,6 +40,7 @@ const pathnames = [
 	'/components/notification.html',
 	'/components/pagination.html',
 	'/components/popover.html',
+	'/components/progress-bar.html',
 	'/components/radio.html',
 	'/components/scroll.html',
 	'/components/select.html',
