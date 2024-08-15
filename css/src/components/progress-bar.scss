@@ -8,7 +8,7 @@ $progress-bar-warning-background-color: $warning !default;
 $progress-bar-danger-background-color: $danger !default;
 $progress-bar-border-radius-rounded: $border-radius-rounded !default;
 
-$progress-bar-animation-duration: 2s !default;
+$progress-bar-indeterminate-animation-duration: 2s !default;
 $progress-bar-transition-duration: 0.3s !default;
 
 .progress-bar-container {
@@ -38,7 +38,8 @@ $progress-bar-transition-duration: 0.3s !default;
 @mixin indeterminate-gradient($color) {
 	position: absolute;
 	width: 100%;
-	animation: progress-bar-indeterminate-animation $progress-bar-animation-duration infinite linear;
+	animation: progress-bar-indeterminate-animation $progress-bar-indeterminate-animation-duration
+		infinite linear;
 	background: linear-gradient(to right, transparent 0%, $color 50%, transparent 100%);
 
 	@include prefers-reduced-motion {
