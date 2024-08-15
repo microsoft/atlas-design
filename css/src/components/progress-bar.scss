@@ -15,6 +15,7 @@ $progress-bar-transition-duration: 0.3s !default;
 	position: relative;
 	width: 100%;
 	height: $progress-bar-height-medium;
+	border-radius: $progress-bar-border-radius-rounded;
 	background-color: $progress-bar-container-background-color;
 	overflow: hidden;
 
@@ -32,6 +33,10 @@ $progress-bar-transition-duration: 0.3s !default;
 
 	&.progress-bar-lg {
 		height: $progress-bar-height-large;
+	}
+
+	&.progress-bar-square {
+		border-radius: 0;
 	}
 }
 
