@@ -38,7 +38,7 @@ $progress-bar-transition-duration: 0.3s !default;
 @mixin indeterminate-gradient($color) {
 	position: absolute;
 	width: 100%;
-	animation: indeterminate-animation $progress-bar-animation-duration infinite linear;
+	animation: progress-bar-indeterminate-animation $progress-bar-animation-duration infinite linear;
 	background: linear-gradient(to right, transparent 0%, $color 50%, transparent 100%);
 
 	@include prefers-reduced-motion {
