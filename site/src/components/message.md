@@ -139,3 +139,16 @@ Use the `message-sender` class to indicate message sent by the user.
 	</div>
 </article>
 ```
+
+## Loading message
+
+```html
+<div>
+	<div class="message">
+		<div class="message-content">Working on it ...</div>
+	</div>
+	<div class="progress-bar-container progress-bar-lg">
+		<div role="progressbar" class="progress-bar indeterminate" aria-label="loading bar"></div>
+	</div>
+</div>
+```

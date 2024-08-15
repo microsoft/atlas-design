@@ -92,10 +92,7 @@ Use an indeterminate progress bar to show that an operation is being executed. A
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-indeterminate"
 	>Indeterminate</label
 >
-<div
-	id="progress-bar-indeterminate"
-	class="progress-bar-container progress-bar-lg progress-bar-rounded"
->
+<div id="progress-bar-indeterminate" class="progress-bar-container progress-bar-lg">
 	<div
 		role="progressbar"
 		class="progress-bar indeterminate"
