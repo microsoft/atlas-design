@@ -73,17 +73,14 @@ $message-content-padding-sm: 0.875rem !default;
 	}
 }
 
-$message-box-shadow-size: 0 0.125rem 0 0 !default;
+$loading-message-box-shadow-size: 0 0.125rem 0 0 !default;
 
 .loading-message {
 	width: 100%;
-	max-width: 100%;
 	border: $message-border;
 	border-radius: $message-border-radius;
+	border-block-end: none;
 	background-color: $message-background-color;
-	border-bottom: none;
-	position: relative;
-	box-shadow: message-box-shadow-size;
 
 	.message {
 		font-size: $message-font-size-md;

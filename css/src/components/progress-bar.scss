@@ -37,8 +37,8 @@ $progress-bar-transition-duration: 0.3s !default;
 
 	&.message-border {
 		border-radius: 0;
-		border-bottom-left-radius: $message-border-radius;
-		border-bottom-right-radius: $message-border-radius;
+		border-end-start-radius: $message-border-radius;
+		border-end-end-radius: $message-border-radius;
 	}
 
 	@mixin indeterminate-gradient($color) {
