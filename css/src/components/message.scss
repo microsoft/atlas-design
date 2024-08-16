@@ -72,3 +72,37 @@ $message-content-padding-sm: 0.875rem !default;
 		}
 	}
 }
+
+.loading-message {
+	width: 100%;
+	max-width: 100%;
+	border: $message-border;
+	border-radius: $message-border-radius;
+	background-color: $message-background-color;
+	border-block-end-color: $message-background-color;
+
+	.message {
+		font-size: $message-font-size-md;
+
+		.message-content {
+			resize: none;
+			border: none;
+			box-shadow: none;
+		}
+
+		&.message-sm {
+			font-size: $message-font-size-sm;
+
+			.message-content {
+				padding: $message-content-padding-sm;
+			}
+		}
+	}
+
+	.loading-message-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		outline-color: currentColor;
+	}
+}
