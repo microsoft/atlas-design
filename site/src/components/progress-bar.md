@@ -17,10 +17,10 @@ Use the progress-bar component to communicate how much of a task has been comple
 Here is an example of a standard usage of the progress bar component.
 
 ```html
-<div class="progress-bar-container">
+<div class="progress-bar">
 	<div
 		role="progressbar"
-		class="progress-bar"
+		class="progress-bar-body"
 		style="width: 45%;"
 		aria-label="demo progress bar"
 		aria-valuenow="45"
@@ -28,7 +28,7 @@ Here is an example of a standard usage of the progress bar component.
 </div>
 ```
 
-Set the size and the shape of the progress bar on the container. Nest the progress bar within the `progress-bar-container` and optionally set the color and indeterminate property on the `progress-bar`.
+Set the size and the shape of the progress bar on the container. Nest the progress bar within the `progress-bar` and optionally set the color and indeterminate property on the `progress-bar`.
 
 See below for more examples.
 
@@ -38,20 +38,20 @@ There are two sizes of the progress bar: `progress-bar-md` / `progress-bar-lg`. 
 
 ```html
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-md">Medium</label>
-<div id="progress-bar-md" class="progress-bar-container">
+<div id="progress-bar-md" class="progress-bar">
 	<div
 		role="progressbar"
-		class="progress-bar"
+		class="progress-bar-body"
 		style="width: 75%;"
 		aria-label="demo size medium progress bar"
 		aria-valuenow="75"
 	></div>
 </div>
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-lg">Large</label>
-<div id="progress-bar-lg" class="progress-bar-container progress-bar-lg">
+<div id="progress-bar-lg" class="progress-bar progress-bar-lg">
 	<div
 		role="progressbar"
-		class="progress-bar"
+		class="progress-bar-body"
 		style="width: 75%;"
 		aria-label="demo size large progress bar"
 		aria-valuenow="75"
@@ -65,19 +65,19 @@ Progress bars can have rounded corners or sharp corners. The default shape is ro
 
 ```html
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-rounded">Rounded</label>
-<div id="progress-bar-rounded" class="progress-bar-container progress-bar-lg">
+<div id="progress-bar-rounded" class="progress-bar progress-bar-lg">
 	<div
 		role="progressbar"
-		class="progress-bar"
+		class="progress-bar-body"
 		aria-label="demo round shaped progress bar"
 		aria-valuenow="100"
 	></div>
 </div>
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-square">Square</label>
-<div id="progress-bar-square" class="progress-bar-container progress-bar-lg border-radius-none">
+<div id="progress-bar-square" class="progress-bar progress-bar-lg border-radius-none">
 	<div
 		role="progressbar"
-		class="progress-bar"
+		class="progress-bar-body"
 		aria-label="demo square shaped progress bar"
 		aria-valuenow="100"
 	></div>
@@ -92,10 +92,10 @@ Use an indeterminate progress bar to show that an operation is being executed. A
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-indeterminate"
 	>Indeterminate</label
 >
-<div id="progress-bar-indeterminate" class="progress-bar-container progress-bar-lg">
+<div id="progress-bar-indeterminate" class="progress-bar progress-bar-lg">
 	<div
 		role="progressbar"
-		class="progress-bar indeterminate"
+		class="progress-bar-body indeterminate"
 		aria-label="demo indeterminate progress bar"
 	></div>
 </div>
@@ -107,26 +107,26 @@ Use an indeterminate progress bar to show that an operation is being executed. A
 
 ```html
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-danger">Danger</label>
-<div id="progress-bar-danger" class="progress-bar-container progress-bar-lg">
+<div id="progress-bar-danger" class="progress-bar progress-bar-lg">
 	<div
 		role="progressbar"
-		class="progress-bar progress-bar-danger indeterminate"
+		class="progress-bar-body progress-bar-danger indeterminate"
 		aria-label="demo indeterminate danger color progress bar"
 	></div>
 </div>
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-warning">Warning</label>
-<div id="progress-bar-warning" class="progress-bar-container progress-bar-lg">
+<div id="progress-bar-warning" class="progress-bar progress-bar-lg">
 	<div
 		role="progressbar"
-		class="progress-bar progress-bar-warning indeterminate"
+		class="progress-bar-body progress-bar-warning indeterminate"
 		aria-label="demo indeterminate warning color progress bar"
 	></div>
 </div>
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-success">Success</label>
-<div id="progress-bar-success" class="progress-bar-container progress-bar-lg">
+<div id="progress-bar-success" class="progress-bar progress-bar-lg">
 	<div
 		role="progressbar"
-		class="progress-bar progress-bar-success indeterminate"
+		class="progress-bar-body progress-bar-success indeterminate"
 		aria-label="demo indeterminate success color progress bar"
 	></div>
 </div>

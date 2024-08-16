@@ -1,8 +1,8 @@
 $progress-bar-height-medium: 0.125rem !default;
 $progress-bar-height-large: 0.25rem !default;
 
-$progress-bar-container-background-color: $secondary-background !default;
-$progress-bar-background-color: $primary !default;
+$progress-bar-background-color: $secondary-background !default;
+$progress-bar-body-background-color: $primary !default;
 $progress-bar-success-background-color: $success !default;
 $progress-bar-warning-background-color: $warning !default;
 $progress-bar-danger-background-color: $danger !default;
@@ -11,12 +11,12 @@ $progress-bar-border-radius: $border-radius-rounded !default;
 $progress-bar-indeterminate-animation-duration: 2s !default;
 $progress-bar-transition-duration: 0.3s !default;
 
-.progress-bar-container {
+.progress-bar {
 	position: relative;
 	width: 100%;
 	height: $progress-bar-height-medium;
 	border-radius: $progress-bar-border-radius;
-	background-color: $progress-bar-container-background-color;
+	background-color: $progress-bar-background-color;
 	overflow: hidden;
 
 	@include forced-colors {
@@ -54,10 +54,10 @@ $progress-bar-transition-duration: 0.3s !default;
 		inset-inline-start: 0;
 	}
 
-	.progress-bar {
+	.progress-bar-body {
 		height: 100%;
 		transition: width $progress-bar-transition-duration ease;
-		background-color: $progress-bar-background-color;
+		background-color: $progress-bar-body-background-color;
 
 		@include forced-colors {
 			background-color: Highlight !important;
@@ -88,7 +88,7 @@ $progress-bar-transition-duration: 0.3s !default;
 		}
 
 		&.indeterminate {
-			@include indeterminate-gradient($progress-bar-background-color);
+			@include indeterminate-gradient($progress-bar-body-background-color);
 		}
 	}
 }
