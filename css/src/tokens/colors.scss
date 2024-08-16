@@ -229,7 +229,8 @@ $color-index-background-glow-high-contrast: 8;
 
 $gradients: (
 	'radiant': (
-		$gradient-radiant-start $gradient-radiant-end
+		$gradient-radiant-start,
+		$gradient-radiant-end
 	),
 	'vivid': (
 		$gradient-vivid-start,
