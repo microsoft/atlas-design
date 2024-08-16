@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Adding color theme to gradient component and updating documentation
+Adding radiant option to gradient component and updating documentation
