@@ -61,7 +61,7 @@ There are two sizes of the progress bar: `progress-bar-md` / `progress-bar-lg`. 
 
 ## Shape
 
-Progress bars can have rounded corners or sharp corners. The default shape is round, but if you want square corners, apply the `progress-bar-square` class.
+Progress bars can have rounded corners or sharp corners. The default shape is round, but if you want square corners, apply the `border-radius-none` atomic.
 
 ```html
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-rounded">Rounded</label>
@@ -74,7 +74,7 @@ Progress bars can have rounded corners or sharp corners. The default shape is ro
 	></div>
 </div>
 <label class="label margin-top-xs margin-bottom-xs" for="progress-bar-square">Square</label>
-<div id="progress-bar-square" class="progress-bar-container progress-bar-lg progress-bar-square">
+<div id="progress-bar-square" class="progress-bar-container progress-bar-lg border-radius-none">
 	<div
 		role="progressbar"
 		class="progress-bar"

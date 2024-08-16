@@ -35,10 +35,6 @@ $progress-bar-transition-duration: 0.3s !default;
 		height: $progress-bar-height-large;
 	}
 
-	&.progress-bar-square {
-		border-radius: 0;
-	}
-
 	@mixin indeterminate-gradient($color) {
 		position: absolute;
 		width: 100%;
