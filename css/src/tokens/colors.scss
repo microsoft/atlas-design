@@ -49,6 +49,8 @@ $gradient-text-purple: var(--theme-gradient-text-purple);
 $gradient-text-blue: var(--theme-gradient-text-blue);
 $gradient-vivid-start: var(--theme-gradient-vivid-start);
 $gradient-vivid-end: var(--theme-gradient-vivid-end);
+$gradient-radiant-start: var(--theme-gradient-radiant-start);
+$gradient-radiant-end: var(--theme-gradient-radiant-end);
 
 $default-hover: var(--theme-hover-base);
 $default-hover-invert: $body-background-medium;
@@ -226,6 +228,9 @@ $color-index-background-glow-high-contrast: 8;
 //}
 
 $gradients: (
+	'radiant': (
+		$gradient-radiant-start $gradient-radiant-end
+	),
 	'vivid': (
 		$gradient-vivid-start,
 		$gradient-vivid-end
