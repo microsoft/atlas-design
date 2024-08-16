@@ -148,7 +148,7 @@ Use the `message-sender` class to indicate message sent by the user.
 		<div class="message-content">Working on it ...</div>
 	</div>
 	<div class="loading-message-footer">
-		<div class="progress-bar progress-bar-lg">
+		<div class="progress-bar progress-bar-lg message-border">
 			<div
 				role="progressbar"
 				class="progress-bar-body indeterminate"

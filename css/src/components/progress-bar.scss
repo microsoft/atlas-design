@@ -35,6 +35,12 @@ $progress-bar-transition-duration: 0.3s !default;
 		height: $progress-bar-height-large;
 	}
 
+	&.message-border {
+		border-radius: 0;
+		border-bottom-left-radius: $message-border-radius;
+		border-bottom-right-radius: $message-border-radius;
+	}
+
 	@mixin indeterminate-gradient($color) {
 		position: absolute;
 		width: 100%;
