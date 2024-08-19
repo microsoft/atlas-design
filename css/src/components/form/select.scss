@@ -72,10 +72,11 @@ $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 		}
 
 		&::after {
+			@include chevron-down;
+
 			display: block;
 			position: absolute;
 			inset-block-start: calc(50% - $chevron-arrow-actual-width / 2);
-			@include chevron-down;
 		}
 
 		&.select-disabled::after {
