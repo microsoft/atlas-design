@@ -1,0 +1,27 @@
+$chevron-color: $text !default;
+$chevron-arrow-size: 0.525em !default;
+$chevron-arrow-border-width: 1px !default;
+$chevron-arrow-actual-width: 0.75em !default;
+
+%chevron {
+	width: $chevron-arrow-size;
+	height: $chevron-arrow-size;
+	transform-origin: center;
+	border: $chevron-arrow-border-width solid $chevron-color;
+	border-block-start: 0;
+	border-inline-end: 0;
+	pointer-events: none;
+	content: ' ';
+	z-index: $zindex-active;
+	inset-inline-end: $control-padding-horizontal;
+}
+
+@mixin chevron-right {
+	@extend %chevron;
+	transform: rotate(-135deg);
+}
+
+@mixin chevron-down {
+	@extend %chevron;
+	transform: rotate(-45deg);
+}

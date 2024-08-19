@@ -19,10 +19,6 @@ $select-success-border-color: $success !default;
 
 $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 
-$select-arrow-size: 0.525em !default;
-$select-arrow-border-width: 1px !default;
-$select-arrow-actual-width: 0.75em !default;
-
 .select {
 	position: relative;
 	font-size: $control-font-size;
@@ -72,24 +68,14 @@ $select-arrow-actual-width: 0.75em !default;
 
 	&:not(.select-multiple) {
 		select {
-			padding-inline-end: calc($control-padding-horizontal + $select-arrow-actual-width);
+			padding-inline-end: calc($control-padding-horizontal + $chevron-arrow-actual-width);
 		}
 
 		&::after {
 			display: block;
 			position: absolute;
-			inset-block-start: calc(50% - $select-arrow-actual-width / 2);
-			width: $select-arrow-size;
-			height: $select-arrow-size;
-			transform: rotate(-45deg);
-			transform-origin: center;
-			border: $select-arrow-border-width solid $select-color;
-			border-block-start: 0;
-			border-inline-end: 0;
-			pointer-events: none;
-			content: ' ';
-			z-index: $zindex-active;
-			inset-inline-end: $control-padding-horizontal;
+			inset-block-start: calc(50% - $chevron-arrow-actual-width / 2);
+			@include chevron-down;
 		}
 
 		&.select-disabled::after {
