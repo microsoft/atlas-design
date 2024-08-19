@@ -48,16 +48,6 @@ The following classes are available for resizing: `tag-sm`, `tag-lg`.
 <span class="tag tag-lg">Tag</span>
 ```
 
-### Shapes
-
-Tags can have circular, rounded (default) or square shape.
-
-| State    | Class              | Example                                  |
-| -------- | ------------------ | ---------------------------------------- |
-| Rounded  | `.tag`             | <span class="tag">Tag</span>             |
-| Circular | `.tag.tag-rounded` | <span class="tag tag-rounded">Tag</span> |
-| Square   | `.tag.tag-square`  | <span class="tag tag-square">Tag</span>  |
-
 ### Types
 
 By default, tags are secondary outlined tags.

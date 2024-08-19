@@ -210,32 +210,4 @@ $tag-interactive-color-primary-hover: $primary-invert !default;
 			}
 		}
 	}
-
-	// Shapes
-
-	&.tag-rounded {
-		border-radius: $tag-border-radius-rounded;
-
-		.tag-popover .tag-summary {
-			border-radius: $tag-border-radius-rounded 0 0 $tag-border-radius-rounded;
-		}
-
-		.tag-close {
-			border-radius: 0 $tag-border-radius-rounded $tag-border-radius-rounded 0;
-		}
-
-		.tag-popover:only-child .tag-summary {
-			border-radius: $tag-border-radius-rounded;
-		}
-	}
-
-	&.tag-square {
-		border-radius: 0;
-
-		.tag-popover .tag-summary,
-		.tag-popover:only-child .tag-summary,
-		.tag-close {
-			border-radius: 0;
-		}
-	}
 }
