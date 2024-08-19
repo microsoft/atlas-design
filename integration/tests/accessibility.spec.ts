@@ -49,6 +49,7 @@ const pathnames = [
 	'/components/site-header.html',
 	'/components/stretched-link.html',
 	'/components/table.html',
+	'/components/tag.html',
 	'/components/textarea.html',
 	'/components/toggle.html',
 	'/patterns/article-header.html',

@@ -12,18 +12,19 @@ $tag-icon-font-size: 0.875em !default;
 
 $tag-border-width: $border-width !default;
 $tag-border-radius: $border-radius !default;
-$tag-border-color: $secondary-dark !default;
+$tag-border-color: $secondary !default;
 
 $tag-color: $secondary-dark;
 $tag-color-hover: $primary-dark;
-$tag-background: $secondary-background;
+$tag-background-color: $body-background !default;
 
-$tag-color-filled: $secondary-invert;
-$tag-background-filled: $secondary;
+$tag-color-filled: $text;
+$tag-background-filled: $secondary-background-glow-high-contrast;
 
-$tag-color-primary: $primary-active;
-$tag-color-primary-hover: $primary-dark;
+$tag-color-primary: $primary-dark;
+$tag-color-primary-hover: $primary-hover;
 $tag-background-primary: $primary-background;
+$tag-border-color-primary: $primary-background-glow-high-contrast;
 
 .tag {
 	display: inline-flex;
@@ -32,7 +33,7 @@ $tag-background-primary: $primary-background;
 	padding: $tag-padding-block $tag-padding-inline;
 	border: $tag-border-width solid $tag-border-color;
 	border-radius: $tag-border-radius;
-	background-color: $tag-background;
+	background-color: $tag-background-color;
 	color: $tag-color;
 	font-size: $tag-font-size;
 	font-weight: $tag-font-weight;
@@ -58,7 +59,7 @@ $tag-background-primary: $primary-background;
 	}
 
 	&.tag-primary {
-		border-color: $tag-background-primary;
+		border-color: $tag-border-color-primary;
 		background-color: $tag-background-primary;
 		color: $tag-color-primary;
 
