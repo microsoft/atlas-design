@@ -2,7 +2,7 @@
 title: Accordion
 description: Accordion patterns in the Atlas Design System
 template: standard
-figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FwKIbxNQ2kXnglOPc2cDE1y%2FFINAL-REBRAND-DESIGNS%3Fnode-id%3D70%253A2398
+# figmaEmbed: https://www.figma.com/design/a5gqz0qtUMAKF36lNS6b61/Adaptive-Learning---Phase-I-(2024)?node-id=2581-106784&t=lkaa1re80XFTF9O3-0
 ---
 
 # Accordion patterns
@@ -31,7 +31,7 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 			<a href="#" class="card-title margin-bottom-none">Extend Microsoft 365 — Fundamental</a>
 		</div>
 	</article>
-	<article class="card">
+	<article class="card margin-block-xs">
 		<div class="card-template">
 			<p class="card-supertitle">Learning Path</p>
 			<a href="#" class="card-title margin-bottom-none">Introduction to Azure Open AI</a>
