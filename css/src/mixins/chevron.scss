@@ -18,10 +18,12 @@ $chevron-arrow-actual-width: 0.75em !default;
 
 @mixin chevron-right {
 	@extend %chevron;
+
 	transform: rotate(-135deg);
 }
 
 @mixin chevron-down {
 	@extend %chevron;
+
 	transform: rotate(-45deg);
 }

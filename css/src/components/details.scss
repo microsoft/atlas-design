@@ -1,3 +1,4 @@
+/* stylelint-disable selector-no-qualifying-type */
 $details-color: $text !default;
 $details-spacing-default: $spacer-5 !default;
 
@@ -7,23 +8,24 @@ details {
 
 summary {
 	display: flex;
-	cursor: pointer;
 	color: $details-color;
-}
+	cursor: pointer;
 
-summary::before {
-	display: flex;
-	align-self: center;
-	margin-inline-end: calc(($control-padding-horizontal + $chevron-arrow-actual-width));
-	@include chevron-right;
+	&::before {
+		@include chevron-right;
+
+		display: flex;
+		align-self: center;
+		margin-inline-end: calc(($control-padding-horizontal + $chevron-arrow-actual-width));
+	}
 }
 
 details[open] {
 	summary {
 		margin-block-end: $details-spacing-default;
-	}
 
-	summary::before {
-		transform: rotate(-45deg) translate(calc($chevron-arrow-size / 2), 0);
+		&::before {
+			transform: rotate(-45deg) translate(calc($chevron-arrow-size / 2), 0);
+		}
 	}
 }
