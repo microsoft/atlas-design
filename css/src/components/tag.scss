@@ -1,3 +1,5 @@
+/* stylelint-disable selector-max-specificity, no-descending-specificity  */
+
 $tag-padding-block: 0.4em !default;
 $tag-padding-inline: 0.65em !default;
 
@@ -20,7 +22,7 @@ $tag-color-hover: $primary-dark !default;
 $tag-background-color: $body-background !default;
 $tag-background-hover: $secondary-background-glow-high-contrast !default;
 
-$tag-color-filled: $text;
+$tag-color-filled: $text !default;
 $tag-background-filled: $secondary-background-glow-high-contrast !default;
 $tag-color-filled-hover: $primary-hover !default;
 $tag-background-filled-hover: $secondary !default;
@@ -81,133 +83,123 @@ $tag-interactive-color-primary-hover: $primary-invert !default;
 		font-size: $tag-font-size-lg;
 	}
 
-	// Colors
-
-	&.tag-primary {
-		border-color: $tag-border-color-primary;
-		background-color: $tag-background-primary;
-		color: $tag-color-primary;
-
-		&:hover,
-		&.is-hovered {
-			.tag-close {
-				color: $tag-color-primary-hover;
-			}
-		}
-	}
-
-	&.tag-filled {
-		border-color: $tag-background-filled;
-		background-color: $tag-background-filled;
-		color: $tag-color-filled;
-
-		&:hover,
-		&.is-hovered {
-			.tag-close {
-				color: $tag-color-filled-hover;
-			}
-		}
-	}
-
 	// Interactive tag
 
 	&.tag-interactive {
-		padding: 0;
-		gap: 0;
 		align-items: stretch;
+		padding: 0;
 		border: none;
 		color: $text;
+		gap: 0;
 
 		.tag-popover {
 			.tag-summary {
-				cursor: pointer;
 				padding: $tag-padding-block $tag-padding-inline;
+				border: $tag-border-width solid $tag-border-color;
+				border-radius: $tag-border-radius;
 				outline-color: currentColor;
 				outline-offset: -$focus-width;
+				cursor: pointer;
 				overflow: hidden;
-				border-radius: $tag-border-radius;
-				border: $tag-border-width solid $tag-border-color;
+
+				/* stylelint-disable-next-line max-nesting-depth, rule-empty-line-before */
+				&:hover,
+				&.is-hovered {
+					background-color: $tag-background-hover;
+				}
 			}
 
 			&:not(:only-child) .tag-summary {
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-				border-right: 0;
+				border-start-end-radius: 0;
+				border-end-end-radius: 0;
+				border-inline-end: 0;
 			}
 		}
 
 		.tag-close {
-			cursor: pointer;
+			padding: $tag-padding-block $tag-padding-inline;
+			border: 0;
+			border: $tag-border-width solid $tag-border-color;
+			border-radius: 0 $tag-border-radius $tag-border-radius 0;
 			outline-color: currentColor;
 			outline-offset: -$focus-width;
 			background-color: inherit;
 			color: inherit;
-			border: 0;
-			border-radius: 0 $tag-border-radius $tag-border-radius 0;
-			padding: $tag-padding-block $tag-padding-inline;
-			border: $tag-border-width solid $tag-border-color;
-		}
+			cursor: pointer;
 
-		.tag-summary,
-		.tag-close {
 			&:hover,
 			&.is-hovered {
 				background-color: $tag-background-hover;
+				color: $tag-color-hover;
+			}
+		}
+	}
+}
+
+// Colors
+
+.tag.tag-primary {
+	border-color: $tag-border-color-primary;
+	background-color: $tag-background-primary;
+	color: $tag-color-primary;
+
+	&:hover,
+	&.is-hovered {
+		.tag-close {
+			color: $tag-color-primary-hover;
+		}
+	}
+
+	&.tag-interactive {
+		.tag-popover .tag-summary,
+		.tag-close {
+			border-color: $tag-border-color-primary;
+			background-color: $tag-background-primary;
+			color: $tag-color-primary;
+
+			&:hover,
+			&.is-hovered {
+				border-color: $tag-background-primary-hover;
+				background-color: $tag-background-primary-hover;
+				color: $tag-interactive-color-primary-hover;
 			}
 		}
 
 		.tag-close {
+			border-inline-start-color: $tag-interactive-divider-color-primary;
+		}
+	}
+}
+
+.tag.tag-filled {
+	border-color: $tag-background-filled;
+	background-color: $tag-background-filled;
+	color: $tag-color-filled;
+
+	&:hover,
+	&.is-hovered {
+		.tag-close {
+			color: $tag-color-filled-hover;
+		}
+	}
+
+	&.tag-interactive {
+		.tag-popover .tag-summary,
+		.tag-close {
+			border-color: $tag-background-filled;
+			background-color: $tag-background-filled;
+			color: $tag-color-filled;
+
 			&:hover,
 			&.is-hovered {
-				color: $tag-color-hover;
+				border-color: $tag-background-filled-hover;
+				background-color: $tag-background-filled-hover;
+				color: $tag-interactive-color-filled-hover;
 			}
 		}
 
-		&.tag-primary {
-			.tag-summary,
-			.tag-close {
-				border-color: $tag-border-color-primary;
-				background-color: $tag-background-primary;
-				color: $tag-color-primary;
-			}
-
-			.tag-close {
-				border-left-color: $tag-interactive-divider-color-primary;
-			}
-
-			.tag-summary,
-			.tag-close {
-				&:hover,
-				&.is-hovered {
-					background-color: $tag-background-primary-hover;
-					border-color: $tag-background-primary-hover;
-					color: $tag-interactive-color-primary-hover;
-					color: $tag-interactive-color-primary-hover;
-				}
-			}
-		}
-
-		&.tag-filled {
-			.tag-summary,
-			.tag-close {
-				border-color: $tag-background-filled;
-				background-color: $tag-background-filled;
-				color: $tag-color-filled;
-			}
-
-			.tag-close {
-				border-left-color: $tag-interactive-divider-color-filled;
-			}
-
-			.tag-summary,
-			.tag-close {
-				&:hover,
-				&.is-hovered {
-					background-color: $tag-background-filled-hover;
-					border-color: $tag-background-filled-hover;
-					color: $tag-interactive-color-filled-hover;
-				}
-			}
+		.tag-close {
+			border-inline-start-color: $tag-interactive-divider-color-filled;
 		}
 	}
 }
