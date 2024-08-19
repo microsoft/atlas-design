@@ -48,6 +48,16 @@ The following classes are available for resizing: `tag-sm`, `tag-lg`.
 <span class="tag tag-lg">Tag</span>
 ```
 
+### Shapes
+
+Tags can have circular, rounded (default) or square shape.
+
+| State    | Class              | Example                                  |
+| -------- | ------------------ | ---------------------------------------- |
+| Rounded  | `.tag`             | <span class="tag">Tag</span>             |
+| Circular | `.tag.tag-rounded` | <span class="tag tag-rounded">Tag</span> |
+| Square   | `.tag.tag-square`  | <span class="tag tag-square">Tag</span>  |
+
 ### Types
 
 By default, tags are secondary outlined tags.
@@ -82,3 +92,79 @@ The only possible action that can be taken is dismissal.
 | Outlined | `.tag`             | <button type="button" class="tag"><span>Tag</span><span class="tag-close"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"/></svg></span></span></button>             | <button type="button" class="tag is-hovered"><span>Tag</span><span class="tag-close"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"/></svg></span></span></button>             |
 | Filled   | `.tag.tag-filled`  | <button type="button" class="tag tag-filled"><span>Tag</span><span class="tag-close"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"/></svg></span></span></button>  | <button type="button" class="tag tag-filled is-hovered"><span>Tag</span><span class="tag-close"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"/></svg></span></span></button>  |
 | Primary  | `.tag.tag-primary` | <button type="button" class="tag tag-primary"><span>Tag</span><span class="tag-close"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"/></svg></span></span></button> | <button type="button" class="tag tag-primary is-hovered"><span>Tag</span><span class="tag-close"><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"/></svg></span></span></button> |
+
+### Interactive tag
+
+In addition to dismissibility, interaction tags can have one other action that can provide more information or actions related to what the tag represents.
+
+To do this, nest the [popover component](./popover.md) inside a tag.
+
+```html
+<span class="tag tag-interactive">
+	<details class="popover tag-popover">
+		<summary class="tag-summary">Click</summary>
+		<div class="popover-content">
+			<p>Content.</p>
+		</div>
+	</details>
+	<button type="button" class="tag-close">
+		<span class="visually-hidden">Dismiss tag</span>
+		<span class="icon" aria-hidden="true">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color">
+				<path
+					d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"
+				/>
+			</svg>
+		</span>
+	</button>
+</span>
+```
+
+<table class="table margin-top-md margin-bottom-xl">
+	<thead>
+		<tr>
+			<th>State</th>
+			<th>Example</th>
+			<th>Tag hover</th>
+			<th>Dismiss hover</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Outlined</td>
+			<td>
+				<span class="tag tag-interactive"><details class="popover tag-popover"><summary class="tag-summary">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+			<td>
+				<span class="tag tag-interactive"><details class="popover tag-popover"><summary class="tag-summary is-hovered">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+			<td>
+				<span class="tag tag-interactive"><details class="popover popover-right tag-popover"><summary class="tag-summary">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close is-hovered"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Filled</td>
+			<td>
+				<span class="tag tag-filled tag-interactive"><details class="popover tag-popover"><summary class="tag-summary">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+			<td>
+				<span class="tag tag-filled tag-interactive"><details class="popover tag-popover"><summary class="tag-summary is-hovered">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+			<td>
+				<span class="tag tag-filled tag-interactive"><details class="popover popover-right tag-popover"><summary class="tag-summary">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close is-hovered"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Primary</td>
+			<td>
+				<span class="tag tag-primary tag-interactive"><details class="popover tag-popover"><summary class="tag-summary">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+			<td>
+				<span class="tag tag-primary tag-interactive"><details class="popover tag-popover"><summary class="tag-summary is-hovered">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+			<td>
+				<span class="tag tag-primary tag-interactive"><details class="popover popover-right tag-popover"><summary class="tag-summary">Click</summary><div class="popover-content"><p class="margin-top-none">Content.</p></div></details><button type="button" class="tag-close is-hovered"><span class="visually-hidden">Dismiss tag</span><span class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" class="fill-current-color"><path d="M269.254 224l137.373 137.373-45.254 45.254L224 269.254 86.627 406.627l-45.255-45.254L178.746 224 41.373 86.627l45.255-45.255L224 178.746 361.373 41.373l45.254 45.255L269.254 224z"></path></svg></span></button></span>
+			</td>
+		</tr>
+	</tbody>
+</table>

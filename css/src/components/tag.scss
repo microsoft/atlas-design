@@ -12,19 +12,28 @@ $tag-icon-font-size: 0.875em !default;
 
 $tag-border-width: $border-width !default;
 $tag-border-radius: $border-radius !default;
+$tag-border-radius-rounded: $border-radius-rounded !default;
 $tag-border-color: $secondary !default;
 
-$tag-color: $secondary-dark;
-$tag-color-hover: $primary-dark;
+$tag-color: $secondary-dark !default;
+$tag-color-hover: $primary-dark !default;
 $tag-background-color: $body-background !default;
+$tag-background-hover: $secondary-background-glow-high-contrast !default;
 
 $tag-color-filled: $text;
-$tag-background-filled: $secondary-background-glow-high-contrast;
+$tag-background-filled: $secondary-background-glow-high-contrast !default;
+$tag-color-filled-hover: $primary-hover !default;
+$tag-background-filled-hover: $secondary !default;
+$tag-interactive-divider-color-filled: $secondary-box-shadow !default;
+$tag-interactive-color-filled-hover: $primary-invert !default;
 
-$tag-color-primary: $primary-dark;
-$tag-color-primary-hover: $primary-hover;
-$tag-background-primary: $primary-background;
-$tag-border-color-primary: $primary-background-glow-high-contrast;
+$tag-color-primary: $primary-dark !default;
+$tag-color-primary-hover: $primary-hover !default;
+$tag-background-primary: $primary-background !default;
+$tag-background-primary-hover: $primary-hover !default;
+$tag-border-color-primary: $primary-background-glow-high-contrast !default;
+$tag-interactive-divider-color-primary: $primary-box-shadow !default;
+$tag-interactive-color-primary-hover: $primary-invert !default;
 
 .tag {
 	display: inline-flex;
@@ -58,6 +67,22 @@ $tag-border-color-primary: $primary-background-glow-high-contrast;
 		}
 	}
 
+	.icon {
+		font-size: $tag-icon-font-size;
+	}
+
+	// Sizes
+
+	&.tag-sm {
+		font-size: $tag-font-size-sm;
+	}
+
+	&.tag-lg {
+		font-size: $tag-font-size-lg;
+	}
+
+	// Colors
+
 	&.tag-primary {
 		border-color: $tag-border-color-primary;
 		background-color: $tag-background-primary;
@@ -75,19 +100,142 @@ $tag-border-color-primary: $primary-background-glow-high-contrast;
 		border-color: $tag-background-filled;
 		background-color: $tag-background-filled;
 		color: $tag-color-filled;
+
+		&:hover,
+		&.is-hovered {
+			.tag-close {
+				color: $tag-color-filled-hover;
+			}
+		}
 	}
 
-	.icon {
-		font-size: $tag-icon-font-size;
+	// Interactive tag
+
+	&.tag-interactive {
+		padding: 0;
+		gap: 0;
+		align-items: stretch;
+		border: none;
+		color: $text;
+
+		.tag-popover {
+			.tag-summary {
+				cursor: pointer;
+				padding: $tag-padding-block $tag-padding-inline;
+				outline-color: currentColor;
+				outline-offset: -$focus-width;
+				overflow: hidden;
+				border-radius: $tag-border-radius;
+				border: $tag-border-width solid $tag-border-color;
+			}
+
+			&:not(:only-child) .tag-summary {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				border-right: 0;
+			}
+		}
+
+		.tag-close {
+			cursor: pointer;
+			outline-color: currentColor;
+			outline-offset: -$focus-width;
+			background-color: inherit;
+			color: inherit;
+			border: 0;
+			border-radius: 0 $tag-border-radius $tag-border-radius 0;
+			padding: $tag-padding-block $tag-padding-inline;
+			border: $tag-border-width solid $tag-border-color;
+		}
+
+		.tag-summary,
+		.tag-close {
+			&:hover,
+			&.is-hovered {
+				background-color: $tag-background-hover;
+			}
+		}
+
+		.tag-close {
+			&:hover,
+			&.is-hovered {
+				color: $tag-color-hover;
+			}
+		}
+
+		&.tag-primary {
+			.tag-summary,
+			.tag-close {
+				border-color: $tag-border-color-primary;
+				background-color: $tag-background-primary;
+				color: $tag-color-primary;
+			}
+
+			.tag-close {
+				border-left-color: $tag-interactive-divider-color-primary;
+			}
+
+			.tag-summary,
+			.tag-close {
+				&:hover,
+				&.is-hovered {
+					background-color: $tag-background-primary-hover;
+					border-color: $tag-background-primary-hover;
+					color: $tag-interactive-color-primary-hover;
+					color: $tag-interactive-color-primary-hover;
+				}
+			}
+		}
+
+		&.tag-filled {
+			.tag-summary,
+			.tag-close {
+				border-color: $tag-background-filled;
+				background-color: $tag-background-filled;
+				color: $tag-color-filled;
+			}
+
+			.tag-close {
+				border-left-color: $tag-interactive-divider-color-filled;
+			}
+
+			.tag-summary,
+			.tag-close {
+				&:hover,
+				&.is-hovered {
+					background-color: $tag-background-filled-hover;
+					border-color: $tag-background-filled-hover;
+					color: $tag-interactive-color-filled-hover;
+				}
+			}
+		}
 	}
 
-	// Sizes
+	// Shapes
 
-	&.tag-sm {
-		font-size: $tag-font-size-sm;
+	&.tag-rounded {
+		border-radius: $tag-border-radius-rounded;
+
+		.tag-popover .tag-summary {
+			border-radius: $tag-border-radius-rounded 0 0 $tag-border-radius-rounded;
+		}
+
+		.tag-close {
+			border-radius: 0 $tag-border-radius-rounded $tag-border-radius-rounded 0;
+		}
+
+		.tag-popover:only-child .tag-summary {
+			border-radius: $tag-border-radius-rounded;
+		}
 	}
 
-	&.tag-lg {
-		font-size: $tag-font-size-lg;
+	&.tag-square {
+		border-radius: 0;
+
+		.tag-popover .tag-summary,
+		.tag-popover:only-child .tag-summary,
+		.tag-close {
+			border-radius: 0;
+		}
 	}
 }
