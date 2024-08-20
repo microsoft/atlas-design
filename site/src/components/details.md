@@ -20,15 +20,21 @@ Here is an example of a standard `.details` usage paired with a `<summary>`. By 
 ```html
 <details class="details">
 	<summary>Details header 1</summary>
-	<p>Details panel 1</p>
+	<div class="details-content">
+		<p>Details panel 1</p>
+	</div>
 </details>
 <details class="details">
 	<summary>Details header 2</summary>
-	<p>Details panel 2</p>
+	<div class="details-content">
+		<p>Details panel 2</p>
+	</div>
 </details>
 <details class="details">
 	<summary>Details header 3</summary>
-	<p>Details panel 3</p>
+	<div class="details-content">
+		<p>Details panel 3</p>
+	</div>
 </details>
 ```
 
@@ -41,15 +47,21 @@ There is an option to have the details component load in the expanded state by a
 ```html
 <details class="details" open>
 	<summary>Details header 1</summary>
-	<p>Details panel 1</p>
+	<div class="details-content">
+		<p>Details panel 1</p>
+	</div>
 </details>
 <details class="details">
 	<summary>Details header 2</summary>
-	<p>Details panel 2</p>
+	<div class="details-content">
+		<p>Details panel 2</p>
+	</div>
 </details>
 <details class="details">
 	<summary>Details header 3</summary>
-	<p>Details panel 3</p>
+	<div class="details-content">
+		<p>Details panel 3</p>
+	</div>
 </details>
 ```
 
@@ -60,15 +72,21 @@ Using the `name` attribute, there is an option to group multiple details compone
 ```html
 <details class="details" name="accordion-group-1">
 	<summary>Details header 1</summary>
-	<p>Details panel 1</p>
+	<div class="details-content">
+		<p>Details panel 1</p>
+	</div>
 </details>
 <details class="details" name="accordion-group-1">
 	<summary>Details header 2</summary>
-	<p>Details panel 2</p>
+	<div class="details-content">
+		<p>Details panel 2</p>
+	</div>
 </details>
 <details class="details" name="accordion-group-1">
 	<summary>Details header 3</summary>
-	<p>Details panel 3</p>
+	<div class="details-content">
+		<p>Details panel 3</p>
+	</div>
 </details>
 ```
 
@@ -81,14 +99,20 @@ For stylized accordion patterns used on Learn, visit the [Accordion pattern page
 ```html
 <details class="details details-sm" name="accordion-group-1">
 	<summary>Details header 1</summary>
-	<p>Details panel 1</p>
+	<div class="details-content">
+		<p>Details panel 1</p>
+	</div>
 </details>
 <details class="details" name="accordion-group-1">
 	<summary>Details header 2</summary>
-	<p>Details panel 2</p>
+	<div class="details-content">
+		<p>Details panel 2</p>
+	</div>
 </details>
 <details class="details details-lg" name="accordion-group-1">
 	<summary>Details header 3</summary>
-	<p>Details panel 3</p>
+	<div class="details-content">
+		<p>Details panel 3</p>
+	</div>
 </details>
 ```

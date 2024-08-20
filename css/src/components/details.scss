@@ -9,9 +9,38 @@ $details-spacing-default: $spacer-4 !default;
 $details-spacing-sm: $spacer-3 !default;
 $details-spacing-lg: $spacer-5 !default;
 
+@mixin details-size-adjuster($font-size, $padding-size) {
+	font-size: $font-size;
+
+	summary {
+		padding-block: $padding-size;
+	}
+
+	&[class*='background-color-'] {
+		summary,
+		.details-content {
+			padding-inline: $padding-size;
+		}
+	}
+
+	&[open] {
+		.details-content {
+			padding: $padding-size;
+		}
+
+		summary {
+			margin-block-end: $padding-size;
+		}
+	}
+}
+
 .details {
 	font-size: $details-font-size;
 	line-height: 1.5;
+
+	.details-content {
+		padding-block: $details-spacing-default;
+	}
 
 	summary {
 		display: flex;
@@ -28,74 +57,22 @@ $details-spacing-lg: $spacer-5 !default;
 		}
 	}
 
-	&[class*='background-color-'] summary {
-		padding-inline: $details-spacing-default;
-	}
-
-	&[open] {
-		padding-block-end: $details-spacing-default;
-
-		> :not(summary) {
-			margin-inline-start: $details-spacing-default;
-			margin-inline-end: $details-spacing-default;
-		}
-
-		summary {
-			margin-block-end: $details-spacing-default;
-
-			&::before {
-				transform: rotate(-45deg) translate(calc($chevron-arrow-size / 2), 0);
-			}
+	&[class*='background-color-'] {
+		summary,
+		.details-content {
+			padding-inline: $details-spacing-default;
 		}
 	}
 
-	&#{'-lg'} {
-		font-size: $details-font-size-lg;
-
-		summary {
-			padding-block: $details-spacing-lg;
-		}
-
-		&[class*='background-color-'] summary {
-			padding-inline: $details-spacing-lg;
-		}
-
-		&[open] {
-			padding-block-end: $details-spacing-lg;
-
-			> :not(summary) {
-				margin-inline-start: $details-spacing-lg;
-				margin-inline-end: $details-spacing-lg;
-			}
-
-			summary {
-				margin-block-end: $details-spacing-lg;
-			}
-		}
+	&[open] summary::before {
+		transform: rotate(-45deg) translate(calc($chevron-arrow-size / 2), 0);
 	}
+}
 
-	&#{'-sm'} {
-		font-size: $details-font-size-sm;
+.details-lg {
+	@include details-size-adjuster($details-font-size-lg, $details-spacing-lg);
+}
 
-		summary {
-			padding-block: $details-spacing-sm;
-		}
-
-		&[class*='background-color-'] summary {
-			padding-inline: $details-spacing-sm;
-		}
-
-		&[open] {
-			padding-block-end: $details-spacing-sm;
-
-			> :not(summary) {
-				margin-inline-start: $details-spacing-sm;
-				margin-inline-end: $details-spacing-sm;
-			}
-
-			summary {
-				margin-block-end: $details-spacing-sm;
-			}
-		}
-	}
+.details-sm {
+	@include details-size-adjuster($details-font-size-sm, $details-spacing-sm);
 }
