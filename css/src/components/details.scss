@@ -1,31 +1,101 @@
 /* stylelint-disable selector-no-qualifying-type */
 $details-color: $text !default;
-$details-spacing-default: $spacer-5 !default;
 
-details {
-	padding: $spacer-3;
-}
+$details-font-size: $font-size-7 !default;
+$details-font-size-sm: $font-size-8 !default;
+$details-font-size-lg: $font-size-6 !default;
 
-summary {
-	display: flex;
-	color: $details-color;
-	cursor: pointer;
+$details-spacing-default: $spacer-4 !default;
+$details-spacing-sm: $spacer-3 !default;
+$details-spacing-lg: $spacer-5 !default;
 
-	&::before {
-		@include chevron-right;
+.details {
+	font-size: $details-font-size;
+	line-height: 1.5;
 
-		display: flex;
-		align-self: center;
-		margin-inline-end: calc(($control-padding-horizontal + $chevron-arrow-actual-width));
-	}
-}
-
-details[open] {
 	summary {
-		margin-block-end: $details-spacing-default;
+		display: flex;
+		color: $details-color;
+		cursor: pointer;
+		padding-block: $details-spacing-default;
 
 		&::before {
-			transform: rotate(-45deg) translate(calc($chevron-arrow-size / 2), 0);
+			@include chevron-right;
+
+			display: flex;
+			align-self: center;
+			margin-inline-end: calc(($control-padding-horizontal + $chevron-arrow-actual-width));
+		}
+	}
+
+	&[class*='background-color-'] summary {
+		padding-inline: $details-spacing-default;
+	}
+
+	&[open] {
+		padding-block-end: $details-spacing-default;
+
+		> :not(summary) {
+			margin-inline-start: $details-spacing-default;
+			margin-inline-end: $details-spacing-default;
+		}
+
+		summary {
+			margin-block-end: $details-spacing-default;
+
+			&::before {
+				transform: rotate(-45deg) translate(calc($chevron-arrow-size / 2), 0);
+			}
+		}
+	}
+
+	&#{'-lg'} {
+		font-size: $details-font-size-lg;
+
+		summary {
+			padding-block: $details-spacing-lg;
+		}
+
+		&[class*='background-color-'] summary {
+			padding-inline: $details-spacing-lg;
+		}
+
+		&[open] {
+			padding-block-end: $details-spacing-lg;
+
+			> :not(summary) {
+				margin-inline-start: $details-spacing-lg;
+				margin-inline-end: $details-spacing-lg;
+			}
+
+			summary {
+				margin-block-end: $details-spacing-lg;
+			}
+		}
+	}
+
+	&#{'-sm'} {
+		font-size: $details-font-size-sm;
+
+		summary {
+			padding-block: $details-spacing-sm;
+		}
+
+		&[class*='background-color-'] summary {
+			padding-inline: $details-spacing-sm;
+		}
+
+		&[open] {
+			padding-block-end: $details-spacing-sm;
+
+			> :not(summary) {
+				margin-inline-start: $details-spacing-sm;
+				margin-inline-end: $details-spacing-sm;
+			}
+
+			summary {
+				margin-block-end: $details-spacing-sm;
+			}
 		}
 	}
 }

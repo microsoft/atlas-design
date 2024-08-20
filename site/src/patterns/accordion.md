@@ -11,13 +11,13 @@ Because the `details` component has so many possible permutations, it can be hel
 
 ## Accordion
 
-This accordion uses the `open` attribute to expand a designated panel on page load. Grouping `<details>` elements together using the `name` attribute, prevents more than 1 panel from being open at a time. Atomics classes are used to style the accordion `<details>` and `summary` elements.
+This accordion uses the `open` attribute to expand a designated panel on page load. Grouping `.details` components together using the `name` attribute, prevents more than 1 panel from being open at a time. Atomics classes are used to style the accordion `<details>` and `summary` elements.
 
 ```html
 <details
 	open
 	name="accordion-group-1"
-	class="background-color-body-accent border-radius margin-block-xxs padding-xs"
+	class="details background-color-body-accent border-radius margin-block-xxs"
 >
 	<summary class="font-weight-semibold">Advanced Design Techniques with Microsoft Tools</summary>
 	<p class="margin-bottom-xxs">
@@ -46,7 +46,7 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 </details>
 <details
 	name="accordion-group-1"
-	class="background-color-body-accent border-radius margin-block-xxs padding-xs"
+	class="details background-color-body-accent border-radius margin-block-xxs"
 >
 	<summary class="font-weight-semibold">Prepare data for analysis with Power BI</summary>
 	<p class="margin-bottom-xxs">
