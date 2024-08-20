@@ -11,22 +11,22 @@ classPrefixes:
 
 # Details
 
-The Details element represents a disclosure widget, where information is only visible when the element is toggled to an "open" state. A Summary or label must be provided using the `<summary>` element.
+The Details component contains a disclosure widget, where information is only visible when the element is toggled to an "open" state. A Summary or label must be provided using the `<summary>` element.
 
 ## Usage
 
-Here is an example of a standard details usage paired with a summary. By default details elements are closed on page load and toggle open and closed when the user clicks the widget.
+Here is an example of a standard `.details` usage paired with a `<summary>`. By default details elements are closed on page load and toggle open or closed when the user clicks the summary.
 
 ```html
-<details>
+<details class="details">
 	<summary>Details header 1</summary>
 	<p>Details panel 1</p>
 </details>
-<details>
+<details class="details">
 	<summary>Details header 2</summary>
 	<p>Details panel 2</p>
 </details>
-<details>
+<details class="details">
 	<summary>Details header 3</summary>
 	<p>Details panel 3</p>
 </details>
@@ -36,18 +36,18 @@ Here is an example of a standard details usage paired with a summary. By default
 
 ### Open
 
-There is an option to have the `<details>` element load in the expanded state by adding the `open` attribute.
+There is an option to have the details component load in the expanded state by adding the `open` attribute.
 
 ```html
-<details open>
+<details class="details" open>
 	<summary>Details header 1</summary>
 	<p>Details panel 1</p>
 </details>
-<details>
+<details class="details">
 	<summary>Details header 2</summary>
 	<p>Details panel 2</p>
 </details>
-<details>
+<details class="details">
 	<summary>Details header 3</summary>
 	<p>Details panel 3</p>
 </details>
@@ -55,21 +55,40 @@ There is an option to have the `<details>` element load in the expanded state by
 
 ### Name
 
-There is an option to group multiple `<details>` elements, with only one open at a time, using the `name` attribute. This behavior is also known as an accordion.
+Using the `name` attribute, there is an option to group multiple details components as an accordion, which allows only one open panel at a time.
 
 ```html
-<details name="accordion-group-1">
+<details class="details" name="accordion-group-1">
 	<summary>Details header 1</summary>
 	<p>Details panel 1</p>
 </details>
-<details name="accordion-group-1">
+<details class="details" name="accordion-group-1">
 	<summary>Details header 2</summary>
 	<p>Details panel 2</p>
 </details>
-<details name="accordion-group-1">
+<details class="details" name="accordion-group-1">
 	<summary>Details header 3</summary>
 	<p>Details panel 3</p>
 </details>
 ```
 
 For stylized accordion patterns used on Learn, visit the [Accordion pattern page](../patterns/accordion.md).
+
+### Sizes
+
+`select-sm`/`select-lg` makes input a little bigger or smaller than the default.
+
+```html
+<details class="details details-sm" name="accordion-group-1">
+	<summary>Details header 1</summary>
+	<p>Details panel 1</p>
+</details>
+<details class="details" name="accordion-group-1">
+	<summary>Details header 2</summary>
+	<p>Details panel 2</p>
+</details>
+<details class="details details-lg" name="accordion-group-1">
+	<summary>Details header 3</summary>
+	<p>Details panel 3</p>
+</details>
+```
