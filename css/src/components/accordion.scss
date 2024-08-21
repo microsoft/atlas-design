@@ -1,0 +1,126 @@
+/* stylelint-disable selector-no-qualifying-type */
+$accordion-font-size: $font-size-7 !default;
+$accordion-font-size-sm: $font-size-8 !default;
+$accordion-font-size-lg: $font-size-6 !default;
+
+$accordion-spacing-sm: $spacer-3 !default;
+$accordion-spacing-md: $spacer-4 !default;
+$accordion-spacing-lg: $spacer-5 !default;
+$accordion-spacing-bg-offset-sm: $spacer-7 !default;
+$accordion-spacing-bg-offset-md: $spacer-8 !default;
+$accordion-spacing-bg-offset-lg: $spacer-9 !default;
+
+@mixin accordion-size-adjuster($font-size, $padding-size) {
+	font-size: $font-size;
+
+	.accordion-content,
+	summary {
+		padding-block: $padding-size;
+
+		&:not(.accordion-icon-end)::before,
+		&.accordion-icon-end::after {
+			top: calc($control-padding-horizontal + $padding-size);
+		}
+
+		&.accordion-icon-end::before {
+			left: -calc($padding-size);
+		}
+	}
+
+	&[class*='background-color-'] {
+		summary,
+		.accordion-content {
+			padding-inline: $padding-size;
+		}
+
+		summary:not(.accordion-icon-end) {
+			padding-inline-start: calc($padding-size + $chevron-arrow-actual-width);
+			&::before {
+				left: $padding-size;
+			}
+		}
+
+		&.accordion-icon-end::after {
+			right: $padding-size;
+		}
+	}
+
+	.accordion-content[class*='background-color-'] {
+		padding-inline: $padding-size;
+	}
+}
+
+.accordion {
+	font-size: $accordion-font-size;
+	line-height: 1.5;
+
+	.accordion-content,
+	summary {
+		padding-block: $accordion-spacing-md;
+	}
+
+	summary {
+		display: block;
+		position: relative;
+		cursor: pointer;
+
+		&:not(.accordion-icon-end) {
+			padding-inline-start: $accordion-spacing-bg-offset-sm;
+
+			&::before {
+				@include chevron-right;
+
+				position: absolute;
+				top: calc($control-padding-horizontal + $accordion-spacing-md);
+				left: 0;
+				transition: transform 0.1s;
+			}
+		}
+
+		&.accordion-icon-end::after {
+			@include chevron-down;
+
+			position: absolute;
+			top: calc($control-padding-horizontal + $accordion-spacing-md);
+			transition: transform 0.1s;
+		}
+	}
+
+	&[class*='background-color-'] {
+		summary,
+		.accordion-content {
+			padding-inline: $accordion-spacing-md;
+		}
+
+		summary:not(.accordion-icon-end) {
+			padding-inline-start: $accordion-spacing-bg-offset-md;
+			&::before {
+				left: $accordion-spacing-md;
+			}
+		}
+
+		&.accordion-icon-end {
+			padding-inline-end: calc(($control-padding-horizontal + $chevron-arrow-actual-width));
+		}
+	}
+
+	&[open] {
+		summary:not(.accordion-icon-end)::before {
+			// chevron-down
+			transform: rotate(-45deg) translate(calc($chevron-arrow-size / 2), 0);
+		}
+
+		summary.accordion-icon-end::after {
+			//chevron-up
+			transform: rotate(-225deg);
+		}
+	}
+}
+
+.accordion-lg {
+	@include accordion-size-adjuster($accordion-font-size-lg, $accordion-spacing-lg);
+}
+
+.accordion-sm {
+	@include accordion-size-adjuster($accordion-font-size-sm, $accordion-spacing-sm);
+}
