@@ -1,6 +1,6 @@
 /* stylelint-disable selector-no-qualifying-type */
-$accordion-font-size: $font-size-7 !default;
 $accordion-font-size-sm: $font-size-8 !default;
+$accordion-font-size-md: $font-size-7 !default;
 $accordion-font-size-lg: $font-size-6 !default;
 
 $accordion-spacing-sm: $spacer-3 !default;
@@ -10,7 +10,9 @@ $accordion-spacing-bg-offset-sm: $spacer-7 !default;
 $accordion-spacing-bg-offset-md: $spacer-8 !default;
 $accordion-spacing-bg-offset-lg: $spacer-9 !default;
 
-@mixin accordion-size-adjuster($font-size, $padding-size) {
+$accordion-transition: transform 0.15s !default;
+
+@mixin accordion-size-adjuster($font-size, $padding-size, $bg-offset) {
 	font-size: $font-size;
 
 	.accordion-content,
@@ -19,12 +21,20 @@ $accordion-spacing-bg-offset-lg: $spacer-9 !default;
 
 		&:not(.accordion-icon-end)::before,
 		&.accordion-icon-end::after {
-			top: calc($control-padding-horizontal + $padding-size);
+			inset-block-start: calc($control-padding-horizontal + $padding-size);
 		}
 
 		&.accordion-icon-end::before {
-			left: -calc($padding-size);
+			inset-inline-start: -calc($padding-size);
 		}
+	}
+
+	.accordion-content {
+		padding-block: $padding-size;
+	}
+
+	.accordion-content[class*='background-color-'] {
+		padding-inline: $padding-size;
 	}
 
 	&[class*='background-color-'] {
@@ -34,35 +44,41 @@ $accordion-spacing-bg-offset-lg: $spacer-9 !default;
 		}
 
 		summary:not(.accordion-icon-end) {
-			padding-inline-start: calc($padding-size + $chevron-arrow-actual-width);
+			padding-inline-start: $bg-offset;
+
 			&::before {
-				left: $padding-size;
+				inset-inline-start: $padding-size;
 			}
 		}
 
 		&.accordion-icon-end::after {
-			right: $padding-size;
+			inset-inline-end: $padding-size;
 		}
-	}
-
-	.accordion-content[class*='background-color-'] {
-		padding-inline: $padding-size;
 	}
 }
 
 .accordion {
-	font-size: $accordion-font-size;
-	line-height: 1.5;
+	@include accordion-size-adjuster(
+		$accordion-font-size-md,
+		$accordion-spacing-md,
+		$accordion-spacing-bg-offset-md
+	);
 
-	.accordion-content,
-	summary {
-		padding-block: $accordion-spacing-md;
-	}
+	line-height: 1.5;
 
 	summary {
 		display: block;
 		position: relative;
 		cursor: pointer;
+
+		&:hover {
+			color: $primary-hover;
+
+			&::before,
+			&::after {
+				border-color: $primary-hover;
+			}
+		}
 
 		&:not(.accordion-icon-end) {
 			padding-inline-start: $accordion-spacing-bg-offset-sm;
@@ -71,9 +87,8 @@ $accordion-spacing-bg-offset-lg: $spacer-9 !default;
 				@include chevron-right;
 
 				position: absolute;
-				top: calc($control-padding-horizontal + $accordion-spacing-md);
-				left: 0;
-				transition: transform 0.1s;
+				inset-inline-start: 0;
+				transition: $accordion-transition;
 			}
 		}
 
@@ -81,24 +96,11 @@ $accordion-spacing-bg-offset-lg: $spacer-9 !default;
 			@include chevron-down;
 
 			position: absolute;
-			top: calc($control-padding-horizontal + $accordion-spacing-md);
-			transition: transform 0.1s;
+			transition: $accordion-transition;
 		}
 	}
 
 	&[class*='background-color-'] {
-		summary,
-		.accordion-content {
-			padding-inline: $accordion-spacing-md;
-		}
-
-		summary:not(.accordion-icon-end) {
-			padding-inline-start: $accordion-spacing-bg-offset-md;
-			&::before {
-				left: $accordion-spacing-md;
-			}
-		}
-
 		&.accordion-icon-end {
 			padding-inline-end: calc(($control-padding-horizontal + $chevron-arrow-actual-width));
 		}
@@ -115,12 +117,25 @@ $accordion-spacing-bg-offset-lg: $spacer-9 !default;
 			transform: rotate(-225deg);
 		}
 	}
+
+	.accordion-content {
+		// Constant content body text size regardless of <summary> heading text-sizing
+		font-size: $accordion-font-size-md;
+	}
 }
 
 .accordion-lg {
-	@include accordion-size-adjuster($accordion-font-size-lg, $accordion-spacing-lg);
+	@include accordion-size-adjuster(
+		$accordion-font-size-lg,
+		$accordion-spacing-lg,
+		$accordion-spacing-bg-offset-lg
+	);
 }
 
 .accordion-sm {
-	@include accordion-size-adjuster($accordion-font-size-sm, $accordion-spacing-sm);
+	@include accordion-size-adjuster(
+		$accordion-font-size-sm,
+		$accordion-spacing-sm,
+		$accordion-spacing-bg-offset-sm
+	);
 }

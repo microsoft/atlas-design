@@ -32,7 +32,7 @@ export const pages: LocalPageConfig[] = [
 	{ pathname: '/components/breadcrumbs.html', name: 'Components/breadcrumbs', routes },
 	{ pathname: '/components/button.html', name: 'Components/button', routes },
 	{ pathname: '/components/checkbox.html', name: 'Components/checkbox', routes },
-	{ pathname: '/components/details.html', name: 'Components/details', routes },
+	{ pathname: '/components/accordion.html', name: 'Components/accordion', routes },
 	{ pathname: '/components/dismiss.html', name: 'Components/dismiss', routes },
 	{ pathname: '/components/help.html', name: 'Components/help', routes },
 	{ pathname: '/components/icon.html', name: 'Components/icon', routes },

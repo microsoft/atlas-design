@@ -18,29 +18,17 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 	name="accordion-group-1"
 	class="accordion background-color-body-accent border-radius margin-block-xxs"
 >
-	<summary class="font-weight-semibold">Advanced Design Techniques with Microsoft Tools</summary>
+	<summary class="font-weight-semibold">Accordion headline 1 text</summary>
 	<div class="accordion-content">
 		<p class="margin-bottom-xxs">
-			Advanced features in Microsoft Azure, optimizing engineering workflows, and leveraging cloud
-			services for engineering solutions.
+			Viverra aliquet eget sit amet tellus cras. Nisl nisi scelerisque eu ultrices vitae.
+			Condimentum id venenatis a condimentum. Ut eu sem integer vitae.
 		</p>
-		<p><strong class="font-weight-semibold">Hours to milestone completion</strong> 14</p>
-		<article class="card margin-block-xs">
+		<h4 class="font-weight-semibold">Accordion content subheading</h4>
+		<article class="card margin-top-xs">
 			<div class="card-template">
-				<p class="card-supertitle">MODULES</p>
-				<a href="#" class="card-title margin-bottom-none">Extend Microsoft 365 — Fundamental</a>
-			</div>
-		</article>
-		<article class="card margin-block-xs">
-			<div class="card-template">
-				<p class="card-supertitle">Learning Path</p>
-				<a href="#" class="card-title margin-bottom-none">Introduction to Azure Open AI</a>
-			</div>
-		</article>
-		<article class="card">
-			<div class="card-template">
-				<p class="card-supertitle">Learning Path</p>
-				<a href="#" class="card-title margin-bottom-none">Implementing Azure DevOps for CI/CD</a>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 	</div>
@@ -49,26 +37,24 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 	name="accordion-group-1"
 	class="accordion background-color-body-accent border-radius margin-block-xxs"
 >
-	<summary class="font-weight-semibold">Prepare data for analysis with Power BI</summary>
+	<summary class="font-weight-semibold">Accordion headline 2 text</summary>
 	<div class="accordion-content">
 		<p class="margin-bottom-xxs">
-			You'll learn how to use Power Query to extract data from different data sources, choose a
-			storage mode, and connectivity type. You'll also learn to profile, clean, and load data into
-			Power BI before you model your data.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa
+			eget egestas.
 		</p>
-		<p><strong class="font-weight-semibold">Hours to milestone completion</strong> 7</p>
+		<h4 class="font-weight-semibold">Accordion content subheading</h4>
 		<article class="card margin-block-xs">
 			<div class="card-template">
-				<p class="card-supertitle">Modules</p>
-				<a href="#" class="card-title margin-bottom-none">Get data in Power BI</a>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 		<article class="card">
 			<div class="card-template">
-				<p class="card-supertitle">Modules</p>
-				<a href="#" class="card-title margin-bottom-none"
-					>Clean, transform, and load data in Power BI</a
-				>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 	</div>
@@ -76,92 +62,77 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 ```
 
 ```html
-<details open name="accordion-group-1" class="accordion accordion-lg">
+<details name="accordion-group-2" class="accordion accordion-lg border-top">
 	<summary>
-		<div>
-			<h3 class="font-weight-semibold font">Advanced Design Techniques with Microsoft Tools</h3>
-			<p class="font-size-md color-text-subtle">lorem ipsum</p>
-		</div>
+		<h3 class="font-weight-semibold">Accordion header 1 text</h3>
+		<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 	</summary>
 	<div class="accordion-content background-color-body-medium">
 		<p class="margin-bottom-xxs">
-			You'll learn how to use Power Query to extract data from different data sources, choose a
-			storage mode, and connectivity type. You'll also learn to profile, clean, and load data into
-			Power BI before you model your data.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua.
 		</p>
-		<p><strong class="font-weight-semibold">Hours to milestone completion</strong> 7</p>
+		<h4 class="font-weight-semibold">Accordion content subheading</h4>
 		<article class="card margin-block-xs">
 			<div class="card-template">
-				<p class="card-supertitle">Modules</p>
-				<a href="#" class="card-title margin-bottom-none">Get data in Power BI</a>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 		<article class="card">
 			<div class="card-template">
-				<p class="card-supertitle">Modules</p>
-				<a href="#" class="card-title margin-bottom-none"
-					>Clean, transform, and load data in Power BI</a
-				>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 	</div>
 </details>
-<details name="accordion-group-1" class="accordion accordion-lg border-top">
+<details name="accordion-group-2" class="accordion accordion-lg border-top">
 	<summary>
-		<div>
-			<h3 class="font-weight-semibold font">Advanced Design Techniques with Microsoft Tools</h3>
-			<p class="font-size-md color-text-subtle">lorem ipsum</p>
-		</div>
+		<h3 class="font-weight-semibold">Accordion header 2 text</h3>
+		<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 	</summary>
 	<div class="accordion-content background-color-body-medium">
 		<p class="margin-bottom-xxs">
-			You'll learn how to use Power Query to extract data from different data sources, choose a
-			storage mode, and connectivity type. You'll also learn to profile, clean, and load data into
-			Power BI before you model your data.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua.
 		</p>
-		<p><strong class="font-weight-semibold">Hours to milestone completion</strong> 7</p>
+		<h4 class="font-weight-semibold">Accordion content subheading</h4>
 		<article class="card margin-block-xs">
 			<div class="card-template">
-				<p class="card-supertitle">Modules</p>
-				<a href="#" class="card-title margin-bottom-none">Get data in Power BI</a>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 		<article class="card">
 			<div class="card-template">
-				<p class="card-supertitle">Modules</p>
-				<a href="#" class="card-title margin-bottom-none"
-					>Clean, transform, and load data in Power BI</a
-				>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 	</div>
 </details>
-<details name="accordion-group-1" class="accordion accordion-lg border-top">
+<details name="accordion-group-2" class="accordion accordion-lg border-top">
 	<summary>
-		<div>
-			<h3 class="font-weight-semibold font">Advanced Design Techniques with Microsoft Tools</h3>
-			<p class="font-size-md color-text-subtle">lorem ipsum</p>
-		</div>
+		<h3 class="font-weight-semibold">Accordion header 3 text</h3>
+		<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 	</summary>
 	<div class="accordion-content background-color-body-medium">
 		<p class="margin-bottom-xxs">
-			You'll learn how to use Power Query to extract data from different data sources, choose a
-			storage mode, and connectivity type. You'll also learn to profile, clean, and load data into
-			Power BI before you model your data.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua.
 		</p>
-		<p><strong class="font-weight-semibold">Hours to milestone completion</strong> 7</p>
+		<h4 class="font-weight-semibold">Accordion content subheading</h4>
 		<article class="card margin-block-xs">
 			<div class="card-template">
-				<p class="card-supertitle">Modules</p>
-				<a href="#" class="card-title margin-bottom-none">Get data in Power BI</a>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 		<article class="card">
 			<div class="card-template">
-				<p class="card-supertitle">Modules</p>
-				<a href="#" class="card-title margin-bottom-none"
-					>Clean, transform, and load data in Power BI</a
-				>
+				<p class="card-supertitle">Content Type</p>
+				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
 	</div>
@@ -170,94 +141,22 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 
 ```html
 <div class="border-bottom">
-	<details open name="accordion-group-1" class="accordion accordion-lg">
-		<summary class="accordion-icon-end">
-			<div>
-				<h3 class="font-weight-semibold font">Advanced Design Techniques with Microsoft Tools</h3>
-				<p class="font-size-md color-text-subtle">lorem ipsum</p>
-			</div>
-		</summary>
+	<details name="accordion-group-3" class="accordion border-top">
+		<summary class="accordion-icon-end font-weight-semibold">Accordion header text</summary>
 		<div class="accordion-content background-color-body-medium">
-			<p class="margin-bottom-xxs">
-				You'll learn how to use Power Query to extract data from different data sources, choose a
-				storage mode, and connectivity type. You'll also learn to profile, clean, and load data into
-				Power BI before you model your data.
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua.
 			</p>
-			<p><strong class="font-weight-semibold">Hours to milestone completion</strong> 7</p>
-			<article class="card margin-block-xs">
-				<div class="card-template">
-					<p class="card-supertitle">Modules</p>
-					<a href="#" class="card-title margin-bottom-none">Get data in Power BI</a>
-				</div>
-			</article>
-			<article class="card">
-				<div class="card-template">
-					<p class="card-supertitle">Modules</p>
-					<a href="#" class="card-title margin-bottom-none"
-						>Clean, transform, and load data in Power BI</a
-					>
-				</div>
-			</article>
 		</div>
 	</details>
-	<details name="accordion-group-1" class="accordion accordion-lg border-top">
-		<summary class="accordion-icon-end">
-			<div>
-				<h3 class="font-weight-semibold font">Advanced Design Techniques with Microsoft Tools</h3>
-				<p class="font-size-md color-text-subtle">lorem ipsum</p>
-			</div>
-		</summary>
+	<details name="accordion-group-3" class="accordion border-top">
+		<summary class="accordion-icon-end font-weight-semibold">Accordion header text</summary>
 		<div class="accordion-content background-color-body-medium">
-			<p class="margin-bottom-xxs">
-				You'll learn how to use Power Query to extract data from different data sources, choose a
-				storage mode, and connectivity type. You'll also learn to profile, clean, and load data into
-				Power BI before you model your data.
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua.
 			</p>
-			<p><strong class="font-weight-semibold">Hours to milestone completion</strong> 7</p>
-			<article class="card margin-block-xs">
-				<div class="card-template">
-					<p class="card-supertitle">Modules</p>
-					<a href="#" class="card-title margin-bottom-none">Get data in Power BI</a>
-				</div>
-			</article>
-			<article class="card">
-				<div class="card-template">
-					<p class="card-supertitle">Modules</p>
-					<a href="#" class="card-title margin-bottom-none"
-						>Clean, transform, and load data in Power BI</a
-					>
-				</div>
-			</article>
-		</div>
-	</details>
-	<details name="accordion-group-1" class="accordion accordion-lg border-top">
-		<summary class="accordion-icon-end">
-			<div>
-				<h3 class="font-weight-semibold font">Advanced Design Techniques with Microsoft Tools</h3>
-				<p class="font-size-md color-text-subtle">lorem ipsum</p>
-			</div>
-		</summary>
-		<div class="accordion-content background-color-body-medium">
-			<p class="margin-bottom-xxs">
-				You'll learn how to use Power Query to extract data from different data sources, choose a
-				storage mode, and connectivity type. You'll also learn to profile, clean, and load data into
-				Power BI before you model your data.
-			</p>
-			<p><strong class="font-weight-semibold">Hours to milestone completion</strong> 7</p>
-			<article class="card margin-block-xs">
-				<div class="card-template">
-					<p class="card-supertitle">Modules</p>
-					<a href="#" class="card-title margin-bottom-none">Get data in Power BI</a>
-				</div>
-			</article>
-			<article class="card">
-				<div class="card-template">
-					<p class="card-supertitle">Modules</p>
-					<a href="#" class="card-title margin-bottom-none"
-						>Clean, transform, and load data in Power BI</a
-					>
-				</div>
-			</article>
 		</div>
 	</details>
 </div>

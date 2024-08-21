@@ -90,8 +90,6 @@ Using the `name` attribute, there is an option to group multiple accordion compo
 </details>
 ```
 
-For accordion patterns styled with Atomics, visit the [Accordion pattern page](../patterns/accordion.md).
-
 ## Icon location
 
 By default the expansion indicator icon is before the summary content. Using the `.accordion-icon-end` class, the icon can be positioned at the end of the summary. The icon is absolutely positioned to remain at the top if Summary content wraps or contains multiple lines.
@@ -133,3 +131,7 @@ By default the expansion indicator icon is before the summary content. Using the
 	</div>
 </details>
 ```
+
+## Patterns
+
+For accordion patterns styled with Atomics, visit the [Accordion patterns page](../patterns/accordion.md).
