@@ -3,18 +3,21 @@ $accordion-font-size-sm: $font-size-8 !default;
 $accordion-font-size-md: $font-size-7 !default;
 $accordion-font-size-lg: $font-size-6 !default;
 
+$accordion-spacing-xs: $spacer-2 !default;
 $accordion-spacing-sm: $spacer-3 !default;
 $accordion-spacing-md: $spacer-4 !default;
 $accordion-spacing-lg: $spacer-5 !default;
-$accordion-spacing-bg-offset-sm: $spacer-7 !default;
-$accordion-spacing-bg-offset-md: $spacer-8 !default;
-$accordion-spacing-bg-offset-lg: $spacer-9 !default;
+$accordion-spacing-offset-sm: $spacer-6 !default;
+$accordion-spacing-offset-md: $spacer-7 !default;
+$accordion-spacing-offset-lg: $spacer-8 !default;
 
 $accordion-transition: transform 0.15s !default;
 
 // Spacing and font-size
 
-@mixin accordion-summary-sizes($font-size, $padding-size, $bg-offset) {
+@mixin accordion-summary-sizes($font-size, $padding-size, $icon-offset) {
+	$bg-icon-offset: calc($icon-offset + 0.25rem);
+
 	font-size: $font-size;
 
 	.accordion-content,
@@ -28,6 +31,16 @@ $accordion-transition: transform 0.15s !default;
 
 		&.accordion-icon-end::before {
 			inset-inline-start: -calc($padding-size);
+		}
+	}
+
+	summary {
+		&:not(.accordion-icon-end) {
+			padding-inline-start: $icon-offset;
+		}
+
+		&.accordion-icon-end {
+			padding-inline-end: $icon-offset;
 		}
 	}
 
@@ -45,16 +58,23 @@ $accordion-transition: transform 0.15s !default;
 			padding-inline: $padding-size;
 		}
 
-		summary:not(.accordion-icon-end) {
-			padding-inline-start: $bg-offset;
+		summary {
+			&:not(.accordion-icon-end) {
+				padding-inline-start: $bg-icon-offset;
 
-			&::before {
-				inset-inline-start: $padding-size;
+				&::before {
+					inset-inline-start: $padding-size;
+				}
 			}
-		}
 
-		&.accordion-icon-end::after {
-			inset-inline-end: $padding-size;
+			&.accordion-icon-end {
+				padding-inline-end: $bg-icon-offset;
+
+				&::after {
+					inset-inline-end: calc($accordion-spacing-xs + $padding-size);
+					inset-block-start: calc($padding-size * 1.5);
+				}
+			}
 		}
 	}
 }
@@ -63,7 +83,7 @@ $accordion-transition: transform 0.15s !default;
 	@include accordion-summary-sizes(
 		$accordion-font-size-md,
 		$accordion-spacing-md,
-		$accordion-spacing-bg-offset-md
+		$accordion-spacing-offset-md
 	);
 
 	line-height: 1.5;
@@ -83,8 +103,6 @@ $accordion-transition: transform 0.15s !default;
 		}
 
 		&:not(.accordion-icon-end) {
-			padding-inline-start: $accordion-spacing-bg-offset-sm;
-
 			&::before {
 				@include chevron-right;
 
@@ -95,12 +113,11 @@ $accordion-transition: transform 0.15s !default;
 		}
 
 		&.accordion-icon-end {
-			padding-inline-end: $accordion-spacing-bg-offset-sm;
-
 			&::after {
 				@include chevron-down;
 
 				position: absolute;
+				inset-inline-end: $accordion-spacing-xs;
 				transition: $accordion-transition;
 			}
 		}
@@ -134,7 +151,7 @@ $accordion-transition: transform 0.15s !default;
 	@include accordion-summary-sizes(
 		$accordion-font-size-lg,
 		$accordion-spacing-lg,
-		$accordion-spacing-bg-offset-lg
+		$accordion-spacing-offset-lg
 	);
 }
 
@@ -142,6 +159,6 @@ $accordion-transition: transform 0.15s !default;
 	@include accordion-summary-sizes(
 		$accordion-font-size-sm,
 		$accordion-spacing-sm,
-		$accordion-spacing-bg-offset-sm
+		$accordion-spacing-offset-sm
 	);
 }
