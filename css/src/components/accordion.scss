@@ -28,27 +28,27 @@ $accordion-transition: transform 0.15s !default;
 
 		&:not(.accordion-icon-end) {
 			padding-inline-start: $icon-offset;
+
+			&::before {
+				inset-block-start: calc($control-padding-horizontal + $padding-size);
+			}
 		}
 
 		&.accordion-icon-end {
 			padding-inline-end: $icon-offset;
-		}
 
-		&.accordion-icon-end::after {
-			inset-block-start: calc($padding-size * 1.5);
-		}
-
-		&:not(.accordion-icon-end)::before {
-			inset-block-start: calc($control-padding-horizontal + $padding-size);
+			&::after {
+				inset-block-start: calc($padding-size * 1.5);
+			}
 		}
 	}
 
 	.accordion-content {
 		padding-block: $padding-size;
-	}
 
-	.accordion-content[class*='background-color-'] {
-		padding-inline: $padding-size;
+		&[class*='background-color-'] {
+			padding-inline: $padding-size;
+		}
 	}
 
 	&[class*='background-color-'] {
