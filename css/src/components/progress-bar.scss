@@ -1,0 +1,136 @@
+$progress-bar-background-color: $secondary-background-glow-high-contrast !default;
+$progress-bar-value-background-color: $primary !default;
+$progress-bar-value-background-color-warning: $warning !default;
+$progress-bar-value-background-color-danger: $danger !default;
+$progress-bar-value-background-color-success: $success !default;
+$progress-bar-height: $spacer-2 !default;
+$progress-bar-height-sm: $spacer-1 !default;
+$progress-bar-border-radius: $border-radius-rounded !default;
+$progress-bar-indeterminate-animation-duration: 2s !default;
+
+.progress-bar {
+	display: block;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	height: $progress-bar-height;
+	padding: 0;
+	border: none;
+	border-radius: $progress-bar-border-radius;
+	background-color: $progress-bar-background-color;
+	appearance: none;
+	overflow: hidden;
+
+	&::-webkit-progress-bar {
+		background-color: $progress-bar-background-color;
+	}
+
+	&::-webkit-progress-value {
+		background-color: $progress-bar-value-background-color;
+	}
+
+	&::-moz-progress-bar {
+		background-color: $progress-bar-value-background-color;
+	}
+
+	// Size
+
+	&.progress-bar-sm {
+		height: $progress-bar-height-sm;
+	}
+
+	// Colors
+
+	&.progress-bar-success {
+		&::-webkit-progress-value {
+			background-color: $progress-bar-value-background-color-success;
+		}
+
+		&::-moz-progress-bar {
+			background-color: $progress-bar-value-background-color-success;
+		}
+	}
+
+	&.progress-bar-danger {
+		&::-webkit-progress-value {
+			background-color: $progress-bar-value-background-color-danger;
+		}
+
+		&::-moz-progress-bar {
+			background-color: $progress-bar-value-background-color-danger;
+		}
+	}
+
+	&.progress-bar-warning {
+		&::-webkit-progress-value {
+			background-color: $progress-bar-value-background-color-warning;
+		}
+
+		&::-moz-progress-bar {
+			background-color: $progress-bar-value-background-color-warning;
+		}
+	}
+
+	&:indeterminate {
+		animation-name: slide-background;
+		animation-timing-function: linear;
+		background-color: $progress-bar-background-color;
+		background-image: linear-gradient(
+			to right,
+			$progress-bar-background-color 0%,
+			$progress-bar-value-background-color 20%,
+			$progress-bar-background-color 40%
+		);
+		background-repeat: no-repeat;
+		background-position: top left;
+		background-size: 150% 150%;
+		animation-duration: $progress-bar-indeterminate-animation-duration;
+		animation-iteration-count: infinite;
+
+		[dir='rtl'] & {
+			animation-name: slide-background-to-left;
+		}
+
+		&::-webkit-progress-bar {
+			background-color: transparent;
+		}
+
+		&::-moz-progress-bar {
+			background-color: transparent;
+		}
+
+		@include prefers-reduced-motion {
+			animation-duration: 0s;
+		}
+	}
+
+	@include forced-colors {
+		background-color: CanvasText !important;
+
+		&::-webkit-progress-bar {
+			background-color: CanvasText !important;
+		}
+
+		&::-webkit-progress-value {
+			background-color: Highlight !important;
+		}
+
+		&::-moz-progress-bar {
+			background-color: Highlight !important;
+		}
+
+		&:indeterminate {
+			&::-webkit-progress-bar {
+				background-color: transparent !important;
+			}
+
+			forced-color-adjust: none !important;
+			background-image: linear-gradient(
+				to right,
+				CanvasText 0%,
+				Highlight 20%,
+				CanvasText 40%
+			) !important;
+		}
+	}
+}
