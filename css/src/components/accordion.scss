@@ -12,7 +12,9 @@ $accordion-spacing-bg-offset-lg: $spacer-9 !default;
 
 $accordion-transition: transform 0.15s !default;
 
-@mixin accordion-size-adjuster($font-size, $padding-size, $bg-offset) {
+// Spacing and font-size
+
+@mixin accordion-summary-sizes($font-size, $padding-size, $bg-offset) {
 	font-size: $font-size;
 
 	.accordion-content,
@@ -58,7 +60,7 @@ $accordion-transition: transform 0.15s !default;
 }
 
 .accordion {
-	@include accordion-size-adjuster(
+	@include accordion-summary-sizes(
 		$accordion-font-size-md,
 		$accordion-spacing-md,
 		$accordion-spacing-bg-offset-md
@@ -106,30 +108,30 @@ $accordion-transition: transform 0.15s !default;
 
 	&[class*='background-color-'] {
 		&.accordion-icon-end {
-			padding-inline-end: calc(($control-padding-horizontal + $chevron-arrow-actual-width));
+			padding-inline-end: calc($control-padding-horizontal + $chevron-arrow-actual-width);
 		}
 	}
 
 	&[open] {
 		summary:not(.accordion-icon-end)::before {
-			// chevron-down
-			transform: rotate(-45deg) translate(calc($chevron-arrow-size / 2), 0);
+			transform: $chevron-down-rotate translate(calc($chevron-arrow-size / 2), 0);
 		}
 
 		summary.accordion-icon-end::after {
-			//chevron-up
-			transform: rotate(-225deg);
+			transform: $chevron-up-rotate;
 		}
 	}
 
 	.accordion-content {
-		// Constant content body text size regardless of <summary> heading text-sizing
+		// Constant content text size regardless of <summary> heading and text sizes
 		font-size: $accordion-font-size-md;
 	}
 }
 
+// Sizes
+
 .accordion-lg {
-	@include accordion-size-adjuster(
+	@include accordion-summary-sizes(
 		$accordion-font-size-lg,
 		$accordion-spacing-lg,
 		$accordion-spacing-bg-offset-lg
@@ -137,7 +139,7 @@ $accordion-transition: transform 0.15s !default;
 }
 
 .accordion-sm {
-	@include accordion-size-adjuster(
+	@include accordion-summary-sizes(
 		$accordion-font-size-sm,
 		$accordion-spacing-sm,
 		$accordion-spacing-bg-offset-sm

@@ -2,6 +2,9 @@ $chevron-color: $text !default;
 $chevron-arrow-size: 0.525em !default;
 $chevron-arrow-border-width: 1px !default;
 $chevron-arrow-actual-width: 0.75em !default;
+$chevron-down-rotate: rotate(-45deg) !default;
+$chevron-right-rotate: rotate(-135deg) !default;
+$chevron-up-rotate: rotate(-225deg) !default;
 
 %chevron {
 	width: $chevron-arrow-size;
@@ -19,11 +22,11 @@ $chevron-arrow-actual-width: 0.75em !default;
 @mixin chevron-right {
 	@extend %chevron;
 
-	transform: rotate(-135deg);
+	transform: $chevron-right-rotate;
 }
 
 @mixin chevron-down {
 	@extend %chevron;
 
-	transform: rotate(-45deg);
+	transform: $chevron-down-rotate;
 }
