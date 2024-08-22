@@ -73,7 +73,7 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 		animation-duration: $progress-bar-indeterminate-animation-duration;
 		animation-iteration-count: infinite;
 
-		[dir='rtl'] & {
+		&:dir(rtl) {
 			animation-direction: reverse;
 		}
 
