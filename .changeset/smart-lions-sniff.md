@@ -4,4 +4,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Adds details component, accordion pattern and refactors select to use new chevron mixin
+Adds Accordion component, patterns and relevant documentation.
