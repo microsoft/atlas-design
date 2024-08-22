@@ -84,11 +84,10 @@ $accordion-transition: transform 0.15s !default;
 		$accordion-spacing-offset-md
 	);
 
-	line-height: 1.5;
-
 	summary {
 		display: block;
 		position: relative;
+		line-height: 1.5;
 		cursor: pointer;
 
 		&:hover {
