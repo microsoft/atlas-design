@@ -18,8 +18,6 @@ $accordion-transition: transform 0.15s !default;
 @mixin accordion-summary-sizes($font-size, $padding-size, $icon-offset) {
 	$bg-icon-offset: calc($icon-offset + 0.25rem);
 
-	font-size: $font-size;
-
 	.accordion-content,
 	summary {
 		padding-block: $padding-size;
@@ -35,6 +33,8 @@ $accordion-transition: transform 0.15s !default;
 	}
 
 	summary {
+		font-size: $font-size;
+
 		&:not(.accordion-icon-end) {
 			padding-inline-start: $icon-offset;
 		}
@@ -137,11 +137,6 @@ $accordion-transition: transform 0.15s !default;
 		summary.accordion-icon-end::after {
 			transform: $chevron-up-rotate;
 		}
-	}
-
-	.accordion-content {
-		// Constant content text size regardless of <summary> heading and text sizes
-		font-size: $accordion-font-size-md;
 	}
 }
 
