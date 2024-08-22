@@ -21,15 +21,6 @@ $accordion-transition: transform 0.15s !default;
 	.accordion-content,
 	summary {
 		padding-block: $padding-size;
-
-		&:not(.accordion-icon-end)::before,
-		&.accordion-icon-end::after {
-			inset-block-start: calc($control-padding-horizontal + $padding-size);
-		}
-
-		&.accordion-icon-end::before {
-			inset-inline-start: -calc($padding-size);
-		}
 	}
 
 	summary {
@@ -41,6 +32,14 @@ $accordion-transition: transform 0.15s !default;
 
 		&.accordion-icon-end {
 			padding-inline-end: $icon-offset;
+		}
+
+		&.accordion-icon-end::after {
+			inset-block-start: calc($padding-size * 1.5);
+		}
+
+		&:not(.accordion-icon-end)::before {
+			inset-block-start: calc($control-padding-horizontal + $padding-size);
 		}
 	}
 
@@ -72,7 +71,6 @@ $accordion-transition: transform 0.15s !default;
 
 				&::after {
 					inset-inline-end: calc($accordion-spacing-xs + $padding-size);
-					inset-block-start: calc($padding-size * 1.5);
 				}
 			}
 		}
