@@ -92,11 +92,15 @@ $accordion-transition: transform 0.15s !default;
 			}
 		}
 
-		&.accordion-icon-end::after {
-			@include chevron-down;
+		&.accordion-icon-end {
+			padding-inline-end: $accordion-spacing-bg-offset-sm;
 
-			position: absolute;
-			transition: $accordion-transition;
+			&::after {
+				@include chevron-down;
+
+				position: absolute;
+				transition: $accordion-transition;
+			}
 		}
 	}
 
