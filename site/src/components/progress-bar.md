@@ -9,11 +9,11 @@ classPrefixes:
 
 # Progress
 
-The `.progress-bar` component is used to display the completion progress of a task, or to show that something is happening now. Progress is build on top of the [`<progress>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) HTML component.
+The `.progress-bar` component is used to display the completion progress of a task, or to show that something is happening now. Progress is built on top of the [`<progress>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) HTML component.
 
 ## Usage
 
-Here is an example of a standard usage of the progress bar component. Its bar is styled by the `value` attribute.
+Here is an example of a standard usage of the progress bar component. The progress shown is set with the `value` attribute.
 
 ```html
 <progress class="progress-bar" value="90" max="100"></progress>
@@ -39,7 +39,7 @@ Progress additionally has three color variants: warning, danger, and success.
 
 ### Indeterminate
 
-When its unclear the amount of progress being made, or when its more important to display that an action is underway, removing the `value` attribute will yield an indeterminate progress bar.
+When the amount of progress made is unclear, or when it's more important to display that an action is underway, removing the `value` attribute will yield an indeterminate progress bar.
 
 ```html
 <progress class="progress-bar" max="100"></progress>

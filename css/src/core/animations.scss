@@ -48,16 +48,6 @@
 	}
 }
 
-@keyframes slide-background-to-left {
-	0% {
-		background-position: -200% 0;
-	}
-
-	100% {
-		background-position: 200% 0;
-	}
-}
-
 .animation-fade {
 	animation: fade-out 0.4s ease-in forwards;
 

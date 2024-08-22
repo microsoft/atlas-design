@@ -10,7 +10,6 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 
 .progress-bar {
 	display: block;
-	position: relative;
 	width: 100%;
 	max-width: 100%;
 	height: $progress-bar-height;
@@ -19,16 +18,12 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 	border-radius: $progress-bar-border-radius;
 	background-color: $progress-bar-background-color;
 	appearance: none;
-	overflow: hidden;
 
 	&::-webkit-progress-bar {
 		background-color: $progress-bar-background-color;
 	}
 
-	&::-webkit-progress-value {
-		background-color: $progress-bar-value-background-color;
-	}
-
+	&::-webkit-progress-value,
 	&::-moz-progress-bar {
 		background-color: $progress-bar-value-background-color;
 	}
@@ -42,30 +37,21 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 	// Colors
 
 	&.progress-bar-success {
-		&::-webkit-progress-value {
-			background-color: $progress-bar-value-background-color-success;
-		}
-
+		&::-webkit-progress-value,
 		&::-moz-progress-bar {
 			background-color: $progress-bar-value-background-color-success;
 		}
 	}
 
 	&.progress-bar-danger {
-		&::-webkit-progress-value {
-			background-color: $progress-bar-value-background-color-danger;
-		}
-
+		&::-webkit-progress-value,
 		&::-moz-progress-bar {
 			background-color: $progress-bar-value-background-color-danger;
 		}
 	}
 
 	&.progress-bar-warning {
-		&::-webkit-progress-value {
-			background-color: $progress-bar-value-background-color-warning;
-		}
-
+		&::-webkit-progress-value,
 		&::-moz-progress-bar {
 			background-color: $progress-bar-value-background-color-warning;
 		}
@@ -88,13 +74,10 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 		animation-iteration-count: infinite;
 
 		[dir='rtl'] & {
-			animation-name: slide-background-to-left;
+			animation-direction: reverse;
 		}
 
-		&::-webkit-progress-bar {
-			background-color: transparent;
-		}
-
+		&::-webkit-progress-bar,
 		&::-moz-progress-bar {
 			background-color: transparent;
 		}
@@ -111,10 +94,7 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 			background-color: CanvasText !important;
 		}
 
-		&::-webkit-progress-value {
-			background-color: Highlight !important;
-		}
-
+		&::-webkit-progress-value,
 		&::-moz-progress-bar {
 			background-color: Highlight !important;
 		}
