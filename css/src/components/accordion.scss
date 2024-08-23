@@ -15,8 +15,8 @@ $accordion-transition: transform 0.15s !default;
 
 // Spacing and font-size
 
-@mixin accordion-summary-sizes($font-size, $padding-size, $icon-offset) {
-	$bg-icon-offset: calc($icon-offset + 0.25rem);
+@mixin accordion-summary-sizes($font-size, $padding-size, $icon-offset-size) {
+	$bg-icon-offset-size: calc($icon-offset-size + 0.25rem);
 
 	.accordion-content,
 	summary {
@@ -27,7 +27,7 @@ $accordion-transition: transform 0.15s !default;
 		font-size: $font-size;
 
 		&:not(.accordion-icon-end) {
-			padding-inline-start: $icon-offset;
+			padding-inline-start: $icon-offset-size;
 
 			&::before {
 				inset-block-start: calc($control-padding-horizontal + $padding-size);
@@ -35,7 +35,7 @@ $accordion-transition: transform 0.15s !default;
 		}
 
 		&.accordion-icon-end {
-			padding-inline-end: $icon-offset;
+			padding-inline-end: $icon-offset-size;
 
 			&::after {
 				inset-block-start: calc($padding-size * 1.5);
@@ -59,7 +59,7 @@ $accordion-transition: transform 0.15s !default;
 
 		summary {
 			&:not(.accordion-icon-end) {
-				padding-inline-start: $bg-icon-offset;
+				padding-inline-start: $bg-icon-offset-size;
 
 				&::before {
 					inset-inline-start: $padding-size;
@@ -67,7 +67,7 @@ $accordion-transition: transform 0.15s !default;
 			}
 
 			&.accordion-icon-end {
-				padding-inline-end: $bg-icon-offset;
+				padding-inline-end: $bg-icon-offset-size;
 
 				&::after {
 					inset-inline-end: calc($accordion-spacing-xs + $padding-size);
