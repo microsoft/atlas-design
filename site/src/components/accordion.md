@@ -2,8 +2,6 @@
 title: Accordion
 description: The accordion component in the Atlas Design System
 template: standard
-# need design to create
-# figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fnode-id%3D1488%253A35182
 classType: Component
 classPrefixes:
   - accordion
@@ -11,11 +9,11 @@ classPrefixes:
 
 # Accordion
 
-The Accordion component contains a disclosure widget, where information is only visible when the element is toggled to an "open" state. A Summary or label must be provided using the `<summary>` element.
+Accordion is a component for grouping sections of related content that can be opened or closed. Accordion is built on top of the `<details>` HTML element.
 
 ## Usage
 
-Here is an example of a standard `.accordion` usage. By default `<details>` elements are closed on page load and toggle open or closed when the user clicks the `<summary>`.
+Here is an example of a standard `.accordion` usage. By default, accordion items are closed and allow multiple items to be open at once.
 
 ```html
 <details class="accordion">
@@ -42,7 +40,7 @@ Here is an example of a standard `.accordion` usage. By default `<details>` elem
 
 ### Open
 
-There is an option to have the accordion component load in the expanded state by adding the `open` attribute.
+There is an option to have the accordion component load in the expanded state by adding the `open` attribute to one of the items.
 
 ```html
 <details class="accordion" open>
@@ -67,7 +65,7 @@ There is an option to have the accordion component load in the expanded state by
 
 ### Name
 
-Using the `name` attribute, there is an option to group multiple accordion components, which allows only one open panel at a time.
+Applying the `name` attribute to all accordion items with the same value will allow opening only one of the items at a time.
 
 ```html
 <details class="accordion" name="accordion-group-1">
@@ -92,16 +90,16 @@ Using the `name` attribute, there is an option to group multiple accordion compo
 
 ## Icon location
 
-By default the expansion indicator icon is before the summary content. Using the `.accordion-icon-end` class, the icon can be positioned at the end of the summary. The icon is absolutely positioned to remain at the top if Summary content wraps or contains multiple lines.
+By default, the expansion indicator icon is located before the accordion item's header. Applying the `.accordion-icon-end` class to the `<summary>` element will change the icon's position to the end of the header.
 
 <details class="accordion">
-  <summary>Accordion header 1</summary>
+  <summary>Accordion icon's default position</summary>
   <div class="accordion-content">
   	<p>Accordion panel 1</p>
   </div>
 </details>
 <details class="accordion border-top">
-  <summary class="accordion-icon-end">Accordion header 2</summary>
+  <summary class="accordion-icon-end">Accordion icon's end position</summary>
   <div class="accordion-content">
   	<p>Accordion panel 2</p>
   </div>
@@ -112,26 +110,26 @@ By default the expansion indicator icon is before the summary content. Using the
 `accordion-sm`/`accordion-lg` modifier classes make the text size and padding a little bigger or smaller than the default.
 
 ```html
-<details class="accordion accordion-sm" name="accordion-group-1">
-	<summary>Accordion header 1</summary>
+<details class="accordion accordion-sm">
+	<summary>Small accordion header</summary>
 	<div class="accordion-content">
-		<p>Accordion panel 1</p>
+		<p>Accordion panel content</p>
 	</div>
 </details>
-<details class="accordion" name="accordion-group-1">
-	<summary>Accordion header 2</summary>
+<details class="accordion">
+	<summary>Default accordion header</summary>
 	<div class="accordion-content">
-		<p>Accordion panel 2</p>
+		<p>Accordion panel content</p>
 	</div>
 </details>
-<details class="accordion accordion-lg" name="accordion-group-1">
-	<summary>Accordion header 3</summary>
+<details class="accordion accordion-lg">
+	<summary>Large accordion header</summary>
 	<div class="accordion-content">
-		<p>Accordion panel 3</p>
+		<p>Accordion panel content</p>
 	</div>
 </details>
 ```
 
 ## Patterns
 
-For accordion patterns styled with Atomics, visit the [Accordion patterns page](../patterns/accordion.md).
+This page discusses the component and subcomponents that make up `.accordion`, but it does not prescribe particular patterns. For examples of specific accordion builds, look to the [accordion patterns page](../patterns/accordion.md) for guidance.
