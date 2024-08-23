@@ -18,6 +18,7 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 	border-radius: $progress-bar-border-radius;
 	background-color: $progress-bar-background-color;
 	appearance: none;
+	overflow: hidden;
 
 	&::-webkit-progress-bar {
 		background-color: $progress-bar-background-color;
