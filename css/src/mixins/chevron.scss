@@ -5,6 +5,7 @@ $chevron-arrow-actual-width: 0.75em !default;
 $chevron-down-rotate: rotate(-45deg) !default;
 $chevron-right-rotate: rotate(-135deg) !default;
 $chevron-up-rotate: rotate(-225deg) !default;
+$chevron-up-rotate-scale-xy: rotate(-45deg) scaleY(-1) scaleX(-1);
 
 %chevron {
 	width: $chevron-arrow-size;

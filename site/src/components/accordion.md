@@ -17,19 +17,25 @@ Here is an example of a standard `.accordion` usage. By default, accordion items
 
 ```html
 <details class="accordion">
-	<summary>Accordion header 1</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 1</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 1</p>
 	</div>
 </details>
 <details class="accordion">
-	<summary>Accordion header 2</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 2</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 2</p>
 	</div>
 </details>
 <details class="accordion">
-	<summary>Accordion header 3</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 3</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 3</p>
 	</div>
@@ -44,19 +50,25 @@ There is an option to have the accordion component load in the expanded state by
 
 ```html
 <details class="accordion" open>
-	<summary>Accordion header 1</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 1</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 1</p>
 	</div>
 </details>
 <details class="accordion">
-	<summary>Accordion header 2</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 2</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 2</p>
 	</div>
 </details>
 <details class="accordion">
-	<summary>Accordion header 3</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 3</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 3</p>
 	</div>
@@ -69,19 +81,25 @@ Applying the `name` attribute to all accordion items with the same value will al
 
 ```html
 <details class="accordion" name="accordion-group-1">
-	<summary>Accordion header 1</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 1</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 1</p>
 	</div>
 </details>
 <details class="accordion" name="accordion-group-1">
-	<summary>Accordion header 2</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 2</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 2</p>
 	</div>
 </details>
 <details class="accordion" name="accordion-group-1">
-	<summary>Accordion header 3</summary>
+	<summary>
+		<div class="accordion-header">Accordion header 3</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel 3</p>
 	</div>
@@ -90,20 +108,26 @@ Applying the `name` attribute to all accordion items with the same value will al
 
 ## Icon location
 
-By default, the expansion indicator icon is located before the accordion item's header. Applying the `.accordion-icon-end` class to the `<summary>` element will change the icon's position to the end of the header.
+By default, the expansion indicator icon is located before the accordion item's header. Applying the `.accordion-icon-end` class to the item will change the icon's position to the end of the header.
 
+```html
 <details class="accordion">
-  <summary>Accordion icon's default position</summary>
-  <div class="accordion-content">
-  	<p>Accordion panel 1</p>
-  </div>
+	<summary>
+		<div class="accordion-header">Accordion icon's default position</div>
+	</summary>
+	<div class="accordion-content">
+		<p>Accordion panel 1</p>
+	</div>
 </details>
-<details class="accordion border-top">
-  <summary class="accordion-icon-end">Accordion icon's end position</summary>
-  <div class="accordion-content">
-  	<p>Accordion panel 2</p>
-  </div>
+<details class="accordion accordion-icon-end border-top">
+	<summary>
+		<div class="accordion-header">Accordion icon's end position</div>
+	</summary>
+	<div class="accordion-content">
+		<p>Accordion panel 2</p>
+	</div>
 </details>
+```
 
 ## Sizes
 
@@ -111,19 +135,25 @@ By default, the expansion indicator icon is located before the accordion item's 
 
 ```html
 <details class="accordion accordion-sm">
-	<summary>Small accordion header</summary>
+	<summary>
+		<div class="accordion-header">Small accordion header</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel content</p>
 	</div>
 </details>
 <details class="accordion">
-	<summary>Default accordion header</summary>
+	<summary>
+		<div class="accordion-header">Default accordion header</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel content</p>
 	</div>
 </details>
 <details class="accordion accordion-lg">
-	<summary>Large accordion header</summary>
+	<summary>
+		<div class="accordion-header">Large accordion header</div>
+	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel content</p>
 	</div>
