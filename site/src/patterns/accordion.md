@@ -54,9 +54,6 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
 			</div>
 		</article>
-		<div class="text-align-center margin-top-xs">
-			<a href="#" class="button button-sm button-primary">Button text</a>
-		</div>
 	</div>
 </details>
 ```
