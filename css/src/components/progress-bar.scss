@@ -58,6 +58,12 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 		}
 	}
 
+	&.message-border {
+		border-radius: 0;
+		border-end-start-radius: $message-border-radius;
+		border-end-end-radius: $message-border-radius;
+	}
+
 	&:indeterminate {
 		animation-name: slide-background;
 		animation-timing-function: linear;

@@ -79,6 +79,7 @@ Use the `message-sender` class to indicate message sent by the user.
 ```
 
 ## Sizes
+
 `message-sm` is available for resizing.
 
 ```html
@@ -137,4 +138,15 @@ Use the `message-sender` class to indicate message sent by the user.
 		</p>
 	</div>
 </article>
+```
+
+## Loading message
+
+```html
+<div class="loading-message">
+	<div class="message message-sm">
+		<div class="message-content">Working on it ...</div>
+	</div>
+	<progress class="progress-bar message-border" max="100"></progress>
+</div>
 ```
