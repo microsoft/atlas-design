@@ -17,6 +17,7 @@ const pathnames = [
 	'/atomics/spacing.html',
 	'/atomics/typography.html',
 	'/components/overview.html',
+	'/components/badge.html',
 	'/components/banner.html',
 	'/components/breadcrumbs.html',
 	'/components/button.html',
