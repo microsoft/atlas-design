@@ -1,5 +1,11 @@
 # @microsoft/atlas-integration
 
+## 1.6.0
+
+### Minor Changes
+
+- 14414e17: Added height-full atomic class and relevant documentation.
+
 ## 1.5.1
 
 ### Patch Changes

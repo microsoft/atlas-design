@@ -1,5 +1,13 @@
 # @microsoft/atlas-site
 
+## 0.50.0
+
+### Minor Changes
+
+- 14414e17: Added overflow-x-hidden atomic class and relevant documentation.
+- 14414e17: Added height-full atomic class and relevant documentation.
+- 69e08b8d: Adding progress bar component and relevant documentation.
+
 ## 0.49.0
 
 ### Minor Changes
