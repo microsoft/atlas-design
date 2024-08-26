@@ -11,6 +11,8 @@ classPrefixes:
 
 Accordion is a component for grouping sections of related content that can be opened or closed. Accordion is built on top of the `<details>` HTML element.
 
+This page discusses the component and subcomponents that make up `.accordion`, but it does not prescribe particular patterns. For examples of specific accordion builds, look to the [accordion patterns page](../patterns/accordion.md) for guidance.
+
 ## Usage
 
 Here is an example of a standard `.accordion` usage. By default, accordion items are closed and allow multiple items to be open at once.
@@ -151,7 +153,3 @@ The `accordion-sm`/`accordion-lg` modifier classes make the summary's font size 
 	</div>
 </details>
 ```
-
-## Patterns
-
-This page discusses the component and subcomponents that make up `.accordion`, but it does not prescribe particular patterns. For examples of specific accordion builds, look to the [accordion patterns page](../patterns/accordion.md) for guidance.
