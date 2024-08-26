@@ -111,15 +111,7 @@ Applying the `name` attribute to all accordion items with the same value will al
 By default, the expansion indicator icon is located before the accordion item's header. Applying the `.accordion-icon-end` class to the item will change the icon's position to the end of the header.
 
 ```html
-<details class="accordion">
-	<summary>
-		<div class="accordion-header">Accordion icon's default position</div>
-	</summary>
-	<div class="accordion-content">
-		<p>Accordion panel 1</p>
-	</div>
-</details>
-<details class="accordion accordion-icon-end border-top">
+<details class="accordion accordion-icon-end">
 	<summary>
 		<div class="accordion-header">Accordion icon's end position</div>
 	</summary>
