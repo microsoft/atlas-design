@@ -46,7 +46,7 @@ Here is an example of a standard `.accordion` usage. By default, accordion items
 
 ### Open
 
-There is an option to have the accordion component load in the expanded state by adding the `open` attribute to one of the items.
+To load the accordion component in the expanded state by default, add the `open` attribute to the appropriate `<details>` element.
 
 ```html
 <details class="accordion" open>
@@ -123,7 +123,7 @@ By default, the expansion indicator icon is located before the accordion item's 
 
 ## Sizes
 
-`accordion-sm`/`accordion-lg` modifier classes make the text size and padding a little bigger or smaller than the default.
+The `accordion-sm`/`accordion-lg` modifier classes make the summary's font size and padding a little smaller or bigger than the default.
 
 ```html
 <details class="accordion accordion-sm">

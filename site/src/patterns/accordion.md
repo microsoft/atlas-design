@@ -62,7 +62,7 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 <details class="accordion accordion-lg border-top">
 	<summary>
 		<div class="accordion-header margin-left-xxs">
-			<h3 class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 1 text</h3>
+			<p class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 1 text</p>
 			<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 		</div>
 	</summary>
@@ -87,7 +87,7 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 <details class="accordion accordion-lg border-top">
 	<summary>
 		<div class="accordion-header  margin-left-xxs">
-			<h3 class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 2 text</h3>
+			<p class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 2 text</p>
 			<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 		</div>
 	</summary>
@@ -112,7 +112,7 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 <details class="accordion accordion-lg border-top">
 	<summary>
 		<div class="accordion-header  margin-left-xxs">
-			<h3 class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 3 text</h3>
+			<p class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 3 text</p>
 			<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 		</div>
 	</summary>
