@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Ungrouping styles in progress-bar.scss
+Separate background pseudo-class selectors in progress-bar.scss
