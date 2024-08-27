@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.47.1
+
+### Patch Changes
+
+- a0cadb3f: Separate background pseudo-class selectors in progress-bar.scss
+
 ## 3.47.0
 
 ### Minor Changes
