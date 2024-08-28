@@ -82,7 +82,16 @@ The popover can also show up above the button.
 
 ```html
 <details class="popover popover-top margin-xxs">
-	<summary class="button">Popover on top of the button</summary>
+	<summary class="button">Popover on top</summary>
+	<div class="popover-content">Popover content.</div>
+</details>
+```
+
+Vertical and horizontal alignment can be used together.
+
+```html
+<details class="popover popover-top margin-xxs">
+	<summary class="button">Popover aligned to the left</summary>
 	<div class="popover-content">Popover content.</div>
 </details>
 
