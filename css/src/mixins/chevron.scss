@@ -3,9 +3,12 @@ $chevron-arrow-size: 0.525em !default;
 $chevron-arrow-border-width: 1px !default;
 $chevron-arrow-actual-width: 0.75em !default;
 $chevron-down-rotate: rotate(-45deg) !default;
+$chevron-down-rotate-rtl: rotate(-315deg) !default;
+$chevron-right-rotate-rtl: rotate(-225deg) !default;
 $chevron-right-rotate: rotate(-135deg) !default;
 $chevron-up-rotate: rotate(-225deg) !default;
-$chevron-up-rotate-scale-xy: rotate(-45deg) scaleY(-1) scaleX(-1);
+$chevron-up-rotate-scale-xy: $chevron-down-rotate scaleY(-1) scaleX(-1);
+$chevron-up-rotate-scale-xy-rtl: $chevron-down-rotate-rtl scaleY(-1) scaleX(-1);
 
 %chevron {
 	width: $chevron-arrow-size;
@@ -26,8 +29,20 @@ $chevron-up-rotate-scale-xy: rotate(-45deg) scaleY(-1) scaleX(-1);
 	transform: $chevron-right-rotate;
 }
 
+@mixin chevron-right-rtl {
+	@extend %chevron;
+
+	transform: $chevron-right-rotate-rtl;
+}
+
 @mixin chevron-down {
 	@extend %chevron;
 
 	transform: $chevron-down-rotate;
+}
+
+@mixin chevron-down-rtl {
+	@extend %chevron;
+
+	transform: $chevron-down-rotate-rtl;
 }

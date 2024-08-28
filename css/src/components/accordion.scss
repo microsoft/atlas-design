@@ -1,4 +1,4 @@
-/* stylelint-disable selector-no-qualifying-type */
+/* stylelint-disable selector-max-specificity, selector-no-qualifying-type */
 $accordion-font-size-sm: $font-size-9 !default;
 $accordion-font-size-md: $font-size-8 !default;
 $accordion-font-size-lg: $font-size-7 !default;
@@ -60,27 +60,51 @@ $accordion-transition: transform 0.15s !default;
 		}
 	}
 
-	&:not(.accordion-icon-end) summary::before {
-		@include chevron-right;
+	&:not(.accordion-icon-end) {
+		summary::before {
+			@include chevron-right;
 
-		margin-inline-end: $accordion-spacing-sm;
-		transition: $accordion-transition;
+			margin-inline-end: $accordion-spacing-sm;
+			transition: $accordion-transition;
+		}
+
+		&:dir(rtl) summary::before {
+			@include chevron-right-rtl;
+		}
 	}
 
-	&.accordion-icon-end summary::after {
-		@include chevron-down;
+	&.accordion-icon-end {
+		summary::after {
+			@include chevron-down;
 
-		margin-inline-start: $accordion-spacing-sm;
-		transition: $accordion-transition;
+			margin-inline-start: $accordion-spacing-sm;
+			transition: $accordion-transition;
+		}
+
+		&:dir(rtl) summary::after {
+			@include chevron-down-rtl;
+		}
 	}
 
 	&[open] {
-		&:not(.accordion-icon-end) summary::before {
-			transform: $chevron-down-rotate translate(calc($chevron-arrow-size / 2), 0);
+		&:not(.accordion-icon-end) {
+			summary::before {
+				transform: $chevron-down-rotate translate(calc($chevron-arrow-size / 2), 0);
+			}
+
+			&:dir(rtl) summary::before {
+				transform: $chevron-down-rotate-rtl translate(calc($chevron-arrow-size / 2 * -1), 0);
+			}
 		}
 
-		&.accordion-icon-end summary::after {
-			transform: $chevron-up-rotate-scale-xy;
+		&.accordion-icon-end {
+			summary::after {
+				transform: $chevron-up-rotate-scale-xy;
+			}
+
+			&:dir(rtl) summary::after {
+				transform: $chevron-up-rotate-scale-xy-rtl;
+			}
 		}
 	}
 
