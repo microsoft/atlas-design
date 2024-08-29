@@ -1,0 +1,205 @@
+/* stylelint-disable selector-max-specificity, no-descending-specificity  */
+
+$tag-padding-block: 0.375em !default;
+$tag-padding-inline: 0.675em !default;
+
+$tag-gap-size: 0.375em !default;
+
+$tag-font-size: $font-size-8 !default;
+$tag-font-size-sm: $font-size-9 !default;
+$tag-font-size-lg: $font-size-7 !default;
+$tag-font-weight: $weight-normal !default;
+
+$tag-icon-font-size: 0.875em !default;
+
+$tag-border-width: $border-width !default;
+$tag-border-radius: $border-radius !default;
+$tag-border-radius-rounded: $border-radius-rounded !default;
+$tag-border-color: $secondary !default;
+
+$tag-color: $secondary-dark !default;
+$tag-color-hover: $primary-dark !default;
+$tag-background-color: $body-background !default;
+$tag-background-hover: $secondary-background-glow-high-contrast !default;
+
+$tag-color-filled: $text !default;
+$tag-background-filled: $secondary-background-glow-high-contrast !default;
+$tag-color-filled-hover: $primary-hover !default;
+$tag-background-filled-hover: $secondary !default;
+$tag-interactive-divider-color-filled: $secondary-box-shadow !default;
+$tag-interactive-color-filled-hover: $secondary-invert !default;
+
+$tag-color-primary: $primary-dark !default;
+$tag-color-primary-hover: $primary-hover !default;
+$tag-background-primary: $primary-background !default;
+$tag-background-primary-hover: $primary-hover !default;
+$tag-border-color-primary: $primary-background-glow-high-contrast !default;
+$tag-interactive-divider-color-primary: $primary-box-shadow !default;
+$tag-interactive-color-primary-hover: $primary-invert !default;
+
+.tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: $tag-padding-block $tag-padding-inline;
+	border: $tag-border-width solid $tag-border-color;
+	border-radius: $tag-border-radius;
+	background-color: $tag-background-color;
+	color: $tag-color;
+	font-size: $tag-font-size;
+	font-weight: $tag-font-weight;
+	line-height: $line-height-normal;
+	white-space: nowrap;
+	gap: $tag-gap-size;
+
+	&:where(button) {
+		cursor: pointer;
+	}
+
+	.tag-close {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&:hover,
+	&.is-hovered {
+		.tag-close {
+			color: $tag-color-hover;
+		}
+	}
+
+	.icon {
+		font-size: $tag-icon-font-size;
+	}
+
+	// Sizes
+
+	&.tag-sm {
+		font-size: $tag-font-size-sm;
+	}
+
+	&.tag-lg {
+		font-size: $tag-font-size-lg;
+	}
+
+	// Interactive tag
+
+	&.tag-interactive {
+		align-items: stretch;
+		padding: 0;
+		border: none;
+		color: $text;
+		gap: 0;
+
+		.tag-popover {
+			.tag-summary {
+				padding: $tag-padding-block $tag-padding-inline;
+				border: $tag-border-width solid $tag-border-color;
+				border-radius: $tag-border-radius;
+				outline-color: currentColor;
+				outline-offset: -$focus-width;
+				cursor: pointer;
+				overflow: hidden;
+
+				/* stylelint-disable-next-line max-nesting-depth, rule-empty-line-before */
+				&:hover,
+				&.is-hovered {
+					background-color: $tag-background-hover;
+				}
+			}
+
+			&:not(:only-child) .tag-summary {
+				border-start-end-radius: 0;
+				border-end-end-radius: 0;
+				border-inline-end: 0;
+			}
+		}
+
+		.tag-close {
+			padding: $tag-padding-block $tag-padding-inline;
+			border: 0;
+			border: $tag-border-width solid $tag-border-color;
+			border-radius: 0 $tag-border-radius $tag-border-radius 0;
+			outline-color: currentColor;
+			outline-offset: -$focus-width;
+			background-color: inherit;
+			color: inherit;
+			cursor: pointer;
+
+			&:hover,
+			&.is-hovered {
+				background-color: $tag-background-hover;
+				color: $tag-color-hover;
+			}
+		}
+	}
+}
+
+// Colors
+
+.tag.tag-primary {
+	border-color: $tag-border-color-primary;
+	background-color: $tag-background-primary;
+	color: $tag-color-primary;
+
+	&:hover,
+	&.is-hovered {
+		.tag-close {
+			color: $tag-color-primary-hover;
+		}
+	}
+
+	&.tag-interactive {
+		.tag-popover .tag-summary,
+		.tag-close {
+			border-color: $tag-border-color-primary;
+			background-color: $tag-background-primary;
+			color: $tag-color-primary;
+
+			&:hover,
+			&.is-hovered {
+				border-color: $tag-background-primary-hover;
+				background-color: $tag-background-primary-hover;
+				color: $tag-interactive-color-primary-hover;
+			}
+		}
+
+		.tag-close {
+			border-inline-start-color: $tag-interactive-divider-color-primary;
+		}
+	}
+}
+
+.tag.tag-filled {
+	border-color: $tag-background-filled;
+	background-color: $tag-background-filled;
+	color: $tag-color-filled;
+
+	&:hover,
+	&.is-hovered {
+		.tag-close {
+			color: $tag-color-filled-hover;
+		}
+	}
+
+	&.tag-interactive {
+		.tag-popover .tag-summary,
+		.tag-close {
+			border-color: $tag-background-filled;
+			background-color: $tag-background-filled;
+			color: $tag-color-filled;
+
+			&:hover,
+			&.is-hovered {
+				border-color: $tag-background-filled-hover;
+				background-color: $tag-background-filled-hover;
+				color: $tag-interactive-color-filled-hover;
+			}
+		}
+
+		.tag-close {
+			border-inline-start-color: $tag-interactive-divider-color-filled;
+		}
+	}
+}
