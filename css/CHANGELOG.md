@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.48.0
+
+### Minor Changes
+
+- 2cb01a07: Adding tag component and relevant documentation.
+- fd2c51bb: Update popover to support a popover that opens upwards
+
 ## 3.47.1
 
 ### Patch Changes
