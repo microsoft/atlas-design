@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.51.0
+
+### Minor Changes
+
+- 2cb01a07: Adding tag component and relevant documentation.
+- fd2c51bb: Update popover to support a popover that opens upwards
+
 ## 0.50.0
 
 ### Minor Changes
