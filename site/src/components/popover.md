@@ -75,3 +75,33 @@ Popover is left aligned by default, but also can be centered or right aligned re
 	<div class="popover-content">Popover content.</div>
 </details>
 ```
+
+### Vertical alignment
+
+The popover can also show up above the button.
+
+```html
+<details class="popover popover-top margin-xxs">
+	<summary class="button">Popover on top</summary>
+	<div class="popover-content">Popover content.</div>
+</details>
+```
+
+Vertical and horizontal alignment can be used together.
+
+```html
+<details class="popover popover-top margin-xxs">
+	<summary class="button">Popover aligned to the left</summary>
+	<div class="popover-content">Popover content.</div>
+</details>
+
+<details class="popover popover-top popover-center margin-xxs">
+	<summary class="button">Popover centered</summary>
+	<div class="popover-content">Popover content.</div>
+</details>
+
+<details class="popover popover-top popover-right margin-xxs">
+	<summary class="button">Popover aligned to the right</summary>
+	<div class="popover-content">Popover content.</div>
+</details>
+```

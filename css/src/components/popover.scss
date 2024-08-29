@@ -39,4 +39,11 @@ $popover-width: 224px !default;
 			inset-inline-start: -25%;
 		}
 	}
+
+	&.popover-top {
+		.popover-content {
+			inset-block-end: 100%;
+			margin-block-end: $spacer-3;
+		}
+	}
 }
