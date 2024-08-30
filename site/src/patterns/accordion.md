@@ -14,7 +14,7 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 
 ```html
 <details class="accordion background-color-body-accent border-radius margin-block-xxs">
-	<summary class="font-weight-semibold padding-xs">
+	<summary class="padding-xs">
 		<div class="accordion-header font-weight-semibold">Accordion headline 1 text</div>
 	</summary>
 	<div class="accordion-content padding-xs">

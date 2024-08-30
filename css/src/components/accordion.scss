@@ -3,8 +3,8 @@ $accordion-font-size-sm: $font-size-9 !default;
 $accordion-font-size-md: $font-size-8 !default;
 $accordion-font-size-lg: $font-size-7 !default;
 
+$accordion-gap: $layout-2 !default;
 $accordion-spacing: $spacer-4 !default;
-
 $accordion-transition: transform 0.15s !default;
 
 // Spacing and font-size
@@ -38,9 +38,11 @@ $accordion-transition: transform 0.15s !default;
 		line-height: 1.5;
 		cursor: pointer;
 		padding-block: $accordion-spacing;
+		gap: $accordion-gap;
 
 		&::before,
 		&::after {
+			// Prevent caret from being clipped when accordion title is long
 			flex-shrink: 0;
 		}
 
@@ -62,7 +64,6 @@ $accordion-transition: transform 0.15s !default;
 		summary::before {
 			@include chevron-right;
 
-			margin-inline-end: $accordion-spacing;
 			transition: $accordion-transition;
 		}
 
@@ -75,7 +76,6 @@ $accordion-transition: transform 0.15s !default;
 		summary::after {
 			@include chevron-down;
 
-			margin-inline-start: $accordion-spacing;
 			transition: $accordion-transition;
 		}
 
