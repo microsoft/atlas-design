@@ -6,7 +6,7 @@ template: standard
 
 # Accordion patterns
 
-Because the `details` component has so many possible permutations, it can be helpful to provide examples of certain styles.
+Because the `.accordion` component has so many possible permutations, it can be helpful to provide examples of certain styles.
 
 ## Accordion
 

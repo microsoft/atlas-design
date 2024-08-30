@@ -3,23 +3,15 @@ $accordion-font-size-sm: $font-size-9 !default;
 $accordion-font-size-md: $font-size-8 !default;
 $accordion-font-size-lg: $font-size-7 !default;
 
-$accordion-spacing-xs: $spacer-2 !default;
-$accordion-spacing-sm: $spacer-3 !default;
-$accordion-spacing-md: $spacer-4 !default;
-$accordion-spacing-lg: $spacer-5 !default;
+$accordion-spacing: $spacer-4 !default;
 
 $accordion-transition: transform 0.15s !default;
 
 // Spacing and font-size
 
-@mixin accordion-summary-sizes($font-size, $padding-size) {
+@mixin accordion-summary-sizes($font-size) {
 	$icon-before-offset-size: calc($font-size - 0.375rem);
 	$icon-after-offset-size: calc($font-size - 0.5rem);
-
-	.accordion-content,
-	summary {
-		padding-block: $padding-size;
-	}
 
 	summary {
 		font-size: $font-size;
@@ -39,12 +31,18 @@ $accordion-transition: transform 0.15s !default;
 }
 
 .accordion {
-	@include accordion-summary-sizes($accordion-font-size-md, $accordion-spacing-md);
+	@include accordion-summary-sizes($accordion-font-size-md);
 
 	summary {
 		display: flex;
 		line-height: 1.5;
 		cursor: pointer;
+		padding-block: $accordion-spacing;
+
+		&::before,
+		&::after {
+			flex-shrink: 0;
+		}
 
 		> &:hover {
 			color: $primary-hover;
@@ -64,7 +62,7 @@ $accordion-transition: transform 0.15s !default;
 		summary::before {
 			@include chevron-right;
 
-			margin-inline-end: $accordion-spacing-sm;
+			margin-inline-end: $accordion-spacing;
 			transition: $accordion-transition;
 		}
 
@@ -77,7 +75,7 @@ $accordion-transition: transform 0.15s !default;
 		summary::after {
 			@include chevron-down;
 
-			margin-inline-start: $accordion-spacing-sm;
+			margin-inline-start: $accordion-spacing;
 			transition: $accordion-transition;
 		}
 
@@ -115,10 +113,10 @@ $accordion-transition: transform 0.15s !default;
 	// Sizes
 
 	&.accordion-lg {
-		@include accordion-summary-sizes($accordion-font-size-lg, $accordion-spacing-lg);
+		@include accordion-summary-sizes($accordion-font-size-lg);
 	}
 
 	&.accordion-sm {
-		@include accordion-summary-sizes($accordion-font-size-sm, $accordion-spacing-sm);
+		@include accordion-summary-sizes($accordion-font-size-sm);
 	}
 }
