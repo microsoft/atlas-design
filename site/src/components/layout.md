@@ -18,10 +18,12 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
 
 <div class="buttons buttons-addons margin-top-sm display-inline-flex">
   <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
+  <button class="button" data-set-layout="layout-twin">Twin</button>
   <button class="button" data-set-layout="layout-single">Single</button>
   <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
   <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
 </div>
+<button class="button margin-top-sm" data-toggle-layout-height-constraint aria-pressed="false">Constrain height</button>
 <button class="button margin-top-sm" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 
 ## Important concepts
