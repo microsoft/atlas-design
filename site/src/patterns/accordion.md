@@ -24,9 +24,9 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 		</p>
 		<h4 class="font-weight-semibold">Accordion content subheading</h4>
 		<article class="card margin-top-xs">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 	</div>
@@ -43,15 +43,15 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 		</p>
 		<h4 class="font-weight-semibold">Accordion content subheading</h4>
 		<article class="card margin-block-xs">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 		<article class="card">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 	</div>
@@ -59,24 +59,24 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 ```
 
 ```html
-<details class="accordion accordion-lg border-top">
+<details class="accordion accordion-xxl border-top">
 	<summary>
 		<div class="accordion-header margin-left-xxs">
-			<p class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 1 text</p>
+			<p class="font-weight-semibold">Accordion header 1 text</p>
 			<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 		</div>
 	</summary>
 	<div class="accordion-content background-color-body-medium font-size-md padding-xs">
 		<article class="card margin-bottom-xs">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 		<article class="card">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 		<div class="text-align-center margin-top-xs">
@@ -84,24 +84,24 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 		</div>
 	</div>
 </details>
-<details class="accordion accordion-lg border-top">
+<details class="accordion accordion-xxl border-top">
 	<summary>
 		<div class="accordion-header  margin-left-xxs">
-			<p class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 2 text</p>
+			<p class="font-weight-semibold">Accordion header 2 text</p>
 			<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 		</div>
 	</summary>
 	<div class="accordion-content background-color-body-medium font-size-md padding-xs">
 		<article class="card margin-bottom-xs">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 		<article class="card">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 		<div class="text-align-center margin-top-xs">
@@ -109,24 +109,24 @@ This accordion uses the `open` attribute to expand a designated panel on page lo
 		</div>
 	</div>
 </details>
-<details class="accordion accordion-lg border-top">
+<details class="accordion accordion-xxl border-top">
 	<summary>
 		<div class="accordion-header  margin-left-xxs">
-			<p class="font-weight-semibold font-size-h5 line-height-normal">Accordion header 3 text</p>
+			<p class="font-weight-semibold">Accordion header 3 text</p>
 			<p class="font-size-md color-text-subtle">Accordion subheader text</p>
 		</div>
 	</summary>
 	<div class="accordion-content background-color-body-medium font-size-md padding-xs">
 		<article class="card margin-bottom-xs">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 		<article class="card">
-			<div class="card-template">
+			<div class="card-content">
 				<p class="card-supertitle">Content Type</p>
-				<a href="#" class="card-title margin-bottom-none">The headline of the content item</a>
+				<a href="#" class="card-title">The headline of the content item</a>
 			</div>
 		</article>
 		<div class="text-align-center margin-top-xs">

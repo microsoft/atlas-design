@@ -2,6 +2,8 @@
 $accordion-font-size-sm: $font-size-9 !default;
 $accordion-font-size-md: $font-size-8 !default;
 $accordion-font-size-lg: $font-size-7 !default;
+$accordion-font-size-xl: $font-size-6 !default;
+$accordion-font-size-xxl: $font-size-5 !default;
 
 $accordion-gap: $layout-2 !default;
 $accordion-spacing: $spacer-4 !default;
@@ -42,7 +44,7 @@ $accordion-transition: transform 0.15s !default;
 
 		&::before,
 		&::after {
-			// Prevent caret from being clipped when accordion title is long
+			// Prevents chevron from being clipped when accordion title is long
 			flex-shrink: 0;
 		}
 
@@ -111,6 +113,14 @@ $accordion-transition: transform 0.15s !default;
 	}
 
 	// Sizes
+
+	&.accordion-xxl {
+		@include accordion-summary-sizes($accordion-font-size-xxl);
+	}
+
+	&.accordion-xl {
+		@include accordion-summary-sizes($accordion-font-size-xl);
+	}
 
 	&.accordion-lg {
 		@include accordion-summary-sizes($accordion-font-size-lg);

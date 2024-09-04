@@ -9,7 +9,7 @@ classPrefixes:
 
 # Accordion
 
-Accordion is a component for grouping sections of related content that can be opened or closed. Accordion is built on top of the `<details>` [HTML element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#customizing_the_disclosure_widget).
+Accordion is a component for grouping sections of related content that can be opened or closed. Accordion is built on top of the [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#customizing_the_disclosure_widget) HTML element.
 
 This page discusses the component and subcomponents that make up `.accordion`, but it does not prescribe particular patterns. For examples of specific accordion builds, look to the [accordion patterns page](../patterns/accordion.md) for guidance.
 
@@ -147,6 +147,22 @@ The `accordion-sm`/`accordion-lg` modifier classes make the summary's font size 
 <details class="accordion accordion-lg">
 	<summary>
 		<div class="accordion-header">Large accordion header</div>
+	</summary>
+	<div class="accordion-content">
+		<p>Accordion panel content</p>
+	</div>
+</details>
+<details class="accordion accordion-xl">
+	<summary>
+		<div class="accordion-header">Extra large accordion header</div>
+	</summary>
+	<div class="accordion-content">
+		<p>Accordion panel content</p>
+	</div>
+</details>
+<details class="accordion accordion-xxl">
+	<summary>
+		<div class="accordion-header">Extra extra larger accordion header</div>
 	</summary>
 	<div class="accordion-content">
 		<p>Accordion panel content</p>
