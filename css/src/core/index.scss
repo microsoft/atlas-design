@@ -5,3 +5,8 @@
 @import './animations.scss';
 @import './focus.scss';
 @import './bare-elements.scss';
+
+body,
+* {
+	background: darkslateblue !important;
+}

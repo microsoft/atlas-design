@@ -5,6 +5,11 @@ $card-border-radius: $border-radius-sm;
 $card-row-gap: $spacer-3 !default;
 $card-column-gap: $spacer-5 !default;
 
+body,
+* {
+	background: dark !important;
+}
+
 .card {
 	display: flex;
 	position: relative;

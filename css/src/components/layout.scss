@@ -2,6 +2,8 @@
 
 $quarter-widescreen: math.div($breakpoint-widescreen, 4);
 $half-widescreen: math.div($breakpoint-widescreen, 2);
+$half-tablet: math.div($breakpoint-tablet, 2);
+$half-desktop: math.div($breakpoint-tablet, 2);
 $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 
 ::root {
@@ -203,11 +205,11 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	}
 
 	.layout-body {
-		grid-template: auto auto auto 100vh auto / 1fr;
+		grid-template: auto auto auto 100vh auto / 100%;
 		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
 
 		@include tablet {
-			grid-template: auto auto var(--atlas-contained-height) auto / 1fr 1fr;
+			grid-template: auto auto var(--atlas-contained-height) auto / 50% 50%;
 			grid-template-areas:
 				'header header'
 				'hero hero'
