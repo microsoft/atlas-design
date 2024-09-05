@@ -123,7 +123,7 @@ These accordions uses standard `.accordion` subcomponents, border atomics are us
 
 ## Coda accordion
 
-These accordions us standard `.accordion` subcomponents, border-atomics to create a . They use `.accordion-icon-end` to right align the icon. Background color atomics are used for the `.accordion-content` subcomponent. Due to the border and backgound color atomics used, a consistent spacing padding atomic is used to align the header and panel content. Note that is recommended right aligned icon accordions not be full-width elements at desktop sizes.
+These accordions use standard `.accordion` subcomponents and border-atomics to create an accordion . They use `.accordion-icon-end` to right align the icon. Background color atomics are used for the `.accordion-content` subcomponent. Due to the border and background color atomics used, a consistent spacing padding atomic is used to align the header and panel content. It is recommended that accordions with right aligned icons not be full-width elements at desktop sizes.
 
 ```html
 <div class="border-bottom">
