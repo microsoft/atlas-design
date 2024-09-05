@@ -125,7 +125,7 @@ By default, the expansion indicator icon is located before the accordion item's 
 
 ## Sizes
 
-The `accordion-sm`/`accordion-lg` modifier classes make the summary's font size and padding a little smaller or bigger than the default.
+Modifier classes to make the`.accordion-header's font size and icon size a little smaller or bigger than the default.
 
 ```html
 <details class="accordion accordion-sm">
