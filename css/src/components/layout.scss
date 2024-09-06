@@ -24,6 +24,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 
 	// todo convert to Sass var for validation
 	--atlas-contained-height: 1fr; // default value, does not contain the height
+	--atlas-flyout-width: 300px;
 
 	@include widescreen {
 		#{$layout-gap-scalable-custom-property-name}: $layout-widescreen-gap;
@@ -70,6 +71,10 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	grid-area: footer;
 }
 
+.layout-body-flyout {
+	grid-area: flyout;
+}
+
 .layout-body-hero,
 .layout-body-main,
 .layout-body-footer,
@@ -80,17 +85,26 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	}
 }
 
-.layout,
-.layout.layout-single {
+.layout-body-flyout {
+	display: none;
+}
+
+@include desktop {
+	.layout.layout-flyout-active {
+		.layout-body-flyout {
+			display: unset;
+		}
+	}
+}
+
+.layout /*.layout.layout-single too, but needs no rule*/ {
 	.layout-body {
-		grid-template: auto auto auto 1fr auto auto / 1fr;
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
 	}
 }
 
 .layout.layout-holy-grail {
 	.layout-body {
-		grid-template: auto auto auto 1fr auto auto / 1fr;
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
 
 		@include tablet {
@@ -115,11 +129,34 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		@include widescreen {
 			grid-template: auto auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
 			grid-template-areas:
-				'header header header header header'
-				'hero hero hero hero hero'
+				'header header header header .'
+				'hero hero hero hero .'
 				'. menu main aside .'
-				'footer footer footer footer footer';
+				'footer footer footer footer .';
 		}
+	}
+}
+
+.layout.layout-holy-grail.layout-flyout-active .layout-body {
+	@include desktop {
+		grid-template: auto auto var(--atlas-contained-height) auto / 1fr 2fr 1fr 1fr;
+		grid-template-areas:
+			'header header header flyout'
+			'hero hero hero flyout'
+			'menu main aside flyout'
+			'footer footer footer flyout';
+	}
+
+	@include widescreen {
+		grid-template:
+			auto auto var(--atlas-contained-height)
+			auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen}
+			auto;
+		grid-template-areas:
+			'header header header header flyout'
+			'hero hero hero hero flyout'
+			'. menu main aside flyout'
+			'footer footer footer footer flyout';
 	}
 }
 
@@ -129,7 +166,6 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	}
 
 	.layout-body {
-		grid-template: auto auto auto 1fr auto / 1fr;
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'footer';
 
 		@include tablet {
@@ -167,7 +203,6 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	}
 
 	.layout-body {
-		grid-template: auto auto auto 1fr auto / 1fr;
 		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
 
 		@include tablet {
@@ -246,7 +281,8 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 .layout.layout-constrained {
 	.layout-body-main,
 	.layout-body-menu,
-	.layout-body-aside {
+	.layout-body-aside,
+	.layout-body-flyout {
 		@extend .scroll-vertical;
 		position: sticky;
 		inset-block-start: 0;

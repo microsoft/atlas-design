@@ -91,6 +91,10 @@ html.debug {
 		@include debug('.layout-body-main');
 	}
 
+	.layout-body-flyout {
+		@include debug('.layout-body-flyout');
+	}
+
 	.layout-body-menu {
 		@include debug('.layout-body-menu');
 	}

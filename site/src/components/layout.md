@@ -25,6 +25,7 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
 </div>
 <button class="button margin-top-sm" data-toggle-layout-height-constraint aria-pressed="false">Constrain height</button>
 <button class="button margin-top-sm" data-toggle-debug aria-pressed="false">Toggle container labels</button>
+<button class="button margin-top-sm display-none display-inline-desktop" data-toggle-flyout aria-pressed="false">Show flyout</button>
 
 ## Important concepts
 
@@ -65,6 +66,10 @@ Why not use gap? You certainly can apply any [gap atomics](../atomics/gap.md) to
 ### Responsiveness
 
 The layout components behavior is inextricably bound to Atlas's breakpoints. On narrow widths on all layouts, elements are stacked on top of one another. If you don't want an element to show on a particular screensize, you should either render nothing into it or hide the inner element.
+
+### An optional flyout container
+
+You can also choose if you'd like to ... blah tbc
 
 ## Available layouts
 
@@ -249,3 +254,7 @@ document.documentElement.classList.add('layout-holy-grail');
 ```
 
 You'll seldom have occasion to do this in the middle of a user's visit, but it can be useful for things like opening a code editor in a wider layout or adopting a focused reading mode.
+
+### A flyout container
+
+layout-flyout-active

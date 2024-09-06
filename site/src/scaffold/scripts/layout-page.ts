@@ -50,6 +50,17 @@ export function initLayoutPageControls() {
 
 	window.addEventListener('click', (e: MouseEvent) => {
 		const target =
+			e.target instanceof Element && (e.target.closest('[data-toggle-flyout]') as HTMLElement);
+		if (!target) {
+			return;
+		}
+		target.classList.toggle('button-filled');
+		document.documentElement.classList.toggle('layout-flyout-active');
+		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+	});
+
+	window.addEventListener('click', (e: MouseEvent) => {
+		const target =
 			e.target instanceof Element &&
 			(e.target.closest('[data-toggle-layout-height-constraint]') as HTMLElement);
 		if (!target) {
