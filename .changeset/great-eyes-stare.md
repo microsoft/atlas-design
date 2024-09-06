@@ -1,5 +1,5 @@
 ---
-'@microsoft/atlas-site': patch
+'@microsoft/atlas-site': minor
 ---
 
 Document scrollbar-gutter atomics
