@@ -24,7 +24,7 @@ Force an elements overflow to be horizontally scrollable by using `.scroll-horiz
 
 ## Vertical scrolling
 
-Force an elements overflow to be horizontally scrollable by using `.scroll-vertical`. Note that this will only occur if the elements height is constrained.
+Force an elements overflow to be vertically scrollable by using `.scroll-vertical`. Note that this will only occur if the elements height is constrained.
 
 <div class="scroll-vertical max-height-30vh background-color-success margin-top-md padding-xl inner-focus" data-focusable-if-scrollable>
 	<p class="color-success-invert font-size-xl margin-bottom">
@@ -140,3 +140,7 @@ _Note: `data-focusable-if-scrollable`, the attribute we use to programmatically 
 	</nav>
 </section>
 ```
+
+## Avoiding jumping text with scrollbar gutters
+
+In some cases, the appearance or disappearance of a scrollbar can cause that container's contents to jump around. This might be fine if the scrollbar is appearing as a result of the user opting to zoom or resize their browser, but when that's not the case, the jumping can be extra noticeable. If you're noticing this in your scrolling component, consider applying a [scrollbar gutter atomic](../atomics/overflow.md#scrollbar-gutter).
