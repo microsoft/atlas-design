@@ -26,14 +26,16 @@ export function initLayoutPageControls() {
 				'Attempting to set a layout class that does not match current list of available layouts'
 			);
 		}
-		setLayoutClass(layoutToSet);
-		scrollTo({ behavior: 'smooth', top: target.getBoundingClientRect().top - 200 });
 
-		const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
-		for (const button of setThemeButtons) {
-			button.setAttribute('aria-pressed', 'false');
-		}
-		target.setAttribute('aria-pressed', 'true');
+		safeViewTransition(() => {
+			setLayoutClass(layoutToSet);
+			scrollTo({ behavior: 'instant', top: target.getBoundingClientRect().top - 200 });
+			const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
+			for (const button of setThemeButtons) {
+				button.setAttribute('aria-pressed', 'false');
+			}
+			target.setAttribute('aria-pressed', 'true');
+		});
 	});
 
 	window.addEventListener('click', (e: MouseEvent) => {
@@ -46,4 +48,18 @@ export function initLayoutPageControls() {
 		document.documentElement.classList.toggle('debug');
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
 	});
+}
+
+declare global {
+	interface Document {
+		startViewTransition(callback: () => void): void;
+	}
+}
+
+function safeViewTransition(cb: () => void) {
+	if (!document.startViewTransition) {
+		cb();
+	} else {
+		document.startViewTransition(() => cb());
+	}
 }
