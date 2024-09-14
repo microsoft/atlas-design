@@ -59,7 +59,7 @@ jobs:
       # On pushes to main, upload images for comparison against pull_request runs
       - name: Upload comparison screenshots [push|main]
         if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: visual_diff_comparison_shapshots
           path: ./integration/visual-diff/screenshots/updated
@@ -73,14 +73,14 @@ jobs:
       # Temporarily upload screenshots for pull requests, just to verify they are as we'd expect
       - name: Upload screenshots [pull_request]
         if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: visual_diff_pull_request_shapshots-${{ github.sha }}
           path: ./integration/visual-diff/screenshots/updated
 
       - name: Download comparison screenshots [pull_request]
         if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: visual_diff_comparison_shapshots
           path: ./integration/visual-diff/screenshots/comparison
