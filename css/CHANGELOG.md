@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 3.49.0
+
+### Minor Changes
+
+- 2d6bf161: Add scrollbar-gutter atomics
+
+### Patch Changes
+
+- 1441c85d: Refactor all layouts to use minmax(0 Xfr), where prior they were Xfr.
+
 ## 3.48.0
 
 ### Minor Changes
