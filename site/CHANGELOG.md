@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.52.0
+
+### Minor Changes
+
+- 1441c85d: Update doc site to use a view transition when changing between layout examples.
+- 2d6bf161: Document scrollbar-gutter atomics
+
+### Patch Changes
+
+- 7b49a876: Provide Figma embeds with an accessible name.
+
 ## 0.51.0
 
 ### Minor Changes
