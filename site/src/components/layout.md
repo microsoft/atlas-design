@@ -18,6 +18,7 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
 
 <div class="buttons buttons-addons margin-top-sm display-inline-flex">
   <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
+  <button class="button" data-set-layout="layout-twin">Twin</button>
   <button class="button" data-set-layout="layout-single">Single</button>
   <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
   <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
@@ -72,6 +73,7 @@ There are two available layouts.
 - [`layout-holy-grail`](#holy-grail-layout)
 - [`layout-sidecar-left`](#sidecar-left-layout)
 - [`layout-sidecar-right`](#sidecar-right-layout)
+- [`layout-twin`](#twin-layout)
 
 ### Layout Single
 
@@ -217,6 +219,42 @@ The specification for this layout is as follows.
 | Narrow           | All elements are stacked.                                                                                                         |
 | Tablet - desktop | Main and aside are side by side. Main is wider than aside.                                                                        |
 | Widescreen       | Same as tablet-desktop with scaling gutter that keeps combined width of main and aside to the width of the widescreen breakpoint. |
+
+### Twin layout
+
+On tablet screens and large the twin layout allows two containers (`main` and `aside`) to share the central part of the screen. Unlike some of the other containers these two containers continue to grow beyond the boundaries of the widescreen breakpoint. This means the text-based content rendered in either should consider setting a maximum width to ensure readability. This layout is ideal for a side-by-side experience, where a user might read an article in `main` and perform some interactive task, such as editing code, in `aside`.
+
+How do I apply it? `layout-twin` to the `layout` element.
+
+Required elements: all except `layout-body-hero` and `layout-body-menu` (see allowed elements).
+
+Allowed elements: all except `layout-body-menu`.
+
+The following block is arranged from narrow widths on the left to wider widths on the right.
+
+```txt
+  Narrow           Tablet and wider
+ ┌──────────────┐ ┌──────────────────────┐
+ │Header        │ │ Header               │
+ ├──────────────┤ ├──────────────────────┤
+ │Hero          │ │ Hero                 │
+ ├──────────────┤ ├───────────┬──────────┤
+ │Main          │ │ Main      │     Aside│
+ │              │ │           │          │
+ │              │ │           │          │
+ ├──────────────┤ │           │          │
+ │Aside         │ │           │          │
+ ├──────────────┤ ├───────────┴───-──────┤
+ │Footer        │ │ Footer               │
+ └──────────────┘ └──────────────────────┘
+```
+
+The specification for this layout is as follows.
+
+| Screensize       | Behavior                                                           |
+| ---------------- | ------------------------------------------------------------------ |
+| Narrow           | All elements are stacked.                                          |
+| Tablet and wider | Main and aside are side by side. Main and aside are the same width |
 
 ## Accessibility Concerns
 
