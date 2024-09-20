@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.50.0
+
+### Minor Changes
+
+- c948faf8: Add a even two container layout to the layout component - called `.layout-twin`.
+
 ## 3.49.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.53.0
+
+### Minor Changes
+
+- c948faf8: Add documentation related to .layout-twin. Remove now-unnecessary overflow:hidden from site's containers.
+
 ## 0.52.0
 
 ### Minor Changes
