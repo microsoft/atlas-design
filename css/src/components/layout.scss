@@ -4,6 +4,12 @@ $quarter-widescreen: math.div($breakpoint-widescreen, 4);
 $half-widescreen: math.div($breakpoint-widescreen, 2);
 $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 
+::root {
+	--window-inner-height: 100vh; // to be overwritten by JS
+	--atlas-header-height: 0px; // to be overwritten by JS
+	--atlas-footer-height: 0px; // to be overwritten by JS
+}
+
 .layout {
 	display: flex;
 	flex-direction: column;
@@ -12,6 +18,9 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	// --layout-gutter by default, see tokens/layout.scss
 	#{$layout-gap-custom-property-name}: $layout-gap;
 	#{$layout-gap-scalable-custom-property-name}: $layout-gap;
+
+	// todo convert to Sass var for validation
+	--atlas-contained-height: 1fr; // default value, does not contain the height
 
 	@include widescreen {
 		#{$layout-gap-scalable-custom-property-name}: $layout-widescreen-gap;
@@ -82,7 +91,10 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
 
 		@include tablet {
-			grid-template: auto auto 1fr auto auto / minmax(0, 1fr) minmax(0, 2fr);
+			grid-template: auto auto var(--atlas-contained-height) auto auto / minmax(0, 1fr) minmax(
+					0,
+					2fr
+				);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -92,7 +104,10 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		}
 
 		@include desktop {
-			grid-template: auto auto 1fr auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(
+					0,
+					1fr
+				);
 			grid-template-areas:
 				'header header header'
 				'hero hero hero'
@@ -101,7 +116,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		}
 
 		@include widescreen {
-			grid-template: auto auto 1fr auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
+			grid-template: auto auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
 			grid-template-areas:
 				'header header header header header'
 				'hero hero hero hero hero'
@@ -121,7 +136,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'footer';
 
 		@include tablet {
-			grid-template: auto auto 1fr auto / minmax(0, 1fr) minmax(0, 2fr);
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -130,7 +145,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		}
 
 		@include desktop {
-			grid-template: auto auto 1fr auto / minmax(0, 1fr) minmax(0, 3fr);
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 3fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -139,7 +154,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		}
 
 		@include widescreen {
-			grid-template: auto auto 1fr auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
+			grid-template: auto auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
@@ -159,7 +174,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
 
 		@include tablet {
-			grid-template: auto auto 1fr auto / minmax(0, 2fr) minmax(0, 1fr);
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 2fr) minmax(0, 1fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -168,7 +183,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		}
 
 		@include desktop {
-			grid-template: auto auto 1fr auto / minmax(0, 3fr) minmax(0, 1fr);
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(0, 1fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -177,7 +192,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		}
 
 		@include widescreen {
-			grid-template: auto auto 1fr auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
+			grid-template: auto auto var(--atlas-contained-height) auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
@@ -198,12 +213,33 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 
 		// note that to make some extra room this layout is not constrained by the widescreen breakpoint like others
 		@include tablet {
-			grid-template: auto auto 1fr auto / minmax(0, 1fr) minmax(0, 1fr);
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 1fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
 				'main aside '
 				'footer footer';
+		}
+	}
+}
+
+.layout.layout-constrained {
+	&.layout-twin,
+	&.layout-sidecar-left,
+	&.layout-sidecar-right,
+	&.layout-holy-grail {
+		// 👇 minus two pixel at the end to account for percentage points and rounding, one px generally suffices though
+		--atlas-contained-height: calc(
+			var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height) - 2px
+		);
+
+		.layout-body-main,
+		.layout-body-menu,
+		.layout-body-aside,
+		.layout-body-flyout {
+			@extend .scroll-vertical;
+			position: sticky;
+			inset-block-start: 0;
 		}
 	}
 }

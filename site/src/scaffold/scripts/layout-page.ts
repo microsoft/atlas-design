@@ -1,5 +1,6 @@
 const layoutsClasses = [
 	'layout-single',
+	'layout-twin',
 	'layout-holy-grail',
 	'layout-sidecar-left',
 	'layout-sidecar-right',
@@ -47,6 +48,55 @@ export function initLayoutPageControls() {
 		}
 		target.classList.toggle('button-filled');
 		document.documentElement.classList.toggle('debug');
+		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+	});
+
+	window.addEventListener('click', (e: MouseEvent) => {
+		const target =
+			e.target instanceof Element &&
+			(e.target.closest('[data-toggle-layout-height-constraint]') as HTMLElement);
+		if (!target) {
+			return;
+		}
+
+		target.classList.toggle('button-filled');
+		document.documentElement.classList.toggle('layout-constrained');
+		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+	});
+
+	//
+
+	window.addEventListener('click', (e: MouseEvent) => {
+		const target =
+			e.target instanceof Element &&
+			(e.target.closest('[data-toggle-hero-visibility]') as HTMLElement);
+		if (!target) {
+			return;
+		}
+
+		target.classList.toggle('button-filled');
+		const hero = document.querySelector('.layout-body-hero') as HTMLElement;
+		if (!hero) {
+			return;
+		}
+		hero.hidden = !hero.hidden;
+		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+	});
+
+	window.addEventListener('click', (e: MouseEvent) => {
+		const target =
+			e.target instanceof Element &&
+			(e.target.closest('[data-toggle-footer-visibility]') as HTMLElement);
+		if (!target) {
+			return;
+		}
+
+		target.classList.toggle('button-filled');
+		const footer = document.querySelector('.layout-body-footer') as HTMLElement;
+		if (!footer) {
+			return;
+		}
+		footer.hidden = !footer.hidden;
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
 	});
 }

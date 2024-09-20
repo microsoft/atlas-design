@@ -23,7 +23,14 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
   <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
   <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
 </div>
-<button class="button margin-top-sm" data-toggle-debug aria-pressed="false">Toggle container labels</button>
+<div class="buttons buttons-addons display-inline-flex">
+	<button class="button" data-toggle-debug aria-pressed="false">Toggle container labels</button>
+	<button class="button" data-toggle-layout-height-constraint aria-pressed="false">Constrain layout height</button>
+</div>
+<div class="buttons buttons-addons display-inline-flex">
+	<button class="button" data-toggle-hero-visibility aria-pressed="false">Toggle hero</button>
+	<button class="button" data-toggle-footer-visibility aria-pressed="false">Toggle footer</button>
+</div>
 
 ## Important concepts
 
