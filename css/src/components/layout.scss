@@ -8,7 +8,6 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	display: flex;
 	flex-direction: column;
 	max-inline-size: 100vw;
-	overflow-x: hidden;
 
 	// --layout-gutter by default, see tokens/layout.scss
 	#{$layout-gap-custom-property-name}: $layout-gap;
@@ -79,7 +78,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 
 .layout.layout-holy-grail {
 	.layout-body {
-		grid-template: auto auto auto 1fr auto auto / 1fr;
+		grid-template: auto auto auto 1fr auto auto / minmax(0, 1fr);
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
 
 		@include tablet {
@@ -173,7 +172,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 			grid-template-areas:
 				'header header'
 				'hero hero'
-				'main aside '
+				'main aside'
 				'footer footer';
 		}
 
@@ -184,6 +183,27 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 				'hero hero hero hero'
 				'. main aside .'
 				'footer footer footer footer';
+		}
+	}
+}
+
+.layout.layout-twin {
+	.layout-body-menu {
+		display: none;
+	}
+
+	.layout-body {
+		grid-template: auto auto auto 1fr auto / minmax(0, 1fr);
+		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
+
+		// note that to make some extra room this layout is not constrained by the widescreen breakpoint like others
+		@include tablet {
+			grid-template: auto auto 1fr auto / minmax(0, 1fr) minmax(0, 1fr);
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'main aside '
+				'footer footer';
 		}
 	}
 }
