@@ -62,6 +62,8 @@ export function initLayoutPageControls() {
 		target.classList.toggle('button-filled');
 		document.documentElement.classList.toggle('layout-constrained');
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+
+		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
 	});
 
 	//
@@ -81,6 +83,8 @@ export function initLayoutPageControls() {
 		}
 		hero.hidden = !hero.hidden;
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+
+		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
 	});
 
 	window.addEventListener('click', (e: MouseEvent) => {
@@ -98,6 +102,8 @@ export function initLayoutPageControls() {
 		}
 		footer.hidden = !footer.hidden;
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+
+		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
 	});
 }
 

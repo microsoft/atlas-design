@@ -16,18 +16,18 @@ The layout component provides a flexible and efficient way to structure the majo
 
 This page is utilizing the holy grail layout, but you can use the buttons below to toggle layouts and test them out by resizing the screen. Try the "Toggle container labels" button below to see the css classes on each of the containers inside `.layout`.
 
-<div class="buttons buttons-addons margin-top-sm display-inline-flex">
+<div class="buttons buttons-addons margin-top-sm display-flex">
   <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
   <button class="button" data-set-layout="layout-twin">Twin</button>
   <button class="button" data-set-layout="layout-single">Single</button>
   <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
   <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
 </div>
-<div class="buttons buttons-addons display-inline-flex">
+<div class="buttons buttons-addons display-flex">
 	<button class="button" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 	<button class="button" data-toggle-layout-height-constraint aria-pressed="false">Constrain layout height</button>
 </div>
-<div class="buttons buttons-addons display-inline-flex">
+<div class="buttons buttons-addons display-flex">
 	<button class="button" data-toggle-hero-visibility aria-pressed="false">Toggle hero</button>
 	<button class="button" data-toggle-footer-visibility aria-pressed="false">Toggle footer</button>
 </div>
@@ -262,6 +262,25 @@ The specification for this layout is as follows.
 | ---------------- | ------------------------------------------------------------------ |
 | Narrow           | All elements are stacked.                                          |
 | Tablet and wider | Main and aside are side by side. Main and aside are the same width |
+
+## Layouts with individually scrolling content containers
+
+If you'd like central containers to scroll individually, instead of the page itself, you have to constrain the height of the layout to the viewport. In order to do that, you can add the `.layout-constrained` class to the `html.layout` element. This has no effect on narrow screens or on the `single` layout, but will work on all other layouts on tablet and larger. This requires the use of some very lightweight client JavaScript to updates a few values on the HTML element as the screen is resizes. This means you must install `@microsoft/atlas-js` and import and call the `initLayout` in your client scripts for this behavior to work. See [how this site does it on GitHub](https://github.com/microsoft/atlas-design/blob/main/site/src/scaffold/index.ts).
+
+### How constraint work?
+
+On tablet and wider, on layouts other than single, height of the page is calculated to be 100vh (i.e. the size of the viewport) _plus the size of the hero._ This means:
+
+1. Main (and any container horizontally adjacent to it) will have a height equal to the viewport height minus the footer's height and the header's height.
+1. Developers must still consider narrow views first. This behavior does not change scroll on narrow screens or mobile devices.
+1. Consider also whether to omit footer or move footer into a different container for a more perfect full-screen fit.
+
+### Why is hero excluded from height calculation?
+
+1. The hero is full width and never side by side with another container. It needn't be scrolled individually and what's more doing so would be quite an odd behavior.
+1. Including it will not harm the experience, but it isn't recommended when using height constraints.
+1. Users will have to scroll past hero to get to the content containers. If you do include it, ensure it isn't too tall.
+1. Remember, the hero is always optional.
 
 ## Accessibility Concerns
 

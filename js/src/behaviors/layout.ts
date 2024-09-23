@@ -18,14 +18,18 @@ const setLayoutCssVariables = () => {
 			`;
 };
 
-export function initLayoutHelpers() {
-	window.addEventListener('resize', () => {
+export function initLayout() {
+	window.addEventListener('atlas-layout-change-event', () => {
 		if (frame) {
 			cancelAnimationFrame(frame);
 		}
 
 		frame = requestAnimationFrame(setLayoutCssVariables);
 	});
+
+	window.addEventListener('resize', () =>
+		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'))
+	);
 
 	document.documentElement.style.cssText = `--window-inner-height: ${window.innerHeight}px !important`;
 

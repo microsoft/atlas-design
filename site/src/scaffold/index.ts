@@ -6,7 +6,7 @@ import {
 	initDismiss,
 	initPopover,
 	initSnapScroll,
-	initLayoutHelpers
+	initLayout
 } from '@microsoft/atlas-js/src/index';
 import { handleFocusableIfScrollable } from './scripts/focusable-if-scrollable';
 import { initFullScreenToggle } from './scripts/full-screen-toggle';
@@ -24,4 +24,4 @@ initFullScreenToggle();
 handleFocusableIfScrollable();
 handleFullScreenNavButton();
 initLayoutPageControls();
-initLayoutHelpers();
+initLayout();
