@@ -4,10 +4,11 @@ $quarter-widescreen: math.div($breakpoint-widescreen, 4);
 $half-widescreen: math.div($breakpoint-widescreen, 2);
 $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 
-::root {
+:root {
 	--window-inner-height: 100vh; // to be overwritten by JS
 	--atlas-header-height: 0px; // to be overwritten by JS
 	--atlas-footer-height: 0px; // to be overwritten by JS
+	--atlas-contained-height: 1fr; // default value, does not contain the height
 }
 
 .layout {
@@ -18,9 +19,6 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	// --layout-gutter by default, see tokens/layout.scss
 	#{$layout-gap-custom-property-name}: $layout-gap;
 	#{$layout-gap-scalable-custom-property-name}: $layout-gap;
-
-	// todo convert to Sass var for validation
-	--atlas-contained-height: 1fr; // default value, does not contain the height
 
 	@include widescreen {
 		#{$layout-gap-scalable-custom-property-name}: $layout-widescreen-gap;
@@ -237,7 +235,8 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		.layout-body-menu,
 		.layout-body-aside,
 		.layout-body-flyout {
-			@extend .scroll-vertical;
+			@extend %scroll-vertical;
+
 			position: sticky;
 			inset-block-start: 0;
 		}

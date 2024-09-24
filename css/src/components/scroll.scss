@@ -4,10 +4,14 @@
 	-webkit-overflow-scrolling: touch;
 }
 
-.scroll-vertical {
+%scroll-vertical {
 	overflow-x: hidden;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
+}
+
+.scroll-vertical {
+	@extend %scroll-vertical;
 }
 
 .scroll-snap-container {
