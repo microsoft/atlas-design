@@ -10,6 +10,10 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 	width: 100% !important;
 }
 
+.width-fit {
+	width: fit-content;
+}
+
 @each $width in $universal-widths {
 	$unit: if($width != auto, 'px', '');
 	.width-#{$width} {
@@ -20,6 +24,10 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 @include tablet {
 	.width-full-tablet {
 		width: 100% !important;
+	}
+
+	.width-fit {
+		width: fit-content;
 	}
 
 	@each $width in $all-widths {
@@ -33,6 +41,10 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 @include desktop {
 	.width-full-desktop {
 		width: 100% !important;
+	}
+
+	.width-fit {
+		width: fit-content;
 	}
 
 	@each $width in $all-widths {
