@@ -10,7 +10,7 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 	width: 100% !important;
 }
 
-.width-fit {
+.width-fit-content {
 	width: fit-content;
 }
 
@@ -26,7 +26,7 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 		width: 100% !important;
 	}
 
-	.width-fit {
+	.width-fit-content-tablet {
 		width: fit-content;
 	}
 
@@ -43,7 +43,7 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 		width: 100% !important;
 	}
 
-	.width-fit {
+	.width-fit-content-desktop {
 		width: fit-content;
 	}
 

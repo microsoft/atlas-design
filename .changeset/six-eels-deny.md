@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Add .width-fit as addtional width class
+Add .width-fit-content as additional width class
