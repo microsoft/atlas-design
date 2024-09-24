@@ -8,7 +8,7 @@ const setSidecarRightLayoutSelector = '[data-set-layout="layout-sidecar-right"]'
 const constrainLayoutSelector = '[data-toggle-layout-height-constraint]';
 const hideHeroSelector = '[data-toggle-hero-visibility]';
 
-test.only('any unconstrained layout does not have a constrained height (twin) @desktop', async ({
+test('any unconstrained layout does not have a constrained height (twin) @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
@@ -55,9 +55,7 @@ test.only('any unconstrained layout does not have a constrained height (twin) @d
 	expect(result.layoutIsConstrained).toBe(false);
 });
 
-test.only('single layout is never constrained, even on desktop @desktop', async ({
-	page
-}, testInfo) => {
+test('single layout is never constrained, even on desktop @desktop', async ({ page }, testInfo) => {
 	test.skip(
 		testInfo.project.name !== 'Widescreen Chromium',
 		'Skip test if display screen is not widescreen'
@@ -100,7 +98,7 @@ test.only('single layout is never constrained, even on desktop @desktop', async 
 	expect(result.layoutIsConstrained).toBe(false);
 });
 
-test.only('any constrained layout is not actually constrained on mobile (twin) @desktop', async ({
+test('any constrained layout is not actually constrained on mobile (twin) @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
@@ -147,7 +145,7 @@ test.only('any constrained layout is not actually constrained on mobile (twin) @
 	expect(result.layoutIsConstrained).toBe(false);
 });
 
-test.only('twin layout can have its height constrained to 100vh with hero hidden @desktop', async ({
+test('twin layout can have its height constrained to 100vh with hero hidden @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
@@ -197,7 +195,7 @@ test.only('twin layout can have its height constrained to 100vh with hero hidden
 	expect(result.layoutIsConstrained).toBe(true);
 });
 
-test.only('holy grail layout can have its height constrained to 100vh with hero hidden @desktop', async ({
+test('holy grail layout can have its height constrained to 100vh with hero hidden @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
@@ -247,7 +245,7 @@ test.only('holy grail layout can have its height constrained to 100vh with hero 
 	expect(result.layoutIsConstrained).toBe(true);
 });
 
-test.only('sidecar-right layout can have its height constrained to 100vh with hero hidden @desktop', async ({
+test('sidecar-right layout can have its height constrained to 100vh with hero hidden @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
@@ -297,7 +295,7 @@ test.only('sidecar-right layout can have its height constrained to 100vh with he
 	expect(result.layoutIsConstrained).toBe(true);
 });
 
-test.only('sidecar-left layout can have its height constrained to 100vh with hero hidden @desktop', async ({
+test('sidecar-left layout can have its height constrained to 100vh with hero hidden @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
