@@ -1,6 +1,6 @@
 @use 'sass:list';
 
-$universal-widths: auto, 100, 150, 200, 250, 300, 350 !default;
+$universal-widths: auto, fit-content, 100, 150, 200, 250, 300, 350 !default;
 $mobile-incompatible-widths: 400, 450, 500, unset !default;
 $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 
@@ -10,12 +10,8 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 	width: 100% !important;
 }
 
-.width-fit-content {
-	width: fit-content;
-}
-
 @each $width in $universal-widths {
-	$unit: if($width != auto, 'px', '');
+	$unit: if($width != auto and $width != fit-content, 'px', '');
 	.width-#{$width} {
 		width: #{$width}#{$unit} !important;
 	}
@@ -26,12 +22,8 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 		width: 100% !important;
 	}
 
-	.width-fit-content-tablet {
-		width: fit-content;
-	}
-
 	@each $width in $all-widths {
-		$unit: if($width != auto and $width != unset, 'px', '');
+		$unit: if($width != auto and $width != unset and $width != fit-content, 'px', '');
 		.width-#{$width}-tablet {
 			width: #{$width}#{$unit} !important;
 		}
@@ -43,12 +35,8 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 		width: 100% !important;
 	}
 
-	.width-fit-content-desktop {
-		width: fit-content;
-	}
-
 	@each $width in $all-widths {
-		$unit: if($width != auto and $width != unset, 'px', '');
+		$unit: if($width != auto and $width != unset and $width != fit-content, 'px', '');
 		.width-#{$width}-desktop {
 			width: #{$width}#{$unit} !important;
 		}
