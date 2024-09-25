@@ -267,7 +267,7 @@ The specification for this layout is as follows.
 
 If you'd like central containers to scroll individually, instead of the page itself, you have to constrain the height of the layout to the viewport. In order to do that, you can add the `.layout-constrained` class to the `html.layout` element. This has no effect on narrow screens or on the `single` layout, but will work on all other layouts on tablet and larger. This requires the use of some very lightweight client JavaScript to updates a few values on the HTML element as the screen resizes. This means you must install `@microsoft/atlas-js` and import and call the `initLayout` in your client scripts for this behavior to work. See [how this site does it on GitHub](https://github.com/microsoft/atlas-design/blob/main/site/src/scaffold/index.ts).
 
-### How constraint work?
+### How does constraint work?
 
 On tablet and wider, on layouts other than single, height of the page is calculated to be 100vh (i.e. the size of the viewport) _plus the size of the hero._ This means:
 
