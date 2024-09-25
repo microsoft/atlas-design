@@ -1,6 +1,10 @@
 .list-style-none {
 	list-style: none !important;
 
+	> li {
+		list-style: none !important;
+	}
+
 	&::marker,
 	&::-webkit-details-marker {
 		display: none;
