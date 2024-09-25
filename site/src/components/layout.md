@@ -92,6 +92,8 @@ Required elements: all except `layout-body-hero`.
 
 Allowed elements: all.
 
+Can have its height constrained? No.
+
 ```Text
    Narrow
   ┌────────────┐
@@ -124,6 +126,8 @@ How do I apply it? `layout-holy-grail` to the `layout` element.
 Required elements: all except `layout-body-hero`.
 
 Allowed elements: all.
+
+Can have its height constrained? Yes, on desktop screens and wider. This differs from other constrainable layouts, because on tablet aside wraps under main, preventing us from constraining main's height effectively.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
@@ -163,6 +167,8 @@ Required elements: all except `layout-body-hero` and `layout-body-aside` (see al
 
 Allowed elements: all except `layout-body-aside`.
 
+Can have its height constrained? Yes, on tablet screens and wider.
+
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```txt
@@ -199,6 +205,8 @@ How do I apply it? `layout-sidecar-right` to the `layout` element.
 Required elements: all except `layout-body-hero` and `layout-body-menu` (see allowed elements).
 
 Allowed elements: all except `layout-body-menu`.
+
+Yes, on tablet screens and wider.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
@@ -237,6 +245,8 @@ Required elements: all except `layout-body-hero` and `layout-body-menu` (see all
 
 Allowed elements: all except `layout-body-menu`.
 
+Yes, on tablet screens and wider.
+
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```txt
@@ -265,11 +275,13 @@ The specification for this layout is as follows.
 
 ## Layouts with individually scrolling content containers
 
-If you'd like central containers to scroll individually, instead of the page itself, you have to constrain the height of the layout to the viewport. In order to do that, you can add the `.layout-constrained` class to the `html.layout` element. This has no effect on narrow screens or on the `single` layout, but will work on all other layouts on tablet and larger. This requires the use of some very lightweight client JavaScript to updates a few values on the HTML element as the screen resizes. This means you must install `@microsoft/atlas-js` and import and call the `initLayout` in your client scripts for this behavior to work. See [how this site does it on GitHub](https://github.com/microsoft/atlas-design/blob/main/site/src/scaffold/index.ts).
+If you'd like central containers to scroll individually, instead of the page itself, you have to constrain the height of the layout to the viewport. In order to do that, you can add the `.layout-constrained` class to the `html.layout` element. This has no effect on narrow screens or on the `single` layout, but will work on most other layouts on tablet and larger (the exception being holy grail, which kicks in on desktop widths). See each layout's individual section for behavior specific to it.
+
+This requires the use of some very lightweight client JavaScript to updates a few values on the HTML element as the screen resizes. This means you must install `@microsoft/atlas-js` and import and call the `initLayout` in your client scripts for this behavior to work. See [how this site does it on GitHub](https://github.com/microsoft/atlas-design/blob/main/site/src/scaffold/index.ts).
 
 ### How does constraint work?
 
-On tablet and wider, on layouts other than single, height of the page is calculated to be 100vh (i.e. the size of the viewport) _plus the size of the hero._ This means:
+When constraint is active the height of the page is calculated to be 100vh (i.e. the size of the viewport) _plus the size of the hero._ This means:
 
 1. Main (and any container horizontally adjacent to it) will have a height equal to the viewport height minus the footer's height and the header's height.
 1. Developers must still consider narrow views first. This behavior does not change scroll on narrow screens or mobile devices.
