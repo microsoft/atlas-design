@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.50.1
+
+### Patch Changes
+
+- 33f3ec64: The changeset is to fix a style inheritence problem in the list element which ensures that the list style is applied to all the list items.
+
 ## 3.50.0
 
 ### Minor Changes
