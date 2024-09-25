@@ -221,11 +221,45 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	}
 }
 
-.layout.layout-constrained {
-	&.layout-twin,
-	&.layout-sidecar-left,
-	&.layout-sidecar-right,
-	&.layout-holy-grail {
+@mixin constrained-layout-child {
+	position: sticky;
+	inset-block-start: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+@include tablet {
+	.layout.layout-constrained {
+		&.layout-twin,
+		&.layout-sidecar-left,
+		&.layout-sidecar-right {
+			// 👇 minus two pixel at the end to account for percentage points and rounding, one px generally suffices though
+			--atlas-contained-height: calc(
+				var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height) - 2px
+			);
+		}
+
+		&.layout-twin,
+		&.layout-sidecar-right {
+			.layout-body-main,
+			.layout-body-aside {
+				@include constrained-layout-child;
+			}
+		}
+
+		&.layout-sidecar-left {
+			.layout-body-menu,
+			.layout-body-main {
+				@include constrained-layout-child;
+			}
+		}
+	}
+}
+
+// Because the holy grail has two rows (containing menu main, menu aside) on tablet, we cannot apply height constrains at that size
+@include desktop {
+	.layout.layout-constrained.layout-holy-grail {
 		// 👇 minus two pixel at the end to account for percentage points and rounding, one px generally suffices though
 		--atlas-contained-height: calc(
 			var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height) - 2px
@@ -233,12 +267,8 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 
 		.layout-body-main,
 		.layout-body-menu,
-		.layout-body-aside,
-		.layout-body-flyout {
-			@extend %scroll-vertical;
-
-			position: sticky;
-			inset-block-start: 0;
+		.layout-body-aside {
+			@include constrained-layout-child;
 		}
 	}
 }
