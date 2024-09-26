@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.54.0
+
+### Minor Changes
+
+- 8bd9bcf1: Add .width-fit-content as additional width class
+
 ## 0.53.0
 
 ### Minor Changes
