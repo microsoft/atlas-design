@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.55.0
+
+### Minor Changes
+
+- 5bb694db: Add the ability to constrain layouts to the height of the viewport certain screensizes. Desktop+ for holy-grail and tablet+ for other layouts. Excludes the single layout.
+
+### Patch Changes
+
+- Updated dependencies [5bb694db]
+  - @microsoft/atlas-js@1.12.0
+
 ## 0.54.0
 
 ### Minor Changes
