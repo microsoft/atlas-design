@@ -206,7 +206,7 @@ Required elements: all except `layout-body-hero` and `layout-body-menu` (see all
 
 Allowed elements: all except `layout-body-menu`.
 
-Yes, on tablet screens and wider.
+Can have its height constrained? Yes, on tablet screens and wider.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
