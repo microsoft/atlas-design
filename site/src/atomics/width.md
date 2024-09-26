@@ -13,10 +13,10 @@ Need to specify a specific width for an element? You've come to the right place!
 
 Values are in pixels. Keep in mind that the `min-width` and `max-width` properties override the standard `width` property. If you aren't using the Atlas core folder as a base for your styles, these classes work best when [you're setting `box-sizing` to be `border-box` in some way](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing). Values represent pixel unless they are a string or otherwise specified.
 
-| cssproperty                                      | value                                                           | screensize                           |
-| ------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------ |
-| `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350`, `full` (100%) | all screensizes, `tablet`, `desktop` |
-| `width` (available on tablet screens and larger) | `400`, `450`, `500`, `unset`                                    | `tablet`, `desktop`                  |
+| cssproperty                                      | value                                                                          | screensize                           |
+| ------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------ |
+| `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350`, `full` (100%), `fit-content` | all screensizes, `tablet`, `desktop` |
+| `width` (available on tablet screens and larger) | `400`, `450`, `500`, `unset`                                                   | `tablet`, `desktop`                  |
 
 ## Usage
 
@@ -86,6 +86,7 @@ List of all available classes:
 
 ```atomics-filter
 .width-full
+.width-fit-content
 .width-auto
 .width-100
 .width-150
