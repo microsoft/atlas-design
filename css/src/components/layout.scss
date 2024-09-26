@@ -257,7 +257,7 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	}
 }
 
-// Because the holy grail has two rows (containing menu main, menu aside) on tablet, we cannot apply height constrains at that size
+// Because the holy grail has two rows (containing menu main, menu aside) on tablet, we cannot apply height constraints at that size
 @include desktop {
 	.layout.layout-constrained.layout-holy-grail {
 		// 👇 minus two pixel at the end to account for percentage points and rounding, one px generally suffices though
