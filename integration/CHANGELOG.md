@@ -1,5 +1,11 @@
 # @microsoft/atlas-integration
 
+## 1.7.0
+
+### Minor Changes
+
+- 5bb694db: Add tests for layout and constrained layouts.
+
 ## 1.6.0
 
 ### Minor Changes
