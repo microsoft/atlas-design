@@ -2,4 +2,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Add underline to banner link
+Add underline to banner and notification links

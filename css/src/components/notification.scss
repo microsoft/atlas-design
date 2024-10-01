@@ -72,8 +72,14 @@ $notification-dismiss-margin: $spacer-2 !default;
 		}
 
 		a:not(.button) {
+			text-decoration: underline;
+
 			.theme-high-contrast & {
 				color: $hyperlink;
+			}
+
+			&:hover {
+				text-decoration-thickness: 0.1em;
 			}
 		}
 
