@@ -58,6 +58,10 @@ $banner-dismiss-margin: $spacer-2 !default;
 			.theme-high-contrast & {
 				color: $hyperlink;
 			}
+
+			&:hover {
+				text-decoration-thickness: 0.1em;
+			}
 		}
 	}
 
