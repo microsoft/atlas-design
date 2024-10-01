@@ -53,6 +53,7 @@ $banner-dismiss-margin: $spacer-2 !default;
 		a:not(.button) {
 			color: currentColor;
 			font-weight: $weight-semibold;
+			text-decoration: underline;
 
 			.theme-high-contrast & {
 				color: $hyperlink;
