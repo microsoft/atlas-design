@@ -14,4 +14,9 @@ $layout-widescreen-gap: calc(
 
 $layout-gap-custom-property-name: '--layout-gap' !default;
 $layout-gap-scalable-custom-property-name: '--layout-gap-scalable' !default;
+
+$layout-flyout-width-name: '--layout-flyout-width' !default;
+$layout-flyout-width-desktop-custom-property-name: '--layout-flyout-width-desktop' !default;
+$layout-flyout-width-widescreen-custom-property-name: '--layout-flyout-width-widescreen' !default;
+
 //@end-sass-export-section

@@ -109,6 +109,10 @@ html.debug {
 	.layout-body-hero {
 		@include debug('.layout-body-hero');
 	}
+
+	.layout-body-flyout {
+		@include debug('.layout-body-flyout');
+	}
 }
 
 .header-spacer {

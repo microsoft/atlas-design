@@ -7,6 +7,7 @@ const setSidecarLeftLayoutSelector = '[data-set-layout="layout-sidecar-left"]';
 const setSidecarRightLayoutSelector = '[data-set-layout="layout-sidecar-right"]';
 const constrainLayoutSelector = '[data-toggle-layout-height-constraint]';
 const hideHeroSelector = '[data-toggle-hero-visibility]';
+const toggleFlyoutSelector = '[data-toggle-flyout-visibility]';
 
 test('any unconstrained layout does not have a constrained height (twin) @desktop', async ({
 	page
@@ -343,4 +344,78 @@ test('sidecar-left layout can have its height constrained to 100vh with hero hid
 
 	expect(result.exceedsScreenHeight).toBe(true);
 	expect(result.layoutIsConstrained).toBe(true);
+});
+
+/// to document
+
+test('any layout can render a flyout menu on desktop+, with no side scroll @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	const singleLayoutButton = await page.locator(setSingleLayoutSelector);
+	const constrainHeightButton = await page.locator(constrainLayoutSelector);
+	const toggleFlyoutButton = await page.locator(toggleFlyoutSelector);
+
+	expect(singleLayoutButton).toBeTruthy();
+	expect(constrainHeightButton).toBeTruthy();
+	expect(toggleFlyoutButton).toBeTruthy();
+
+	await singleLayoutButton.click();
+	await toggleFlyoutButton.click();
+
+	await page.waitForTimeout(300);
+
+	let result: { [key: string]: boolean | null | string | number } = {};
+
+	result = await page.evaluate(arg => {
+		const layoutHtml = document.querySelector('.layout.layout-single');
+		if (!layoutHtml) {
+			throw new Error('Did not find expected layout element');
+		}
+		const mainElement = layoutHtml.querySelector('.layout-body-main');
+		if (!mainElement) {
+			throw new Error('Did not find expected layout main element');
+		}
+		const mainIsScrolled = mainElement.scrollHeight > mainElement.clientHeight;
+		const layoutIsConstrained =
+			layoutHtml.scrollHeight === window.innerHeight &&
+			window.innerHeight === layoutHtml.clientHeight;
+		arg.exceedsScreenHeight = mainIsScrolled;
+		arg.layoutIsConstrained = layoutIsConstrained;
+		arg.exceendsScreenWidth = layoutHtml.scrollWidth > window.innerWidth;
+		return arg;
+	}, result);
+
+	expect(result.exceendsScreenWidth).toBe(false); // key one
+	expect(result.exceedsScreenHeight).toBe(false); // just ensuring this didn't change based on both flyout and constraint
+	expect(result.layoutIsConstrained).toBe(false); // just ensuring this didn't change based on both flyout and constraint
+});
+
+test('flyout will not be shown on mobile and tablet ever @desktop', async ({ page }, testInfo) => {
+	test.skip(
+		testInfo.project.name === 'Widescreen Chromium',
+		'Skip test if display screen is not mobile'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	const twinLayoutButton = await page.locator(setTwinLayoutSelector);
+	const toggleFlyoutButton = await page.locator(toggleFlyoutSelector);
+
+	expect(twinLayoutButton).toBeTruthy();
+	expect(toggleFlyoutButton).toBeTruthy();
+
+	await twinLayoutButton.click();
+	await toggleFlyoutButton.click();
+
+	const flyoutElt = await page.locator('.layout-body-flyout');
+	expect(flyoutElt).not.toBeVisible();
 });
