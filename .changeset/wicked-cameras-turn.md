@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Add white-space: pre-wrap
+Add white-space property

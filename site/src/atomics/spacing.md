@@ -605,5 +605,4 @@ Because the `auto` value is inapplicable to padding, and less useful when used w
 .margin-right-auto-widescreen
 .margin-inline-auto-widescreen
 .margin-top-auto-widescreen
-.white-space-pre-wrap
 ```
