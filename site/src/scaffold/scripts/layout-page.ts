@@ -29,6 +29,10 @@ export function initLayoutPageControls() {
 			);
 		}
 
+		if (document.documentElement.classList.contains(layoutToSet)) {
+			return;
+		}
+
 		safeViewTransition(() => {
 			setLayoutClass(layoutToSet);
 			scrollTo({ behavior: 'instant', top: target.getBoundingClientRect().top - 200 });
@@ -46,6 +50,7 @@ export function initLayoutPageControls() {
 		if (!target) {
 			return;
 		}
+
 		target.classList.toggle('button-filled');
 		document.documentElement.classList.toggle('debug');
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
