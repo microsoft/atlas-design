@@ -297,14 +297,14 @@ When constraint is active the height of the page is calculated to be 100vh (i.e.
 
 ## An optional flyout container
 
-An optional flyout container can be added to the page. This container has several important characteristics:
+A flyout is container that appears on the side of the screen. It provides additional space to render elements that you may not always want to be visible. Atlas's optional flyout container can be added to any layout. This container has several important characteristics:
 
 1. **It is not available on narrow and tablet-size screens.** There simply isn't room for it. This means that whatever content is available in this sidebar, should be rendered elsewhere on narrow/tablet screen sizes. Typically, this would be done in a modal that renders "on top" of the other containers. Atlas does not implement this for you.
 1. The flyout can be shown/hidden by adding/removing the `.layout-flyout-active` class to the `.layout` element.
 1. The default widths of the flyout on both desktop and widescreen can be customized with the following CSS variables.
-   1. `--layout-flyout-width-desktop` will affect the desktop breakpoint
-   1. `--layout-flyout-width-widescreen` will affect the widescreen (largest) breakpoint
-1. This means developers must handle mobile and tablet widths with a different solution, such using a mobile.
+   1. `--layout-flyout-width-desktop` will affect the desktop breakpoint.
+   1. `--layout-flyout-width-widescreen` will affect the widescreen (largest) breakpoint.
+1. This means developers must handle mobile and tablet widths with a different solution, such using a modal on narrow screens.
 1. On expand/collapse of the flyout, it's recommended developers perform manual focus handling to ensure that focus is not lost for screenreaders.
 1. The same should happen on resize.
 
