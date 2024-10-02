@@ -20,18 +20,18 @@ classPrefixes:
 
 The typography scale is designed for great readability across the platform. This page covers the various classes available to modify text.
 
-| cssproperty       | value                                                             | screensize |
-| ----------------- | ----------------------------------------------------------------- | ---------- |
-| `font-size`       | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `xs`, `sm`, `md`, `lg`, `xl`  | `tablet`   |
-| `font-weight`     | `semilight`, `light`, `normal`, `semibold` `bold`                 | N\A        |
-| `font-style`      | `italic`                                                          | N\A        |
-| `text-decoration` | `underline`, `none`                                               | N\A        |
-| `letter-spacing`  | `wide`                                                            | N\A        |
-| `text-transform`  | `uppercase`                                                       | N\A        |
-| `text-align`      | `left`, `center`, `right`                                         | `tablet`   |
-| `text-wrap`       | `pretty`                                                          | N\A        |
-| `line-height`     | `normal`                                                          | N\A        |
-| `white-space`     | `normal`, `nowrap`, `pre`, `pre-wrap`, `pre-line`, `break-spaces` | N\A        |
+| cssproperty       | value                                                            | screensize |
+| ----------------- | ---------------------------------------------------------------- | ---------- |
+| `font-size`       | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `xs`, `sm`, `md`, `lg`, `xl` | `tablet`   |
+| `font-weight`     | `semilight`, `light`, `normal`, `semibold` `bold`                | N\A        |
+| `font-style`      | `italic`                                                         | N\A        |
+| `text-decoration` | `underline`, `none`                                              | N\A        |
+| `letter-spacing`  | `wide`                                                           | N\A        |
+| `text-transform`  | `uppercase`                                                      | N\A        |
+| `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
+| `text-wrap`       | `pretty`                                                         | N\A        |
+| `line-height`     | `normal`                                                         | N\A        |
+| `white-space`     | `normal`, `nowrap`, `pre`, `pre-wrap`                            | N\A        |
 
 ## Font size
 
