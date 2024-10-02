@@ -393,6 +393,9 @@ test('any layout can render a flyout menu on desktop+, with no side scroll @desk
 		return arg;
 	}, result);
 
+	const flyout = await page.locator('.layout-body-flyout');
+
+	expect(flyout).toBeVisible();
 	expect(result.exceendsScreenWidth).toBe(false); // key one
 	expect(result.exceedsScreenHeight).toBe(false); // just ensuring this didn't change based on both flyout and constraint
 	expect(result.layoutIsConstrained).toBe(false); // just ensuring this didn't change based on both flyout and constraint

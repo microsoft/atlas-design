@@ -73,8 +73,8 @@ $default-flyout-width-widescreen: 480px;
 }
 
 .layout-body-flyout {
+	display: none;
 	grid-area: flyout;
-	view-transition-name: layout-flyout;
 }
 
 .layout-body-hero,
@@ -338,33 +338,13 @@ $default-flyout-width-widescreen: 480px;
 	-webkit-overflow-scrolling: touch;
 }
 
-.layout-body-flyout-sticky {
-	@include constrained-layout-child;
-}
-
-@include discouraged-mobile {
-	.layout-body-flyout {
-		display: none;
-	}
-}
-
 // hide flyout when it's inactive
 
-.layout:not(.layout-flyout-active) {
-	.layout-body-flyout {
-		display: none;
-	}
-}
-
-@include tablet {
-	.layout .layout-body-flyout {
-		display: none;
-	}
-}
-
 @include desktop {
-	.layout .layout-body-flyout {
-		display: block;
+	.layout.layout-flyout-active {
+		.layout-body-flyout {
+			display: block;
+		}
 	}
 }
 
