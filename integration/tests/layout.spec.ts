@@ -401,7 +401,7 @@ test('any layout can render a flyout menu on desktop+, with no side scroll @desk
 	expect(result.layoutIsConstrained).toBe(false); // just ensuring this didn't change based on both flyout and constraint
 });
 
-test('flyout will not be shown on mobile and tablet ever @desktop', async ({ page }, testInfo) => {
+test('flyout will not be shown on mobile and tablet ever @narrow', async ({ page }, testInfo) => {
 	test.skip(
 		testInfo.project.name === 'Widescreen Chromium',
 		'Skip test if display screen is not mobile'
