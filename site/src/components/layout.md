@@ -28,8 +28,8 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
 	<button class="button" data-toggle-layout-height-constraint aria-pressed="false">Constrain layout height</button>
 </div>
 <div class="buttons buttons-addons display-flex">
-	<button class="button" data-toggle-hero-visibility aria-pressed="false">Toggle hero</button>
-	<button class="button" data-toggle-footer-visibility aria-pressed="false">Toggle footer</button>
+	<button class="button button-filled" data-toggle-hero-visibility aria-pressed="true">Toggle hero</button>
+	<button class="button button-filled" data-toggle-footer-visibility aria-pressed="true">Toggle footer</button>
 	<button class="button" data-toggle-flyout-visibility aria-pressed="false">Toggle flyout</button>
 </div>
 
