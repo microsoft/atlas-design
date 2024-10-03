@@ -13,6 +13,7 @@ classPrefixes:
   - text-transform
   - text-wrap
   - line-height
+  - white-space
 ---
 
 # Typography Atomics
@@ -30,6 +31,7 @@ The typography scale is designed for great readability across the platform. This
 | `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
 | `text-wrap`       | `pretty`                                                         | N\A        |
 | `line-height`     | `normal`                                                         | N\A        |
+| `white-space`     | `normal`, `nowrap`, `pre`, `pre-wrap`                            | N\A        |
 
 ## Font size
 
@@ -134,3 +136,16 @@ If your browser supports pretty text-wrapping, resize your browser window and no
 
 - **Support:** As of March 2024, [support is mainly available in Chromium browsers](https://caniuse.com/mdn-css_properties_text-wrap_pretty). Browsers which don't support this rule will ignore it and break lines as usual. Treat this as a progressive enhancement.
 - **Performance:** Calculating optimal line breaks can be expensive, especially for larger blocks of text. Use, but use sparingly.
+
+## White space
+
+Control the preservation of white space (or lack thereof) and text wrapping by using the `white-space` property.
+
+For example, show white space:
+
+```html
+<p class="white-space-pre-wrap">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+	labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+</p>
+```
