@@ -3,6 +3,8 @@
 $quarter-widescreen: math.div($breakpoint-widescreen, 4);
 $half-widescreen: math.div($breakpoint-widescreen, 2);
 $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
+$default-flyout-width-desktop: 360px;
+$default-flyout-width-widescreen: 480px;
 
 :root {
 	--window-inner-height: 100vh; // to be overwritten by JS
@@ -19,9 +21,14 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	// --layout-gutter by default, see tokens/layout.scss
 	#{$layout-gap-custom-property-name}: $layout-gap;
 	#{$layout-gap-scalable-custom-property-name}: $layout-gap;
+	#{$layout-flyout-width-desktop-custom-property-name}: $default-flyout-width-desktop;
+	#{$layout-flyout-width-widescreen-custom-property-name}: $default-flyout-width-widescreen;
+	#{$layout-flyout-width-name}: var(#{$layout-flyout-width-desktop-custom-property-name});
 
 	@include widescreen {
 		#{$layout-gap-scalable-custom-property-name}: $layout-widescreen-gap;
+		// sets widescreen custom prop
+		#{$layout-flyout-width-name}: var(#{$layout-flyout-width-widescreen-custom-property-name});
 	}
 }
 
@@ -65,6 +72,11 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	grid-area: footer;
 }
 
+.layout-body-flyout {
+	display: none;
+	grid-area: flyout;
+}
+
 .layout-body-hero,
 .layout-body-main,
 .layout-body-footer,
@@ -75,11 +87,22 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	}
 }
 
+/* It is quite hard to keep the layout rules organized / group while satisfying the no-descrending specificity lint rule. Disabling it here. */
+
+/* stylelint-disable no-descending-specificity */
+
 .layout,
 .layout.layout-single {
 	.layout-body {
 		grid-template: auto auto auto 1fr auto auto / minmax(0, 1fr);
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
+	}
+
+	&.layout-flyout-active .layout-body {
+		@include desktop {
+			grid-template: auto auto auto 1fr auto auto / minmax(0, 1fr) var(#{$layout-flyout-width-name});
+			grid-template-areas: 'header flyout' 'hero flyout' 'menu flyout' 'main flyout' 'aside flyout' 'footer flyout';
+		}
 	}
 }
 
@@ -122,6 +145,30 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 				'footer footer footer footer footer';
 		}
 	}
+
+	&.layout-flyout-active .layout-body {
+		@include desktop {
+			grid-template:
+				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
+				var(#{$layout-flyout-width-name});
+			grid-template-areas:
+				'header header header flyout'
+				'hero hero hero flyout'
+				'menu main aside flyout'
+				'footer footer footer flyout';
+		}
+
+		@include widescreen {
+			grid-template:
+				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
+				var(#{$layout-flyout-width-name});
+			grid-template-areas:
+				'header header header flyout'
+				'hero hero hero flyout'
+				'menu main aside flyout'
+				'footer footer footer flyout';
+		}
+	}
 }
 
 .layout.layout-sidecar-left {
@@ -158,6 +205,29 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 				'hero hero hero hero'
 				'. menu main .'
 				'footer footer footer footer';
+		}
+	}
+
+	&.layout-flyout-active .layout-body {
+		@include desktop {
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 3fr) var(
+					#{$layout-flyout-width-name}
+				);
+			grid-template-areas:
+				'header header flyout'
+				'hero hero flyout'
+				'menu main flyout'
+				'footer footer flyout';
+		}
+		@include widescreen {
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 3fr) var(
+					#{$layout-flyout-width-name}
+				);
+			grid-template-areas:
+				'header header flyout'
+				'hero hero flyout'
+				'menu main flyout'
+				'footer footer flyout';
 		}
 	}
 }
@@ -198,6 +268,30 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 				'footer footer footer footer';
 		}
 	}
+
+	&.layout-flyout-active .layout-body {
+		@include desktop {
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(0, 1fr) var(
+					#{$layout-flyout-width-name}
+				);
+			grid-template-areas:
+				'header header flyout'
+				'hero hero flyout'
+				'main aside flyout'
+				'footer footer flyout';
+		}
+
+		@include widescreen {
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(0, 1fr) var(
+					#{$layout-flyout-width-name}
+				);
+			grid-template-areas:
+				'header header flyout'
+				'hero hero flyout'
+				'main aside flyout'
+				'footer footer flyout';
+		}
+	}
 }
 
 .layout.layout-twin {
@@ -215,11 +309,26 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 			grid-template-areas:
 				'header header'
 				'hero hero'
-				'main aside '
+				'main aside'
 				'footer footer';
 		}
 	}
+
+	&.layout-flyout-active .layout-body {
+		@include desktop {
+			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 1fr) var(
+					#{$layout-flyout-width-name}
+				);
+			grid-template-areas:
+				'header header flyout'
+				'hero hero flyout'
+				'main aside flyout'
+				'footer footer flyout';
+		}
+	}
 }
+
+/* stylelint-enable no-descending-specificity */
 
 @mixin constrained-layout-child {
 	position: sticky;
@@ -227,6 +336,16 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 	overflow-x: hidden;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
+}
+
+// hide flyout when it's inactive
+
+@include desktop {
+	.layout.layout-flyout-active {
+		.layout-body-flyout {
+			display: block;
+		}
+	}
 }
 
 @include tablet {
@@ -268,6 +387,12 @@ $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 		.layout-body-main,
 		.layout-body-menu,
 		.layout-body-aside {
+			@include constrained-layout-child;
+		}
+	}
+
+	.layout.layout-constrained {
+		.layout-body-flyout {
 			@include constrained-layout-child;
 		}
 	}

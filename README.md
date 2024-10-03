@@ -23,15 +23,14 @@ Looking for information about the Atlas CSS framework? Start in `/css`!
 
 ## Version and status
 
-| Name                     | Status                                                                                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **@microsoft/atlas-css** | [![@microsoft/atlas-css npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)                          |
-| **@microsoft/atlas-js**  | [![@microsoft/atlas-js npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-js.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-js)                             |
-| **Release Pipeline**     | [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml) |
-| **PR Builds**            | [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml) |
-
-![Atlas-css package size (gzip)](https://img.badgesize.io/https:/unpkg.com/@microsoft/atlas-css/dist/index.css?label=css%20gzip%20size&compression=gzip)
-![Atlas-css package size (uncompressed)](<https://img.badgesize.io/https:/unpkg.com/@microsoft/atlas-css/dist/index.css?label=css%20size%20(uncompressed)>)
+| Name                                      | Status                                                                                                                                                                   |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **@microsoft/atlas-css**                  | [![@microsoft/atlas-css npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-css.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-css)                          |
+| **@microsoft/atlas-js**                   | [![@microsoft/atlas-js npm version](https://badge.fury.io/js/%40microsoft%2Fatlas-js.svg)](https://badge.fury.io/js/%40microsoft%2Fatlas-js)                             |
+| **Release Pipeline**                      | [![Release](https://github.com/microsoft/atlas-design/actions/workflows/release.yml/badge.svg)](https://github.com/microsoft/atlas-design/actions/workflows/release.yml) |
+| **PR Builds**                             | [![CI](https://github.com/microsoft/atlas-design/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/microsoft/atlas-design/actions/workflows/main.yml) |
+| **Atlas-css package size (gzip)**         | ![Atlas-css package size (gzip)](https://img.badgesize.io/https:/unpkg.com/@microsoft/atlas-css/dist/index.css?label=css%20gzip%20size&compression=gzip)                 |
+| **Atlas-css package size (uncompressed)** | ![Atlas-css package size (uncompressed)](<https://img.badgesize.io/https:/unpkg.com/@microsoft/atlas-css/dist/index.css?label=css%20size%20(uncompressed)>)              |
 
 ## Development
 

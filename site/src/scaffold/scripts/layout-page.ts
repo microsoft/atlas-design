@@ -29,6 +29,10 @@ export function initLayoutPageControls() {
 			);
 		}
 
+		if (document.documentElement.classList.contains(layoutToSet)) {
+			return;
+		}
+
 		safeViewTransition(() => {
 			setLayoutClass(layoutToSet);
 			scrollTo({ behavior: 'instant', top: target.getBoundingClientRect().top - 200 });
@@ -46,6 +50,7 @@ export function initLayoutPageControls() {
 		if (!target) {
 			return;
 		}
+
 		target.classList.toggle('button-filled');
 		document.documentElement.classList.toggle('debug');
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
@@ -104,6 +109,28 @@ export function initLayoutPageControls() {
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
 
 		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+	});
+
+	window.addEventListener('click', (e: MouseEvent) => {
+		const target =
+			e.target instanceof Element &&
+			(e.target.closest('[data-toggle-flyout-visibility]') as HTMLElement);
+		if (!target) {
+			return;
+		}
+
+		target.classList.toggle('button-filled');
+		const flyout = document.querySelector('.layout-body-flyout') as HTMLElement;
+		if (!flyout) {
+			return;
+		}
+		safeViewTransition(() => {
+			const html = document.documentElement;
+			html.classList.toggle('layout-flyout-active');
+			target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+
+			window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+		});
 	});
 }
 
