@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.56.0
+
+### Minor Changes
+
+- bef61ab0: Add flyout component to layouts and add relevant documentation.
+- 49e9c2e7: Add white-space property
+
 ## 0.55.0
 
 ### Minor Changes

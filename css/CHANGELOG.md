@@ -1,5 +1,17 @@
 # @microsoft/atlas-css
 
+## 3.53.0
+
+### Minor Changes
+
+- bef61ab0: Add animation-none class to allow to easily disable animation.
+- bef61ab0: Add flyout component to layouts and add relevant documentation.
+- 49e9c2e7: Add white-space property
+
+### Patch Changes
+
+- cfec0da1: Add underline to banner and notification links
+
 ## 3.52.0
 
 ### Minor Changes
