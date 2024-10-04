@@ -199,23 +199,23 @@
 // Line height
 
 .line-height-normal {
-	line-height: $line-height-normal;
+	line-height: $line-height-normal !important;
 }
 
 // White space
 
 .white-space-normal {
-	white-space: normal;
+	white-space: normal !important;
 }
 
 .white-space-nowrap {
-	white-space: nowrap;
+	white-space: nowrap !important;
 }
 
 .white-space-pre {
-	white-space: pre;
+	white-space: pre !important;
 }
 
 .white-space-pre-wrap {
-	white-space: pre-wrap;
+	white-space: pre-wrap !important;
 }
