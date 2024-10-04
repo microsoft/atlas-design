@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.57.0
+
+### Minor Changes
+
+- bd2f360a: Adding Accordion component and relevant documentation.
+
+### Patch Changes
+
+- e5fc6ddf: Invert button states for hero and footer toggles.
+
 ## 0.56.0
 
 ### Minor Changes
