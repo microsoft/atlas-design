@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 3.54.0
+
+### Minor Changes
+
+- bd2f360a: Adding Accordion component and relevant documentation.
+
+### Patch Changes
+
+- 0f89f529: Add !important flag to line-height-normal and white-space atomics.
+
 ## 3.53.0
 
 ### Minor Changes

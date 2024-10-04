@@ -1,5 +1,11 @@
 # @microsoft/atlas-integration
 
+## 1.8.0
+
+### Minor Changes
+
+- bd2f360a: Adding Accordion component and relevant documentation.
+
 ## 1.7.0
 
 ### Minor Changes
