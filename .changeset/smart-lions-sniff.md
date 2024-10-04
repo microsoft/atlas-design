@@ -4,4 +4,4 @@
 '@microsoft/atlas-site': minor
 ---
 
-Adds Accordion component, patterns and relevant documentation.
+Adding Accordion component and relevant documentation.

@@ -1,4 +1,3 @@
-/* stylelint-disable selector-max-specificity, selector-no-qualifying-type */
 $accordion-font-size-sm: $font-size-9 !default;
 $accordion-font-size-md: $font-size-8 !default;
 $accordion-font-size-lg: $font-size-7 !default;
@@ -92,6 +91,7 @@ $accordion-transition: transform 0.15s !default;
 				transform: $chevron-down-rotate translate(calc($chevron-arrow-size / 2), 0);
 			}
 
+			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
 			&:dir(rtl) summary::before {
 				transform: $chevron-down-rotate-rtl translate(calc($chevron-arrow-size / 2 * -1), 0);
 			}
@@ -102,6 +102,7 @@ $accordion-transition: transform 0.15s !default;
 				transform: $chevron-up-rotate-scale-xy;
 			}
 
+			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
 			&:dir(rtl) summary::after {
 				transform: $chevron-up-rotate-scale-xy-rtl;
 			}
@@ -114,19 +115,19 @@ $accordion-transition: transform 0.15s !default;
 
 	// Sizes
 
-	&.accordion-xxl {
-		@include accordion-summary-sizes($accordion-font-size-xxl);
-	}
-
-	&.accordion-xl {
-		@include accordion-summary-sizes($accordion-font-size-xl);
+	&.accordion-sm {
+		@include accordion-summary-sizes($accordion-font-size-sm);
 	}
 
 	&.accordion-lg {
 		@include accordion-summary-sizes($accordion-font-size-lg);
 	}
 
-	&.accordion-sm {
-		@include accordion-summary-sizes($accordion-font-size-sm);
+	&.accordion-xl {
+		@include accordion-summary-sizes($accordion-font-size-xl);
+	}
+
+	&.accordion-xxl {
+		@include accordion-summary-sizes($accordion-font-size-xxl);
 	}
 }
