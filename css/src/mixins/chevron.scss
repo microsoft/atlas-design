@@ -1,0 +1,48 @@
+$chevron-color: $text !default;
+$chevron-arrow-size: 0.525em !default;
+$chevron-arrow-border-width: 1px !default;
+$chevron-arrow-actual-width: 0.75em !default;
+$chevron-down-rotate: rotate(-45deg) !default;
+$chevron-down-rotate-rtl: rotate(-315deg) !default;
+$chevron-right-rotate-rtl: rotate(-225deg) !default;
+$chevron-right-rotate: rotate(-135deg) !default;
+$chevron-up-rotate: rotate(-225deg) !default;
+$chevron-up-rotate-scale-xy: $chevron-down-rotate scaleY(-1) scaleX(-1);
+$chevron-up-rotate-scale-xy-rtl: $chevron-down-rotate-rtl scaleY(-1) scaleX(-1);
+
+%chevron {
+	width: $chevron-arrow-size;
+	height: $chevron-arrow-size;
+	transform-origin: center;
+	border: $chevron-arrow-border-width solid $chevron-color;
+	border-block-start: 0;
+	border-inline-end: 0;
+	pointer-events: none;
+	content: ' ';
+	z-index: $zindex-active;
+	inset-inline-end: $control-padding-horizontal;
+}
+
+@mixin chevron-right {
+	@extend %chevron;
+
+	transform: $chevron-right-rotate;
+}
+
+@mixin chevron-right-rtl {
+	@extend %chevron;
+
+	transform: $chevron-right-rotate-rtl;
+}
+
+@mixin chevron-down {
+	@extend %chevron;
+
+	transform: $chevron-down-rotate;
+}
+
+@mixin chevron-down-rtl {
+	@extend %chevron;
+
+	transform: $chevron-down-rotate-rtl;
+}

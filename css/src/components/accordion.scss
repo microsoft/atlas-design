@@ -1,0 +1,133 @@
+$accordion-font-size-sm: $font-size-9 !default;
+$accordion-font-size-md: $font-size-8 !default;
+$accordion-font-size-lg: $font-size-7 !default;
+$accordion-font-size-xl: $font-size-6 !default;
+$accordion-font-size-xxl: $font-size-5 !default;
+
+$accordion-gap: $layout-2 !default;
+$accordion-spacing: $spacer-4 !default;
+$accordion-transition: transform 0.15s !default;
+
+// Spacing and font-size
+
+@mixin accordion-summary-sizes($font-size) {
+	$icon-before-offset-size: calc($font-size - 0.375rem);
+	$icon-after-offset-size: calc($font-size - 0.5rem);
+
+	summary {
+		font-size: $font-size;
+	}
+
+	&:not(.accordion-icon-end) summary {
+		&::before {
+			margin-block-start: $icon-before-offset-size;
+		}
+	}
+
+	&.accordion-icon-end summary {
+		&::after {
+			margin-block-start: $icon-after-offset-size;
+		}
+	}
+}
+
+.accordion {
+	@include accordion-summary-sizes($accordion-font-size-md);
+
+	summary {
+		display: flex;
+		line-height: 1.5;
+		cursor: pointer;
+		padding-block: $accordion-spacing;
+		gap: $accordion-gap;
+
+		&::before,
+		&::after {
+			// Prevents chevron from being clipped when accordion title is long
+			flex-shrink: 0;
+		}
+
+		> &:hover {
+			color: $primary-hover;
+
+			&::before,
+			&::after {
+				border-color: $primary-hover;
+			}
+		}
+
+		.accordion-header {
+			flex-grow: 1;
+		}
+	}
+
+	&:not(.accordion-icon-end) {
+		summary::before {
+			@include chevron-right;
+
+			transition: $accordion-transition;
+		}
+
+		&:dir(rtl) summary::before {
+			@include chevron-right-rtl;
+		}
+	}
+
+	&.accordion-icon-end {
+		summary::after {
+			@include chevron-down;
+
+			transition: $accordion-transition;
+		}
+
+		&:dir(rtl) summary::after {
+			@include chevron-down-rtl;
+		}
+	}
+
+	&[open] {
+		&:not(.accordion-icon-end) {
+			summary::before {
+				transform: $chevron-down-rotate translate(calc($chevron-arrow-size / 2), 0);
+			}
+
+			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
+			&:dir(rtl) summary::before {
+				transform: $chevron-down-rotate-rtl translate(calc($chevron-arrow-size / 2 * -1), 0);
+			}
+		}
+
+		&.accordion-icon-end {
+			summary::after {
+				transform: $chevron-up-rotate-scale-xy;
+			}
+
+			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
+			&:dir(rtl) summary::after {
+				transform: $chevron-up-rotate-scale-xy-rtl;
+			}
+		}
+	}
+
+	.accordion-content {
+		font-size: $accordion-font-size-md;
+	}
+
+	// Sizes
+
+	&.accordion-sm {
+		@include accordion-summary-sizes($accordion-font-size-sm);
+	}
+
+	&.accordion-lg {
+		@include accordion-summary-sizes($accordion-font-size-lg);
+	}
+
+	&.accordion-xl {
+		@include accordion-summary-sizes($accordion-font-size-xl);
+	}
+
+	&.accordion-xxl {
+		@include accordion-summary-sizes($accordion-font-size-xxl);
+	}
+}
