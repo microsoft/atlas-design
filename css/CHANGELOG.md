@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.55.0
+
+### Minor Changes
+
+- f0dde112: Accordion typo - removing the unnecessary child selector
+
 ## 3.54.0
 
 ### Minor Changes
