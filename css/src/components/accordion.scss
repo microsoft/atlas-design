@@ -47,7 +47,7 @@ $accordion-transition: transform 0.15s !default;
 			flex-shrink: 0;
 		}
 
-		> &:hover {
+		&:hover {
 			color: $primary-hover;
 
 			&::before,
