@@ -59,6 +59,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 }
 
 .site-header {
+	container: inline-size;
 	display: flex;
 	position: relative;
 	align-items: center;
@@ -68,8 +69,8 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 	gap: $site-header-inline-gap;
 	padding-inline: $layout-gap;
 
-	@include widescreen {
-		padding-inline: $layout-widescreen-gap;
+	@include container-widescreen {
+		padding-inline: max(#{$layout-gap}, #{$layout-widescreen-gap});
 	}
 
 	.site-header-button {
@@ -155,7 +156,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 			@extend %site-header-hover-underline;
 		}
 
-		@include tablet {
+		@include container-tablet {
 			font-size: $site-header-brand-font-size;
 		}
 	}
@@ -185,16 +186,16 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 		padding-block: $site-header-panel-block-padding;
 		padding-inline: $layout-gap;
 
-		@include tablet {
+		@include container-tablet {
 			grid-template-columns: auto 33.333%;
 			grid-template-areas: 'panel-content panel-featured-section';
 		}
 
-		@include desktop {
+		@include container-desktop {
 			grid-template-columns: auto 25%;
 		}
 
-		@include widescreen {
+		@include container-widescreen {
 			padding-inline: $layout-widescreen-gap;
 		}
 
@@ -206,7 +207,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 			gap: $site-header-panel-gap;
 			flex-direction: column;
 
-			@include tablet {
+			@include container-tablet {
 				border-inline-start: $site-header-panel-featured-section-border;
 				border-block-start: 0;
 				padding-block-start: 0;
@@ -224,13 +225,13 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 			display: grid;
 			grid-gap: $site-header-panel-content-gap;
 
-			@include tablet {
+			@include container-tablet {
 				grid-auto-flow: column;
 				grid-template-columns: repeat(2, 1fr);
 				grid-template-rows: repeat(11, auto);
 			}
 
-			@include desktop {
+			@include container-desktop {
 				grid-template-columns: repeat(3, 1fr);
 				grid-template-rows: repeat(7, auto);
 			}
@@ -240,13 +241,13 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 			display: grid;
 			grid-gap: $site-header-panel-content-gap;
 
-			@include tablet {
+			@include container-tablet {
 				grid-auto-flow: column;
 				grid-template-columns: repeat(2, 1fr);
 				grid-template-rows: repeat(5, auto);
 			}
 
-			@include desktop {
+			@include container-desktop {
 				grid-template-columns: repeat(3, 1fr);
 				grid-template-rows: repeat(3, auto);
 			}

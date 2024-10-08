@@ -59,3 +59,54 @@
 		@content;
 	}
 }
+
+// Container based querys
+
+// Please avoid using this mixin if possible. It doesn't follow the mobile-first approach to writing CSS.
+@mixin container-discouraged-mobile($container-name: '') {
+	@if $container-name != '' {
+		@container #{container-name} (max-width: ($breakpoint-tablet - 1px)) {
+			@content;
+		}
+	} @else {
+		@container (max-width: ($breakpoint-tablet - 1px)) {
+			@content;
+		}
+	}
+}
+
+@mixin container-tablet($container-name: '') {
+	@if $container-name != '' {
+		@container #{container-name} (min-width: #{$breakpoint-tablet}) {
+			@content;
+		}
+	} @else {
+		@container (min-width: #{$breakpoint-tablet}) {
+			@content;
+		}
+	}
+}
+
+@mixin container-desktop($container-name: '') {
+	@if $container-name != '' {
+		@container #{container-name} (min-width: #{$breakpoint-desktop}) {
+			@content;
+		}
+	} @else {
+		@container (min-width: #{$breakpoint-desktop}) {
+			@content;
+		}
+	}
+}
+
+@mixin container-widescreen($container-name: '') {
+	@if $container-name != '' {
+		@container #{container-name} (min-width: #{$breakpoint-widescreen}) {
+			@content;
+		}
+	} @else {
+		@container (min-width: #{$breakpoint-widescreen}) {
+			@content;
+		}
+	}
+}
