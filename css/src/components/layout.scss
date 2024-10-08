@@ -217,7 +217,7 @@ $default-flyout-width-widescreen: 480px;
 				'header header header'
 				'hero hero flyout'
 				'menu main flyout'
-				'footer footer flyout';
+				'footer footer footer';
 		}
 		@include widescreen {
 			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 3fr) var(
@@ -227,7 +227,7 @@ $default-flyout-width-widescreen: 480px;
 				'header header header'
 				'hero hero flyout'
 				'menu main flyout'
-				'footer footer flyout';
+				'footer footer footer';
 		}
 	}
 }
@@ -323,7 +323,7 @@ $default-flyout-width-widescreen: 480px;
 				'header header header'
 				'hero hero flyout'
 				'main aside flyout'
-				'footer footer flyout';
+				'footer footer footer';
 		}
 	}
 }
