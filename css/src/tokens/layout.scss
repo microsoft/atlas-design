@@ -8,8 +8,9 @@ $reading-max-width: 50rem !default;
 
 $layout-gap: 24px !default;
 $layout-widescreen-width: $breakpoint-widescreen - $layout-gap * 2 !default;
-$layout-widescreen-gap: calc(
-	50% - #{$layout-widescreen-width} / 2
+$layout-widescreen-gap: max(
+	$layout-gap,
+	calc(50% - #{$layout-widescreen-width} / 2)
 ) !default; // $layout-widescreen-gap is a naming error, keeping for backwards compat
 
 $layout-gap-custom-property-name: '--layout-gap' !default;

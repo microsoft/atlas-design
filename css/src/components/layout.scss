@@ -101,7 +101,7 @@ $default-flyout-width-widescreen: 480px;
 	&.layout-flyout-active .layout-body {
 		@include desktop {
 			grid-template: auto auto auto 1fr auto auto / minmax(0, 1fr) var(#{$layout-flyout-width-name});
-			grid-template-areas: 'header flyout' 'hero flyout' 'menu flyout' 'main flyout' 'aside flyout' 'footer flyout';
+			grid-template-areas: 'header header' 'hero flyout' 'menu flyout' 'main flyout' 'aside flyout' 'footer footer';
 		}
 	}
 }
@@ -152,10 +152,10 @@ $default-flyout-width-widescreen: 480px;
 				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
 				var(#{$layout-flyout-width-name});
 			grid-template-areas:
-				'header header header flyout'
+				'header header header header'
 				'hero hero hero flyout'
 				'menu main aside flyout'
-				'footer footer footer flyout';
+				'footer footer footer footer';
 		}
 
 		@include widescreen {
@@ -163,10 +163,10 @@ $default-flyout-width-widescreen: 480px;
 				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
 				var(#{$layout-flyout-width-name});
 			grid-template-areas:
-				'header header header flyout'
+				'header header header header'
 				'hero hero hero flyout'
 				'menu main aside flyout'
-				'footer footer footer flyout';
+				'footer footer footer footer';
 		}
 	}
 }
@@ -214,7 +214,7 @@ $default-flyout-width-widescreen: 480px;
 					#{$layout-flyout-width-name}
 				);
 			grid-template-areas:
-				'header header flyout'
+				'header header header'
 				'hero hero flyout'
 				'menu main flyout'
 				'footer footer flyout';
@@ -224,7 +224,7 @@ $default-flyout-width-widescreen: 480px;
 					#{$layout-flyout-width-name}
 				);
 			grid-template-areas:
-				'header header flyout'
+				'header header header'
 				'hero hero flyout'
 				'menu main flyout'
 				'footer footer flyout';
@@ -275,10 +275,10 @@ $default-flyout-width-widescreen: 480px;
 					#{$layout-flyout-width-name}
 				);
 			grid-template-areas:
-				'header header flyout'
+				'header header header'
 				'hero hero flyout'
 				'main aside flyout'
-				'footer footer flyout';
+				'footer footer footer';
 		}
 
 		@include widescreen {
@@ -286,10 +286,10 @@ $default-flyout-width-widescreen: 480px;
 					#{$layout-flyout-width-name}
 				);
 			grid-template-areas:
-				'header header flyout'
+				'header header header'
 				'hero hero flyout'
 				'main aside flyout'
-				'footer footer flyout';
+				'footer footer footer';
 		}
 	}
 }
@@ -320,7 +320,7 @@ $default-flyout-width-widescreen: 480px;
 					#{$layout-flyout-width-name}
 				);
 			grid-template-areas:
-				'header header flyout'
+				'header header header'
 				'hero hero flyout'
 				'main aside flyout'
 				'footer footer flyout';
