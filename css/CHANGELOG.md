@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.55.1
+
+### Patch Changes
+
+- dfc0a22c: Flyout to render under the header and footer not adjacent to them.
+
 ## 3.55.0
 
 ### Minor Changes
