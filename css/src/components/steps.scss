@@ -1,0 +1,22 @@
+$steps-gap: 7px;
+$steps-size: 8px;
+$steps-size-double: 16px;
+
+.steps {
+	display: flex;
+	gap: $steps-gap;
+
+	.step {
+		width: $steps-size;
+		height: $steps-size;
+		border-radius: 50%;
+		background-color: $secondary;
+
+		&.step-selected {
+			width: $steps-size-double;
+			height: $steps-size;
+			border-radius: $steps-size;
+			background-color: $primary;
+		}
+	}
+}
