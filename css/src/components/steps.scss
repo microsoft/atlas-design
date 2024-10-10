@@ -1,6 +1,6 @@
 $steps-gap: 7px;
 $steps-size: 8px;
-$steps-size-double: 16px;
+$steps-size-double: 2 * $steps-size;
 
 .steps {
 	display: flex;

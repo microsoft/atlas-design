@@ -6,6 +6,7 @@ figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.f
 classType: Component
 classPrefixes:
   - steps
+  - step
 ---
 
 # Steps
