@@ -16,35 +16,40 @@ Used to indicate the user's location in a finite progression. These steps are no
 For example, as a user progresses through 5 items, you would see something like this:
 
 ```html
-<div class="steps padding-xxs">
+<p class="visually-hidden">Step 1 of 5</p>
+<div class="steps padding-xxs" aria-hidden="true">
 	<div class="step step-selected"></div>
 	<div class="step"></div>
 	<div class="step"></div>
 	<div class="step"></div>
 	<div class="step"></div>
 </div>
-<div class="steps padding-xxs">
+<p class="visually-hidden">Step 2 of 5</p>
+<div class="steps padding-xxs" aria-hidden="true">
 	<div class="step"></div>
 	<div class="step step-selected"></div>
 	<div class="step"></div>
 	<div class="step"></div>
 	<div class="step"></div>
 </div>
-<div class="steps padding-xxs">
+<p class="visually-hidden">Step 3 of 5</p>
+<div class="steps padding-xxs" aria-hidden="true">
 	<div class="step"></div>
 	<div class="step"></div>
 	<div class="step step-selected"></div>
 	<div class="step"></div>
 	<div class="step"></div>
 </div>
-<div class="steps padding-xxs">
+<p class="visually-hidden">Step 4 of 5</p>
+<div class="steps padding-xxs" aria-hidden="true">
 	<div class="step"></div>
 	<div class="step"></div>
 	<div class="step"></div>
 	<div class="step step-selected"></div>
 	<div class="step"></div>
 </div>
-<div class="steps padding-xxs">
+<p class="visually-hidden">Step 5 of 5</p>
+<div class="steps padding-xxs" aria-hidden="true">
 	<div class="step"></div>
 	<div class="step"></div>
 	<div class="step"></div>
@@ -52,3 +57,7 @@ For example, as a user progresses through 5 items, you would see something like 
 	<div class="step step-selected"></div>
 </div>
 ```
+
+## Accessibility concerns
+
+Although the step component is not interactive, it is also not entirely presentational. Thus, it's recommended that you put `aria-hidden` on the component, while including a `visually-hidden` element that communicates the current state of the user's progress through the steps.
