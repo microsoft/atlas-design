@@ -1,6 +1,6 @@
 ---
 title: Steps
-description: Steps the Atlas Design System
+description: The steps component in the Atlas Design System
 template: standard
 figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com/design/7raji0IWkuBRxs5kLiADgI/Copilot-Web-UI-kit?node-id=70108-9255&node-type=frame&t=G0FoPLEXPee1yysa-0
 classType: Component

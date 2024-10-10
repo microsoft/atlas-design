@@ -9,13 +9,11 @@ $steps-size-double: 2 * $steps-size;
 	.step {
 		width: $steps-size;
 		height: $steps-size;
-		border-radius: 50%;
+		border-radius: $border-radius-rounded;
 		background-color: $secondary;
 
 		&.step-selected {
 			width: $steps-size-double;
-			height: $steps-size;
-			border-radius: $steps-size;
 			background-color: $primary;
 		}
 	}
