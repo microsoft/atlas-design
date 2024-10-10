@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.58.0
+
+### Minor Changes
+
+- ad81e9f8: Add steps component and documentation
+
 ## 0.57.0
 
 ### Minor Changes

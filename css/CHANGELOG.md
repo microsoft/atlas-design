@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.56.0
+
+### Minor Changes
+
+- ad81e9f8: Add steps component and documentation
+
 ## 3.55.1
 
 ### Patch Changes
