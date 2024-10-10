@@ -48,6 +48,7 @@ const pathnames = [
 	'/components/scroll.html',
 	'/components/select.html',
 	'/components/site-header.html',
+	'/components/steps.html',
 	'/components/stretched-link.html',
 	'/components/table.html',
 	'/components/tag.html',
