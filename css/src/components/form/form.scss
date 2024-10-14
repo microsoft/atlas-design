@@ -1,7 +1,7 @@
 /* stylelint-disable max-nesting-depth, selector-max-specificity  */
 
 $field-line-height: 1.5 !default;
-$field-error-color: $danger !default;
+$field-error-color: $colorPaletteRedForeground1 !default;
 
 .field {
 	&:not(:last-child) {

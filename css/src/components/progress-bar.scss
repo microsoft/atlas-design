@@ -1,6 +1,6 @@
 $progress-bar-background-color: $secondary-background-glow-high-contrast !default;
 $progress-bar-value-background-color: $primary !default;
-$progress-bar-value-background-color-warning: $warning !default;
+$progress-bar-value-background-color-warning: $colorPaletteDarkOrangeBackground3 !default;
 $progress-bar-value-background-color-danger: $danger !default;
 $progress-bar-value-background-color-success: $success !default;
 $progress-bar-height: $spacer-2 !default;
@@ -61,6 +61,16 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 	}
 
 	&.progress-bar-warning {
+		&::-webkit-progress-value {
+			background-color: $progress-bar-value-background-color-warning;
+		}
+
+		&::-moz-progress-bar {
+			background-color: $progress-bar-value-background-color-warning;
+		}
+	}
+
+	.theme-dark &.progress-bar-warning {
 		&::-webkit-progress-value {
 			background-color: $progress-bar-value-background-color-warning;
 		}
