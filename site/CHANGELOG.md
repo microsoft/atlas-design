@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.59.0
+
+### Minor Changes
+
+- bbac9cfd: Add `-tablet` suffixed version of `.layout-padding` and `.layout-gap`.
+
 ## 0.58.0
 
 ### Minor Changes
