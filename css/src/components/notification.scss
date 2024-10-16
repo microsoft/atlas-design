@@ -1,8 +1,8 @@
-$notification-background: $secondary-background !default;
+$notification-background: $secondary-background-fluent !default;
 $notification-padding: $spacer-5 !default;
 
 $notification-font-size: $font-size-7 !default;
-$notification-color: $text !default;
+$notification-color: $text-fluent !default;
 
 $notification-border-color: $control-border !default;
 $notification-border-width: $border-width !default;
@@ -33,11 +33,26 @@ $notification-dismiss-margin: $spacer-2 !default;
 		$base: nth($color-set, $color-index-base);
 		$dark: nth($color-set, $color-index-dark);
 		$background: nth($color-set, $color-index-background);
+		$border: nth($color-set, $color-index-border);
 
 		&.notification-#{$name} {
-			border-color: $dark;
-			background-color: $background;
-			color: $dark;
+			@if $name == 'tertiary' {
+				border-color: $border;
+				background-color: $background;
+				color: $dark;
+			} @else if $name == 'secondary' {
+				border-color: $border;
+				background-color: $background;
+				color: $dark;
+			} @else if $name == 'info' {
+				border-color: $border;
+				background-color: $background;
+				color: $dark;
+			} @else {
+				border-color: $border;
+				background-color: $background;
+				color: $text-fluent;
+			}
 
 			&.is-loading::before {
 				border-color: transparent transparent $dark $dark;

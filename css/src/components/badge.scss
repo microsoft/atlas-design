@@ -18,8 +18,10 @@ $badge-border-radius: $border-radius-rounded !default;
 	align-items: center;
 	justify-content: center;
 	padding: $badge-padding-block $badge-padding-inline;
-	border: $badge-border-width solid $border-white-high-contrast;
+	border: $badge-border-width solid $colorNeutralStroke2;
 	border-radius: $badge-border-radius;
+	background-color: $colorNeutralBackground4;
+	color: $colorNeutralForeground3;
 	font-size: $badge-font-size;
 	font-weight: $badge-font-weight;
 	line-height: $line-height-normal;
@@ -32,15 +34,15 @@ $badge-border-radius: $border-radius-rounded !default;
 		$dark: nth($color-set, $color-index-dark);
 		$background: nth($color-set, $color-index-background);
 
-		@if $name == 'secondary' {
-			border-color: $dark;
-			background-color: $background;
-			color: $dark;
-		} @else {
-			&.badge-#{$name} {
+		&.badge-#{$name} {
+			@if $name == 'info' or $name == 'secondary' or $name == 'tertiary' or $name == 'warning' {
 				border-color: $dark;
 				background-color: $background;
 				color: $dark;
+			} @else {
+				border-color: $base;
+				background-color: $background;
+				color: $base;
 			}
 		}
 	}
@@ -51,23 +53,33 @@ $badge-border-radius: $border-radius-rounded !default;
 	}
 
 	&.badge-filled {
+		background-color: $colorNeutralBackground5;
+
 		@each $name, $color-set in $colors {
 			$base: nth($color-set, $color-index-base);
 			$invert: nth($color-set, $color-index-invert);
 			$dark: nth($color-set, $color-index-dark);
 			$background: nth($color-set, $color-index-background);
 
-			@if $name == 'secondary' {
-				border-color: $base;
-				background-color: $base;
-				color: $invert;
-			} @else {
-				&.badge-#{$name} {
+			&.badge-#{$name} {
+				/* stylelint-disable-next-line max-nesting-depth */
+				@if $name == 'secondary' {
+					border-color: $base;
+					background-color: $base;
+					color: $invert;
+
+					/* stylelint-disable-next-line max-nesting-depth */
+				} @else {
 					border-color: $base;
 					background-color: $base;
 					color: $invert;
 				}
 			}
+		}
+
+		.theme-high-contrast & {
+			background-color: $alternate-background;
+			color: $text-invert;
 		}
 	}
 
