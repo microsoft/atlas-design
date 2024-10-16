@@ -62,10 +62,12 @@ The basic boilerplate for a layout is as follows:
 
 The `$layout-gap` token is used to generate two separate classes that can be used to apply spacing to containers _within_ each of the major layout areas. Spacing should _not_ be applied to the `layout-body-*` containers themselves, but rather to elements within them - most often a single container that is a direct child of the `layout-body-*` element.
 
-| Class name        | Use case                             | Examples of use case                                                                  |
-| ----------------- | ------------------------------------ | ------------------------------------------------------------------------------------- |
-| `.layout-padding` | Layout areas that are not full width | The menu and aside areas. The main area when not in a single layout                   |
-| `.layout-margin`  | Full width layout areas              | The header, footer, and hero. The main area when it is full width in a single layout. |
+| Class name               | Use case                                                                   | Examples of use case                                                                  |
+| ------------------------ | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `.layout-padding`        | Layout areas that are not full width                                       | The menu and aside areas. The main area when not in a single layout                   |
+| `.layout-margin`         | Full width layout areas                                                    | The header, footer, and hero. The main area when it is full width in a single layout. |
+| `.layout-padding-tablet` | Same as `.layout-padding` but only applied on tablet breakpoint and above. |                                                                                       |
+| `.layout-margin-tablet`  | Same as `.layout-margin` but only applied on tablet breakpoint and above.  |                                                                                       |
 
 Why not use gap? You certainly can apply any [gap atomics](../atomics/gap.md) to the `layout-body` to change spacing as you see fit. However, to provide adequate space to display focus rectangles and to ensure enough space to render dynamic inline elements (like heading anchors), spacing applied to an inner container is still the best choice.
 
