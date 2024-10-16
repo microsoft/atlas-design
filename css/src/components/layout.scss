@@ -40,6 +40,16 @@ $default-flyout-width-widescreen: 480px;
 	margin-inline: var(#{$layout-gap-scalable-custom-property-name}) !important;
 }
 
+@include tablet {
+	.layout-padding-tablet {
+		padding-inline: var(#{$layout-gap-custom-property-name}) !important;
+	}
+
+	.layout-margin-tablet {
+		margin-inline: var(#{$layout-gap-scalable-custom-property-name}) !important;
+	}
+}
+
 .layout-body {
 	display: grid;
 	width: 100%;
