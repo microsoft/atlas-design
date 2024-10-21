@@ -177,7 +177,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 		background-color: $site-header-panel-background-color;
 		text-wrap: wrap;
 		box-shadow: $site-header-panel-shadow;
-		z-index: $zindex-dropdown;
+		z-index: $zindex-popover;
 		inset-inline-start: 0;
 		inset-block-start: calc($site-header-height - 1px);
 		border-block-start: $site-header-panel-border;
