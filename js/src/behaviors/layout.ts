@@ -1,21 +1,17 @@
 let frame: number;
 
+const root = document.documentElement;
+
 const setLayoutCssVariables = () => {
-	const footerHeight = document.querySelector('.layout-body-footer')?.clientHeight;
 	const headerHeight = document.querySelector('.layout-body-header')?.clientHeight;
+	const headerCssProp = headerHeight ? `${headerHeight}px` : '0px';
 
-	const headerCssProp = headerHeight
-		? `--atlas-header-height: ${headerHeight}px !important;`
-		: '--atlas-header-height: 0px !important;';
-	const footerCssProp = footerHeight
-		? `--atlas-footer-height: ${footerHeight}px !important;`
-		: '--atlas-footer-height: 0px !important;';
+	const footerHeight = document.querySelector('.layout-body-footer')?.clientHeight;
+	const footerCssProp = footerHeight ? `${footerHeight}px` : '0px';
 
-	document.documentElement.style.cssText = `
-			--window-inner-height: ${window.innerHeight}px !important;
-			${headerCssProp}
-			${footerCssProp}
-			`;
+	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`, 'important');
+	root.style.setProperty('--atlas-header-height', headerCssProp, 'important');
+	root.style.setProperty('--atlas-footer-height', footerCssProp, 'important');
 };
 
 export function initLayout() {
@@ -31,7 +27,7 @@ export function initLayout() {
 		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'))
 	);
 
-	document.documentElement.style.cssText = `--window-inner-height: ${window.innerHeight}px !important`;
+	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`);
 
 	window.addEventListener('DOMContentLoaded', setLayoutCssVariables);
 }
