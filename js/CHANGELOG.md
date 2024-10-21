@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.12.1
+
+### Patch Changes
+
+- 9e64093d: The layout related TypeScript should use style.setProperty to avoid downstream conflicts if sets document.documentElement.style.cssText directly.
+
 ## 1.12.0
 
 ### Minor Changes
