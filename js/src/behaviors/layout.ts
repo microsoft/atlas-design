@@ -3,15 +3,25 @@ let frame: number;
 const root = document.documentElement;
 
 const setLayoutCssVariables = () => {
-	const headerHeight = document.querySelector('.layout-body-header')?.clientHeight;
+	const header = document.querySelector('.layout-body-header');
+	const headerHeight = header?.clientHeight || 0;
 	const headerCssProp = headerHeight ? `${headerHeight}px` : '0px';
+	const headerY = header?.getBoundingClientRect().y || 0; // determine if header is visible, assign visible heights as well
+	const visibleHeaderHeight = Math.round(Math.max(0, headerY + headerHeight));
+	const visibleHeaderCssProp = `${visibleHeaderHeight}px`;
 
-	const footerHeight = document.querySelector('.layout-body-footer')?.clientHeight;
+	const footer = document.querySelector('.layout-body-footer');
+	const footerHeight = footer?.clientHeight || 0;
 	const footerCssProp = footerHeight ? `${footerHeight}px` : '0px';
+	const footerY = footer?.getBoundingClientRect().y || 0; // determine if header and footer are visible, assign visible heights as well
+	const visibleFooterHeight = Math.round(Math.max(0, footerY + footerHeight));
+	const visibleFooterCssProp = `${visibleFooterHeight}px`;
 
 	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`, 'important');
 	root.style.setProperty('--atlas-header-height', headerCssProp, 'important');
 	root.style.setProperty('--atlas-footer-height', footerCssProp, 'important');
+	root.style.setProperty('--atlas-header-visible-height', visibleHeaderCssProp, 'important');
+	root.style.setProperty('--atlas-footer-visible-height', visibleFooterCssProp, 'important');
 };
 
 export function initLayout() {
@@ -23,11 +33,13 @@ export function initLayout() {
 		frame = requestAnimationFrame(setLayoutCssVariables);
 	});
 
-	window.addEventListener('resize', () =>
-		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'))
+	window.addEventListener(
+		'resize',
+		() => window.dispatchEvent(new CustomEvent('atlas-layout-change-event')),
+		{ passive: true }
 	);
 
 	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`);
 
-	window.addEventListener('DOMContentLoaded', setLayoutCssVariables);
+	window.addEventListener('DOMContentLoaded', setLayoutCssVariables, { passive: true });
 }
