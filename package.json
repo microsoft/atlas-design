@@ -27,6 +27,7 @@
 		"serve:css": "npm run start --workspace=@microsoft/atlas-css",
 		"screenshots:light": "npm run screenshots:light --workspace=@microsoft/atlas-integration",
 		"screenshots:all": "npm run screenshots:all --workspace=@microsoft/atlas-integration",
+		"test": "npm run test --workspace=@microsoft/atlas-js",
 		"integration": "npm run test --workspace=@microsoft/atlas-integration",
 		"integration:debug": "npm run test:debug --workspace=@microsoft/atlas-integration",
 		"show-report": "npm run show-report --workspace=@microsoft/atlas-integration",

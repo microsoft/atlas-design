@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"extendedDiagnostics": true,
+		"forceConsistentCasingInFileNames": true,
+		"declaration": true,
+		"importHelpers": true,
+		"lib": ["dom", "ESNext"],
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "dist-test",
+		"resolveJsonModule": true,
+		"strict": true,
+		"target": "esnext",
+		"skipLibCheck": true
+	},
+	"include": ["src/**/*.ts", "test/**/*.ts"]
+}

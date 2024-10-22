@@ -9,7 +9,7 @@
 		"build": "tsc --project \"./tsconfig.json\" --outDir \"./dist\" --declaration true --declarationMap true",
 		"lint": "eslint . --ext .ts",
 		"prebuild": "rimraf dist",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "tap run --allow-empty-coverage",
 		"prepublishOnly": "npm run lint && npm run build"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
@@ -39,6 +39,7 @@
 		"eslint-plugin-jsdoc": "^46.3.0",
 		"eslint-plugin-security": "^1.7.1",
 		"rimraf": "^5.0.1",
+		"tap": "^21.0.1",
 		"tslib": "^2.6.0",
 		"typescript": "^5.1.5"
 	}
