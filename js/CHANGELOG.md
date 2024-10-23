@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.13.0
+
+### Minor Changes
+
+- eb988a55: Atlas layout JS should also set the visible height of the header and the visible height of the footer.
+
 ## 1.12.1
 
 ### Patch Changes
