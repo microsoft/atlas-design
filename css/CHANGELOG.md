@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.57.1
+
+### Patch Changes
+
+- eb988a55: Remove two pixel adjustment from layout-constrained-height's declaration.
+- 959240b4: The z-index of the site-header's panels should not be dropdown, which is "in content." It should be popover, which is "on content"
+
 ## 3.57.0
 
 ### Minor Changes
