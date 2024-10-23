@@ -42,4 +42,13 @@ export function initLayout() {
 	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`);
 
 	window.addEventListener('DOMContentLoaded', setLayoutCssVariables, { passive: true });
+
+	// determine if header/footer are visible below the top of the viewport
+	window.addEventListener(
+		'scroll',
+		() => window.dispatchEvent(new CustomEvent('atlas-layout-change-event')),
+		{
+			passive: true
+		}
+	);
 }
