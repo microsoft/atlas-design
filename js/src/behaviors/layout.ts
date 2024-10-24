@@ -14,7 +14,10 @@ const setLayoutCssVariables = () => {
 	const footerHeight = footer?.clientHeight || 0;
 	const footerCssProp = footerHeight ? `${footerHeight}px` : '0px';
 	const footerY = footer?.getBoundingClientRect().y || 0; // determine if header and footer are visible, assign visible heights as well
-	const visibleFooterHeight = Math.round(Math.max(0, footerY + footerHeight));
+
+	const visibleFooterHeight = Math.round(
+		footerY < window.innerHeight ? Math.min(window.innerHeight - footerY, footerHeight) : 0
+	);
 	const visibleFooterCssProp = `${visibleFooterHeight}px`;
 
 	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`, 'important');
@@ -42,4 +45,14 @@ export function initLayout() {
 	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`);
 
 	window.addEventListener('DOMContentLoaded', setLayoutCssVariables, { passive: true });
+
+	// determine if header/footer are visible below the top of the viewport
+
+	window.addEventListener(
+		'scroll',
+		() => window.dispatchEvent(new CustomEvent('atlas-layout-change-event')),
+		{
+			passive: true
+		}
+	);
 }
