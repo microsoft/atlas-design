@@ -363,9 +363,8 @@ $default-flyout-width-widescreen: 480px;
 		&.layout-twin,
 		&.layout-sidecar-left,
 		&.layout-sidecar-right {
-			// 👇 minus a pixel at the end to account for percentage points and rounding
 			--atlas-contained-height: calc(
-				var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height) - 1px
+				var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height)
 			);
 		}
 
@@ -389,9 +388,8 @@ $default-flyout-width-widescreen: 480px;
 // Because the holy grail has two rows (containing menu main, menu aside) on tablet, we cannot apply height constraints at that size
 @include desktop {
 	.layout.layout-constrained.layout-holy-grail {
-		// 👇 minus a pixel at the end to account for percentage points and rounding
 		--atlas-contained-height: calc(
-			var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height) - 1px
+			var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height)
 		);
 
 		.layout-body-main,

@@ -11,13 +11,21 @@ const setLayoutCssVariables = () => {
 	const visibleHeaderCssProp = `${visibleHeaderHeight}px`;
 
 	const footer = document.querySelector('.layout-body-footer');
-	const footerHeight = footer?.clientHeight || 0;
-	const footerCssProp = footerHeight ? `${footerHeight}px` : '0px';
-	const footerY = footer?.getBoundingClientRect().y || 0; // determine if header and footer are visible, assign visible heights as well
+	// get computed style of the footer to ensure it is not hidden
+	const footerHidden = footer && window.getComputedStyle(footer).display !== 'none';
+	let footerHeight = 0;
+	let footerCssProp = '0px';
+	let footerY = 0;
+	let visibleFooterHeight = window.innerHeight;
+	if (!footerHidden) {
+		footerHeight = footer?.clientHeight || 0;
+		footerCssProp = footerHeight ? `${footerHeight}px` : '0px';
+		footerY = footer?.getBoundingClientRect().y || 0; // determine if header and footer are visible, assign visible heights as well
 
-	const visibleFooterHeight = Math.round(
-		footerY < window.innerHeight ? Math.min(window.innerHeight - footerY, footerHeight) : 0
-	);
+		visibleFooterHeight = Math.round(
+			footerY < window.innerHeight ? Math.min(window.innerHeight - footerY, footerHeight) : 0
+		);
+	}
 	const visibleFooterCssProp = `${visibleFooterHeight}px`;
 
 	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`, 'important');
