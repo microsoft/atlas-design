@@ -1,5 +1,12 @@
 # @microsoft/atlas-js
 
+## 1.13.1
+
+### Patch Changes
+
+- 80cb7aa3: Layout to use passive scroll listeners to measure visible header height
+- 80cb7aa3: Measurement for atlas-footer-visible-height was not correct.
+
 ## 1.13.0
 
 ### Minor Changes
