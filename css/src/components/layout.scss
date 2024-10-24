@@ -104,13 +104,15 @@ $default-flyout-width-widescreen: 480px;
 .layout,
 .layout.layout-single {
 	.layout-body {
-		grid-template: auto auto auto 1fr auto auto / minmax(0, 1fr);
+		grid-template: minmax(auto, max-content) auto auto 1fr auto auto / minmax(0, 1fr);
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
 	}
 
 	&.layout-flyout-active .layout-body {
 		@include desktop {
-			grid-template: auto auto auto 1fr auto auto / minmax(0, 1fr) var(#{$layout-flyout-width-name});
+			grid-template: minmax(auto, max-content) auto auto 1fr auto auto / minmax(0, 1fr) var(
+					#{$layout-flyout-width-name}
+				);
 			grid-template-areas: 'header header' 'hero flyout' 'menu flyout' 'main flyout' 'aside flyout' 'footer footer';
 		}
 	}
@@ -118,14 +120,13 @@ $default-flyout-width-widescreen: 480px;
 
 .layout.layout-holy-grail {
 	.layout-body {
-		grid-template: auto auto auto 1fr auto auto / minmax(0, 1fr);
+		grid-template: minmax(auto, max-content) auto auto 1fr auto auto / minmax(0, 1fr);
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'aside' 'footer';
 
 		@include tablet {
-			grid-template: auto auto var(--atlas-contained-height) auto auto / minmax(0, 1fr) minmax(
-					0,
-					2fr
-				);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / minmax(0, 1fr)
+				minmax(0, 2fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -135,10 +136,12 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include desktop {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
 					0,
-					1fr
-				);
+					2fr
+				)
+				minmax(0, 1fr);
 			grid-template-areas:
 				'header header header'
 				'hero hero hero'
@@ -147,7 +150,7 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include widescreen {
-			grid-template: auto auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
+			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
 			grid-template-areas:
 				'header header header header header'
 				'hero hero hero hero hero'
@@ -187,11 +190,13 @@ $default-flyout-width-widescreen: 480px;
 	}
 
 	.layout-body {
-		grid-template: auto auto auto 1fr auto / minmax(0, 1fr);
+		grid-template: minmax(auto, max-content) auto auto 1fr auto / minmax(0, 1fr);
 		grid-template-areas: 'header' 'hero' 'menu' 'main' 'footer';
 
 		@include tablet {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
+				minmax(0, 2fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -200,7 +205,9 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include desktop {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 3fr);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
+				minmax(0, 3fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -209,7 +216,7 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include widescreen {
-			grid-template: auto auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
+			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
@@ -220,9 +227,12 @@ $default-flyout-width-widescreen: 480px;
 
 	&.layout-flyout-active .layout-body {
 		@include desktop {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 3fr) var(
-					#{$layout-flyout-width-name}
-				);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
+					0,
+					3fr
+				)
+				var(#{$layout-flyout-width-name});
 			grid-template-areas:
 				'header header header'
 				'hero hero flyout'
@@ -230,9 +240,12 @@ $default-flyout-width-widescreen: 480px;
 				'footer footer footer';
 		}
 		@include widescreen {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 3fr) var(
-					#{$layout-flyout-width-name}
-				);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
+					0,
+					3fr
+				)
+				var(#{$layout-flyout-width-name});
 			grid-template-areas:
 				'header header header'
 				'hero hero flyout'
@@ -248,11 +261,13 @@ $default-flyout-width-widescreen: 480px;
 	}
 
 	.layout-body {
-		grid-template: auto auto auto 1fr auto / minmax(0, 1fr);
+		grid-template: minmax(auto, max-content) auto auto 1fr auto / minmax(0, 1fr);
 		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
 
 		@include tablet {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 2fr) minmax(0, 1fr);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 2fr)
+				minmax(0, 1fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -261,7 +276,9 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include desktop {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(0, 1fr);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr)
+				minmax(0, 1fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -270,7 +287,7 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include widescreen {
-			grid-template: auto auto var(--atlas-contained-height) auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
+			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
@@ -281,9 +298,12 @@ $default-flyout-width-widescreen: 480px;
 
 	&.layout-flyout-active .layout-body {
 		@include desktop {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(0, 1fr) var(
-					#{$layout-flyout-width-name}
-				);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(
+					0,
+					1fr
+				)
+				var(#{$layout-flyout-width-name});
 			grid-template-areas:
 				'header header header'
 				'hero hero flyout'
@@ -292,9 +312,12 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include widescreen {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(0, 1fr) var(
-					#{$layout-flyout-width-name}
-				);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(
+					0,
+					1fr
+				)
+				var(#{$layout-flyout-width-name});
 			grid-template-areas:
 				'header header header'
 				'hero hero flyout'
@@ -310,12 +333,14 @@ $default-flyout-width-widescreen: 480px;
 	}
 
 	.layout-body {
-		grid-template: auto auto auto 1fr auto / minmax(0, 1fr);
+		grid-template: minmax(auto, max-content) auto auto 1fr auto / minmax(0, 1fr);
 		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
 
 		// note that to make some extra room this layout is not constrained by the widescreen breakpoint like others
 		@include tablet {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 1fr);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
+				minmax(0, 1fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -326,9 +351,12 @@ $default-flyout-width-widescreen: 480px;
 
 	&.layout-flyout-active .layout-body {
 		@include desktop {
-			grid-template: auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 1fr) var(
-					#{$layout-flyout-width-name}
-				);
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
+					0,
+					1fr
+				)
+				var(#{$layout-flyout-width-name});
 			grid-template-areas:
 				'header header header'
 				'hero hero flyout'
@@ -363,7 +391,6 @@ $default-flyout-width-widescreen: 480px;
 		&.layout-twin,
 		&.layout-sidecar-left,
 		&.layout-sidecar-right {
-			// 👇 minus a pixel at the end to account for percentage points and rounding
 			--atlas-contained-height: calc(
 				var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height) - 1px
 			);
@@ -389,7 +416,6 @@ $default-flyout-width-widescreen: 480px;
 // Because the holy grail has two rows (containing menu main, menu aside) on tablet, we cannot apply height constraints at that size
 @include desktop {
 	.layout.layout-constrained.layout-holy-grail {
-		// 👇 minus a pixel at the end to account for percentage points and rounding
 		--atlas-contained-height: calc(
 			var(--window-inner-height) - var(--atlas-header-height) - var(--atlas-footer-height) - 1px
 		);
