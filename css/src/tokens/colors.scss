@@ -5,6 +5,7 @@ $white-static: #fff;
 $black-static: #000;
 
 $text: var(--theme-text);
+$text-fluent: var(--theme-text-fluent);
 $text-subtle: var(--theme-text-subtle);
 $text-invert: var(--theme-text-invert);
 $hyperlink: var(--theme-hyperlink);
@@ -15,6 +16,7 @@ $box-shadow-color-heavy: var(--theme-box-shadow-heavy);
 $box-shadow-color-extra-heavy: var(--theme-box-shadow-extra-heavy);
 
 $body-background: var(--theme-body-background);
+$body-background-fluent: var(--theme-body-background-fluent);
 $body-background-medium: var(--theme-body-background-medium);
 $body-background-accent: var(--theme-body-background-accent);
 
@@ -52,6 +54,9 @@ $gradient-vivid-end: var(--theme-gradient-vivid-end);
 
 $default-hover: var(--theme-hover-base);
 $default-hover-invert: $body-background-medium;
+$default-hover-fluent: var(--theme-hover-base-text-fluent);
+$default-hover-background-fluent: var(--theme-hover-base-fluent);
+$default-hover-border-fluent: var(--theme-hover-base-border-fluent);
 $border-white-high-contrast: var(--theme-border-white-high-contrast);
 $border-yellow-high-contrast: var(--theme-border-yellow-high-contrast);
 $code-highlight-background: var(--theme-code-highlight-background);
@@ -72,15 +77,18 @@ $primary-hover: var(--theme-primary-hover);
 $primary-active: var(--theme-primary-active);
 $primary-invert: var(--theme-primary-invert);
 $primary-box-shadow: var(--theme-primary-box-shadow);
+$primary-border: var(--theme-primary-border);
 
 $secondary: var(--theme-secondary-base);
 $secondary-background: var(--theme-secondary-background);
+$secondary-background-fluent: var(--theme-secondary-background-fluent);
 $secondary-background-glow-high-contrast: var(--theme-secondary-background-glow-high-contrast);
 $secondary-dark: var(--theme-secondary-dark);
 $secondary-hover: var(--theme-secondary-hover);
 $secondary-active: var(--theme-secondary-active);
 $secondary-invert: var(--theme-secondary-invert);
 $secondary-box-shadow: var(--theme-secondary-box-shadow);
+$secondary-border: var(--theme-secondary-border);
 
 $tertiary: var(--theme-tertiary-base);
 $tertiary-background: var(--theme-tertiary-background);
@@ -90,6 +98,7 @@ $tertiary-hover: var(--theme-tertiary-hover);
 $tertiary-active: var(--theme-tertiary-active);
 $tertiary-invert: var(--theme-tertiary-invert);
 $tertiary-box-shadow: var(--theme-tertiary-box-shadow);
+$tertiary-border: var(--theme-tertiary-border);
 
 $success: var(--theme-success-base);
 $success-background: var(--theme-success-background);
@@ -99,6 +108,7 @@ $success-hover: var(--theme-success-hover);
 $success-active: var(--theme-success-active);
 $success-invert: var(--theme-success-invert);
 $success-box-shadow: var(--theme-success-box-shadow);
+$success-border: var(--theme-success-border);
 
 $info: var(--theme-info-base);
 $info-background: var(--theme-info-background);
@@ -108,6 +118,7 @@ $info-hover: var(--theme-info-hover);
 $info-active: var(--theme-info-active);
 $info-invert: var(--theme-info-invert);
 $info-box-shadow: var(--theme-info-box-shadow);
+$info-border: var(--theme-info-border);
 
 $warning: var(--theme-warning-base);
 $warning-background: var(--theme-warning-background);
@@ -117,6 +128,7 @@ $warning-hover: var(--theme-warning-hover);
 $warning-active: var(--theme-warning-active);
 $warning-invert: var(--theme-warning-invert);
 $warning-box-shadow: var(--theme-warning-box-shadow);
+$warning-border: var(--theme-warning-border);
 
 $danger: var(--theme-danger-base);
 $danger-background: var(--theme-danger-background);
@@ -126,6 +138,7 @@ $danger-hover: var(--theme-danger-hover);
 $danger-active: var(--theme-danger-active);
 $danger-invert: var(--theme-danger-invert);
 $danger-box-shadow: var(--theme-danger-box-shadow);
+$danger-border: var(--theme-danger-border);
 
 $colors: (
 	'primary': (
@@ -136,7 +149,8 @@ $colors: (
 		$primary-active,
 		$primary-invert,
 		$primary-box-shadow,
-		$primary-background-glow-high-contrast
+		$primary-background-glow-high-contrast,
+		$primary-border
 	),
 	'secondary': (
 		$secondary,
@@ -146,7 +160,8 @@ $colors: (
 		$secondary-active,
 		$secondary-invert,
 		$secondary-box-shadow,
-		$secondary-background-glow-high-contrast
+		$secondary-background-glow-high-contrast,
+		$secondary-border
 	),
 	'tertiary': (
 		$tertiary,
@@ -156,7 +171,8 @@ $colors: (
 		$tertiary-active,
 		$tertiary-invert,
 		$tertiary-box-shadow,
-		$tertiary-background-glow-high-contrast
+		$tertiary-background-glow-high-contrast,
+		$tertiary-border
 	),
 	'success': (
 		$success,
@@ -166,7 +182,8 @@ $colors: (
 		$success-active,
 		$success-invert,
 		$success-box-shadow,
-		$success-background-glow-high-contrast
+		$success-background-glow-high-contrast,
+		$success-border
 	),
 	'info': (
 		$info,
@@ -176,7 +193,8 @@ $colors: (
 		$info-active,
 		$info-invert,
 		$info-box-shadow,
-		$info-background-glow-high-contrast
+		$info-background-glow-high-contrast,
+		$info-border
 	),
 	'warning': (
 		$warning,
@@ -186,7 +204,8 @@ $colors: (
 		$warning-active,
 		$warning-invert,
 		$warning-box-shadow,
-		$warning-background-glow-high-contrast
+		$warning-background-glow-high-contrast,
+		$warning-border
 	),
 	'danger': (
 		$danger,
@@ -196,7 +215,8 @@ $colors: (
 		$danger-active,
 		$danger-invert,
 		$danger-box-shadow,
-		$danger-background-glow-high-contrast
+		$danger-background-glow-high-contrast,
+		$danger-border
 	)
 ) !default;
 
@@ -212,6 +232,7 @@ $color-index-active: 5;
 $color-index-invert: 6;
 $color-index-box-shadow: 7;
 $color-index-background-glow-high-contrast: 8;
+$color-index-border: 9;
 
 // example implementation of a color loop
 
@@ -238,3 +259,31 @@ $gradients: (
 
 $gradient-color-start-index: 1;
 $gradient-color-end-index: 2;
+
+//Fluent color tokens
+$colorNeutralBackground1: var(--theme-body-background-fluent);
+$colorNeutralForeground2Hover: var(--theme-color-neutral-foreground-2-hover-fluent);
+$colorNeutralBackground4: var(--theme-color-background-neutral-4-fluent);
+$colorNeutralBackground5: var(--theme-color-background-neutral-5-fluent);
+
+$colorNeutralStroke1: var(--theme-color-neutral-stroke-1-fluent);
+$colorNeutralStroke2: var(--theme-color-neutral-stroke-2-fluent);
+
+$colorNeutralForeground1: var(--theme-body-background-fluent);
+$colorNeutralForeground2: var(--theme-color-neutral-foreground-2-fluent);
+$colorNeutralForeground3: var(--theme-color-neutral-foreground-3-fluent);
+
+$colorPaletteRedBackground3: var(--theme-color-palette-red-background-3-fluent);
+$colorPaletteGreenBackground3: var(--theme-color-palette-green-background-3-fluent);
+$colorPaletteRedForeground1: var(--theme-color-palette-red-foreground-1-fluent);
+
+$colorStatusWarningBorder1: var(--theme-warning-border);
+$colorStatusWarningBackground1: var(--theme-warning-background);
+$colorPaletteDarkOrangeBackground3: var(--theme-color-palette-dark-orange-background-3-fluent);
+
+$colorStatusDangerBorder1: var(--theme-danger-border);
+$colorStatusDangerBackground1: var(--theme-danger-background);
+$colorStatusDangerBackground3: var(--theme-danger-base);
+
+$colorStatusSuccessBorder1: var(--theme-success-border);
+$colorStatusSuccessBackground1: var(--theme-success-background);

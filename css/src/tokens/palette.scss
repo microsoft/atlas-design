@@ -25,6 +25,22 @@ $palette-grey-110: #2f2f2f !default;
 $palette-grey-120: #171717 !default;
 $palette-grey-130: #161616 !default;
 
+$palette-grey-10-fluent: #f5f5f5 !default;
+$palette-grey-20-fluent: #f0f0f0 !default;
+$palette-grey-30-fluent: #ebebeb !default;
+$palette-grey-40-fluent: #e0e0e0 !default;
+$palette-grey-50-fluent: #d6d6d6 !default;
+$palette-grey-60-fluent: #d1d1d1 !default;
+$palette-grey-70-fluent: #bdbdbd !default;
+$palette-grey-80-fluent: #adadad !default;
+$palette-grey-90-fluent: #666 !default;
+$palette-grey-100-fluent: #616161 !default;
+$palette-grey-110-fluent: #525252 !default;
+$palette-grey-120-fluent: #424242 !default;
+$palette-grey-130-fluent: #3d3d3d !default;
+$palette-grey-140-fluent: #333 !default;
+$palette-grey-150-fluent: #141414 !default;
+
 // Black
 
 $palette-black: #000 !default;
@@ -82,6 +98,11 @@ $palette-blue-80: #004173 !default;
 $palette-blue-90: #002b4d !default;
 $palette-blue-100: #000a13 !default;
 
+$palette-blue-10-fluent: #ebf3fc !default;
+$palette-blue-20-fluent: #0f6cbd !default;
+$palette-blue-30-fluent: #115ea3 !default;
+$palette-blue-40-fluent: #0c3b5e !default;
+
 $palette-blue-a: #9ccbee !default;
 
 $palette-blue-opacity-30: hsl(206deg 100% 35% / 30%);
@@ -137,6 +158,11 @@ $palette-green-100: #061a00 !default;
 $palette-green-opacity-30: hsl(120deg 37% 45% / 30%) !default;
 $palette-green-opacity-70: hsl(120deg 37% 45% / 70%) !default;
 
+$palette-green-10-fluent: #f1faf1 !default;
+$palette-green-20-fluent: #9fd89f !default;
+$palette-green-30-fluent: #107c10 !default;
+$palette-green-40-fluent: #052505 !default;
+
 // Purple
 
 $palette-purple-10: #efd9fd !default;
@@ -175,6 +201,8 @@ $palette-yellow-opacity-70: hsl(44deg 100% 50% / 70%) !default;
 
 $palette-yellow-sand: #e8e6df !default;
 
+$palette-yellow-20-fluent: #fde300 !default;
+
 // Red
 
 $palette-red-10: #fde7e9 !default;
@@ -191,10 +219,27 @@ $palette-red-100: #290001 !default;
 $palette-red-opacity-30: hsl(0deg 100% 33% / 30%) !default;
 $palette-red-opacity-70: hsl(0deg 100% 33% / 70%) !default;
 
+$palette-red-10-fluent: #fdf3f4 !default;
+$palette-red-20-fluent: #eeacb2 !default;
+$palette-red-30-fluent: #e37d80 !default;
+$palette-red-40-fluent: #d13438 !default;
+$palette-red-50-fluent: #c50f1f !default;
+$palette-red-60-fluent: #bc2f32 !default;
+$palette-red-70-fluent: #3b0509 !default;
+
 // High Contrast
 
 $palette-yellow-high-contrast: #ff0 !default;
 $palette-yellow-high-contrast-hover: #ff3 !default;
 $palette-visited-high-contrast: #3cff00 !default;
+
+$palette-turqoise-high-contrast-hover-fluent: #1aebff !default;
+
+$palette-orange-10-fluent: #fff9f5 !default;
+$palette-orange-20-fluent: #fdcfb4 !default;
+$palette-orange-30-fluent: #f7630c !default;
+$palette-orange-40-fluent: #da3b01 !default;
+$palette-orange-50-fluent: #8a3707 !default;
+$palette-orange-60-fluent: #4a1e04 !default;
 
 //@end-sass-export-section
