@@ -12,11 +12,11 @@ const setLayoutCssVariables = () => {
 
 	const footer = document.querySelector('.layout-body-footer');
 	// get computed style of the footer to ensure it is not hidden
-	const footerHidden = footer && window.getComputedStyle(footer).display !== 'none';
+	const footerHidden = footer && window.getComputedStyle(footer).display === 'none';
 	let footerHeight = 0;
 	let footerCssProp = '0px';
 	let footerY = 0;
-	let visibleFooterHeight = window.innerHeight;
+	let visibleFooterHeight = 0;
 	if (!footerHidden) {
 		footerHeight = footer?.clientHeight || 0;
 		footerCssProp = footerHeight ? `${footerHeight}px` : '0px';
