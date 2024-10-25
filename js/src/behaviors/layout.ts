@@ -1,5 +1,3 @@
-let frame: number;
-
 const root = document.documentElement;
 
 const setLayoutCssVariables = () => {
@@ -7,7 +5,7 @@ const setLayoutCssVariables = () => {
 	const headerHeight = header?.clientHeight || 0;
 	const headerCssProp = headerHeight ? `${headerHeight}px` : '0px';
 	const headerY = header?.getBoundingClientRect().y || 0; // determine if header is visible, assign visible heights as well
-	const visibleHeaderHeight = Math.round(Math.max(0, headerY + headerHeight));
+	const visibleHeaderHeight = Math.max(0, headerY + headerHeight);
 	const visibleHeaderCssProp = `${visibleHeaderHeight}px`;
 
 	const footer = document.querySelector('.layout-body-footer');
@@ -15,9 +13,8 @@ const setLayoutCssVariables = () => {
 	const footerCssProp = footerHeight ? `${footerHeight}px` : '0px';
 	const footerY = footer?.getBoundingClientRect().y || 0; // determine if header and footer are visible, assign visible heights as well
 
-	const visibleFooterHeight = Math.round(
-		footerY < window.innerHeight ? Math.min(window.innerHeight - footerY, footerHeight) : 0
-	);
+	const visibleFooterHeight =
+		footerY < window.innerHeight ? Math.min(window.innerHeight - footerY, footerHeight) : 0;
 	const visibleFooterCssProp = `${visibleFooterHeight}px`;
 
 	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`, 'important');
@@ -27,32 +24,30 @@ const setLayoutCssVariables = () => {
 	root.style.setProperty('--atlas-footer-visible-height', visibleFooterCssProp, 'important');
 };
 
+let animationFrame = 0;
+
+function scheduleUpdate(update: typeof setLayoutCssVariables) {
+	cancelAnimationFrame(animationFrame);
+	animationFrame = requestAnimationFrame(update);
+}
+
+export const dispatchAtlasLayoutUpdateEvent = () => {
+	window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+};
+
 export function initLayout() {
 	window.addEventListener('atlas-layout-change-event', () => {
-		if (frame) {
-			cancelAnimationFrame(frame);
-		}
-
-		frame = requestAnimationFrame(setLayoutCssVariables);
+		scheduleUpdate(setLayoutCssVariables);
 	});
 
-	window.addEventListener(
-		'resize',
-		() => window.dispatchEvent(new CustomEvent('atlas-layout-change-event')),
-		{ passive: true }
-	);
+	window.addEventListener('resize', dispatchAtlasLayoutUpdateEvent, { passive: true });
 
 	root.style.setProperty('--window-inner-height', `${window.innerHeight}px`);
 
-	window.addEventListener('DOMContentLoaded', setLayoutCssVariables, { passive: true });
+	window.addEventListener('DOMContentLoaded', dispatchAtlasLayoutUpdateEvent);
 
-	// determine if header/footer are visible below the top of the viewport
-
-	window.addEventListener(
-		'scroll',
-		() => window.dispatchEvent(new CustomEvent('atlas-layout-change-event')),
-		{
-			passive: true
-		}
-	);
+	// determine if header/footer are visible below the top of the viewport - remove with atlas-js 1.13.1
+	window.addEventListener('scroll', dispatchAtlasLayoutUpdateEvent, {
+		passive: true
+	});
 }
