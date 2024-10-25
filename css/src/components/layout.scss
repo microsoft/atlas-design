@@ -239,6 +239,7 @@ $default-flyout-width-widescreen: 480px;
 				'menu main flyout'
 				'footer footer footer';
 		}
+
 		@include widescreen {
 			grid-template:
 				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
@@ -371,8 +372,7 @@ $default-flyout-width-widescreen: 480px;
 @mixin constrained-layout-child {
 	position: sticky;
 	inset-block-start: 0;
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow: hidden auto;
 	-webkit-overflow-scrolling: touch;
 }
 

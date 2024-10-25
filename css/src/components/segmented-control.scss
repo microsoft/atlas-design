@@ -118,6 +118,7 @@ $sc-active-color: $text-invert !default;
 			padding: $sc-padding;
 		}
 	}
+
 	@include desktop {
 		.segmented-control,
 		.segmented-previous,

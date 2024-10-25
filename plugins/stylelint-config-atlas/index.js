@@ -9,22 +9,15 @@ module.exports = {
 			'always',
 			{ except: ['width', 'height', 'max-height', 'min-height', 'max-width', 'min-width'] }
 		],
-		'number-leading-zero': 'never',
-		'selector-list-comma-newline-after': 'always',
 		'rule-empty-line-before': ['always', { except: ['first-nested'] }],
 		'comment-empty-line-before': ['always', { except: ['first-nested'] }],
-		'block-opening-brace-space-before': 'always',
-		'declaration-colon-space-after': 'always',
-		'declaration-colon-space-before': 'never',
 		'declaration-block-single-line-max-declarations': 1,
 		'scss/dollar-variable-pattern': '^_?[a-z]+[\\w-]*$',
 		'scss/at-extend-no-missing-placeholder': true,
-		indentation: 'tab',
 		'max-nesting-depth': 3,
 		'font-family-name-quotes': 'always-where-recommended',
 		'function-url-quotes': 'always',
 		'selector-attribute-quotes': 'always',
-		'string-quotes': 'double',
 		'annotation-no-unknown': null,
 		'selector-not-notation': null,
 		'order/order': [
@@ -222,25 +215,11 @@ module.exports = {
 		'selector-max-id': 0,
 		'selector-no-qualifying-type': true,
 		'function-url-no-scheme-relative': true,
-		'at-rule-empty-line-before': [
-			'always',
-			{
-				except: ['blockless-after-blockless', 'first-nested'],
-				ignore: ['after-comment'],
-				ignoreAtRules: ['else']
-			}
-		],
 		'declaration-empty-line-before': [
 			'always',
 			{
 				except: ['after-declaration', 'first-nested'],
 				ignore: ['after-comment']
-			}
-		],
-		'block-closing-brace-newline-after': [
-			'always',
-			{
-				ignoreAtRules: ['if', 'else']
 			}
 		],
 		'function-name-case': [
@@ -250,13 +229,11 @@ module.exports = {
 			}
 		],
 		'scss/selector-no-redundant-nesting-selector': true,
-		'scss/at-import-no-partial-leading-underscore': true,
 		'scss/at-else-closing-brace-newline-after': 'always-last-in-chain',
 		'scss/at-else-closing-brace-space-after': 'always-intermediate',
 		'scss/at-else-empty-line-before': 'never',
 		'scss/at-if-closing-brace-newline-after': 'always-last-in-chain',
 		'scss/at-if-closing-brace-space-after': 'always-intermediate',
-		'scss/at-import-partial-extension': 'always',
 		'scss/operator-no-unspaced': null,
 		'scss/no-global-function-names': null,
 		'value-keyword-case': [
@@ -284,6 +261,9 @@ module.exports = {
 				]
 			}
 		],
-		'import-notation': null
+		'import-notation': null,
+		'at-rule-empty-line-before': null,
+		'scss/load-partial-extension': 'always',
+		'declaration-block-no-redundant-longhand-properties': null
 	}
 };

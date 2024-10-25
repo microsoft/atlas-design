@@ -35,16 +35,14 @@ $border-gradient-direction: (
 
 		@if $direction == 'right' {
 			border-image-slice: 0 128 0 0;
-			inset-block-start: 0;
-			inset-block-end: 0;
+			inset-block: 0;
 			inset-inline-end: 0;
 		}
 
 		@if $direction == 'bottom' {
 			border-image-slice: 0 0 128 0;
 			inset-block-end: 0;
-			inset-inline-start: 0;
-			inset-inline-end: 0;
+			inset-inline: 0;
 		}
 
 		@include forced-colors {
