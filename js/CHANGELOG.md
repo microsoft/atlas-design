@@ -1,5 +1,16 @@
 # @microsoft/atlas-js
 
+## 1.14.0
+
+### Minor Changes
+
+- 6de95c8d: Export a `dispatchAtlasLayoutUpdateEvent` function for easier use downstream.
+
+### Patch Changes
+
+- 6de95c8d: Fix bug where a hidden footer element would still register a height. Layout now always expects a header, but not necessarily a footer, since footers can be rendered within containers too.
+- 6de95c8d: Move footer border to child element of layout.
+
 ## 1.13.1
 
 ### Patch Changes
