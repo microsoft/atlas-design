@@ -1,5 +1,12 @@
 # @microsoft/atlas-css
 
+## 3.57.2
+
+### Patch Changes
+
+- 6de95c8d: For the layout component, the height of the header's grid track should be minmax(auto, max-content) to ensure proper height constraint happens.
+- 6de95c8d: Stop accounting for rounding in calculations and remove -1px in the --atlas-contained-height property.
+
 ## 3.57.1
 
 ### Patch Changes
