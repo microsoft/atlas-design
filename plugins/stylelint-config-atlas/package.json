@@ -17,13 +17,13 @@
 		"index.js"
 	],
 	"dependencies": {
-		"postcss-scss": "^4.0.6",
-		"stylelint-scss": "^5.0.1",
-		"stylelint-order": "^6.0.3",
-		"stylelint-config-standard": "^33.0.0",
-		"stylelint-config-recommended-scss": "^12.0.0",
-		"stylelint": "^15.9.0",
-		"stylelint-use-logical": "^2.1.0"
+		"postcss-scss": "^4.0.9",
+		"stylelint-scss": "^6.8.1",
+		"stylelint-order": "^6.0.4",
+		"stylelint-config-standard": "^36.0.1",
+		"stylelint-config-recommended-scss": "14.1.0",
+		"stylelint": "^16.10.0",
+		"stylelint-use-logical": "^2.1.2"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

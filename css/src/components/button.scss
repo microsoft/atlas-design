@@ -31,8 +31,7 @@ $button-font-weight: $weight-semibold !default;
 	@include unselectable;
 
 	justify-content: center;
-	padding-block-start: $button-padding-vertical;
-	padding-block-end: $button-padding-vertical;
+	padding-block: $button-padding-vertical;
 	border-width: $button-border-width;
 	border-radius: $button-border-radius;
 	border-color: $button-border-color;
@@ -42,8 +41,7 @@ $button-font-weight: $weight-semibold !default;
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
-	padding-inline-start: $button-padding-horizontal;
-	padding-inline-end: $button-padding-horizontal;
+	padding-inline: $button-padding-horizontal;
 
 	strong {
 		color: inherit;
@@ -172,6 +170,7 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 
 		&.button-#{$name} {
 			color: $base;
+
 			@if $name == 'warning' {
 				color: $dark;
 			}

@@ -83,9 +83,9 @@
 		"quicktype-core": "^23.0.48",
 		"grass": "^1.0.2",
 		"sass-export": "^2.1.2",
-		"stylelint": "^15.9.0",
+		"stylelint": "^16.10.0",
 		"stylelint-config-prettier": "^9.0.5",
 		"stylelint-prettier": "^3.0.0",
-		"wireit": "^0.9.5"
+		"wireit": "0.14.9"
 	}
 }

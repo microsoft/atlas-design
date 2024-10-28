@@ -37,8 +37,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 			position: absolute;
 			content: '';
 			border-block-end: $site-header-hover-underline-border;
-			inset-inline-start: 0;
-			inset-inline-end: 0;
+			inset-inline: 0;
 			inset-block-end: -$site-header-hover-underline-border-width;
 		}
 	}
@@ -75,6 +74,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 	.site-header-button {
 		@include control;
 		@include unselectable;
+
 		@extend %site-header-control;
 
 		justify-content: center;

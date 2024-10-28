@@ -29,8 +29,10 @@ $theme-names: map.keys($themes);
 // Validation: ensure all properties in non-root themes exist in root
 @each $theme-name in $theme-names {
 	$theme: map.get($themes, $theme-name);
+
 	@if $theme-name != $root-theme {
 		$root: map.get($themes, $root-theme);
+
 		@each $color-name, $val in $theme {
 			@if map.has-key($root, $color-name) != true {
 				@error '#{$color-name} from #{$theme-name} does not exist in theme: #{$theme-name}.';
