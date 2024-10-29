@@ -19,7 +19,7 @@ Here is an example of a standard select usage paired with a label.
 ```html
 <label class="label margin-bottom-xxs" for="select-id-1">Label</label>
 <div class="select">
-	<select name="select-1" id="select-id-1" aria-label="Default usage select example">
+	<select name="select-1" id="select-id-1">
 		<option value="">Choose an option</option>
 		<option value="option-1">Option 1</option>
 		<option value="option-2">Option 2</option>
