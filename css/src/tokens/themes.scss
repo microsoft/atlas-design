@@ -134,7 +134,9 @@ $themes: (
 		'color-palette-red-background-3-fluent': $palette-red-40-fluent,
 		'color-palette-green-background-3-fluent': $palette-green-30-fluent,
 		'color-palette-dark-orange-background-3-fluent': $palette-orange-40-fluent,
-		'color-palette-red-foreground-1-fluent': $palette-red-60-fluent
+		'color-palette-red-foreground-1-fluent': $palette-red-60-fluent,
+		'color-brand-stroke-1': $palette-blue-40-fluent,
+		'color-brand-stroke-2-contrast': $palette-blue-20-fluent
 	),
 	'dark': (
 		'text': $palette-grey-30,
@@ -268,7 +270,9 @@ $themes: (
 		'color-palette-red-background-3-fluent': $palette-red-40-fluent,
 		'color-palette-green-background-3-fluent': $palette-green-30-fluent,
 		'color-palette-dark-orange-background-3-fluent': $palette-yellow-50,
-		'color-palette-red-foreground-1-fluent': $palette-red-30-fluent
+		'color-palette-red-foreground-1-fluent': $palette-red-30-fluent,
+		'color-brand-stroke-1': $palette-blue-30-fluent,
+		'color-brand-stroke-2-contrast': $palette-blue-60-fluent
 	),
 	'high-contrast': (
 		'text': $palette-white,
@@ -402,7 +406,9 @@ $themes: (
 		'color-palette-red-background-3-fluent': $palette-white,
 		'color-palette-green-background-3-fluent': $palette-white,
 		'color-palette-dark-orange-background-3-fluent': $palette-yellow-20,
-		'color-palette-red-foreground-1-fluent': $palette-white
+		'color-palette-red-foreground-1-fluent': $palette-white,
+		'color-brand-stroke-1': $white-static,
+		'color-brand-stroke-2-contrast': $palette-black
 	)
 ) !default;
 //@end-sass-export-section
