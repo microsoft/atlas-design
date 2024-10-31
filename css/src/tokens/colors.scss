@@ -238,3 +238,8 @@ $gradients: (
 
 $gradient-color-start-index: 1;
 $gradient-color-end-index: 2;
+
+//Fluent color tokens
+
+$colorBrandStroke1: var(--theme-color-brand-stroke-1);
+$colorBrandStroke2Contrast: var(--theme-color-brand-stroke-2-contrast);

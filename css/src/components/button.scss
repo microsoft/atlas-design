@@ -108,8 +108,17 @@ $button-font-weight: $weight-semibold !default;
 			@include center(1em);
 
 			position: absolute !important;
-			border-block-end-color: $text;
-			border-inline-start-color: $text;
+			border-block-end-color: $colorBrandStroke1;
+			border-inline-start-color: $colorBrandStroke1;
+			background-color: $colorBrandStroke2Contrast;
+			background-image: conic-gradient(currentcolor 135deg, transparent 135deg);
+			mask-image: radial-gradient(
+				closest-side,
+				transparent calc(100% - 2px),
+				white calc(100% - 3px) calc(100% - 1px),
+				transparent 100%
+			);
+			animation-timing-function: linear;
 		}
 	}
 
