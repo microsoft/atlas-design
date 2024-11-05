@@ -113,6 +113,8 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 		&:hover,
 		&.is-hovered,
 		&:focus-visible {
+			text-decoration: none;
+
 			&:not([aria-expanded='true']) {
 				@extend %site-header-hover-underline;
 			}
@@ -153,6 +155,8 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 		&.is-hovered,
 		&:focus-visible {
 			@extend %site-header-hover-underline;
+
+			text-decoration: none;
 		}
 
 		@include tablet {
