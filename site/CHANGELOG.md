@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.59.1
+
+### Patch Changes
+
+- 4173db2b: Cleaning up Select component example
+
 ## 0.59.0
 
 ### Minor Changes

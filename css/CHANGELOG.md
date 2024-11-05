@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.58.0
+
+### Minor Changes
+
+- 920130ee: Blocking underlines on hover for site header buttons
+
 ## 3.57.2
 
 ### Patch Changes
