@@ -78,25 +78,25 @@ $badge-border-radius: $border-radius-rounded !default;
 
 	&.badge-icon {
 		padding: 0;
-		border-radius: 50%;
+		border: none;
 		font-size: $badge-icon-font-size;
 	}
 
 	&.badge-icon-xs {
 		padding: 0;
-		border-radius: 50%;
+		border: none;
 		font-size: $badge-icon-font-size-xs;
 	}
 
 	&.badge-icon-sm {
 		padding: 0;
-		border-radius: 50%;
+		border: none;
 		font-size: $badge-icon-font-size-sm;
 	}
 
 	&.badge-icon-lg {
 		padding: 0;
-		border-radius: 50%;
+		border: none;
 		font-size: $badge-icon-font-size-lg;
 	}
 
