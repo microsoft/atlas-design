@@ -8,6 +8,7 @@ $text: var(--theme-text);
 $text-fluent: var(--theme-text-fluent);
 $text-subtle: var(--theme-text-subtle);
 $text-invert: var(--theme-text-invert);
+$text-light: var(--theme-text-light);
 $hyperlink: var(--theme-hyperlink);
 $text-glow-high-contrast: var(--theme-text-glow-high-contrast);
 $box-shadow-color-light: var(--theme-box-shadow-light);
@@ -54,9 +55,8 @@ $gradient-vivid-end: var(--theme-gradient-vivid-end);
 
 $default-hover: var(--theme-hover-base);
 $default-hover-invert: $body-background-medium;
-$default-hover-fluent: var(--theme-hover-base-text-fluent);
-$default-hover-background-fluent: var(--theme-hover-base-fluent);
-$default-hover-border-fluent: var(--theme-hover-base-border-fluent);
+$default-hover-border: var(--theme-hover-border);
+$default-hover-text: var(--theme-hover-text);
 $border-white-high-contrast: var(--theme-border-white-high-contrast);
 $border-yellow-high-contrast: var(--theme-border-yellow-high-contrast);
 $code-highlight-background: var(--theme-code-highlight-background);
@@ -81,7 +81,6 @@ $primary-border: var(--theme-primary-border);
 
 $secondary: var(--theme-secondary-base);
 $secondary-background: var(--theme-secondary-background);
-$secondary-background-fluent: var(--theme-secondary-background-fluent);
 $secondary-background-glow-high-contrast: var(--theme-secondary-background-glow-high-contrast);
 $secondary-dark: var(--theme-secondary-dark);
 $secondary-hover: var(--theme-secondary-hover);
@@ -263,8 +262,8 @@ $gradient-color-end-index: 2;
 //Fluent color tokens
 $colorNeutralBackground1: var(--theme-body-background-fluent);
 $colorNeutralForeground2Hover: var(--theme-color-neutral-foreground-2-hover-fluent);
-$colorNeutralBackground4: var(--theme-color-background-neutral-4-fluent);
-$colorNeutralBackground5: var(--theme-color-background-neutral-5-fluent);
+$colorNeutralBackground4: var(--theme-color-neutral-background-4-fluent);
+$colorNeutralBackground5: var(--theme-color-neutral-background-5-fluent);
 
 $colorNeutralStroke1: var(--theme-color-neutral-stroke-1-fluent);
 $colorNeutralStroke2: var(--theme-color-neutral-stroke-2-fluent);
