@@ -297,27 +297,39 @@ $palette-yellow-180: #50301a !default;
 
 // Red
 
-$palette-red-10: #fde7e9 !default;
-$palette-red-20: #e5a7a8 !default;
-$palette-red-30: #d4797a !default;
-$palette-red-40: #c54f4f !default;
-$palette-red-50: #b62626 !default;
-$palette-red-60: #a80000 !default;
-$palette-red-70: #870000 !default;
-$palette-red-80: #630001 !default;
-$palette-red-90: #470001 !default;
-$palette-red-100: #290001 !default;
+$palette-red-10-deprecated: #fde7e9 !default;
+$palette-red-20-deprecated: #e5a7a8 !default;
+$palette-red-30-deprecated: #d4797a !default;
+$palette-red-40-deprecated: #c54f4f !default;
+$palette-red-50-deprecated: #b62626 !default;
+$palette-red-60-deprecated: #a80000 !default;
+$palette-red-70-deprecated: #870000 !default;
+$palette-red-80-deprecated: #630001 !default;
+$palette-red-90-deprecated: #470001 !default;
+$palette-red-100-deprecated: #290001 !default;
 
-$palette-red-opacity-30: hsl(0deg 100% 33% / 30%) !default;
-$palette-red-opacity-70: hsl(0deg 100% 33% / 70%) !default;
+$palette-red-opacity-30-deprecated: hsl(0deg 100% 33% / 30%) !default;
+$palette-red-opacity-70-deprecated: hsl(0deg 100% 33% / 70%) !default;
 
-$palette-red-10-fluent: #fdf3f4 !default;
-$palette-red-20-fluent: #eeacb2 !default;
-$palette-red-30-fluent: #e37d80 !default;
-$palette-red-40-fluent: #d13438 !default;
-$palette-red-50-fluent: #c50f1f !default;
-$palette-red-60-fluent: #bc2f32 !default;
-$palette-red-70-fluent: #3b0509 !default;
+$palette-red-10: #fdf3f4 !default;
+$palette-red-20: #fdf6f6 !default;
+$palette-red-30: #f1bbbc !default;
+$palette-red-40: #eeacb2 !default;
+$palette-red-50: #d69ca5 !default;
+$palette-red-60: #e37d80 !default;
+$palette-red-70: #dc626d !default;
+$palette-red-80: #dc5e62 !default;
+$palette-red-90: #d13438 !default;
+$palette-red-100: #bc2f32 !default;
+$palette-red-110: #c50f1f !default;
+$palette-red-120: #ac4f5e !default;
+$palette-red-130: #751d1f !default;
+$palette-red-140: #750b1c !default;
+$palette-red-150: #6e0811 !default;
+$palette-red-160: #590815 !default;
+$palette-red-170: #420610 !default;
+$palette-red-180: #3b0509 !default;
+$palette-red-190: #3f1011 !default;
 
 // High Contrast
 
