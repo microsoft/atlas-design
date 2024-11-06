@@ -25,78 +25,78 @@ $palette-grey-110-deprecated: #2f2f2f !default;
 $palette-grey-120-deprecated: #171717 !default;
 $palette-grey-130-deprecated: #161616 !default;
 
-$palette-grey-10-fluent: #f5f5f5 !default;
-$palette-grey-20-fluent: #f0f0f0 !default;
-$palette-grey-30-fluent: #ebebeb !default;
-$palette-grey-40-fluent: #e0e0e0 !default;
-$palette-grey-50-fluent: #d6d6d6 !default;
-$palette-grey-60-fluent: #d1d1d1 !default;
-$palette-grey-70-fluent: #c7c7c7 !default;
-$palette-grey-80-fluent: #bdbdbd !default;
-$palette-grey-90-fluent: #b3b3b3 !default;
-$palette-grey-100-fluent: #adadad !default;
-$palette-grey-110-fluent: #999999 !default;
-$palette-grey-120-fluent: #757575 !default;
-$palette-grey-130-fluent: #707070 !default;
-$palette-grey-140-fluent: #6b6b6b !default;
-$palette-grey-150-fluent: #666 !default;
-$palette-grey-160-fluent: #616161 !default;
-$palette-grey-170-fluent: #575757 !default;
-$palette-grey-180-fluent: #525252 !default;
-$palette-grey-190-fluent: #4d4d4d !default;
-$palette-grey-200-fluent: #424242 !default;
-$palette-grey-210-fluent: #3d3d3d !default;
-$palette-grey-220-fluent: #383838 !default;
-$palette-grey-230-fluent: #333 !default;
-$palette-grey-240-fluent: #292929 !default;
-$palette-grey-250-fluent: #242424 !default;
-$palette-grey-260-fluent: #1a1a1a !default;
-$palette-grey-270-fluent: #141414 !default;
-$palette-grey-280-fluent: #0a0a0a !default;
+$palette-grey-10: #f5f5f5 !default;
+$palette-grey-20: #f0f0f0 !default;
+$palette-grey-30: #ebebeb !default;
+$palette-grey-40: #e0e0e0 !default;
+$palette-grey-50: #d6d6d6 !default;
+$palette-grey-60: #d1d1d1 !default;
+$palette-grey-70: #c7c7c7 !default;
+$palette-grey-80: #bdbdbd !default;
+$palette-grey-90: #b3b3b3 !default;
+$palette-grey-100: #adadad !default;
+$palette-grey-110: #999999 !default;
+$palette-grey-120: #757575 !default;
+$palette-grey-130: #707070 !default;
+$palette-grey-140: #6b6b6b !default;
+$palette-grey-150: #666 !default;
+$palette-grey-160: #616161 !default;
+$palette-grey-170: #575757 !default;
+$palette-grey-180: #525252 !default;
+$palette-grey-190: #4d4d4d !default;
+$palette-grey-200: #424242 !default;
+$palette-grey-210: #3d3d3d !default;
+$palette-grey-220: #383838 !default;
+$palette-grey-230: #333 !default;
+$palette-grey-240: #292929 !default;
+$palette-grey-250: #242424 !default;
+$palette-grey-260: #1a1a1a !default;
+$palette-grey-270: #141414 !default;
+$palette-grey-280: #0a0a0a !default;
 
 // Black
 
 $palette-black: #000 !default;
 
-$palette-black-opacity-90: hsl(0deg 0% 0% / 90%) !default;
-$palette-black-opacity-80: hsl(0deg 0% 0% / 80%) !default;
-$palette-black-opacity-70: hsl(0deg 0% 0% / 70%) !default;
-$palette-black-opacity-60: hsl(0deg 0% 0% / 60%) !default;
-$palette-black-opacity-50: hsl(0deg 0% 0% / 50%) !default;
-$palette-black-opacity-40: hsl(0deg 0% 0% / 40%) !default;
-$palette-black-opacity-30: hsl(0deg 0% 0% / 30%) !default;
-$palette-black-opacity-20: hsl(0deg 0% 0% / 20%) !default;
-$palette-black-opacity-10: hsl(0deg 0% 0% / 10%) !default;
-$palette-black-opacity-0: hsl(0deg 0% 0% / 0%) !default;
+$palette-black-opacity-90-deprecated: hsl(0deg 0% 0% / 90%) !default;
+$palette-black-opacity-80-deprecated: hsl(0deg 0% 0% / 80%) !default;
+$palette-black-opacity-70-deprecated: hsl(0deg 0% 0% / 70%) !default;
+$palette-black-opacity-60-deprecated: hsl(0deg 0% 0% / 60%) !default;
+$palette-black-opacity-50-deprecated: hsl(0deg 0% 0% / 50%) !default;
+$palette-black-opacity-40-deprecated: hsl(0deg 0% 0% / 40%) !default;
+$palette-black-opacity-30-deprecated: hsl(0deg 0% 0% / 30%) !default;
+$palette-black-opacity-20-deprecated: hsl(0deg 0% 0% / 20%) !default;
+$palette-black-opacity-10-deprecated: hsl(0deg 0% 0% / 10%) !default;
+$palette-black-opacity-0-deprecated: hsl(0deg 0% 0% / 0%) !default;
 
 // White
 
 $palette-white: #fff !default;
 
-$palette-white-opacity-0: hsl(0deg 0% 100% / 0%);
-$palette-white-opacity-10: hsl(0deg 0% 100% / 10%);
-$palette-white-opacity-20: hsl(0deg 0% 100% / 20%);
-$palette-white-opacity-30: hsl(0deg 0% 100% / 30%);
-$palette-white-opacity-40: hsl(0deg 0% 100% / 40%);
-$palette-white-opacity-50: hsl(0deg 0% 100% / 50%);
-$palette-white-opacity-60: hsl(0deg 0% 100% / 60%);
-$palette-white-opacity-70: hsl(0deg 0% 100% / 70%);
-$palette-white-opacity-80: hsl(0deg 0% 100% / 80%);
-$palette-white-opacity-90: hsl(0deg 0% 100% / 90%);
+$palette-white-opacity-0-deprecated: hsl(0deg 0% 100% / 0%);
+$palette-white-opacity-10-deprecated: hsl(0deg 0% 100% / 10%);
+$palette-white-opacity-20-deprecated: hsl(0deg 0% 100% / 20%);
+$palette-white-opacity-30-deprecated: hsl(0deg 0% 100% / 30%);
+$palette-white-opacity-40-deprecated: hsl(0deg 0% 100% / 40%);
+$palette-white-opacity-50-deprecated: hsl(0deg 0% 100% / 50%);
+$palette-white-opacity-60-deprecated: hsl(0deg 0% 100% / 60%);
+$palette-white-opacity-70-deprecated: hsl(0deg 0% 100% / 70%);
+$palette-white-opacity-80-deprecated: hsl(0deg 0% 100% / 80%);
+$palette-white-opacity-90-deprecated: hsl(0deg 0% 100% / 90%);
 
 // Values used for shadows
 
-$palette-black-opacity-108: hsl(0deg 0% 0% / 11%) !default;
-$palette-black-opacity-132: hsl(0deg 0% 0% / 13%) !default;
+$palette-black-opacity-108-deprecated: hsl(0deg 0% 0% / 11%) !default;
+$palette-black-opacity-132-deprecated: hsl(0deg 0% 0% / 13%) !default;
 
-$palette-black-opacity-22: hsl(0deg 0% 0% / 22%) !default;
-$palette-black-opacity-18: hsl(0deg 0% 0% / 18%) !default;
+$palette-black-opacity-22-deprecated: hsl(0deg 0% 0% / 22%) !default;
+$palette-black-opacity-18-deprecated: hsl(0deg 0% 0% / 18%) !default;
 
-$palette-white-opacity-108: hsl(0deg 0% 100% / 11%) !default;
-$palette-white-opacity-132: hsl(0deg 0% 100% / 13%) !default;
+$palette-white-opacity-108-deprecated: hsl(0deg 0% 100% / 11%) !default;
+$palette-white-opacity-132-deprecated: hsl(0deg 0% 100% / 13%) !default;
 
-$palette-white-opacity-22: hsl(0deg 0% 100% / 22%) !default;
-$palette-white-opacity-18: hsl(0deg 0% 100% / 18%) !default;
+$palette-white-opacity-22-deprecated: hsl(0deg 0% 100% / 22%) !default;
+$palette-white-opacity-18-deprecated: hsl(0deg 0% 100% / 18%) !default;
 
 // Blue
 
@@ -130,12 +130,12 @@ $palette-blue-160: #0c3b5e !default;
 $palette-blue-170: #0a2e4a !default;
 $palette-blue-180: #002c4e !default;
 
-$palette-blue-a: #9ccbee !default;
+$palette-blue-a-deprecated: #9ccbee !default;
 
-$palette-blue-opacity-30: hsl(206deg 100% 35% / 30%);
-$palette-blue-opacity-70: hsl(206deg 100% 35% / 70%);
+$palette-blue-opacity-30-deprecated: hsl(206deg 100% 35% / 30%);
+$palette-blue-opacity-70-deprecated: hsl(206deg 100% 35% / 70%);
 
-$palette-blue-black: #091f2c !default;
+$palette-blue-black-deprecated: #091f2c !default;
 
 // Navy
 
@@ -337,7 +337,7 @@ $palette-yellow-high-contrast: #ff0 !default;
 $palette-yellow-high-contrast-hover: #ff3 !default;
 $palette-visited-high-contrast: #3cff00 !default;
 
-$palette-turqoise-high-contrast-hover-fluent: #1aebff !default;
+$palette-turqoise-high-contrast-hover: #1aebff !default;
 
 $palette-orange-10: #fff9f5 !default;
 $palette-orange-20: #fdf6f3 !default;
