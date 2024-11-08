@@ -22,12 +22,13 @@ Badges use short text, color, and an optional icon for quick recognition.
 
 ### Sizes
 
-The following classes are available for resizing: `badge-sm`, `badge-lg`.
+The following classes are available for resizing: `badge-sm`, `badge-lg`, `badge-xl`.
 
 ```html
-<span class="badge badge-sm">Badge</span>
+<span class="badge badge-sm">Badge Small</span>
 <span class="badge">Badge</span>
-<span class="badge badge-lg">Badge</span>
+<span class="badge badge-lg">Badge Large</span>
+<span class="badge badge-xl">Badge Extra Large</span>
 ```
 
 ### Semantic colors & types
@@ -98,12 +99,12 @@ Badges can include icons and text. To do this, nest the [icon component](./icon.
 </span>
 ```
 
-### Badge Icon
+### Badge with Icon only
 
-Badges with only icons.
+Badges with only icons, can be used with all badge sizes
 
 ```html
-<span class="badge badge-sm">
+<span class="badge badge-sm badge-danger">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -114,7 +115,7 @@ Badges with only icons.
 		</svg>
 	</span>
 </span>
-<span class="badge">
+<span class="badge badge-success">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -125,7 +126,7 @@ Badges with only icons.
 		</svg>
 	</span>
 </span>
-<span class="badge badge-lg">
+<span class="badge badge-lg badge-warning">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -136,7 +137,7 @@ Badges with only icons.
 		</svg>
 	</span>
 </span>
-<span class="badge badge-xl">
+<span class="badge badge-xl badge-info">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path

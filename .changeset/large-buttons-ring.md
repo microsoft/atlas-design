@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Add badge-icon css styles
+Update badge styles to handle icon only badges and add multiple sizes for icon badges
