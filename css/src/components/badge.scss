@@ -8,10 +8,10 @@ $badge-font-size-sm: $font-size-9 !default;
 $badge-font-size-lg: $font-size-7 !default;
 $badge-font-weight: $weight-semibold !default;
 
-$badge-icon-font-size-xs: 2.5em !default;
-$badge-icon-font-size-sm: 3.5em !default;
-$badge-icon-font-size: 4.5em !default;
-$badge-icon-font-size-lg: 5.5em !default;
+$badge-icon-font-size-xs: 1.5em !default;
+$badge-icon-font-size-sm: 2.5em !default;
+$badge-icon-font-size: 3.5em !default;
+$badge-icon-font-size-lg: 4.5em !default;
 
 $badge-with-icon-font-size: 0.875em !default;
 
@@ -76,28 +76,23 @@ $badge-border-radius: $border-radius-rounded !default;
 		}
 	}
 
-	&.badge-icon {
+	&:has(.icon:only-child) {
 		padding: 0;
 		border: none;
-		font-size: $badge-icon-font-size;
-	}
 
-	&.badge-icon-xs {
-		padding: 0;
-		border: none;
-		font-size: $badge-icon-font-size-xs;
-	}
+		.icon {
+			font-size: $badge-icon-font-size;
 
-	&.badge-icon-sm {
-		padding: 0;
-		border: none;
-		font-size: $badge-icon-font-size-sm;
-	}
-
-	&.badge-icon-lg {
-		padding: 0;
-		border: none;
-		font-size: $badge-icon-font-size-lg;
+			&.icon-xs {
+				font-size: $badge-icon-font-size-xs;
+			}
+			&.icon-sm {
+				font-size: $badge-icon-font-size-sm;
+			}
+			&.icon-lg {
+				font-size: $badge-icon-font-size-lg;
+			}
+		}
 	}
 
 	.icon {
@@ -105,7 +100,6 @@ $badge-border-radius: $border-radius-rounded !default;
 	}
 
 	// Sizes
-
 	&.badge-sm {
 		font-size: $badge-font-size-sm;
 	}
