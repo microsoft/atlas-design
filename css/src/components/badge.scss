@@ -76,35 +76,38 @@ $badge-border-radius: $border-radius-rounded !default;
 		}
 	}
 
+	.icon {
+		font-size: $badge-with-icon-font-size;
+	}
+
 	&:has(.icon:only-child) {
 		padding: 0;
 		border: none;
 
 		.icon {
 			font-size: $badge-icon-font-size;
-
-			&.icon-xs {
-				font-size: $badge-icon-font-size-xs;
-			}
-			&.icon-sm {
-				font-size: $badge-icon-font-size-sm;
-			}
-			&.icon-lg {
-				font-size: $badge-icon-font-size-lg;
-			}
 		}
 	}
 
-	.icon {
-		font-size: $badge-with-icon-font-size;
-	}
-
 	// Sizes
+
 	&.badge-sm {
 		font-size: $badge-font-size-sm;
 	}
 
 	&.badge-lg {
 		font-size: $badge-font-size-lg;
+	}
+
+	&.icon-xs {
+		font-size: $badge-icon-font-size-xs;
+	}
+
+	&.icon-sm {
+		font-size: $badge-icon-font-size-sm;
+	}
+
+	&.icon-lg {
+		font-size: $badge-icon-font-size-lg;
 	}
 }
