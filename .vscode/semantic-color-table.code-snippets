@@ -1,0 +1,50 @@
+{
+	// Place your atlas-design workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	"Semantic color table": {
+		"scope": "markdown",
+		"prefix": "Semantic",
+		"body": [
+			"<table class=\"table\">",
+			"\t<caption>",
+			"\t\t${1:textlabel} color classes",
+			"\t</caption>",
+			"\t<thead>",
+			"\t\t<tr>",
+			"\t\t\t<th>Background color /<br>Text color</th>",
+			"\t\t\t<th>Font class</th>",
+			"\t\t\t<th>Background class</th>",
+			"\t\t</tr>",
+			"\t</thead>",
+			"\t<tbody>",
+			"\t\t<tr class=\"background-color-${2:textlabel}-invert color-${2:textlabel}\">",
+			"\t\t\t<td>${1:textlabel} invert /<br>${1:textlabel}</td>",
+			"\t\t\t<td><code>.color-${2:textlabel}</code></td>",
+			"\t\t\t<td><code>.background-color-${2:textlabel}-invert</code></td>",
+			"\t\t</tr>",
+			"\t\t<tr class=\"background-color-${2:textlabel}-light\" style=\"color: var(--theme-${2:textlabel}-dark)\">",
+			"\t\t\t<td>${1:textlabel} light /<br> ${1:textlabel} dark</td>",
+			"\t\t\t<td>N/A</td>",
+			"\t\t\t<td><code>.background-color-${2:textlabel}-light</code></td>",
+			"\t\t</tr>",
+			"\t\t<tr class=\"background-color-${2:textlabel} color-${2:textlabel}-invert\">",
+			"\t\t\t<td>${1:textlabel} /<br>${1:textlabel} invert</td>",
+			"\t\t\t<td><code>.color-${2:textlabel}-invert</code></td>",
+			"\t\t\t<td><code>.background-color-${2:textlabel}</code></td>",
+			"\t\t</tr>",
+			"\t\t<tr class=\"background-color-${2:textlabel}-dark color-${2:textlabel}-invert\">",
+			"\t\t\t<td>${1:textlabel} dark /<br>${1:textlabel} invert</td>",
+			"\t\t\t<td><code>.color-${2:textlabel}-invert</code></td>",
+			"\t\t\t<td><code>.background-color-${2:textlabel}-dark</code></td>",
+			"\t\t</tr>",
+			"\t</tbody>",
+			"</table>"
+		],
+		"description": "A table that can showcase a sematic color"
+	}
+}
