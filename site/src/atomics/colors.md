@@ -10,7 +10,7 @@ classPrefixes:
 
 # Color Atomics
 
-Atlas has CSS classes that allow you to easily apply themed background and text colors.
+Atlas has CSS classes that allow you to easily apply themed background and text colors. Change the site's theme to see how each looks in different themes.
 
 ## Accessibility concerns
 
@@ -18,7 +18,7 @@ Altas components take care of ensuring accessible text-to-background color contr
 
 ## Text colors
 
-Atlas has several themed text colors.
+Atlas has three themed text colors.
 
 <table class="table">
 	<caption>
@@ -48,7 +48,7 @@ Atlas has several themed text colors.
 
 ## Background colors
 
-Atlas has several themed background colors.
+Atlas has five themed (non-sematic) background colors.
 
 <table class="table">
 	<caption>
