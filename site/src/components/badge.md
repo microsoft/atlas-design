@@ -2,7 +2,6 @@
 title: Badge
 description: The Badge component in the Atlas Design System
 template: standard
-figmaEmbed: https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FuVA2amRR71yJZ0GS6RI6zL%2F%25F0%259F%258C%259E-Atlas-Design-Library%3Fm%3Dauto%26node-id%3D3381-10722%26t%3DZhpJOvxIFDBwfkR7-1
 classType: Component
 classPrefixes:
   - badge
@@ -101,10 +100,10 @@ Badges can include icons and text. To do this, nest the [icon component](./icon.
 
 ### Badge with Icon only
 
-Badges with only icons, can be used with all badge sizes
+Badges with only icons, can be used with all badge sizes. If including an icon is the only child of the element, ensure that `aria-label` is added to the badge for accessibility.
 
 ```html
-<span class="badge badge-sm badge-danger">
+<span class="badge badge-sm badge-danger" aria-label="Small icon only badge with danger color.">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -115,7 +114,7 @@ Badges with only icons, can be used with all badge sizes
 		</svg>
 	</span>
 </span>
-<span class="badge badge-success">
+<span class="badge badge-success" aria-label="Icon only badge with success color.">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -126,7 +125,7 @@ Badges with only icons, can be used with all badge sizes
 		</svg>
 	</span>
 </span>
-<span class="badge badge-lg badge-warning">
+<span class="badge badge-lg badge-warning" aria-label="Large icon only badge with warning color.">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -137,7 +136,7 @@ Badges with only icons, can be used with all badge sizes
 		</svg>
 	</span>
 </span>
-<span class="badge badge-xl badge-info">
+<span class="badge badge-xl badge-info" aria-label="Extra large icon only badge with info color.">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path

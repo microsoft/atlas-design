@@ -1,6 +1,6 @@
 ---
-'@microsoft/atlas-site': patch
-'@microsoft/atlas-css': patch
+'@microsoft/atlas-site': minor
+'@microsoft/atlas-css': minor
 ---
 
-Update badge styles to handle icon only badges and add multiple sizes for icon badges
+Update badge styles to handle icon only badges. Add new extra large badge size.
