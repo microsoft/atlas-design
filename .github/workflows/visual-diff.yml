@@ -29,6 +29,9 @@ jobs:
   visual-diff:
     # The type of runner that the job will run on
     runs-on: windows-latest
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -51,20 +54,20 @@ jobs:
         run: npx playwright install
 
       # Take images
-      - name: Take screenshots for comparison [push|main]
+      - name: Take screenshots for baseline [push|main]
         if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
         id: 'visual_diff_all'
         run: npm run screenshots:all
 
-      # On pushes to main, upload images for comparison against pull_request runs
-      - name: Upload comparison screenshots [push|main]
+      # On pushes to main, upload images for baseline against pull_request runs
+      - name: Upload baseline screenshots [push|main]
         if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
         uses: actions/upload-artifact@v4
         with:
-          name: visual_diff_comparison_shapshots
+          name: visual_diff_baseline_shapshots
           path: ./integration/visual-diff/screenshots/updated
 
-      # On pull requests into main, download images for comparison
+      # On pull requests into main, download images for baseline
       - name: Take screenshots [pull_request]
         if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
         id: 'visual_diff_light'
@@ -78,9 +81,39 @@ jobs:
           name: visual_diff_pull_request_shapshots-${{ github.sha }}
           path: ./integration/visual-diff/screenshots/updated
 
-      - name: Download comparison screenshots [pull_request]
+      - name: Download baseline screenshots [pull_request]
         if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
         uses: actions/upload-artifact@v4
         with:
-          name: visual_diff_comparison_shapshots
-          path: ./integration/visual-diff/screenshots/comparison
+          name: visual_diff_baseline_shapshots
+          path: ./integration/visual-diff/screenshots/baseline
+
+      - name: Download baseline screenshots [pull_request]
+        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual_diff_baseline_shapshots
+          path: ./integration/visual-diff/screenshots/baseline
+
+        # populate ./integration/visual-diff/screenshots/ with the contents of the diff site
+      - name: Compare Screenshots and Generate Site
+        run: npm run compare -w @microsoft/atlas-integration
+
+      # Ready for Parcel to build the thing
+      - name: Build diff report site
+        run: npm run build-report -w @microsoft/atlas-integration
+
+      # # Pages setup and upload
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v5
+
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     name: github-pages
+      #     # Upload entire repository
+      #     path: './integration/visual-diff/screenshots/'
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
