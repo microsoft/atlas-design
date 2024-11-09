@@ -101,7 +101,7 @@ jobs:
 
       # Ready for Parcel to build the thing
       - name: Build diff report site
-        run: npm run build-report -w @microsoft/atlas-integration
+        run: npm run build-report -w @microsoft/atlas-integration -- --public-url "/pull/${{ github.event.number }}" --dist-dir "dist/pull/${{ github.event.number }}" --no-optimize"
 
       # Temporarily upload screenshots for pull requests, just to verify they are as we'd expect
       - name: Upload site [pull_request]
