@@ -103,6 +103,14 @@ jobs:
       - name: Build diff report site
         run: npm run build-report -w @microsoft/atlas-integration
 
+      # Temporarily upload screenshots for pull requests, just to verify they are as we'd expect
+      - name: Upload site [pull_request]
+        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diff-screenshots-${{ github.sha }}
+          path: ./integration/dist
+
       # # Pages setup and upload
       # - name: Setup Pages
       #   uses: actions/configure-pages@v5
