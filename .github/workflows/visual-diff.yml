@@ -108,7 +108,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
         uses: actions/upload-artifact@v4
         with:
-          name: visual-diff-screenshots-${{ github.sha }}
+          name: visual-diff-screenshots-${{ github.event.number }}
           path: ./integration/dist
 
       # # Pages setup and upload
