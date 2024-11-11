@@ -17,7 +17,7 @@
 			"\t<thead>",
 			"\t\t<tr>",
 			"\t\t\t<th>Background color /<br>Text color</th>",
-			"\t\t\t<th>Font class</th>",
+			"\t\t\t<th>Text class</th>",
 			"\t\t\t<th>Background class</th>",
 			"\t\t</tr>",
 			"\t</thead>",
