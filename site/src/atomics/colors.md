@@ -14,7 +14,7 @@ Atlas has CSS classes that allow you to easily apply themed background and text 
 
 ## Accessibility concerns
 
-Altas components take care of ensuring accessible text-to-background color contrast ratios. However, when apply specific colors yourself via atomics always remember to test contrast.
+Atlas components ensure accessible text-to-background color contrast ratios. However, when applying specific colors yourself via atomics, always remember to test contrast.
 
 ## Text colors
 
