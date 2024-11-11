@@ -100,10 +100,10 @@ Badges can include icons and text. To do this, nest the [icon component](./icon.
 
 ### Badge with Icon only
 
-Badges with only icons, can be used with all badge sizes. If including an icon is the only child of the element, ensure that `aria-label` is added to the badge for accessibility.
+Badges with only icons, can be used with all badge sizes. If including an icon is the only child of the element, ensure that `aria-label` and `role` are added to the badge for accessibility.
 
 ```html
-<span class="badge badge-sm badge-danger" aria-label="Small icon only badge with danger color.">
+<span class="badge badge-sm badge-danger" aria-label="Small icon only badge with danger color." role="badge">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -114,7 +114,7 @@ Badges with only icons, can be used with all badge sizes. If including an icon i
 		</svg>
 	</span>
 </span>
-<span class="badge badge-success" aria-label="Icon only badge with success color.">
+<span class="badge badge-success" aria-label="Icon only badge with success color." role="badge">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -125,7 +125,7 @@ Badges with only icons, can be used with all badge sizes. If including an icon i
 		</svg>
 	</span>
 </span>
-<span class="badge badge-lg badge-warning" aria-label="Large icon only badge with warning color.">
+<span class="badge badge-lg badge-warning" aria-label="Large icon only badge with warning color." role="badge">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
@@ -136,7 +136,7 @@ Badges with only icons, can be used with all badge sizes. If including an icon i
 		</svg>
 	</span>
 </span>
-<span class="badge badge-xl badge-info" aria-label="Extra large icon only badge with info color.">
+<span class="badge badge-xl badge-info" aria-label="Extra large icon only badge with info color." role="badge">
 	<span class="icon" aria-hidden="true">
 		<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
