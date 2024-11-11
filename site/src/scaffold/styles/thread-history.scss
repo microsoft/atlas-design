@@ -1,0 +1,62 @@
+$thread-font-size: $font-size-8 !default;
+$thread-font-size-sm: $font-size-9 !default;
+$thread-font-size-lg: $font-size-7 !default;
+$thread-font-weight: $weight-semibold !default;
+
+.thread-history {
+	font-size: $thread-font-size;
+}
+
+.line {
+	padding-left: 2em;
+	min-height: 50px;
+	position: relative;
+	display: flex;
+
+	&.line-solid {
+		border-left: 1px solid #a5a5a5;
+	}
+
+	&.line-dashed {
+		border-left: 1px dashed #a5a5a5;
+	}
+
+	&:last-child {
+		border-left: none;
+	}
+}
+
+.thread-icon {
+	position: absolute;
+	left: -1.05em;
+
+	content: ' ';
+	border: 8px solid rgba(255, 255, 255, 0.74);
+	border-radius: 500%;
+	background: #258cc7;
+	height: 32px;
+	width: 32px;
+}
+
+.thread-text {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.thread-title {
+	display: flex;
+	justify-content: space-between;
+	font-weight: $thread-font-weight;
+}
+
+.thread-timestamp {
+	color: #8d8d8d;
+	font-size: $thread-font-size-sm;
+	text-align: right;
+}
+
+.thread-detail {
+	font-size: $thread-font-size-sm;
+	padding-bottom: 1.25rem;
+}
