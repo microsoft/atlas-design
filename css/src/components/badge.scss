@@ -18,7 +18,7 @@ $badge-border-radius: $border-radius-rounded !default;
 	align-items: center;
 	justify-content: center;
 	padding: $badge-padding-block $badge-padding-inline;
-	border: $badge-border-width solid $colorNeutralStroke2;
+	border: $badge-border-width solid $border-light;
 	border-radius: $badge-border-radius;
 	background-color: $colorNeutralBackground4;
 	color: $colorNeutralForeground3;

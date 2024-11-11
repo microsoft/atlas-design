@@ -4,7 +4,6 @@ $button-color: $text !default;
 $button-background-color: $body-background !default;
 $button-color-fluent: $text-fluent !default;
 $button-color-subtle-fluent: $colorNeutralForeground2 !default;
-$button-background-color-fluent: $body-background-fluent !default;
 
 $button-lg-font-size: $font-size-6 !default;
 $button-sm-font-size: $font-size-8 !default;
@@ -18,11 +17,9 @@ $button-border-radius: $control-radius !default;
 $button-padding-vertical: calc(0.375em - #{$button-border-width}) !default;
 $button-padding-horizontal: 0.75em !default;
 
-$button-hover-color: $text !default;
+$button-hover-color: $default-hover-text !default;
 $button-hover-border-color: $default-hover-border !default;
 $button-hover-background-color: $default-hover !default;
-
-$button-hover-color-fluent: $default-hover-text !default;
 
 $button-disabled-background-color: $body-background-medium !default;
 $button-disabled-shadow: none !default;
@@ -41,7 +38,7 @@ $button-font-weight: $weight-semibold !default;
 	border-width: $button-border-width;
 	border-radius: $button-border-radius;
 	border-color: $button-border-color;
-	background-color: $button-background-color-fluent;
+	background-color: $button-background-color;
 	color: $button-color-fluent;
 	font-weight: $button-font-weight;
 	text-align: center;
@@ -74,7 +71,7 @@ $button-font-weight: $weight-semibold !default;
 	&.is-hovered {
 		border-color: $button-hover-border-color;
 		background-color: $button-hover-background-color;
-		color: $button-hover-color-fluent;
+		color: $button-hover-color;
 	}
 
 	&:visited {
@@ -147,9 +144,8 @@ $button-font-weight: $weight-semibold !default;
 	}
 }
 
-$button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
-$button-clear-hover-background-color-fluent: $default-hover;
-$button-clear-hover-color-fluent: $colorNeutralForeground2Hover;
+$button-clear-hover-background-color: $default-hover;
+$button-clear-hover-color: $button-hover-color;
 
 .button.button-clear {
 	border-color: transparent;
@@ -170,8 +166,8 @@ $button-clear-hover-color-fluent: $colorNeutralForeground2Hover;
 	&.is-hovered,
 	&:hover,
 	&:active {
-		background-color: $button-clear-hover-background-color-fluent;
-		color: $button-clear-hover-color-fluent;
+		background-color: $button-clear-hover-background-color;
+		color: $button-clear-hover-color;
 	}
 
 	@each $name, $color-set in $colors {
