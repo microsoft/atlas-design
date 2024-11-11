@@ -45,6 +45,6 @@
 			"\t</tbody>",
 			"</table>"
 		],
-		"description": "A table that can showcase a sematic color"
+                "description": "A table that can showcase a semantic color"
 	}
 }
