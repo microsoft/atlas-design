@@ -100,7 +100,7 @@ Badges can include icons and text. To do this, nest the [icon component](./icon.
 
 ### Badge with Icon only
 
-Badges with only icons, can be used with all badge sizes. If including an icon is the only child of the element, ensure that `aria-label` is added to the badge for accessibility.
+Badges with only icons, can be used with all badge sizes. If including an icon is the only child of the element, ensure that `aria-label` and `role="img" are added to the badge for accessibility.
 
 ```html
 <span
