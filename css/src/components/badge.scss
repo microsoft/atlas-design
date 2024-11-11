@@ -79,7 +79,7 @@ $badge-border-radius: $border-radius-rounded !default;
 
 	&:has(.icon:only-child) {
 		padding: $badge-icon-padding-block;
-		border: none;
+		border: 0;
 	}
 
 	// Sizes
