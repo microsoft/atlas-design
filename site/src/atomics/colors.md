@@ -48,7 +48,7 @@ Atlas has three themed text colors.
 
 ## Background colors
 
-Atlas has five themed (non-sematic) background colors.
+Atlas has five themed (non-semantic) background colors.
 
 <table class="table">
 	<caption>
