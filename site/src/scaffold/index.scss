@@ -6,6 +6,7 @@
 @import './styles/code-block.scss';
 @import './styles/burger.scss';
 @import './styles/layout-buttons.scss';
+@import './styles/thread-history.scss';
 
 // hack to mark markdown logo on '/' look a tad different, excludes header logo
 main img[src^='/atlas-light.'] {
