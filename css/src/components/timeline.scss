@@ -1,0 +1,51 @@
+$timeline-content-font-size: $font-size-8 !default;
+$timeline-timestamp-font-size: $font-size-9 !default;
+$timeline-timestamp-font-weight: $weight-semilight !default;
+$timeline-description-padding-top: $spacer-4 !default;
+$timeline-description-line-height: $line-height-normal;
+
+$timeline-item-border-left: $border-width solid $border !default;
+$timeline-item-min-height: $layout-6 !default;
+$timeline-item-padding-bottom: $spacer-7 !default;
+$timeline-item-padding-left: $spacer-8 !default;
+
+$timeline-badge-top-offset: -0.35em !default;
+$timeline-badge-left-offset: -1.05em !default;
+
+.timeline-item {
+	display: flex;
+	position: relative;
+	padding-block-end: $timeline-item-padding-bottom;
+	padding-inline-start: $timeline-item-padding-left;
+	min-height: $timeline-item-min-height;
+	border-inline-start: $timeline-item-border-left;
+
+	&:last-child {
+		border-inline-start: none;
+	}
+
+	.timeline-item-badge {
+		position: absolute;
+		inset-block-start: $timeline-badge-top-offset;
+		inset-inline-start: $timeline-badge-left-offset;
+	}
+
+	.timeline-item-content {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		font-size: $timeline-content-font-size;
+
+		.timeline-item-timestamp {
+			min-width: max-content;
+			font-size: $timeline-timestamp-font-size;
+			font-weight: $timeline-timestamp-font-weight;
+			text-align: end;
+		}
+
+		.timeline-item-description {
+			padding-block-start: $timeline-description-padding-top;
+			line-height: $timeline-description-line-height;
+		}
+	}
+}

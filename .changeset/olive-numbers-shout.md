@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Added thread history pattern and css styles.
+Added timeline pattern and css styles.

@@ -1,22 +1,22 @@
 ---
-title: Thread History
-description: Common thread history patterns in the Atlas Design System
+title: Timeline
+description: Common timeline patterns in the Atlas Design System
 template: standard
 ---
 
-# Thread History
+# Timeline
 
-The thread history pattern is used to display a timeline of events.
+The timeline pattern is used to display a list of events.
 
 ```html
 <div class="border-md border-radius-lg padding-md font-size-md line-height-md">
 	<div class="display-flex justify-content-space-between margin-bottom-sm">
-		<h4 class="font-size-h5">Thread history</h4>
+		<h4 class="font-size-h5">Timeline History</h4>
 		<button class="button button-clear">X</button>
 	</div>
 	<ul class="margin-left-sm">
-		<li class="thread-item">
-			<div class="thread-icon">
+		<li class="timeline-item">
+			<div class="timeline-item-badge">
 				<span class="badge badge-warning">
 					<span class="icon" aria-hidden="true">
 						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,14 +29,12 @@ The thread history pattern is used to display a timeline of events.
 					</span>
 				</span>
 			</div>
-			<div class="thread-text">
+			<div class="timeline-item-content">
 				<div class="display-flex justify-content-space-between">
-					<p class="font-size-sm font-weight-semibold">
-						Question escalation removed by ModeratorJohn
-					</p>
-					<p class="thread-timestamp">Sept 19, 2024, 11:30 AM</p>
+					<p class="font-weight-semibold">Question escalation removed by ModeratorJohn</p>
+					<p class="timeline-item-timestamp">Sept 19, 2024, 11:30 AM</p>
 				</div>
-				<div class="font-size-sm line-height-normal padding-top-xxs">
+				<p class="timeline-item-description">
 					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
 					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -48,11 +46,11 @@ The thread history pattern is used to display a timeline of events.
 					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
 					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
 					sapien risus a quam. Maecenas fermentum consequat.
-				</div>
+				</p>
 			</div>
 		</li>
-		<li class="thread-item">
-			<div class="thread-icon">
+		<li class="timeline-item">
+			<div class="timeline-item-badge">
 				<span class="badge badge-success">
 					<span class="icon" aria-hidden="true">
 						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,14 +63,14 @@ The thread history pattern is used to display a timeline of events.
 					</span>
 				</span>
 			</div>
-			<div class="thread-text">
+			<div class="timeline-item-content">
 				<div class="display-flex justify-content-space-between">
-					<p class="font-size-sm font-weight-semibold">
+					<p class="font-weight-semibold">
 						Question escalated by ModeratorEmily to Microsoft moderators
 					</p>
-					<p class="thread-timestamp">Sept 19, 2024, 11:30 AM</p>
+					<p class="timeline-item-timestamp">Sept 19, 2024, 11:30 AM</p>
 				</div>
-				<div class="font-size-sm line-height-normal padding-top-xxs">
+				<div class="timeline-item-description">
 					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
 					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -87,8 +85,8 @@ The thread history pattern is used to display a timeline of events.
 				</div>
 			</div>
 		</li>
-		<li class="thread-item">
-			<div class="thread-icon">
+		<li class="timeline-item">
+			<div class="timeline-item-badge">
 				<span class="badge badge-danger">
 					<span class="icon" aria-hidden="true">
 						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,15 +99,15 @@ The thread history pattern is used to display a timeline of events.
 					</span>
 				</span>
 			</div>
-			<div class="thread-text">
+			<div class="timeline-item-content">
 				<div class="display-flex justify-content-space-between">
-					<p class="font-size-sm font-weight-semibold">Answer deleted by ModeratorSarah</p>
-					<p class="thread-timestamp">Sept 12, 2024, 11:30 AM</p>
+					<p class="font-weight-semibold">Answer deleted by ModeratorSarah</p>
+					<p class="timeline-item-timestamp">Sept 12, 2024, 11:30 AM</p>
 				</div>
 			</div>
 		</li>
-		<li class="thread-item">
-			<div class="thread-icon">
+		<li class="timeline-item">
+			<div class="timeline-item-badge">
 				<span class="badge badge-info">
 					<span class="icon" aria-hidden="true">
 						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,10 +120,10 @@ The thread history pattern is used to display a timeline of events.
 					</span>
 				</span>
 			</div>
-			<div class="thread-text">
+			<div class="timeline-item-content">
 				<div class="display-flex justify-content-space-between">
-					<p class="font-size-sm font-weight-semibold">Question created by User123</p>
-					<p class="thread-timestamp">Sept 9, 2024, 11:30 AM</p>
+					<p class="font-weight-semibold">Question created by User123</p>
+					<p class="timeline-item-timestamp">Sept 9, 2024, 11:30 AM</p>
 				</div>
 			</div>
 		</li>
