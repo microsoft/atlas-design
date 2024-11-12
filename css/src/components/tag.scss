@@ -206,6 +206,13 @@ $tag-interactive-color-primary-hover: $primary-dark !default;
 
 		.tag-close {
 			border-inline-start-color: $tag-interactive-divider-color-filled;
+
+			&:hover,
+			&.is-hovered {
+				border-color: $tag-background-filled-hover;
+				background-color: $tag-background-filled-hover;
+				color: $tag-color-filled-hover;
+			}
 		}
 	}
 }
