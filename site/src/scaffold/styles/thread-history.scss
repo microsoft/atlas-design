@@ -1,25 +1,22 @@
-$thread-font-size: $font-size-8 !default;
-$thread-font-size-sm: $font-size-9 !default;
-$thread-font-size-lg: $font-size-7 !default;
-$thread-font-weight: $weight-semibold !default;
+$thread-timestamp-font-size: $font-size-9 !default;
+$thread-timestamp-font-weight: $weight-semilight !default;
 
-.thread-history {
-	font-size: $thread-font-size;
-}
+$thread-padding-left: $spacer-8 !default;
+$thread-padding-bottom: $spacer-8 !default;
+$thread-border-left: $border-width solid $border !default;
 
-.line {
-	padding-left: 2em;
-	min-height: 50px;
+$thread-min-height: 3.5em !default;
+
+$thread-icon-top-offset: -0.35em !default;
+$thread-icon-left-offset: -1.05em !default;
+
+.thread-item {
+	padding-left: $thread-padding-left;
+	padding-bottom: $thread-padding-bottom;
 	position: relative;
 	display: flex;
-
-	&.line-solid {
-		border-left: 1px solid #a5a5a5;
-	}
-
-	&.line-dashed {
-		border-left: 1px dashed #a5a5a5;
-	}
+	min-height: $thread-min-height;
+	border-left: $thread-border-left;
 
 	&:last-child {
 		border-left: none;
@@ -28,14 +25,8 @@ $thread-font-weight: $weight-semibold !default;
 
 .thread-icon {
 	position: absolute;
-	left: -1.05em;
-
-	content: ' ';
-	border: 8px solid rgba(255, 255, 255, 0.74);
-	border-radius: 500%;
-	background: #258cc7;
-	height: 32px;
-	width: 32px;
+	left: $thread-icon-left-offset;
+	top: $thread-icon-top-offset;
 }
 
 .thread-text {
@@ -44,19 +35,9 @@ $thread-font-weight: $weight-semibold !default;
 	flex-grow: 1;
 }
 
-.thread-title {
-	display: flex;
-	justify-content: space-between;
-	font-weight: $thread-font-weight;
-}
-
 .thread-timestamp {
-	color: #8d8d8d;
-	font-size: $thread-font-size-sm;
+	font-size: $thread-timestamp-font-size;
+	font-weight: $thread-timestamp-font-weight;
+	min-width: max-content;
 	text-align: right;
-}
-
-.thread-detail {
-	font-size: $thread-font-size-sm;
-	padding-bottom: 1.25rem;
 }

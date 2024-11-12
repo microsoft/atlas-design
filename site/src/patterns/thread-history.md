@@ -9,50 +9,124 @@ template: standard
 The thread history pattern
 
 ```html
-<div class="display-flex border-md padding-block-sm padding-inline-md">
-	<ul>
-		<li class="line line-solid">
-			<div class="thread-icon"></div>
+<div class="border-md border-radius-lg padding-md font-size-md line-height-md">
+	<div class="display-flex justify-content-space-between margin-bottom-sm">
+		<h4 class="font-size-h5">Thread history</h4>
+		<button class="button button-clear">X</button>
+	</div>
+	<ul class="margin-left-sm">
+		<li class="thread-item">
+			<div class="thread-icon">
+				<span class="badge badge-warning">
+					<span class="icon" aria-hidden="true">
+						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								class="fill-current-color"
+								d="M10 3C6.13401 3 3 6.13401 3 10C3 11.7547 3.64565 13.3586 4.71233 14.5872L8.94781 10.4185C9.5316 9.84393 10.4684 9.84393 11.0522 10.4185L15.2877 14.5872C16.3544 13.3586 17 11.7547 17 10C17 6.13401 13.866 3 10 3ZM10 17C11.7513 17 13.3525 16.3568 14.5801 15.2938L10.3507 11.1312C10.1561 10.9397 9.84387 10.9397 9.64927 11.1312L5.41994 15.2938C6.64753 16.3568 8.24866 17 10 17ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5Z"
+								fill="white"
+							/>
+						</svg>
+					</span>
+				</span>
+			</div>
 			<div class="thread-text">
-				<div class="thread-title">
-					<p>Start from Shire</p>
-					<p class="thread-timestamp">3rd March 2015 19:00</p>
+				<div class="display-flex justify-content-space-between">
+					<p class="font-size-sm font-weight-semibold">
+						Question escalation removed by ModeratorJohn
+					</p>
+					<p class="thread-timestamp">Sept 19, 2024, 11:30 AM</p>
 				</div>
-				<div class="thread-detail">
-					In summary, the Shire is a land of beauty, tranquility, and simple pleasures. It is a
-					place where the worries of the world seem to fade away, and one can truly appreciate the
-					joys of a peaceful and contented life. Whether you are strolling through the verdant
-					fields, enjoying a meal with friends, or simply basking in the natural beauty of the
-					landscape, the Shire offers a sense of serenity and happiness that is unmatched anywhere
-					else in Middle-earth.
+				<div class="font-size-sm line-height-normal padding-top-xxs">
+					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
+					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+					commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+					dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.
+					Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum
+					elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod
+					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
+					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
+					sapien risus a quam. Maecenas fermentum consequat.
 				</div>
 			</div>
 		</li>
-		<li class="line line-solid">
-			<div class="thread-icon"></div>
+		<li class="thread-item">
+			<div class="thread-icon">
+				<span class="badge badge-success">
+					<span class="icon" aria-hidden="true">
+						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								class="fill-current-color"
+								d="M10 3C6.13401 3 3 6.13401 3 10C3 11.7547 3.64565 13.3586 4.71233 14.5872L8.94781 10.4185C9.5316 9.84393 10.4684 9.84393 11.0522 10.4185L15.2877 14.5872C16.3544 13.3586 17 11.7547 17 10C17 6.13401 13.866 3 10 3ZM10 17C11.7513 17 13.3525 16.3568 14.5801 15.2938L10.3507 11.1312C10.1561 10.9397 9.84387 10.9397 9.64927 11.1312L5.41994 15.2938C6.64753 16.3568 8.24866 17 10 17ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5Z"
+								fill="white"
+							/>
+						</svg>
+					</span>
+				</span>
+			</div>
 			<div class="thread-text">
-				<div class="thread-title">
-					<p>Kill some Orcs</p>
-					<p class="thread-timestamp">5th March 2016 15:00</p>
+				<div class="display-flex justify-content-space-between">
+					<p class="font-size-sm font-weight-semibold">
+						Question escalated by ModeratorEmily to Microsoft moderators
+					</p>
+					<p class="thread-timestamp">Sept 19, 2024, 11:30 AM</p>
 				</div>
-				<div class="thread-detail">Don't enter the caves!!</div>
+				<div class="font-size-sm line-height-normal padding-top-xxs">
+					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
+					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+					commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+					dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.
+					Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum
+					elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod
+					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
+					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
+					sapien risus a quam. Maecenas fermentum consequat.
+				</div>
 			</div>
 		</li>
-		<li class="line line-dashed">
-			<div class="thread-icon"></div>
+		<li class="thread-item">
+			<div class="thread-icon">
+				<span class="badge badge-danger">
+					<span class="icon" aria-hidden="true">
+						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								class="fill-current-color"
+								d="M10 3C6.13401 3 3 6.13401 3 10C3 11.7547 3.64565 13.3586 4.71233 14.5872L8.94781 10.4185C9.5316 9.84393 10.4684 9.84393 11.0522 10.4185L15.2877 14.5872C16.3544 13.3586 17 11.7547 17 10C17 6.13401 13.866 3 10 3ZM10 17C11.7513 17 13.3525 16.3568 14.5801 15.2938L10.3507 11.1312C10.1561 10.9397 9.84387 10.9397 9.64927 11.1312L5.41994 15.2938C6.64753 16.3568 8.24866 17 10 17ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5Z"
+								fill="white"
+							/>
+						</svg>
+					</span>
+				</span>
+			</div>
 			<div class="thread-text">
-				<div class="thread-title">
-					<p>Throw that damn ring in the lava</p>
-					<p class="thread-timestamp">1st June 2015 19:00</p>
+				<div class="display-flex justify-content-space-between">
+					<p class="font-size-sm font-weight-semibold">Answer deleted by ModeratorSarah</p>
+					<p class="thread-timestamp">Sept 12, 2024, 11:30 AM</p>
 				</div>
-				<div class="thread-detail">Also, throw in Gollum while your at it.</div>
 			</div>
 		</li>
-		<li class="line">
-			<div class="thread-icon"></div>
+		<li class="thread-item">
+			<div class="thread-icon">
+				<span class="badge badge-info">
+					<span class="icon" aria-hidden="true">
+						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								class="fill-current-color"
+								d="M10 3C6.13401 3 3 6.13401 3 10C3 11.7547 3.64565 13.3586 4.71233 14.5872L8.94781 10.4185C9.5316 9.84393 10.4684 9.84393 11.0522 10.4185L15.2877 14.5872C16.3544 13.3586 17 11.7547 17 10C17 6.13401 13.866 3 10 3ZM10 17C11.7513 17 13.3525 16.3568 14.5801 15.2938L10.3507 11.1312C10.1561 10.9397 9.84387 10.9397 9.64927 11.1312L5.41994 15.2938C6.64753 16.3568 8.24866 17 10 17ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10ZM13 7.5C13 7.22386 12.7761 7 12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8C12.7761 8 13 7.77614 13 7.5ZM14 7.5C14 8.32843 13.3284 9 12.5 9C11.6716 9 11 8.32843 11 7.5C11 6.67157 11.6716 6 12.5 6C13.3284 6 14 6.67157 14 7.5Z"
+								fill="white"
+							/>
+						</svg>
+					</span>
+				</span>
+			</div>
 			<div class="thread-text">
-				<div class="thread-title">Go sailing with the elves.</div>
-				<div class="thread-detail">Not much else you can do now.</div>
+				<div class="display-flex justify-content-space-between">
+					<p class="font-size-sm font-weight-semibold">Question created by User123</p>
+					<p class="thread-timestamp">Sept 9, 2024, 11:30 AM</p>
+				</div>
 			</div>
 		</li>
 	</ul>
