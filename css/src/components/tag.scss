@@ -35,7 +35,7 @@ $tag-background-primary: $primary-background !default;
 $tag-background-primary-hover: $primary-hover !default;
 $tag-border-color-primary: $primary-background-glow-high-contrast !default;
 $tag-interactive-divider-color-primary: $primary-box-shadow !default;
-$tag-interactive-color-primary-hover: $primary-invert !default;
+$tag-interactive-color-primary-hover: $primary-dark !default;
 
 .tag {
 	display: inline-flex;
@@ -162,6 +162,11 @@ $tag-interactive-color-primary-hover: $primary-invert !default;
 				border-color: $tag-background-primary-hover;
 				background-color: $tag-background-primary-hover;
 				color: $tag-interactive-color-primary-hover;
+
+				/* stylelint-disable-next-line max-nesting-depth */
+				.theme-high-contrast & {
+					color: $primary-invert;
+				}
 			}
 		}
 
