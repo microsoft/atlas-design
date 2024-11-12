@@ -6,7 +6,7 @@ template: standard
 
 # Thread History
 
-The thread history pattern
+The thread history pattern is used to display a timeline of events.
 
 ```html
 <div class="border-md border-radius-lg padding-md font-size-md line-height-md">

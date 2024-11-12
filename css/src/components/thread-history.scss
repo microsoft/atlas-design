@@ -1,32 +1,31 @@
 $thread-timestamp-font-size: $font-size-9 !default;
 $thread-timestamp-font-weight: $weight-semilight !default;
 
-$thread-padding-left: $spacer-8 !default;
-$thread-padding-bottom: $spacer-8 !default;
 $thread-border-left: $border-width solid $border !default;
-
 $thread-min-height: 3.5em !default;
+$thread-padding-bottom: $spacer-8 !default;
+$thread-padding-left: $spacer-8 !default;
 
 $thread-icon-top-offset: -0.35em !default;
 $thread-icon-left-offset: -1.05em !default;
 
 .thread-item {
-	padding-left: $thread-padding-left;
-	padding-bottom: $thread-padding-bottom;
-	position: relative;
 	display: flex;
+	position: relative;
+	padding-block-end: $thread-padding-bottom;
+	padding-inline-start: $thread-padding-left;
 	min-height: $thread-min-height;
-	border-left: $thread-border-left;
+	border-inline-start: $thread-border-left;
 
 	&:last-child {
-		border-left: none;
+		border-inline-start: none;
 	}
 }
 
 .thread-icon {
 	position: absolute;
-	left: $thread-icon-left-offset;
-	top: $thread-icon-top-offset;
+	inset-block-start: $thread-icon-top-offset;
+	inset-inline-start: $thread-icon-left-offset;
 }
 
 .thread-text {
@@ -36,8 +35,8 @@ $thread-icon-left-offset: -1.05em !default;
 }
 
 .thread-timestamp {
+	min-width: max-content;
 	font-size: $thread-timestamp-font-size;
 	font-weight: $thread-timestamp-font-weight;
-	min-width: max-content;
-	text-align: right;
+	text-align: end;
 }
