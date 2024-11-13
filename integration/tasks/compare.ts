@@ -4,15 +4,14 @@ import { emptyDir, ensureDir, readFile, writeFile, writeJSON } from 'fs-extra';
 import { basename, dirname, join, resolve, sep } from 'path';
 import * as pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
-import { promisify } from 'util';
 import {
 	baselineDirectory,
 	diffDirectory,
 	screenshotsOutputDir,
 	screenshotsRoot
 } from './locations';
-import { generateHtmlReport } from './report';
-export const glob = promisify(require('glob'));
+import { generateOutputs } from './report';
+import { glob } from 'glob';
 
 export const diffExt = '.diff.png';
 /**
@@ -158,7 +157,7 @@ async function performVisualDiff(
 	outDir: string = _outDir
 ) {
 	const manifest = await compare(sourceDir, targetDir, outDir);
-	await generateHtmlReport(manifest);
+	await generateOutputs(manifest);
 }
 
 function sortManifest(manifest: VisualDiffReportManifest) {
