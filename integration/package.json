@@ -4,6 +4,7 @@
 	"private": true,
 	"description": "",
 	"scripts": {
+		"action": "wireit",
 		"codegen": "playwright codegen localhost:1111",
 		"compare": "wireit",
 		"compile-tasks": "wireit",
@@ -27,11 +28,18 @@
 		},
 		"compile-tasks": {
 			"command": "tsc -p \"./tasks/tsconfig.json\""
+		},
+		"action": {
+			"command": "node \"./tasks/dist/action.js\" ",
+			"dependencies": [
+				"compile-tasks"
+			]
 		}
 	},
 	"author": "Microsoft Corporation",
 	"license": "ISC",
 	"devDependencies": {
+		"@actions/core": "1.11.1",
 		"@axe-core/playwright": "^4.7.3",
 		"@playwright/test": "^1.35.1",
 		"@types/normalize-path": "^3.0.0",

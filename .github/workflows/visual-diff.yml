@@ -111,6 +111,9 @@ jobs:
           name: visual-diff-screenshots-${{ github.event.number }}
           path: ./integration/dist
 
+      - name: Run GH Action Script
+        run: npm run action -w @microsoft/atlas-integration
+
       # # Pages setup and upload
       # - name: Setup Pages
       #   uses: actions/configure-pages@v5
