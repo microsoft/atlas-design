@@ -1,6 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
+		"skipLibCheck": false,
 		/*NOTE: This file is used only for linting. */
 		/* Basic Options */
 		"target": "es2021",

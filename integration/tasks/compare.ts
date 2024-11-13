@@ -1,4 +1,4 @@
-// @ts-check
+#!/usr/bin/env ts-node
 
 import { emptyDir, ensureDir, readFile, writeFile, writeJSON } from 'fs-extra';
 import { basename, dirname, join, resolve, sep } from 'path';

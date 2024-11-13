@@ -1,5 +1,7 @@
+#!/usr/bin/env ts-node
+
 // import { ensureDir, writeFile } from 'fs-extra';
-import { join } from 'path';
+
 import type { VisualDiffReportManifest } from './compare';
 import { screenshotsRoot } from './locations';
 
