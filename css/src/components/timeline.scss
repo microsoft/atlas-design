@@ -1,3 +1,4 @@
+@use 'sass:math';
 $timeline-content-font-size: $font-size-8 !default;
 $timeline-timestamp-font-size: $font-size-9 !default;
 $timeline-timestamp-font-weight: $weight-semilight !default;
@@ -9,43 +10,63 @@ $timeline-item-min-height: $layout-6 !default;
 $timeline-item-padding-bottom: $spacer-7 !default;
 $timeline-item-padding-left: $spacer-8 !default;
 
-$timeline-badge-top-offset: -0.35em !default;
-$timeline-badge-left-offset: -1.05em !default;
+.timeline {
+	font-size: $document-font-size;
+	container-type: inline-size;
 
-.timeline-item {
-	display: flex;
-	position: relative;
-	padding-block-end: $timeline-item-padding-bottom;
-	padding-inline-start: $timeline-item-padding-left;
-	min-height: $timeline-item-min-height;
-	border-inline-start: $timeline-item-border-left;
-
-	&:last-child {
-		border-inline-start: none;
-	}
-
-	.timeline-item-badge {
-		position: absolute;
-		inset-block-start: $timeline-badge-top-offset;
-		inset-inline-start: $timeline-badge-left-offset;
-	}
-
-	.timeline-item-content {
+	.timeline-item {
 		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-		font-size: $timeline-content-font-size;
+		position: relative;
+		padding-block-end: $timeline-item-padding-bottom;
+		padding-inline-start: $timeline-item-padding-left;
+		// min-height: $timeline-item-min-height;
+		border-inline-start: $timeline-item-border-left;
 
-		.timeline-item-timestamp {
-			min-width: max-content;
-			font-size: $timeline-timestamp-font-size;
-			font-weight: $timeline-timestamp-font-weight;
-			text-align: end;
+		&:last-child {
+			border-inline-start: none;
 		}
 
-		.timeline-item-description {
+		.timeline-item-badge {
+			position: absolute;
+			transform: translate(
+				calc(-#{$timeline-item-padding-left} - 50%),
+				-#{math.div($timeline-timestamp-font-size, 2)}
+			);
+		}
+
+		@container (min-width: 480px) {
+			// todo refactor into a variable containers.scss file in tokens folder
+			.timeline-item-template {
+				display: grid;
+				grid-template: auto / minmax(0, 1fr) auto;
+				grid-template-areas:
+					'title time'
+					'description description';
+				gap: 8px;
+			}
+		}
+
+		.timeline-item-template-title {
+			grid-area: title;
+			font-weight: $weight-semibold;
+			line-height: $line-height-normal;
+		}
+
+		.timeline-item-template-time {
+			grid-area: time;
+			line-height: $line-height-normal;
+			font-size: $timeline-timestamp-font-size;
+			font-weight: $timeline-timestamp-font-weight;
+			align-content: baseline;
+
+			// text-align: end;
+		}
+
+		.timeline-item-template-description {
+			grid-area: description;
 			padding-block-start: $timeline-description-padding-top;
 			line-height: $timeline-description-line-height;
+			font-size: $timeline-content-font-size;
 		}
 	}
 }

@@ -14,10 +14,10 @@ The timeline pattern is used to display a list of events.
 		<h4 class="font-size-h5">Timeline History</h4>
 		<button class="button button-clear">X</button>
 	</div>
-	<ul class="margin-left-sm">
+	<ul class="timeline">
 		<li class="timeline-item">
 			<div class="timeline-item-badge">
-				<span class="badge badge-warning">
+				<span class="badge badge-success">
 					<span class="icon" aria-hidden="true">
 						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -29,12 +29,12 @@ The timeline pattern is used to display a list of events.
 					</span>
 				</span>
 			</div>
-			<div class="timeline-item-content">
-				<div class="display-flex justify-content-space-between">
-					<p class="font-weight-semibold">Question escalation removed by ModeratorJohn</p>
-					<p class="timeline-item-timestamp">Sept 19, 2024, 11:30 AM</p>
-				</div>
-				<p class="timeline-item-description">
+			<div class="timeline-item-template">
+				<p class="timeline-item-template-title">
+					Question escalated by ModeratorEmily to Microsoft moderators
+				</p>
+				<p class="timeline-item-template-time">Sept 19, 2024, 11:30 AM</p>
+				<div class="timeline-item-template-description">
 					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
 					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -46,7 +46,7 @@ The timeline pattern is used to display a list of events.
 					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
 					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
 					sapien risus a quam. Maecenas fermentum consequat.
-				</p>
+				</div>
 			</div>
 		</li>
 		<li class="timeline-item">
@@ -63,14 +63,10 @@ The timeline pattern is used to display a list of events.
 					</span>
 				</span>
 			</div>
-			<div class="timeline-item-content">
-				<div class="display-flex justify-content-space-between">
-					<p class="font-weight-semibold">
-						Question escalated by ModeratorEmily to Microsoft moderators
-					</p>
-					<p class="timeline-item-timestamp">Sept 19, 2024, 11:30 AM</p>
-				</div>
-				<div class="timeline-item-description">
+			<div class="timeline-item-template">
+				<p class="timeline-item-template-title">Question escalated</p>
+				<p class="timeline-item-template-time">Sept 19, 2024</p>
+				<div class="timeline-item-template-description">
 					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
 					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -87,7 +83,7 @@ The timeline pattern is used to display a list of events.
 		</li>
 		<li class="timeline-item">
 			<div class="timeline-item-badge">
-				<span class="badge badge-danger">
+				<span class="badge badge-success">
 					<span class="icon" aria-hidden="true">
 						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -99,16 +95,29 @@ The timeline pattern is used to display a list of events.
 					</span>
 				</span>
 			</div>
-			<div class="timeline-item-content">
-				<div class="display-flex justify-content-space-between">
-					<p class="font-weight-semibold">Answer deleted by ModeratorSarah</p>
-					<p class="timeline-item-timestamp">Sept 12, 2024, 11:30 AM</p>
+			<div class="timeline-item-template">
+				<p class="timeline-item-template-title">
+					Question escalated by ModeratorEmily to Microsoft moderators
+				</p>
+				<p class="timeline-item-template-time">11:30 AM</p>
+				<div class="timeline-item-template-description">
+					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
+					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+					commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+					dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.
+					Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum
+					elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod
+					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
+					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
+					sapien risus a quam. Maecenas fermentum consequat.
 				</div>
 			</div>
 		</li>
 		<li class="timeline-item">
 			<div class="timeline-item-badge">
-				<span class="badge badge-info">
+				<span class="badge badge-success">
 					<span class="icon" aria-hidden="true">
 						<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -120,10 +129,20 @@ The timeline pattern is used to display a list of events.
 					</span>
 				</span>
 			</div>
-			<div class="timeline-item-content">
-				<div class="display-flex justify-content-space-between">
-					<p class="font-weight-semibold">Question created by User123</p>
-					<p class="timeline-item-timestamp">Sept 9, 2024, 11:30 AM</p>
+			<div class="timeline-item-template">
+				<p class="timeline-item-template-title">ModeratorEmily to Microsoft moderators</p>
+				<div class="timeline-item-template-description">
+					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
+					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+					commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+					dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.
+					Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum
+					elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod
+					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
+					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
+					sapien risus a quam. Maecenas fermentum consequat.
 				</div>
 			</div>
 		</li>
