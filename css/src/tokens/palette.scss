@@ -128,19 +128,21 @@ $palette-navy-opacity-70: hsl(262deg 46% 17% / 70%) !default;
 
 // Turqoise
 
-$palette-turqoise-10: #e9fbff !default;
-$palette-turqoise-20: #bdf5ff !default;
-$palette-turqoise-30: #7becff !default;
-$palette-turqoise-40: #50e6ff !default;
-$palette-turqoise-50: #41b9cf !default;
-$palette-turqoise-60: #328e9f !default;
-$palette-turqoise-70: #28727f !default;
-$palette-turqoise-80: #19474f !default;
-$palette-turqoise-90: #0f2a2f !default;
-$palette-turqoise-100: #050e0f !default;
+$palette-turqoise-10-deprecated: #e9fbff !default;
+$palette-turqoise-20-deprecated: #bdf5ff !default;
+$palette-turqoise-30-deprecated: #7becff !default;
+$palette-turqoise-40-deprecated: #50e6ff !default;
+$palette-turqoise-50-deprecated: #41b9cf !default;
+$palette-turqoise-60-deprecated: #328e9f !default;
+$palette-turqoise-70-deprecated: #28727f !default;
+$palette-turqoise-80-deprecated: #19474f !default;
+$palette-turqoise-90-deprecated: #0f2a2f !default;
+$palette-turqoise-100-deprecated: #050e0f !default;
 
-$palette-navy-opacity-30: hsl(189deg 52% 12% / 30%) !default;
-$palette-navy-opacity-70: hsl(189deg 52% 12% / 70%) !default;
+$palette-turqoise-10: #1aebff !default;
+
+$palette-turqoise-opacity-30-deprecated: hsl(189deg 52% 12% / 30%) !default;
+$palette-turqoise-opacity-70-deprecated: hsl(189deg 52% 12% / 70%) !default;
 
 // Green
 
