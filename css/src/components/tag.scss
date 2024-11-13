@@ -163,7 +163,7 @@ $tag-interactive-color-primary-hover: $primary-dark !default;
 				background-color: $tag-background-primary-hover;
 				color: $tag-interactive-color-primary-hover;
 
-				/* stylelint-disable-next-line max-nesting-depth */
+				/* stylelint-disable-next-line max-nesting-depth, rule-empty-line-before */
 				.theme-high-contrast & {
 					color: $primary-invert;
 				}
