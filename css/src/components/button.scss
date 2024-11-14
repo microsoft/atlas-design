@@ -27,6 +27,8 @@ $button-icon-spacing: 0.375em !default;
 $button-font-weight: $weight-semibold !default;
 
 .button {
+	font-size: 38px;
+
 	@include control;
 	@include unselectable;
 
