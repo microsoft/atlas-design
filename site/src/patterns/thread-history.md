@@ -11,7 +11,7 @@ The Thread history pattern is used to display a list of events.
 ```html
 <div class="border-md border-radius-lg padding-md font-size-md line-height-md">
 	<div class="display-flex justify-content-space-between margin-bottom-sm">
-		<h4 class="font-size-h5">Thread History</h4>
+		<p class="font-size-h5">Thread History</p>
 		<button
 			id="button-close"
 			class="button button-clear"
