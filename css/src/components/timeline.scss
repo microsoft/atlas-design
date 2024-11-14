@@ -10,6 +10,14 @@ $timeline-item-min-height: $layout-6 !default;
 $timeline-item-padding-bottom: $spacer-7 !default;
 $timeline-item-padding-left: $spacer-8 !default;
 
+$timeline-item-template-gap: 8px !default;
+$timeline-item-template-width: 100% !default;
+
+$timeline-item-badge-transform: translate(
+	calc(-#{$timeline-item-padding-left} - 50%),
+	-#{math.div($timeline-timestamp-font-size, 2)}
+);
+
 .timeline {
 	font-size: $document-font-size;
 	container-type: inline-size;
@@ -27,22 +35,20 @@ $timeline-item-padding-left: $spacer-8 !default;
 
 		.timeline-item-badge {
 			position: absolute;
-			transform: translate(
-				calc(-#{$timeline-item-padding-left} - 50%),
-				-#{math.div($timeline-timestamp-font-size, 2)}
-			);
+			transform: $timeline-item-badge-transform;
 		}
 
 		@container (min-width: 480px) {
 			// todo refactor into a variable containers.scss file in tokens folder
+
 			.timeline-item-template {
-				width: 100%;
 				display: grid;
+				width: $timeline-item-template-width;
 				grid-template: auto / minmax(0, 1fr) auto;
 				grid-template-areas:
 					'title time'
 					'description description';
-				gap: 8px;
+				gap: $timeline-item-template-gap;
 			}
 		}
 
@@ -54,17 +60,17 @@ $timeline-item-padding-left: $spacer-8 !default;
 
 		.timeline-item-template-time {
 			grid-area: time;
-			line-height: $line-height-normal;
+			align-content: baseline;
 			font-size: $timeline-timestamp-font-size;
 			font-weight: $timeline-timestamp-font-weight;
-			align-content: baseline;
+			line-height: $line-height-normal;
 		}
 
 		.timeline-item-template-description {
 			grid-area: description;
 			padding-block-start: $timeline-description-padding-top;
-			line-height: $timeline-description-line-height;
 			font-size: $timeline-content-font-size;
+			line-height: $timeline-description-line-height;
 		}
 	}
 }
