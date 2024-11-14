@@ -1,17 +1,17 @@
 ---
-title: Timeline
-description: Common timeline patterns in the Atlas Design System
+title: Thread history
+description: Common thread history patterns in the Atlas Design System
 template: standard
 ---
 
-# Timeline
+# Thread history
 
-The timeline pattern is used to display a list of events.
+The Thread history pattern is used to display a list of events.
 
 ```html
 <div class="border-md border-radius-lg padding-md font-size-md line-height-md">
 	<div class="display-flex justify-content-space-between margin-bottom-sm">
-		<h4 class="font-size-h5">Timeline History</h4>
+		<h4 class="font-size-h5">Thread History</h4>
 		<button class="button button-clear" role="presentation">
 			<span class="icon" aria-hidden="true">
 				<svg
