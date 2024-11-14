@@ -73,7 +73,8 @@ $primary-hover: var(--theme-primary-hover);
 $primary-active: var(--theme-primary-active);
 $primary-invert: var(--theme-primary-invert);
 $primary-box-shadow: var(--theme-primary-box-shadow);
-$primary-hover-light: var(--theme-primary-hover-light);
+$primary-hover-light-background: var(--theme-primary-hover-light-background);
+$primary-hover-light-text: var(--theme-primary-hover-light-text);
 
 $secondary: var(--theme-secondary-base);
 $secondary-background: var(--theme-secondary-background);
@@ -139,7 +140,8 @@ $colors: (
 		$primary-invert,
 		$primary-box-shadow,
 		$primary-background-glow-high-contrast,
-		$primary-hover-light
+		$primary-hover-light-background,
+		$primary-hover-light-text
 	),
 	'secondary': (
 		$secondary,
@@ -215,7 +217,8 @@ $color-index-active: 5;
 $color-index-invert: 6;
 $color-index-box-shadow: 7;
 $color-index-background-glow-high-contrast: 8;
-$color-index-hover-light: 9;
+$color-index-hover-light-background: 9;
+$color-index-hover-light-text: 10;
 
 // example implementation of a color loop
 
