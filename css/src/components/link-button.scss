@@ -19,12 +19,12 @@
 	&.is-focused,
 	&:hover,
 	&.is-hovered {
-		color: $hyperlink-hover;
+		color: $primary-hover;
 		text-decoration: underline !important;
 	}
 
 	@include focus-visible {
-		color: $hyperlink-hover;
+		color: $primary-hover;
 		text-decoration: underline !important;
 	}
 
