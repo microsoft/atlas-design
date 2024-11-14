@@ -52,6 +52,7 @@ $site-header-panel-featured-section-border: 1px solid $table-border-dark !defaul
 	padding-block: $button-padding-vertical;
 	padding-inline: $site-header-inline-gap;
 
+	&:hover,
 	&:visited {
 		color: $site-header-control-color;
 	}
