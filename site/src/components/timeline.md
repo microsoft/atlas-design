@@ -9,7 +9,7 @@ classPrefixes:
 
 # Timeline
 
-Timeline shows a list of events
+A timeline component that lists the items vertically and allows for the descriptions.
 
 ## Usage
 
@@ -32,9 +32,7 @@ Here is an example of a standard timeline.
 			</span>
 		</div>
 		<div class="timeline-item-template">
-			<p class="timeline-item-template-title">
-				Question escalated by ModeratorEmily to Microsoft moderators
-			</p>
+			<p class="timeline-item-template-title">Timeline title</p>
 			<p class="timeline-item-template-time">Sept 19, 2024, 11:30 AM</p>
 		</div>
 	</li>
@@ -53,24 +51,24 @@ Here is an example of a standard timeline.
 			</span>
 		</div>
 		<div class="timeline-item-template">
-			<p class="timeline-item-template-title">
-				Question escalated by ModeratorEmily to Microsoft moderators
-			</p>
+			<p class="timeline-item-template-title">Timeline title</p>
 			<p class="timeline-item-template-time">Sept 19, 2024, 11:30 AM</p>
 		</div>
 	</li>
 </ol>
 ```
 
-### Timeline description
+### Timeline template
 
-Add an element with the `timeline-item-template-description` class to add a description.
+The timeline template contains the `timeline-item-template-title` and `timeline-item-template-time`.
+
+Use the optional `timeline-item-template-description` that comes with prescriptive styling. If `timeline-item-template-description` is omitted, will need to style the contents using atomics instead
 
 ```html
 <ol class="timeline">
 	<li class="timeline-item">
 		<div class="timeline-item-badge">
-			<span class="badge badge-success">
+			<span class="badge badge-danger">
 				<span class="icon" aria-hidden="true">
 					<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -83,23 +81,9 @@ Add an element with the `timeline-item-template-description` class to add a desc
 			</span>
 		</div>
 		<div class="timeline-item-template">
-			<p class="timeline-item-template-title">
-				Question escalated by ModeratorEmily to Microsoft moderators
-			</p>
+			<p class="timeline-item-template-title">Timeline title</p>
 			<p class="timeline-item-template-time">Sept 19, 2024, 11:30 AM</p>
-			<p class="timeline-item-template-description">
-				Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
-				adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-				ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-				fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-				officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla
-				gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec
-				luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac
-				tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut
-				ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a
-				quam. Maecenas fermentum consequat.
-			</p>
+			<p class="timeline-item-template-description">Timeline description</p>
 		</div>
 	</li>
 </ol>
