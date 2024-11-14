@@ -56,6 +56,7 @@ const pathnames = [
 	'/components/toggle.html',
 	'/patterns/article-header.html',
 	'/patterns/chat.html',
+	'/patterns/timeline.htlm',
 	'/tokens/overview.html',
 	'/tokens/animation.html',
 	'/tokens/border.html',
