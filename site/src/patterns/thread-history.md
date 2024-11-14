@@ -12,7 +12,11 @@ The Thread history pattern is used to display a list of events.
 <div class="border-md border-radius-lg padding-md font-size-md line-height-md">
 	<div class="display-flex justify-content-space-between margin-bottom-sm">
 		<h4 class="font-size-h5">Thread History</h4>
-		<button class="button button-clear" role="presentation">
+		<button
+			id="button-close"
+			class="button button-clear"
+			aria-label="Button Close"
+		>
 			<span class="icon" aria-hidden="true">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
