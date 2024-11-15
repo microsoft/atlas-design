@@ -11,7 +11,7 @@ classPrefixes:
 
 The timeline component is designed to present a chronological sequence of events in a vertical list format. Each item in the timeline represents a specific event. The component is structured to enhance readability and user engagement by providing clear visual markers for each event.
 
-### Timeline badge
+## Timeline badge
 
 The `timeline-item-badge` is recommended to used with the badge component. For component documentation [visit the badge component](../components/badge.md)
 
@@ -40,7 +40,7 @@ The `timeline-item-badge` is recommended to used with the badge component. For c
 </ol>
 ```
 
-### Timeline template
+## Timeline template
 
 The timeline template contains the `timeline-item-template-title` and `timeline-item-template-time`.
 
