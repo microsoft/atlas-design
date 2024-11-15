@@ -6,17 +6,13 @@ template: standard
 
 # Thread history
 
-The Thread history pattern is used to display a list of events.
+The thread history pattern is used to display a list of events.
 
 ```html
 <div class="border-md border-radius-lg padding-md font-size-md line-height-md">
 	<div class="display-flex justify-content-space-between margin-bottom-sm">
 		<p class="font-size-h5">Thread History</p>
-		<button
-			id="button-close"
-			class="button button-clear"
-			aria-label="Button Close"
-		>
+		<button id="button-close" class="button button-clear" aria-label="Button Close">
 			<span class="icon" aria-hidden="true">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -54,19 +50,14 @@ The Thread history pattern is used to display a list of events.
 					Question escalated by ModeratorEmily to Microsoft moderators
 				</p>
 				<p class="timeline-item-template-time">Sept 19, 2024, 11:30 AM</p>
-				<div class="timeline-item-template-description">
-					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-					commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-					dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.
-					Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum
-					elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod
-					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
-					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
-					sapien risus a quam. Maecenas fermentum consequat.
-				</div>
+				<p class="timeline-item-template-description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+					ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+					ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+					sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+					est laborum. Curabitur pretium tincidunt lacus.
+				</p>
 			</div>
 		</li>
 		<li class="timeline-item">
@@ -84,21 +75,14 @@ The Thread history pattern is used to display a list of events.
 				</span>
 			</div>
 			<div class="timeline-item-template">
-				<p class="timeline-item-template-title">Question escalated</p>
-				<p class="timeline-item-template-time">Sept 19, 2024</p>
-				<div class="timeline-item-template-description">
-					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-					commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-					dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.
-					Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum
-					elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod
-					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
-					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
-					sapien risus a quam. Maecenas fermentum consequat.
-				</div>
+				<p class="timeline-item-template-title">Answer escalated by User789 to Microsoft moderators</p>
+				<p class="timeline-item-template-time">July 4, 2024 12:00 PM</p>
+				<p class="timeline-item-template-description">
+					Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate
+					vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor
+					congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum
+					consequat.
+				</p>
 			</div>
 		</li>
 		<li class="timeline-item">
@@ -116,23 +100,15 @@ The Thread history pattern is used to display a list of events.
 				</span>
 			</div>
 			<div class="timeline-item-template">
-				<p class="timeline-item-template-title">
-					Question escalated by ModeratorEmily to Microsoft moderators
+				<p class="timeline-item-template-title">Answer created by User456</p>
+				<p class="timeline-item-template-time">Dec 25, 2023 1:30 PM</p>
+				<p class="timeline-item-template-description">
+					Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et
+					commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
+					Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula.
+					Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros
+					est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat.
 				</p>
-				<p class="timeline-item-template-time">11:30 AM</p>
-				<div class="timeline-item-template-description">
-					Reason: Reason goes here 1000 max characters. Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-					enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-					commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-					dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus.
-					Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum
-					elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod
-					gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam
-					tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt
-					sapien risus a quam. Maecenas fermentum consequat.
-				</div>
 			</div>
 		</li>
 		<li class="timeline-item">
@@ -150,8 +126,8 @@ The Thread history pattern is used to display a list of events.
 				</span>
 			</div>
 			<div class="timeline-item-template">
-				<p class="timeline-item-template-title">ModeratorEmily to Microsoft moderators</p>
-				<p class="timeline-item-template-time">11:30 AM</p>
+				<p class="timeline-item-template-title">Question created by User123</p>
+				<p class="timeline-item-template-time">Oct 31, 2023 9:30 AM</p>
 			</div>
 		</li>
 	</ol>
