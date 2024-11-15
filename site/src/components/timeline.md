@@ -9,7 +9,7 @@ classPrefixes:
 
 # Timeline
 
-A timeline component that lists the items vertically and allows for the descriptions.
+The timeline component is designed to present a chronological sequence of events in a vertical list format. Each item in the timeline represents a specific event. The component is structured to enhance readability and user engagement by providing clear visual markers for each event.
 
 ### Timeline badge
 
