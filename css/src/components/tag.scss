@@ -203,8 +203,6 @@ $tag-interactive-color-primary-hover: $primary-hover-light-text !default;
 
 			&:hover,
 			&.is-hovered {
-				border-color: $tag-background-filled-hover;
-				background-color: $tag-background-filled-hover;
 				color: $tag-color-filled-hover;
 			}
 		}
