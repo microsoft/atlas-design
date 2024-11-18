@@ -77,7 +77,7 @@ The timeline component is designed to present a chronological sequence of events
 
 ### Timeline badge
 
-The `timeline-item-badge` is recommended to used with the badge component. For component documentation [visit the badge component](../components/badge.md).
+The `timeline-item-badge` is recommended to be used with the badge component. For badge component documentation [visit the badge component](../components/badge.md).
 
 
 ```html
