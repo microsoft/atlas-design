@@ -20,3 +20,4 @@ Link: [preview](http://localhost:1111/)
 - [ ] Did you submit a changeset? Changesets are required for all code changes.
 - [ ] Does your pull request implement complex UI logic (js/ts)? Consider adding an integration test to test your user flow.
 - [ ] Does your pull request add a new page to the documentation site? Add your new page for automated accessibility testing in /integration/tests/accessibility.
+- [ ] Does your pull request change any transforms? Did you test they work on right to left?
