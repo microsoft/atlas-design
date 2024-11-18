@@ -142,7 +142,7 @@ Use the `message-sender` class to indicate message sent by the user.
 
 ## Chat
 
-To mimic a chat experience, apply `message-sm` and `message-sender` to automatically fit to the width of the sender's message. The response should be the full width and should not be shortened.
+To mimic a chat experience, apply `message-sm` and `message-sender` to automatically fit to the width of the sender's message. The response should be the full width and will not be shortened.
 
 ```html
 <article class="message message-sm message-sender">
