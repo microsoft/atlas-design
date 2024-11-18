@@ -14,7 +14,9 @@ $message-border-radius: $border-radius-lg !default;
 $message-border: $border-width solid $border !default;
 
 $message-content-padding: $spacer-5 !default;
-$message-content-padding-sm: 0.875rem !default;
+$message-content-padding-inline-sm: 1rem !default;
+$message-content-padding-block-sm: 0.75rem !default;
+$message-content-padding-block-sm-sender: 0.5rem !default;
 
 .message {
 	display: grid;
@@ -68,7 +70,16 @@ $message-content-padding-sm: 0.875rem !default;
 		font-size: $message-font-size-sm;
 
 		.message-content {
-			padding: $message-content-padding-sm;
+			padding-inline: $message-content-padding-inline-sm;
+			padding-block: $message-content-padding-block-sm;
+		}
+	}
+
+	&.message-sm.message-sender {
+		width: auto;
+
+		.message-content {
+			padding-block: $message-content-padding-block-sm-sender;
 		}
 	}
 }

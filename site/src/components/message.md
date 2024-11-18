@@ -79,6 +79,7 @@ Use the `message-sender` class to indicate message sent by the user.
 ```
 
 ## Sizes
+
 `message-sm` is available for resizing.
 
 ```html
@@ -135,6 +136,43 @@ Use the `message-sender` class to indicate message sent by the user.
 			labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa
 			eget egestas. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat.
 		</p>
+	</div>
+</article>
+```
+
+## Chat
+
+To mimic a chat experience, apply `message-sm` and `message-sender` to automatically fit to the width of the sender's message. The response should be the full width and should not be shortened.
+
+```html
+<article class="message message-sm message-sender">
+	<div class="message-content">
+		<p>Ask a short question</p>
+	</div>
+</article>
+<article class="message message-sm">
+	<div class="message-content">
+		<p>
+			Respond with a much longer answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed
+			ullamcorper morbi tincidunt ornare massa eget egestas. Pellentesque elit ullamcorper dignissim
+			cras tincidunt lobortis feugiat.
+		</p>
+	</div>
+</article>
+<article class="message message-sm message-sender">
+	<div class="message-content">
+		<p>
+			Ask a very long question. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+			eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper
+			morbi tincidunt ornare massa eget egestas. Pellentesque elit ullamcorper dignissim cras
+			tincidunt lobortis feugiat.
+		</p>
+	</div>
+</article>
+<article class="message message-sm">
+	<div class="message-content">
+		<p>Short response.</p>
 	</div>
 </article>
 ```
