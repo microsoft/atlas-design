@@ -1,5 +1,13 @@
 # @microsoft/atlas-site
 
+## 0.60.0
+
+### Minor Changes
+
+- 2fc04208: Update color atomics documentation.
+- d6a18063: Update badge styles to handle icon only badges. Add new extra large badge size.
+- 3c48da87: Added timeline pattern and css styles.
+
 ## 0.59.1
 
 ### Patch Changes

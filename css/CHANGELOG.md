@@ -1,5 +1,13 @@
 # @microsoft/atlas-css
 
+## 3.59.0
+
+### Minor Changes
+
+- 6940e18f: Updating button's hover styles in site-header
+- d6a18063: Update badge styles to handle icon only badges. Add new extra large badge size.
+- 3c48da87: Added timeline pattern and css styles.
+
 ## 3.58.0
 
 ### Minor Changes
