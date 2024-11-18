@@ -1,0 +1,82 @@
+@use 'sass:math';
+$timeline-content-font-size: $font-size-8 !default;
+$timeline-timestamp-font-size: $font-size-9 !default;
+$timeline-timestamp-font-weight: $weight-semilight !default;
+$timeline-description-padding-top: $spacer-4 !default;
+$timeline-description-line-height: $line-height-normal;
+
+$timeline-item-border-left: $border-width solid $border !default;
+$timeline-item-min-height: $layout-6 !default;
+$timeline-item-padding-bottom: $spacer-7 !default;
+$timeline-item-padding-left: $spacer-8 !default;
+
+$timeline-item-template-gap: 8px !default;
+$timeline-item-template-width: 100% !default;
+
+$timeline-item-badge-transform-ltr: translate(
+	calc(-#{$timeline-item-padding-left} - 50%),
+	-#{math.div($timeline-timestamp-font-size, 2)}
+);
+$timeline-item-badge-transform-rtl: translate(
+	calc(#{$timeline-item-padding-left} + 50%),
+	-#{math.div($timeline-timestamp-font-size, 2)}
+);
+
+.timeline {
+	font-size: $document-font-size;
+	container-type: inline-size;
+
+	.timeline-item {
+		display: flex;
+		position: relative;
+		padding-block-end: $timeline-item-padding-bottom;
+		padding-inline-start: $timeline-item-padding-left;
+		border-inline-start: $timeline-item-border-left;
+
+		&:last-child {
+			border-inline-start: none;
+		}
+
+		.timeline-item-badge {
+			position: absolute;
+			transform: $timeline-item-badge-transform-ltr;
+
+			&:dir(rtl) {
+				transform: $timeline-item-badge-transform-rtl;
+			}
+		}
+
+		@container (min-width: #{$container-query-md}) {
+			.timeline-item-template {
+				display: grid;
+				width: $timeline-item-template-width;
+				grid-template: auto / minmax(0, 1fr) auto;
+				grid-template-areas:
+					'title time'
+					'description description';
+				gap: $timeline-item-template-gap;
+			}
+		}
+
+		.timeline-item-template-title {
+			grid-area: title;
+			font-weight: $weight-semibold;
+			line-height: $line-height-normal;
+		}
+
+		.timeline-item-template-time {
+			grid-area: time;
+			align-content: baseline;
+			font-size: $timeline-timestamp-font-size;
+			font-weight: $timeline-timestamp-font-weight;
+			line-height: $line-height-normal;
+		}
+
+		.timeline-item-template-description {
+			grid-area: description;
+			padding-block-start: $timeline-description-padding-top;
+			font-size: $timeline-content-font-size;
+			line-height: $timeline-description-line-height;
+		}
+	}
+}
