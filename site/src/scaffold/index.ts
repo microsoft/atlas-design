@@ -12,6 +12,7 @@ import { handleFocusableIfScrollable } from './scripts/focusable-if-scrollable';
 import { initFullScreenToggle } from './scripts/full-screen-toggle';
 import { initLayoutPageControls } from './scripts/layout-page';
 import { handleFullScreenNavButton } from './scripts/mobile-navigation';
+import { initReadingDirectionButtons } from './scripts/direction-buttons';
 
 initTheme();
 initDismiss();
@@ -26,20 +27,3 @@ handleFullScreenNavButton();
 initLayoutPageControls();
 initLayout();
 initReadingDirectionButtons();
-export function initReadingDirectionButtons() {
-	window.addEventListener('click', (e: MouseEvent) => {
-		const target =
-			e.target instanceof Element &&
-			(e.target.closest('[data-direction-change]') as HTMLButtonElement);
-		if (!target) {
-			return;
-		}
-
-		const direction = target.dataset.directionChange;
-		if (direction !== 'ltr' && direction !== 'rtl') {
-			throw new Error('Misconfigured direction button');
-		}
-
-		document.documentElement.dir = direction;
-	});
-}
