@@ -41,7 +41,7 @@ $timeline-item-badge-transform-rtl: translate(
 			position: absolute;
 			transform: $timeline-item-badge-transform-ltr;
 
-			[dir='rtl'] & {
+			&:dir(rtl) {
 				transform: $timeline-item-badge-transform-rtl;
 			}
 		}
