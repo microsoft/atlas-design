@@ -13,8 +13,12 @@ $timeline-item-padding-left: $spacer-8 !default;
 $timeline-item-template-gap: 8px !default;
 $timeline-item-template-width: 100% !default;
 
-$timeline-item-badge-transform: translate(
+$timeline-item-badge-transform-ltr: translate(
 	calc(-#{$timeline-item-padding-left} - 50%),
+	-#{math.div($timeline-timestamp-font-size, 2)}
+);
+$timeline-item-badge-transform-rtl: translate(
+	calc(#{$timeline-item-padding-left} + 50%),
 	-#{math.div($timeline-timestamp-font-size, 2)}
 );
 
@@ -35,7 +39,11 @@ $timeline-item-badge-transform: translate(
 
 		.timeline-item-badge {
 			position: absolute;
-			transform: $timeline-item-badge-transform;
+			transform: $timeline-item-badge-transform-ltr;
+
+			[dir='rtl'] & {
+				transform: $timeline-item-badge-transform-rtl;
+			}
 		}
 
 		@container (min-width: #{$container-query-md}) {
