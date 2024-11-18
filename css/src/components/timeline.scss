@@ -39,8 +39,6 @@ $timeline-item-badge-transform: translate(
 		}
 
 		@container (min-width: #{$container-query-md}) {
-			// todo refactor into a variable containers.scss file in tokens folder
-
 			.timeline-item-template {
 				display: grid;
 				width: $timeline-item-template-width;
