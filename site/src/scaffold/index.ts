@@ -12,6 +12,7 @@ import { handleFocusableIfScrollable } from './scripts/focusable-if-scrollable';
 import { initFullScreenToggle } from './scripts/full-screen-toggle';
 import { initLayoutPageControls } from './scripts/layout-page';
 import { handleFullScreenNavButton } from './scripts/mobile-navigation';
+import { initReadingDirectionButtons } from './scripts/direction-buttons';
 
 initTheme();
 initDismiss();
@@ -25,3 +26,4 @@ handleFocusableIfScrollable();
 handleFullScreenNavButton();
 initLayoutPageControls();
 initLayout();
+initReadingDirectionButtons();
