@@ -71,16 +71,37 @@ $palette-white-opacity-18: hsl(0deg 0% 100% / 18%) !default;
 
 // Blue
 
-$palette-blue-10: #d7eaf8 !default;
-$palette-blue-20: #9ccbee !default;
-$palette-blue-30: #75b6e7 !default;
-$palette-blue-40: #278cda !default;
-$palette-blue-50: #0078d4 !default;
-$palette-blue-60: #0065b3 !default;
-$palette-blue-70: #00579a !default;
-$palette-blue-80: #004173 !default;
-$palette-blue-90: #002b4d !default;
-$palette-blue-100: #000a13 !default;
+$palette-blue-10-deprecated: #d7eaf8 !default;
+$palette-blue-20-deprecated: #9ccbee !default;
+$palette-blue-30-deprecated: #75b6e7 !default;
+$palette-blue-40-deprecated: #278cda !default;
+$palette-blue-50-deprecated: #0078d4 !default;
+$palette-blue-60-deprecated: #0065b3 !default;
+$palette-blue-70-deprecated: #00579a !default;
+$palette-blue-80-deprecated: #004173 !default;
+$palette-blue-90-deprecated: #002b4d !default;
+$palette-blue-100-deprecated: #000a13 !default;
+
+$palette-blue-10: #ebf3fc !default;
+$palette-blue-20: #cfe4fa !default;
+$palette-blue-30: #a9d3f2 !default;
+$palette-blue-40: #b4d6fa !default;
+$palette-blue-50: #9abfdc !default;
+$palette-blue-60: #77b7f7 !default;
+$palette-blue-70: #62abf5 !default;
+$palette-blue-80: #479ef5 !default;
+$palette-blue-90: #2886de !default;
+$palette-blue-100: #0078d4 !default;
+$palette-blue-110: #0f6cbd !default;
+$palette-blue-120: #115ea3 !default;
+$palette-blue-130: #0f548c !default;
+$palette-blue-140: #004e8c !default;
+$palette-blue-150: #0e4775 !default;
+$palette-blue-160: #004377 !default;
+$palette-blue-170: #0c3b5e !default;
+$palette-blue-180: #0a2e4a !default;
+$palette-blue-190: #002c4e !default;
+$palette-blue-200: #082338 !default;
 
 $palette-blue-a: #9ccbee !default;
 
@@ -107,19 +128,21 @@ $palette-navy-opacity-70: hsl(262deg 46% 17% / 70%) !default;
 
 // Turqoise
 
-$palette-turqoise-10: #e9fbff !default;
-$palette-turqoise-20: #bdf5ff !default;
-$palette-turqoise-30: #7becff !default;
-$palette-turqoise-40: #50e6ff !default;
-$palette-turqoise-50: #41b9cf !default;
-$palette-turqoise-60: #328e9f !default;
-$palette-turqoise-70: #28727f !default;
-$palette-turqoise-80: #19474f !default;
-$palette-turqoise-90: #0f2a2f !default;
-$palette-turqoise-100: #050e0f !default;
+$palette-turqoise-10-deprecated: #e9fbff !default;
+$palette-turqoise-20-deprecated: #bdf5ff !default;
+$palette-turqoise-30-deprecated: #7becff !default;
+$palette-turqoise-40-deprecated: #50e6ff !default;
+$palette-turqoise-50-deprecated: #41b9cf !default;
+$palette-turqoise-60-deprecated: #328e9f !default;
+$palette-turqoise-70-deprecated: #28727f !default;
+$palette-turqoise-80-deprecated: #19474f !default;
+$palette-turqoise-90-deprecated: #0f2a2f !default;
+$palette-turqoise-100-deprecated: #050e0f !default;
 
-$palette-navy-opacity-30: hsl(189deg 52% 12% / 30%) !default;
-$palette-navy-opacity-70: hsl(189deg 52% 12% / 70%) !default;
+$palette-turqoise-10: #1aebff !default;
+
+$palette-turqoise-opacity-30-deprecated: hsl(189deg 52% 12% / 30%) !default;
+$palette-turqoise-opacity-70-deprecated: hsl(189deg 52% 12% / 70%) !default;
 
 // Green
 

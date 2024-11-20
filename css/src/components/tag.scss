@@ -28,14 +28,15 @@ $tag-color-filled-hover: $primary-hover !default;
 $tag-background-filled-hover: $secondary !default;
 $tag-interactive-divider-color-filled: $secondary-box-shadow !default;
 $tag-interactive-color-filled-hover: $secondary-invert !default;
+$tag-interactive-color-filled-close-hover: $primary-dark-hover !default;
 
 $tag-color-primary: $primary-dark !default;
 $tag-color-primary-hover: $primary-hover !default;
 $tag-background-primary: $primary-background !default;
-$tag-background-primary-hover: $primary-hover !default;
+$tag-background-primary-hover: $primary-background-hover !default;
 $tag-border-color-primary: $primary-background-glow-high-contrast !default;
 $tag-interactive-divider-color-primary: $primary-box-shadow !default;
-$tag-interactive-color-primary-hover: $primary-invert !default;
+$tag-interactive-color-primary-hover: $primary-dark-hover !default;
 
 .tag {
 	display: inline-flex;
@@ -200,6 +201,11 @@ $tag-interactive-color-primary-hover: $primary-invert !default;
 
 		.tag-close {
 			border-inline-start-color: $tag-interactive-divider-color-filled;
+
+			&:hover,
+			&.is-hovered {
+				color: $tag-interactive-color-filled-close-hover;
+			}
 		}
 	}
 }
