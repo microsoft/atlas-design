@@ -33,10 +33,11 @@ $badge-border-radius: $border-radius-rounded !default;
 		$invert: nth($color-set, $color-index-invert);
 		$dark: nth($color-set, $color-index-dark);
 		$background: nth($color-set, $color-index-background);
+		$background-hover: nth($color-set, $color-index-background-hover);
 
 		@if $name == 'secondary' {
 			border-color: $dark;
-			background-color: $background;
+			background-color: $background-hover;
 			color: $dark;
 		} @else {
 			&.badge-#{$name} {
