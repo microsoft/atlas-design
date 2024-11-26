@@ -37,7 +37,7 @@ $badge-border-radius: $border-radius-rounded !default;
 
 		@if $name == 'secondary' {
 			border-color: $dark;
-			background-color: $background-hover;
+			background-color: $background;
 			color: $dark;
 		} @else {
 			&.badge-#{$name} {
