@@ -33,11 +33,16 @@ $notification-dismiss-margin: $spacer-2 !default;
 		$base: nth($color-set, $color-index-base);
 		$dark: nth($color-set, $color-index-dark);
 		$background: nth($color-set, $color-index-background);
+		$background-hover: nth($color-set, $color-index-background-hover);
 
 		&.notification-#{$name} {
 			border-color: $dark;
 			background-color: $background;
 			color: $dark;
+
+			@if $name == 'success' {
+				border-color: $background-hover;
+			}
 
 			&.is-loading::before {
 				border-color: transparent transparent $dark $dark;
