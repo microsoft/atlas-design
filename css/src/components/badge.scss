@@ -58,7 +58,6 @@ $badge-border-radius: $border-radius-rounded !default;
 			$invert: nth($color-set, $color-index-invert);
 			$dark: nth($color-set, $color-index-dark);
 			$background: nth($color-set, $color-index-background);
-			$active: nth($color-set, $color-index-active);
 
 			@if $name == 'secondary' {
 				border-color: $base;
@@ -69,12 +68,6 @@ $badge-border-radius: $border-radius-rounded !default;
 					border-color: $base;
 					background-color: $base;
 					color: $invert;
-
-					/* stylelint-disable-next-line max-nesting-depth, rule-empty-line-before */
-					@if $name == 'danger' {
-						border-color: $active;
-						background-color: $active;
-					}
 				}
 			}
 		}

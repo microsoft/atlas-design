@@ -75,6 +75,7 @@ $primary-hover: var(--theme-primary-hover);
 $primary-active: var(--theme-primary-active);
 $primary-invert: var(--theme-primary-invert);
 $primary-box-shadow: var(--theme-primary-box-shadow);
+$primary-border: var(--theme-primary-border);
 
 $secondary: var(--theme-secondary-base);
 $secondary-background: var(--theme-secondary-background);
@@ -86,6 +87,7 @@ $secondary-hover: var(--theme-secondary-hover);
 $secondary-active: var(--theme-secondary-active);
 $secondary-invert: var(--theme-secondary-invert);
 $secondary-box-shadow: var(--theme-secondary-box-shadow);
+$secondary-border: var(--theme-secondary-border);
 
 $tertiary: var(--theme-tertiary-base);
 $tertiary-background: var(--theme-tertiary-background);
@@ -97,6 +99,7 @@ $tertiary-hover: var(--theme-tertiary-hover);
 $tertiary-active: var(--theme-tertiary-active);
 $tertiary-invert: var(--theme-tertiary-invert);
 $tertiary-box-shadow: var(--theme-tertiary-box-shadow);
+$tertiary-border: var(--theme-tertiary-border);
 
 $success: var(--theme-success-base);
 $success-background: var(--theme-success-background);
@@ -108,6 +111,7 @@ $success-hover: var(--theme-success-hover);
 $success-active: var(--theme-success-active);
 $success-invert: var(--theme-success-invert);
 $success-box-shadow: var(--theme-success-box-shadow);
+$success-border: var(--theme-success-border);
 
 $info: var(--theme-info-base);
 $info-background: var(--theme-info-background);
@@ -119,6 +123,7 @@ $info-hover: var(--theme-info-hover);
 $info-active: var(--theme-info-active);
 $info-invert: var(--theme-info-invert);
 $info-box-shadow: var(--theme-info-box-shadow);
+$info-border: var(--theme-info-border);
 
 $warning: var(--theme-warning-base);
 $warning-background: var(--theme-warning-background);
@@ -130,6 +135,7 @@ $warning-hover: var(--theme-warning-hover);
 $warning-active: var(--theme-warning-active);
 $warning-invert: var(--theme-warning-invert);
 $warning-box-shadow: var(--theme-warning-box-shadow);
+$warning-border: var(--theme-warning-border);
 
 $danger: var(--theme-danger-base);
 $danger-background: var(--theme-danger-background);
@@ -141,6 +147,7 @@ $danger-hover: var(--theme-danger-hover);
 $danger-active: var(--theme-danger-active);
 $danger-invert: var(--theme-danger-invert);
 $danger-box-shadow: var(--theme-danger-box-shadow);
+$danger-border: var(--theme-danger-border);
 
 $colors: (
 	'primary': (
@@ -153,7 +160,8 @@ $colors: (
 		$primary-box-shadow,
 		$primary-background-glow-high-contrast,
 		$primary-background-hover,
-		$primary-dark-hover
+		$primary-dark-hover,
+		$primary-border
 	),
 	'secondary': (
 		$secondary,
@@ -165,7 +173,8 @@ $colors: (
 		$secondary-box-shadow,
 		$secondary-background-glow-high-contrast,
 		$secondary-background-hover,
-		$secondary-dark-hover
+		$secondary-dark-hover,
+		$secondary-border
 	),
 	'tertiary': (
 		$tertiary,
@@ -177,7 +186,8 @@ $colors: (
 		$tertiary-box-shadow,
 		$tertiary-background-glow-high-contrast,
 		$tertiary-background-hover,
-		$tertiary-dark-hover
+		$tertiary-dark-hover,
+		$tertiary-border
 	),
 	'success': (
 		$success,
@@ -189,7 +199,8 @@ $colors: (
 		$success-box-shadow,
 		$success-background-glow-high-contrast,
 		$success-background-hover,
-		$success-dark-hover
+		$success-dark-hover,
+		$success-border
 	),
 	'info': (
 		$info,
@@ -201,7 +212,8 @@ $colors: (
 		$info-box-shadow,
 		$info-background-glow-high-contrast,
 		$info-background-hover,
-		$info-dark-hover
+		$info-dark-hover,
+		$info-border
 	),
 	'warning': (
 		$warning,
@@ -213,7 +225,8 @@ $colors: (
 		$warning-box-shadow,
 		$warning-background-glow-high-contrast,
 		$warning-background-hover,
-		$warning-dark-hover
+		$warning-dark-hover,
+		$warning-border
 	),
 	'danger': (
 		$danger,
@@ -225,7 +238,8 @@ $colors: (
 		$danger-box-shadow,
 		$danger-background-glow-high-contrast,
 		$danger-background-hover,
-		$danger-dark-hover
+		$danger-dark-hover,
+		$danger-border
 	)
 ) !default;
 
@@ -243,6 +257,7 @@ $color-index-box-shadow: 7;
 $color-index-background-glow-high-contrast: 8;
 $color-index-background-hover: 9;
 $color-index-dark-hover: 10;
+$color-index-border: 11;
 
 // example implementation of a color loop
 
