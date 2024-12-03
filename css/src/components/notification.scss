@@ -33,11 +33,9 @@ $notification-dismiss-margin: $spacer-2 !default;
 		$base: nth($color-set, $color-index-base);
 		$dark: nth($color-set, $color-index-dark);
 		$background: nth($color-set, $color-index-background);
-		$background-hover: nth($color-set, $color-index-background-hover);
-		$border: nth($color-set, $color-index-border);
 
 		&.notification-#{$name} {
-			border-color: $border;
+			border-color: $dark;
 			background-color: $background;
 			color: $dark;
 
