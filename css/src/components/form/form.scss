@@ -61,7 +61,7 @@ $field-error-color: $danger !default;
 
 .required-indicator::after,
 ::part(required-indicator)::after {
-	color: $danger-active;
+	color: $danger;
 	content: '*';
 	vertical-align: top;
 }
