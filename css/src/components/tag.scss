@@ -15,7 +15,7 @@ $tag-icon-font-size: 0.875em !default;
 $tag-border-width: $border-width !default;
 $tag-border-radius: $border-radius !default;
 $tag-border-radius-rounded: $border-radius-rounded !default;
-$tag-border-color: $secondary !default;
+$tag-border-color: $control-border !default;
 
 $tag-color: $secondary-dark !default;
 $tag-color-hover: $primary-dark !default;
@@ -25,8 +25,8 @@ $tag-background-hover: $secondary-background-glow-high-contrast !default;
 $tag-color-filled: $text !default;
 $tag-background-filled: $secondary-background-glow-high-contrast !default;
 $tag-color-filled-hover: $primary-hover !default;
-$tag-background-filled-hover: $secondary !default;
-$tag-interactive-divider-color-filled: $secondary-box-shadow !default;
+$tag-background-filled-hover: $secondary-background-hover !default;
+$tag-interactive-divider-color-filled: $control-border !default;
 $tag-interactive-color-filled-hover: $secondary-invert !default;
 $tag-interactive-color-filled-close-hover: $primary-dark-hover !default;
 
