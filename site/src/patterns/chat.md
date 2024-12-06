@@ -54,10 +54,10 @@ For a copilot-friendly input, with a series of buttons placed within the visual 
 
 ## Copilot-like chat messages
 
-To mimic a copilot chat experience, apply `message-sm` and `message-sender` to automatically fit to the width of the sender's message. For the AI responses (`message-sm`), the message will take up the full width.
+To mimic a copilot chat experience, apply `message-sm`, `message-sender`, and `width-auto` to automatically fit to the width of the sender's message. For the AI responses (`message-sm`), the message will take up the full width.
 
 ```html
-<article class="message message-sm message-sender">
+<article class="message message-sm message-sender width-auto">
 	<div class="message-content">
 		<p>Ask a short question</p>
 	</div>
@@ -80,6 +80,21 @@ To mimic a copilot chat experience, apply `message-sm` and `message-sender` to a
 			morbi tincidunt ornare massa eget egestas. Pellentesque elit ullamcorper dignissim cras
 			tincidunt lobortis feugiat.
 		</p>
+	</div>
+</article>
+<article class="message message-sm">
+	<div class="message-content">
+		<p>Short response.</p>
+	</div>
+</article>
+```
+
+If you want the full-width message, then only use `message-sm` and `message-sender` on the sender's message.
+
+```html
+<article class="message message-sm message-sender">
+	<div class="message-content">
+		<p>Ask a short question</p>
 	</div>
 </article>
 <article class="message message-sm">

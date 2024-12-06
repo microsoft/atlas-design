@@ -76,8 +76,6 @@ $message-content-padding-block-sm-sender: 0.5rem !default;
 	}
 
 	&.message-sm.message-sender {
-		width: auto;
-
 		.message-content {
 			padding-block: $message-content-padding-block-sm-sender;
 		}
