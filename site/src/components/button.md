@@ -87,7 +87,7 @@ Success buttons are green on most themes. This color stands for a good, positive
 
 ### Warning
 
-Warning buttons are orange on light theme. This color indicates a critical situation or warning. Use this semantic color if ...
+Warning buttons are orange on most themes. This color indicates a critical situation or warning. Use this semantic color if ...
 
 - You want to highlight a critical status.
 - A minor problem has occurred. The user can carry on working but might run into an error later on.
