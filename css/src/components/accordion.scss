@@ -37,9 +37,14 @@ $accordion-transition: transform 0.15s !default;
 	summary {
 		display: flex;
 		line-height: 1.5;
+		list-style: none;
 		cursor: pointer;
 		padding-block: $accordion-spacing;
 		gap: $accordion-gap;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
 
 		&::before,
 		&::after {
