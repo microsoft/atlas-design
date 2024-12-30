@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.61.0
+
+### Minor Changes
+
+- 9634b6dc: Add button for easier manual right to left testing.
+
 ## 0.60.0
 
 ### Minor Changes
