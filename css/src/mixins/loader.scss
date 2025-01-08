@@ -3,11 +3,6 @@
 	position: relative;
 	width: 1em;
 	height: 1em;
-	animation: spinAround 500ms infinite linear;
-	border: 2px solid $border;
-	border-radius: $border-radius-rounded;
-	border-block-start-color: transparent;
-	border-inline-end-color: transparent;
 	content: '';
 }
 

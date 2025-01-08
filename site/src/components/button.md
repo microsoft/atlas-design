@@ -132,8 +132,8 @@ Make a button take up the full width of a container.
 Ensure the user knows they need to wait for some event (like a fetch request) in order to interact with a button.
 
 ```html
-<button class="button is-loading">Loading</button>
-<button class="button button-primary button-filled is-loading">Loading</button>
+<button class="button is-loading"><span class="loader-container"><span class="loader">Loading</span></span></button>
+<button class="button button-primary button-filled is-loading"><span class="loader-container"><span class="loader">Loading</span></span></button>
 ```
 
 <!--

@@ -48,6 +48,34 @@
 	}
 }
 
+@keyframes loader-spin-1 {
+	0% {
+		transform: rotate(-135deg);
+	}
+
+	50% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(225deg);
+	}
+}
+
+@keyframes loader-spin-2 {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	50% {
+		transform: rotate(225deg);
+	}
+
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
 .animation-fade {
 	animation: fade-out 0.4s ease-in forwards;
 
