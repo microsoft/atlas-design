@@ -97,6 +97,8 @@ Notification can be made dismissable with the [`dismiss` component](./dismiss.md
 
 ```abut-html
 <div class="notification notification-success">
+  <div class="notification-content">
 	<p>Success notification.</p>
+  </div>
 </div>
 ```
