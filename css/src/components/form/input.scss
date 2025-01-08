@@ -19,7 +19,6 @@ $input-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 
 $input-icon-size: 2.25em !default;
 $input-icon-color: $text-subtle !default;
-$input-icon-active-color: $secondary !default;
 
 .input {
 	@include control;
@@ -125,12 +124,6 @@ $input-icon-active-color: $secondary !default;
 			color: $input-icon-color;
 			pointer-events: none;
 			z-index: $zindex-multi;
-		}
-
-		@include focus-visible {
-			+ .icon {
-				color: $input-icon-active-color;
-			}
 		}
 
 		&.input-sm {
