@@ -1,30 +1,56 @@
-$banner-background: $info-background !default;
-$banner-padding: $spacer-5 !default;
+// $banner-background: $info-background !default;
+$banner-background: $secondary-background !default;
+$banner-padding: $spacer-3 !default;
 
-$banner-font-size: $font-size-7 !default;
-$banner-color: $info-dark !default;
+$banner-font-size: $font-size-8 !default;
+$banner-color: $text !default;
 
-$banner-border-color: $border-white-high-contrast !default;
+$banner-button-font-size: $font-size-9 !default;
+
+$banner-border-color: $control-border !default;
 $banner-border-width: $border-width !default;
 
 $banner-dismiss-margin: $spacer-2 !default;
+
+$banner-icon-inline-spacing: 0.75em !default;
+$banner-icon-block-spacing: 0.2em !default;
 
 .banner {
 	@extend %layout-gap;
 
 	display: grid;
 	position: relative;
-	grid-template: auto / 1fr auto;
-	grid-template-areas: 'banner-content dismiss';
+	align-items: flex-start;
 	outline-color: $text;
 	background-color: $banner-background;
 	color: $banner-color;
 	font-size: $banner-font-size;
 	line-height: $line-height-normal;
+	grid-template: auto / auto 1fr auto;
+	grid-template-areas: 'icon banner-content dismiss';
 	padding-block: $banner-padding;
 	word-wrap: break-word;
 	word-break: break-word;
 	border-block: $banner-border-width solid $banner-border-color;
+
+	@each $name, $color-set in $colors {
+		$base: nth($color-set, $color-index-base);
+		$dark: nth($color-set, $color-index-dark);
+		$background: nth($color-set, $color-index-background);
+
+		&.banner-#{$name} {
+			border-color: $dark;
+			background-color: $background;
+
+			&.is-loading::before {
+				border-color: transparent transparent $dark $dark;
+			}
+
+			.banner-icon {
+				color: $dark;
+			}
+		}
+	}
 
 	&.is-loading {
 		color: transparent;
@@ -50,25 +76,43 @@ $banner-dismiss-margin: $spacer-2 !default;
 	.banner-content {
 		grid-area: banner-content;
 
-		a:not(.button) {
-			color: currentColor;
+		.banner-title {
 			font-weight: $weight-semibold;
-			text-decoration: underline;
+			margin-inline-end: $banner-icon-inline-spacing;
+		}
 
-			.theme-high-contrast & {
-				color: $hyperlink;
-			}
+		a:not(.button) {
+			text-decoration: underline;
 
 			&:hover {
 				text-decoration-thickness: 0.15em;
 			}
 		}
+
+		.button {
+			font-size: $banner-button-font-size;
+		}
+
+		p {
+			max-width: $reading-max-width;
+		}
+	}
+
+	.banner-icon {
+		grid-area: icon;
+		flex-shrink: 0;
+		margin-inline-end: $banner-icon-inline-spacing;
 	}
 
 	.banner-dismiss {
 		@include dismiss-square;
 
 		grid-area: dismiss;
-		margin-inline-start: $banner-dismiss-margin;
+		margin-inline-start: $banner-icon-inline-spacing;
+	}
+
+	.banner-icon,
+	.banner-dismiss {
+		margin-block-start: $banner-icon-block-spacing;
 	}
 }
