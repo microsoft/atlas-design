@@ -29,9 +29,7 @@ Notification with an action button.
 		</span>
 	</span>
 	<div class="notification-content">
-		<div
-			class="display-flex align-items-flex-start gap-xxs justify-content-space-between flex-wrap-wrap"
-		>
+		<div class="display-flex gap-xxs justify-content-space-between flex-wrap-wrap">
 			<p>
 				<span class="notification-title">Descriptive title</span> A notification about something
 				happening in the world.
@@ -71,7 +69,7 @@ Notification with a few buttons and a longer paragraph.
 		</span>
 	</span>
 	<div class="notification-content">
-		<div class="display-flex gap-xs justify-content-space-between flex-wrap-wrap">
+		<div class="display-flex gap-xxs justify-content-space-between flex-wrap-wrap">
 			<p>
 				<span class="notification-title">Descriptive title</span> A notification about something
 				happening in the world. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

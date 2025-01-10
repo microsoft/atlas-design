@@ -1,18 +1,18 @@
 $notification-background: $secondary-background !default;
-$notification-padding-vertical: 0.5em !default;
-$notification-padding-horizontal: 0.75em !default;
+$notification-padding-block: 0.75em !default;
+$notification-padding-inline: 0.85em !default;
 
-$notification-font-size: $font-size-8 !default;
+$notification-gap: $spacer-3 !default;
+$notification-icon-block-spacing: 0.2em !default;
+
 $notification-color: $text !default;
+$notification-font-size: $font-size-8 !default;
 
 $notification-button-font-size: $font-size-9 !default;
 
 $notification-border-color: $control-border !default;
 $notification-border-width: $border-width !default;
 $notification-border-radius: $border-radius !default;
-
-$notification-icon-inline-spacing: 0.75em !default;
-$notification-icon-block-spacing: 0.2em !default;
 
 .notification {
 	display: grid;
@@ -25,8 +25,8 @@ $notification-icon-block-spacing: 0.2em !default;
 	color: $notification-color;
 	font-size: $notification-font-size;
 	line-height: $line-height-normal;
-	padding-inline: $notification-padding-horizontal;
-	padding-block: $notification-padding-vertical;
+	padding-inline: $notification-padding-inline;
+	padding-block: $notification-padding-block;
 	grid-template: auto / auto 1fr auto;
 	grid-template-areas: 'icon notification-content dismiss';
 	word-wrap: break-word;
@@ -55,15 +55,15 @@ $notification-icon-block-spacing: 0.2em !default;
 		color: transparent;
 
 		> :first-child {
-			margin-inline-start: calc($notification-padding-vertical + 0.375em);
+			margin-inline-start: 1.75em;
 		}
 
 		&::before {
 			@include loader;
 
 			position: absolute;
-			inset-block-start: $notification-padding-vertical;
-			inset-inline-start: $notification-padding-horizontal;
+			inset-block-start: $notification-padding-block;
+			inset-inline-start: $notification-padding-inline;
 			border-color: transparent transparent $notification-color $notification-color;
 		}
 	}
@@ -73,7 +73,7 @@ $notification-icon-block-spacing: 0.2em !default;
 
 		.notification-title {
 			font-weight: $weight-semibold;
-			margin-inline-end: $notification-icon-inline-spacing;
+			margin-inline-end: $notification-gap;
 		}
 
 		a:not(.button) {
@@ -92,14 +92,14 @@ $notification-icon-block-spacing: 0.2em !default;
 	.notification-icon {
 		grid-area: icon;
 		flex-shrink: 0;
-		margin-inline-end: $notification-icon-inline-spacing;
+		margin-inline-end: $notification-gap;
 	}
 
 	.notification-dismiss {
 		@include dismiss-square;
 
 		grid-area: dismiss;
-		margin-inline-start: $notification-icon-inline-spacing;
+		margin-inline-start: $notification-gap;
 	}
 
 	.notification-icon,
