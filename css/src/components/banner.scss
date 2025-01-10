@@ -1,19 +1,16 @@
-// $banner-background: $info-background !default;
 $banner-background: $secondary-background !default;
-$banner-padding: $spacer-3 !default;
+$banner-padding-block: 0.75em !default;
 
-$banner-font-size: $font-size-8 !default;
+$banner-gap: $spacer-3 !default;
+$banner-icon-block-spacing: 0.2em !default;
+
 $banner-color: $text !default;
+$banner-font-size: $font-size-8 !default;
 
 $banner-button-font-size: $font-size-9 !default;
 
 $banner-border-color: $control-border !default;
 $banner-border-width: $border-width !default;
-
-$banner-dismiss-margin: $spacer-2 !default;
-
-$banner-icon-inline-spacing: 0.75em !default;
-$banner-icon-block-spacing: 0.2em !default;
 
 .banner {
 	@extend %layout-gap;
@@ -28,7 +25,7 @@ $banner-icon-block-spacing: 0.2em !default;
 	line-height: $line-height-normal;
 	grid-template: auto / auto 1fr auto;
 	grid-template-areas: 'icon banner-content dismiss';
-	padding-block: $banner-padding;
+	padding-block: $banner-padding-block;
 	word-wrap: break-word;
 	word-break: break-word;
 	border-block: $banner-border-width solid $banner-border-color;
@@ -56,14 +53,14 @@ $banner-icon-block-spacing: 0.2em !default;
 		color: transparent;
 
 		> :first-child {
-			margin-inline-start: calc($banner-padding + 0.375em);
+			margin-inline-start: 1.75em;
 		}
 
 		&::before {
 			@include loader;
 
 			position: absolute;
-			inset-block-start: $banner-padding;
+			inset-block-start: $banner-padding-block;
 			inset-inline-start: $layout-gap;
 			border-color: transparent transparent $banner-color $banner-color;
 
@@ -78,7 +75,7 @@ $banner-icon-block-spacing: 0.2em !default;
 
 		.banner-title {
 			font-weight: $weight-semibold;
-			margin-inline-end: $banner-icon-inline-spacing;
+			margin-inline-end: $banner-gap;
 		}
 
 		a:not(.button) {
@@ -101,14 +98,14 @@ $banner-icon-block-spacing: 0.2em !default;
 	.banner-icon {
 		grid-area: icon;
 		flex-shrink: 0;
-		margin-inline-end: $banner-icon-inline-spacing;
+		margin-inline-end: $banner-gap;
 	}
 
 	.banner-dismiss {
 		@include dismiss-square;
 
 		grid-area: dismiss;
-		margin-inline-start: $banner-icon-inline-spacing;
+		margin-inline-start: $banner-gap;
 	}
 
 	.banner-icon,
