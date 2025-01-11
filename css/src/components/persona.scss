@@ -2,7 +2,6 @@ $persona-font-size-sm: $font-size-9 !default;
 $persona-font-size-md: $font-size-8 !default;
 $persona-font-size-lg: $font-size-7 !default;
 
-$persona-avatar-background-color: $alternate-background-medium !default;
 $persona-avatar-font-color: $text-invert !default;
 $persona-avatar-border-radius: $border-radius-rounded;
 
@@ -25,7 +24,6 @@ $persona-gap-size: $layout-1 !default;
 		width: 2.6666em;
 		height: 2.6666em;
 		border-radius: $persona-avatar-border-radius;
-		background-color: $persona-avatar-background-color;
 		color: $persona-avatar-font-color;
 
 		img,
