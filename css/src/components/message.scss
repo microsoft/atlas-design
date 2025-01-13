@@ -27,6 +27,7 @@ $message-content-padding-block-sm-sender: 0.5rem !default;
 	gap: $message-gap-size;
 	font-size: $message-font-size-md;
 	line-height: $line-height-normal;
+	word-wrap: break-word;
 
 	.message-time {
 		grid-area: message-time;
