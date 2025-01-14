@@ -14,16 +14,16 @@ $pagination-focus-border-color: $primary-active !default;
 $pagination-active-color: $primary-active !default;
 $pagination-active-border-color: $primary-active !default;
 
-$pagination-disabled-color: $secondary !default;
-$pagination-disabled-background-color: $secondary-background !default;
-$pagination-disabled-border-color: $secondary-background !default;
+$pagination-disabled-color: $secondary-dark !default;
+$pagination-disabled-background-color: $secondary !default;
+$pagination-disabled-border-color: $secondary !default;
 
 $pagination-current-color: $text-invert !default;
 $pagination-current-background-color: $primary !default;
 $pagination-current-background-color-hover: $primary-hover !default;
 $pagination-current-border-color: $text-invert !default;
 
-$pagination-ellipsis-color: $secondary-background !default;
+$pagination-ellipsis-color: $secondary !default;
 
 $pagination-shadow-inset: inset 0 1px 2px $box-shadow-color-light;
 
@@ -80,7 +80,6 @@ $pagination-shadow-inset: inset 0 1px 2px $box-shadow-color-light;
 }
 
 .pagination-ellipsis {
-	color: $pagination-ellipsis-color;
 	pointer-events: none;
 }
 
