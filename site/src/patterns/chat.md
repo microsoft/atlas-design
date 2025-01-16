@@ -52,6 +52,58 @@ For a copilot-friendly input, with a series of buttons placed within the visual 
 </div>
 ```
 
+## Copilot-like chat messages
+
+To mimic a copilot chat experience, apply `message-sm`, `message-sender`, and `width-auto` to automatically fit to the width of the sender's message. For the AI responses (`message-sm`), the message will take up the full width.
+
+```html
+<article class="message message-sm message-sender width-auto">
+	<div class="message-content">
+		<p>Ask a short question</p>
+	</div>
+</article>
+<article class="message message-sm">
+	<div class="message-content">
+		<p>
+			Respond with a much longer answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed
+			ullamcorper morbi tincidunt ornare massa eget egestas. Pellentesque elit ullamcorper dignissim
+			cras tincidunt lobortis feugiat.
+		</p>
+	</div>
+</article>
+<article class="message message-sm message-sender">
+	<div class="message-content">
+		<p>
+			Ask a very long question. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+			eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper
+			morbi tincidunt ornare massa eget egestas. Pellentesque elit ullamcorper dignissim cras
+			tincidunt lobortis feugiat.
+		</p>
+	</div>
+</article>
+<article class="message message-sm">
+	<div class="message-content">
+		<p>Short response.</p>
+	</div>
+</article>
+```
+
+If you want the full-width message, then only use `message-sm` and `message-sender` on the sender's message.
+
+```html
+<article class="message message-sm message-sender">
+	<div class="message-content">
+		<p>Ask a short question</p>
+	</div>
+</article>
+<article class="message message-sm">
+	<div class="message-content">
+		<p>Short response.</p>
+	</div>
+</article>
+```
+
 ## Messages
 
 The following markup utilizes various components and atomics to create a chat experience. As you can see from the example below, we create a grid container and place several `.message` components within. In each message we make use of `.persona` to display a user's information, and a `popover` to house the overflow menu and its contents.

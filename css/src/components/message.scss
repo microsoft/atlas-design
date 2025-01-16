@@ -3,7 +3,7 @@ $message-font-size-sm: $font-size-8 !default;
 $message-font-size-md: $font-size-7 !default;
 
 $message-background-color: $body-background !default;
-$message-gap-size: $layout-1 !default;
+$message-gap-size: $spacer-4 !default;
 $message-spacer-md: $spacer-3 !default;
 $message-spacer-lg: $spacer-5 !default;
 
@@ -14,7 +14,9 @@ $message-border-radius: $border-radius-lg !default;
 $message-border: $border-width solid $border !default;
 
 $message-content-padding: $spacer-5 !default;
-$message-content-padding-sm: 0.875rem !default;
+$message-content-padding-inline-sm: 1rem !default;
+$message-content-padding-block-sm: 0.75rem !default;
+$message-content-padding-block-sm-sender: 0.5rem !default;
 
 .message {
 	display: grid;
@@ -25,6 +27,7 @@ $message-content-padding-sm: 0.875rem !default;
 	gap: $message-gap-size;
 	font-size: $message-font-size-md;
 	line-height: $line-height-normal;
+	word-wrap: break-word;
 
 	.message-time {
 		grid-area: message-time;
@@ -68,7 +71,14 @@ $message-content-padding-sm: 0.875rem !default;
 		font-size: $message-font-size-sm;
 
 		.message-content {
-			padding: $message-content-padding-sm;
+			padding-inline: $message-content-padding-inline-sm;
+			padding-block: $message-content-padding-block-sm;
+		}
+	}
+
+	&.message-sm.message-sender {
+		.message-content {
+			padding-block: $message-content-padding-block-sm-sender;
 		}
 	}
 }
