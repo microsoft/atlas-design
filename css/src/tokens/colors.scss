@@ -52,7 +52,7 @@ $gradient-vivid-start: var(--theme-gradient-vivid-start);
 $gradient-vivid-end: var(--theme-gradient-vivid-end);
 
 $default-hover: var(--theme-hover-base);
-$default-hover-invert: $body-background-medium;
+$default-hover-invert: var(--theme-hover-invert);
 $border-white-high-contrast: var(--theme-border-white-high-contrast);
 $border-yellow-high-contrast: var(--theme-border-yellow-high-contrast);
 $code-highlight-background: var(--theme-code-highlight-background);
