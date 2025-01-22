@@ -62,7 +62,7 @@ Banner with a few buttons and a longer paragraph.
 		</span>
 	</span>
 	<div class="banner-content">
-		<div class="display-flex gap-xxs justify-content-space-between flex-wrap-wrap">
+		<div class="display-flex gap-xxs justify-content-space-between align-items-flex-start flex-wrap-wrap">
 			<p><span class="banner-title">Descriptive title</span> A banner about something happening in the world. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			<div class="buttons flex-wrap-nowrap-tablet margin-left-auto">
                 <button type="button" class="button">Action</button>

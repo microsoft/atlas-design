@@ -1,9 +1,13 @@
+$notification-min-height: 50px !default;
 $notification-background: $secondary-background !default;
 $notification-padding-block: 0.75em !default;
 $notification-padding-inline: 0.85em !default;
-
 $notification-gap: $spacer-3 !default;
-$notification-icon-block-spacing: 0.2em !default;
+
+$notification-icon-size: 1.145em !default;
+$notification-icon-block-spacing: 0.35em !default;
+
+$notification-content-block-spacing: 0.3em !default;
 
 $notification-color: $text !default;
 $notification-font-size: $font-size-8 !default;
@@ -18,6 +22,7 @@ $notification-border-radius: $border-radius !default;
 	display: grid;
 	position: relative;
 	align-items: flex-start;
+	min-height: $notification-min-height;
 	border: $notification-border-width solid $notification-border-color;
 	border-radius: $notification-border-radius;
 	outline-color: $text;
@@ -62,9 +67,10 @@ $notification-border-radius: $border-radius !default;
 			@include loader;
 
 			position: absolute;
-			inset-block-start: $notification-padding-block;
-			inset-inline-start: $notification-padding-inline;
 			border-color: transparent transparent $notification-color $notification-color;
+			font-size: $notification-icon-size;
+			inset-block-start: calc($notification-padding-block + $notification-icon-block-spacing);
+			inset-inline-start: $notification-padding-inline;
 		}
 	}
 
@@ -74,6 +80,10 @@ $notification-border-radius: $border-radius !default;
 		.notification-title {
 			font-weight: $weight-semibold;
 			margin-inline-end: $notification-gap;
+		}
+
+		p:first-child {
+			margin-block-start: $notification-content-block-spacing;
 		}
 
 		a:not(.button) {
@@ -90,8 +100,10 @@ $notification-border-radius: $border-radius !default;
 	}
 
 	.notification-icon {
-		grid-area: icon;
 		flex-shrink: 0;
+		font-size: $notification-icon-size;
+		line-height: 1;
+		grid-area: icon;
 		margin-inline-end: $notification-gap;
 	}
 

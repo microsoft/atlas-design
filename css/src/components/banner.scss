@@ -1,8 +1,13 @@
+$banner-min-height: 50px !default;
 $banner-background: $secondary-background !default;
 $banner-padding-block: 0.75em !default;
 
 $banner-gap: $spacer-3 !default;
-$banner-icon-block-spacing: 0.2em !default;
+
+$banner-icon-size: 1.145em !default;
+$banner-icon-block-spacing: 0.35em !default;
+
+$banner-content-block-spacing: 0.3em !default;
 
 $banner-color: $text !default;
 $banner-font-size: $font-size-8 !default;
@@ -18,6 +23,7 @@ $banner-border-width: $border-width !default;
 	display: grid;
 	position: relative;
 	align-items: flex-start;
+	min-height: $banner-min-height;
 	outline-color: $text;
 	background-color: $banner-background;
 	color: $banner-color;
@@ -60,9 +66,10 @@ $banner-border-width: $border-width !default;
 			@include loader;
 
 			position: absolute;
-			inset-block-start: $banner-padding-block;
-			inset-inline-start: $layout-gap;
 			border-color: transparent transparent $banner-color $banner-color;
+			font-size: $banner-icon-size;
+			inset-block-start: calc($banner-padding-block + $banner-icon-block-spacing);
+			inset-inline-start: $layout-gap;
 
 			@include widescreen {
 				inset-inline-start: $layout-widescreen-gap;
@@ -92,12 +99,18 @@ $banner-border-width: $border-width !default;
 
 		p {
 			max-width: $reading-max-width;
+
+			&:first-child {
+				margin-block-start: $banner-content-block-spacing;
+			}
 		}
 	}
 
 	.banner-icon {
-		grid-area: icon;
 		flex-shrink: 0;
+		font-size: $banner-icon-size;
+		line-height: 1;
+		grid-area: icon;
 		margin-inline-end: $banner-gap;
 	}
 
