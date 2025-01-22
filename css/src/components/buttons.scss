@@ -1,11 +1,12 @@
 /* stylelint-disable selector-max-specificity, max-nesting-depth */
+$buttons-gap: $spacer-3 !default;
 
 .buttons {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: flex-start;
-	gap: 0.5rem;
+	gap: $buttons-gap;
 
 	&.buttons-centered {
 		justify-content: center;
