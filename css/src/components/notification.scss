@@ -59,18 +59,10 @@ $notification-border-radius: $border-radius !default;
 	&.is-loading {
 		color: transparent;
 
-		> :first-child {
-			margin-inline-start: 1.75em;
-		}
-
 		&::before {
 			@include loader;
 
-			position: absolute;
 			border-color: transparent transparent $notification-color $notification-color;
-			font-size: $notification-icon-size;
-			inset-block-start: calc($notification-padding-block + $notification-icon-block-spacing);
-			inset-inline-start: $notification-padding-inline;
 		}
 	}
 
@@ -99,7 +91,8 @@ $notification-border-radius: $border-radius !default;
 		}
 	}
 
-	.notification-icon {
+	.notification-icon,
+	&.is-loading::before {
 		flex-shrink: 0;
 		font-size: $notification-icon-size;
 		line-height: 1;
@@ -115,7 +108,8 @@ $notification-border-radius: $border-radius !default;
 	}
 
 	.notification-icon,
-	.notification-dismiss {
+	.notification-dismiss,
+	&.is-loading::before {
 		margin-block-start: $notification-icon-block-spacing;
 	}
 }
