@@ -58,6 +58,8 @@ const pathnames = [
 	'/patterns/article-header.html',
 	'/patterns/chat.html',
 	'/patterns/thread-history.html',
+	'/patterns/banner.html',
+	'/patterns/notification.html',
 	'/tokens/overview.html',
 	'/tokens/animation.html',
 	'/tokens/border.html',
