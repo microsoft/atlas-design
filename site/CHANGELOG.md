@@ -1,5 +1,18 @@
 # @microsoft/atlas-site
 
+## 0.61.0
+
+### Minor Changes
+
+- 57af6b9f: Update the padding and width of the message component
+- 9634b6dc: Add button for easier manual right to left testing.
+
+### Patch Changes
+
+- 2449a670: Updating notification example markup
+- 5ddf13fc: Updating testimonial card pattern with persona component usage.
+- 1f423411: Updating footer copyright
+
 ## 0.60.0
 
 ### Minor Changes

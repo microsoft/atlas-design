@@ -1,5 +1,18 @@
 # @microsoft/atlas-css
 
+## 3.60.0
+
+### Minor Changes
+
+- beea19dd: Update warning color to match Fluent 2 colors.
+- 0c61b765: Update primary colors to align with Fluent 2 colors.
+- 53d1cbc9: Fixing default chevron icon appearance in accordion component.
+- a9f36c4e: Update success colors to match Fluent 2 colors.
+- 25a4e2ec: Update table, code block, inline code, default hover invert with greys from new grey palette. Update gradient text blue color. Update facepile colors.
+- 8e512e90: Update secondary color to align with Fluent 2 colors.
+- 9460d2f3: Update danger color to match Fluent 2 colors.
+- 57af6b9f: Update the padding and width of the message component
+
 ## 3.59.0
 
 ### Minor Changes
