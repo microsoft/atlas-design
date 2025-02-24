@@ -149,12 +149,14 @@ $textarea-divider-radius: 0.5rem !default;
 		height: 100%;
 	}
 
-	.help {
-		display: flex;
+	.textarea-form-help {
+		.help {
+			display: flex;
 
-		.icon {
-			margin-inline-end: $textarea-icon-inline-spacing;
-			margin-block-start: $textarea-icon-block-spacing;
+			.icon {
+				margin-inline-end: $textarea-icon-inline-spacing;
+				margin-block-start: $textarea-icon-block-spacing;
+			}
 		}
 	}
 }
