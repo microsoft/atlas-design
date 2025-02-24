@@ -17,6 +17,9 @@ $textarea-success-border-color: $success !default;
 
 $textarea-focus-box-shadow-size: 0 0.125rem 0 0 !default;
 
+$textarea-icon-inline-spacing: 0.375em !default;
+$textarea-icon-block-spacing: 0.1em !default;
+
 .textarea {
 	@include control;
 
@@ -144,5 +147,14 @@ $textarea-divider-radius: 0.5rem !default;
 		align-items: center;
 		gap: $textarea-form-gap;
 		height: 100%;
+	}
+
+	.help {
+		display: flex;
+
+		.icon {
+			margin-inline-end: $textarea-icon-inline-spacing;
+			margin-block-start: $textarea-icon-block-spacing;
+		}
 	}
 }
