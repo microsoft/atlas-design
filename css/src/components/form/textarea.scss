@@ -17,6 +17,7 @@ $textarea-success-border-color: $success !default;
 
 $textarea-focus-box-shadow-size: 0 0.125rem 0 0 !default;
 
+$textarea-margin-spacing: $layout-1 !default;
 $textarea-icon-inline-spacing: 0.375em !default;
 $textarea-icon-block-spacing: 0.1em !default;
 
@@ -133,6 +134,7 @@ $textarea-divider-radius: 0.5rem !default;
 		align-items: center;
 		justify-content: space-between;
 		outline-color: currentColor;
+		margin-inline-start: $textarea-margin-spacing;
 	}
 
 	.textarea-form-footer-divider {
@@ -152,6 +154,7 @@ $textarea-divider-radius: 0.5rem !default;
 	.textarea-form-help {
 		.help {
 			display: flex;
+			margin-inline-start: $textarea-margin-spacing;
 
 			.icon {
 				margin-inline-end: $textarea-icon-inline-spacing;
