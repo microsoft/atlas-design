@@ -18,8 +18,6 @@ $textarea-success-border-color: $success !default;
 $textarea-focus-box-shadow-size: 0 0.125rem 0 0 !default;
 
 $textarea-margin-spacing: $layout-1 !default;
-$textarea-icon-inline-spacing: 0.375em !default;
-$textarea-icon-block-spacing: 0.1em !default;
 
 .textarea {
 	@include control;
@@ -152,14 +150,12 @@ $textarea-divider-radius: 0.5rem !default;
 	}
 
 	.textarea-form-help {
-		.help {
-			display: flex;
-			margin-inline-start: $textarea-margin-spacing;
+		display: flex;
+		margin-inline-start: $textarea-margin-spacing;
 
-			.icon {
-				margin-inline-end: $textarea-icon-inline-spacing;
-				margin-block-start: $textarea-icon-block-spacing;
-			}
+		.help {
+			align-items: center;
+			gap: 0.375em;
 		}
 	}
 }

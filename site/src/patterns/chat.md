@@ -21,7 +21,7 @@ For a copilot-friendly input, with a series of buttons placed within the visual 
 	></textarea>
 	<div class="textarea-form-footer">
 		<div class="textarea-form-footer-left">
-			<span class="margin-left-xxs color-text-subtle">0 / 500</span>
+			<span class="color-text-subtle">0 / 500</span>
 		</div>
 		<div class="textarea-form-footer-right">
 			<button class="button button-clear" aria-label="Attach (non functional)">
@@ -64,7 +64,7 @@ Show an error or help message for the `textarea-form` by using `textarea-form-he
 		placeholder="Ask a question or describe what you'd like to do"
 	></textarea>
 	<div class="textarea-form-help">
-		<div class="help help-danger margin-left-xxs">
+		<div class="help help-danger">
 			<span class="icon" aria-hidden="true">
 				<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="fill-current-color">
 					<path
@@ -77,7 +77,7 @@ Show an error or help message for the `textarea-form` by using `textarea-form-he
 	</div>
 	<div class="textarea-form-footer">
 		<div class="textarea-form-footer-left">
-			<span class="margin-left-xxs color-text-subtle">0 / 500</span>
+			<span class="color-text-subtle">0 / 500</span>
 		</div>
 		<div class="textarea-form-footer-right">
 			<button class="button button-clear" aria-label="Attach (non functional)">
