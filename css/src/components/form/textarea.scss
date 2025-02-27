@@ -150,10 +150,10 @@ $textarea-divider-radius: 0.5rem !default;
 	}
 
 	.textarea-form-help {
-		display: flex;
 		margin-inline-start: $textarea-margin-spacing;
 
 		.help {
+			display: flex;
 			align-items: center;
 			gap: 0.375em;
 		}
