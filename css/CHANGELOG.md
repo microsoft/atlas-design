@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.61.0
+
+### Minor Changes
+
+- b4a25e22: Adds CSS to support a help or error validation message in the chat textarea
+
 ## 3.60.0
 
 ### Minor Changes
