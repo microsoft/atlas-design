@@ -17,6 +17,7 @@ Values are in pixels. Keep in mind that the `min-width` and `max-width` properti
 | ------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------ |
 | `width`                                          | `auto`, `100`, `150`, `200`, `250`, `300`, `350`, `full` (100%), `fit-content` | all screensizes, `tablet`, `desktop` |
 | `width` (available on tablet screens and larger) | `400`, `450`, `500`, `unset`                                                   | `tablet`, `desktop`                  |
+| `max-width`                                      | `full` (100%), `100vw`                                                         | all screensizes                      |
 
 ## Usage
 
@@ -60,6 +61,17 @@ Set the `width` of an element.
 </div>
 ```
 
+Set the `max-width` of an element.
+
+```html
+<div class="max-width-full border padding-sm font-weight-semibold">
+	<p>Max Width Full</p>
+</div>
+<div class="max-width-100vw border padding-sm font-weight-semibold">
+	<p>Max Width 100vw</p>
+</div>
+```
+
 ### Responsive rules
 
 Certain widths are too large for many mobile screens, so they are only available on larger screensizes. See the table above for information on which helpers can be applied universally.
@@ -85,6 +97,8 @@ Another possible pattern may be that a container needs to be constrained on smal
 List of all available classes:
 
 ```atomics-filter
+.max-width-full
+.max-width-100vw
 .width-full
 .width-fit-content
 .width-auto
