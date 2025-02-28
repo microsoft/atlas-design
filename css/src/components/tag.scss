@@ -204,6 +204,7 @@ $tag-interactive-color-primary-hover: $primary-dark-hover !default;
 
 			&:hover,
 			&.is-hovered {
+				border-inline-start-color: $tag-border-color;
 				color: $tag-interactive-color-filled-close-hover;
 			}
 		}
