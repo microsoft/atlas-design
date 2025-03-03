@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.62.0
+
+### Minor Changes
+
+- 494a4465: Update filled tag and progress bar background color.
+
 ## 3.61.0
 
 ### Minor Changes
