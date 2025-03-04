@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.63.0
+
+### Minor Changes
+
+- 26fe8b0e: Update body background and body background medium color to a Fluent color.
+
 ## 3.62.0
 
 ### Minor Changes
