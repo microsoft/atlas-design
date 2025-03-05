@@ -46,7 +46,7 @@
 	},
 	"devDependencies": {
 		"@vscode/vsce": "^2.19.0",
-		"esbuild": "^0.18.10",
+		"esbuild": "^0.25.0",
 		"@types/vscode": "^1.79.1",
 		"@types/glob": "^8.1.0",
 		"@types/mocha": "^10.0.1",
