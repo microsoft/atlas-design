@@ -96,6 +96,10 @@ $notification-dismiss-margin: $spacer-2 !default;
 				margin-block-start: $notification-icon-block-spacing;
 			}
 		}
+
+		p {
+			margin: 0;
+		}
 	}
 
 	.notification-dismiss {
