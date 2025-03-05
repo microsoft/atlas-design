@@ -1,10 +1,9 @@
 // @ts-check
 
-import { emptyDir, ensureDir, readFile, writeFile, writeJSON } from 'fs-extra';
+import { emptyDir, ensureDir, PathLike, readFile, writeFile, writeJSON } from 'fs-extra';
 import { basename, dirname, join, resolve, sep } from 'path';
 import * as pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
-import { promisify } from 'util';
 import {
 	baselineDirectory,
 	diffDirectory,
@@ -12,7 +11,7 @@ import {
 	screenshotsRoot
 } from './locations';
 import { generateHtmlReport } from './report';
-export const glob = promisify(require('glob'));
+import { glob } from 'glob';
 
 export const diffExt = '.diff.png';
 /**
@@ -84,12 +83,13 @@ async function compare(
 		emptyDir(outDir)
 	]);
 
-	const sourceMap = sourceKeys.reduce(
-		(m: { set: (arg0: any, arg1: string) => any }, f: any) => m.set(f, join(sourceDir, f)),
+	const sourceMap: Map<string, string> = sourceKeys.reduce(
+		(m: Map<string, string>, f: any) => m.set(f, join(sourceDir, f)),
 		new Map()
 	);
-	const targetMap = targetKeys.reduce(
-		(m: { set: (arg0: any, arg1: string) => any }, f: any) => m.set(f, join(targetDir, f)),
+
+	const targetMap: Map<string, string> = targetKeys.reduce(
+		(m: Map<string, string>, f: any) => m.set(f, join(targetDir, f)),
 		new Map()
 	);
 	const manifest: VisualDiffReportManifest = [];
@@ -100,12 +100,12 @@ async function compare(
 			continue;
 		}
 
-		const targetFilename = targetMap.get(key);
+		const targetFilename = targetMap.get(key) || '';
 		const [source, target] = await Promise.all([
 			readFile(sourceFilename),
-			readFile(targetFilename)
+			readFile(targetFilename as PathLike)
 		]);
-		const diff = await compareBuffers(source, target);
+		const diff = await compareBuffers(source, target as Buffer);
 
 		if (diff.pixelCount === 0) {
 			continue;

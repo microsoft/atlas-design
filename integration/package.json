@@ -4,9 +4,10 @@
 	"private": true,
 	"description": "",
 	"scripts": {
+		"action": "wireit",
 		"codegen": "playwright codegen localhost:1111",
-		"compare": "node \"./tasks/dist/compare.js\" ",
-		"compile-tasks": "tsc -p \"./tasks/tsconfig.json\"",
+		"compare": "wireit",
+		"compile-tasks": "wireit",
 		"test": "playwright test --config=integration-tests.config.ts",
 		"test:debug": "playwright test --debug --config=integration-tests.config.ts",
 		"screenshots:all": "cross-env FULL_DIFF=true playwright test --config=visual-diff.config.ts",
@@ -18,21 +19,41 @@
 		"serve-report": "parcel \"./visual-diff/screenshots/*.html\" --port 7777 --open Chrome --no-cache",
 		"build-report": "parcel build \"./visual-diff/screenshots/*.html\""
 	},
+	"wireit": {
+		"compare": {
+			"command": "node \"./tasks/dist/compare.js\" ",
+			"dependencies": [
+				"compile-tasks"
+			]
+		},
+		"compile-tasks": {
+			"command": "tsc -p \"./tasks/tsconfig.json\""
+		},
+		"action": {
+			"command": "node \"./tasks/dist/action.js\" ",
+			"dependencies": [
+				"compile-tasks"
+			]
+		}
+	},
 	"author": "Microsoft Corporation",
 	"license": "ISC",
 	"devDependencies": {
+		"@actions/core": "1.11.1",
 		"@axe-core/playwright": "^4.7.3",
 		"@playwright/test": "^1.35.1",
 		"@types/normalize-path": "^3.0.0",
 		"@types/pixelmatch": "^5.2.4",
+		"@types/fs-extra": "^11.0.4",
 		"@types/pngjs": "6.0.1",
 		"cross-env": "^7.0.3",
 		"execa": "^7.1.1",
 		"fs-extra": "^11.1.1",
-		"glob": "^10.3.1",
+		"glob": "^11.0.0",
 		"normalize-path": "^3.0.0",
 		"parcel": "^2.12.0",
 		"pixelmatch": "^5.3.0",
-		"pngjs": "^7.0.0"
+		"pngjs": "^7.0.0",
+		"wireit": "0.14.9"
 	}
 }
