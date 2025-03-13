@@ -3,7 +3,7 @@
 $quarter-widescreen: math.div($breakpoint-widescreen, 4);
 $half-widescreen: math.div($breakpoint-widescreen, 2);
 $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
-$default-flyout-width-desktop: 360px;
+$default-flyout-width-desktop: 320px;
 $default-flyout-width-widescreen: 480px;
 
 :root {
