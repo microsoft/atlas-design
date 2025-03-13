@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.64.0
+
+### Minor Changes
+
+- f018d59: Updating the default width of the layout's flyout container to be 320px on desktop screen sizes.
+
 ## 3.63.0
 
 ### Minor Changes
