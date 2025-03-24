@@ -210,3 +210,13 @@ $tag-interactive-color-primary-hover: $primary-dark-hover !default;
 		}
 	}
 }
+
+.tag.tag-suggestion {
+	border-radius: 0.5rem;
+
+	&:hover,
+	&.is-hovered {
+		background-color: $primary-background;
+		color: $primary-dark;
+	}
+}

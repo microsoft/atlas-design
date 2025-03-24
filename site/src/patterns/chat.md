@@ -269,3 +269,16 @@ The following markup utilizes various components and atomics to create a chat ex
 	</article>
 </section>
 ```
+
+### Suggestion Pill
+
+To display suggestions to the user, use the tag-based suggestion pill.
+
+```html
+<button type="button" class="tag tag-sm tag-suggestion">
+	<span>Catch me up on the meeting I missed this morning<span>
+</button>
+<button type="button" class="tag tag-sm tag-suggestion">
+	<span>Summarize this page<span>
+</button>
+```
