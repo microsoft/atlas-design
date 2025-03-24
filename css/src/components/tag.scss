@@ -38,6 +38,8 @@ $tag-border-color-primary: $primary-background-glow-high-contrast !default;
 $tag-interactive-divider-color-primary: $primary-box-shadow !default;
 $tag-interactive-color-primary-hover: $primary-dark-hover !default;
 
+$tag-suggestion-radius: 0.5rem !default;
+
 .tag {
 	display: inline-flex;
 	align-items: center;
@@ -212,7 +214,7 @@ $tag-interactive-color-primary-hover: $primary-dark-hover !default;
 }
 
 .tag.tag-suggestion {
-	border-radius: 0.5rem;
+	border-radius: $tag-suggestion-radius;
 
 	&:hover,
 	&.is-hovered {
