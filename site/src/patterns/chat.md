@@ -275,13 +275,22 @@ The following markup utilizes various components and atomics to create a chat ex
 To display suggestions to the user, use the tag-based suggestion pill. The pills should be left-aligned and will sit side-by-side unless one pill is too long and forces the next pill onto the next line.
 
 ```html
-<button type="button" class="tag tag-sm tag-suggestion margin-bottom-xxs">
-	<span>Catch me up on the meeting I missed this morning<span>
+<button type="button" class="tag tag-sm tag-suggestion">
+	<span>Suggestion pill<span>
 </button>
 <button type="button" class="tag tag-sm tag-suggestion">
-	<span>Summarize this page<span>
+	<span>Suggestion pill<span>
 </button>
 <button type="button" class="tag tag-sm tag-suggestion">
-	<span>Tell me about other capabilities<span>
+	<span>Suggestion pill<span>
+</button>
+<button type="button" class="tag tag-sm tag-suggestion">
+	<span>Suggestion pill<span>
+</button>
+<button type="button" class="tag tag-sm tag-suggestion">
+	<span>Suggestion pill<span>
+</button>
+<button type="button" class="tag tag-sm tag-suggestion">
+	<span>Suggestion pill<span>
 </button>
 ```
