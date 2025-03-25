@@ -30,6 +30,10 @@ Because gradient transitions take up the entire width of a particular element, i
 <h3 class="font-size-h3 font-weight-bold">
 	A vivid gradient from <span class="gradient-text-vivid">purple to blue</span>
 </h3>
+<h3 class="font-size-h3 font-weight-bold">
+	A three-color gradient from
+	<span class="gradient-text-ask-learn">yellow to red to purple</span>
+</h3>
 ```
 
 ## Gradient borders usage

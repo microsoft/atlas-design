@@ -74,10 +74,11 @@ $border-gradient-direction: (
 }
 
 @each $name, $gradient in $gradients {
-	$colorStart: nth($gradient, $gradient-color-start-index);
-	$colorEnd: nth($gradient, $gradient-color-end-index);
+	$colorStart: nth($gradient, 1);
+	$colorMiddle: if(length($gradient) > 2, nth($gradient, 2), null);
+	$colorEnd: nth($gradient, length($gradient));
 
 	.gradient-text-#{$name} {
-		@include gradient-text($colorStart, $colorEnd);
+		@include gradient-text($colorStart, $colorMiddle, $colorEnd);
 	}
 }

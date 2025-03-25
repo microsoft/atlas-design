@@ -50,6 +50,9 @@ $gradient-text-purple: var(--theme-gradient-text-purple);
 $gradient-text-blue: var(--theme-gradient-text-blue);
 $gradient-vivid-start: var(--theme-gradient-vivid-start);
 $gradient-vivid-end: var(--theme-gradient-vivid-end);
+$gradient-ask-learn-yellow: var(--theme-gradient-ask-learn-yellow);
+$gradient-ask-learn-red: var(--theme-gradient-ask-learn-red);
+$gradient-ask-learn-purple: var(--theme-gradient-ask-learn-purple);
 
 $default-hover: var(--theme-hover-base);
 $default-hover-invert: var(--theme-hover-invert);
@@ -264,8 +267,10 @@ $gradients: (
 	'purple-blue': (
 		$gradient-text-purple,
 		$gradient-text-blue
+	),
+	'ask-learn': (
+		$gradient-ask-learn-yellow,
+		$gradient-ask-learn-red,
+		$gradient-ask-learn-purple
 	)
 );
-
-$gradient-color-start-index: 1;
-$gradient-color-end-index: 2;
