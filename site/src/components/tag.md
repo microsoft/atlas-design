@@ -168,3 +168,13 @@ To make an interactive tag, nest the [popover component](./popover.md) inside a 
 		</tr>
 	</tbody>
 </table>
+
+### Suggestion pill
+
+A suggestion pill looks roughly like a tag but functions like a button. The user can click on a suggestion to trigger an action. See more use cases in the [chat pattern](./../patterns/chat.md).
+
+```html
+<button type="button" class="tag tag-sm tag-suggestion">
+	<span>Suggestion pill<span>
+</button>
+```

@@ -275,22 +275,24 @@ The following markup utilizes various components and atomics to create a chat ex
 To display suggestions to the user, use the tag-based suggestion pill. The pills should be left-aligned and will sit side-by-side unless one pill is too long and forces the next pill onto the next line.
 
 ```html
-<button type="button" class="tag tag-sm tag-suggestion">
-	<span>Suggestion pill<span>
-</button>
-<button type="button" class="tag tag-sm tag-suggestion">
-	<span>Suggestion pill<span>
-</button>
-<button type="button" class="tag tag-sm tag-suggestion">
-	<span>Suggestion pill<span>
-</button>
-<button type="button" class="tag tag-sm tag-suggestion">
-	<span>Suggestion pill<span>
-</button>
-<button type="button" class="tag tag-sm tag-suggestion">
-	<span>Suggestion pill<span>
-</button>
-<button type="button" class="tag tag-sm tag-suggestion">
-	<span>Suggestion pill<span>
-</button>
+<div class="display-flex flex-wrap-wrap gap-xxs">
+	<button type="button" class="tag tag-sm tag-suggestion">
+		<span>Suggestion pill 1<span>
+	</button>
+	<button type="button" class="tag tag-sm tag-suggestion">
+		<span>Suggestion pill 2<span>
+	</button>
+	<button type="button" class="tag tag-sm tag-suggestion">
+		<span>Suggestion pill 3<span>
+	</button>
+	<button type="button" class="tag tag-sm tag-suggestion">
+		<span>Suggestion pill 4<span>
+	</button>
+	<button type="button" class="tag tag-sm tag-suggestion">
+		<span>Suggestion pill 5<span>
+	</button>
+	<button type="button" class="tag tag-sm tag-suggestion">
+		<span>Suggestion pill 6<span>
+	</button>
+</div>
 ```

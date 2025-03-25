@@ -38,8 +38,7 @@ $tag-border-color-primary: $primary-background-glow-high-contrast !default;
 $tag-interactive-divider-color-primary: $primary-box-shadow !default;
 $tag-interactive-color-primary-hover: $primary-dark-hover !default;
 
-$tag-suggestion-radius: 0.5rem !default;
-$tag-suggestion-margin: 0.5rem !default;
+$tag-suggestion-radius: 8px !default;
 
 .tag {
 	display: inline-flex;
@@ -215,8 +214,6 @@ $tag-suggestion-margin: 0.5rem !default;
 }
 
 .tag.tag-suggestion {
-	margin-inline-end: calc($tag-suggestion-margin - $tag-gap-size);
-	margin-block-end: $tag-suggestion-margin;
 	border-radius: $tag-suggestion-radius;
 
 	&:hover,
