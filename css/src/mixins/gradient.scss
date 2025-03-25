@@ -1,4 +1,4 @@
-@mixin gradient-text($startColor, $middleColor: null, $endColor) {
+@mixin gradient-text($startColor, $middleColor: null, $endColor, $direction: 90deg) {
 	/* stylelint-disable */
 	-webkit-background-clip: text;
 	/* stylelint-enable */
@@ -6,9 +6,9 @@
 	background-color: $startColor;
 
 	@if $middleColor {
-		background-image: linear-gradient(90deg, $startColor, $middleColor, $endColor);
+		background-image: linear-gradient($direction, $startColor, $middleColor, $endColor);
 	} @else {
-		background-image: linear-gradient(90deg, $startColor, $endColor);
+		background-image: linear-gradient($direction, $startColor, $endColor);
 	}
 
 	color: transparent;

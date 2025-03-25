@@ -73,6 +73,10 @@ $border-gradient-direction: (
 	}
 }
 
+$gradient-direction: (
+	'bottom': 180deg
+) !default;
+
 @each $name, $gradient in $gradients {
 	$colorStart: nth($gradient, 1);
 	$colorMiddle: if(length($gradient) > 2, nth($gradient, 2), null);
@@ -80,5 +84,11 @@ $border-gradient-direction: (
 
 	.gradient-text-#{$name} {
 		@include gradient-text($colorStart, $colorMiddle, $colorEnd);
+	}
+
+	@each $direction, $angle in $gradient-direction {
+		.gradient-text-#{$name}-#{$direction} {
+			@include gradient-text($colorStart, $colorMiddle, $colorEnd, $angle);
+		}
 	}
 }

@@ -36,6 +36,21 @@ Because gradient transitions take up the entire width of a particular element, i
 </h3>
 ```
 
+## Direction of gradient
+
+You can specify for the gradient to transition vertically instead of horizontally by appending `-bottom` to the end of the gradient class. By default, the gradient moves from left to right, so you do not need to specify `-right`.
+
+```html
+<h3 class="font-size-h3 font-weight-bold">
+	This gradient transitions from
+	<span class="gradient-text-ask-learn-bottom">top to bottom</span>
+</h3>
+<h3 class="font-size-h3 font-weight-bold">
+	This gradient transitions from
+	<span class="gradient-text-ask-learn">left to right</span>
+</h3>
+```
+
 ## Gradient borders usage
 
 The `.gradient-border` component is a moderately pluggable component used to blend the boundaries between colors. Because of the near-infinite number of steps, color variations, and gradient types involved in creating a gradient, we've scoped these to be linear gradients that transition between `transparent` and a given color represented by the `--border-gradient-end-color` custom property. Each gradient combination requires a minimum of two class, one specifying the color and one specifying the direction.
