@@ -37,7 +37,7 @@ Because gradient transitions take up the entire width of a particular element, i
 
 ## Direction of gradient
 
-You can specify for the gradient to transition vertically instead of horizontally by appending `-bottom` to the end of the gradient class. By default, the gradient moves from left to right, so you do not need to specify `-right`.
+By default, the gradient moves from left to right. To transition gradient vertically instead, append `-bottom` to the end of the gradient atomic - `gradient-text-<colorname>-bottom`.
 
 ```html
 <h3 class="font-size-h3 font-weight-bold">
