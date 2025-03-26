@@ -38,6 +38,8 @@ $tag-border-color-primary: $primary-background-glow-high-contrast !default;
 $tag-interactive-divider-color-primary: $primary-box-shadow !default;
 $tag-interactive-color-primary-hover: $primary-dark-hover !default;
 
+$tag-suggestion-radius: 8px !default;
+
 .tag {
 	display: inline-flex;
 	align-items: center;
@@ -208,5 +210,15 @@ $tag-interactive-color-primary-hover: $primary-dark-hover !default;
 				color: $tag-interactive-color-filled-close-hover;
 			}
 		}
+	}
+}
+
+.tag.tag-suggestion {
+	border-radius: $tag-suggestion-radius;
+
+	&:hover,
+	&.is-hovered {
+		background-color: $primary-background;
+		color: $primary-dark;
 	}
 }
