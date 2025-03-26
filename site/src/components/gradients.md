@@ -19,9 +19,9 @@ There are two main types of gradients.
 
 Because gradient transitions take up the entire width of a particular element, it's recommended to highlight inline elements, icons, or a portion of a heading, and not the entire heading itself.
 
-| base class name             | interpolated value     |
-| --------------------------- | ---------------------- |
-| `gradient-text-<colorname>` | `purple-blue`, `vivid` |
+| base class name             | interpolated value                   |
+| --------------------------- | ------------------------------------ |
+| `gradient-text-<colorname>` | `purple-blue`, `vivid`, `red-purple` |
 
 ```html
 <h3 class="font-size-h3 font-weight-bold">
@@ -31,8 +31,7 @@ Because gradient transitions take up the entire width of a particular element, i
 	A vivid gradient from <span class="gradient-text-vivid">purple to blue</span>
 </h3>
 <h3 class="font-size-h3 font-weight-bold">
-	A three-color gradient from
-	<span class="gradient-text-ask-learn">yellow to red to purple</span>
+	A bright gradient from <span class="gradient-text-red-purple">red to purple</span>
 </h3>
 ```
 
@@ -42,12 +41,10 @@ You can specify for the gradient to transition vertically instead of horizontall
 
 ```html
 <h3 class="font-size-h3 font-weight-bold">
-	This gradient transitions from
-	<span class="gradient-text-ask-learn-bottom">top to bottom</span>
+	This gradient transitions from <span class="gradient-text-red-purple-bottom">top to bottom</span>
 </h3>
 <h3 class="font-size-h3 font-weight-bold">
-	This gradient transitions from
-	<span class="gradient-text-ask-learn">left to right</span>
+	This gradient transitions from <span class="gradient-text-red-purple">left to right</span>
 </h3>
 ```
 

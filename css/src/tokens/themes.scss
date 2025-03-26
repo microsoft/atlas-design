@@ -120,9 +120,8 @@ $themes: (
 		'gradient-text-blue': $palette-blue-130,
 		'gradient-vivid-start': $palette-purple-c,
 		'gradient-vivid-end': $palette-blue-100,
-		'gradient-ask-learn-yellow': $palette-ask-learn-yellow,
-		'gradient-ask-learn-red': $palette-ask-learn-red,
-		'gradient-ask-learn-purple': $palette-ask-learn-purple
+		'gradient-bright-red': $palette-red-a,
+		'gradient-bright-purple': $palette-purple-d
 	),
 	'dark': (
 		'text': $palette-grey-30-deprecated,
@@ -242,9 +241,8 @@ $themes: (
 		'gradient-text-blue': $palette-blue-a,
 		'gradient-vivid-start': $palette-purple-c,
 		'gradient-vivid-end': $palette-blue-30-deprecated,
-		'gradient-ask-learn-yellow': $palette-ask-learn-yellow,
-		'gradient-ask-learn-red': $palette-ask-learn-red,
-		'gradient-ask-learn-purple': $palette-ask-learn-purple
+		'gradient-bright-red': $palette-red-a,
+		'gradient-bright-purple': $palette-purple-d
 	),
 	'high-contrast': (
 		'text': $palette-white,
@@ -364,9 +362,8 @@ $themes: (
 		'gradient-text-blue': $white-static,
 		'gradient-vivid-start': $white-static,
 		'gradient-vivid-end': $white-static,
-		'gradient-ask-learn-yellow': $white-static,
-		'gradient-ask-learn-red': $white-static,
-		'gradient-ask-learn-purple': $white-static
+		'gradient-bright-red': $white-static,
+		'gradient-bright-purple': $white-static
 	)
 ) !default;
 //@end-sass-export-section

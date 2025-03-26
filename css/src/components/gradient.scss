@@ -78,17 +78,16 @@ $gradient-direction: (
 ) !default;
 
 @each $name, $gradient in $gradients {
-	$colorStart: nth($gradient, 1);
-	$colorMiddle: if(length($gradient) > 2, nth($gradient, 2), null);
-	$colorEnd: nth($gradient, length($gradient));
+	$colorStart: nth($gradient, $gradient-color-start-index);
+	$colorEnd: nth($gradient, $gradient-color-end-index);
 
 	.gradient-text-#{$name} {
-		@include gradient-text($colorStart, $colorMiddle, $colorEnd);
+		@include gradient-text($colorStart, $colorEnd);
 	}
 
 	@each $direction, $angle in $gradient-direction {
 		.gradient-text-#{$name}-#{$direction} {
-			@include gradient-text($colorStart, $colorMiddle, $colorEnd, $angle);
+			@include gradient-text($colorStart, $colorEnd, $angle);
 		}
 	}
 }
