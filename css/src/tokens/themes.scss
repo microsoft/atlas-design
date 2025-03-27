@@ -119,7 +119,9 @@ $themes: (
 		'gradient-text-purple': $palette-purple-b,
 		'gradient-text-blue': $palette-blue-130,
 		'gradient-vivid-start': $palette-purple-c,
-		'gradient-vivid-end': $palette-blue-100
+		'gradient-vivid-end': $palette-blue-100,
+		'gradient-bright-red': $palette-red-a,
+		'gradient-bright-purple': $palette-purple-d
 	),
 	'dark': (
 		'text': $palette-grey-30-deprecated,
@@ -238,7 +240,9 @@ $themes: (
 		'gradient-text-purple': $palette-purple-a,
 		'gradient-text-blue': $palette-blue-a,
 		'gradient-vivid-start': $palette-purple-c,
-		'gradient-vivid-end': $palette-blue-30-deprecated
+		'gradient-vivid-end': $palette-blue-30-deprecated,
+		'gradient-bright-red': $palette-red-a,
+		'gradient-bright-purple': $palette-purple-d
 	),
 	'high-contrast': (
 		'text': $palette-white,
@@ -357,7 +361,9 @@ $themes: (
 		'gradient-text-purple': $white-static,
 		'gradient-text-blue': $white-static,
 		'gradient-vivid-start': $white-static,
-		'gradient-vivid-end': $white-static
+		'gradient-vivid-end': $white-static,
+		'gradient-bright-red': $white-static,
+		'gradient-bright-purple': $white-static
 	)
 ) !default;
 //@end-sass-export-section

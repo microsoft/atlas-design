@@ -50,6 +50,8 @@ $gradient-text-purple: var(--theme-gradient-text-purple);
 $gradient-text-blue: var(--theme-gradient-text-blue);
 $gradient-vivid-start: var(--theme-gradient-vivid-start);
 $gradient-vivid-end: var(--theme-gradient-vivid-end);
+$gradient-bright-red: var(--theme-gradient-bright-red);
+$gradient-bright-purple: var(--theme-gradient-bright-purple);
 
 $default-hover: var(--theme-hover-base);
 $default-hover-invert: var(--theme-hover-invert);
@@ -264,6 +266,10 @@ $gradients: (
 	'purple-blue': (
 		$gradient-text-purple,
 		$gradient-text-blue
+	),
+	'red-purple': (
+		$gradient-bright-red,
+		$gradient-bright-purple
 	)
 );
 

@@ -1,10 +1,10 @@
-@mixin gradient-text($startColor, $endColor) {
+@mixin gradient-text($startColor, $endColor, $angle: 90deg) {
 	/* stylelint-disable */
 	-webkit-background-clip: text;
 	/* stylelint-enable */
 	background-clip: text;
 	background-color: $startColor;
-	background-image: linear-gradient(90deg, $startColor, $endColor);
+	background-image: linear-gradient($angle, $startColor, $endColor);
 	color: transparent;
 	-webkit-text-fill-color: transparent;
 	line-height: 1.4; // required because of background clip, avoid "g" and "y" getting cut off
