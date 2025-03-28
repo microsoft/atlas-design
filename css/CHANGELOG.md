@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.65.0
+
+### Minor Changes
+
+- 8d53175: Add a suggestion pill for the chat pattern and update tag.md documentation.
+
 ## 3.64.0
 
 ### Minor Changes
