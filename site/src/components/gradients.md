@@ -35,6 +35,11 @@ Because gradient transitions take up the entire width of a particular element, i
 </h3>
 ```
 
+### A note on usage
+
+1. Before using any of the gradients, check that the colors on the gradient satisfy color contrast requirements for your use case. You will likely have to verify multiple different background colors in light and dark theme [see background colors](../atomics/colors.md)
+1. The `red-purple` and `vivid` gradients satisfy a color contrast of `3:1` but not `4.5:1`, which means they should only be used on large text and icons.
+
 ## Direction of gradient
 
 By default, the gradient moves from left to right. To transition gradient vertically instead, append `-bottom` to the end of the gradient atomic - `gradient-text-<colorname>-bottom`.
