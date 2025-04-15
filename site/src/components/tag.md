@@ -175,6 +175,6 @@ A suggestion pill looks roughly like a tag but functions like a button. The user
 
 ```html
 <button type="button" class="tag tag-sm tag-suggestion">
-	<span>Suggestion pill<span>
+	<span>Suggestion pill</span>
 </button>
 ```
