@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.63.1
+
+### Patch Changes
+
+- 5dba083: Fix a typo in the tag-suggestion example
+
 ## 0.63.0
 
 ### Minor Changes
