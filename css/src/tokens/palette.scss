@@ -52,8 +52,9 @@ $palette-grey-240: #333 !default;
 $palette-grey-250: #292929 !default;
 $palette-grey-260: #242424 !default;
 $palette-grey-270: #1a1a1a !default;
-$palette-grey-280: #141414 !default;
-$palette-grey-290: #0a0a0a !default;
+$palette-grey-280: #1f1f1f !default;
+$palette-grey-290: #141414 !default;
+$palette-grey-300: #0a0a0a !default;
 
 // Black
 
@@ -346,6 +347,7 @@ $palette-red-opacity-70: hsl(0deg 100% 33% / 70%) !default;
 
 $palette-yellow-high-contrast: #ff0 !default;
 $palette-yellow-high-contrast-hover: #ff3 !default;
+$palette-yellow-high-contrast-selected: #fd0 !default;
 $palette-visited-high-contrast: #3cff00 !default;
 
 //@end-sass-export-section

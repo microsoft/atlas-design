@@ -23,6 +23,10 @@ $button-disabled-background-color: $body-background-medium !default;
 $button-disabled-shadow: none !default;
 $button-disabled-opacity: 0.5 !default;
 
+$button-selected-background-color: $selected-background !default;
+$button-selected-border-color: $selected-stroke !default;
+$button-selected-color: $selected-foreground !default;
+
 $button-icon-spacing: 0.375em !default;
 $button-font-weight: $weight-semibold !default;
 
@@ -86,6 +90,12 @@ $button-font-weight: $weight-semibold !default;
 
 	// Modifiers
 
+	&.is-selected:not(:hover, .is-hovered) {
+		border-color: $button-selected-border-color;
+		background-color: $button-selected-background-color;
+		color: $button-selected-color;
+	}
+
 	&.is-disabled,
 	&[disabled] {
 		border-color: currentColor;
@@ -117,6 +127,10 @@ $button-font-weight: $weight-semibold !default;
 		$base: nth($color-set, $color-index-base);
 		$dark: nth($color-set, $color-index-dark);
 		$background: nth($color-set, $color-index-background);
+		$background-selected: nth($color-set, $color-index-background-selected);
+		$selected: nth($color-set, $color-index-selected);
+		$foreground-selected: nth($color-set, $color-index-foreground-selected);
+		$border-selected: nth($color-set, $color-index-stroke-selected);
 
 		&.button-#{$name} {
 			@if $name == 'warning' {
@@ -133,6 +147,16 @@ $button-font-weight: $weight-semibold !default;
 				color: $dark;
 			}
 
+			&.is-selected:not(:hover, .is-hovered) {
+				border-color: $border-selected;
+				background-color: $background-selected;
+				color: $foreground-selected;
+			}
+
+			&.is-selected.is-loading::after {
+				border-color: transparent transparent $foreground-selected $foreground-selected !important;
+			}
+
 			&.is-loading::after {
 				border-color: transparent transparent $base $base !important;
 			}
@@ -141,6 +165,7 @@ $button-font-weight: $weight-semibold !default;
 }
 
 $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
+$button-clear-selected-background-color: $selected-background-subtle !default;
 
 .button.button-clear {
 	border-color: transparent;
@@ -163,10 +188,19 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 		background-color: $button-clear-hover-background-color;
 	}
 
+	&.is-selected:not(:hover, .is-hovered) {
+		border-color: transparent;
+		background-color: $button-clear-selected-background-color;
+		color: $button-selected-color;
+	}
+
 	@each $name, $color-set in $colors {
 		$base: nth($color-set, $color-index-base);
 		$dark: nth($color-set, $color-index-dark);
 		$background: nth($color-set, $color-index-background);
+		$background-selected: nth($color-set, $color-index-background-selected);
+		$selected: nth($color-set, $color-index-selected);
+		$foreground-selected: nth($color-set, $color-index-foreground-selected);
 
 		&.button-#{$name} {
 			color: $base;
@@ -179,6 +213,11 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 			&.is-hovered {
 				background-color: $background;
 				color: $dark;
+			}
+
+			&.is-selected:not(:hover, .is-hovered) {
+				background-color: $background-selected;
+				color: $foreground-selected;
 			}
 
 			&.is-disabled,
@@ -194,6 +233,7 @@ $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
 $button-filled-background-color: $alternate-background-medium !default;
 $button-filled-background-color-hover: $alternate-background !default;
 $button-filled-text-color: $text-invert !default;
+$button-filled-background-color-selected: $secondary-selected !default;
 
 .button.button-filled {
 	border-color: $button-filled-background-color;
@@ -203,6 +243,12 @@ $button-filled-text-color: $text-invert !default;
 	&:hover,
 	&.is-hovered {
 		background-color: $button-filled-background-color-hover;
+	}
+
+	&.is-selected:not(:hover, .is-hovered) {
+		border-color: $button-filled-background-color-selected;
+		background-color: $button-filled-background-color-selected;
+		color: $button-filled-text-color;
 	}
 
 	&.is-loading::after {
@@ -217,6 +263,8 @@ $button-filled-text-color: $text-invert !default;
 		$active: nth($color-set, $color-index-active);
 		$invert: nth($color-set, $color-index-invert);
 		$background: nth($color-set, $color-index-background);
+		$selected: nth($color-set, $color-index-selected);
+		$selected-invert: nth($color-set, $color-index-foreground-selected-invert);
 
 		&.button-#{$name} {
 			border-color: $base;
@@ -228,6 +276,18 @@ $button-filled-text-color: $text-invert !default;
 				border-color: $hover;
 				background-color: $hover;
 				color: $invert;
+			}
+
+			&.is-selected:not(:hover, .is-hovered) {
+				border-color: $selected;
+				background-color: $selected;
+				color: $selected-invert;
+			}
+
+			&.is-selected.is-loading::after {
+				@include loader;
+
+				border-color: transparent transparent $selected-invert $selected-invert !important;
 			}
 
 			&.is-loading::after {
