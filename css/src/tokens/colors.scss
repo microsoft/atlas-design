@@ -58,6 +58,11 @@ $border-yellow-high-contrast: var(--theme-border-yellow-high-contrast);
 $code-highlight-background: var(--theme-code-highlight-background);
 $visited: var(--theme-visited);
 
+$selected-background: var(--theme-background-selected);
+$selected-background-subtle: var(--theme-background-subtle-selected);
+$selected-stroke: var(--theme-stroke-selected);
+$selected-foreground: var(--theme-foreground-selected);
+
 $score-low-off: var(--theme-score-low-off);
 $score-low: var(--theme-score-low);
 $score-medium-off: var(--theme-score-medium-off);
@@ -75,6 +80,11 @@ $primary-hover: var(--theme-primary-hover);
 $primary-active: var(--theme-primary-active);
 $primary-invert: var(--theme-primary-invert);
 $primary-box-shadow: var(--theme-primary-box-shadow);
+$primary-selected: var(--theme-primary-selected);
+$primary-background-selected: var(--theme-primary-background-selected);
+$primary-foreground-selected: var(--theme-primary-foreground-selected);
+$primary-foreground-selected-invert: var(--theme-primary-foreground-selected-invert);
+$primary-stroke-selected: var(--theme-primary-stroke-selected);
 
 $secondary: var(--theme-secondary-base);
 $secondary-background: var(--theme-secondary-background);
@@ -86,6 +96,11 @@ $secondary-hover: var(--theme-secondary-hover);
 $secondary-active: var(--theme-secondary-active);
 $secondary-invert: var(--theme-secondary-invert);
 $secondary-box-shadow: var(--theme-secondary-box-shadow);
+$secondary-background-selected: var(--theme-secondary-background-selected);
+$secondary-selected: var(--theme-secondary-selected);
+$secondary-foreground-selected: var(--theme-secondary-foreground-selected);
+$secondary-foreground-selected-invert: var(--theme-secondary-foreground-selected-invert);
+$secondary-stroke-selected: var(--theme-secondary-stroke-selected);
 
 $tertiary: var(--theme-tertiary-base);
 $tertiary-background: var(--theme-tertiary-background);
@@ -97,6 +112,11 @@ $tertiary-hover: var(--theme-tertiary-hover);
 $tertiary-active: var(--theme-tertiary-active);
 $tertiary-invert: var(--theme-tertiary-invert);
 $tertiary-box-shadow: var(--theme-tertiary-box-shadow);
+$tertiary-background-selected: var(--theme-tertiary-background-selected);
+$tertiary-selected: var(--theme-tertiary-selected);
+$tertiary-foreground-selected: var(--theme-tertiary-foreground-selected);
+$tertiary-foreground-selected-invert: var(--theme-tertiary-foreground-selected-invert);
+$tertiary-stroke-selected: var(--theme-tertiary-stroke-selected);
 
 $success: var(--theme-success-base);
 $success-background: var(--theme-success-background);
@@ -108,6 +128,11 @@ $success-hover: var(--theme-success-hover);
 $success-active: var(--theme-success-active);
 $success-invert: var(--theme-success-invert);
 $success-box-shadow: var(--theme-success-box-shadow);
+$success-background-selected: var(--theme-success-background-selected);
+$success-selected: var(--theme-success-selected);
+$success-foreground-selected: var(--theme-success-foreground-selected);
+$success-foreground-selected-invert: var(--theme-success-foreground-selected-invert);
+$success-stroke-selected: var(--theme-success-stroke-selected);
 
 $info: var(--theme-info-base);
 $info-background: var(--theme-info-background);
@@ -119,6 +144,11 @@ $info-hover: var(--theme-info-hover);
 $info-active: var(--theme-info-active);
 $info-invert: var(--theme-info-invert);
 $info-box-shadow: var(--theme-info-box-shadow);
+$info-background-selected: var(--theme-info-background-selected);
+$info-selected: var(--theme-info-selected);
+$info-foreground-selected: var(--theme-info-foreground-selected);
+$info-foreground-selected-invert: var(--theme-info-foreground-selected-invert);
+$info-stroke-selected: var(--theme-info-stroke-selected);
 
 $warning: var(--theme-warning-base);
 $warning-background: var(--theme-warning-background);
@@ -130,6 +160,11 @@ $warning-hover: var(--theme-warning-hover);
 $warning-active: var(--theme-warning-active);
 $warning-invert: var(--theme-warning-invert);
 $warning-box-shadow: var(--theme-warning-box-shadow);
+$warning-background-selected: var(--theme-warning-background-selected);
+$warning-selected: var(--theme-warning-selected);
+$warning-foreground-selected: var(--theme-warning-foreground-selected);
+$warning-foreground-selected-invert: var(--theme-warning-foreground-selected-invert);
+$warning-stroke-selected: var(--theme-warning-stroke-selected);
 
 $danger: var(--theme-danger-base);
 $danger-background: var(--theme-danger-background);
@@ -141,6 +176,11 @@ $danger-hover: var(--theme-danger-hover);
 $danger-active: var(--theme-danger-active);
 $danger-invert: var(--theme-danger-invert);
 $danger-box-shadow: var(--theme-danger-box-shadow);
+$danger-background-selected: var(--theme-danger-background-selected);
+$danger-selected: var(--theme-danger-selected);
+$danger-foreground-selected: var(--theme-danger-foreground-selected);
+$danger-foreground-selected-invert: var(--theme-danger-foreground-selected-invert);
+$danger-stroke-selected: var(--theme-danger-stroke-selected);
 
 $colors: (
 	'primary': (
@@ -153,7 +193,12 @@ $colors: (
 		$primary-box-shadow,
 		$primary-background-glow-high-contrast,
 		$primary-background-hover,
-		$primary-dark-hover
+		$primary-dark-hover,
+		$primary-selected,
+		$primary-background-selected,
+		$primary-stroke-selected,
+		$primary-foreground-selected,
+		$primary-foreground-selected-invert
 	),
 	'secondary': (
 		$secondary,
@@ -165,7 +210,12 @@ $colors: (
 		$secondary-box-shadow,
 		$secondary-background-glow-high-contrast,
 		$secondary-background-hover,
-		$secondary-dark-hover
+		$secondary-dark-hover,
+		$secondary-selected,
+		$secondary-background-selected,
+		$secondary-stroke-selected,
+		$secondary-foreground-selected,
+		$secondary-foreground-selected-invert
 	),
 	'tertiary': (
 		$tertiary,
@@ -177,7 +227,12 @@ $colors: (
 		$tertiary-box-shadow,
 		$tertiary-background-glow-high-contrast,
 		$tertiary-background-hover,
-		$tertiary-dark-hover
+		$tertiary-dark-hover,
+		$tertiary-selected,
+		$tertiary-background-selected,
+		$tertiary-stroke-selected,
+		$tertiary-foreground-selected,
+		$tertiary-foreground-selected-invert
 	),
 	'success': (
 		$success,
@@ -189,7 +244,12 @@ $colors: (
 		$success-box-shadow,
 		$success-background-glow-high-contrast,
 		$success-background-hover,
-		$success-dark-hover
+		$success-dark-hover,
+		$success-selected,
+		$success-background-selected,
+		$success-stroke-selected,
+		$success-foreground-selected,
+		$success-foreground-selected-invert
 	),
 	'info': (
 		$info,
@@ -201,7 +261,12 @@ $colors: (
 		$info-box-shadow,
 		$info-background-glow-high-contrast,
 		$info-background-hover,
-		$info-dark-hover
+		$info-dark-hover,
+		$info-selected,
+		$info-background-selected,
+		$info-stroke-selected,
+		$info-foreground-selected,
+		$info-foreground-selected-invert
 	),
 	'warning': (
 		$warning,
@@ -213,7 +278,12 @@ $colors: (
 		$warning-box-shadow,
 		$warning-background-glow-high-contrast,
 		$warning-background-hover,
-		$warning-dark-hover
+		$warning-dark-hover,
+		$warning-selected,
+		$warning-background-selected,
+		$warning-stroke-selected,
+		$warning-foreground-selected,
+		$warning-foreground-selected-invert
 	),
 	'danger': (
 		$danger,
@@ -225,7 +295,12 @@ $colors: (
 		$danger-box-shadow,
 		$danger-background-glow-high-contrast,
 		$danger-background-hover,
-		$danger-dark-hover
+		$danger-dark-hover,
+		$danger-selected,
+		$danger-background-selected,
+		$danger-stroke-selected,
+		$danger-foreground-selected,
+		$danger-foreground-selected-invert
 	)
 ) !default;
 
@@ -243,6 +318,11 @@ $color-index-box-shadow: 7;
 $color-index-background-glow-high-contrast: 8;
 $color-index-background-hover: 9;
 $color-index-dark-hover: 10;
+$color-index-selected: 11;
+$color-index-background-selected: 12;
+$color-index-stroke-selected: 13;
+$color-index-foreground-selected: 14;
+$color-index-foreground-selected-invert: 15;
 
 // example implementation of a color loop
 
