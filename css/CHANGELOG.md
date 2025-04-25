@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.66.0
+
+### Minor Changes
+
+- 56f26c5: Adding palette, colors, and themes tokens and updating buttons to have a selected state
+
 ## 3.65.0
 
 ### Minor Changes

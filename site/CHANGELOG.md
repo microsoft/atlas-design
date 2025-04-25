@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 0.64.0
+
+### Minor Changes
+
+- 56f26c5: Add selected state for buttons to documentation
+
+### Patch Changes
+
+- 5dba083: Fix a typo in the tag-suggestion example
+
 ## 0.63.0
 
 ### Minor Changes
