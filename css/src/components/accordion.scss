@@ -52,15 +52,6 @@ $accordion-transition: transform 0.15s !default;
 			flex-shrink: 0;
 		}
 
-		&:hover {
-			color: $primary-hover;
-
-			&::before,
-			&::after {
-				border-color: $primary-hover;
-			}
-		}
-
 		.accordion-header {
 			flex-grow: 1;
 		}
