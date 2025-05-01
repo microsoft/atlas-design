@@ -210,6 +210,10 @@ $tag-suggestion-radius: 8px !default;
 				color: $tag-interactive-color-filled-close-hover;
 			}
 		}
+
+		.popover-content {
+			color: $text;
+		}
 	}
 }
 
