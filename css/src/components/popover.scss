@@ -19,31 +19,15 @@ $popover-width: 224px !default;
 	.popover-content {
 		position: absolute;
 		width: $popover-width;
-		margin-block-start: $spacer-3;
 		padding: $spacer-5;
+		transition: opacity 0.15s ease;
 		border: $popover-border;
 		border-radius: $popover-border-radius;
 		background-color: $popover-background-color;
+		opacity: 0;
 		box-shadow: $popover-shadow;
+		// Hide to avoid jank when location is calculated in JS later
+		visibility: hidden;
 		z-index: $zindex-popover;
-	}
-
-	&.popover-right {
-		.popover-content {
-			inset-inline-end: 0;
-		}
-	}
-
-	&.popover-center {
-		.popover-content {
-			inset-inline-start: -25%;
-		}
-	}
-
-	&.popover-top {
-		.popover-content {
-			inset-block-end: 100%;
-			margin-block-end: $spacer-3;
-		}
 	}
 }
