@@ -20,7 +20,6 @@ $popover-width: 224px !default;
 		position: absolute;
 		width: $popover-width;
 		padding: $spacer-5;
-		transition: opacity 0.15s ease;
 		border: $popover-border;
 		border-radius: $popover-border-radius;
 		background-color: $popover-background-color;

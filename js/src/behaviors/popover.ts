@@ -63,32 +63,30 @@ export function initPopover(container: HTMLElement = document.body) {
 						'details.popover'
 					) as HTMLDetailsElement));
 
-			if (
-				!targetPopover ||
-				!targetPopover.open ||
-				targetPopover.dataset.popoverInitialized === 'true'
-			) {
+			if (!targetPopover) {
 				return;
 			}
-
-			targetPopover.dataset.popoverInitialized = 'true';
 
 			const content = targetPopover.querySelector('.popover-content') as HTMLElement;
 			if (!content) {
 				return;
 			}
 
-			// Hide the popover until the position has been calculated, then show
-			content.style.visibility = 'hidden';
-			content.style.opacity = '0';
+			// If popover is being closed, hide content immediately
+			if (!targetPopover.open) {
+				content.style.visibility = 'hidden';
+				content.style.opacity = '0';
+				return;
+			}
 
 			requestAnimationFrame(() => {
 				positionPopover(targetPopover);
-
-				requestAnimationFrame(() => {
-					content.style.visibility = 'visible';
-					content.style.opacity = '1';
-				});
+				// If the user scrolls around on the page, this forced reflow
+				// recalculates the popover's position to avoid a flash before
+				// the position is relocated
+				void content.offsetHeight;
+				content.style.visibility = 'visible';
+				content.style.opacity = '1';
 			});
 
 			const keyHandler = (event: KeyboardEvent) => {
@@ -125,7 +123,8 @@ export function initPopover(container: HTMLElement = document.body) {
 				window.removeEventListener('blur', blurHandler);
 				if (targetPopover?.open) {
 					targetPopover.removeAttribute('open');
-					targetPopover.dataset.popoverInitialized = 'false';
+					content.style.visibility = 'hidden';
+					content.style.opacity = '0';
 				}
 			};
 
