@@ -38,8 +38,8 @@ function positionPopover(popover: HTMLDetailsElement) {
 	// Compute the right edge and if the right edge overflows, shift more to the left
 	const contentWidth = popoverContent.offsetWidth;
 	const contentRightEdge = popoverRect.left + desiredLeft + contentWidth;
-	if (contentRightEdge > window.innerWidth - buffer) {
-		const overflowAmount = contentRightEdge - (window.innerWidth - buffer);
+	if (contentRightEdge > window.innerWidth - buffer * 2) {
+		const overflowAmount = contentRightEdge - (window.innerWidth - buffer * 2);
 		desiredLeft -= overflowAmount;
 	}
 
