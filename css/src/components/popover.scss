@@ -23,7 +23,6 @@ $popover-width: 224px !default;
 		border: $popover-border;
 		border-radius: $popover-border-radius;
 		background-color: $popover-background-color;
-		opacity: 0;
 		box-shadow: $popover-shadow;
 		// Hide to avoid jank when location is calculated in JS later
 		visibility: hidden;

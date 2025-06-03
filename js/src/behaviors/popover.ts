@@ -75,7 +75,6 @@ export function initPopover(container: HTMLElement = document.body) {
 			// If popover is being closed, hide content immediately
 			if (!targetPopover.open) {
 				content.style.visibility = 'hidden';
-				content.style.opacity = '0';
 				return;
 			}
 
@@ -86,7 +85,6 @@ export function initPopover(container: HTMLElement = document.body) {
 				// the position is relocated
 				void content.offsetHeight;
 				content.style.visibility = 'visible';
-				content.style.opacity = '1';
 			});
 
 			const keyHandler = (event: KeyboardEvent) => {
@@ -124,7 +122,6 @@ export function initPopover(container: HTMLElement = document.body) {
 				if (targetPopover?.open) {
 					targetPopover.removeAttribute('open');
 					content.style.visibility = 'hidden';
-					content.style.opacity = '0';
 				}
 			};
 
