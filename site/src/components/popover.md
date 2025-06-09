@@ -50,7 +50,7 @@ You can apply almost any classes on the `summary` element to achieve the look yo
 		</span>
 	</summary>
 	<div class="popover-content">
-		<p>Popover content.</p>
+		<p>Popover content will be centered by default.</p>
 	</div>
 </details>
 ```
@@ -75,7 +75,24 @@ Popovers are left aligned and open downwards by default, but the contents will d
 <div class="display-flex justify-content-flex-end">
 	<details class="popover margin-xxs">
 		<summary class="button">Popover</summary>
-		<div class="popover-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		<div class="popover-content popover-caret">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 	</details>
 </div>
+```
+
+```html
+<div class="display-flex justify-content-center">
+	<details class="popover margin-xxs">
+		<summary class="button">Popover top</summary>
+		<div class="popover-content popover-top">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+	</details>
+</div>
+
+<div class="display-flex justify-content-center">
+	<details class="popover margin-xxs">
+		<summary class="button">Popover top with caret</summary>
+		<div class="popover-content popover-top popover-caret">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+	</details>
+</div>
+
 ```

@@ -23,17 +23,25 @@ function positionPopover(popover: HTMLDetailsElement) {
 	// By default, place the popover-content below the button. If it doesn't fit, put it above.
 	const spaceBelow = window.innerHeight - summaryRect.bottom;
 	const spaceAbove = summaryRect.top;
-	const placeBelow = spaceBelow >= popoverContent.offsetHeight || spaceBelow >= spaceAbove;
+	// If popover or popover-content has .popover-top, always place above
+	const forceTop =
+		popover.classList.contains('popover-top') || popoverContent.classList.contains('popover-top');
+	const placeBelow =
+		!forceTop && (spaceBelow >= popoverContent.offsetHeight || spaceBelow >= spaceAbove);
+
+	popoverContent.classList.remove('popover-caret--bottom');
 
 	if (placeBelow) {
 		popoverContent.style.top = `${offsetTop + summaryButton.offsetHeight + buffer}px`;
 	} else {
 		popoverContent.style.top = `${offsetTop - popoverContent.offsetHeight - buffer}px`;
+		popoverContent.classList.add('popover-caret--bottom');
 	}
 
-	// Line up the left edge of the button and popover-content
-	const offsetLeft = summaryButton.offsetLeft;
-	let desiredLeft = offsetLeft;
+	// Center the popover-content horizontally with the button
+	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
+	const contentHalfWidth = popoverContent.offsetWidth / 2;
+	let desiredLeft = buttonCenter - contentHalfWidth;
 
 	// Compute the right edge and if the right edge overflows, shift more to the left
 	const contentWidth = popoverContent.offsetWidth;

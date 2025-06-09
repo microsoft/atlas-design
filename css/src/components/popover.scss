@@ -27,5 +27,77 @@ $popover-width: 224px !default;
 		// Hide to avoid jank when location is calculated in JS later
 		visibility: hidden;
 		z-index: $zindex-popover;
+		left: 0; // Ensure left is set by JS for centering
+		transform: none; // Remove any transform that might interfere with centering
+
+		&.popover-top {
+			margin-top: 0;
+			margin-bottom: 8px;
+		}
+
+		// Caret variables for reuse
+		$popover-caret-size: 8px;
+		$popover-caret-border-size: 9px;
+		$popover-caret-offset: 10px;
+
+		&.popover-caret {
+			margin-top: $popover-caret-size;
+			overflow: visible;
+
+			&::before,
+			&::after {
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				display: block;
+				width: 0;
+				height: 0;
+				pointer-events: none;
+				content: '';
+			}
+
+			// Default: caret on top (points up)
+			&::before {
+				top: -$popover-caret-offset;
+				border-left: $popover-caret-border-size solid transparent;
+				border-right: $popover-caret-border-size solid transparent;
+				border-bottom: $popover-caret-border-size solid $border;
+				border-top: none;
+				z-index: 2;
+			}
+			&::after {
+				top: -$popover-caret-size;
+				border-left: $popover-caret-size solid transparent;
+				border-right: $popover-caret-size solid transparent;
+				border-bottom: $popover-caret-size solid $popover-background-color;
+				border-top: none;
+				z-index: 3;
+			}
+
+			// If popover is above the button, add .popover-caret--bottom to move caret to bottom and point down
+			&.popover-caret--bottom {
+				margin-top: -$popover-caret-size;
+				margin-bottom: $popover-caret-size;
+
+				&::before {
+					top: auto;
+					bottom: -$popover-caret-offset;
+					border-left: $popover-caret-border-size solid transparent;
+					border-right: $popover-caret-border-size solid transparent;
+					border-top: $popover-caret-border-size solid $border;
+					border-bottom: none;
+					z-index: 2;
+				}
+				&::after {
+					top: auto;
+					bottom: -$popover-caret-size;
+					border-left: $popover-caret-size solid transparent;
+					border-right: $popover-caret-size solid transparent;
+					border-top: $popover-caret-size solid $popover-background-color;
+					border-bottom: none;
+					z-index: 3;
+				}
+			}
+		}
 	}
 }
