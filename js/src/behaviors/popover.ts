@@ -1,33 +1,34 @@
 const VIEWPORT_BUFFER = 8;
 
-function positionVertically(
-	popoverContent: HTMLElement,
-	summaryButton: HTMLElement,
-	summaryRect: DOMRect
-): void {
+function positionVertically(popoverContent: HTMLElement, summaryButton: HTMLElement) {
+	const summaryRect = summaryButton.getBoundingClientRect();
+
 	const spaceBelow = window.innerHeight - summaryRect.bottom;
 	const spaceAbove = summaryRect.top;
-
 	const forceTop = popoverContent.classList.contains('popover-top');
 	const placeBelow =
 		!forceTop && (spaceBelow >= popoverContent.offsetHeight || spaceBelow >= spaceAbove);
 
-	popoverContent.classList.remove('popover-caret--bottom');
+	const hasCaretClass = popoverContent.classList.contains('popover-caret');
+	if (hasCaretClass) {
+		popoverContent.classList.remove('popover-caret-bottom');
+	}
+
 	const offsetTop = summaryButton.offsetTop;
 
 	if (placeBelow) {
 		popoverContent.style.top = `${offsetTop + summaryButton.offsetHeight + VIEWPORT_BUFFER}px`;
 	} else {
 		popoverContent.style.top = `${offsetTop - popoverContent.offsetHeight - VIEWPORT_BUFFER}px`;
-		popoverContent.classList.add('popover-caret--bottom');
+		if (hasCaretClass) {
+			popoverContent.classList.add('popover-caret-bottom');
+		}
 	}
 }
 
-function positionHorizontally(
-	popoverContent: HTMLElement,
-	summaryButton: HTMLElement,
-	popoverRect: DOMRect
-): number {
+function positionHorizontally(popoverContent: HTMLElement, summaryButton: HTMLElement): number {
+	const popoverRect = popoverContent.getBoundingClientRect();
+
 	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
 	const contentHalfWidth = popoverContent.offsetWidth / 2;
 	let desiredLeft = buttonCenter - contentHalfWidth;
@@ -52,7 +53,7 @@ function positionCaret(
 	popoverContent: HTMLElement,
 	summaryButton: HTMLElement,
 	desiredLeft: number
-): void {
+) {
 	const contentWidth = popoverContent.offsetWidth;
 	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
 
@@ -78,12 +79,13 @@ function positionPopover(popover: HTMLDetailsElement) {
 
 	popoverContent.style.top = '';
 	popoverContent.style.left = '';
-	const summaryRect = summaryButton.getBoundingClientRect();
-	const popoverRect = popover.getBoundingClientRect();
 
-	positionVertically(popoverContent, summaryButton, summaryRect);
-	const desiredLeft = positionHorizontally(popoverContent, summaryButton, popoverRect);
-	positionCaret(popoverContent, summaryButton, desiredLeft);
+	positionVertically(popoverContent, summaryButton);
+	const desiredLeft = positionHorizontally(popoverContent, summaryButton);
+
+	if (popoverContent.classList.contains('popover-caret')) {
+		positionCaret(popoverContent, summaryButton, desiredLeft);
+	}
 }
 
 /* eslint-disable @typescript-eslint/no-use-before-define */

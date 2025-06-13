@@ -9,21 +9,21 @@ $popover-caret-border-size: 9px;
 $popover-caret-offset: 10px;
 $popover-buffer: 8px;
 
-@mixin caret-triangle($direction, $size, $color) {
+@mixin caret($direction, $size, $color) {
 	width: 0;
 	height: 0;
 	pointer-events: none;
 
 	@if $direction == 'up' {
-		border-left: $size solid transparent;
-		border-right: $size solid transparent;
-		border-bottom: $size solid $color;
-		border-top: none;
+		border-inline-start: $size solid transparent;
+		border-inline-end: $size solid transparent;
+		border-block-end: $size solid $color;
+		border-block-start: none;
 	} @else if $direction == 'down' {
-		border-left: $size solid transparent;
-		border-right: $size solid transparent;
-		border-top: $size solid $color;
-		border-bottom: none;
+		border-inline-start: $size solid transparent;
+		border-inline-end: $size solid transparent;
+		border-block-start: $size solid $color;
+		border-block-end: none;
 	}
 }
 
@@ -39,12 +39,12 @@ $popover-buffer: 8px;
 		}
 	}
 
-	// Popover content container
 	.popover-content {
 		position: absolute;
 		width: $popover-width;
 		padding: $spacer-5;
-		left: 0;
+		transform: none;
+		inset-inline-start: 0;
 		border: $popover-border;
 		border-radius: $popover-border-radius;
 		background-color: $popover-background-color;
@@ -53,56 +53,57 @@ $popover-buffer: 8px;
 		// hide popover until after position is calculated, then show
 		visibility: hidden;
 		z-index: $zindex-popover;
-		transform: none;
 
 		&.popover-top {
-			margin-top: 0;
-			margin-bottom: $popover-buffer;
+			margin-block: 0;
+			margin-block-end: $popover-buffer;
 		}
 
 		&.popover-caret {
-			margin-top: $popover-caret-size;
+			margin-block-start: $popover-caret-size;
 			overflow: visible;
 
 			&::before,
 			&::after {
-				position: absolute;
-				left: var(--caret-left, 50%);
-				transform: translateX(-50%);
 				display: block;
+				position: absolute;
+				inset-inline-start: var(--caret-left, 50%);
+				transform: translateX(-50%);
 				content: '';
 			}
 
-			// caret border
 			&::before {
-				top: -$popover-caret-offset;
+				@include caret('up', $popover-caret-border-size, $border);
+
+				inset-block-start: -$popover-caret-offset;
 				z-index: 2;
-				@include caret-triangle('up', $popover-caret-border-size, $border);
 			}
 
-			// caret triangle color
 			&::after {
-				top: -$popover-caret-size;
+				@include caret('up', $popover-caret-size, $popover-background-color);
+
+				inset-block-start: -$popover-caret-size;
 				z-index: 3;
-				@include caret-triangle('up', $popover-caret-size, $popover-background-color);
-			}
-
-			&.popover-caret--bottom {
-				margin-top: -$popover-caret-size;
-				margin-bottom: $popover-caret-size;
-
-				&::before {
-					top: auto;
-					bottom: -$popover-caret-offset;
-					@include caret-triangle('down', $popover-caret-border-size, $border);
-				}
-
-				&::after {
-					top: auto;
-					bottom: -$popover-caret-size;
-					@include caret-triangle('down', $popover-caret-size, $popover-background-color);
-				}
 			}
 		}
+	}
+}
+
+.popover .popover-content.popover-caret.popover-caret-bottom {
+	margin-block: -$popover-caret-size;
+	margin-block-end: $popover-caret-size;
+
+	&::before {
+		@include caret('down', $popover-caret-border-size, $border);
+
+		inset-block: auto;
+		inset-block-end: -$popover-caret-offset;
+	}
+
+	&::after {
+		@include caret('down', $popover-caret-size, $popover-background-color);
+
+		inset-block: auto;
+		inset-block-end: -$popover-caret-size;
 	}
 }
