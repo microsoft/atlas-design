@@ -1,3 +1,68 @@
+const VIEWPORT_BUFFER = 8;
+
+function positionVertically(
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement,
+	summaryRect: DOMRect
+): void {
+	const spaceBelow = window.innerHeight - summaryRect.bottom;
+	const spaceAbove = summaryRect.top;
+
+	const forceTop = popoverContent.classList.contains('popover-top');
+	const placeBelow =
+		!forceTop && (spaceBelow >= popoverContent.offsetHeight || spaceBelow >= spaceAbove);
+
+	popoverContent.classList.remove('popover-caret--bottom');
+	const offsetTop = summaryButton.offsetTop;
+
+	if (placeBelow) {
+		popoverContent.style.top = `${offsetTop + summaryButton.offsetHeight + VIEWPORT_BUFFER}px`;
+	} else {
+		popoverContent.style.top = `${offsetTop - popoverContent.offsetHeight - VIEWPORT_BUFFER}px`;
+		popoverContent.classList.add('popover-caret--bottom');
+	}
+}
+
+function positionHorizontally(
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement,
+	popoverRect: DOMRect
+): number {
+	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
+	const contentHalfWidth = popoverContent.offsetWidth / 2;
+	let desiredLeft = buttonCenter - contentHalfWidth;
+
+	const contentWidth = popoverContent.offsetWidth;
+	const contentRightEdge = popoverRect.left + desiredLeft + contentWidth;
+
+	if (contentRightEdge > window.innerWidth - VIEWPORT_BUFFER * 2) {
+		const overflowAmount = contentRightEdge - (window.innerWidth - VIEWPORT_BUFFER * 2);
+		desiredLeft -= overflowAmount;
+	}
+
+	// Clamp to stay within left edge
+	const minLeft = VIEWPORT_BUFFER - popoverRect.left;
+	desiredLeft = Math.max(desiredLeft, minLeft);
+
+	popoverContent.style.left = `${desiredLeft}px`;
+	return desiredLeft;
+}
+
+function positionCaret(
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement,
+	desiredLeft: number
+): void {
+	const contentWidth = popoverContent.offsetWidth;
+	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
+
+	const buttonCenterRelativeToContent = buttonCenter - desiredLeft;
+	const caretLeftPercent = (buttonCenterRelativeToContent / contentWidth) * 100;
+	const clampedCaretLeftPercent = Math.min(Math.max(caretLeftPercent, 10), 90);
+
+	popoverContent.style.setProperty('--caret-left', `${clampedCaretLeftPercent}%`);
+}
+
 /**
  * Position the popover so that popover-content does not go off the screen
  * Originally, the popover-content is hidden. This function calculates
@@ -6,56 +71,19 @@
 function positionPopover(popover: HTMLDetailsElement) {
 	const popoverContent = popover.querySelector('.popover-content') as HTMLElement;
 	const summaryButton = popover.querySelector('summary') as HTMLElement;
+
 	if (!popoverContent || !summaryButton) {
 		return;
 	}
 
 	popoverContent.style.top = '';
 	popoverContent.style.left = '';
-
-	// leave space from viewport edge
-	const buffer = 8;
-
 	const summaryRect = summaryButton.getBoundingClientRect();
 	const popoverRect = popover.getBoundingClientRect();
-	const offsetTop = summaryButton.offsetTop;
 
-	// By default, place the popover-content below the button. If it doesn't fit, put it above.
-	const spaceBelow = window.innerHeight - summaryRect.bottom;
-	const spaceAbove = summaryRect.top;
-	// If popover or popover-content has .popover-top, always place above
-	const forceTop =
-		popover.classList.contains('popover-top') || popoverContent.classList.contains('popover-top');
-	const placeBelow =
-		!forceTop && (spaceBelow >= popoverContent.offsetHeight || spaceBelow >= spaceAbove);
-
-	popoverContent.classList.remove('popover-caret--bottom');
-
-	if (placeBelow) {
-		popoverContent.style.top = `${offsetTop + summaryButton.offsetHeight + buffer}px`;
-	} else {
-		popoverContent.style.top = `${offsetTop - popoverContent.offsetHeight - buffer}px`;
-		popoverContent.classList.add('popover-caret--bottom');
-	}
-
-	// Center the popover-content horizontally with the button
-	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
-	const contentHalfWidth = popoverContent.offsetWidth / 2;
-	let desiredLeft = buttonCenter - contentHalfWidth;
-
-	// Compute the right edge and if the right edge overflows, shift more to the left
-	const contentWidth = popoverContent.offsetWidth;
-	const contentRightEdge = popoverRect.left + desiredLeft + contentWidth;
-	if (contentRightEdge > window.innerWidth - buffer * 2) {
-		const overflowAmount = contentRightEdge - (window.innerWidth - buffer * 2);
-		desiredLeft -= overflowAmount;
-	}
-
-	// Clamp to stay within left edge
-	const minLeft = buffer - popoverRect.left;
-	desiredLeft = Math.max(desiredLeft, minLeft);
-
-	popoverContent.style.left = `${desiredLeft}px`;
+	positionVertically(popoverContent, summaryButton, summaryRect);
+	const desiredLeft = positionHorizontally(popoverContent, summaryButton, popoverRect);
+	positionCaret(popoverContent, summaryButton, desiredLeft);
 }
 
 /* eslint-disable @typescript-eslint/no-use-before-define */

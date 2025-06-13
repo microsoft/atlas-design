@@ -34,30 +34,9 @@ The popover component allows content to be placed in the popup that appears afte
 </details>
 ```
 
-## Styling the trigger
+## Dynamic positioning
 
-You can apply almost any classes on the `summary` element to achieve the look you need. The following example applies `.button`.
-
-```html
-<details class="popover">
-	<summary class="button border">
-		<span class="icon color-primary">
-			<svg class="fill-current-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
-				<path
-					d="M256 896q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm768 0q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm768 0q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10z"
-				/>
-			</svg>
-		</span>
-	</summary>
-	<div class="popover-content">
-		<p>Popover content will be centered by default.</p>
-	</div>
-</details>
-```
-
-## Alignment
-
-Popovers are left aligned and open downwards by default, but the contents will dynamically shift location to avoid overflowing outside of the window, regardless of the button's position. You can test this out by minimizing the size of your window such that the popover button is adjacent to the edge of the window. For example, if the button is near the bottom of the window, the popover will open upwards; if it’s near the right edge, the popover will shift to the left.
+By default, the popover content is centered with the popover button and opens downward, but will dynamically shift location to avoid overflowing outside of the window. You can test this out by minimizing the size of your window such that the popover button is adjacent to the edge of the window. For example, if the button is near the bottom of the window, the popover will open upwards; if it’s near the right edge, the popover will shift to the left.
 
 ```html
 <details class="popover margin-xxs">
@@ -75,10 +54,14 @@ Popovers are left aligned and open downwards by default, but the contents will d
 <div class="display-flex justify-content-flex-end">
 	<details class="popover margin-xxs">
 		<summary class="button">Popover</summary>
-		<div class="popover-content popover-caret">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		<div class="popover-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 	</details>
 </div>
 ```
+
+## Fixed positioning
+
+You can also fix the position of the popover above the button, which will disable the vertical dynamic positioning of the popover content. The popover will still dynamically position itself horizontally to avoid overflow.
 
 ```html
 <div class="display-flex justify-content-center">
@@ -87,12 +70,38 @@ Popovers are left aligned and open downwards by default, but the contents will d
 		<div class="popover-content popover-top">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 	</details>
 </div>
-
-<div class="display-flex justify-content-center">
-	<details class="popover margin-xxs">
-		<summary class="button">Popover top with caret</summary>
-		<div class="popover-content popover-top popover-caret">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-	</details>
-</div>
-
 ```
+
+## Caret
+
+Show a caret on the popover content by applying the `popover-caret` class. The caret should point to the center of the popover button.
+
+```html
+<details class="popover margin-xxs">
+	<summary class="button">Popover</summary>
+	<div class="popover-content popover-caret">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</details>
+```
+
+## Styling the trigger
+
+You can apply almost any class on the `summary` element to achieve the look you need. The following example applies `.button`.
+
+```html
+<details class="popover">
+	<summary class="button border">
+		<span class="icon color-primary">
+			<svg class="fill-current-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+				<path
+					d="M256 896q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm768 0q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10zm768 0q27 0 50 10t40 27 28 41 10 50q0 27-10 50t-27 40-41 28-50 10q-27 0-50-10t-40-27-28-41-10-50q0-27 10-50t27-40 41-28 50-10z"
+				/>
+			</svg>
+		</span>
+	</summary>
+	<div class="popover-content popover-caret">
+		<p>Popover content will be centered by default, but will adjust positioning dynamically to prevent overflow.</p>
+	</div>
+</details>
+```
+
+

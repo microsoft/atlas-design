@@ -4,6 +4,29 @@ $popover-border-radius: $border-radius !default;
 $popover-shadow: $box-shadow-heavy !default;
 $popover-width: 224px !default;
 
+$popover-caret-size: 8px;
+$popover-caret-border-size: 9px;
+$popover-caret-offset: 10px;
+$popover-buffer: 8px;
+
+@mixin caret-triangle($direction, $size, $color) {
+	width: 0;
+	height: 0;
+	pointer-events: none;
+
+	@if $direction == 'up' {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-bottom: $size solid $color;
+		border-top: none;
+	} @else if $direction == 'down' {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-top: $size solid $color;
+		border-bottom: none;
+	}
+}
+
 .popover {
 	display: inline-block;
 	position: relative;
@@ -16,29 +39,26 @@ $popover-width: 224px !default;
 		}
 	}
 
+	// Popover content container
 	.popover-content {
 		position: absolute;
 		width: $popover-width;
 		padding: $spacer-5;
+		left: 0;
 		border: $popover-border;
 		border-radius: $popover-border-radius;
 		background-color: $popover-background-color;
 		box-shadow: $popover-shadow;
-		// Hide to avoid jank when location is calculated in JS later
+
+		// hide popover until after position is calculated, then show
 		visibility: hidden;
 		z-index: $zindex-popover;
-		left: 0; // Ensure left is set by JS for centering
-		transform: none; // Remove any transform that might interfere with centering
+		transform: none;
 
 		&.popover-top {
 			margin-top: 0;
-			margin-bottom: 8px;
+			margin-bottom: $popover-buffer;
 		}
-
-		// Caret variables for reuse
-		$popover-caret-size: 8px;
-		$popover-caret-border-size: 9px;
-		$popover-caret-offset: 10px;
 
 		&.popover-caret {
 			margin-top: $popover-caret-size;
@@ -47,34 +67,26 @@ $popover-width: 224px !default;
 			&::before,
 			&::after {
 				position: absolute;
-				left: 50%;
+				left: var(--caret-left, 50%);
 				transform: translateX(-50%);
 				display: block;
-				width: 0;
-				height: 0;
-				pointer-events: none;
 				content: '';
 			}
 
-			// Default: caret on top (points up)
+			// caret border
 			&::before {
 				top: -$popover-caret-offset;
-				border-left: $popover-caret-border-size solid transparent;
-				border-right: $popover-caret-border-size solid transparent;
-				border-bottom: $popover-caret-border-size solid $border;
-				border-top: none;
 				z-index: 2;
-			}
-			&::after {
-				top: -$popover-caret-size;
-				border-left: $popover-caret-size solid transparent;
-				border-right: $popover-caret-size solid transparent;
-				border-bottom: $popover-caret-size solid $popover-background-color;
-				border-top: none;
-				z-index: 3;
+				@include caret-triangle('up', $popover-caret-border-size, $border);
 			}
 
-			// If popover is above the button, add .popover-caret--bottom to move caret to bottom and point down
+			// caret triangle color
+			&::after {
+				top: -$popover-caret-size;
+				z-index: 3;
+				@include caret-triangle('up', $popover-caret-size, $popover-background-color);
+			}
+
 			&.popover-caret--bottom {
 				margin-top: -$popover-caret-size;
 				margin-bottom: $popover-caret-size;
@@ -82,20 +94,13 @@ $popover-width: 224px !default;
 				&::before {
 					top: auto;
 					bottom: -$popover-caret-offset;
-					border-left: $popover-caret-border-size solid transparent;
-					border-right: $popover-caret-border-size solid transparent;
-					border-top: $popover-caret-border-size solid $border;
-					border-bottom: none;
-					z-index: 2;
+					@include caret-triangle('down', $popover-caret-border-size, $border);
 				}
+
 				&::after {
 					top: auto;
 					bottom: -$popover-caret-size;
-					border-left: $popover-caret-size solid transparent;
-					border-right: $popover-caret-size solid transparent;
-					border-top: $popover-caret-size solid $popover-background-color;
-					border-bottom: none;
-					z-index: 3;
+					@include caret-triangle('down', $popover-caret-size, $popover-background-color);
 				}
 			}
 		}
