@@ -7,7 +7,6 @@ $popover-width: 224px !default;
 $popover-caret-size: 8px;
 $popover-caret-border-size: 9px;
 $popover-caret-offset: 10px;
-$popover-buffer: 8px;
 
 @mixin caret($direction, $size, $color) {
 	width: 0;
@@ -56,7 +55,7 @@ $popover-buffer: 8px;
 
 		&.popover-top {
 			margin-block: 0;
-			margin-block-end: $popover-buffer;
+			margin-block-end: $spacer-3;
 		}
 
 		&.popover-caret {
