@@ -14,16 +14,17 @@ function positionVertically(popoverContent: HTMLElement, summaryButton: HTMLElem
 		popoverContent.classList.remove('popover-caret-bottom');
 	}
 
-	const offsetTop = summaryButton.offsetTop;
-
+	let topPosition = 0;
 	if (placeBelow) {
-		popoverContent.style.top = `${offsetTop + summaryButton.offsetHeight + VIEWPORT_BUFFER}px`;
+		topPosition = summaryButton.offsetTop + summaryButton.offsetHeight + VIEWPORT_BUFFER;
 	} else {
-		popoverContent.style.top = `${offsetTop - popoverContent.offsetHeight - VIEWPORT_BUFFER}px`;
+		const bottomBuffer = hasCaretClass ? VIEWPORT_BUFFER * 2 : VIEWPORT_BUFFER;
+		topPosition = summaryButton.offsetTop - popoverContent.offsetHeight - bottomBuffer;
 		if (hasCaretClass) {
 			popoverContent.classList.add('popover-caret-bottom');
 		}
 	}
+	popoverContent.style.top = `${topPosition}px`;
 }
 
 function positionHorizontally(popoverContent: HTMLElement, summaryButton: HTMLElement): number {
@@ -36,10 +37,8 @@ function positionHorizontally(popoverContent: HTMLElement, summaryButton: HTMLEl
 
 	if (alignLeft) {
 		desiredLeft = summaryButton.offsetLeft;
-		popoverContent.style.left = `${desiredLeft}px`;
 	} else if (alignRight) {
 		desiredLeft = summaryButton.offsetLeft + summaryButton.offsetWidth - popoverContent.offsetWidth;
-		popoverContent.style.left = `${desiredLeft}px`;
 	} else {
 		const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
 		const contentHalfWidth = popoverContent.offsetWidth / 2;
@@ -55,10 +54,8 @@ function positionHorizontally(popoverContent: HTMLElement, summaryButton: HTMLEl
 
 		const minLeft = VIEWPORT_BUFFER - popoverRect.left;
 		desiredLeft = Math.max(desiredLeft, minLeft);
-
-		popoverContent.style.left = `${desiredLeft}px`;
 	}
-
+	popoverContent.style.left = `${desiredLeft}px`;
 	return desiredLeft;
 }
 
