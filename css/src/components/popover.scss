@@ -58,6 +58,17 @@ $popover-caret-offset: 10px;
 			margin-block-end: $spacer-3;
 		}
 
+		&.popover-left {
+			transform-origin: left top;
+			inset-inline-start: 0;
+		}
+
+		&.popover-right {
+			transform-origin: right top;
+			inset-inline-start: auto;
+			inset-inline-end: 0;
+		}
+
 		&.popover-caret {
 			margin-block-start: $popover-caret-size;
 			overflow: visible;

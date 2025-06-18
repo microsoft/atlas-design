@@ -77,6 +77,23 @@ By default, the popover content is centered with the popover button and opens do
 </div>
 ```
 
+## Caret
+
+Show a caret on the popover content by applying the `popover-caret` class. The caret should point to the center of the popover button.
+
+```html
+<details class="popover margin-xxs">
+	<summary class="button">Popover</summary>
+	<div class="popover-content popover-caret">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+		labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+		laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+		voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+		non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</div>
+</details>
+```
+
 ## Fixed positioning
 
 You can also fix the position of the popover above the button, which will disable the vertical dynamic positioning of the popover content. The popover will still dynamically position itself horizontally to avoid overflow.
@@ -96,21 +113,29 @@ You can also fix the position of the popover above the button, which will disabl
 </div>
 ```
 
-## Caret
-
-Show a caret on the popover content by applying the `popover-caret` class. The caret should point to the center of the popover button.
+By default, the popover content is centered with the popover button. You can use the `popover-left` or `popover-right` classes on the `.popover-content` element to align the popover content with the left or right edge of the button.
 
 ```html
-<details class="popover margin-xxs">
-	<summary class="button">Popover</summary>
-	<div class="popover-content popover-caret">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-		laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-		voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-		non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</div>
-</details>
+<div class="display-flex justify-content-space-around">
+	<details class="popover margin-xxs">
+		<summary class="button">Left-aligned</summary>
+		<div class="popover-content popover-left popover-caret">
+			This popover is aligned with the left edge of the button.
+		</div>
+	</details>
+
+	<details class="popover margin-xxs">
+		<summary class="button">Centered (default)</summary>
+		<div class="popover-content popover-caret">This popover is centered with the button.</div>
+	</details>
+
+	<details class="popover margin-xxs">
+		<summary class="button">Right-aligned</summary>
+		<div class="popover-content popover-right popover-caret">
+			This popover is aligned with the right edge of the button.
+		</div>
+	</details>
+</div>
 ```
 
 ## Styling the trigger
