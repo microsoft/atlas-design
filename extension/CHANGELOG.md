@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.0.6
+
+### Patch Changes
+
+- e4c88cf: Update CVE dependencies
+- Updated dependencies [7deedd9]
+  - @microsoft/atlas-css@3.67.0
+
 ## 0.0.5
 
 ### Patch Changes

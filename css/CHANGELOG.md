@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 3.67.0
+
+### Minor Changes
+
+- 7deedd9: Accordion will no longer have color change on hover.
+
 ## 3.66.0
 
 ### Minor Changes

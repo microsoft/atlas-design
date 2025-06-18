@@ -2,7 +2,7 @@
 	"name": "atlas-design-system-tools",
 	"displayName": "Atlas Design System Tools",
 	"description": "VSCode tooling for using the Atlas Design System.",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"preview": true,
 	"private": true,
 	"publisher": "docsmsft",
@@ -42,7 +42,7 @@
 		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
 	},
 	"dependencies": {
-		"@microsoft/atlas-css": "^3.34.0"
+		"@microsoft/atlas-css": "^3.67.0"
 	},
 	"devDependencies": {
 		"@types/glob": "^8.1.0",
