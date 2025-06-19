@@ -2,7 +2,7 @@
 	"name": "atlas-design-system-tools",
 	"displayName": "Atlas Design System Tools",
 	"description": "VSCode tooling for using the Atlas Design System.",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"preview": true,
 	"private": true,
 	"publisher": "docsmsft",
