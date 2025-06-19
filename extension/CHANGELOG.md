@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.7
+
+### Patch Changes
+
+- c5d965e: Update dependency for CVE
+
 ## 0.0.6
 
 ### Patch Changes
