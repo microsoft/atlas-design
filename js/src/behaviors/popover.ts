@@ -1,4 +1,5 @@
 const VIEWPORT_BUFFER = 8;
+const POPOVER_SPACING = 8;
 
 function positionVertically(popoverContent: HTMLElement, summaryButton: HTMLElement) {
 	const summaryRect = summaryButton.getBoundingClientRect();
@@ -16,10 +17,9 @@ function positionVertically(popoverContent: HTMLElement, summaryButton: HTMLElem
 
 	let topPosition = 0;
 	if (placeBelow) {
-		topPosition = summaryButton.offsetTop + summaryButton.offsetHeight + VIEWPORT_BUFFER;
+		topPosition = summaryButton.offsetTop + summaryButton.offsetHeight + POPOVER_SPACING;
 	} else {
-		const bottomBuffer = hasCaretClass ? VIEWPORT_BUFFER * 2 : VIEWPORT_BUFFER;
-		topPosition = summaryButton.offsetTop - popoverContent.offsetHeight - bottomBuffer;
+		topPosition = summaryButton.offsetTop - popoverContent.offsetHeight - POPOVER_SPACING;
 		if (hasCaretClass) {
 			popoverContent.classList.add('popover-caret-bottom');
 		}
@@ -149,6 +149,12 @@ export function initPopover(container: HTMLElement = document.body) {
 				content.style.visibility = 'visible';
 			});
 
+			const resizeHandler = () => {
+				if (targetPopover.open) {
+					positionPopover(targetPopover);
+				}
+			};
+
 			const keyHandler = (event: KeyboardEvent) => {
 				if (event.key === 'Escape') {
 					closePopovers();
@@ -174,13 +180,13 @@ export function initPopover(container: HTMLElement = document.body) {
 					closePopovers();
 				}
 			};
-
 			const closePopovers = () => {
 				container.removeEventListener('focus', checkTarget, true);
 				container.removeEventListener('click', checkTarget);
 				container.removeEventListener('touchstart', checkTarget);
 				container.removeEventListener('keydown', keyHandler);
 				window.removeEventListener('blur', blurHandler);
+				window.removeEventListener('resize', resizeHandler);
 				if (targetPopover?.open) {
 					targetPopover.removeAttribute('open');
 					content.style.visibility = 'hidden';
@@ -192,6 +198,7 @@ export function initPopover(container: HTMLElement = document.body) {
 			container.addEventListener('touchstart', checkTarget);
 			container.addEventListener('keydown', keyHandler);
 			window.addEventListener('blur', blurHandler);
+			window.addEventListener('resize', resizeHandler);
 		},
 		true
 	);
