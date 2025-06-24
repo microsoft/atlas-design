@@ -120,7 +120,7 @@ By default, the popover content is centered with the popover button and opens do
 
 ## Fixed positioning
 
-You can also fix the position of the popover above the button, which will disable dynamic positioning of the popover content.
+You can also fix the position of the popover, which will disable dynamic positioning of the popover content.
 
 ```html
 <div class="display-flex justify-content-center">

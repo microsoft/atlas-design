@@ -67,22 +67,8 @@ function positionCaret(
 	const contentWidth = popoverContent.offsetWidth;
 	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
 
-	const alignLeft = popoverContent.classList.contains('popover-left');
-	const alignRight = popoverContent.classList.contains('popover-right');
-
-	let caretLeftPercent;
-
-	if (alignLeft) {
-		const buttonCenterFromLeft = buttonCenter - desiredLeft;
-		caretLeftPercent = (buttonCenterFromLeft / contentWidth) * 100;
-	} else if (alignRight) {
-		const buttonCenterFromRight =
-			buttonCenter - (desiredLeft + contentWidth - summaryButton.offsetWidth);
-		caretLeftPercent = 100 - (buttonCenterFromRight / contentWidth) * 100;
-	} else {
-		const buttonCenterRelativeToContent = buttonCenter - desiredLeft;
-		caretLeftPercent = (buttonCenterRelativeToContent / contentWidth) * 100;
-	}
+	const buttonCenterRelativeToContent = buttonCenter - desiredLeft - 4;
+	const caretLeftPercent = (buttonCenterRelativeToContent / contentWidth) * 100;
 
 	const clampedCaretLeftPercent = Math.min(Math.max(caretLeftPercent, 10), 90);
 	popoverContent.style.setProperty('--caret-left', `${clampedCaretLeftPercent}%`);
