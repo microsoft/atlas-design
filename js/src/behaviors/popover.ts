@@ -1,6 +1,10 @@
 const VIEWPORT_BUFFER = 8;
 const POPOVER_SPACING = 8;
 
+function isRTL(element: HTMLElement): boolean {
+	return window.getComputedStyle(element).direction === 'rtl';
+}
+
 function scrollToShowPopover(
 	summaryRect: DOMRect,
 	popoverContentHeight: number,
@@ -65,6 +69,7 @@ function positionHorizontally(
 	summaryButton: HTMLElement
 ): number {
 	const popoverRect = popoverContent.getBoundingClientRect();
+	const isRtl = isRTL(popover);
 
 	let desiredLeft;
 
@@ -72,9 +77,19 @@ function positionHorizontally(
 	const alignRight = popover.classList.contains('popover-right');
 
 	if (alignLeft) {
-		desiredLeft = summaryButton.offsetLeft;
+		if (isRtl) {
+			desiredLeft =
+				summaryButton.offsetLeft + summaryButton.offsetWidth - popoverContent.offsetWidth;
+		} else {
+			desiredLeft = summaryButton.offsetLeft;
+		}
 	} else if (alignRight) {
-		desiredLeft = summaryButton.offsetLeft + summaryButton.offsetWidth - popoverContent.offsetWidth;
+		if (isRtl) {
+			desiredLeft = summaryButton.offsetLeft;
+		} else {
+			desiredLeft =
+				summaryButton.offsetLeft + summaryButton.offsetWidth - popoverContent.offsetWidth;
+		}
 	} else {
 		const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
 		const contentHalfWidth = popoverContent.offsetWidth / 2;
@@ -91,7 +106,14 @@ function positionHorizontally(
 		const minLeft = VIEWPORT_BUFFER - popoverRect.left;
 		desiredLeft = Math.max(desiredLeft, minLeft);
 	}
-	popoverContent.style.left = `${desiredLeft}px`;
+
+	popoverContent.style.setProperty('inset-inline-start', `${desiredLeft}px`);
+
+	if (isRtl) {
+		popoverContent.style.left = `${desiredLeft}px`;
+		popoverContent.style.right = 'auto';
+	}
+
 	return desiredLeft;
 }
 
@@ -125,6 +147,7 @@ function positionPopover(popover: HTMLDetailsElement) {
 
 	popoverContent.style.top = '';
 	popoverContent.style.left = '';
+	popoverContent.style.setProperty('inset-inline-start', '');
 	positionVertically(popover, popoverContent, summaryButton);
 	const desiredLeft = positionHorizontally(popover, popoverContent, summaryButton);
 

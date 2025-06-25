@@ -1,3 +1,5 @@
+/* stylelint-disable max-nesting-depth, selector-max-specificity  */
+
 $popover-background-color: $body-background !default;
 $popover-border: $border-width solid $border !default;
 $popover-border-radius: $border-radius !default;
@@ -69,6 +71,12 @@ $popover-chevron-color: $border !default;
 				background-color: $popover-background-color;
 				z-index: 2;
 			}
+
+			[dir='rtl'] & {
+				&::before {
+					transform: rotate(-135deg);
+				}
+			}
 		}
 	}
 
@@ -90,6 +98,14 @@ $popover-chevron-color: $border !default;
 				background-color: $popover-background-color;
 				z-index: 2;
 			}
+
+			[dir='rtl'] & {
+				&::before {
+					transform: rotate(45deg);
+				}
+			}
 		}
 	}
 }
+
+/* stylelint-enable selector-max-specificity, max-nesting-depth */
