@@ -34,6 +34,8 @@ The popover component allows content to be placed in the popup that appears afte
 </details>
 ```
 
+Popover atomics: `popover-caret`, `popover-top`, `popover-left`, `popover-right`
+
 ## Styling the trigger
 
 You can apply almost any class on the `summary` element to achieve the look you need. The following example applies `.button`.
@@ -63,9 +65,9 @@ You can apply almost any class on the `summary` element to achieve the look you 
 Show a caret on the popover content by applying the `popover-caret` class. The caret should point to the center of the popover button.
 
 ```html
-<details class="popover margin-xxs">
+<details class="popover popover-caret margin-xxs">
 	<summary class="button">Popover</summary>
-	<div class="popover-content popover-caret">
+	<div class="popover-content">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 		labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 		laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
@@ -120,13 +122,15 @@ By default, the popover content is centered with the popover button and opens do
 
 ## Fixed positioning
 
+### Vertical alignment
+
 You can also fix the position of the popover, which will disable dynamic positioning of the popover content.
 
 ```html
 <div class="display-flex justify-content-center">
-	<details class="popover margin-xxs">
+	<details class="popover popover-top margin-xxs">
 		<summary class="button">Popover top</summary>
-		<div class="popover-content popover-top">
+		<div class="popover-content">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 			laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
@@ -137,21 +141,23 @@ You can also fix the position of the popover, which will disable dynamic positio
 </div>
 ```
 
+### Horizontal alignment
+
 By default, the popover content is centered with the popover button. You can use the `popover-left` or `popover-right` classes on the `.popover-content` element to align the popover content with the left or right edge of the button.
 
 ```html
-<details class="popover margin-xxs">
+<details class="popover popover-left popover-caret margin-xxs">
 	<summary class="button">Popover aligned to the left</summary>
-	<div class="popover-content popover-left popover-caret">Popover content.</div>
+	<div class="popover-content">Popover content.</div>
 </details>
 
-<details class="popover popover-center margin-xxs">
+<details class="popover popover-center popover-caret margin-xxs">
 	<summary class="button">Popover centered</summary>
-	<div class="popover-content popover-caret">Popover content.</div>
+	<div class="popover-content">Popover content.</div>
 </details>
 
-<details class="popover popover-right margin-xxs">
+<details class="popover popover-right popover-caret margin-xxs">
 	<summary class="button">Popover aligned to the right</summary>
-	<div class="popover-content popover-right popover-caret">Popover content.</div>
+	<div class="popover-content">Popover content.</div>
 </details>
 ```

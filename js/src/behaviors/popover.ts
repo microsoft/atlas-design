@@ -1,39 +1,75 @@
 const VIEWPORT_BUFFER = 8;
 const POPOVER_SPACING = 8;
 
-function positionVertically(popoverContent: HTMLElement, summaryButton: HTMLElement) {
+function scrollToShowPopover(
+	summaryRect: DOMRect,
+	popoverContentHeight: number,
+	placeBelow: boolean
+) {
+	if (placeBelow) {
+		const popoverBottomRelativeToViewport =
+			summaryRect.bottom + popoverContentHeight + POPOVER_SPACING;
+		if (popoverBottomRelativeToViewport > window.innerHeight) {
+			const scrollAmount = popoverBottomRelativeToViewport - window.innerHeight + POPOVER_SPACING;
+			window.scrollBy({
+				top: scrollAmount,
+				behavior: 'smooth'
+			});
+		}
+	} else {
+		const popoverTopRelativeToViewport = summaryRect.top - popoverContentHeight - POPOVER_SPACING;
+		if (popoverTopRelativeToViewport < 0) {
+			const scrollAmount = Math.abs(popoverTopRelativeToViewport) + POPOVER_SPACING;
+			window.scrollBy({
+				top: -scrollAmount,
+				behavior: 'smooth'
+			});
+		}
+	}
+}
+
+function positionVertically(
+	popover: HTMLElement,
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement
+) {
 	const summaryRect = summaryButton.getBoundingClientRect();
 
 	const spaceBelow = window.innerHeight - summaryRect.bottom;
 	const spaceAbove = summaryRect.top;
-	const forceTop = popoverContent.classList.contains('popover-top');
+	const forceTop = popover.classList.contains('popover-top');
 	const placeBelow =
 		!forceTop && (spaceBelow >= popoverContent.offsetHeight || spaceBelow >= spaceAbove);
 
-	const hasCaretClass = popoverContent.classList.contains('popover-caret');
+	const hasCaretClass = popover.classList.contains('popover-caret');
 	if (hasCaretClass) {
-		popoverContent.classList.remove('popover-caret-bottom');
+		popover.classList.remove('popover-caret-bottom');
 	}
-
 	let topPosition = 0;
 	if (placeBelow) {
 		topPosition = summaryButton.offsetTop + summaryButton.offsetHeight + POPOVER_SPACING;
 	} else {
 		topPosition = summaryButton.offsetTop - popoverContent.offsetHeight - POPOVER_SPACING;
 		if (hasCaretClass) {
-			popoverContent.classList.add('popover-caret-bottom');
+			popover.classList.add('popover-caret-bottom');
 		}
 	}
+
+	scrollToShowPopover(summaryRect, popoverContent.offsetHeight, placeBelow);
 	popoverContent.style.top = `${topPosition}px`;
 }
 
-function positionHorizontally(popoverContent: HTMLElement, summaryButton: HTMLElement): number {
+function positionHorizontally(
+	popover: HTMLElement,
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement
+): number {
 	const popoverRect = popoverContent.getBoundingClientRect();
 
 	let desiredLeft;
 
-	const alignLeft = popoverContent.classList.contains('popover-left');
-	const alignRight = popoverContent.classList.contains('popover-right');
+	const alignLeft = popover.classList.contains('popover-left');
+	const alignRight = popover.classList.contains('popover-right');
 
 	if (alignLeft) {
 		desiredLeft = summaryButton.offsetLeft;
@@ -89,11 +125,10 @@ function positionPopover(popover: HTMLDetailsElement) {
 
 	popoverContent.style.top = '';
 	popoverContent.style.left = '';
+	positionVertically(popover, popoverContent, summaryButton);
+	const desiredLeft = positionHorizontally(popover, popoverContent, summaryButton);
 
-	positionVertically(popoverContent, summaryButton);
-	const desiredLeft = positionHorizontally(popoverContent, summaryButton);
-
-	if (popoverContent.classList.contains('popover-caret')) {
+	if (popover.classList.contains('popover-caret')) {
 		positionCaret(popoverContent, summaryButton, desiredLeft);
 	}
 }
