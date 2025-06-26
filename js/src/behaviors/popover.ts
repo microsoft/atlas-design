@@ -1,4 +1,4 @@
-const VIEWPORT_BUFFER = 8;
+const VIEWPORT_BUFFER = 24;
 const POPOVER_SPACING = 8;
 
 function isRTL(element: HTMLElement): boolean {
@@ -63,60 +63,6 @@ function positionVertically(
 	popoverContent.style.top = `${topPosition}px`;
 }
 
-function positionHorizontally(
-	popover: HTMLElement,
-	popoverContent: HTMLElement,
-	summaryButton: HTMLElement
-): number {
-	const popoverRect = popoverContent.getBoundingClientRect();
-	const isRtl = isRTL(popover);
-
-	let desiredLeft;
-
-	const alignLeft = popover.classList.contains('popover-left');
-	const alignRight = popover.classList.contains('popover-right');
-
-	if (alignLeft) {
-		if (isRtl) {
-			desiredLeft =
-				summaryButton.offsetLeft + summaryButton.offsetWidth - popoverContent.offsetWidth;
-		} else {
-			desiredLeft = summaryButton.offsetLeft;
-		}
-	} else if (alignRight) {
-		if (isRtl) {
-			desiredLeft = summaryButton.offsetLeft;
-		} else {
-			desiredLeft =
-				summaryButton.offsetLeft + summaryButton.offsetWidth - popoverContent.offsetWidth;
-		}
-	} else {
-		const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
-		const contentHalfWidth = popoverContent.offsetWidth / 2;
-		desiredLeft = buttonCenter - contentHalfWidth;
-
-		const contentWidth = popoverContent.offsetWidth;
-		const contentRightEdge = popoverRect.left + desiredLeft + contentWidth;
-
-		if (contentRightEdge > window.innerWidth - VIEWPORT_BUFFER * 2) {
-			const overflowAmount = contentRightEdge - (window.innerWidth - VIEWPORT_BUFFER * 2);
-			desiredLeft -= overflowAmount;
-		}
-
-		const minLeft = VIEWPORT_BUFFER - popoverRect.left;
-		desiredLeft = Math.max(desiredLeft, minLeft);
-	}
-
-	popoverContent.style.setProperty('inset-inline-start', `${desiredLeft}px`);
-
-	if (isRtl) {
-		popoverContent.style.left = `${desiredLeft}px`;
-		popoverContent.style.right = 'auto';
-	}
-
-	return desiredLeft;
-}
-
 function positionCaret(
 	popoverContent: HTMLElement,
 	summaryButton: HTMLElement,
@@ -125,10 +71,14 @@ function positionCaret(
 	const contentWidth = popoverContent.offsetWidth;
 	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
 
+	// Calculate button center relative to popover content position
+	// The desiredLeft represents where the popover content's left edge is positioned
 	const buttonCenterRelativeToContent = buttonCenter - desiredLeft - 4;
 	const caretLeftPercent = (buttonCenterRelativeToContent / contentWidth) * 100;
 
+	// Ensure caret stays within reasonable bounds (10% to 90% of content width)
 	const clampedCaretLeftPercent = Math.min(Math.max(caretLeftPercent, 10), 90);
+
 	popoverContent.style.setProperty('--caret-left', `${clampedCaretLeftPercent}%`);
 }
 
@@ -145,10 +95,16 @@ function positionPopover(popover: HTMLDetailsElement) {
 		return;
 	}
 
+	// Reset all positioning properties to start fresh
 	popoverContent.style.top = '';
 	popoverContent.style.left = '';
+	popoverContent.style.right = '';
 	popoverContent.style.setProperty('inset-inline-start', '');
+
+	// First position vertically to set the top property
 	positionVertically(popover, popoverContent, summaryButton);
+
+	// Then position horizontally
 	const desiredLeft = positionHorizontally(popover, popoverContent, summaryButton);
 
 	if (popover.classList.contains('popover-caret')) {
@@ -156,6 +112,116 @@ function positionPopover(popover: HTMLDetailsElement) {
 	}
 }
 
+function positionHorizontallyLTR(
+	popover: HTMLElement,
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement,
+	popoverRect: DOMRect
+): number {
+	let desiredInlineStart;
+	const contentWidth = popoverContent.offsetWidth;
+
+	const alignStart = popover.classList.contains('popover-left');
+	const alignEnd = popover.classList.contains('popover-right');
+
+	if (alignStart) {
+		// In LTR, popover-left should be left-aligned (start-aligned)
+		desiredInlineStart = summaryButton.offsetLeft;
+	} else if (alignEnd) {
+		// In LTR, popover-right should be right-aligned (end-aligned)
+		desiredInlineStart =
+			summaryButton.offsetLeft + summaryButton.offsetWidth - popoverContent.offsetWidth;
+	} else {
+		// Center alignment
+		const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
+		const contentHalfWidth = popoverContent.offsetWidth / 2;
+		desiredInlineStart = buttonCenter - contentHalfWidth;
+
+		// Check inline-end (right in LTR) edge overflow
+		const contentInlineEndEdge = popoverRect.left + desiredInlineStart + contentWidth;
+		if (contentInlineEndEdge > window.innerWidth - VIEWPORT_BUFFER) {
+			const overflowAmount = contentInlineEndEdge - (window.innerWidth - VIEWPORT_BUFFER);
+			desiredInlineStart -= overflowAmount;
+		}
+
+		// Check inline-start (left in LTR) edge overflow
+		const minInlineStart = VIEWPORT_BUFFER - popoverRect.left;
+		desiredInlineStart = Math.max(desiredInlineStart, minInlineStart);
+	}
+
+	return desiredInlineStart;
+}
+
+function positionHorizontallyRTL(
+	popover: HTMLElement,
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement
+): number {
+	const contentWidth = popoverContent.offsetWidth;
+	const buttonWidth = summaryButton.offsetWidth;
+	const viewportWidth = window.innerWidth;
+
+	const parent = popoverContent.offsetParent as HTMLElement;
+	const parentRect = parent.getBoundingClientRect();
+
+	const buttonLeft = summaryButton.offsetLeft;
+	const buttonRight = buttonLeft + buttonWidth;
+
+	let desiredLeft;
+	const alignStart = popover.classList.contains('popover-left');
+	const alignEnd = popover.classList.contains('popover-right');
+
+	if (alignStart) {
+		desiredLeft = buttonRight - contentWidth;
+	} else if (alignEnd) {
+		desiredLeft = buttonLeft;
+	} else {
+		desiredLeft = buttonLeft + buttonWidth / 2 - contentWidth / 2;
+
+		const leftEdgeInViewport = parentRect.left + desiredLeft;
+		const rightEdgeInViewport = leftEdgeInViewport + contentWidth;
+
+		if (leftEdgeInViewport < VIEWPORT_BUFFER) {
+			// if overflowing left, then left-align popover and button
+			desiredLeft = buttonLeft;
+		} else if (rightEdgeInViewport > viewportWidth - VIEWPORT_BUFFER) {
+			// right-align
+			desiredLeft = buttonRight - contentWidth;
+		}
+	}
+
+	return desiredLeft;
+}
+
+function positionHorizontally(
+	popover: HTMLElement,
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement
+): number {
+	const popoverRect = popoverContent.getBoundingClientRect();
+	const isRtl = isRTL(popover);
+
+	let desiredInlineStart: number;
+
+	if (isRtl) {
+		desiredInlineStart = positionHorizontallyRTL(popover, popoverContent, summaryButton);
+		popoverContent.style.setProperty('left', `${desiredInlineStart}px`);
+		popoverContent.style.setProperty('right', 'auto');
+		popoverContent.style.visibility = 'visible';
+	} else {
+		desiredInlineStart = positionHorizontallyLTR(
+			popover,
+			popoverContent,
+			summaryButton,
+			popoverRect
+		);
+		popoverContent.style.setProperty('inset-inline-start', `${desiredInlineStart}px`);
+		popoverContent.style.left = '';
+		popoverContent.style.right = '';
+	}
+
+	return desiredInlineStart;
+}
 /* eslint-disable @typescript-eslint/no-use-before-define */
 export function initPopover(container: HTMLElement = document.body) {
 	container.addEventListener(
