@@ -5,6 +5,10 @@ function isRTL(element: HTMLElement): boolean {
 	return window.getComputedStyle(element).direction === 'rtl';
 }
 
+/**
+ * If the contents of the popover are long and exceed the size of the screen,
+ * this function will scroll up or down to show the entire contents
+ */
 function scrollToShowPopover(
 	summaryRect: DOMRect,
 	popoverContentHeight: number,
@@ -63,93 +67,45 @@ function positionVertically(
 	popoverContent.style.top = `${topPosition}px`;
 }
 
-function positionCaret(
-	popoverContent: HTMLElement,
-	summaryButton: HTMLElement,
-	desiredLeft: number
-) {
-	const contentWidth = popoverContent.offsetWidth;
-	const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
-
-	// Calculate button center relative to popover content position
-	// The desiredLeft represents where the popover content's left edge is positioned
-	const buttonCenterRelativeToContent = buttonCenter - desiredLeft - 4;
-	const caretLeftPercent = (buttonCenterRelativeToContent / contentWidth) * 100;
-
-	// Ensure caret stays within reasonable bounds (10% to 90% of content width)
-	const clampedCaretLeftPercent = Math.min(Math.max(caretLeftPercent, 10), 90);
-
-	popoverContent.style.setProperty('--caret-left', `${clampedCaretLeftPercent}%`);
-}
-
-/**
- * Position the popover so that popover-content does not go off the screen
- * Originally, the popover-content is hidden. This function calculates
- * the new position and shows the popover-content
- */
-function positionPopover(popover: HTMLDetailsElement) {
-	const popoverContent = popover.querySelector('.popover-content') as HTMLElement;
-	const summaryButton = popover.querySelector('summary') as HTMLElement;
-
-	if (!popoverContent || !summaryButton) {
-		return;
-	}
-
-	// Reset all positioning properties to start fresh
-	popoverContent.style.top = '';
-	popoverContent.style.left = '';
-	popoverContent.style.right = '';
-	popoverContent.style.setProperty('inset-inline-start', '');
-
-	// First position vertically to set the top property
-	positionVertically(popover, popoverContent, summaryButton);
-
-	// Then position horizontally
-	const desiredLeft = positionHorizontally(popover, popoverContent, summaryButton);
-
-	if (popover.classList.contains('popover-caret')) {
-		positionCaret(popoverContent, summaryButton, desiredLeft);
-	}
-}
-
 function positionHorizontallyLTR(
 	popover: HTMLElement,
 	popoverContent: HTMLElement,
-	summaryButton: HTMLElement,
-	popoverRect: DOMRect
+	summaryButton: HTMLElement
 ): number {
-	let desiredInlineStart;
 	const contentWidth = popoverContent.offsetWidth;
+	const buttonWidth = summaryButton.offsetWidth;
+	const viewportWidth = window.innerWidth;
 
+	const parent = popoverContent.offsetParent as HTMLElement;
+	const parentRect = parent.getBoundingClientRect();
+
+	const buttonLeft = summaryButton.offsetLeft;
+	const buttonRight = buttonLeft + buttonWidth;
+
+	let desiredLeft;
 	const alignStart = popover.classList.contains('popover-left');
 	const alignEnd = popover.classList.contains('popover-right');
 
 	if (alignStart) {
-		// In LTR, popover-left should be left-aligned (start-aligned)
-		desiredInlineStart = summaryButton.offsetLeft;
+		desiredLeft = buttonLeft;
 	} else if (alignEnd) {
-		// In LTR, popover-right should be right-aligned (end-aligned)
-		desiredInlineStart =
-			summaryButton.offsetLeft + summaryButton.offsetWidth - popoverContent.offsetWidth;
+		desiredLeft = buttonRight - contentWidth;
 	} else {
-		// Center alignment
-		const buttonCenter = summaryButton.offsetLeft + summaryButton.offsetWidth / 2;
-		const contentHalfWidth = popoverContent.offsetWidth / 2;
-		desiredInlineStart = buttonCenter - contentHalfWidth;
+		desiredLeft = buttonLeft + buttonWidth / 2 - contentWidth / 2;
 
-		// Check inline-end (right in LTR) edge overflow
-		const contentInlineEndEdge = popoverRect.left + desiredInlineStart + contentWidth;
-		if (contentInlineEndEdge > window.innerWidth - VIEWPORT_BUFFER) {
-			const overflowAmount = contentInlineEndEdge - (window.innerWidth - VIEWPORT_BUFFER);
-			desiredInlineStart -= overflowAmount;
+		const leftEdgeInViewport = parentRect.left + desiredLeft;
+		const rightEdgeInViewport = leftEdgeInViewport + contentWidth;
+
+		if (leftEdgeInViewport < VIEWPORT_BUFFER) {
+			// if overflowing left, then left-align popover and button
+			desiredLeft = buttonLeft;
+		} else if (rightEdgeInViewport > viewportWidth - VIEWPORT_BUFFER) {
+			// right-align
+			desiredLeft = buttonRight - contentWidth;
 		}
-
-		// Check inline-start (left in LTR) edge overflow
-		const minInlineStart = VIEWPORT_BUFFER - popoverRect.left;
-		desiredInlineStart = Math.max(desiredInlineStart, minInlineStart);
 	}
 
-	return desiredInlineStart;
+	return desiredLeft;
 }
 
 function positionHorizontallyRTL(
@@ -198,23 +154,15 @@ function positionHorizontally(
 	popoverContent: HTMLElement,
 	summaryButton: HTMLElement
 ): number {
-	const popoverRect = popoverContent.getBoundingClientRect();
 	const isRtl = isRTL(popover);
-
 	let desiredInlineStart: number;
 
 	if (isRtl) {
 		desiredInlineStart = positionHorizontallyRTL(popover, popoverContent, summaryButton);
 		popoverContent.style.setProperty('left', `${desiredInlineStart}px`);
 		popoverContent.style.setProperty('right', 'auto');
-		popoverContent.style.visibility = 'visible';
 	} else {
-		desiredInlineStart = positionHorizontallyLTR(
-			popover,
-			popoverContent,
-			summaryButton,
-			popoverRect
-		);
+		desiredInlineStart = positionHorizontallyLTR(popover, popoverContent, summaryButton);
 		popoverContent.style.setProperty('inset-inline-start', `${desiredInlineStart}px`);
 		popoverContent.style.left = '';
 		popoverContent.style.right = '';
@@ -222,6 +170,60 @@ function positionHorizontally(
 
 	return desiredInlineStart;
 }
+
+function positionCaret(
+	popoverContent: HTMLElement,
+	summaryButton: HTMLElement,
+	desiredLeft: number
+) {
+	const contentWidth = popoverContent.offsetWidth;
+	const buttonWidth = summaryButton.offsetWidth;
+	const buttonLeft = summaryButton.offsetLeft;
+	const popover = popoverContent.closest('.popover') as HTMLElement;
+	const isRtl = isRTL(popover);
+
+	const buttonCenter = buttonLeft + buttonWidth / 2;
+	let caretPosition;
+
+	if (!isRtl) {
+		caretPosition = ((buttonCenter - desiredLeft - 4) / contentWidth) * 100;
+	} else {
+		const ltrPosition = ((buttonCenter - desiredLeft + 4) / contentWidth) * 100;
+		caretPosition = 100 - ltrPosition;
+	}
+
+	const clampedCaretPosition = Math.min(Math.max(caretPosition, 10), 90);
+	popoverContent.style.setProperty('--caret-left', `${clampedCaretPosition}%`);
+}
+
+/**
+ * Position the popover so that popover-content does not go off the screen
+ * Originally, the popover-content is hidden. This function calculates
+ * the new position and shows the popover-content
+ */
+function positionPopover(popover: HTMLDetailsElement) {
+	const popoverContent = popover.querySelector('.popover-content') as HTMLElement;
+	const summaryButton = popover.querySelector('summary') as HTMLElement;
+
+	if (!popoverContent || !summaryButton) {
+		return;
+	}
+
+	popoverContent.style.top = '';
+	popoverContent.style.left = '';
+	popoverContent.style.right = '';
+	popoverContent.style.setProperty('inset-inline-start', '');
+
+	positionVertically(popover, popoverContent, summaryButton);
+	const desiredLeft = positionHorizontally(popover, popoverContent, summaryButton);
+
+	if (popover.classList.contains('popover-caret')) {
+		positionCaret(popoverContent, summaryButton, desiredLeft);
+	}
+
+	popoverContent.style.visibility = 'visible';
+}
+
 /* eslint-disable @typescript-eslint/no-use-before-define */
 export function initPopover(container: HTMLElement = document.body) {
 	container.addEventListener(
@@ -256,7 +258,6 @@ export function initPopover(container: HTMLElement = document.body) {
 				// recalculates the popover's position to avoid a flash before
 				// the position is relocated
 				void content.offsetHeight;
-				content.style.visibility = 'visible';
 			});
 
 			const resizeHandler = () => {
