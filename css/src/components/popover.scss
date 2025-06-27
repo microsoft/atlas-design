@@ -75,10 +75,8 @@ $popover-chevron-color: $border !default;
 			[dir='rtl'] & {
 				&::before {
 					transform: rotate(-135deg);
-					inset-inline-start: auto;
+					inset-inline-start: var(--caret-left, 50%);
 					inset-inline-end: var(--caret-left, 50%);
-					inset-inline: var(--caret-left, 50%);
-					left: auto;
 				}
 			}
 		}
@@ -106,10 +104,8 @@ $popover-chevron-color: $border !default;
 			[dir='rtl'] & {
 				&::before {
 					transform: rotate(45deg);
-					inset-inline-start: auto;
+					inset-inline-start: var(--caret-left, 50%);
 					inset-inline-end: var(--caret-left, 50%);
-					inset-inline: var(--caret-left, 50%);
-					left: auto;
 				}
 			}
 		}
