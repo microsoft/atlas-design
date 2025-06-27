@@ -46,3 +46,9 @@ $chevron-up-rotate-scale-xy-rtl: $chevron-down-rotate-rtl scaleY(-1) scaleX(-1);
 
 	transform: $chevron-down-rotate-rtl;
 }
+
+@mixin chevron-up {
+	@extend %chevron;
+
+	transform: $chevron-up-rotate;
+}
