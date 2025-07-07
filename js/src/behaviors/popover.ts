@@ -5,37 +5,6 @@ function isRTL(element: HTMLElement): boolean {
 	return window.getComputedStyle(element).direction === 'rtl';
 }
 
-/**
- * If the contents of the popover are long and exceed the size of the screen,
- * this function will scroll up or down to show the entire contents
- */
-function scrollToShowPopover(
-	summaryRect: DOMRect,
-	popoverContentHeight: number,
-	placeBelow: boolean
-) {
-	if (placeBelow) {
-		const popoverBottomRelativeToViewport =
-			summaryRect.bottom + popoverContentHeight + POPOVER_SPACING;
-		if (popoverBottomRelativeToViewport > window.innerHeight) {
-			const scrollAmount = popoverBottomRelativeToViewport - window.innerHeight + POPOVER_SPACING;
-			window.scrollBy({
-				top: scrollAmount,
-				behavior: 'smooth'
-			});
-		}
-	} else {
-		const popoverTopRelativeToViewport = summaryRect.top - popoverContentHeight - POPOVER_SPACING;
-		if (popoverTopRelativeToViewport < 0) {
-			const scrollAmount = Math.abs(popoverTopRelativeToViewport) + POPOVER_SPACING;
-			window.scrollBy({
-				top: -scrollAmount,
-				behavior: 'smooth'
-			});
-		}
-	}
-}
-
 function positionVertically(
 	popover: HTMLElement,
 	popoverContent: HTMLElement,
@@ -46,8 +15,20 @@ function positionVertically(
 	const spaceBelow = window.innerHeight - summaryRect.bottom;
 	const spaceAbove = summaryRect.top;
 	const forceTop = popover.classList.contains('popover-top');
-	const placeBelow =
-		!forceTop && (spaceBelow >= popoverContent.offsetHeight || spaceBelow >= spaceAbove);
+
+	const popoverHeight = popoverContent.offsetHeight;
+	let placeBelow;
+
+	if (forceTop) {
+		placeBelow = false;
+	} else {
+		const wouldBeCutOffAtTop = popoverHeight + POPOVER_SPACING > spaceAbove;
+		if (wouldBeCutOffAtTop) {
+			placeBelow = true;
+		} else {
+			placeBelow = spaceBelow >= popoverHeight || spaceBelow >= spaceAbove;
+		}
+	}
 
 	const hasCaretClass = popover.classList.contains('popover-caret');
 	if (hasCaretClass) {
@@ -63,7 +44,6 @@ function positionVertically(
 		}
 	}
 
-	scrollToShowPopover(summaryRect, popoverContent.offsetHeight, placeBelow);
 	popoverContent.style.top = `${topPosition}px`;
 }
 
@@ -185,11 +165,11 @@ function positionCaret(
 	const buttonCenter = buttonLeft + buttonWidth / 2;
 	let caretPosition;
 
-	if (!isRtl) {
-		caretPosition = ((buttonCenter - desiredLeft - 4) / contentWidth) * 100;
-	} else {
+	if (isRtl) {
 		const ltrPosition = ((buttonCenter - desiredLeft + 4) / contentWidth) * 100;
 		caretPosition = 100 - ltrPosition;
+	} else {
+		caretPosition = ((buttonCenter - desiredLeft - 4) / contentWidth) * 100;
 	}
 
 	const clampedCaretPosition = Math.min(Math.max(caretPosition, 10), 90);

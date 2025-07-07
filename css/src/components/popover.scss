@@ -85,7 +85,7 @@ $popover-chevron-color: $border !default;
 	&.popover-caret.popover-caret-bottom {
 		.popover-content {
 			margin-block-start: 0;
-			margin-block-end: 0;
+			margin-block-end: $spacer-3;
 			overflow: visible;
 
 			&::before {

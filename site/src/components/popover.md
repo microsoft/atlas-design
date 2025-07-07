@@ -34,7 +34,18 @@ The popover component allows content to be placed in the popup that appears afte
 </details>
 ```
 
-Popover atomics: `popover-caret`, `popover-top`, `popover-left`, `popover-right`
+## Popover Classes
+
+The following table shows the available popover classes, which can also be combined:
+
+| Type              | Class                                                   | Description                                                                     | Example                                                                                                                                                                                                      |
+| ----------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Basic             | `.popover`                                              | Default popover that appears below the trigger, with dynamic vertical placement | <details class="popover"><summary class="button" style="white-space: nowrap;">Basic popover example</summary><div class="popover-content">Popover content</div></details>                                    |
+| Caret             | `.popover` `.popover-caret`                             | Adds a caret pointing to the trigger                                            | <details class="popover popover-caret"><summary class="button" style="white-space: nowrap;">Popover with caret</summary><div class="popover-content">Popover with caret</div></details>                      |
+| Top               | `.popover` `.popover-top`                               | Forces the popover-content to appear above the trigger                          | <details class="popover popover-top"><summary class="button" style="white-space: nowrap;">Force popover on top</summary><div class="popover-content">Appears above</div></details>                           |
+| Left-aligned      | `.popover` `.popover-left`                              | Aligns the popover with the left edge of the trigger                            | <details class="popover popover-left"><summary class="button" style="white-space: nowrap;">Left-aligned popover example</summary><div class="popover-content">Left-aligned content</div></details>           |
+| Right-aligned     | `.popover` `.popover-right`                             | Aligns the popover with the right edge of the trigger                           | <details class="popover popover-right"><summary class="button" style="white-space: nowrap;">Right-aligned popover example</summary><div class="popover-content">Right-aligned content</div></details>        |
+| Combining classes | `.popover` `popover-top` `popover-left` `popover-caret` | Aligns the popover with the left edge of the trigger with a caret               | <details class="popover popover-top popover-left popover-caret"><summary class="button" style="white-space: nowrap;">Combined classes</summary><div class="popover-content">Combined classes</div></details> |
 
 ## Styling the trigger
 
@@ -62,7 +73,7 @@ You can apply almost any class on the `summary` element to achieve the look you 
 
 ## Caret
 
-Show a caret on the popover content by applying the `popover-caret` class. The caret should point to the center of the popover button.
+Add a caret to the popover by applying the `popover-caret` class. The caret automatically points to the center of the button and adjusts its position based on whether the popover appears above or below the trigger.
 
 ```html
 <details class="popover popover-caret margin-xxs">
@@ -122,9 +133,11 @@ By default, the popover content is centered with the popover button and opens do
 
 ## Fixed positioning
 
+You can override the dynamic positioning behavior with the following classes.
+
 ### Vertical alignment
 
-You can also fix the position of the popover, which will disable dynamic positioning of the popover content.
+Use the `popover-top` class to force the popover to appear above the trigger element, regardless of available space.
 
 ```html
 <div class="display-flex justify-content-center">
