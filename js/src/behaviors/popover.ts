@@ -106,16 +106,16 @@ function positionVertically(
 	const spaceBelow = window.innerHeight - summaryRect.bottom;
 	const spaceAbove = summaryRect.top;
 	const forceTop = popover.classList.contains('popover-top');
+	const forceBottom = popover.classList.contains('popover-bottom');
 
 	const popoverHeight = popoverContent.offsetHeight;
-	let placeBelow = false;
 
-	if (!forceTop) {
-		const wouldBeCutOffAtTop = popoverHeight + POPOVER_SPACING > spaceAbove;
-		placeBelow = wouldBeCutOffAtTop
-			? true
-			: spaceBelow >= popoverHeight || spaceBelow >= spaceAbove;
-	}
+	const placeBelow =
+		forceBottom ||
+		(!forceTop &&
+			(popoverHeight + POPOVER_SPACING > spaceAbove || // Cut off at top
+				spaceBelow >= popoverHeight ||
+				spaceBelow >= spaceAbove));
 
 	const hasCaretClass = popover.classList.contains('popover-caret');
 	if (hasCaretClass) {

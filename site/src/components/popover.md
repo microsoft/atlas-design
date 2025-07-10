@@ -12,13 +12,14 @@ classPrefixes:
 
 The popover component allows content to be placed in the popup that appears after clicking on a button. Popover is build on top of the [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#customizing_the_disclosure_widget) HTML component.
 
-| Type                  | Class                    | Example                                                                                                                                                                                 |
-| --------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Base                  | `.popover`               | <details class="popover"><summary class="button" style="white-space: nowrap;">Popover</summary><div class="popover-content">Popover content</div></details>                             |
-| Popover with caret    | `.popover.popover-caret` | <details class="popover popover-caret"><summary class="button" style="white-space: nowrap;">Popover with caret</summary><div class="popover-content">Popover content</div></details>    |
-| Left-aligned content  | `.popover.popover-left`  | <details class="popover popover-left"><summary class="button" style="white-space: nowrap;">Content left-aligned</summary><div class="popover-content">Popover content</div></details>   |
-| Right-aligned content | `.popover.popover-right` | <details class="popover popover-right"><summary class="button" style="white-space: nowrap;">Content right-aligned</summary><div class="popover-content">Popover content</div></details> |
-| Top-aligned content   | `.popover.popover-top`   | <details class="popover popover-top"><summary class="button" style="white-space: nowrap;">Content top-aligned</summary><div class="popover-content">Popover content</div></details>     |
+| Type                   | Class                     | Example                                                                                                                                                                                   |
+| ---------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base                   | `.popover`                | <details class="popover"><summary class="button" style="white-space: nowrap;">Popover</summary><div class="popover-content">Popover content</div></details>                               |
+| Popover with caret     | `.popover.popover-caret`  | <details class="popover popover-caret"><summary class="button" style="white-space: nowrap;">Popover with caret</summary><div class="popover-content">Popover content</div></details>      |
+| Left-aligned content   | `.popover.popover-left`   | <details class="popover popover-left"><summary class="button" style="white-space: nowrap;">Content left-aligned</summary><div class="popover-content">Popover content</div></details>     |
+| Right-aligned content  | `.popover.popover-right`  | <details class="popover popover-right"><summary class="button" style="white-space: nowrap;">Content right-aligned</summary><div class="popover-content">Popover content</div></details>   |
+| Bottom-aligned content | `.popover.popover-bottom` | <details class="popover popover-bottom"><summary class="button" style="white-space: nowrap;">Content bottom-aligned</summary><div class="popover-content">Popover content</div></details> |
+| Top-aligned content    | `.popover.popover-top`    | <details class="popover popover-top"><summary class="button" style="white-space: nowrap;">Content top-aligned</summary><div class="popover-content">Popover content</div></details>       |
 
 ## Usage
 
@@ -132,6 +133,21 @@ Use the `popover-top` class to force the popover to appear above the trigger ele
 <div class="display-flex justify-content-center">
 	<details class="popover popover-top margin-xxs">
 		<summary class="button">Popover top</summary>
+		<div class="popover-content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+			laboris nisi ut aliquip ex ea commodo consequat.
+		</div>
+	</details>
+</div>
+```
+
+Use the `popover-bottom` class to force the popover to appear below the trigger element.
+
+```html
+<div class="display-flex justify-content-center">
+	<details class="popover popover-bottom margin-xxs">
+		<summary class="button">Popover bottom</summary>
 		<div class="popover-content">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 			labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
