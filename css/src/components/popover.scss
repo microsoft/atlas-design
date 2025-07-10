@@ -43,18 +43,6 @@ $popover-chevron-color: $border !default;
 		}
 	}
 
-	&.popover-left {
-		.popover-content {
-			inset-inline-start: 0;
-		}
-	}
-
-	&.popover-right {
-		.popover-content {
-			inset-inline-start: 0;
-		}
-	}
-
 	&.popover-caret {
 		.popover-content {
 			margin-block-start: 0;

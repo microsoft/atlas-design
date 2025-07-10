@@ -12,6 +12,16 @@ classPrefixes:
 
 The popover component allows content to be placed in the popup that appears after clicking on a button. Popover is build on top of the [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#customizing_the_disclosure_widget) HTML component.
 
+| Type                  | Class                    | Example                                                                                                                                                                                 |
+| --------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base                  | `.popover`               | <details class="popover"><summary class="button" style="white-space: nowrap;">Popover</summary><div class="popover-content">Popover content</div></details>                             |
+| Popover with caret    | `.popover.popover-caret` | <details class="popover popover-caret"><summary class="button" style="white-space: nowrap;">Popover with caret</summary><div class="popover-content">Popover content</div></details>    |
+| Left-aligned content  | `.popover.popover-left`  | <details class="popover popover-left"><summary class="button" style="white-space: nowrap;">Content left-aligned</summary><div class="popover-content">Popover content</div></details>   |
+| Right-aligned content | `.popover.popover-right` | <details class="popover popover-right"><summary class="button" style="white-space: nowrap;">Content right-aligned</summary><div class="popover-content">Popover content</div></details> |
+| Top-aligned content   | `.popover.popover-top`   | <details class="popover popover-top"><summary class="button" style="white-space: nowrap;">Content top-aligned</summary><div class="popover-content">Popover content</div></details>     |
+
+## Usage
+
 ```html
 <details class="popover">
 	<summary class="link-button">Click for details</summary>
@@ -33,19 +43,6 @@ The popover component allows content to be placed in the popup that appears afte
 	</div>
 </details>
 ```
-
-## Popover Classes
-
-The following table shows the available popover classes, which can also be combined:
-
-| Type              | Class                                                   | Description                                                                     | Example                                                                                                                                                                                                      |
-| ----------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Basic             | `.popover`                                              | Default popover that appears below the trigger, with dynamic vertical placement | <details class="popover"><summary class="button" style="white-space: nowrap;">Basic popover example</summary><div class="popover-content">Popover content</div></details>                                    |
-| Caret             | `.popover` `.popover-caret`                             | Adds a caret pointing to the trigger                                            | <details class="popover popover-caret"><summary class="button" style="white-space: nowrap;">Popover with caret</summary><div class="popover-content">Popover with caret</div></details>                      |
-| Top               | `.popover` `.popover-top`                               | Forces the popover-content to appear above the trigger                          | <details class="popover popover-top"><summary class="button" style="white-space: nowrap;">Force popover on top</summary><div class="popover-content">Appears above</div></details>                           |
-| Left-aligned      | `.popover` `.popover-left`                              | Aligns the popover with the left edge of the trigger                            | <details class="popover popover-left"><summary class="button" style="white-space: nowrap;">Left-aligned popover example</summary><div class="popover-content">Left-aligned content</div></details>           |
-| Right-aligned     | `.popover` `.popover-right`                             | Aligns the popover with the right edge of the trigger                           | <details class="popover popover-right"><summary class="button" style="white-space: nowrap;">Right-aligned popover example</summary><div class="popover-content">Right-aligned content</div></details>        |
-| Combining classes | `.popover` `popover-top` `popover-left` `popover-caret` | Aligns the popover with the left edge of the trigger with a caret               | <details class="popover popover-top popover-left popover-caret"><summary class="button" style="white-space: nowrap;">Combined classes</summary><div class="popover-content">Combined classes</div></details> |
 
 ## Styling the trigger
 
