@@ -23,6 +23,8 @@ The popover component allows content to be placed in the popup that appears afte
 
 ## Usage
 
+Here is an example of a standard usage of popover component.
+
 ```html
 <details class="popover">
 	<summary class="link-button">Click for details</summary>
@@ -163,7 +165,7 @@ By default, the popover content is centered with the popover button. You can use
 
 ```html
 <details class="popover popover-left popover-caret margin-xxs">
-	<summary class="button">Popover aligned to the left</summary>
+	<summary class="button">Left-aligned</summary>
 	<div class="popover-content">Popover content.</div>
 </details>
 
@@ -173,7 +175,7 @@ By default, the popover content is centered with the popover button. You can use
 </details>
 
 <details class="popover popover-right popover-caret margin-xxs">
-	<summary class="button">Popover aligned to the right</summary>
+	<summary class="button">Right-aligned</summary>
 	<div class="popover-content">Popover content.</div>
 </details>
 ```
