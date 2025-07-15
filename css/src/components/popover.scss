@@ -1,8 +1,12 @@
+/* stylelint-disable max-nesting-depth, selector-max-specificity  */
+
 $popover-background-color: $body-background !default;
 $popover-border: $border-width solid $border !default;
 $popover-border-radius: $border-radius !default;
 $popover-shadow: $box-shadow-heavy !default;
 $popover-width: 224px !default;
+
+$popover-chevron-color: $border !default;
 
 .popover {
 	display: inline-block;
@@ -19,25 +23,17 @@ $popover-width: 224px !default;
 	.popover-content {
 		position: absolute;
 		width: $popover-width;
-		margin-block-start: $spacer-3;
 		padding: $spacer-5;
+		transform: none;
+		inset-inline-start: 0;
 		border: $popover-border;
 		border-radius: $popover-border-radius;
 		background-color: $popover-background-color;
 		box-shadow: $popover-shadow;
+
+		// hide popover until after position is calculated, then show
+		visibility: hidden;
 		z-index: $zindex-popover;
-	}
-
-	&.popover-right {
-		.popover-content {
-			inset-inline-end: 0;
-		}
-	}
-
-	&.popover-center {
-		.popover-content {
-			inset-inline-start: -25%;
-		}
 	}
 
 	&.popover-top {
@@ -46,4 +42,62 @@ $popover-width: 224px !default;
 			margin-block-end: $spacer-3;
 		}
 	}
+
+	&.popover-caret {
+		.popover-content {
+			margin-block-start: 0;
+			overflow: visible;
+
+			&::before {
+				@include chevron-up;
+
+				position: absolute;
+				inset-inline-start: var(--caret-left, 50%);
+				inset-inline-end: auto;
+				inset-block-start: calc($chevron-arrow-size / -1.75);
+				border-color: $popover-chevron-color;
+				background-color: $popover-background-color;
+				z-index: 2;
+			}
+
+			[dir='rtl'] & {
+				&::before {
+					transform: rotate(-135deg);
+					inset-inline-start: var(--caret-left, 50%);
+					inset-inline-end: var(--caret-left, 50%);
+				}
+			}
+		}
+	}
+
+	&.popover-caret.popover-caret-bottom {
+		.popover-content {
+			margin-block-start: 0;
+			margin-block-end: $spacer-3;
+			overflow: visible;
+
+			&::before {
+				@include chevron-down;
+
+				position: absolute;
+				inset-inline-start: var(--caret-left, 50%);
+				inset-inline-end: auto;
+				inset-block-start: auto;
+				inset-block-end: calc($chevron-arrow-size / -1.75);
+				border-color: $popover-chevron-color;
+				background-color: $popover-background-color;
+				z-index: 2;
+			}
+
+			[dir='rtl'] & {
+				&::before {
+					transform: rotate(45deg);
+					inset-inline-start: var(--caret-left, 50%);
+					inset-inline-end: var(--caret-left, 50%);
+				}
+			}
+		}
+	}
 }
+
+/* stylelint-enable selector-max-specificity, max-nesting-depth */
