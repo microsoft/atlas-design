@@ -1,5 +1,12 @@
 # @microsoft/parcel-transformer-markdown-html
 
+## 2.7.2
+
+### Patch Changes
+
+- Updated dependencies [a965c36]
+  - @microsoft/atlas-css@4.0.0
+
 ## 2.7.1
 
 ### Patch Changes

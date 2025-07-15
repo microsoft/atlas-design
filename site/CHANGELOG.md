@@ -1,5 +1,16 @@
 # @microsoft/atlas-site
 
+## 0.65.0
+
+### Minor Changes
+
+- a965c36: Updating popover component with more positioning options. Introducing popover with caret variant
+
+### Patch Changes
+
+- Updated dependencies [a965c36]
+  - @microsoft/atlas-js@1.15.0
+
 ## 0.64.0
 
 ### Minor Changes

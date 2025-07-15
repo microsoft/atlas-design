@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 4.0.0
+
+### Major Changes
+
+- a965c36: Updating popover component with more positioning options. Introducing popover with caret variant
+
 ## 3.67.0
 
 ### Minor Changes
