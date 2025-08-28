@@ -6,7 +6,7 @@ Welcome to the Atlas Design project! This repository holds the source code backi
 
 ## Our mission
 
-The Atlas Design System strives to empower designers, PMs, and developers to build accessible, high quality, and consistent experiences at scale across the Microsoft Skilling web properties. Atlas powers [Microsoft Learn](https://learn.microsoft.com) 🤓!
+The Atlas strives to empower designers, PMs, and developers to build accessible, high quality, and consistent experiences at scale. Atlas powers [Microsoft Learn](https://learn.microsoft.com) 🤓! We are a CSS-first framework, adding JavaScript only where required for accessibility and behavior.
 
 Looking for information about the Atlas CSS framework? Start in `/css`!
 
