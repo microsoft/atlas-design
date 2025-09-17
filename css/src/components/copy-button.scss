@@ -1,0 +1,116 @@
+// Copy Button Component
+// A button component for copying content (like URLs) with visual feedback states
+// Based on Figma design: https://www.figma.com/design/9Gj2jqai9E2uNE2It10mHA/Public-Profile?node-id=343-33260
+
+$copy-button-border-color: $primary !default;
+$copy-button-border-width: $control-border-width !default;
+$copy-button-border-radius: $control-radius !default;
+$copy-button-padding-vertical: calc(0.375em - #{$copy-button-border-width}) !default;
+$copy-button-padding-horizontal: 0.75em !default;
+
+$copy-button-color: $primary !default;
+$copy-button-background-color: transparent !default;
+$copy-button-font-size: $font-size-8 !default;
+$copy-button-font-weight: $weight-semibold !default;
+
+$copy-button-hover-background-color: $primary-background !default;
+$copy-button-hover-border-color: $primary !default;
+
+$copy-button-success-background-color: $success !default;
+$copy-button-success-color: $success-invert !default;
+$copy-button-success-border-color: $success !default;
+
+$copy-button-icon-spacing: 0.375em !default;
+
+.copy-button {
+	@include control;
+	@include unselectable;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: $copy-button-icon-spacing;
+
+	padding-block: $copy-button-padding-vertical;
+	padding-inline: $copy-button-padding-horizontal;
+
+	border: $copy-button-border-width solid $copy-button-border-color;
+	border-radius: $copy-button-border-radius;
+	background-color: $copy-button-background-color;
+
+	color: $copy-button-color;
+	font-size: $copy-button-font-size;
+	font-weight: $copy-button-font-weight;
+	text-decoration: none;
+
+	cursor: pointer;
+	transition: all 0.15s ease-in-out;
+
+	// Hover state
+	&:hover:not(:disabled):not(.copy-button-success) {
+		background-color: $copy-button-hover-background-color;
+		border-color: $copy-button-hover-border-color;
+	}
+
+	// Success state (after copying)
+	&.copy-button-success {
+		background-color: $copy-button-success-background-color;
+		border-color: $copy-button-success-border-color;
+		color: $copy-button-success-color;
+	}
+
+	// Disabled state
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	// Focus state for accessibility
+	&:focus-visible {
+		outline: 2px solid $primary;
+		outline-offset: 2px;
+	}
+}
+
+// Icon styling
+.copy-button-icon {
+	display: inline-flex;
+	align-items: center;
+	width: 1.25em; // 20px at 16px base
+	height: 1.25em;
+	flex-shrink: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
+	}
+}
+
+// Text content
+.copy-button-text {
+	white-space: nowrap;
+}
+
+// Modifier for different sizes
+.copy-button-sm {
+	padding-block: calc(0.25em - #{$copy-button-border-width});
+	padding-inline: 0.5em;
+	font-size: $font-size-9;
+
+	.copy-button-icon {
+		width: 1em;
+		height: 1em;
+	}
+}
+
+.copy-button-lg {
+	padding-block: calc(0.5em - #{$copy-button-border-width});
+	padding-inline: 1em;
+	font-size: $font-size-6;
+
+	.copy-button-icon {
+		width: 1.5em;
+		height: 1.5em;
+	}
+}

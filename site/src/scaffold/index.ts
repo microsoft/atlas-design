@@ -6,7 +6,8 @@ import {
 	initDismiss,
 	initPopover,
 	initSnapScroll,
-	initLayout
+	initLayout,
+	initCopyButton
 } from '@microsoft/atlas-js/src/index';
 import { handleFocusableIfScrollable } from './scripts/focusable-if-scrollable';
 import { initFullScreenToggle } from './scripts/full-screen-toggle';
@@ -17,6 +18,7 @@ import { initReadingDirectionButtons } from './scripts/direction-buttons';
 initTheme();
 initDismiss();
 initPopover();
+initCopyButton();
 handleCodeFilters();
 handleFigmaFullScreenRequest();
 handleMockFormSubmit();
