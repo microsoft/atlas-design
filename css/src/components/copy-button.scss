@@ -29,56 +29,57 @@ $copy-button-icon-spacing: 0.375em !default;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: $copy-button-icon-spacing;
-
-	padding-block: $copy-button-padding-vertical;
-	padding-inline: $copy-button-padding-horizontal;
-
+	transition: all 0.15s ease-in-out;
 	border: $copy-button-border-width solid $copy-button-border-color;
 	border-radius: $copy-button-border-radius;
 	background-color: $copy-button-background-color;
-
 	color: $copy-button-color;
 	font-size: $copy-button-font-size;
 	font-weight: $copy-button-font-weight;
 	text-decoration: none;
-
 	cursor: pointer;
-	transition: all 0.15s ease-in-out;
+	gap: $copy-button-icon-spacing;
+	padding-block: $copy-button-padding-vertical;
+	padding-inline: $copy-button-padding-horizontal;
 
-	// Hover state
-	&:hover:not(:disabled):not(.copy-button-success) {
-		background-color: $copy-button-hover-background-color;
-		border-color: $copy-button-hover-border-color;
-	}
+	// Focus state for accessibility
 
-	// Success state (after copying)
-	&.copy-button-success {
-		background-color: $copy-button-success-background-color;
-		border-color: $copy-button-success-border-color;
-		color: $copy-button-success-color;
+	&:focus-visible {
+		outline: 2px solid $primary;
+		outline-offset: 2px;
 	}
 
 	// Disabled state
+
 	&:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
 	}
 
-	// Focus state for accessibility
-	&:focus-visible {
-		outline: 2px solid $primary;
-		outline-offset: 2px;
+	// Hover state
+
+	&:hover:not(:disabled):not(.copy-button-success) {
+		border-color: $copy-button-hover-border-color;
+		background-color: $copy-button-hover-background-color;
+	}
+
+	// Success state (after copying)
+
+	&.copy-button-success {
+		border-color: $copy-button-success-border-color;
+		background-color: $copy-button-success-background-color;
+		color: $copy-button-success-color;
 	}
 }
 
 // Icon styling
+
 .copy-button-icon {
 	display: inline-flex;
+	flex-shrink: 0;
 	align-items: center;
 	width: 1.25em; // 20px at 16px base
 	height: 1.25em;
-	flex-shrink: 0;
 
 	svg {
 		width: 100%;
@@ -88,11 +89,13 @@ $copy-button-icon-spacing: 0.375em !default;
 }
 
 // Text content
+
 .copy-button-text {
 	white-space: nowrap;
 }
 
 // Modifier for different sizes
+
 .copy-button-sm {
 	padding-block: calc(0.25em - #{$copy-button-border-width});
 	padding-inline: 0.5em;
