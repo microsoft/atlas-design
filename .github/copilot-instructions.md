@@ -10,7 +10,7 @@ Do not create branches without the `copilot/` prefix.
 
 ## Branch Protection Instructions for Copilot
 
-Copilot must never:
+**Copilot must never:**
 
 - Add files to the 'main' branch
 - Commit changes to the 'main' branch
