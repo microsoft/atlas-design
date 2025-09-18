@@ -36,6 +36,23 @@ export class FormBehaviorElement extends HTMLElement {
 		this.locStrings = this.locStrings;
 	}
 
+	commit = (event: Event) => {
+		if (
+			!isValueElement(event.target, this.form) ||
+			!event.target?.form ||
+			event.target?.form !== this.parentElement
+		) {
+			return;
+		}
+
+		clearTimeout(this.commitTimeout);
+
+		if (event.type === 'change') {
+			normalizeInputValue(event.target);
+		}
+		this.setDirty();
+	};
+
 	get canSave() {
 		return this.isDirty || this.isNew;
 	}
@@ -152,23 +169,6 @@ export class FormBehaviorElement extends HTMLElement {
 		clearTimeout(this.commitTimeout);
 		setTimeout(this.commit, 300, event);
 	}
-
-	commit = (event: Event) => {
-		if (
-			!isValueElement(event.target, this.form) ||
-			!event.target?.form ||
-			event.target?.form !== this.parentElement
-		) {
-			return;
-		}
-
-		clearTimeout(this.commitTimeout);
-
-		if (event.type === 'change') {
-			normalizeInputValue(event.target);
-		}
-		this.setDirty();
-	};
 
 	async handleUnloadEvent(event: BeforeUnloadEvent) {
 		this.setDirty();

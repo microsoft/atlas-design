@@ -4,6 +4,7 @@ module.exports = {
 		node: false,
 		jasmine: true
 	},
+	ignorePatterns: ['**/*.d.ts'],
 	extends: [
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',

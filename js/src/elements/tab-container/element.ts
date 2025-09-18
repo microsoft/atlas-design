@@ -50,6 +50,8 @@ export class TabContainerChangeEvent extends Event {
 }
 
 export class TabContainerElement extends HTMLElement {
+	static observedAttributes = ['vertical'];
+
 	static define(tag = 'tab-container', registry = customElements) {
 		registry.define(tag, this);
 		return this;
@@ -114,9 +116,6 @@ export class TabContainerElement extends HTMLElement {
 	set onChanged(listener: ((event: TabContainerChangeEvent) => void) | null) {
 		this.onTabContainerChanged = listener;
 	}
-
-	// eslint-disable-next-line @typescript-eslint/member-ordering
-	static observedAttributes = ['vertical'];
 
 	get #tabList(): HTMLElement {
 		const wrapper = this.querySelector('[slot=tablist-wrapper]');
