@@ -1,5 +1,7 @@
 @use 'sass:math';
 
+$twelveth-widescreen: math.div($breakpoint-widescreen, 12);
+$sixth-widescreen: math.div($breakpoint-widescreen, 6);
 $quarter-widescreen: math.div($breakpoint-widescreen, 4);
 $half-widescreen: math.div($breakpoint-widescreen, 2);
 $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
@@ -54,6 +56,11 @@ $default-flyout-width-widescreen: 480px;
 	display: grid;
 	width: 100%;
 	max-width: 100%;
+
+	// use a min function to get the smallest of the text-wrap-mode:
+	// either 1/12 of the viewport width or 1/12 of $breakpoint-widescreen;
+	//assign to variable $column-gap
+	// use css min function not math.min;
 }
 
 // grid-area values
@@ -136,6 +143,7 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include desktop {
+			column-gap: math.div(100vw, 12); // addition
 			grid-template:
 				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
 					0,
@@ -150,17 +158,21 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
+			column-gap: 0; // reset the column gap set on desktop // addition
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height)
+				auto / auto #{$sixth-widescreen} #{$twelveth-widescreen} #{$half-widescreen} #{$twelveth-widescreen} #{$sixth-widescreen} auto; // addition
 			grid-template-areas:
-				'header header header header header'
-				'hero hero hero hero hero'
-				'. menu main aside .'
-				'footer footer footer footer footer';
+				'header header header header header header header'
+				'hero hero hero hero hero hero hero'
+				'. menu . main . aside .'
+				'footer footer footer footer footer footer footer';
 		}
 	}
 
 	&.layout-flyout-active .layout-body {
 		@include desktop {
+			column-gap: 36px; // addition
 			grid-template:
 				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
 				var(#{$layout-flyout-width-name});
@@ -172,6 +184,7 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include widescreen {
+			column-gap: 48px; // addition
 			grid-template:
 				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
 				var(#{$layout-flyout-width-name});
@@ -216,7 +229,9 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height)
+				auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
@@ -288,7 +303,9 @@ $default-flyout-width-widescreen: 480px;
 		}
 
 		@include widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height)
+				auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
