@@ -161,7 +161,7 @@ $themes: (
 		'gradient-vivid-end': $palette-blue-100
 	),
 	'dark': (
-		'text': $palette-grey-30-deprecated,
+		'text': $palette-white,
 		'text-subtle': $palette-grey-40-deprecated,
 		'text-invert': $palette-grey-110-deprecated,
 		'text-glow-high-contrast': $palette-grey-30-deprecated,
@@ -171,7 +171,7 @@ $themes: (
 		'box-shadow-extra-heavy': $palette-black-opacity-22,
 		'overlay': $palette-black-opacity-70,
 		'overlay-invert': $palette-white,
-		'body-background': $palette-grey-270,
+		'body-background': $palette-grey-280,
 		'body-background-accent': $palette-blue-black,
 		'body-background-medium': $palette-grey-250,
 		'alternate-background': $palette-grey-20-deprecated,
