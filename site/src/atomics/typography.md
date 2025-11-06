@@ -29,7 +29,7 @@ The typography scale is designed for great readability across the platform. This
 | `letter-spacing`  | `wide`                                                           | N\A        |
 | `text-transform`  | `uppercase`                                                      | N\A        |
 | `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
-| `text-wrap`       | `pretty`                                                         | N\A        |
+| `text-wrap`       | `pretty`, `balance`                                              | N\A        |
 | `line-height`     | `normal`                                                         | N\A        |
 | `white-space`     | `normal`, `nowrap`, `pre`, `pre-wrap`                            | N\A        |
 
@@ -122,6 +122,8 @@ Appending with `-tablet` to a text-align class will make that class applicable t
 ## Text wrapping
 
 The `.text-wrap-pretty` atomic can be used to prevent [orphans](https://en.wikipedia.org/wiki/Widows_and_orphans), or situations where a line breaks and just one small word ends up on the next line. When the `.text-wrap-pretty` atomic is applied, the browser will instead try to cut the line so the break looks a little more balanced.
+
+Use `.text-wrap-balance` to create more visually balanced line lengths, making a text block appear more uniform.
 
 If your browser supports pretty text-wrapping, resize your browser window and notice the differences between how these two paragraphs break.
 
