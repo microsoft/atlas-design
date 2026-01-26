@@ -367,8 +367,6 @@ $default-flyout-width-widescreen: 480px;
 	}
 }
 
-/* stylelint-enable no-descending-specificity */
-
 .layout.layout-menu-collapsed {
 	.layout-body {
 		@include tablet {
@@ -389,8 +387,8 @@ $default-flyout-width-widescreen: 480px;
 	}
 
 	.layout-body-main {
-		max-width: 900px !important;
 		width: 100%;
+		max-width: 900px !important;
 		justify-self: center;
 	}
 
@@ -400,6 +398,8 @@ $default-flyout-width-widescreen: 480px;
 		flex-shrink: 0 !important;
 	}
 }
+
+/* stylelint-enable no-descending-specificity */
 
 @mixin constrained-layout-child {
 	position: sticky;
