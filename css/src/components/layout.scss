@@ -369,6 +369,38 @@ $default-flyout-width-widescreen: 480px;
 
 /* stylelint-enable no-descending-specificity */
 
+.layout.layout-menu-collapsed {
+	.layout-body {
+		@include tablet {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 23fr);
+		}
+
+		@include desktop {
+			grid-template-columns: minmax(0, 7fr) minmax(0, 23fr) minmax(0, 10fr);
+		}
+
+		@include widescreen {
+			grid-template-columns:
+				auto calc(#{$quarter-widescreen} * 0.5) calc(
+					#{$half-widescreen} + #{$quarter-widescreen} * 0.5
+				)
+				#{$quarter-widescreen} auto;
+		}
+	}
+
+	.layout-body-main {
+		max-width: 900px !important;
+		width: 100%;
+		justify-self: center;
+	}
+
+	.layout-body-aside {
+		width: 100% !important;
+		min-width: 300px !important;
+		flex-shrink: 0 !important;
+	}
+}
+
 @mixin constrained-layout-child {
 	position: sticky;
 	inset-block-start: 0;
