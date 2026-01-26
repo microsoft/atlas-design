@@ -393,9 +393,9 @@ $default-flyout-width-widescreen: 480px;
 	}
 
 	.layout-body-aside {
+		flex-shrink: 0 !important;
 		width: 100% !important;
 		min-width: 300px !important;
-		flex-shrink: 0 !important;
 	}
 }
 
