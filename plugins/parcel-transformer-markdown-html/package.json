@@ -9,8 +9,8 @@
 	},
 	"main": "lib/index.js",
 	"engines": {
-		"node": "20.18.1",
-		"npm": "10.8.2"
+		"node": "24.11.1",
+		"npm": "11.6.2"
 	},
 	"dependencies": {
 		"@microsoft/atlas-css": "4.0.0",

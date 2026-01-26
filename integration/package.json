@@ -3,6 +3,10 @@
 	"version": "1.8.0",
 	"private": true,
 	"description": "",
+	"engines": {
+		"node": "24.11.1",
+		"npm": "11.6.2"
+	},
 	"scripts": {
 		"codegen": "playwright codegen localhost:1111",
 		"compare": "node \"./tasks/dist/compare.js\" ",

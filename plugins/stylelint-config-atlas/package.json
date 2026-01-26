@@ -16,6 +16,10 @@
 	"files": [
 		"index.js"
 	],
+	"engines": {
+		"node": "24.11.1",
+		"npm": "11.6.2"
+	},
 	"dependencies": {
 		"postcss-scss": "^4.0.9",
 		"stylelint-scss": "^6.8.1",

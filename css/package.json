@@ -51,6 +51,10 @@
 		"type": "git",
 		"url": "https://github.com/microsoft/atlas-design"
 	},
+	"engines": {
+		"node": "24.11.1",
+		"npm": "11.6.2"
+	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
