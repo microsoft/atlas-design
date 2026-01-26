@@ -48,7 +48,7 @@ The basic boilerplate for a layout is as follows:
 ```html-no-example
 <html class="layout layout-{nameoflayout}">
 	<body class="layout-body">
-		<header style="layout-body-header">Header</header>
+		<header class="layout-body-header">Header</header>
 		<section aria-label="hero" class="layout-body-hero">Hero</section>
 		<nav class="layout-body-menu">Menu</nav>
 		<main class="layout-body-main">Main</main>
