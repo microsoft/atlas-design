@@ -1,0 +1,59 @@
+$code-block-border-color: $code-block-border !default;
+$code-block-border-width: $border-width !default;
+$code-block-border-radius: $border-radius !default;
+
+$code-block-header-min-height: 2rem !default;
+$code-block-header-color: $text !default;
+$code-block-header-background-color: $code-header !default;
+$code-block-header-font-size: 0.875em !default;
+$code-block-header-font-weight: $weight-semibold !default;
+$code-block-header-gap: $spacer-2 !default;
+$code-block-header-filter-font-size: $font-size-8 !default;
+$code-block-header-padding-vertical: $spacer-1 !default;
+$code-block-header-padding-horizontal: $spacer-4 $spacer-3 !default;
+
+.code-block {
+	position: relative;
+	border: $code-block-border-width solid $code-block-border-color;
+	border-radius: $code-block-border-radius;
+	overflow: hidden;
+
+	.code-block-header {
+		display: flex;
+		gap: $code-block-header-gap;
+		align-items: center;
+		min-height: $code-block-header-min-height;
+		border-block-end: $code-block-border-width solid $code-block-border-color;
+		background-color: $code-block-header-background-color;
+		color: $code-block-header-color;
+		font-size: $code-block-header-font-size;
+		font-weight: $code-block-header-font-weight;
+		padding-block: $code-block-header-padding-vertical;
+		padding-inline: $code-block-header-padding-horizontal;
+
+		.code-block-header-language {
+			flex-grow: 1;
+		}
+
+		.code-block-header-action-button {
+			min-height: auto;
+			padding-block: calc(0.125em - #{$button-border-width});
+		}
+
+		.code-block-header-filter {
+			flex-shrink: 1;
+			max-width: 12ch;
+			min-height: auto;
+			font-size: $code-block-header-filter-font-size;
+			padding-block: calc(0.125em - #{$button-border-width});
+
+			&::placeholder {
+				color: $text-subtle;
+			}
+		}
+	}
+
+	.code-block-body {
+		@include code-block(true);
+	}
+}
