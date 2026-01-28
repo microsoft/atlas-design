@@ -19,6 +19,8 @@ $code-block-pre-padding: $spacer-4 !default;
 		max-width: 100%;
 		margin: 0;
 		padding: $code-block-pre-padding;
+		outline-color: currentColor;
+		outline-offset: -$focus-width;
 		font-size: $code-block-pre-font-size;
 		-moz-osx-font-smoothing: auto;
 		-webkit-font-smoothing: auto;
