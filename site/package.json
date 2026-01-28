@@ -7,6 +7,11 @@
 		"node": "24.11.1",
 		"npm": "11.6.2"
 	},
+	"targets": {
+		"default": {
+			"includeNodeModules": true
+		}
+	},
 	"scripts": {
 		"prebuild": "node toc.js",
 		"prestart": "node toc.js",
@@ -32,9 +37,7 @@
 		"@microsoft/parcel-transformer-markdown-html": "2.7.2",
 		"fs-extra": "^11.1.1",
 		"front-matter": "^4.0.2",
-		"typescript": "^5.1.5"
-	},
-	"dependencies": {
+		"typescript": "^5.1.5",
 		"@microsoft/atlas-js": "^1.15.0"
 	}
 }
