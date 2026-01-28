@@ -1,4 +1,4 @@
-const fs = require('fs-extra');
+const { readFile, writeFile, mkdir } = require('fs/promises');
 const path = require('path');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
 const { exporter } = require('sass-export');
@@ -24,9 +24,9 @@ async function createTokens() {
 	const outfileStem = path.join(outfolder, 'tokens');
 
 	try {
-		await fs.ensureDir(outfolder);
+		await mkdir(outfolder, { recursive: true });
 		await Promise.all([
-			fs.writeJSON(`${outfileStem}.json`, collection),
+			writeFile(`${outfileStem}.json`, JSON.stringify(collection)),
 			quicktypeJSON('AtlasTokens', JSON.stringify(collection), `${outfileStem}.ts`, 'typescript')
 		]);
 		console.log(`Tokens written to "${path.join(process.cwd(), `/dist/${outfileStem}.json`)}".`);
@@ -45,7 +45,7 @@ async function getInputFilesFromIndex(filePathStem, indexPath) {
 	/** @type {string[]} */
 	const filePaths = [];
 	try {
-		const indexFile = (await fs.readFile(indexPath)).toString();
+		const indexFile = (await readFile(indexPath)).toString();
 		const lines = indexFile.split('\n').reduce((arr, line) => {
 			if (line.includes('@import')) {
 				const filePath = line.replace('@import', '').replaceAll(`'`, '').replace(';', '').trim();
@@ -66,7 +66,7 @@ async function getInputFilesFromIndex(filePathStem, indexPath) {
 function checkFileComments(paths) {
 	const promises = paths.map(async path => {
 		try {
-			const result = await fs.readFile(path, 'utf8');
+			const result = await readFile(path, 'utf8');
 			if (!result.includes('@sass-export-section')) {
 				console.log(`Warning: ${path} is missing @sass-export-section annotations.`);
 			}
@@ -242,5 +242,5 @@ async function quicktypeJSON(typeName, jsonString, outfile, targetLanguage = 'ty
 		inputData,
 		lang: targetLanguage
 	});
-	return fs.writeFile(outfile, result.lines.join('\n'));
+	return writeFile(outfile, result.lines.join('\n'));
 }
