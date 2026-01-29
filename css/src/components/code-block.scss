@@ -8,9 +8,10 @@ $code-block-header-color: $text !default;
 $code-block-header-background-color: $code-header !default;
 $code-block-header-font-weight: $weight-semibold !default;
 $code-block-header-gap: $spacer-2 !default;
-$code-block-header-filter-font-size: $font-size-8 !default;
 $code-block-header-padding-vertical: $spacer-1 !default;
 $code-block-header-padding-horizontal: $spacer-4 $spacer-3 !default;
+
+$code-block-control-padding: calc(0.125em - #{$button-border-width}) !default;
 
 .code-block {
 	position: relative;
@@ -21,34 +22,33 @@ $code-block-header-padding-horizontal: $spacer-4 $spacer-3 !default;
 
 	.code-block-header {
 		display: flex;
-		gap: $code-block-header-gap;
+		flex-wrap: wrap;
 		align-items: center;
 		min-height: $code-block-header-min-height;
-		border-block-end: $code-block-border-width solid $code-block-border-color;
 		background-color: $code-block-header-background-color;
 		color: $code-block-header-color;
 		font-weight: $code-block-header-font-weight;
+		gap: $code-block-header-gap;
+		border-block-end: $code-block-border-width solid $code-block-border-color;
 		padding-block: $code-block-header-padding-vertical;
 		padding-inline: $code-block-header-padding-horizontal;
+
+		@include tablet {
+			flex-wrap: nowrap;
+		}
 
 		.code-block-header-language {
 			flex-grow: 1;
 		}
 
-		.code-block-header-action-button {
-			min-height: auto;
-			padding-block: calc(0.125em - #{$button-border-width});
-		}
+		.code-block-header-actions {
+			display: flex;
+			gap: $code-block-header-gap;
+			margin-inline-start: auto;
 
-		.code-block-header-filter {
-			flex-shrink: 1;
-			max-width: 12ch;
-			min-height: auto;
-			font-size: $code-block-header-filter-font-size;
-			padding-block: calc(0.125em - #{$button-border-width});
-
-			&::placeholder {
-				color: $text-subtle;
+			.code-block-header-action-button {
+				min-height: auto;
+				padding-block: $code-block-control-padding;
 			}
 		}
 	}

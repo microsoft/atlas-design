@@ -1,0 +1,16 @@
+$code-block-header-filter-font-size: $font-size-8;
+$code-block-header-filter-color: $text-subtle;
+
+.code-block .code-block-header .code-block-header-actions {
+	.code-block-header-filter {
+		flex-shrink: 1;
+		max-width: 12ch;
+		min-height: auto;
+		font-size: $code-block-header-filter-font-size;
+		padding-block: $code-block-control-padding;
+
+		&::placeholder {
+			color: $code-block-header-filter-color;
+		}
+	}
+}
