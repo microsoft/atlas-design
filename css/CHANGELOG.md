@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 4.2.0
+
+### Minor Changes
+
+- 58a83fd: Adding XXL size to non-heading font
+
 ## 4.1.0
 
 ### Minor Changes

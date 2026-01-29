@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.66.0
+
+### Minor Changes
+
+- 58a83fd: Adding XXL size to non-heading font
+
 ## 0.65.0
 
 ### Minor Changes
