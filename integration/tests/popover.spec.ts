@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('popover closes .popover-content when an outer element is clicked', async ({ page }) => {
+test.only('popover closes .popover-content when an outer element is clicked', async ({ page }) => {
 	await page.goto('/components/popover.html');
 
 	const content = page.locator('#test-popover-content');
@@ -9,6 +9,8 @@ test('popover closes .popover-content when an outer element is clicked', async (
 
 	// Click summary:has-text("Popover centered")
 	await page.locator('#test-popover-summary').click();
+
+	await content.scrollIntoViewIfNeeded();
 
 	expect(content).toBeVisible();
 

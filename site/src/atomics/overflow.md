@@ -39,7 +39,7 @@ You can use `.overflow-x-hidden` to set the clipping behavior for the left/right
 ```html
 <div class="border-radius-lg">
 	<div class="">
-		<div class="overflow-x-hidden" style="width: 100px">
+		<div class="overflow-x-hidden" style="width: 100px" data-focusable-if-scrollable>
 			<p class="font-size-xl" style="width: 150px">
 				This text is clipped on its right edge because we gave the parent container overflow-hidden.
 			</p>
