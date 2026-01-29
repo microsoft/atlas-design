@@ -26,6 +26,7 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
 <div class="buttons buttons-addons display-flex">
 	<button class="button" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 	<button class="button" data-toggle-layout-height-constraint aria-pressed="false">Constrain layout height</button>
+	<button class="button" data-toggle-menu-collapsed aria-pressed="false">Menu Collapse</button>
 </div>
 <div class="buttons buttons-addons display-flex">
 	<button class="button button-filled" data-toggle-hero-visibility aria-pressed="true">Toggle hero</button>
