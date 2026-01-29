@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.only('popover closes .popover-content when an outer element is clicked', async ({ page }) => {
+test('popover closes .popover-content when an outer element is clicked', async ({ page }) => {
 	await page.goto('/components/popover.html');
 
 	const content = page.locator('#test-popover-content');
