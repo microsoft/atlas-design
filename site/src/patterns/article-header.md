@@ -14,6 +14,7 @@ Please note that, when dealing with a variable amount of breadcrumbs, you'll nee
 <div class="display-flex align-items-center">
 	<details class="popover">
 		<summary class="button button-clear button-primary">
+			<span class="visually-hidden">Example button</span>
 			<span class="icon">
 				<svg width="21" height="21" fill="none">
 					<rect width="10" height="10" class="fill-current-color"></rect>

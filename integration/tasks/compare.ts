@@ -1,6 +1,6 @@
 // @ts-check
 
-import { emptyDir, ensureDir, readFile, writeFile, writeJSON } from 'fs-extra';
+import { mkdir, readFile, rm, writeFile } from 'fs/promises';
 import { basename, dirname, join, resolve, sep } from 'path';
 import * as pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
@@ -81,7 +81,7 @@ async function compare(
 	const [sourceKeys, targetKeys] = await Promise.all([
 		glob(pattern, { cwd: sourceDir }),
 		glob(pattern, { cwd: targetDir }),
-		emptyDir(outDir)
+		rm(outDir, { recursive: true, force: true }).then(() => mkdir(outDir, { recursive: true }))
 	]);
 
 	const sourceMap = sourceKeys.reduce(
@@ -115,7 +115,7 @@ async function compare(
 
 		const name = basename(key, '.png');
 		const dir = resolve(outDir, dirname(key));
-		await ensureDir(dir);
+		await mkdir(dir, { recursive: true });
 		const outfile = join(dir, `${name}${diffExt}`);
 
 		const [title, theme, resolutionString, projectInfo, browser] = name.split('__');
@@ -148,7 +148,10 @@ async function compare(
 	await Promise.all([writePromises]);
 	const sortedManifest = sortManifest(manifest);
 
-	await writeJSON(join(screenshotsManifestLocation, 'manifest.json'), sortedManifest);
+	await writeFile(
+		join(screenshotsManifestLocation, 'manifest.json'),
+		JSON.stringify(sortedManifest)
+	);
 	return sortedManifest;
 }
 

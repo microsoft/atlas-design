@@ -16,14 +16,18 @@
 	"files": [
 		"index.js"
 	],
+	"engines": {
+		"node": "24.11.1",
+		"npm": "11.6.2"
+	},
 	"dependencies": {
 		"postcss-scss": "^4.0.9",
 		"stylelint-scss": "^6.8.1",
 		"stylelint-order": "^6.0.4",
 		"stylelint-config-standard": "^36.0.1",
 		"stylelint-config-recommended-scss": "14.1.0",
-		"stylelint": "^16.10.0",
-		"stylelint-use-logical": "^2.1.2"
+		"stylelint": "14.16.1",
+		"stylelint-use-logical": "2.1.2"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

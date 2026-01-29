@@ -10,6 +10,8 @@ test('popover closes .popover-content when an outer element is clicked', async (
 	// Click summary:has-text("Popover centered")
 	await page.locator('#test-popover-summary').click();
 
+	await content.scrollIntoViewIfNeeded();
+
 	expect(content).toBeVisible();
 
 	await page.locator('h1').click();

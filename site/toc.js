@@ -1,10 +1,9 @@
 // @ts-nocheck
 const path = require('path');
-const fs = require('fs-extra');
+const { readdir, readFile, stat, writeFile, mkdir } = require('fs/promises');
 const frontMatter = require('front-matter');
 
 const siteDir = path.join(process.cwd(), '/src/');
-console.log(siteDir);
 
 const routesForClassPrefixes = {};
 
@@ -49,10 +48,10 @@ const settings = normalizePaths({
 createToc().then(async toc => {
 	const { outFile, distFolder } = settings;
 	const saveTo = outFile;
-	fs.writeFile(saveTo, JSON.stringify(toc));
-	await fs.ensureDir(distFolder);
+	writeFile(saveTo, JSON.stringify(toc));
+	await mkdir(distFolder, { recursive: true });
 	const classPrefixesOutFile = path.resolve(distFolder, 'routes-for-class-prefixes.json');
-	fs.writeFile(classPrefixesOutFile, JSON.stringify(routesForClassPrefixes));
+	writeFile(classPrefixesOutFile, JSON.stringify(routesForClassPrefixes));
 });
 
 /**
@@ -78,7 +77,7 @@ async function createToc(subDir) {
 	/**
 	 * All the items in the directory.
 	 */
-	const items = await fs.readdir(directory);
+	const items = await readdir(directory);
 	/**
 	 * A data structure to make building things to HTML relatively straightforward.
 	 */
@@ -115,7 +114,7 @@ async function createToc(subDir) {
 
 		// If it's not markdown, determine if it's a directory
 		if (!isMarkdown) {
-			isDirectory = (await fs.stat(location)).isDirectory();
+			isDirectory = (await stat(location)).isDirectory();
 		}
 
 		// Only add markdown files and directories, except ignored files
@@ -163,7 +162,7 @@ async function getName(settings, srcPath, isMarkdown, location, parsed) {
 	}
 
 	if (isMarkdown) {
-		const contents = await fs.readFile(location, 'utf-8');
+		const contents = await readFile(location, 'utf-8');
 		const { attributes } = frontMatter(contents);
 
 		if (attributes.title) {
@@ -175,7 +174,7 @@ async function getName(settings, srcPath, isMarkdown, location, parsed) {
 }
 
 async function getclassPrefixes(location, pagePath, pageName) {
-	const contents = await fs.readFile(location, 'utf-8');
+	const contents = await readFile(location, 'utf-8');
 	const { attributes } = frontMatter(contents);
 	if (!Array.isArray(attributes.classPrefixes)) {
 		return;

@@ -51,6 +51,10 @@
 		"type": "git",
 		"url": "https://github.com/microsoft/atlas-design"
 	},
+	"engines": {
+		"node": "24.11.1",
+		"npm": "11.6.2"
+	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
@@ -73,18 +77,18 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@microsoft/stylelint-config-atlas": "4.1.0",
-		"@parcel/transformer-sass": "2.16.0",
+		"@parcel/transformer-sass": "2.16.3",
 		"css-tree": "^2.3.1",
 		"eslint-plugin-security": "^1.7.1",
 		"fs-extra": "^11.1.1",
-		"parcel": "2.16.0",
+		"parcel": "2.16.3",
 		"lightningcss": "^1.25.1",
 		"prettier": "^2.8.8",
 		"quicktype-core": "^23.0.48",
 		"grass": "^1.0.2",
 		"sass-export": "^2.1.2",
-		"stylelint": "^16.10.0",
-		"stylelint-config-prettier": "^9.0.5",
+		"stylelint": "14.16.1",
+		"stylelint-config-prettier": "9.0.5",
 		"stylelint-prettier": "^3.0.0",
 		"wireit": "0.14.9"
 	}

@@ -3,6 +3,10 @@
 	"version": "1.8.0",
 	"private": true,
 	"description": "",
+	"engines": {
+		"node": "24.11.1",
+		"npm": "11.6.2"
+	},
 	"scripts": {
 		"codegen": "playwright codegen localhost:1111",
 		"compare": "node \"./tasks/dist/compare.js\" ",
@@ -15,7 +19,7 @@
 		"prescreenshots:all": "rimraf \"./visual-diff/visual-diff.spec.ts-screenshots\"",
 		"show-report": "playwright show-report",
 		"visual-diff:local": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./tasks/visual-diff-local.ps1 && npm run serve-report",
-		"serve-report": "parcel \"./visual-diff/screenshots/*.html\" --port 7777 --open Chrome --no-cache",
+		"serve-report": "parcel \"./visual-diff/screenshots/*.html\" --port 7777 --open Chrome",
 		"build-report": "parcel build \"./visual-diff/screenshots/*.html\""
 	},
 	"author": "Microsoft Corporation",
@@ -31,7 +35,7 @@
 		"fs-extra": "^11.1.1",
 		"glob": "^10.3.1",
 		"normalize-path": "^3.0.0",
-		"parcel": "2.16.0",
+		"parcel": "2.16.3",
 		"pixelmatch": "^5.3.0",
 		"pngjs": "^7.0.0"
 	}
