@@ -215,10 +215,10 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 		@include widescreen {
 			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$eighth-widescreen} #{$five-eighths-widescreen} #{$quarter-widescreen} auto;
 			grid-template-areas:
-				'header header header header'
-				'hero hero hero hero'
-				'. main aside .'
-				'footer footer footer footer';
+				'header header header header header'
+				'hero hero hero hero hero'
+				'. menu main aside .'
+				'footer footer footer footer footer';
 		}
 	}
 
