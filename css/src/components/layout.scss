@@ -5,6 +5,9 @@ $half-widescreen: math.div($breakpoint-widescreen, 2);
 $three-quarters-widescreen: math.div($breakpoint-widescreen, 4) * 3;
 $default-flyout-width-desktop: 320px;
 $default-flyout-width-widescreen: 480px;
+$default-aside-min-width: 300px;
+$eighth-widescreen: math.div($breakpoint-widescreen, 8); // 225px
+$five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 
 :root {
 	--window-inner-height: 100vh; // to be overwritten by JS
@@ -181,6 +184,54 @@ $default-flyout-width-widescreen: 480px;
 				'menu main aside flyout'
 				'footer footer footer footer';
 		}
+	}
+}
+
+.layout.layout-menu-collapsed {
+	.layout-body {
+		@include tablet {
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / minmax(0, 7fr)
+				minmax(0, 23fr);
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'menu main'
+				'menu aside'
+				'footer footer';
+		}
+
+		@include desktop {
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 7fr)
+				minmax(0, 23fr) minmax(0, 10fr);
+			grid-template-areas:
+				'header header header'
+				'hero hero hero'
+				'menu main aside'
+				'footer footer footer';
+		}
+
+		@include widescreen {
+			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$eighth-widescreen} #{$five-eighths-widescreen} #{$quarter-widescreen} auto;
+			grid-template-areas:
+				'header header header header'
+				'hero hero hero hero'
+				'. main aside .'
+				'footer footer footer footer';
+		}
+	}
+
+	.layout-body-main {
+		width: 100%;
+		max-width: $half-widescreen !important;
+		justify-self: center;
+	}
+
+	.layout-body-aside {
+		flex-shrink: 0 !important;
+		width: 100% !important;
+		min-width: $default-aside-min-width !important;
 	}
 }
 
@@ -364,38 +415,6 @@ $default-flyout-width-widescreen: 480px;
 				'main aside flyout'
 				'footer footer footer';
 		}
-	}
-}
-
-.layout.layout-menu-collapsed {
-	.layout-body {
-		@include tablet {
-			grid-template-columns: minmax(0, 7fr) minmax(0, 23fr);
-		}
-
-		@include desktop {
-			grid-template-columns: minmax(0, 7fr) minmax(0, 23fr) minmax(0, 10fr);
-		}
-
-		@include widescreen {
-			grid-template-columns:
-				auto calc(#{$quarter-widescreen} * 0.5) calc(
-					#{$half-widescreen} + #{$quarter-widescreen} * 0.5
-				)
-				#{$quarter-widescreen} auto;
-		}
-	}
-
-	.layout-body-main {
-		width: 100%;
-		max-width: 900px !important;
-		justify-self: center;
-	}
-
-	.layout-body-aside {
-		flex-shrink: 0 !important;
-		width: 100% !important;
-		min-width: 300px !important;
 	}
 }
 

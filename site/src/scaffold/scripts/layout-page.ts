@@ -4,7 +4,8 @@ const layoutsClasses = [
 	'layout-holy-grail',
 	'layout-sidecar-left',
 	'layout-sidecar-right',
-	'layout-twin'
+	'layout-twin',
+	'layout-menu-collapsed'
 ];
 
 // A function that removes all classes that begin with layout- on the html element
