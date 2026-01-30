@@ -5,6 +5,7 @@ const setHolyGrailLayoutSelector = '[data-set-layout="layout-holy-grail"]';
 const setTwinLayoutSelector = '[data-set-layout="layout-twin"]';
 const setSidecarLeftLayoutSelector = '[data-set-layout="layout-sidecar-left"]';
 const setSidecarRightLayoutSelector = '[data-set-layout="layout-sidecar-right"]';
+const setMenuCollapsedLayoutSelector = '[data-set-layout="layout-menu-collapsed"]';
 const constrainLayoutSelector = '[data-toggle-layout-height-constraint]';
 const hideHeroSelector = '[data-toggle-hero-visibility]';
 const toggleFlyoutSelector = '[data-toggle-flyout-visibility]';
@@ -421,4 +422,42 @@ test('flyout will not be shown on mobile and tablet ever @narrow', async ({ page
 
 	const flyoutElt = await page.locator('.layout-body-flyout');
 	expect(flyoutElt).not.toBeVisible();
+});
+
+test('menu-collapsed layout displays menu, main, and aside in correct order at widescreen @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	await page.locator(setMenuCollapsedLayoutSelector).click();
+	await page.waitForTimeout(300);
+
+	const layoutHtml = page.locator('.layout.layout-menu-collapsed');
+	const menu = layoutHtml.locator('.layout-body-menu');
+	const main = layoutHtml.locator('.layout-body-main');
+	const aside = layoutHtml.locator('.layout-body-aside');
+
+	// All elements should be visible
+	await expect(layoutHtml).toBeVisible();
+	await expect(menu).toBeVisible();
+	await expect(main).toBeVisible();
+	await expect(aside).toBeVisible();
+
+	// Verify horizontal order: menu < main < aside
+	const menuBox = await menu.boundingBox();
+	const mainBox = await main.boundingBox();
+	const asideBox = await aside.boundingBox();
+
+	expect(menuBox).not.toBeNull();
+	expect(mainBox).not.toBeNull();
+	expect(asideBox).not.toBeNull();
+
+	expect(menuBox!.x).toBeLessThan(mainBox!.x);
+	expect(mainBox!.x).toBeLessThan(asideBox!.x);
 });
