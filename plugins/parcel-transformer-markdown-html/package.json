@@ -9,12 +9,13 @@
 	},
 	"main": "lib/index.js",
 	"engines": {
-		"node": "20.18.1",
-		"npm": "10.8.2"
+		"node": "24.11.1",
+		"npm": "11.6.2",
+		"parcel": "2.16.3"
 	},
 	"dependencies": {
 		"@microsoft/atlas-css": "4.0.0",
-		"parcel": "2.16.0",
+		"parcel": "2.16.3",
 		"@parcel/plugin": "2.16.0",
 		"@parcel/utils": "2.16.0",
 		"marked": "^5.1.0",

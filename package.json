@@ -4,6 +4,10 @@
 	"description": "The Atlas Design System used by Microsoft's Developer Relations platform.",
 	"private": true,
 	"homepage": "https://github.com/microsoft/atlas-design",
+	"engines": {
+		"node": "24.11.1",
+		"npm": "11.6.2"
+	},
 	"scripts": {
 		"build:css": "npm run build --workspace=@microsoft/atlas-css",
 		"build:js": "npm run build --workspace=@microsoft/atlas-js",

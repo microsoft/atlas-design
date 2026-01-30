@@ -1,4 +1,4 @@
-import { ensureDir, writeFile } from 'fs-extra';
+import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
 import type { VisualDiffReportManifest } from './compare';
 import { screenshotsRoot } from './locations';
@@ -123,7 +123,7 @@ function generateNav(entries: VisualDiffReportManifest): string {
 
 async function writePage(directory: string, filename: string, toc: string, content: string) {
 	const location = join(screenshotsRoot, filename);
-	await ensureDir(directory);
+	await mkdir(directory, { recursive: true });
 	const html = `
 		<!doctype html>
 		<html lang="en" class="theme-dark">

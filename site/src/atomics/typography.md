@@ -22,14 +22,14 @@ The typography scale is designed for great readability across the platform. This
 
 | cssproperty       | value                                                            | screensize |
 | ----------------- | ---------------------------------------------------------------- | ---------- |
-| `font-size`       | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `xs`, `sm`, `md`, `lg`, `xl` | `tablet`   |
+| `font-size`       | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `xs`, `sm`, `md`, `lg`, `xl`, `xxl` | `tablet`   |
 | `font-weight`     | `semilight`, `light`, `normal`, `semibold` `bold`                | N\A        |
 | `font-style`      | `italic`                                                         | N\A        |
 | `text-decoration` | `underline`, `none`                                              | N\A        |
 | `letter-spacing`  | `wide`                                                           | N\A        |
 | `text-transform`  | `uppercase`                                                      | N\A        |
 | `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
-| `text-wrap`       | `pretty`, `balance`                                              | N\A        |
+| `text-wrap`       | `pretty`, `balance`                                                         | N\A        |
 | `line-height`     | `normal`                                                         | N\A        |
 | `white-space`     | `normal`, `nowrap`, `pre`, `pre-wrap`                            | N\A        |
 
@@ -56,6 +56,7 @@ These sizes are tied to the default heading sizes renderer within the [markdown 
 The following classes targets text that are not headings.
 
 ```html
+<p class="font-size-xxl">Extra extra large text</p>
 <p class="font-size-xl">Extra large text</p>
 <p class="font-size-lg">Large text</p>
 <p class="font-size-md">Medium text</p>
