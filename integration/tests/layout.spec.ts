@@ -436,7 +436,6 @@ test('menu-collapsed layout displays menu, main, and aside in correct order at w
 	await page.waitForLoadState('domcontentloaded');
 
 	await page.locator(setMenuCollapsedLayoutSelector).click();
-	await page.waitForTimeout(300);
 
 	const layoutHtml = page.locator('.layout.layout-menu-collapsed');
 	const menu = layoutHtml.locator('.layout-body-menu');

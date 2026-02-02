@@ -4,7 +4,6 @@ const layoutsClasses = [
 	'layout-holy-grail',
 	'layout-sidecar-left',
 	'layout-sidecar-right',
-	'layout-twin',
 	'layout-menu-collapsed'
 ];
 
