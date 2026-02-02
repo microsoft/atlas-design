@@ -1,0 +1,78 @@
+// Homepage-specific styles - minimal CSS, using Atlas atomics where possible
+// Only includes: animations, pseudo-elements, and styles not achievable with atomics
+
+// Nav link hover effect
+.homepage-nav-link:hover {
+	color: var(--primary);
+}
+
+// Brand logo hover animation
+.homepage-logo {
+	transition: transform 0.3s ease;
+
+	.homepage-brand:hover & {
+		transform: rotate(15deg) scale(1.1);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+}
+
+// Uses palette colors: $palette-blue-100 (#0078d4) and $palette-turqoise-20 (#00666d)
+.homepage-hero-bg {
+	background: radial-gradient(ellipse at 30% 20%, hsl(206deg 100% 41% / 15%) 0%, transparent 50%),
+		radial-gradient(ellipse at 70% 80%, hsl(183deg 100% 21% / 10%) 0%, transparent 50%);
+	pointer-events: none;
+}
+
+.homepage-features-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 1.5rem;
+}
+
+.homepage-feature-icon {
+	width: 48px;
+	height: 48px;
+	color: white;
+
+	svg {
+		width: 24px;
+		height: 24px;
+	}
+
+	&.homepage-feature-icon-accessibility {
+		background: linear-gradient(135deg, #6366f1, #8b5cf6);
+	}
+	&.homepage-feature-icon-css {
+		background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+	}
+	&.homepage-feature-icon-rtl {
+		background: linear-gradient(135deg, #10b981, #059669);
+	}
+	&.homepage-feature-icon-themes {
+		background: linear-gradient(135deg, #f59e0b, #d97706);
+	}
+	&.homepage-feature-icon-vscode {
+		background: linear-gradient(135deg, #3b82f6, #2563eb);
+	}
+	&.homepage-feature-icon-npm {
+		background: linear-gradient(135deg, #ef4444, #dc2626);
+	}
+	&.homepage-feature-icon-layouts {
+		background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+	}
+	&.homepage-feature-icon-testing {
+		background: linear-gradient(135deg, #22c55e, #16a34a);
+	}
+}
+
+// Quick start grid - responsive
+.homepage-quickstart-grid {
+	grid-template-columns: 1fr;
+
+	@media (min-width: 860px) {
+		grid-template-columns: 1fr 1fr;
+	}
+}

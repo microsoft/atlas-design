@@ -24,6 +24,7 @@ const settings = normalizePaths({
 	names: {
 		'/index.md': '[hide]',
 		'/not-found.md': '[hide]',
+		'/get-started.md': 'Get Started',
 		'/tokens': 'Tokens',
 		'/components': 'Components',
 		'/patterns': 'Patterns',
@@ -47,6 +48,12 @@ const settings = normalizePaths({
 
 createToc().then(async toc => {
 	const { outFile, distFolder } = settings;
+	// Sort to put get-started first
+	toc.sort((a, b) => {
+		if (a.href.includes('get-started.md')) return -1;
+		if (b.href.includes('get-started.md')) return 1;
+		return 0;
+	});
 	const saveTo = outFile;
 	writeFile(saveTo, JSON.stringify(toc));
 	await mkdir(distFolder, { recursive: true });

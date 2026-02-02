@@ -1,6 +1,6 @@
 # Atlas Site - Copilot Instructions
 
-applyTo: "site/**"
+applyTo: "site/\*\*"
 
 This is the `@microsoft/atlas-site` package, the documentation website for the Atlas Design System.
 
@@ -41,6 +41,7 @@ site/
 1. **Include frontmatter** - All pages need title and description
 2. **Use Atlas components** - Document with live examples
 3. **Follow existing patterns** - Match structure of similar pages
+4. **Write internal links to markdown, not html, and let the build system resolve them.** - Example: `href="~/src/components/button.md"`
 
 ### Frontmatter Example
 
