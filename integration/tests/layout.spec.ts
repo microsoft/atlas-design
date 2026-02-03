@@ -5,7 +5,7 @@ const setHolyGrailLayoutSelector = '[data-set-layout="layout-holy-grail"]';
 const setTwinLayoutSelector = '[data-set-layout="layout-twin"]';
 const setSidecarLeftLayoutSelector = '[data-set-layout="layout-sidecar-left"]';
 const setSidecarRightLayoutSelector = '[data-set-layout="layout-sidecar-right"]';
-const setMenuCollapsedLayoutSelector = '[data-set-layout="layout-menu-collapsed"]';
+const toggleMenuCollapsedSelector = '[data-toggle-menu-collapsed]';
 const constrainLayoutSelector = '[data-toggle-layout-height-constraint]';
 const hideHeroSelector = '[data-toggle-hero-visibility]';
 const toggleFlyoutSelector = '[data-toggle-flyout-visibility]';
@@ -424,7 +424,7 @@ test('flyout will not be shown on mobile and tablet ever @narrow', async ({ page
 	expect(flyoutElt).not.toBeVisible();
 });
 
-test('menu-collapsed layout displays menu, main, and aside in correct order at widescreen @desktop', async ({
+test('menu-collapsed modifier collapses menu width on holy-grail layout at widescreen @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
@@ -435,21 +435,26 @@ test('menu-collapsed layout displays menu, main, and aside in correct order at w
 	await page.goto('/components/layout.html');
 	await page.waitForLoadState('domcontentloaded');
 
-	// Measure menu width before (holy-grail is default)
+	// Ensure we're on holy-grail layout (default)
+	const layoutHtml = page.locator('.layout.layout-holy-grail');
+	await expect(layoutHtml).toBeVisible();
+
+	// Measure menu width before applying modifier
 	const menuBefore = page.locator('.layout-body-menu');
 	await expect(menuBefore).toBeVisible();
 	const menuWidthBefore = (await menuBefore.boundingBox())!.width;
 
-	// Switch to menu-collapsed layout
-	await page.locator(setMenuCollapsedLayoutSelector).click();
+	// Toggle menu-collapsed modifier
+	await page.locator(toggleMenuCollapsedSelector).click();
 
-	const layoutHtml = page.locator('.layout.layout-menu-collapsed');
-	const menu = layoutHtml.locator('.layout-body-menu');
-	const main = layoutHtml.locator('.layout-body-main');
-	const aside = layoutHtml.locator('.layout-body-aside');
+	// Layout should now have both holy-grail and menu-collapsed classes
+	const layoutWithModifier = page.locator('.layout.layout-holy-grail.layout-menu-collapsed');
+	const menu = layoutWithModifier.locator('.layout-body-menu');
+	const main = layoutWithModifier.locator('.layout-body-main');
+	const aside = layoutWithModifier.locator('.layout-body-aside');
 
 	// All elements should be visible
-	await expect(layoutHtml).toBeVisible();
+	await expect(layoutWithModifier).toBeVisible();
 	await expect(menu).toBeVisible();
 	await expect(main).toBeVisible();
 	await expect(aside).toBeVisible();
@@ -465,4 +470,51 @@ test('menu-collapsed layout displays menu, main, and aside in correct order at w
 
 	expect(menuBox!.x).toBeLessThan(mainBox!.x);
 	expect(mainBox!.x).toBeLessThan(asideBox!.x);
+});
+
+test('menu-collapsed modifier collapses menu width on sidecar-left layout at widescreen @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	// Switch to sidecar-left layout
+	await page.locator(setSidecarLeftLayoutSelector).click();
+	await page.waitForTimeout(300);
+
+	const layoutHtml = page.locator('.layout.layout-sidecar-left');
+	await expect(layoutHtml).toBeVisible();
+
+	// Measure menu width before applying modifier
+	const menuBefore = page.locator('.layout-body-menu');
+	await expect(menuBefore).toBeVisible();
+	const menuWidthBefore = (await menuBefore.boundingBox())!.width;
+
+	// Toggle menu-collapsed modifier
+	await page.locator(toggleMenuCollapsedSelector).click();
+
+	// Layout should now have both sidecar-left and menu-collapsed classes
+	const layoutWithModifier = page.locator('.layout.layout-sidecar-left.layout-menu-collapsed');
+	const menu = layoutWithModifier.locator('.layout-body-menu');
+	const main = layoutWithModifier.locator('.layout-body-main');
+
+	// Elements should be visible
+	await expect(layoutWithModifier).toBeVisible();
+	await expect(menu).toBeVisible();
+	await expect(main).toBeVisible();
+
+	// Menu should be narrower than before
+	const menuWidthAfter = (await menu.boundingBox())!.width;
+	expect(menuWidthAfter).toBeLessThan(menuWidthBefore);
+
+	// Verify horizontal order: menu < main
+	const menuBox = await menu.boundingBox();
+	const mainBox = await main.boundingBox();
+
+	expect(menuBox!.x).toBeLessThan(mainBox!.x);
 });

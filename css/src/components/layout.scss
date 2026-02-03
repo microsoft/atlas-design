@@ -187,8 +187,27 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 	}
 }
 
+// layout-menu-collapsed is a modifier that works with layouts that have a menu
+// It collapses the menu to a narrower width and adjusts the main/aside areas accordingly
+
 .layout.layout-menu-collapsed {
-	.layout-body {
+	// Shared styles for main and aside when menu is collapsed
+
+	.layout-body-main {
+		width: 100%;
+		max-width: $half-widescreen !important;
+		justify-self: center;
+	}
+
+	.layout-body-aside {
+		flex-shrink: 0 !important;
+		width: 100% !important;
+		min-width: $default-aside-min-width !important;
+	}
+
+	// holy-grail layout with collapsed menu
+
+	&.layout-holy-grail .layout-body {
 		@include tablet {
 			grid-template:
 				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / minmax(0, 7fr)
@@ -222,16 +241,39 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 		}
 	}
 
-	.layout-body-main {
-		width: 100%;
-		max-width: $half-widescreen !important;
-		justify-self: center;
-	}
+	// sidecar-left layout with collapsed menu
 
-	.layout-body-aside {
-		flex-shrink: 0 !important;
-		width: 100% !important;
-		min-width: $default-aside-min-width !important;
+	&.layout-sidecar-left .layout-body {
+		@include tablet {
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 7fr)
+				minmax(0, 23fr);
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'menu main'
+				'footer footer';
+		}
+
+		@include desktop {
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 7fr)
+				minmax(0, 23fr);
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'menu main'
+				'footer footer';
+		}
+
+		@include widescreen {
+			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$eighth-widescreen} #{$five-eighths-widescreen} auto;
+			grid-template-areas:
+				'header header header header'
+				'hero hero hero hero'
+				'. menu main .'
+				'footer footer footer footer';
+		}
 	}
 }
 

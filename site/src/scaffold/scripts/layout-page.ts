@@ -3,11 +3,10 @@ const layoutsClasses = [
 	'layout-twin',
 	'layout-holy-grail',
 	'layout-sidecar-left',
-	'layout-sidecar-right',
-	'layout-menu-collapsed'
+	'layout-sidecar-right'
 ];
 
-// A function that removes all classes that begin with layout- on the html element
+// A function that removes all layout classes and sets the new one
 function setLayoutClass(layoutToSet: string) {
 	for (const layoutClass of layoutsClasses) {
 		document.documentElement.classList.remove(layoutClass);
@@ -66,6 +65,21 @@ export function initLayoutPageControls() {
 
 		target.classList.toggle('button-filled');
 		document.documentElement.classList.toggle('layout-constrained');
+		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
+
+		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+	});
+
+	window.addEventListener('click', (e: MouseEvent) => {
+		const target =
+			e.target instanceof Element &&
+			(e.target.closest('[data-toggle-menu-collapsed]') as HTMLElement);
+		if (!target) {
+			return;
+		}
+
+		target.classList.toggle('button-filled');
+		document.documentElement.classList.toggle('layout-menu-collapsed');
 		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
 
 		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));

@@ -24,7 +24,7 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
   <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
 </div>
 <div class="buttons buttons-addons display-flex">
-	<button class="button" data-set-layout="layout-menu-collapsed">Menu Collapse</button>
+	<button class="button" data-toggle-menu-collapsed aria-pressed="false">Collapse menu</button>
 	<button class="button" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 	<button class="button" data-toggle-layout-height-constraint aria-pressed="false">Constrain layout height</button>
 	
