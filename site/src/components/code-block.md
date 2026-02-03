@@ -33,17 +33,14 @@ Here is an example of a basic usage of dismiss component.
 
 ### Code block with action buttons
 
-Code block might include action buttons in it's header section.
+Code block might include action buttons in its header section.
 
 ```html
 <div class="code-block">
 	<div class="code-block-header">
 		<span class="code-block-header-language">JavaScript</span>
 		<div class="code-block-header-actions">
-			<button
-				type="button"
-				class="button button-sm action inner-focus code-block-header-action-button"
-			>
+			<button type="button" class="button button-sm inner-focus code-block-header-action-button">
 				<span class="icon" aria-hidden="true">
 					<svg class="fill-current-color" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -53,10 +50,7 @@ Code block might include action buttons in it's header section.
 				</span>
 				<span>Run</span>
 			</button>
-			<button
-				type="button"
-				class="button button-sm action inner-focus code-block-header-action-button"
-			>
+			<button type="button" class="button button-sm inner-focus code-block-header-action-button">
 				<span class="icon" aria-hidden="true">
 					<svg class="fill-current-color" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 						<path
