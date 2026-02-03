@@ -135,13 +135,13 @@ If your browser supports pretty text-wrapping, resize your browser window and no
 
 Use `.text-wrap-balance` to create more visually balanced line lengths, making a text block appear more uniform. 
 
-If your browser supports balance text-wrapping, resize your browser window to view the differences between how these two headings break. 
+If your browser supports balance text-wrapping, resize your browser window to view the differences between how these two paragraphs break. 
 
 ```html
-<h2 class="font-size-h3">A heading might break awkwardly at certain widths without text-wrap-balance</h2>
-<h2 class="font-size-h3 text-wrap-balance margin-top-xxs">
-	A heading might break awkwardly at certain widths without text-wrap-balance
-</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+<p class="text-wrap-balance margin-top-xxs">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
+</p>
 ```
 
 `.text-wrap-pretty` and `.text-wrap-balance` have two caveats:
