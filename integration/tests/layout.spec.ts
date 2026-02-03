@@ -435,6 +435,12 @@ test('menu-collapsed layout displays menu, main, and aside in correct order at w
 	await page.goto('/components/layout.html');
 	await page.waitForLoadState('domcontentloaded');
 
+	// Measure menu width before (holy-grail is default)
+	const menuBefore = page.locator('.layout-body-menu');
+	await expect(menuBefore).toBeVisible();
+	const menuWidthBefore = (await menuBefore.boundingBox())!.width;
+
+	// Switch to menu-collapsed layout
 	await page.locator(setMenuCollapsedLayoutSelector).click();
 
 	const layoutHtml = page.locator('.layout.layout-menu-collapsed');
@@ -448,14 +454,14 @@ test('menu-collapsed layout displays menu, main, and aside in correct order at w
 	await expect(main).toBeVisible();
 	await expect(aside).toBeVisible();
 
+	// Menu should be narrower than before
+	const menuWidthAfter = (await menu.boundingBox())!.width;
+	expect(menuWidthAfter).toBeLessThan(menuWidthBefore);
+
 	// Verify horizontal order: menu < main < aside
 	const menuBox = await menu.boundingBox();
 	const mainBox = await main.boundingBox();
 	const asideBox = await aside.boundingBox();
-
-	expect(menuBox).not.toBeNull();
-	expect(mainBox).not.toBeNull();
-	expect(asideBox).not.toBeNull();
 
 	expect(menuBox!.x).toBeLessThan(mainBox!.x);
 	expect(mainBox!.x).toBeLessThan(asideBox!.x);
