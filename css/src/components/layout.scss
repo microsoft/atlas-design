@@ -188,24 +188,25 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 }
 
 // layout-menu-collapsed is a modifier that works with layouts that have a menu
-// It collapses the menu to a narrower width and adjusts the main/aside areas accordingly
+// It hides the menu and adjusts the main/aside areas accordingly
 
 .layout.layout-menu-collapsed {
-	// Shared styles for main and aside when menu is collapsed
+	// Styles for main and aside when menu is collapsed (only for holy-grail)
 
-	.layout-body-main {
-		width: 100%;
-		max-width: $half-widescreen !important;
-		justify-self: center;
+	&.layout-holy-grail {
+		.layout-body-main {
+			width: 100%;
+			max-width: $half-widescreen !important;
+		}
+
+		.layout-body-aside {
+			flex-shrink: 0 !important;
+			width: 100% !important;
+			min-width: $default-aside-min-width !important;
+		}
 	}
 
-	.layout-body-aside {
-		flex-shrink: 0 !important;
-		width: 100% !important;
-		min-width: $default-aside-min-width !important;
-	}
-
-	// holy-grail layout with collapsed menu
+	// holy-grail layout with collapsed menu needs different grid proportions
 
 	&.layout-holy-grail .layout-body {
 		@include tablet {
@@ -241,40 +242,7 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 		}
 	}
 
-	// sidecar-left layout with collapsed menu
-
-	&.layout-sidecar-left .layout-body {
-		@include tablet {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 7fr)
-				minmax(0, 23fr);
-			grid-template-areas:
-				'header header'
-				'hero hero'
-				'menu main'
-				'footer footer';
-		}
-
-		@include desktop {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 7fr)
-				minmax(0, 23fr);
-			grid-template-areas:
-				'header header'
-				'hero hero'
-				'menu main'
-				'footer footer';
-		}
-
-		@include widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$eighth-widescreen} #{$five-eighths-widescreen} auto;
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero hero'
-				'. menu main .'
-				'footer footer footer footer';
-		}
-	}
+	// sidecar-left uses its base grid - menu is simply hidden via JS
 }
 
 .layout.layout-sidecar-left {

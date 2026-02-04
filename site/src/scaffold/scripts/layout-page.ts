@@ -73,23 +73,6 @@ export function initLayoutPageControls() {
 	window.addEventListener('click', (e: MouseEvent) => {
 		const target =
 			e.target instanceof Element &&
-			(e.target.closest('[data-toggle-menu-collapsed]') as HTMLElement);
-		if (!target) {
-			return;
-		}
-
-		target.classList.toggle('button-filled');
-		document.documentElement.classList.toggle('layout-menu-collapsed');
-		target.setAttribute('aria-pressed', target.classList.contains('button-filled').toString());
-
-		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
-	});
-
-	//
-
-	window.addEventListener('click', (e: MouseEvent) => {
-		const target =
-			e.target instanceof Element &&
 			(e.target.closest('[data-toggle-hero-visibility]') as HTMLElement);
 		if (!target) {
 			return;
