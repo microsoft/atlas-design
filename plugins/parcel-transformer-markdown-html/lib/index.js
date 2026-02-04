@@ -32,7 +32,7 @@ function createFilterableCodeBlock(code, language, displayName) {
 	<div class="code-block margin-top-xs">
 		<div class="code-block-header">
 			<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
-			<div class="code-block-header-actions">
+			<div class="code-block-header-action-bar">
 				<input id="filter" class="input code-block-header-filter" data-code-filter-input="${filterIds}" placeholder="Filter ..." type="search" />
 			</div>
 		</div>

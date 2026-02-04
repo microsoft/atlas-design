@@ -41,7 +41,7 @@ $code-block-control-padding: calc(0.125em - #{$button-border-width}) !default;
 			flex-grow: 1;
 		}
 
-		.code-block-header-actions {
+		.code-block-header-action-bar {
 			display: flex;
 			gap: $code-block-header-gap;
 			margin-inline-start: auto;
