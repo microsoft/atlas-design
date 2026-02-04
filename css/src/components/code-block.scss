@@ -48,6 +48,9 @@ $code-block-control-padding: calc(0.125em - #{$button-border-width}) !default;
 
 			.button {
 				min-height: auto;
+				outline-color: currentColor;
+				outline-offset: -$focus-width;
+				font-size: $button-sm-font-size;
 				padding-block: $code-block-control-padding;
 			}
 		}
