@@ -24,10 +24,12 @@ Here is an example of a basic usage of code block component.
 <div class="code-block">
 	<div class="code-block-header"></div>
 	<div class="code-block-body">
-		<pre>Hello, world! I'm the example!</pre>
+		<pre data-focusable-if-scrollable>Hello, world! I'm the example!</pre>
 	</div>
 </div>
 ```
+
+_Note: `data-focusable-if-scrollable`, the attribute we use to programmatically make elements focusable if they are scrollable, is left to you to implement. Our implementation lives in [`/site/src/scaffold/scripts/focusable-if-scrollable.ts`](https://github.com/microsoft/atlas-design/tree/main/site/src/scaffold/scripts.focusable-if-scrollable.ts)_
 
 ### Header section modifications
 
@@ -60,7 +62,7 @@ Header section can contain the language and/or action bar subcomponents.
 		</div>
 	</div>
 	<div class="code-block-body">
-		<pre><code>console.log('Hello, world! I'm the example!');</code></pre>
+		<pre data-focusable-if-scrollable><code>console.log('Hello, world! I'm the example!');</code></pre>
 	</div>
 </div>
 
@@ -74,7 +76,9 @@ Header section can contain the language and/or action bar subcomponents.
 		<span class="code-block-header-language">JavaScript</span>
 	</div>
 	<div class="code-block-body">
-		<pre><code>console.log('Hello, world! I'm the example!');</code></pre>
+		<pre
+			data-focusable-if-scrollable
+		><code>console.log('Hello, world! I'm the example!');</code></pre>
 	</div>
 </div>
 ```
@@ -110,7 +114,7 @@ Header section can contain the language and/or action bar subcomponents.
 		</div>
 	</div>
 	<div class="code-block-body">
-		<pre>Hello, world! I'm the example!</pre>
+		<pre data-focusable-if-scrollable>Hello, world! I'm the example!</pre>
 	</div>
 </div>
 ```
