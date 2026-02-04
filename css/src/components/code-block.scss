@@ -46,7 +46,7 @@ $code-block-control-padding: calc(0.125em - #{$button-border-width}) !default;
 			gap: $code-block-header-gap;
 			margin-inline-start: auto;
 
-			.code-block-header-action-button {
+			.button {
 				min-height: auto;
 				padding-block: $code-block-control-padding;
 			}
