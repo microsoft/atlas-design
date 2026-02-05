@@ -1,5 +1,13 @@
 # @microsoft/atlas-css
 
+## 4.2.0
+
+### Minor Changes
+
+- 5f0abc7: Creating code-block component and adding relevant documentation
+- 124aeba: Add a .text-wrap-balance typography atomic
+- 58a83fd: Adding XXL size to non-heading font
+
 ## 4.1.0
 
 ### Minor Changes

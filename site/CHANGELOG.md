@@ -1,5 +1,17 @@
 # @microsoft/atlas-site
 
+## 0.66.0
+
+### Minor Changes
+
+- 124aeba: Add a .text-wrap-balance typography atomic
+- 58a83fd: Adding XXL size to non-heading font
+- 5f0abc7: Updating code-block component
+
+### Patch Changes
+
+- 1d113b7: Updating footer copyright
+
 ## 0.65.0
 
 ### Minor Changes
