@@ -242,7 +242,31 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 		}
 	}
 
-	// sidecar-left uses its base grid - menu is simply hidden via JS
+	// sidecar-left layout with collapsed menu - centers main content
+
+	&.layout-sidecar-left .layout-body {
+		@include tablet {
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
+				minmax(0, 7fr) minmax(0, 1fr);
+			grid-template-areas:
+				'header header header'
+				'hero hero hero'
+				'. main .'
+				'footer footer footer';
+		}
+
+		@include widescreen {
+			grid-template:
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
+				minmax(0, 3fr) minmax(0, 1fr);
+			grid-template-areas:
+				'header header header'
+				'hero hero hero'
+				'. main .'
+				'footer footer footer';
+		}
+	}
 }
 
 .layout.layout-sidecar-left {

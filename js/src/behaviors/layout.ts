@@ -62,7 +62,7 @@ export function initLayout() {
 		}
 
 		const menu = document.querySelector('.layout-body-menu') as HTMLElement | null;
-		const isCollapsed = root.classList.toggle('layout-menu-collapsed');
+		const isCollapsed = document.documentElement.classList.toggle('layout-menu-collapsed');
 
 		if (menu) {
 			menu.hidden = isCollapsed;

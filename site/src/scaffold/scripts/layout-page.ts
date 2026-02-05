@@ -34,7 +34,6 @@ export function initLayoutPageControls() {
 
 		safeViewTransition(() => {
 			setLayoutClass(layoutToSet);
-			scrollTo({ behavior: 'instant', top: target.getBoundingClientRect().top - 200 });
 			const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
 			for (const button of setThemeButtons) {
 				button.setAttribute('aria-pressed', 'false');
