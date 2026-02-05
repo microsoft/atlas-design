@@ -1,4 +1,12 @@
-# Atlas Design System
+---
+title: Get Started with Atlas Design
+description: Learn about the Atlas Design System, its mission, and how to contribute.
+template: standard
+hero: true
+h1: Get Started with Atlas Design
+---
+
+## Welcome
 
 Welcome to the Atlas Design project! This repository holds the source code backing the Atlas Design System.
 
@@ -97,7 +105,7 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 The following commands can be used to update broadly update dependencies. (Note: we omit major updates to husky because of major api changes and a general preference for version 4.x)
 
 ```sh
-npm exec --package npm-check-updates --workspaces --include-workspace-root -- npm-check-updates --upgrade --reject husky
+npm exec --package npm-check-updates --workspaces --include-workspace-root -- npm-check-updates --upgrade --reject husky
 npm exec --package npm-check-updates --workspaces --include-workspace-root -- npm-check-updates --upgrade --target minor
 rm package-lock.json
 npm i

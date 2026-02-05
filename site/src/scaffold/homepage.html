@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light default-focus" dir="ltr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>{{title}} | Atlas Design | Microsoft</title>
+		<meta property="og:title" content="{{title}}" />
+		<meta property="og:type" content="website" />
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			http-equiv="Content-Security-Policy"
+			content="default-src 'self'; frame-src 'self' https://www.figma.com/; img-src data: 'self' https://github.com/ https://img.shields.io/ https://badge.fury.io/ https://img.badgesize.io/ https://*.cloudfront.net https://via.placeholder.com https://docs.microsoft.com https://learn.microsoft.com; style-src 'self' 'unsafe-inline'"
+		/>
+		<link rel="stylesheet" href="~/src/scaffold/index.scss" />
+		<link rel="stylesheet" href="~/src/scaffold/styles/homepage.scss" />
+		<script type="module" src="~/src/scaffold/index.ts"></script>
+		<link rel="icon" href="~/src/atlas-light.svg" type="image/svg+xml" />
+	</head>
+	<body class="background-color-body overflow-x-hidden">
+		<main>
+			<!-- Hero Section -->
+			<section class="hero hero-lg hero-image flex-direction-row-tablet">
+				<div class="homepage-hero-bg position-absolute top-0 left-0 right-0 bottom-0"></div>
+				<div class="hero-content homepage-hero-content">
+					<p class="letter-spacing-wide text-transform-uppercase font-size-sm margin-bottom-sm">
+						<span class="badge badge-filled white-space-normal">Powering Microsoft Learn</span>
+					</p>
+					<h1 class="font-size-h0 font-weight-bold line-height-normal">
+						<span class="gradient-text-vivid">Atlas</span> Design System
+					</h1>
+					<p class="font-size-lg color-text-subtle line-height-normal margin-top-sm">
+						Build accessible, high-quality, and consistent experiences at scale with a CSS-first
+						design system.
+					</p>
+					<div class="buttons margin-top-md">
+						<a href="~/src/get-started.md" class="button button-primary button-lg">
+							<span>Get Started</span>
+							<span class="icon" aria-hidden="true">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+									<path
+										fill-rule="evenodd"
+										d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							</span>
+						</a>
+						<a href="~/src/components/overview.md" class="button button-clear button-lg">
+							Component Docs
+						</a>
+					</div>
+					<div class="display-flex gap-lg margin-top-xl padding-top-md border-top flex-wrap-wrap">
+						<div class="display-flex flex-direction-column gap-xxs">
+							<span class="font-size-h2 font-weight-bold color-primary">30+</span>
+							<span class="font-size-sm text-transform-uppercase letter-spacing-wide"
+								>Components</span
+							>
+						</div>
+						<div class="display-flex flex-direction-column gap-xxs">
+							<span class="font-size-h2 font-weight-bold color-primary">3+</span>
+							<span class="font-size-sm text-transform-uppercase letter-spacing-wide">Themes</span>
+						</div>
+						<div class="display-flex flex-direction-column gap-xxs">
+							<span class="font-size-h2 font-weight-bold color-primary">5</span>
+							<span class="font-size-sm text-transform-uppercase letter-spacing-wide">Layouts</span>
+						</div>
+					</div>
+				</div>
+				<div
+					class="hero-details display-none display-flex-tablet justify-content-center align-items-center"
+				>
+					<div class="orbit position-relative">
+						<div
+							class="orbit-ring orbit-ring-1 position-absolute border border-radius-rounded"
+						></div>
+						<div
+							class="orbit-ring orbit-ring-2 position-absolute border border-radius-rounded"
+						></div>
+						<div
+							class="orbit-ring orbit-ring-3 position-absolute border border-radius-rounded"
+						></div>
+						<div
+							class="orbit-center position-absolute display-flex align-items-center justify-content-center background-color-body border-radius-rounded"
+						>
+							<img src="~/src/atlas-light.svg" alt="Atlas Design Logo" class="orbit-logo" />
+						</div>
+						<div class="orbit-dot orbit-dot-1 position-absolute color-primary"></div>
+						<div class="orbit-dot orbit-dot-2 position-absolute color-success"></div>
+						<div class="orbit-dot orbit-dot-3 position-absolute color-info"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Sticky header -->
+			<header
+				class="background-color-body position-sticky top-0 left-0 right-0 padding-block-xs padding-inline-md background-color-body border-bottom border-top"
+				style="z-index: 1020"
+			>
+				<div
+					class="display-flex align-items-center justify-content-space-between margin-inline-auto"
+					style="max-width: 1400px"
+				>
+					<a
+						href="~/src/index.md"
+						class="display-flex align-items-center gap-xxs gap-xs-tablet text-decoration-none color-text homepage-brand"
+					>
+						<span class="image image-32x32 display-flex align-items-center" aria-hidden="true">
+							<img
+								alt="Atlas Design Logo"
+								style="margin-block-end: 0"
+								src="~/src/atlas-light.svg"
+							/>
+						</span>
+						<span class="font-weight-semibold">Atlas Design</span>
+					</a>
+					<div class="display-flex align-items-center gap-xxs gap-xs-tablet">
+						<button
+							aria-label="Change theme"
+							class="button button-clear button-sm"
+							data-theme-cycle
+						>
+							<span class="icon" aria-hidden="true">
+								<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+									<path
+										class="fill-current-color"
+										d="M8 0C8.73438 0 9.44271 0.0963542 10.125 0.289062C10.8073 0.476562 11.4453 0.744792 12.0391 1.09375C12.6328 1.4375 13.1719 1.85417 13.6562 2.34375C14.1458 2.82812 14.5625 3.36719 14.9062 3.96094C15.2552 4.55469 15.5234 5.19271 15.7109 5.875C15.9036 6.55729 16 7.26562 16 8C16 8.73438 15.9036 9.44271 15.7109 10.125C15.5234 10.8073 15.2552 11.4453 14.9062 12.0391C14.5625 12.6328 14.1458 13.1745 13.6562 13.6641C13.1719 14.1484 12.6328 14.5651 12.0391 14.9141C11.4453 15.2578 10.8073 15.526 10.125 15.7188C9.44271 15.9062 8.73438 16 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.526 4.55469 15.2578 3.96094 14.9141C3.36719 14.5651 2.82552 14.1484 2.33594 13.6641C1.85156 13.1745 1.4349 12.6328 1.08594 12.0391C0.742188 11.4453 0.473958 10.8099 0.28125 10.1328C0.09375 9.45052 0 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.473958 5.19271 0.742188 4.55469 1.08594 3.96094C1.4349 3.36719 1.85156 2.82812 2.33594 2.34375C2.82552 1.85417 3.36719 1.4375 3.96094 1.09375C4.55469 0.744792 5.1901 0.476562 5.86719 0.289062C6.54948 0.0963542 7.26042 0 8 0ZM8 15C8.64062 15 9.25781 14.9167 9.85156 14.75C10.4505 14.5833 11.0078 14.349 11.5234 14.0469C12.0443 13.7396 12.5182 13.3724 12.9453 12.9453C13.3724 12.5182 13.737 12.0469 14.0391 11.5312C14.3464 11.0104 14.5833 10.4531 14.75 9.85938C14.9167 9.26042 15 8.64062 15 8C15 7.35938 14.9167 6.74219 14.75 6.14844C14.5833 5.54948 14.3464 4.99219 14.0391 4.47656C13.737 3.95573 13.3724 3.48177 12.9453 3.05469C12.5182 2.6276 12.0443 2.26302 11.5234 1.96094C11.0078 1.65365 10.4505 1.41667 9.85156 1.25C9.25781 1.08333 8.64062 1 8 1C7.66146 1 7.32812 1.02344 7 1.07031V14.9297C7.32812 14.9766 7.66146 15 8 15Z"
+										fill="black"
+									/>
+								</svg>
+							</span>
+						</button>
+						<a
+							href="https://github.com/microsoft/atlas-design"
+							class="button button-clear button-sm"
+							aria-label="GitHub repository"
+						>
+							<span class="icon" aria-hidden="true">
+								<svg
+									class="fill-current-color"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 448 448"
+								>
+									<path
+										d="M448 229.55c0 98.94-64.13 182.83-153.06 212.51-11.356 2.194-15.41-4.772-15.41-10.776 0-7.347.27-31.494.27-61.443 0-20.895-7.17-34.56-15.21-41.48 49.906-5.556 102.278-24.484 102.278-110.545 0-24.46-8.67-44.442-23.027-60.1 2.31-5.666 9.99-28.447-2.24-59.27 0 0-18.77-6.025-61.53 22.96-17.9-4.973-37.05-7.46-56.09-7.55-19.04.09-38.213 2.577-56.09 7.55-42.783-28.986-61.6-22.96-61.6-22.96-12.14 30.822-4.46 53.603-2.15 59.27-14.336 15.66-23.05 35.64-23.05 60.1 0 85.838 52.28 105.057 102.03 110.702-6.404 5.6-12.183 15.48-14.22 29.95-12.77 5.734-45.204 15.612-65.185-18.615 0 0-11.827-21.504-34.317-23.094 0 0-21.885-.27-1.546 13.62 0 0 14.694 6.898 24.864 32.77 0 0 13.15 43.568 75.466 30.016l.31 38.104c0 5.936-4.076 12.858-15.3 10.797C64.178 412.447 0 328.49 0 229.55 0 105.81 100.307 5.526 223.978 5.526 347.692 5.526 448 105.813 448 229.55z"
+									/>
+								</svg>
+							</span>
+						</a>
+					</div>
+				</div>
+			</header>
+
+			<!-- Features Section -->
+			<section class="padding-xl background-color-body-medium">
+				<div class="text-align-center margin-inline-auto margin-bottom-xl" style="max-width: 600px">
+					<h2 class="font-size-h2 font-weight-bold">Why Atlas?</h2>
+					<p class="font-size-lg color-text-subtle margin-top-sm">
+						Built for web developers who care about quality and standards
+					</p>
+				</div>
+				<div class="homepage-features-grid margin-inline-auto" style="max-width: 1200px">
+					<article class="card">
+						<div class="card-content">
+							<div
+								class="homepage-feature-icon homepage-feature-icon-accessibility display-flex align-items-center justify-content-center border-radius margin-bottom-sm"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+									<path
+										d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+									/>
+								</svg>
+							</div>
+							<p class="card-title font-size-lg color-text">Accessibility First</p>
+							<p class="card-content-description color-text-subtle">
+								Grade B compliance to Microsoft Accessibility Standards, which include WCAG 2.0
+								standards.
+							</p>
+						</div>
+					</article>
+					<article class="card">
+						<div class="card-content">
+							<div
+								class="homepage-feature-icon homepage-feature-icon-css display-flex align-items-center justify-content-center border-radius margin-bottom-sm"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+									<path
+										d="M4 4h2v2H4V4zm4 0h2v2H8V4zm4 0h2v2h-2V4zM4 8h2v2H4V8zm4 0h8v2H8V8zM4 12h2v2H4v-2zm4 0h6v2H8v-2zM4 16h2v2H4v-2zm4 0h4v2H8v-2z"
+									/>
+								</svg>
+							</div>
+							<p class="card-title font-size-lg color-text">CSS-First</p>
+							<p class="card-content-description color-text-subtle">
+								Zero-dependency approach. JavaScript only where required for accessibility and
+								behavior.
+							</p>
+						</div>
+					</article>
+					<article class="card">
+						<div class="card-content">
+							<div
+								class="homepage-feature-icon homepage-feature-icon-rtl display-flex align-items-center justify-content-center border-radius margin-bottom-sm"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+									<path
+										d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"
+									/>
+								</svg>
+							</div>
+							<p class="card-title font-size-lg color-text">RTL Support</p>
+							<p class="card-content-description color-text-subtle">
+								Full right-to-left reading direction support via logical properties.
+							</p>
+						</div>
+					</article>
+					<article class="card">
+						<div class="card-content">
+							<div
+								class="homepage-feature-icon homepage-feature-icon-themes display-flex align-items-center justify-content-center border-radius margin-bottom-sm"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+									<path
+										d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+									/>
+								</svg>
+							</div>
+							<p class="card-title font-size-lg color-text">Themeable</p>
+							<p class="card-content-description color-text-subtle">
+								Light, Dark, and High Contrast themes included. Add unlimited custom themes.
+							</p>
+						</div>
+					</article>
+					<article class="card">
+						<div class="card-content">
+							<div
+								class="homepage-feature-icon homepage-feature-icon-vscode display-flex align-items-center justify-content-center border-radius margin-bottom-sm"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+									<path
+										d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+									/>
+								</svg>
+							</div>
+							<p class="card-title font-size-lg color-text">VS Code Extension</p>
+							<p class="card-content-description color-text-subtle">
+								<a
+									href="https://marketplace.visualstudio.com/items?itemName=docsmsft.atlas-design-system-tools"
+									>Atlas Design System Tools</a
+								>
+								provides IntelliSense and class completion for faster development in your IDE.
+							</p>
+						</div>
+					</article>
+					<article class="card">
+						<div class="card-content">
+							<div
+								class="homepage-feature-icon homepage-feature-icon-npm display-flex align-items-center justify-content-center border-radius margin-bottom-sm"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+									<path
+										d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"
+									/>
+								</svg>
+							</div>
+							<p class="card-title font-size-lg color-text">NPM Published</p>
+							<p class="card-content-description color-text-subtle">
+								Easy installation via npm. Available as @microsoft/atlas-css and
+								@microsoft/atlas-js.
+							</p>
+						</div>
+					</article>
+					<article class="card">
+						<div class="card-content">
+							<div
+								class="homepage-feature-icon homepage-feature-icon-layouts display-flex align-items-center justify-content-center border-radius margin-bottom-sm"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M3 3h5v18H3V3zm7 0h4v18h-4V3zm7 0h4v18h-4V3z" />
+								</svg>
+							</div>
+							<p class="card-title font-size-lg color-text">Site Layouts</p>
+							<p class="card-content-description color-text-subtle">
+								Pre-built responsive layouts for common site structures like sidebars, headers, and
+								content areas. Just add classes to your HTML element to switch layouts.
+							</p>
+						</div>
+					</article>
+					<article class="card">
+						<div class="card-content">
+							<div
+								class="homepage-feature-icon homepage-feature-icon-testing display-flex align-items-center justify-content-center border-radius margin-bottom-sm"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+									<path
+										d="M19.8 18.4L14 10.67V6.5l1.35-1.69c.26-.33.03-.81-.39-.81H9.04c-.42 0-.65.48-.39.81L10 6.5v4.17L4.2 18.4c-.49.66-.02 1.6.8 1.6h14c.82 0 1.29-.94.8-1.6z"
+									/>
+								</svg>
+							</div>
+							<p class="card-title font-size-lg color-text">Tested with Playwright</p>
+							<p class="card-content-description color-text-subtle">
+								Interactive components are tested in CI with Playwright to ensure quality.
+							</p>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<!-- Component Showcase Section -->
+			<section
+				class="padding-inline-xs padding-block-xl padding-xl-tablet background-color-body-accent"
+			>
+				<div
+					class="display-grid gap-lg align-items-center margin-inline-auto homepage-quickstart-grid"
+					style="max-width: 1200px"
+				>
+					<!-- Left: Philosophy -->
+					<div>
+						<h2 class="font-size-h2 font-weight-bold">CSS first. Zero friction.</h2>
+						<p class="font-size-lg color-text-subtle margin-top-sm">
+							Just add classes to your HTML and ship.
+						</p>
+						<ul class="margin-top-md font-size-md" style="list-style: none; padding: 0">
+							<li class="display-flex align-items-start gap-sm margin-bottom-sm">
+								<span class="color-success font-weight-bold">✓</span>
+								<span>Large component library for styling</span>
+							</li>
+							<li class="display-flex align-items-start gap-sm margin-bottom-sm">
+								<span class="color-success font-weight-bold">✓</span>
+								<span>Semantic HTML that works everywhere</span>
+							</li>
+							<li class="display-flex align-items-start gap-sm margin-bottom-sm">
+								<span class="color-success font-weight-bold">✓</span>
+								<span>Utility classes for rapid prototyping and maximum flexibility</span>
+							</li>
+							<li class="display-flex align-items-start gap-sm margin-bottom-sm">
+								<span class="color-success font-weight-bold">✓</span>
+								<span>Framework agnostic—works with any stack</span>
+							</li>
+							<li class="display-flex align-items-start gap-sm">
+								<span class="color-success font-weight-bold">✓</span>
+								<span>Accessible by default</span>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Right: Component Showcase -->
+					<div>
+						<div
+							class="card border margin-top-lg border-radius-lg"
+							style="max-width: min(90vw, 500px)"
+						>
+							<div class="card-header background-color-body-medium padding-md text-align-center">
+								<span class="font-size-lg font-weight-semibold">Component Showcase</span>
+							</div>
+							<div class="card-content">
+								<tab-container>
+									<div class="segmented-controls" slot="tablist-wrapper">
+										<button
+											type="button"
+											class="segmented-control-previous"
+											title="Previous segment"
+											data-tab-container-nav="previous"
+										>
+											<span class="icon" aria-hidden="true">
+												<svg
+													class="fill-current-color"
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 448 448"
+												>
+													<path
+														d="M448 224H62.625l148.688 148.688-22.625 22.625L1.375 208 188.688 20.688l22.625 22.625L62.625 192H448v32z"
+													/>
+												</svg>
+											</span>
+										</button>
+										<div
+											class="segmented-control-list"
+											role="tablist"
+											aria-orientation="horizontal"
+										>
+											<button
+												class="segmented-control"
+												type="button"
+												id="showcase-tab-forms"
+												role="tab"
+												aria-selected="true"
+											>
+												Forms
+											</button>
+											<button
+												class="segmented-control"
+												type="button"
+												id="showcase-tab-chat"
+												role="tab"
+											>
+												Chat Input
+											</button>
+											<button
+												class="segmented-control"
+												type="button"
+												id="showcase-tab-cards"
+												role="tab"
+											>
+												Cards
+											</button>
+											<button
+												class="segmented-control"
+												type="button"
+												id="showcase-tab-notifications"
+												role="tab"
+											>
+												Notifications
+											</button>
+											<button
+												class="segmented-control"
+												type="button"
+												id="showcase-tab-tags"
+												role="tab"
+											>
+												Tags
+											</button>
+											<button
+												class="segmented-control"
+												type="button"
+												id="showcase-tab-buttons"
+												role="tab"
+											>
+												Buttons
+											</button>
+											<button
+												class="segmented-control"
+												type="button"
+												id="showcase-tab-timeline"
+												role="tab"
+											>
+												Timeline
+											</button>
+										</div>
+										<button
+											type="button"
+											class="segmented-control-next"
+											title="Next segment"
+											data-tab-container-nav="next"
+										>
+											<span class="icon" aria-hidden="true">
+												<svg
+													class="fill-current-color"
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="-255 57 448 448"
+												>
+													<path
+														d="M-253.625 281v-32H131.75L-16.938 100.313 5.687 77.688 193 265 5.687 452.313l-22.625-22.625L131.75 281h-385.375z"
+													/>
+												</svg>
+											</span>
+										</button>
+									</div>
+
+									<!-- Forms Tab -->
+									<div
+										role="tabpanel"
+										aria-labelledby="showcase-tab-forms"
+										class="padding-md"
+										style="box-sizing: border-box"
+									>
+										<div class="field">
+											<label class="field-label" for="home-example-input">Text input</label>
+											<div class="field-body">
+												<input
+													class="input"
+													id="home-example-input"
+													type="text"
+													placeholder="Enter text..."
+												/>
+											</div>
+										</div>
+										<div class="field">
+											<label class="field-label" for="home-example-select">Select</label>
+											<div class="field-body">
+												<div class="select">
+													<select id="home-example-select">
+														<option value="">Choose an option</option>
+														<option value="option-1">Option 1</option>
+														<option value="option-2">Option 2</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="field">
+											<label class="field-label" for="home-example-textarea">Textarea</label>
+											<div class="field-body">
+												<textarea
+													class="textarea"
+													id="home-example-textarea"
+													rows="2"
+													placeholder="Enter description..."
+												></textarea>
+											</div>
+										</div>
+										<div class="field">
+											<div class="field-body">
+												<label class="checkbox">
+													<input type="checkbox" id="home-example-checkbox" checked />
+													<span
+														class="checkbox-check"
+														role="presentation"
+														aria-hidden="true"
+													></span>
+													<span class="checkbox-text">Checkbox option</span>
+												</label>
+											</div>
+										</div>
+										<div class="buttons margin-top-sm">
+											<button class="button button-primary" id="home-example-button-submit">
+												Submit
+											</button>
+											<button class="button button-clear" id="home-example-button-cancel">
+												Cancel
+											</button>
+										</div>
+										<details class="accordion margin-top-md">
+											<summary>
+												<div class="accordion-header font-size-sm">View source code</div>
+											</summary>
+											<div class="accordion-content">
+												<div class="code-block margin-top-sm">
+													<div class="code-block-header">
+														<span class="code-block-header-language" data-hljs-language="html"
+															>HTML</span
+														>
+													</div>
+													<div class="code-block-body inner-focus">
+														<pre
+															class="inner-focus"
+															data-focusable-if-scrollable=""
+															role="group"
+															aria-label="Horizontally scrollable element"
+															tabindex="0"
+														><code>&lt;div class="field"&gt;
+  &lt;label class="field-label" for="home-example-input"&gt;Text input&lt;/label&gt;
+  &lt;div class="field-body"&gt;
+    &lt;input class="input" id="home-example-input" type="text" placeholder="Enter text..." /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="field"&gt;
+  &lt;label class="field-label" for="home-example-select"&gt;Select&lt;/label&gt;
+  &lt;div class="field-body"&gt;
+    &lt;div class="select"&gt;
+      &lt;select id="home-example-select"&gt;
+        &lt;option value=""&gt;Choose an option&lt;/option&gt;
+        &lt;option value="option-1"&gt;Option 1&lt;/option&gt;
+        &lt;option value="option-2"&gt;Option 2&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="field"&gt;
+  &lt;label class="field-label" for="home-example-textarea"&gt;Textarea&lt;/label&gt;
+  &lt;div class="field-body"&gt;
+    &lt;textarea class="textarea" id="home-example-textarea" rows="2" placeholder="Enter description..."&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="field"&gt;
+  &lt;div class="field-body"&gt;
+    &lt;label class="checkbox"&gt;
+      &lt;input type="checkbox" id="home-example-checkbox" checked /&gt;
+      &lt;span class="checkbox-check" role="presentation" aria-hidden="true"&gt;&lt;/span&gt;
+      &lt;span class="checkbox-text"&gt;Checkbox option&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="buttons margin-top-sm"&gt;
+  &lt;button class="button button-primary" id="home-example-button-submit"&gt;Submit&lt;/button&gt;
+  &lt;button class="button button-clear" id="home-example-button-cancel"&gt;Cancel&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+													</div>
+												</div>
+											</div>
+										</details>
+									</div>
+
+									<!-- Chat Input Tab -->
+									<div
+										role="tabpanel"
+										aria-labelledby="showcase-tab-chat"
+										hidden
+										class="padding-md"
+										style="box-sizing: border-box"
+									>
+										<div class="textarea-form">
+											<textarea
+												class="textarea"
+												rows="3"
+												placeholder="Ask a question or describe what you'd like to do"
+											></textarea>
+											<div class="textarea-form-footer">
+												<div class="textarea-form-footer-left">
+													<span class="color-text-subtle">0 / 500</span>
+												</div>
+												<div class="textarea-form-footer-right">
+													<button class="button button-clear" aria-label="Attach (non functional)">
+														<span class="icon font-size-lg">
+															<svg
+																viewBox="0 0 20 20"
+																fill="none"
+																xmlns="http://www.w3.org/2000/svg"
+															>
+																<g>
+																	<path
+																		class="fill-current-color"
+																		d="M4.82841 10.4848L10.4853 4.8279C11.6568 3.65633 13.5563 3.65633 14.7279 4.8279C15.8995 5.99947 15.8995 7.89897 14.7279 9.07054L8.01039 15.7881C7.4246 16.3738 6.47485 16.3738 5.88907 15.7881C5.30328 15.2023 5.30328 14.2525 5.88907 13.6667L11.8995 7.65633C12.0947 7.46106 12.0947 7.14448 11.8995 6.94922C11.7042 6.75396 11.3876 6.75396 11.1924 6.94922L5.18196 12.9596C4.20565 13.9359 4.20565 15.5189 5.18196 16.4952C6.15827 17.4715 7.74118 17.4715 8.71749 16.4952L15.435 9.77765C16.9971 8.21555 16.9971 5.68289 15.435 4.12079C13.8729 2.55869 11.3403 2.55869 9.77815 4.12079L4.1213 9.77765C3.92604 9.97291 3.92604 10.2895 4.1213 10.4848C4.31656 10.68 4.63315 10.68 4.82841 10.4848Z"
+																	/>
+																</g>
+															</svg>
+														</span>
+													</button>
+													<span class="textarea-form-footer-divider" aria-hidden="true"></span>
+													<button class="button button-clear" aria-label="Send">
+														<span class="icon font-size-lg">
+															<svg
+																fill="none"
+																xmlns="http://www.w3.org/2000/svg"
+																viewBox="0 0 48 48"
+															>
+																<path
+																	class="fill-current-color"
+																	d="M4.12775 6.9639C3.50837 5.06496 5.48618 3.36055 7.27283 4.2536L42.7565 21.9901C44.4152 22.8192 44.4152 25.1862 42.7565 26.0153L7.27283 43.7518C5.48618 44.6448 3.50837 42.9404 4.12775 41.0415L9.68537 24.0027L4.12775 6.9639ZM11.9073 25.2527L6.68995 41.2482L41.1914 24.0027L6.68995 6.75717L11.9073 22.7527H28.7502C29.4405 22.7527 30.0002 23.3123 30.0002 24.0027C30.0002 24.693 29.4405 25.2527 28.7502 25.2527H11.9073Z"
+																/>
+															</svg>
+														</span>
+													</button>
+												</div>
+											</div>
+										</div>
+										<details class="accordion margin-top-md">
+											<summary>
+												<div class="accordion-header font-size-sm">View source code</div>
+											</summary>
+											<div class="accordion-content">
+												<div class="code-block margin-top-sm">
+													<div class="code-block-header">
+														<span class="code-block-header-language" data-hljs-language="html"
+															>HTML</span
+														>
+													</div>
+													<div class="code-block-body inner-focus">
+														<pre
+															class="inner-focus"
+															data-focusable-if-scrollable=""
+															role="group"
+															aria-label="Horizontally scrollable element"
+															tabindex="0"
+														><code>&lt;div class="textarea-form"&gt;
+  &lt;textarea
+    class="textarea"
+    rows="3"
+    placeholder="Ask a question or describe what you'd like to do"
+  &gt;&lt;/textarea&gt;
+  &lt;div class="textarea-form-footer"&gt;
+    &lt;div class="textarea-form-footer-left"&gt;
+      &lt;span class="color-text-subtle"&gt;0 / 500&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="textarea-form-footer-right"&gt;
+      &lt;button class="button button-clear" aria-label="Attach (non functional)"&gt;
+        &lt;span class="icon font-size-lg"&gt;
+          &lt;svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+            &lt;g&gt;
+              &lt;path class="fill-current-color" d="M4.82841 10.4848..." /&gt;
+            &lt;/g&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+      &lt;/button&gt;
+      &lt;span class="textarea-form-footer-divider" aria-hidden="true"&gt;&lt;/span&gt;
+      &lt;button class="button button-clear" aria-label="Send"&gt;
+        &lt;span class="icon font-size-lg"&gt;
+          &lt;svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"&gt;
+            &lt;path class="fill-current-color" d="M4.12775 6.9639..." /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+													</div>
+												</div>
+											</div>
+										</details>
+									</div>
+
+									<!-- Cards Tab -->
+									<div
+										role="tabpanel"
+										aria-labelledby="showcase-tab-cards"
+										hidden
+										class="padding-md"
+										style="box-sizing: border-box"
+									>
+										<div class="display-grid gap-sm" style="grid-template-columns: repeat(2, 1fr)">
+											<article class="card">
+												<div class="card-content">
+													<p class="card-supertitle">Component</p>
+													<a href="~/src/components/button.md" class="card-title">Button</a>
+													<p class="card-content-description">
+														Interactive elements for user actions
+													</p>
+												</div>
+											</article>
+											<article class="card">
+												<div class="card-content">
+													<p class="card-supertitle">Component</p>
+													<a href="~/src/components/card.md" class="card-title">Card</a>
+													<p class="card-content-description">Container for related content</p>
+												</div>
+											</article>
+											<article class="card" style="grid-column: span 2">
+												<div class="card-template">
+													<p class="card-supertitle">Component</p>
+													<a href="~/src/components/card.md" class="card-title">Template card</a>
+													<img
+														aria-hidden="true"
+														class="card-template-icon"
+														src="https://learn.microsoft.com/en-us/training/achievements/review-microsoft-azure-pricing-slas-lifecycles.svg"
+													/>
+													<div class="card-template-detail">
+														<p>Additional details or elements can be placed here.</p>
+													</div>
+												</div>
+												<div class="card-footer">
+													<div class="card-footer-item">
+														<progress
+															class="progress-bar"
+															style="width: 60px"
+															max="100"
+															value="70"
+														></progress>
+													</div>
+													<div class="card-footer-item">
+														<button class="button button-primary button-filled button-sm">
+															Continue
+														</button>
+													</div>
+												</div>
+											</article>
+										</div>
+										<details class="accordion margin-top-md">
+											<summary>
+												<div class="accordion-header font-size-sm">View source code</div>
+											</summary>
+											<div class="accordion-content">
+												<div class="code-block margin-top-sm">
+													<div class="code-block-header">
+														<span class="code-block-header-language" data-hljs-language="html"
+															>HTML</span
+														>
+													</div>
+													<div class="code-block-body inner-focus">
+														<pre
+															class="inner-focus"
+															data-focusable-if-scrollable=""
+															role="group"
+															aria-label="Horizontally scrollable element"
+															tabindex="0"
+														><code>&lt;div class="display-grid gap-sm" style="grid-template-columns: repeat(2, 1fr);"&gt;
+  &lt;article class="card"&gt;
+    &lt;div class="card-content"&gt;
+      &lt;p class="card-supertitle"&gt;Component&lt;/p&gt;
+      &lt;a href="#" class="card-title"&gt;Button&lt;/a&gt;
+      &lt;p class="card-content-description"&gt;Interactive elements for user actions&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  &lt;article class="card"&gt;
+    &lt;div class="card-content"&gt;
+      &lt;p class="card-supertitle"&gt;Component&lt;/p&gt;
+      &lt;a href="#" class="card-title"&gt;Card&lt;/a&gt;
+      &lt;p class="card-content-description"&gt;Container for related content&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  &lt;article class="card" style="grid-column: span 2"&gt;
+    &lt;div class="card-template"&gt;
+      &lt;p class="card-supertitle"&gt;Component&lt;/p&gt;
+      &lt;a href="#" class="card-title"&gt;Template card&lt;/a&gt;
+      &lt;img aria-hidden="true" class="card-template-icon" src="..." /&gt;
+      &lt;div class="card-template-detail"&gt;
+        &lt;p&gt;Additional details or elements can be placed here.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+      &lt;div class="card-footer-item"&gt;
+        &lt;progress class="progress-bar" style="width: 60px;" max="100" value="70"&gt;&lt;/progress&gt;
+      &lt;/div&gt;
+      &lt;div class="card-footer-item"&gt;
+        &lt;button class="button button-primary button-filled button-sm"&gt;Continue&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+													</div>
+												</div>
+											</div>
+										</details>
+									</div>
+									<!-- Notifications Tab -->
+									<div
+										role="tabpanel"
+										aria-labelledby="showcase-tab-notifications"
+										hidden
+										class="padding-md"
+										style="box-sizing: border-box"
+									>
+										<div class="display-flex flex-direction-column gap-sm">
+											<div class="notification">
+												<div class="notification-content">
+													<p class="notification-title">
+														<span class="icon" aria-hidden="true">
+															<svg
+																viewBox="0 0 16 16"
+																xmlns="http://www.w3.org/2000/svg"
+																class="fill-current-color"
+															>
+																<path
+																	d="M8 0C8.73438 0 9.44271 0.09375 10.125 0.28125C10.8073 0.46875 11.4427 0.739583 12.0312 1.09375C12.6198 1.44792 13.1589 1.86458 13.6484 2.34375C14.138 2.82292 14.5573 3.36198 14.9062 3.96094C15.2552 4.5599 15.5234 5.19792 15.7109 5.875C15.8984 6.55208 15.9948 7.26042 16 8C16 8.73438 15.9062 9.44271 15.7188 10.125C15.5312 10.8073 15.2604 11.4427 14.9062 12.0312C14.5521 12.6198 14.1354 13.1589 13.6562 13.6484C13.1771 14.138 12.638 14.5573 12.0391 14.9062C11.4401 15.2552 10.8021 15.5234 10.125 15.7109C9.44792 15.8984 8.73958 15.9948 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.5312 4.55729 15.2604 3.96875 14.9062C3.38021 14.5521 2.84115 14.1354 2.35156 13.6562C1.86198 13.1771 1.44271 12.638 1.09375 12.0391C0.744792 11.4401 0.476562 10.8021 0.289062 10.125C0.101562 9.44792 0.00520833 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.46875 5.19271 0.739583 4.55729 1.09375 3.96875C1.44792 3.38021 1.86458 2.84115 2.34375 2.35156C2.82292 1.86198 3.36198 1.44271 3.96094 1.09375C4.5599 0.744792 5.19792 0.476562 5.875 0.289062C6.55208 0.101562 7.26042 0.00520833 8 0ZM9 12V10H7V12H9ZM9 9V4H7V9H9Z"
+																/>
+															</svg>
+														</span>
+														<span>Title</span>
+													</p>
+													<p>
+														A notification about something happening in the world
+														<a href="#">Link</a>
+													</p>
+												</div>
+											</div>
+											<div class="notification notification-success">
+												<div class="notification-content">
+													<p>Success notification <a href="#">Link</a></p>
+												</div>
+											</div>
+											<div class="notification notification-danger">
+												<div class="notification-content">
+													<p>Danger notification <a href="#">Link</a></p>
+												</div>
+											</div>
+										</div>
+										<details class="accordion margin-top-md">
+											<summary>
+												<div class="accordion-header font-size-sm">View source code</div>
+											</summary>
+											<div class="accordion-content">
+												<div class="code-block margin-top-sm">
+													<div class="code-block-header">
+														<span class="code-block-header-language" data-hljs-language="html"
+															>HTML</span
+														>
+													</div>
+													<div class="code-block-body inner-focus">
+														<pre
+															class="inner-focus"
+															data-focusable-if-scrollable=""
+															role="group"
+															aria-label="Horizontally scrollable element"
+															tabindex="0"
+														><code>&lt;div class="notification"&gt;
+  &lt;div class="notification-content"&gt;
+    &lt;p class="notification-title"&gt;
+      &lt;span class="icon" aria-hidden="true"&gt;
+        &lt;svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="fill-current-color"&gt;
+          &lt;path
+            d="M8 0C8.73438 0 9.44271 0.09375 10.125 0.28125C10.8073 0.46875 11.4427 0.739583 12.0312 1.09375C12.6198 1.44792 13.1589 1.86458 13.6484 2.34375C14.138 2.82292 14.5573 3.36198 14.9062 3.96094C15.2552 4.5599 15.5234 5.19792 15.7109 5.875C15.8984 6.55208 15.9948 7.26042 16 8C16 8.73438 15.9062 9.44271 15.7188 10.125C15.5312 10.8073 15.2604 11.4427 14.9062 12.0312C14.5521 12.6198 14.1354 13.1589 13.6562 13.6484C13.1771 14.138 12.638 14.5573 12.0391 14.9062C11.4401 15.2552 10.8021 15.5234 10.125 15.7109C9.44792 15.8984 8.73958 15.9948 8 16C7.26562 16 6.55729 15.9062 5.875 15.7188C5.19271 15.5312 4.55729 15.2604 3.96875 14.9062C3.38021 14.5521 2.84115 14.1354 2.35156 13.6562C1.86198 13.1771 1.44271 12.638 1.09375 12.0391C0.744792 11.4401 0.476562 10.8021 0.289062 10.125C0.101562 9.44792 0.00520833 8.73958 0 8C0 7.26562 0.09375 6.55729 0.28125 5.875C0.46875 5.19271 0.739583 4.55729 1.09375 3.96875C1.44792 3.38021 1.86458 2.84115 2.34375 2.35156C2.82292 1.86198 3.36198 1.44271 3.96094 1.09375C4.5599 0.744792 5.19792 0.476562 5.875 0.289062C6.55208 0.101562 7.26042 0.00520833 8 0ZM9 12V10H7V12H9ZM9 9V4H7V9H9Z"
+          /&gt;
+        &lt;/svg&gt;
+      &lt;/span&gt;
+      &lt;span&gt;Title&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;p&gt;A notification about something happening in the world &lt;a href="#"&gt;Link&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="notification notification-success"&gt;
+  &lt;div class="notification-content"&gt;
+    &lt;p&gt;Success notification &lt;a href="#"&gt;Link&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="notification notification-danger"&gt;
+  &lt;div class="notification-content"&gt;
+    &lt;p&gt;Danger notification &lt;a href="#"&gt;Link&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+													</div>
+												</div>
+											</div>
+										</details>
+									</div>
+									<!-- Tags Tab -->
+									<div
+										role="tabpanel"
+										aria-labelledby="showcase-tab-tags"
+										hidden
+										class="padding-md"
+										style="box-sizing: border-box"
+									>
+										<div class="display-flex flex-wrap-wrap gap-sm">
+											<span class="tag">Tag</span>
+											<span class="tag tag-filled">Tag</span>
+											<span class="tag tag-primary">Tag</span>
+											<span class="tag tag-interactive">
+												<details class="popover tag-popover">
+													<summary class="tag-summary">Interactive tag</summary>
+													<div class="popover-content">
+														<p>Content.</p>
+													</div>
+												</details>
+											</span>
+										</div>
+										<details class="accordion margin-top-md">
+											<summary>
+												<div class="accordion-header font-size-sm">View source code</div>
+											</summary>
+											<div class="accordion-content">
+												<div class="code-block margin-top-sm">
+													<div class="code-block-header">
+														<span class="code-block-header-language" data-hljs-language="html"
+															>HTML</span
+														>
+													</div>
+													<div class="code-block-body inner-focus">
+														<pre
+															class="inner-focus"
+															data-focusable-if-scrollable=""
+															role="group"
+															aria-label="Horizontally scrollable element"
+															tabindex="0"
+														><code>&lt;span class="tag"&gt;Tag&lt;/span&gt;
+&lt;span class="tag tag-filled"&gt;Tag&lt;/span&gt;
+&lt;span class="tag tag-primary"&gt;Tag&lt;/span&gt;
+&lt;span class="tag tag-interactive"&gt;
+  &lt;details class="popover tag-popover"&gt;
+    &lt;summary class="tag-summary"&gt;Interactive tag&lt;/summary&gt;
+    &lt;div class="popover-content"&gt;
+      &lt;p&gt;Content.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/details&gt;
+&lt;/span&gt;</code></pre>
+													</div>
+												</div>
+											</div>
+										</details>
+									</div>
+									<!-- Buttons Tab -->
+									<div
+										role="tabpanel"
+										aria-labelledby="showcase-tab-buttons"
+										hidden
+										class="padding-md"
+										style="box-sizing: border-box"
+									>
+										<div class="display-flex flex-wrap-wrap gap-sm">
+											<button class="button">Default</button>
+											<button class="button button-primary">Primary</button>
+											<button class="button button-primary button-filled">Filled</button>
+											<button class="button button-clear">Clear</button>
+											<button class="button button-danger">Danger</button>
+											<button class="button button-sm">Small</button>
+										</div>
+										<details class="accordion margin-top-md">
+											<summary>
+												<div class="accordion-header font-size-sm">View source code</div>
+											</summary>
+											<div class="accordion-content">
+												<div class="code-block margin-top-sm">
+													<div class="code-block-header">
+														<span class="code-block-header-language" data-hljs-language="html"
+															>HTML</span
+														>
+													</div>
+													<div class="code-block-body inner-focus">
+														<pre
+															class="inner-focus"
+															data-focusable-if-scrollable=""
+															role="group"
+															aria-label="Horizontally scrollable element"
+															tabindex="0"
+														><code>&lt;button class="button"&gt;Default&lt;/button&gt;
+&lt;button class="button button-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="button button-primary button-filled"&gt;Filled&lt;/button&gt;
+&lt;button class="button button-clear"&gt;Clear&lt;/button&gt;
+&lt;button class="button button-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="button button-sm"&gt;Small&lt;/button&gt;</code></pre>
+													</div>
+												</div>
+											</div>
+										</details>
+									</div>
+									<!-- Timeline Tab -->
+									<div
+										role="tabpanel"
+										aria-labelledby="showcase-tab-timeline"
+										hidden
+										class="padding-md"
+										style="box-sizing: border-box"
+									>
+										<ol class="timeline">
+											<li class="timeline-item">
+												<div class="timeline-item-badge">
+													<span class="badge badge-success">
+														<span class="icon" aria-hidden="true">
+															<svg
+																viewBox="0 0 20 20"
+																fill="none"
+																xmlns="http://www.w3.org/2000/svg"
+															>
+																<path
+																	class="fill-current-color"
+																	d="M10.5 3L13.5 7H11.5V11H9.5V7H7.5L10.5 3ZM5 13V15H16V13H5ZM4 12H17C17.5523 12 18 12.4477 18 13V15C18 15.5523 17.5523 16 17 16H4C3.44772 16 3 15.5523 3 15V13C3 12.4477 3.44772 12 4 12Z"
+																/>
+															</svg>
+														</span>
+													</span>
+												</div>
+												<div class="timeline-item-template">
+													<p class="timeline-item-template-title">Project deployed to production</p>
+													<p class="timeline-item-template-time">Feb 2, 2026, 11:30 AM</p>
+												</div>
+											</li>
+											<li class="timeline-item">
+												<div class="timeline-item-badge">
+													<span class="badge badge-success">
+														<span class="icon" aria-hidden="true">
+															<svg
+																viewBox="0 0 24 24"
+																fill="none"
+																xmlns="http://www.w3.org/2000/svg"
+															>
+																<path
+																	class="fill-current-color"
+																	fill-rule="evenodd"
+																	clip-rule="evenodd"
+																	d="M3 5C3 6.30622 3.83481 7.41746 5 7.82929V16.1707C3.83481 16.5825 3 17.6938 3 19C3 20.6569 4.34315 22 6 22C7.65685 22 9 20.6569 9 19C9 17.6938 8.16519 16.5825 7 16.1707V11.3987C8.89299 14.0198 11.8676 15.7195 15.1597 15.9683C15.5625 17.15 16.682 18 18 18C19.6569 18 21 16.6569 21 15C21 13.3431 19.6569 12 18 12C16.7075 12 15.6058 12.8174 15.1839 13.9635C11.726 13.6534 8.7142 11.3899 7.47847 8.09457L7.3272 7.6912C8.31833 7.20148 9 6.18034 9 5C9 3.34315 7.65685 2 6 2C4.34315 2 3 3.34315 3 5ZM6 18C5.44772 18 5 18.4477 5 19C5 19.5523 5.44772 20 6 20C6.55228 20 7 19.5523 7 19C7 18.4477 6.55228 18 6 18ZM17 15C17 14.4477 17.4477 14 18 14C18.5523 14 19 14.4477 19 15C19 15.5523 18.5523 16 18 16C17.4477 16 17 15.5523 17 15ZM5 5C5 4.44772 5.44772 4 6 4C6.55228 4 7 4.44772 7 5C7 5.55228 6.55228 6 6 6C5.44772 6 5 5.55228 5 5Z"
+																/>
+															</svg>
+														</span>
+													</span>
+												</div>
+												<div class="timeline-item-template">
+													<p class="timeline-item-template-title">Pull request merged</p>
+													<p class="timeline-item-template-time">Feb 2, 2026, 10:00 AM</p>
+												</div>
+											</li>
+											<li class="timeline-item">
+												<div class="timeline-item-badge">
+													<span class="badge badge-success">
+														<span class="icon" aria-hidden="true">
+															<svg
+																viewBox="0 0 20 20"
+																fill="none"
+																xmlns="http://www.w3.org/2000/svg"
+															>
+																<path
+																	class="fill-current-color"
+																	d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2ZM13.7071 8.70711L9.70711 12.7071C9.31658 13.0976 8.68342 13.0976 8.29289 12.7071L6.29289 10.7071C5.90237 10.3166 5.90237 9.68342 6.29289 9.29289C6.68342 8.90237 7.31658 8.90237 7.70711 9.29289L9 10.5858L12.2929 7.29289C12.6834 6.90237 13.3166 6.90237 13.7071 7.29289C14.0976 7.68342 14.0976 8.31658 13.7071 8.70711Z"
+																/>
+															</svg>
+														</span>
+													</span>
+												</div>
+												<div class="timeline-item-template">
+													<p class="timeline-item-template-title">Pull request approved</p>
+													<p class="timeline-item-template-time">Feb 1, 2026, 4:30 PM</p>
+												</div>
+											</li>
+											<li class="timeline-item">
+												<div class="timeline-item-badge">
+													<span class="badge badge-success">
+														<span class="icon" aria-hidden="true">
+															<svg
+																viewBox="0 0 24 24"
+																fill="none"
+																xmlns="http://www.w3.org/2000/svg"
+															>
+																<path
+																	class="fill-current-color"
+																	fill-rule="evenodd"
+																	clip-rule="evenodd"
+																	d="M14.7071 2.70711L13.4142 4H14C17.3137 4 20 6.68629 20 10V16.1707C21.1652 16.5825 22 17.6938 22 19C22 20.6569 20.6569 22 19 22C17.3431 22 16 20.6569 16 19C16 17.6938 16.8348 16.5825 18 16.1707V10C18 7.79086 16.2091 6 14 6H13.4142L14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711C14.3166 9.09763 13.6834 9.09763 13.2929 8.70711L10.2929 5.70711C9.90237 5.31658 9.90237 4.68342 10.2929 4.29289L13.2929 1.29289C13.6834 0.902369 14.3166 0.902369 14.7071 1.29289C15.0976 1.68342 15.0976 2.31658 14.7071 2.70711ZM18 19C18 18.4477 18.4477 18 19 18C19.5523 18 20 18.4477 20 19C20 19.5523 19.5523 20 19 20C18.4477 20 18 19.5523 18 19ZM6 4C5.44772 4 5 4.44772 5 5C5 5.55228 5.44772 6 6 6C6.55228 6 7 5.55228 7 5C7 4.44772 6.55228 4 6 4ZM7 7.82929C8.16519 7.41746 9 6.30622 9 5C9 3.34315 7.65685 2 6 2C4.34315 2 3 3.34315 3 5C3 6.30622 3.83481 7.41746 5 7.82929V16.1707C3.83481 16.5825 3 17.6938 3 19C3 20.6569 4.34315 22 6 22C7.65685 22 9 20.6569 9 19C9 17.6938 8.16519 16.5825 7 16.1707V7.82929ZM6 18C5.44772 18 5 18.4477 5 19C5 19.5523 5.44772 20 6 20C6.55228 20 7 19.5523 7 19C7 18.4477 6.55228 18 6 18Z"
+																/>
+															</svg>
+														</span>
+													</span>
+												</div>
+												<div class="timeline-item-template">
+													<p class="timeline-item-template-title">Pull request opened</p>
+													<p class="timeline-item-template-time">Jan 30, 2026, 9:15 AM</p>
+												</div>
+											</li>
+										</ol>
+										<details class="accordion margin-top-md">
+											<summary>
+												<div class="accordion-header font-size-sm">View source code</div>
+											</summary>
+											<div class="accordion-content">
+												<div class="code-block margin-top-sm">
+													<div class="code-block-header">
+														<span class="code-block-header-language" data-hljs-language="html"
+															>HTML</span
+														>
+													</div>
+													<div class="code-block-body inner-focus">
+														<pre
+															class="inner-focus"
+															data-focusable-if-scrollable=""
+															role="group"
+															aria-label="Horizontally scrollable element"
+															tabindex="0"
+														><code>&lt;ol class="timeline"&gt;
+  &lt;li class="timeline-item"&gt;
+    &lt;div class="timeline-item-badge"&gt;
+      &lt;span class="badge badge-success"&gt;
+        &lt;span class="icon" aria-hidden="true"&gt;...&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline-item-template"&gt;
+      &lt;p class="timeline-item-template-title"&gt;Project deployed to production&lt;/p&gt;
+      &lt;p class="timeline-item-template-time"&gt;Feb 2, 2026, 11:30 AM&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="timeline-item"&gt;...&lt;/li&gt;
+  &lt;li class="timeline-item"&gt;...&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+													</div>
+												</div>
+											</div>
+										</details>
+									</div>
+								</tab-container>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA Section -->
+			<section class="padding-inline-md padding-block-xl padding-xl-tablet text-align-center">
+				<div class="margin-inline-auto" style="max-width: 700px">
+					<h2 class="font-size-h1 font-weight-bold">Ready to build?</h2>
+					<p class="font-size-lg margin-top-sm">Get up and running in seconds</p>
+					<div
+						class="code-block margin-top-lg margin-inline-auto text-align-left"
+						style="max-width: 400px"
+					>
+						<div class="code-block-header">
+							<span class="code-block-header-language">terminal</span>
+						</div>
+						<div class="code-block-body">
+							<pre data-focusable-if-scrollable class="inner-focus"><code># Install with npm
+npm install @microsoft/atlas-css
+
+# Or use from CDN
+https://unpkg.com/@microsoft/atlas-css</code></pre>
+						</div>
+					</div>
+					<p class="font-size-md color-text-subtle margin-top-md">
+						Then dive into our documentation or explore the source.
+					</p>
+					<div class="display-flex justify-content-center flex-wrap-wrap gap-sm margin-top-md">
+						<a href="~/src/components/overview.md" class="button button-primary button-lg"
+							>Browse Components</a
+						>
+						<a
+							href="https://github.com/microsoft/atlas-design"
+							class="button button-clear button-lg"
+							>View on GitHub</a
+						>
+						<a href="https://codepen.io/wibjorn/pen/JjEzrQN" class="button button-clear button-lg"
+							>Try on CodePen</a
+						>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="padding-lg">
+			<div
+				class="display-flex flex-direction-column flex-direction-row-tablet align-items-center justify-content-space-between-tablet gap-sm margin-inline-auto color-text-subtle"
+				style="max-width: 1200px"
+			>
+				<p>© Microsoft 2026</p>
+				<div class="display-flex gap-md">
+					<a
+						href="https://github.com/microsoft/atlas-design"
+						class="color-text-subtle text-decoration-none homepage-nav-link"
+						>GitHub</a
+					>
+					<a
+						href="https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks"
+						class="color-text-subtle text-decoration-none homepage-nav-link"
+						>Trademarks</a
+					>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
