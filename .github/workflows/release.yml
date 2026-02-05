@@ -16,6 +16,7 @@ jobs:
   release:
     if: github.repository == 'microsoft/atlas-design'
     permissions:
+      id-token: write # Required for OIDC / npm provenance
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
     name: Release
