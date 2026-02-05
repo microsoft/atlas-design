@@ -1,19 +1,30 @@
-$code-font-size: $font-size-8 !default;
-$code-block-spacing: 1em !default;
-$code-header-body-line-height: 1.3571 !default;
+$code-block-pre-font-size: $font-size-8 !default;
+$code-block-pre-spacing: 1em !default;
+$code-block-pre-line-height: 1.3571 !default;
+$code-block-pre-border-color: $code-block-border !default;
+$code-block-pre-border-width: $border-width !default;
+$code-block-pre-border-radius: $border-radius !default;
+$code-block-pre-background-color: $code-block !default;
 
-@mixin code-block {
+$code-block-pre-padding: $spacer-4 !default;
+
+@mixin code-block($code-block-component: false) {
+	@if $code-block-component == true {
+		background-color: $code-block-pre-background-color;
+		overflow: auto;
+	}
+
 	pre {
 		box-sizing: border-box;
 		max-width: 100%;
 		margin: 0;
-		padding: $code-block-spacing;
-		border: 1px solid $border;
-		background-color: $code-block;
-		font-size: $code-font-size;
+		padding: $code-block-pre-padding;
+		outline-color: currentColor;
+		outline-offset: -$focus-width;
+		font-size: $code-block-pre-font-size;
 		-moz-osx-font-smoothing: auto;
 		-webkit-font-smoothing: auto;
-		line-height: 1.3571;
+		line-height: $code-block-pre-line-height;
 		white-space: pre;
 		word-spacing: normal;
 		overflow: auto;
@@ -23,19 +34,25 @@ $code-header-body-line-height: 1.3571 !default;
 		hyphens: none;
 		-webkit-overflow-scrolling: touch;
 
+		@if $code-block-component == false {
+			border: $code-block-pre-border-width solid $code-block-pre-border-color;
+			border-radius: $code-block-pre-border-radius;
+			background-color: $code-block-pre-background-color;
+		}
+
 		> code {
 			display: block;
 			position: relative;
 			padding: 0;
 			border: 0;
-			line-height: $code-header-body-line-height;
+			line-height: $code-block-pre-line-height;
 
 			mark {
 				display: inline-block;
-				min-width: calc(100% + #{$code-block-spacing} + #{$code-block-spacing});
+				min-width: calc(100% + #{$code-block-pre-spacing} + #{$code-block-pre-spacing});
 				min-height: 18.9px; // Allow for highlighting of blank lines.
-				margin: 0 $code-block-spacing * -1;
-				padding: 0 $code-block-spacing;
+				margin: 0 $code-block-pre-spacing * -1;
+				padding: 0 $code-block-pre-spacing;
 				color: $text;
 			}
 		}

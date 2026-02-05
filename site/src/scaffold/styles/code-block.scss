@@ -1,44 +1,16 @@
-$code-header-min-height: 2em !default;
-$code-header-color: $text !default;
-$code-block-header-font-size: 0.8em !default;
+$code-block-header-filter-font-size: $font-size-8;
+$code-block-header-filter-color: $text-subtle;
 
-.code-block {
-	position: relative;
-	overflow-x: auto;
-
+.code-block .code-block-header .code-block-header-action-bar {
 	.code-block-header-filter {
-		max-width: 12ch;
 		flex-shrink: 1;
-		border: none;
-		font-size: $font-size-9;
-		background: $body-background-medium;
-		margin-right: $spacer-3;
-		padding-inline: $spacer-2;
-		padding-block: $spacer-1;
+		max-width: 12ch;
+		min-height: auto;
+		font-size: $code-block-header-filter-font-size;
+		padding-block: $code-block-control-padding;
 
 		&::placeholder {
-			color: $text-subtle;
-			font-size: $font-size-9;
+			color: $code-block-header-filter-color;
 		}
-	}
-
-	.code-block-header {
-		display: flex;
-		align-items: center;
-		min-height: $code-header-min-height;
-		border: 1px solid $border;
-		border-bottom: 0;
-		background-color: $code-header;
-		color: $code-header-color;
-		font-size: $code-block-header-font-size;
-
-		.code-block-header-language {
-			flex-grow: 1;
-			padding: 0.125em $code-block-spacing;
-		}
-	}
-
-	.code-block-body {
-		@include code-block();
 	}
 }
