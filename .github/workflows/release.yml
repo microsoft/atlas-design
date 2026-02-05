@@ -41,7 +41,7 @@ jobs:
         run: npm ci
 
       - name: login
-        run: npm
+        run: npm login
 
       # https://github.com/changesets/action
       - name: Publish on version increment
