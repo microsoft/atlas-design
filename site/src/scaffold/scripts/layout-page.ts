@@ -69,6 +69,28 @@ export function initLayoutPageControls() {
 		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
 	});
 
+	// Menu collapse behavior
+	window.addEventListener('click', (e: MouseEvent) => {
+		const trigger =
+			e.target instanceof Element &&
+			(e.target.closest('[data-menu-collapse-trigger]') as HTMLElement);
+		if (!trigger) {
+			return;
+		}
+
+		const menu = document.querySelector('.layout-body-menu') as HTMLElement;
+		const isCollapsed = document.documentElement.classList.toggle('layout-menu-collapsed');
+
+		if (menu) {
+			menu.hidden = isCollapsed;
+		}
+
+		trigger.classList.toggle('button-filled', isCollapsed);
+		trigger.setAttribute('aria-expanded', String(!isCollapsed));
+
+		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+	});
+
 	window.addEventListener('click', (e: MouseEvent) => {
 		const target =
 			e.target instanceof Element &&
