@@ -312,6 +312,10 @@ A flyout is a container that appears on the side of the screen. It provides addi
 1. On expand/collapse of the flyout, it's recommended developers perform manual focus handling to ensure that focus is not lost for screenreaders.
 1. The same should happen on resize.
 
+## Collapsing the left-hand menu
+
+In certain scenarios, it may be advantageous to collapse the left-hand menu element on layouts that have this container. To do this, add `.layout-menu-collapsed` to the `html` element of your page. This will hide the menu element and rearrange containers on layouts that support it, such as `layout-holy-grail` and `layout-sidecar-left`.
+
 ## Accessibility Concerns
 
 ### ARIA landmarks
