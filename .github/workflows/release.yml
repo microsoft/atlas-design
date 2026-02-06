@@ -1,16 +1,18 @@
 name: Release
 
 on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
   push:
     branches:
       - main
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 permissions:
-  id-token: write # Required for OIDC
-  contents: read
+  id-token: write # Required for OIDC / npm provenance
+  contents: write # to create release (changesets/action)
+  pull-requests: write # to create pull request (changesets/action)
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
@@ -38,6 +40,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Update NPM
+        run: |
+          npm install -g npm@latest
+          npm -v
+
       # https://github.com/changesets/action
       - name: Publish on version increment
         uses: changesets/action@v1
@@ -45,10 +52,9 @@ jobs:
         with:
           publish: npx changeset publish
         env:
-          HOME: ${{ github.workspace }} # https://github.com/changesets/action/issues/147
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
           NPM_TOKEN: ''
+          HOME: ${{ github.workspace }} # https://github.com/changesets/action/issues/147
+          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
 
       # When changesets has published a new version of @microsoft/atlas-css, then we can attempt to publish a new extension version too.
       - name: Publish VSCode extension on version increment
