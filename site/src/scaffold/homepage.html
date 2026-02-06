@@ -4,8 +4,8 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>{{title}} | Atlas Design | Microsoft</title>
-		<meta property="og:title" content="{{title}}" />
+		<title>Atlas Design | Microsoft</title>
+		<meta property="og:title" content="Atlas Design | Microsoft" />
 		<meta property="og:type" content="website" />
 		<meta name="color-scheme" content="light dark" />
 		<meta
@@ -23,8 +23,10 @@
 			<section class="hero hero-lg hero-image flex-direction-row-tablet">
 				<div class="homepage-hero-bg position-absolute top-0 left-0 right-0 bottom-0"></div>
 				<div class="hero-content homepage-hero-content">
-					<p class="letter-spacing-wide text-transform-uppercase font-size-sm margin-bottom-sm">
-						<span class="badge badge-filled white-space-normal">Powering Microsoft Learn</span>
+					<p
+						class="letter-spacing-wide text-transform-uppercase font-size-sm margin-bottom-xs line-height-normal"
+					>
+						Powering Microsoft Learn
 					</p>
 					<h1 class="font-size-h0 font-weight-bold line-height-normal">
 						<span class="gradient-text-vivid">Atlas</span> Design System
@@ -152,7 +154,9 @@
 			</header>
 
 			<!-- Features Section -->
-			<section class="padding-xl background-color-body-medium">
+			<section
+				class="padding-inline-xs padding-block-xl padding-xl-tablet background-color-body-medium"
+			>
 				<div class="text-align-center margin-inline-auto margin-bottom-xl" style="max-width: 600px">
 					<h2 class="font-size-h2 font-weight-bold">Why Atlas?</h2>
 					<p class="font-size-lg color-text-subtle margin-top-sm">
@@ -352,7 +356,7 @@
 							<div class="card-header background-color-body-medium padding-md text-align-center">
 								<span class="font-size-lg font-weight-semibold">Component Showcase</span>
 							</div>
-							<div class="card-content">
+							<div class="card-content padding-block-xxs">
 								<tab-container>
 									<div class="segmented-controls" slot="tablist-wrapper">
 										<button
@@ -692,19 +696,10 @@
 										role="tabpanel"
 										aria-labelledby="showcase-tab-cards"
 										hidden
-										class="padding-md"
+										class="padding-md padding-md background-color-body-medium border-radius-lg margin-top-xxs"
 										style="box-sizing: border-box"
 									>
-										<div class="display-grid gap-sm" style="grid-template-columns: repeat(2, 1fr)">
-											<article class="card">
-												<div class="card-content">
-													<p class="card-supertitle">Component</p>
-													<a href="~/src/components/button.md" class="card-title">Button</a>
-													<p class="card-content-description">
-														Interactive elements for user actions
-													</p>
-												</div>
-											</article>
+										<div class="display-grid gap-sm">
 											<article class="card">
 												<div class="card-content">
 													<p class="card-supertitle">Component</p>
@@ -1186,12 +1181,12 @@ https://unpkg.com/@microsoft/atlas-css</code></pre>
 				<div class="display-flex gap-md">
 					<a
 						href="https://github.com/microsoft/atlas-design"
-						class="color-text-subtle text-decoration-none homepage-nav-link"
+						class="color-text-subtle text-decoration-none"
 						>GitHub</a
 					>
 					<a
 						href="https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks"
-						class="color-text-subtle text-decoration-none homepage-nav-link"
+						class="color-text-subtle text-decoration-none"
 						>Trademarks</a
 					>
 				</div>
