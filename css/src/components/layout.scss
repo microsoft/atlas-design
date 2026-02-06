@@ -211,14 +211,14 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 	&.layout-holy-grail .layout-body {
 		@include tablet {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / minmax(0, 7fr)
-				minmax(0, 23fr);
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / minmax(0, 1fr)
+				minmax(0, 7fr) minmax(0, 1fr);
 			grid-template-areas:
-				'header header'
-				'hero hero'
-				'menu main'
-				'menu aside'
-				'footer footer';
+				'header header header'
+				'hero hero hero'
+				'. main .'
+				'. aside .'
+				'footer footer footer';
 		}
 
 		@include desktop {
