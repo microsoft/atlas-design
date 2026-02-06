@@ -54,6 +54,7 @@ jobs:
         env:
           HOME: ${{ github.workspace }} # https://github.com/changesets/action/issues/147
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
+          NPM_TOKEN: false
 
       # When changesets has published a new version of @microsoft/atlas-css, then we can attempt to publish a new extension version too.
       - name: Publish VSCode extension on version increment
