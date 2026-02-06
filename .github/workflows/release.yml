@@ -8,15 +8,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-permissions:
-  id-token: write # Required for OIDC
-  contents: read
-
 jobs:
   release:
     if: github.repository == 'microsoft/atlas-design'
     permissions:
-      id-token: write # Required for OIDC / npm provenance
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
     name: Release
@@ -28,12 +23,11 @@ jobs:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
 
-      - name: Use Node.js from .nvmrc
-        uses: actions/setup-node@v4
+      - name: Setup node (20.18.1)
+        uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 20.18.1
+          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: npm ci
@@ -48,7 +42,7 @@ jobs:
           HOME: ${{ github.workspace }} # https://github.com/changesets/action/issues/147
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
-          NPM_TOKEN: ''
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # When changesets has published a new version of @microsoft/atlas-css, then we can attempt to publish a new extension version too.
       - name: Publish VSCode extension on version increment
