@@ -5,6 +5,7 @@ const setHolyGrailLayoutSelector = '[data-set-layout="layout-holy-grail"]';
 const setTwinLayoutSelector = '[data-set-layout="layout-twin"]';
 const setSidecarLeftLayoutSelector = '[data-set-layout="layout-sidecar-left"]';
 const setSidecarRightLayoutSelector = '[data-set-layout="layout-sidecar-right"]';
+const toggleMenuCollapsedSelector = '[data-menu-collapse-trigger]';
 const constrainLayoutSelector = '[data-toggle-layout-height-constraint]';
 const hideHeroSelector = '[data-toggle-hero-visibility]';
 const toggleFlyoutSelector = '[data-toggle-flyout-visibility]';
@@ -421,4 +422,85 @@ test('flyout will not be shown on mobile and tablet ever @narrow', async ({ page
 
 	const flyoutElt = await page.locator('.layout-body-flyout');
 	expect(flyoutElt).not.toBeVisible();
+});
+
+test('menu-collapsed modifier hides menu on holy-grail layout at widescreen @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	// Ensure we're on holy-grail layout (default)
+	const layoutHtml = page.locator('.layout.layout-holy-grail');
+	await expect(layoutHtml).toBeVisible();
+
+	// Menu should be visible before collapse
+	const menu = page.locator('.layout-body-menu');
+	await expect(menu).toBeVisible();
+
+	// Toggle menu-collapsed modifier
+	await page.locator(toggleMenuCollapsedSelector).click();
+
+	// Layout should now have both holy-grail and menu-collapsed classes
+	const layoutWithModifier = page.locator('.layout.layout-holy-grail.layout-menu-collapsed');
+	await expect(layoutWithModifier).toBeVisible();
+
+	// Menu should now be hidden
+	await expect(menu).toBeHidden();
+
+	// Main and aside should still be visible
+	const main = layoutWithModifier.locator('.layout-body-main');
+	const aside = layoutWithModifier.locator('.layout-body-aside');
+	await expect(main).toBeVisible();
+	await expect(aside).toBeVisible();
+
+	// Toggle again to show menu
+	await page.locator(toggleMenuCollapsedSelector).click();
+	await expect(menu).toBeVisible();
+});
+
+test('menu-collapsed modifier hides menu on sidecar-left layout at widescreen @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	// Switch to sidecar-left layout
+	await page.locator(setSidecarLeftLayoutSelector).click();
+	await page.waitForTimeout(300);
+
+	const layoutHtml = page.locator('.layout.layout-sidecar-left');
+	await expect(layoutHtml).toBeVisible();
+
+	// Menu should be visible before collapse
+	const menu = page.locator('.layout-body-menu');
+	await expect(menu).toBeVisible();
+
+	// Toggle menu-collapsed modifier
+	await page.locator(toggleMenuCollapsedSelector).click();
+
+	// Layout should now have both sidecar-left and menu-collapsed classes
+	const layoutWithModifier = page.locator('.layout.layout-sidecar-left.layout-menu-collapsed');
+	await expect(layoutWithModifier).toBeVisible();
+
+	// Menu should now be hidden
+	await expect(menu).toBeHidden();
+
+	// Main should still be visible
+	const main = layoutWithModifier.locator('.layout-body-main');
+	await expect(main).toBeVisible();
+
+	// Toggle again to show menu
+	await page.locator(toggleMenuCollapsedSelector).click();
+	await expect(menu).toBeVisible();
 });

@@ -24,8 +24,10 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
   <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
 </div>
 <div class="buttons buttons-addons display-flex">
+	<button class="button" data-menu-collapse-trigger aria-expanded="true">Collapse menu</button>
 	<button class="button" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 	<button class="button" data-toggle-layout-height-constraint aria-pressed="false">Constrain layout height</button>
+	
 </div>
 <div class="buttons buttons-addons display-flex">
 	<button class="button button-filled" data-toggle-hero-visibility aria-pressed="true">Toggle hero</button>
@@ -309,6 +311,10 @@ A flyout is a container that appears on the side of the screen. It provides addi
 1. This means developers must handle mobile and tablet widths with a different solution, such using a modal on narrow screens.
 1. On expand/collapse of the flyout, it's recommended developers perform manual focus handling to ensure that focus is not lost for screenreaders.
 1. The same should happen on resize.
+
+## Collapsing the left-hand menu
+
+In certain scenarios, it may be advantageous to collapse the left-hand menu element on layouts that have this container. To do this, add `.layout-menu-collapsed` to the `html` element of your page. This will hide the menu element and rearrange containers on layouts that support it, such as `layout-holy-grail` and `layout-sidecar-left`.
 
 ## Accessibility Concerns
 
