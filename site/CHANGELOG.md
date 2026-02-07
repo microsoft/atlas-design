@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.67.0
+
+### Minor Changes
+
+- 9b834ef: Update home page to be prettier, then move the readme to the getting-started page.
+
 ## 0.66.0
 
 ### Minor Changes
