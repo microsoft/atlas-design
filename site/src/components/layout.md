@@ -179,7 +179,8 @@ Allowed elements: all except `layout-body-aside`.
 Can have its height constrained? Yes, on tablet screens and wider.
 
 Can have its menu collapsed? Yes, on tablet screens and wider.
-```
+
+````
 
 The specification for this layout is as follows.
 
@@ -219,7 +220,7 @@ The following block is arranged from narrow widths on the left to wider widths o
  ├──────────────┤ ├───────────────┴──────┤ ├───────────────┴──────┤
  │Footer        │ │ Footer               │ │ Footer               │
  └──────────────┘ └──────────────────────┘ └──────────────────────┘
-```
+````
 
 The specification for this layout is as follows.
 
