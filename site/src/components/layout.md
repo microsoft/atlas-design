@@ -99,6 +99,8 @@ Allowed elements: all.
 
 Can have its height constrained? No.
 
+Can have its menu collapsed? No.
+
 ```Text
    Narrow
   ┌────────────┐
@@ -133,6 +135,8 @@ Required elements: all except `layout-body-hero`.
 Allowed elements: all.
 
 Can have its height constrained? Yes, on desktop screens and wider. This differs from other constrainable layouts, because on tablet aside wraps under main, preventing us from constraining main's height effectively.
+
+Can have its menu collapsed? Yes, on tablet screens and wider.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
@@ -174,23 +178,7 @@ Allowed elements: all except `layout-body-aside`.
 
 Can have its height constrained? Yes, on tablet screens and wider.
 
-The following block is arranged from narrow widths on the left to wider widths on the right.
-
-```txt
-   Narrow           Tablet           Widescreen
-  ┌────────────┐   ┌──────────────┐ ┌──────────────────────┐
-  │ Header     │   │Header        │ │ Header               │
-  ├────────────┤   ├──────────────┤ ├──────────────────────┤
-  │ Hero       │   │Hero          │ │ Hero                 │
-  ├────────────┤   ├─────┬────────┤ ├──────┬───────────────┤
-  │ Menu       │   │Menu │ Main   │ │ Menu │ Main          │
-  ├────────────┤   │     │        │ │      │               │
-  │ Main       │   │     │        │ │      │               │
-  │            │   │     │        │ │      │               │
-  │            │   │     │        │ │      │               │
-  ├────────────┤   ├─────┴────────┤ ├──────┴───────────────┤
-  │ Footer     │   │Footer        │ │ Footer               │
-  └────────────┘   └──────────────┘ └──────────────────────┘
+Can have its menu collapsed? Yes, on tablet screens and wider.
 ```
 
 The specification for this layout is as follows.
@@ -213,6 +201,7 @@ Allowed elements: all except `layout-body-menu`.
 
 Can have its height constrained? Yes, on tablet screens and wider.
 
+Can have its menu collapsed? No
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```txt
