@@ -50,6 +50,11 @@ jobs:
         run: |
           npm run build:css;
 
+      # Build MCP server
+      - name: Build MCP
+        run: |
+          npm run build -w @microsoft/atlas-mcp;
+
       # Run build for tokens and website
       - name: Build site
         run: |
