@@ -180,7 +180,6 @@ Can have its height constrained? Yes, on tablet screens and wider.
 
 Can have its menu collapsed? Yes, on tablet screens and wider.
 
-```
 
 The specification for this layout is as follows.
 
