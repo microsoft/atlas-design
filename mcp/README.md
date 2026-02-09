@@ -46,32 +46,6 @@ Add to your project's `.github/copilot-mcp.json`:
 }
 ```
 
-### Claude Desktop
-
-Add to your Claude configuration file:
-
-**macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-**Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
-
-```json
-{
-  "mcpServers": {
-    "atlas": {
-      "command": "npx",
-      "args": ["-y", "@microsoft/atlas-mcp"]
-    }
-  }
-}
-```
-
-### Other MCP Clients
-
-The server uses stdio transport and can be integrated with any MCP-compatible client:
-
-```bash
-npx @microsoft/atlas-mcp
-```
-
 ## Available Tools
 
 ### `search_classes`
