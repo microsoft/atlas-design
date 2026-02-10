@@ -3,11 +3,10 @@ const layoutsClasses = [
 	'layout-twin',
 	'layout-holy-grail',
 	'layout-sidecar-left',
-	'layout-sidecar-right',
-	'layout-twin'
+	'layout-sidecar-right'
 ];
 
-// A function that removes all classes that begin with layout- on the html element
+// A function that removes all layout classes and sets the new one
 function setLayoutClass(layoutToSet: string) {
 	for (const layoutClass of layoutsClasses) {
 		document.documentElement.classList.remove(layoutClass);
@@ -71,7 +70,27 @@ export function initLayoutPageControls() {
 		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
 	});
 
-	//
+	// Menu collapse behavior
+	window.addEventListener('click', (e: MouseEvent) => {
+		const trigger =
+			e.target instanceof Element &&
+			(e.target.closest('[data-menu-collapse-trigger]') as HTMLElement);
+		if (!trigger) {
+			return;
+		}
+
+		const menu = document.querySelector('.layout-body-menu') as HTMLElement;
+		const isCollapsed = document.documentElement.classList.toggle('layout-menu-collapsed');
+
+		if (menu) {
+			menu.hidden = isCollapsed;
+		}
+
+		trigger.classList.toggle('button-filled', isCollapsed);
+		trigger.setAttribute('aria-expanded', String(!isCollapsed));
+
+		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+	});
 
 	window.addEventListener('click', (e: MouseEvent) => {
 		const target =

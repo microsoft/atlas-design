@@ -24,8 +24,10 @@ This page is utilizing the holy grail layout, but you can use the buttons below 
   <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
 </div>
 <div class="buttons buttons-addons display-flex">
+	<button class="button" data-menu-collapse-trigger aria-expanded="true">Collapse menu</button>
 	<button class="button" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 	<button class="button" data-toggle-layout-height-constraint aria-pressed="false">Constrain layout height</button>
+	
 </div>
 <div class="buttons buttons-addons display-flex">
 	<button class="button button-filled" data-toggle-hero-visibility aria-pressed="true">Toggle hero</button>
@@ -97,6 +99,8 @@ Allowed elements: all.
 
 Can have its height constrained? No.
 
+Can have its menu collapsed? No.
+
 ```Text
    Narrow
   ┌────────────┐
@@ -131,6 +135,8 @@ Required elements: all except `layout-body-hero`.
 Allowed elements: all.
 
 Can have its height constrained? Yes, on desktop screens and wider. This differs from other constrainable layouts, because on tablet aside wraps under main, preventing us from constraining main's height effectively.
+
+Can have its menu collapsed? Yes, on tablet screens and wider.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
@@ -172,6 +178,8 @@ Allowed elements: all except `layout-body-aside`.
 
 Can have its height constrained? Yes, on tablet screens and wider.
 
+Can have its menu collapsed? Yes, on tablet screens and wider.
+
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```txt
@@ -210,6 +218,8 @@ Required elements: all except `layout-body-hero` and `layout-body-menu` (see all
 Allowed elements: all except `layout-body-menu`.
 
 Can have its height constrained? Yes, on tablet screens and wider.
+
+Can have its menu collapsed? No
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
@@ -309,6 +319,10 @@ A flyout is a container that appears on the side of the screen. It provides addi
 1. This means developers must handle mobile and tablet widths with a different solution, such using a modal on narrow screens.
 1. On expand/collapse of the flyout, it's recommended developers perform manual focus handling to ensure that focus is not lost for screenreaders.
 1. The same should happen on resize.
+
+## Collapsing the left-hand menu
+
+In certain scenarios, it may be advantageous to collapse the left-hand menu element on layouts that have this container. To do this, add `.layout-menu-collapsed` to the `html` element of your page. This will hide the menu element and rearrange containers on layouts that support it, such as `layout-holy-grail` and `layout-sidecar-left`.
 
 ## Accessibility Concerns
 
