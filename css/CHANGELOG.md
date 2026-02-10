@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 4.3.0
+
+### Minor Changes
+
+- c856959: Adds support for a new layout modifier .layout-menu-collapse which allows the Holy Grail and Sidecar Left layouts to collapse their left hand menu component.
+
 ## 4.2.0
 
 ### Minor Changes
