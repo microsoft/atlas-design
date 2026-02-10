@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 0.67.0
+
+### Minor Changes
+
+- c856959: Adds support for a new layout modifier .layout-menu-collapse which allows the Holy Grail and Sidecar Left layouts to collapse their left hand menu component.
+- 9b834ef: Update home page to be prettier, then move the readme to the getting-started page.
+
 ## 0.66.0
 
 ### Minor Changes
