@@ -191,6 +191,10 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 // It hides the menu and adjusts the main/aside areas accordingly
 
 .layout.layout-menu-collapsed {
+	.layout-body-menu {
+		display: none;
+	}
+
 	// Styles for main and aside when menu is collapsed (only for holy-grail)
 
 	&.layout-holy-grail {
@@ -252,7 +256,7 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 			grid-template-areas:
 				'header header header'
 				'hero hero hero'
-				'. main .'
+				'menu main .'
 				'footer footer footer';
 		}
 
@@ -261,7 +265,7 @@ $five-eighths-widescreen: math.div($breakpoint-widescreen, 8) * 5; // 1125px
 			grid-template-areas:
 				'header header header'
 				'hero hero hero'
-				'. main .'
+				'menu main .'
 				'footer footer footer';
 		}
 	}
