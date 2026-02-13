@@ -79,12 +79,7 @@ export function initLayoutPageControls() {
 			return;
 		}
 
-		const menu = document.querySelector('.layout-body-menu') as HTMLElement;
 		const isCollapsed = document.documentElement.classList.toggle('layout-menu-collapsed');
-
-		if (menu) {
-			menu.hidden = isCollapsed;
-		}
 
 		trigger.classList.toggle('button-filled', isCollapsed);
 		trigger.setAttribute('aria-expanded', String(!isCollapsed));
