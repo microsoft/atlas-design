@@ -15,3 +15,13 @@ main img[src^='/atlas-light.'] {
 	height: auto;
 	margin-bottom: 18px;
 }
+
+// add temporary layout-menu-collapsed classes for site functionality, might bring this into the css package if it is useful
+
+.layout.layout-menu-collapsed .hide-on-menu-collapsed {
+	display: none !important;
+}
+
+.layout:not(.layout-menu-collapsed) .show-on-menu-collapsed {
+	display: none !important;
+}

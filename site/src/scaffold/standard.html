@@ -74,7 +74,7 @@
 
 		<nav id="menu" class="layout-body-menu background-color-body">
 			{{#toc}}
-				<div id="menu-content" class="display-none display-block-tablet layout-padding padding-block-md">
+				<div id="menu-content" class="display-none display-block-tablet layout-padding padding-block-md hide-on-menu-collapsed">
 					<button data-full-screen-nav type="button" class="display-none burger button button-clear position-fixed margin-right-sm margin-top-sm top-0 right-0" aria-label="Mobile menu toggle">
 						<span class="burger-top"></span>
 						<span class="burger-middle"></span>
@@ -98,7 +98,9 @@
 					{{/entries}}
 				</div>
 			{{/toc}}
-
+			<button class="button button-clear show-on-menu-collapsed">
+				add svg
+			</button>
 		</nav>
 
 		<main id="main" class="layout-body-main">
