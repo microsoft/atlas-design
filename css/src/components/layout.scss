@@ -508,8 +508,6 @@ $layout-menu-collapsed-width: 96px !default;
 	}
 }
 
-/* stylelint-enable no-descending-specificity */
-
 @mixin constrained-layout-child {
 	position: sticky;
 	inset-block-start: 0;
