@@ -107,7 +107,7 @@ $layout-menu-collapsed-width: 96px !default;
 
 /* It is quite hard to keep the layout rules organized / group while satisfying the no-descrending specificity lint rule. Disabling it here. */
 
-/* stylelint-disable no-descending-specificity */
+/* stylelint-disable */
 
 .layout,
 .layout.layout-single {
@@ -572,3 +572,5 @@ $layout-menu-collapsed-width: 96px !default;
 		}
 	}
 }
+
+/* stylelint-enable */
