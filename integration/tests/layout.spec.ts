@@ -5,7 +5,7 @@ const setHolyGrailLayoutSelector = '[data-set-layout="layout-holy-grail"]';
 const setTwinLayoutSelector = '[data-set-layout="layout-twin"]';
 const setSidecarLeftLayoutSelector = '[data-set-layout="layout-sidecar-left"]';
 const setSidecarRightLayoutSelector = '[data-set-layout="layout-sidecar-right"]';
-const toggleMenuCollapsedSelector = '[data-menu-collapse-trigger]';
+const toggleMenuCollapsedSelector = '#main [data-menu-collapse-trigger]';
 const constrainLayoutSelector = '[data-toggle-layout-height-constraint]';
 const hideHeroSelector = '[data-toggle-hero-visibility]';
 const toggleFlyoutSelector = '[data-toggle-flyout-visibility]';
