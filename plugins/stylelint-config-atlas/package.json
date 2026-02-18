@@ -18,7 +18,7 @@
 	],
 	"engines": {
 		"node": "24.13.1",
-		"npm": "11.6.2"
+		"npm": "11.8.0"
 	},
 	"dependencies": {
 		"postcss-scss": "^4.0.9",

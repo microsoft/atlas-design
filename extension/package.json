@@ -14,7 +14,7 @@
 	"engines": {
 		"vscode": "^1.71.0",
 		"node": "24.13.1",
-		"npm": "11.6.2"
+		"npm": "11.8.0"
 	},
 	"categories": [
 		"Other"

@@ -6,7 +6,7 @@
 	"homepage": "https://github.com/microsoft/atlas-design",
 	"engines": {
 		"node": "24.13.1",
-		"npm": "11.6.2"
+		"npm": "11.8.0"
 	},
 	"scripts": {
 		"build:css": "npm run build --workspace=@microsoft/atlas-css",
