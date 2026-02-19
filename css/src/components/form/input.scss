@@ -1,3 +1,6 @@
+@use '../../tokens/index.scss' as *;
+@use '../../mixins/index.scss' as *;
+
 $input-color: $text !default;
 $input-background-color: $body-background !default;
 $input-border-color: $control-border !default;

@@ -1,4 +1,6 @@
 @use 'sass:math';
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
 $timeline-content-font-size: $font-size-8 !default;
 $timeline-timestamp-font-size: $font-size-9 !default;
 $timeline-timestamp-font-weight: $weight-semilight !default;

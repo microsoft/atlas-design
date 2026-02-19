@@ -1,3 +1,5 @@
+@use '../tokens/index.scss' as *;
+
 @mixin gradient-text($startColor, $endColor) {
 	/* stylelint-disable */
 	-webkit-background-clip: text;

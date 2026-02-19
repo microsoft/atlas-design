@@ -1,4 +1,6 @@
 @use 'sass:map';
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
 
 $button-color: $text !default;
 $button-background-color: $body-background !default;

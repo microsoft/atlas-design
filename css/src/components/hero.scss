@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $hero-padding-xs: $layout-4 !default;
 $hero-padding-sm: $layout-5 !default;
 $hero-padding-default: $layout-6 !default;

@@ -1,3 +1,6 @@
+@use '../../tokens/index.scss' as *;
+@use '../../mixins/index.scss' as *;
+
 $label-color: $text !default;
 $label-font-size: $font-size-7 !default;
 $label-font-weight: $weight-semibold !default;

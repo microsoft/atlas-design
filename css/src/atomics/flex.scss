@@ -1,4 +1,6 @@
 @use 'sass:map';
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
 
 $flex-atomics: (
 	'justify-content': (

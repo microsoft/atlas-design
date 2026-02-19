@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 @if ($focus-visible-use-polyfill) {
 	.js-focus-visible .has-default-focus *:focus:not(.focus-visible),
 	.js-focus-visible .default-focus *:focus:not(.focus-visible) {

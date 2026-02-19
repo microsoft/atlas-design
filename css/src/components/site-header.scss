@@ -1,3 +1,7 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+@use './button.scss' as *;
+
 $site-header-height: 3.375em !default;
 $site-header-inline-gap: $spacer-3 !default;
 $site-header-border: 1px solid $border !default;

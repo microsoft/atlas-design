@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $gradient-card-padding: $layout-2 !default;
 $gradient-card-border-radius: $border-radius-lg !default; //6px
 

@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $notification-background: $secondary-background !default;
 $notification-padding: $spacer-5 !default;
 

@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $dimensions: 16 24 32 36 48 64 76 88 96 112 128 !default;
 
 .image {

@@ -1,3 +1,6 @@
+@use '../../tokens/index.scss' as *;
+@use '../../mixins/index.scss' as *;
+
 $help-color: $text !default;
 $help-danger-color: $danger !default;
 $help-success-color: $success !default;

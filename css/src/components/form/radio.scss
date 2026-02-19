@@ -1,3 +1,6 @@
+@use '../../tokens/index.scss' as *;
+@use '../../mixins/index.scss' as *;
+
 $radio-circle-size: 1.25em !default;
 $radio-dot-size: 0.625em !default;
 $radio-shadow-radius: 0.15em !default;

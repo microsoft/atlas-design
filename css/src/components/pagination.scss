@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $font-size-lg: $font-size-6 !default;
 $font-size-sm: $font-size-8 !default;
 

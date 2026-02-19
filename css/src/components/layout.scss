@@ -1,4 +1,6 @@
 @use 'sass:math';
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
 
 $quarter-widescreen: math.div($breakpoint-widescreen, 4);
 $half-widescreen: math.div($breakpoint-widescreen, 2);
