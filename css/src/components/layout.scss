@@ -198,11 +198,11 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include widescreen {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto var(
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, auto) var(
 					#{$layout-menu-collapsed-width-name}
 				)
 				minmax(0, var(#{$layout-menu-collapsed-width-widescreen-spacer-width-name}))
-				minmax(0, #{$half-widescreen}) minmax(0, #{$quarter-widescreen}) auto;
+				$half-widescreen minmax(0, #{$quarter-widescreen}) minmax(0, auto);
 			grid-template-areas:
 				'header header header header header header'
 				'hero hero hero hero hero hero'
@@ -333,11 +333,11 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include widescreen {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto var(
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, auto) var(
 					#{$layout-menu-collapsed-width-name}
 				)
 				minmax(0, var(#{$layout-menu-collapsed-width-widescreen-spacer-width-name}))
-				#{$three-quarters-widescreen} auto;
+				#{$three-quarters-widescreen} minmax(0, auto);
 			grid-template-areas:
 				'header header header header header'
 				'hero hero hero hero hero'
