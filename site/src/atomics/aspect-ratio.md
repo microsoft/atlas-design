@@ -24,7 +24,7 @@ Aspect ratio atomics are used to set the width-to-height ratio of an element, ev
 	<img
 		alt="An example image with an aspect ratio of 2 by 1"
 		class="aspect-ratio-2-1"
-		src="~/src/scaffold/media/aspect-ratio-2-1.png"
+		src="/scaffold/media/aspect-ratio-2-1.png"
 	/>
 </div>
 ```
@@ -39,7 +39,7 @@ If the `video` or `iframe` container is wider or taller than the video content, 
 		controls
 		name="media"
 		class="aspect-ratio-16-9"
-		src="~/src/scaffold/media/aspect-ratio-video-16-9.mp4"
+		src="/scaffold/media/aspect-ratio-video-16-9.mp4"
 		type="video/mp4"
 	></video>
 </div>
@@ -52,7 +52,7 @@ If the element's intrinsic size is smaller than its container size, the ratio is
 	<img
 		class="aspect-ratio-1-1"
 		alt="An example image with an aspect ratio of 1 by 1"
-		src="~/src/scaffold/media/aspect-ratio-1-1.png"
+		src="/scaffold/media/aspect-ratio-1-1.png"
 	/>
 </div>
 ```
@@ -64,7 +64,7 @@ If the source image has a different intrinsic aspect ratio than the atomic ratio
 	<img
 		class="aspect-ratio-4-3 object-fit-cover"
 		alt="An example image resized to an aspect ratio of 4 by 3"
-		src="~/src/scaffold/media/aspect-ratio-16-9.png"
+		src="/scaffold/media/aspect-ratio-16-9.png"
 	/>
 </div>
 ```

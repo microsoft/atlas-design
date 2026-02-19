@@ -23,7 +23,7 @@ Below is an example of the most common persona component use-case.
 ```html
 <div class="persona">
 	<figure class="persona-avatar">
-		<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+		<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 	</figure>
 	<div class="persona-details">
 		<p class="persona-name">Jane Doe</p>
@@ -37,7 +37,7 @@ Persona's details may contain a link to user's profile, and with help of the [`.
 ```html
 <div class="persona position-relative">
 	<figure class="persona-avatar">
-		<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+		<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 	</figure>
 	<div class="persona-details">
 		<a class="persona-name justify-self-stretch stretched-link" href="#">Jane Doe</a>
@@ -51,7 +51,7 @@ Persona might have both avatar and details presented at the same time or just on
 ```html
 <div class="persona">
 	<figure class="persona-avatar">
-		<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+		<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 	</figure>
 </div>
 
@@ -71,7 +71,7 @@ The following classes are available for resizing: `persona-sm`, `persona-lg`.
 <div class="display-flex flex-direction-column gap-sm">
 	<div class="persona persona-sm">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+			<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 		<div class="persona-details">
 			<p class="persona-name">Jane Doe</p>
@@ -80,7 +80,7 @@ The following classes are available for resizing: `persona-sm`, `persona-lg`.
 	</div>
 	<div class="persona">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+			<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 		<div class="persona-details">
 			<p class="persona-name">Jane Doe</p>
@@ -89,7 +89,7 @@ The following classes are available for resizing: `persona-sm`, `persona-lg`.
 	</div>
 	<div class="persona persona-lg">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+			<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 		<div class="persona-details">
 			<p class="persona-name">Jane Doe</p>

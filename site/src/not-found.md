@@ -9,7 +9,7 @@ template: standard
 	<p class="font-size-h1 color-text-subtle">Shoot! The requested page doesn't exist.</p>
 	<nav class="buttons gap-md margin-top-lg">
 		<a class="button button-primary button-lg button-clear" href="/">Atlas Home</a>
-		<a class="button button-primary button-lg button-clear" href="~/src/atomics/overview.md">Atomics</a>
-		<a class="button button-primary button-lg button-clear" href="~/src/components/overview.md">Components</a>
+		<a class="button button-primary button-lg button-clear" href="/atomics/overview/">Atomics</a>
+		<a class="button button-primary button-lg button-clear" href="/components/overview/">Components</a>
 	</nav>
 </div>

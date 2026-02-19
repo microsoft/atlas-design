@@ -1,0 +1,176 @@
+// @ts-nocheck
+/**
+ * Custom marked renderer ported from parcel-transformer-markdown-html.
+ * Produces identical HTML output to the original Parcel plugin.
+ */
+const { marked } = require('marked');
+const hljs = require('highlight.js');
+
+const languageDisplayNames = {
+	html: 'HTML',
+	js: 'JavaScript',
+	javascript: 'JavaScript',
+	scss: 'SCSS',
+	sass: 'Sass',
+	md: 'Markdown',
+	markdown: 'Markdown',
+	'atomics-filter': 'Atomics',
+	atomics: 'Atomics',
+	'abut-html': 'HTML',
+	'html-no-indent': 'HTML',
+	'html-no-example': 'HTML'
+};
+
+let filterIds = 0;
+
+function resetFilterIds() {
+	filterIds = 0;
+}
+
+function createFilterableCodeBlock(code, language, displayName) {
+	filterIds++;
+	return `
+	<div class="code-block margin-top-xs">
+		<div class="code-block-header">
+			<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
+			<div class="code-block-header-action-bar">
+				<input id="filter" class="input code-block-header-filter" data-code-filter-input="${filterIds}" placeholder="Filter ..." type="search" />
+			</div>
+		</div>
+		<div class="code-block-body max-height-30vh inner-focus" data-focusable-if-scrollable>
+			<pre><code data-code-filter-code="${filterIds}">${code}</code></pre>
+		</div>
+	</div>`;
+}
+
+function createExample(language, code, noIndent = false) {
+	if (language.toLowerCase() === 'html') {
+		return `<div class="example ${noIndent ? 'full-width' : ''} padding-block-md">${code}</div>`;
+	}
+	if (language.toLowerCase() === 'markdown') {
+		return `<div class="example padding-block-md">${marked(code)}</div>`;
+	}
+	return '';
+}
+
+/**
+ * @type {import('marked').RendererObject}
+ */
+const markedOptions = {
+	heading(text, level) {
+		const id = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+		return `
+		<!-- heading-capture-outer-begin -->
+		<div class="markdown">
+			<a href="#${id}" aria-label="Section titled: ${text}">
+				<span class="heading-anchor"></span>
+			</a>
+			<h${level} id="${id}">
+				<!-- heading-capture-text-begin -->${text}<!-- heading-capture-text-end -->
+			</h${level}>
+		</div>
+		<!-- heading-capture-outer-end -->
+		`;
+	},
+	code(code, language) {
+		const fullWidth = language === 'html-no-indent';
+		let provideExample = true;
+		if (language === 'html-no-example') {
+			language = 'html';
+			provideExample = false;
+		}
+		let spacing = 'margin-top-sm';
+		if (language === 'abut-html' || language === 'html-no-indent') {
+			language = 'html';
+		}
+		if (language === 'abut-html') {
+			spacing = '';
+		}
+		const elementExample = provideExample ? createExample(language, code, fullWidth) : '';
+
+		const displayName =
+			language in languageDisplayNames ? languageDisplayNames[language] : language;
+		if (language === 'atomics-filter') {
+			return createFilterableCodeBlock(code, language, displayName);
+		}
+		return `
+			${elementExample}
+			<div class="code-block ${spacing}">
+				<div class="code-block-header">
+					<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
+				</div>
+				<div class="code-block-body inner-focus">
+					<pre class="inner-focus" data-focusable-if-scrollable><code>${
+						hljs.highlight(code, { language }).value
+					}</code></pre>
+				</div>
+			</div>
+		`;
+	},
+	paragraph(text) {
+		return `
+			<div class="markdown">
+				<p>${text}</p>
+			</div>`;
+	},
+	list(body, ordered, start) {
+		const element = ordered ? 'ol' : 'ul';
+		return `
+			<div class="markdown">
+				<${element}>
+					${body}
+				</${element}>
+			</div>
+			`;
+	},
+	table(header, body) {
+		return `
+			<div class="markdown table-wrapper margin-top-sm inner-focus" data-focusable-if-scrollable>
+				<table class="table">
+					<thead>${header}</thead>
+					<tbody>${body}</tbody>
+				</table>
+			</div>
+		`;
+	}
+};
+
+marked.use({
+	renderer: markedOptions,
+	pedantic: false,
+	gfm: true,
+	breaks: false,
+	sanitize: false,
+	smartLists: true,
+	smartypants: false,
+	xhtml: false,
+	headerIds: false,
+	mangle: false
+});
+
+function renderMarkdown(content) {
+	resetFilterIds();
+	return marked(content);
+}
+
+function extractH1AndFirstP(htmlString) {
+	const entireH1Regexp =
+		/<!-- heading-capture-outer-begin -->\s*([\s\S]*?)\s*<!-- heading-capture-outer-end -->/i;
+	const entireH1 = htmlString.match(entireH1Regexp);
+	const entireh1Match = entireH1 ? entireH1[1].toString() : null;
+
+	const pMatch = htmlString.match(/<p>(.*?)<\/p>/);
+	const p = pMatch ? pMatch[1] : null;
+
+	const h1Match = htmlString.match(
+		/<!-- heading-capture-text-begin -->\s*([\s\S]*?)\s*<!-- heading-capture-text-end -->/i
+	);
+	const h1 = h1Match ? h1Match[1].toString() : null;
+	const html = htmlString
+		.replaceAll(entireh1Match, '')
+		.replace(p, '<div class="h1-inverse-spacer"></div>');
+	return { h1, p, html };
+}
+
+module.exports = { renderMarkdown, extractH1AndFirstP };

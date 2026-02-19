@@ -80,7 +80,7 @@ Some situations may require the inclusion of a slash previous the first breadcru
 
 ## Size modification with Atomics
 
-By default `.breadcrumbs` are just slightly smaller than the document's font size. However, you may use [font size atomics](~/src/atomics/typography.md) to easily change the size of all the breadcrumbs. See example below, where `font-size-xl` is applied the the `.breadcrumbs` element.
+By default `.breadcrumbs` are just slightly smaller than the document's font size. However, you may use [font size atomics](/atomics/typography/) to easily change the size of all the breadcrumbs. See example below, where `font-size-xl` is applied the the `.breadcrumbs` element.
 
 ```html
 <nav aria-label="breadcrumb example with size modification">

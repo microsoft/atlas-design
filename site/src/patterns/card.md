@@ -62,7 +62,7 @@ This card pattern makes use of the outer `.card` class and includes the use of t
 				<div class="image image-64x64">
 					<img
 						alt="Write alt text here or if image is presentational only add aria-hidden attribute"
-						src="~/src/scaffold/media/video-media.png"
+						src="/scaffold/media/video-media.png"
 					/>
 				</div>
 			</div>
@@ -109,7 +109,7 @@ The testimonial card provides a place for a user's opinion to be showcased and i
 	<div class="card-content font-size-lg display-flex flex-direction-column">
 		<div class="persona persona-lg">
 			<figure class="persona-avatar">
-				<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+				<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 			</figure>
 			<div class="persona-details">
 				<p class="persona-name">Jane Doe</p>

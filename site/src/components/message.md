@@ -21,7 +21,7 @@ Here is an example of a standard usage of message component.
 	<p class="message-time">May 29, 2023, 4:50PM</p>
 	<div class="persona message-persona">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+			<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="message-content">
@@ -53,7 +53,7 @@ Use the `message-sender` class to indicate message sent by the user.
 	<p class="message-time">May 29, 2023, 4:55PM</p>
 	<div class="persona message-persona">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+			<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="message-content">
@@ -87,7 +87,7 @@ Use the `message-sender` class to indicate message sent by the user.
 	<p class="message-time">May 29, 2023, 4:50PM</p>
 	<div class="persona persona-sm message-persona">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+			<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="message-content">
@@ -115,7 +115,7 @@ Use the `message-sender` class to indicate message sent by the user.
 	<p class="message-time">May 29, 2023, 4:50PM</p>
 	<div class="persona message-persona">
 		<figure class="persona-avatar">
-			<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+			<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 		</figure>
 	</div>
 	<div class="message-content">
