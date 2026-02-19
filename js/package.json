@@ -18,8 +18,8 @@
 		"url": "https://github.com/microsoft/atlas-design"
 	},
 	"engines": {
-		"node": "24.11.1",
-		"npm": "11.6.2"
+		"node": "24.13.1",
+		"npm": "11.8.0"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
