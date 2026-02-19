@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': patch
 ---
 
-Cleaning up logical direction warnings
+Updating a few rules with their corresponding logical versions
