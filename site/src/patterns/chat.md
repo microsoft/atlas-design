@@ -171,7 +171,7 @@ The following markup utilizes various components and atomics to create a chat ex
 			<p class="message-time">May 29, 2023, 4:50PM</p>
 			<div class="persona message-persona">
 				<figure class="persona-avatar">
-					<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+					<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 				</figure>
 			</div>
 			<div class="message-content">
@@ -222,7 +222,7 @@ The following markup utilizes various components and atomics to create a chat ex
 			<p class="message-time">May 29, 2023, 4:55PM</p>
 			<div class="persona message-persona">
 				<figure class="persona-avatar">
-					<img src="~/src/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
+					<img src="/scaffold/media/avatar.png" alt="Avatar for Jane Doe" />
 				</figure>
 			</div>
 			<div class="message-content">

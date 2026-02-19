@@ -7,16 +7,14 @@
 		"node": "24.11.1",
 		"npm": "11.6.2"
 	},
-	"targets": {
-		"default": {
-			"includeNodeModules": true
-		}
-	},
 	"scripts": {
-		"prebuild": "node toc.js",
-		"prestart": "node toc.js",
-		"start": "cross-env PARCEL_WORKERS=0 parcel \"./src/**/*.md\" --port 1111",
-		"build": "cross-env PARCEL_WORKERS=0 parcel build \"./src/**/*.md\"",
+		"prebuild": "npm run build:assets",
+		"prestart": "npm run build:assets",
+		"build:scss": "sass src/scaffold/index.scss dist/scaffold/index.css --load-path=../node_modules --quiet-deps && sass src/scaffold/styles/homepage.scss dist/scaffold/styles/homepage.css --load-path=../node_modules --quiet-deps",
+		"build:ts": "esbuild src/scaffold/index.ts --bundle --outfile=dist/scaffold/index.js --format=esm --platform=browser",
+		"build:assets": "npm run build:scss && npm run build:ts",
+		"start": "npm run build:assets && eleventy --serve --port=1111",
+		"build": "eleventy",
 		"toc": "node toc.js",
 		"type-check": "tsc --noEmit",
 		"prelint": "npm run type-check",
@@ -24,20 +22,22 @@
 		"lint-fix": "eslint . --ext .ts --fix"
 	},
 	"devDependencies": {
-		"cross-env": "^7.0.3",
-		"eslint": "^8.43.0",
+		"@11ty/eleventy": "^3.1.2",
+		"@11ty/eleventy-navigation": "^1.0.5",
+		"@microsoft/atlas-css": "4.3.0",
+		"@microsoft/atlas-js": "^1.15.0",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
-		"eslint-plugin-import": "^2.27.5",
-		"@microsoft/atlas-css": "4.3.0",
+		"cross-env": "^7.0.3",
+		"esbuild": "^0.25.12",
+		"eslint": "^8.43.0",
 		"eslint-config-prettier": "^8.8.0",
-		"parcel": "2.16.3",
-		"lightningcss": "1.30.2",
-		"@parcel/transformer-sass": "2.16.3",
-		"@microsoft/parcel-transformer-markdown-html": "2.7.2",
-		"fs-extra": "^11.1.1",
+		"eslint-plugin-import": "^2.27.5",
 		"front-matter": "^4.0.2",
-		"typescript": "^5.1.5",
-		"@microsoft/atlas-js": "^1.15.0"
+		"fs-extra": "^11.1.1",
+		"highlight.js": "^11.11.1",
+		"marked": "^5.1.2",
+		"sass": "^1.97.3",
+		"typescript": "^5.1.5"
 	}
 }

@@ -16,7 +16,7 @@
 		"build:class-names": "npm run class-names --workspace=@microsoft/atlas-css",
 		"prebuild:class-names": "npm run build:css",
 		"codegen": "npm run codegen --workspace=@microsoft/atlas-integration",
-		"type-check": "npm run build:css && npm run type-check --workspace=@microsoft/atlas-site",
+		"type-check": "npm run build:css && npm run type-check --workspace=@microsoft/atlas-site && npm run type-check --workspace=@microsoft/atlas-js",
 		"prelint": "npm run build:tokens",
 		"lint": "npm run lint:css && npm run lint:site && npm run lint:js",
 		"lint:site": "npm run lint --workspace=@microsoft/atlas-site",
@@ -52,7 +52,6 @@
 	"workspaces": {
 		"packages": [
 			"css",
-			"plugins/parcel-transformer-markdown-html",
 			"plugins/stylelint-config-atlas",
 			"site",
 			"js",

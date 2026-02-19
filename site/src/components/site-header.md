@@ -48,7 +48,7 @@ Below is the example of the site header with logo, brand, and navigation links.
 	<div class="site-header-divider"></div>
 
 	<!-- Brand -->
-	<a href="~/src/index.md" class="site-header-brand">
+	<a href="/" class="site-header-brand">
 		<span>Brand</span>
 	</a>
 
@@ -82,7 +82,7 @@ You can use `site-header-logo-centered` subcomponent class to center the logo.
 ```html-no-indent
 <div class="site-header justify-content-space-between">
 	<!-- Brand -->
-	<a href="~/src/index.md" class="site-header-brand">
+	<a href="/" class="site-header-brand">
 		<span>Brand</span>
 	</a>
 

@@ -194,7 +194,7 @@ Another available option is using the `.card-content` inner container, and placi
 <article class="card card-horizontal">
 	<div class="card-header" aria-hidden="true">
 		<div class="card-header-image">
-			<img src="~/src/scaffold/media/path.svg" />
+			<img src="/scaffold/media/path.svg" />
 		</div>
 	</div>
 	<div class="card-content">

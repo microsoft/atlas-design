@@ -7,6 +7,7 @@
 	"source": "src/index.ts",
 	"scripts": {
 		"build": "tsc --project \"./tsconfig.json\" --outDir \"./dist\" --declaration true --declarationMap true",
+		"type-check": "tsc --noEmit",
 		"lint": "eslint . --ext .ts",
 		"prebuild": "rimraf dist",
 		"test": "echo \"Error: no test specified\" && exit 1",
