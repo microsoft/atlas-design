@@ -13,8 +13,8 @@
 	"icon": "icons/atlas-icon-512.png",
 	"engines": {
 		"vscode": "^1.71.0",
-		"node": "24.11.1",
-		"npm": "11.6.2"
+		"node": "24.13.1",
+		"npm": "11.8.0"
 	},
 	"categories": [
 		"Other"
@@ -30,7 +30,7 @@
 		"classes"
 	],
 	"main": "./out/main.js",
-	"packageManager": "npm@11.6.2",
+	"packageManager": "npm@11.8.0",
 	"scripts": {
 		"test-compile": "tsc -p ./",
 		"pretest": "npm run compile && npm run lint",
