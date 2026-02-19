@@ -170,9 +170,16 @@ $layout-menu-collapsed-width: 96px !default;
 	&.layout-menu-collapsed .layout-body {
 		@include tablet {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto /
-				var(#{$layout-menu-collapsed-width-name})
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / var(
+					#{$layout-menu-collapsed-width-name}
+				)
 				minmax(0, 1fr);
+			grid-template-areas:
+				'header header'
+				'hero hero'
+				'menu main'
+				'menu aside'
+				'footer footer';
 		}
 
 		@include desktop {
