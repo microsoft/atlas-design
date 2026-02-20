@@ -23,6 +23,7 @@ main img[src^='/atlas-light.'] {
 	display: none !important;
 }
 
+.layout.layout-single .show-on-menu-collapsed,
 .layout.layout-holy-grail:not(.layout-menu-collapsed) .show-on-menu-collapsed,
 .layout.layout-sidecar-left:not(.layout-menu-collapsed) .show-on-menu-collapsed {
 	display: none !important;
