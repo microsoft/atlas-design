@@ -18,10 +18,12 @@ main img[src^='/atlas-light.'] {
 
 // add temporary layout-menu-collapsed classes for site functionality, might bring this into the css package if it is useful
 
-.layout.layout-menu-collapsed .hide-on-menu-collapsed {
+.layout.layout-menu-collapsed.layout-holy-grail .hide-on-menu-collapsed,
+.layout.layout-menu-collapsed.layout-sidecar-left .hide-on-menu-collapsed {
 	display: none !important;
 }
 
-.layout:not(.layout-menu-collapsed) .show-on-menu-collapsed {
+.layout.layout-holy-grail:not(.layout-menu-collapsed) .show-on-menu-collapsed,
+.layout.layout-sidecar-left:not(.layout-menu-collapsed) .show-on-menu-collapsed {
 	display: none !important;
 }
