@@ -5,7 +5,7 @@ const setHolyGrailLayoutSelector = '[data-set-layout="layout-holy-grail"]';
 const setTwinLayoutSelector = '[data-set-layout="layout-twin"]';
 const setSidecarLeftLayoutSelector = '[data-set-layout="layout-sidecar-left"]';
 const setSidecarRightLayoutSelector = '[data-set-layout="layout-sidecar-right"]';
-const toggleMenuCollapsedSelector = '[data-menu-collapse-trigger]';
+const toggleMenuCollapsedSelector = '#main [data-menu-collapse-toggle]';
 const constrainLayoutSelector = '[data-toggle-layout-height-constraint]';
 const hideHeroSelector = '[data-toggle-hero-visibility]';
 const toggleFlyoutSelector = '[data-toggle-flyout-visibility]';
@@ -424,7 +424,7 @@ test('flyout will not be shown on mobile and tablet ever @narrow', async ({ page
 	expect(flyoutElt).not.toBeVisible();
 });
 
-test('menu-collapsed modifier hides menu on holy-grail layout at widescreen @desktop', async ({
+test('menu-collapsed modifier collapses menu on holy-grail layout at widescreen @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
@@ -439,9 +439,13 @@ test('menu-collapsed modifier hides menu on holy-grail layout at widescreen @des
 	const layoutHtml = page.locator('.layout.layout-holy-grail');
 	await expect(layoutHtml).toBeVisible();
 
-	// Menu should be visible before collapse
+	// Menu and its content should be visible before collapse
 	const menu = page.locator('.layout-body-menu');
+	const menuContent = page.locator('.hide-on-menu-collapsed');
+	const collapsedButton = page.locator('.show-on-menu-collapsed');
 	await expect(menu).toBeVisible();
+	await expect(menuContent).toBeVisible();
+	await expect(collapsedButton).toBeHidden();
 
 	// Toggle menu-collapsed modifier
 	await page.locator(toggleMenuCollapsedSelector).click();
@@ -450,8 +454,10 @@ test('menu-collapsed modifier hides menu on holy-grail layout at widescreen @des
 	const layoutWithModifier = page.locator('.layout.layout-holy-grail.layout-menu-collapsed');
 	await expect(layoutWithModifier).toBeVisible();
 
-	// Menu should now be hidden
-	await expect(menu).toBeHidden();
+	// Menu area should still be visible but content should be hidden and collapsed button shown
+	await expect(menu).toBeVisible();
+	await expect(menuContent).toBeHidden();
+	await expect(collapsedButton).toBeVisible();
 
 	// Main and aside should still be visible
 	const main = layoutWithModifier.locator('.layout-body-main');
@@ -459,12 +465,13 @@ test('menu-collapsed modifier hides menu on holy-grail layout at widescreen @des
 	await expect(main).toBeVisible();
 	await expect(aside).toBeVisible();
 
-	// Toggle again to show menu
+	// Toggle again to expand menu
 	await page.locator(toggleMenuCollapsedSelector).click();
-	await expect(menu).toBeVisible();
+	await expect(menuContent).toBeVisible();
+	await expect(collapsedButton).toBeHidden();
 });
 
-test('menu-collapsed modifier hides menu on sidecar-left layout at widescreen @desktop', async ({
+test('menu-collapsed modifier collapses menu on sidecar-left layout at widescreen @desktop', async ({
 	page
 }, testInfo) => {
 	test.skip(
@@ -482,9 +489,13 @@ test('menu-collapsed modifier hides menu on sidecar-left layout at widescreen @d
 	const layoutHtml = page.locator('.layout.layout-sidecar-left');
 	await expect(layoutHtml).toBeVisible();
 
-	// Menu should be visible before collapse
+	// Menu and its content should be visible before collapse
 	const menu = page.locator('.layout-body-menu');
+	const menuContent = page.locator('.hide-on-menu-collapsed');
+	const collapsedButton = page.locator('.show-on-menu-collapsed');
 	await expect(menu).toBeVisible();
+	await expect(menuContent).toBeVisible();
+	await expect(collapsedButton).toBeHidden();
 
 	// Toggle menu-collapsed modifier
 	await page.locator(toggleMenuCollapsedSelector).click();
@@ -493,14 +504,17 @@ test('menu-collapsed modifier hides menu on sidecar-left layout at widescreen @d
 	const layoutWithModifier = page.locator('.layout.layout-sidecar-left.layout-menu-collapsed');
 	await expect(layoutWithModifier).toBeVisible();
 
-	// Menu should now be hidden
-	await expect(menu).toBeHidden();
+	// Menu area should still be visible but content should be hidden and collapsed button shown
+	await expect(menu).toBeVisible();
+	await expect(menuContent).toBeHidden();
+	await expect(collapsedButton).toBeVisible();
 
 	// Main should still be visible
 	const main = layoutWithModifier.locator('.layout-body-main');
 	await expect(main).toBeVisible();
 
-	// Toggle again to show menu
+	// Toggle again to expand menu
 	await page.locator(toggleMenuCollapsedSelector).click();
-	await expect(menu).toBeVisible();
+	await expect(menuContent).toBeVisible();
+	await expect(collapsedButton).toBeHidden();
 });

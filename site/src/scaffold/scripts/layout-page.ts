@@ -14,6 +14,16 @@ function setLayoutClass(layoutToSet: string) {
 	document.documentElement.classList.add(layoutToSet);
 }
 
+// A function that removes all layout classes and sets the new one
+function getCurrentLayoutClass() {
+	for (const layoutClass of layoutsClasses) {
+		if (document.documentElement.classList.contains(layoutClass)) {
+			return layoutClass;
+		}
+	}
+	throw new Error('No layout class present on HTML element');
+}
+
 export function initLayoutPageControls() {
 	window.addEventListener('click', (e: MouseEvent) => {
 		const target =
@@ -33,6 +43,14 @@ export function initLayoutPageControls() {
 		}
 
 		safeViewTransition(() => {
+			if (!collapseBehaviorAllowed(layoutToSet)) {
+				const collapseTrigger = document.querySelector(
+					'[data-menu-collapse-toggle]'
+				) as HTMLButtonElement;
+				if (collapseTrigger) {
+					handleMenuCollapse(collapseTrigger, false);
+				}
+			}
 			setLayoutClass(layoutToSet);
 			scrollTo({ behavior: 'instant', top: target.getBoundingClientRect().top - 200 });
 			const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
@@ -74,22 +92,37 @@ export function initLayoutPageControls() {
 	window.addEventListener('click', (e: MouseEvent) => {
 		const trigger =
 			e.target instanceof Element &&
-			(e.target.closest('[data-menu-collapse-trigger]') as HTMLElement);
+			(e.target.closest('[data-menu-collapse-toggle]') as HTMLElement);
 		if (!trigger) {
 			return;
 		}
 
-		const menu = document.querySelector('.layout-body-menu') as HTMLElement;
-		const isCollapsed = document.documentElement.classList.toggle('layout-menu-collapsed');
-
-		if (menu) {
-			menu.hidden = isCollapsed;
+		const currentLayout = getCurrentLayoutClass();
+		if (!collapseBehaviorAllowed(currentLayout)) {
+			return;
 		}
 
-		trigger.classList.toggle('button-filled', isCollapsed);
-		trigger.setAttribute('aria-expanded', String(!isCollapsed));
+		const isCollapsed = document.documentElement.classList.contains('layout-menu-collapsed');
+		safeViewTransition(() => {
+			handleMenuCollapse(trigger, !isCollapsed);
+		});
+	});
 
-		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+	// collapse only button
+	window.addEventListener('click', (e: MouseEvent) => {
+		const target =
+			e.target instanceof Element &&
+			(e.target.closest('[data-menu-collapse-only-trigger]') as HTMLElement);
+		if (!target) {
+			return;
+		}
+		const toggleButton = document.querySelector('[data-menu-collapse-toggle]') as HTMLElement;
+		if (!toggleButton) {
+			throw new Error('Menu collapse toggle button not found in the document');
+		}
+		safeViewTransition(() => {
+			handleMenuCollapse(toggleButton, false);
+		});
 	});
 
 	window.addEventListener('click', (e: MouseEvent) => {
@@ -159,10 +192,25 @@ declare global {
 	}
 }
 
+function handleMenuCollapse(trigger: HTMLElement, shouldCollapse: boolean) {
+	const method: 'add' | 'remove' = shouldCollapse ? 'add' : 'remove';
+	// eslint-disable-next-line security/detect-object-injection
+	trigger.classList[method]('button-filled');
+	trigger.setAttribute('aria-expanded', String(!shouldCollapse));
+	// eslint-disable-next-line security/detect-object-injection
+	document.documentElement.classList[method]('layout-menu-collapsed');
+
+	window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+}
+
 function safeViewTransition(cb: () => void) {
 	if (!document.startViewTransition) {
 		cb();
 	} else {
 		document.startViewTransition(() => cb());
 	}
+}
+
+function collapseBehaviorAllowed(layoutClass: string) {
+	return layoutClass === 'layout-holy-grail' || layoutClass === 'layout-sidecar-left';
 }
