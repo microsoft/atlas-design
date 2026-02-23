@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 0.67.1
+
+### Patch Changes
+
+- 7f16a0b: Fixing issues with holy grail and sidecar left when flyout is active and menu is collapsed. Also fixes issues with menu collapsed widths.
+
 ## 0.67.0
 
 ### Minor Changes
