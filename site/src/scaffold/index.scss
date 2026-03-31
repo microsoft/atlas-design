@@ -13,7 +13,7 @@
 main img[src^='/atlas-light.'] {
 	width: 64px;
 	height: auto;
-	margin-bottom: 18px;
+	margin-block-end: 18px;
 }
 
 // add temporary layout-menu-collapsed classes for site functionality, might bring this into the css package if it is useful

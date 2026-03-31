@@ -28,7 +28,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		font-size: $table-caption-size;
 		font-weight: $weight-semibold;
 		letter-spacing: $table-caption-spacing;
-		text-align: $user-right;
+		text-align: end;
 		text-transform: uppercase;
 	}
 
@@ -43,7 +43,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 	}
 
 	th:not([align]) {
-		text-align: $user-left;
+		text-align: start;
 	}
 
 	&.table-stacked-mobile {
