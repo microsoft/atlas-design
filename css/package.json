@@ -90,6 +90,6 @@
 		"stylelint": "16.10.0",
 		"stylelint-config-prettier": "9.0.5",
 		"stylelint-prettier": "^3.0.0",
-		"wireit": "0.14.9"
+		"wireit": "0.14.12"
 	}
 }

@@ -21,7 +21,7 @@ $list-top-spacing: 1rem !default;
 .markdown {
 	// @include mixins.responsive-font-size($markdown-paragraph-size, 0.875rem); // experiment only
 	font-size: $markdown-paragraph-size;
-	line-height: 1.6;
+	line-height: 1.75;
 
 	// Inline code
 

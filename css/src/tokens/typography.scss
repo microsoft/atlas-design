@@ -28,6 +28,10 @@ $letter-spacing-medium: 0.125rem;
 $letter-spacing-wide: 0.225rem;
 
 // Line height
-$line-height-normal: 1.3;
+$line-height-normal: 1.4;
 
+// Reading width
+$optimal-reading-width: 688px;
+$reading-width-padding: 24px;
+$reading-width-padded: $optimal-reading-width + ($reading-width-padding * 2);
 //@end-sass-export-section

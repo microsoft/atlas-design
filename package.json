@@ -27,6 +27,7 @@
 		"lint:js": "npm run lint --workspace=@microsoft/atlas-js",
 		"lint-fix:css": "npm run lint-fix --workspace=@microsoft/atlas-css",
 		"start": "npm run serve:site",
+		"clean-cache": "rimraf .parcel-cache/ .wireit/ ./**/.wireit & rimraf ./packages/*/dist",
 		"serve:site": "npm run start --workspace=@microsoft/atlas-site",
 		"serve:css": "npm run start --workspace=@microsoft/atlas-css",
 		"screenshots:light": "npm run screenshots:light --workspace=@microsoft/atlas-integration",
@@ -74,6 +75,7 @@
 		"@changesets/cli": "^2.26.2",
 		"@playwright/test": "^1.35.1",
 		"husky": "4.3.8",
+		"rimraf": "3.0.2",
 		"prettier": "^2.8.8",
 		"pretty-quick": "^3.1.3"
 	},

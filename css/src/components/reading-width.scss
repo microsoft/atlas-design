@@ -1,0 +1,10 @@
+@use '../tokens/typography.scss' as typography;
+
+.reading-width {
+	max-width: typography.$optimal-reading-width;
+}
+
+.reading-width-padded {
+	width: typography.$reading-width-padded;
+	padding: typography.$reading-width-padding;
+}

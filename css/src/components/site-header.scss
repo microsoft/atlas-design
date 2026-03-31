@@ -72,9 +72,9 @@ $site-header-panel-featured-section-border: 1px solid tokens.$table-border-dark 
 	gap: $site-header-inline-gap;
 	padding-inline: tokens.$layout-gap;
 
-	@include mixins.widescreen {
-		padding-inline: tokens.$layout-widescreen-gap;
-	}
+	// @include mixins.widescreen {
+	// 	padding-inline: tokens.$layout-widescreen-gap;
+	// }
 
 	.site-header-button {
 		@include mixins.control;
