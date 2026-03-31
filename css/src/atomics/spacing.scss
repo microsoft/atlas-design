@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $separator: '-' !default;
 $logical-spacing-properties: (
 	('margin', 'margin'),

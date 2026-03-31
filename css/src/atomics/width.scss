@@ -1,4 +1,6 @@
 @use 'sass:list';
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
 
 $universal-widths: auto, fit-content, 100, 150, 200, 250, 300, 350 !default;
 $mobile-incompatible-widths: 400, 450, 500, unset !default;

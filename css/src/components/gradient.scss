@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $border-gradient-colors: (
 	'body': $body-background,
 	'body-accent': $body-background-accent

@@ -1,3 +1,6 @@
+@use '../../tokens/index.scss' as *;
+@use '../../mixins/index.scss' as *;
+
 /* stylelint-disable selector-max-specificity, max-nesting-depth, selector-no-qualifying-type */
 
 $checkbox-border-radius: $border-radius !default;

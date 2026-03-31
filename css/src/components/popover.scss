@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 /* stylelint-disable max-nesting-depth, selector-max-specificity  */
 
 $popover-background-color: $body-background !default;

@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $progress-bar-background-color: $secondary-background-glow-high-contrast !default;
 $progress-bar-value-background-color: $primary !default;
 $progress-bar-value-background-color-warning: $warning !default;

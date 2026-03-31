@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $step-font-size: $font-size-7 !default;
 $steps-gap: 0.4375em !default;
 $steps-size: 0.5em !default;

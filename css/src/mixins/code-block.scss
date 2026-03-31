@@ -1,3 +1,5 @@
+@use '../tokens/index.scss' as *;
+
 $code-block-pre-font-size: $font-size-8 !default;
 $code-block-pre-spacing: 1em !default;
 $code-block-pre-line-height: 1.3571 !default;

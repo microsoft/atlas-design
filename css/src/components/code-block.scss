@@ -1,3 +1,7 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+@use './button.scss' as *;
+
 $code-block-font-size: $font-size-8 !default;
 $code-block-border-color: $code-block-border !default;
 $code-block-border-width: $border-width !default;

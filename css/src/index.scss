@@ -1,5 +1,5 @@
-@import './tokens/index.scss';
-@import './mixins/index.scss';
-@import './core/index.scss';
-@import './components/index.scss';
-@import './atomics/index.scss';
+@forward './tokens/index.scss';
+@forward './mixins/index.scss';
+@forward './core/index.scss';
+@forward './components/index.scss';
+@forward './atomics/index.scss';

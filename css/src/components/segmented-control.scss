@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $sc-padding-sm: 0.5em 1em !default;
 $sc-padding: 0.75em 1.25em !default;
 $sc-padding-lg: 1em 1.5em !default;

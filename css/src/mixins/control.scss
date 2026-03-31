@@ -1,3 +1,5 @@
+@use '../tokens/index.scss' as *;
+
 $control-radius: $border-radius !default;
 
 $control-font-size: $font-size-7 !default;

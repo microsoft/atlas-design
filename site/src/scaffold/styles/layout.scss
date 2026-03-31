@@ -1,3 +1,6 @@
+@use '@microsoft/atlas-css/src/tokens/index.scss' as *;
+@use '@microsoft/atlas-css/src/mixins/index.scss' as *;
+
 $gap-size: 1.5rem;
 
 html {

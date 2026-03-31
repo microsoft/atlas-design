@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $auto-spacing-properties: (
 	('margin-inline', 'margin-inline'),
 	('margin-left', 'margin-inline-start'),

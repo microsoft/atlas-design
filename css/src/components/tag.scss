@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 /* stylelint-disable selector-max-specificity, no-descending-specificity  */
 
 $tag-padding-block: 0.375em !default;

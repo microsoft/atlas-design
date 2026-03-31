@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use '../mixins/index.scss' as *;
+
 $table-cell-vertical-padding: $spacer-5 !default;
 $table-cell-horizontal-padding: $spacer-6 !default;
 $table-cell-padding-compact: $spacer-3 !default;

@@ -1,3 +1,7 @@
+@use '@microsoft/atlas-css/src/tokens/index.scss' as *;
+@use '@microsoft/atlas-css/src/mixins/index.scss' as *;
+@use '@microsoft/atlas-css/src/components/code-block.scss' as *;
+
 $code-block-header-filter-font-size: $font-size-8;
 $code-block-header-filter-color: $text-subtle;
 

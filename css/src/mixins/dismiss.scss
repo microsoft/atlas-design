@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as *;
+@use './transparency.scss' as *;
+
 %dismiss {
 	@include transparent-effects;
 

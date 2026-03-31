@@ -1,3 +1,7 @@
+@use '../../tokens/index.scss' as *;
+@use '../../mixins/index.scss' as *;
+@use './label.scss' as *;
+
 /* stylelint-disable max-nesting-depth, selector-max-specificity  */
 
 $field-line-height: 1.5 !default;

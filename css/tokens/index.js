@@ -1,5 +1,6 @@
-const { readFile, writeFile, mkdir } = require('fs/promises');
+const { readFile, writeFile, mkdir, rm } = require('fs/promises');
 const path = require('path');
+const os = require('os');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
 const { exporter } = require('sass-export');
 
@@ -12,13 +13,33 @@ async function createTokens() {
 	const filePaths = await getInputFilesFromIndex(filePathStem, indexPath);
 	checkFileComments(filePaths);
 
+	// sass-export concatenates files via stdin and cannot resolve @use paths.
+	// Create temp copies with @use lines stripped for sass-export processing.
+	const tempDir = path.join(os.tmpdir(), 'atlas-tokens-' + Date.now());
+	await mkdir(tempDir, { recursive: true });
+	const tempFilePaths = await Promise.all(
+		filePaths.map(async fp => {
+			const content = await readFile(fp, 'utf8');
+			const stripped = content
+				.split('\n')
+				.filter(line => !line.trim().startsWith('@use '))
+				.join('\n');
+			const tempPath = path.join(tempDir, path.basename(fp));
+			await writeFile(tempPath, stripped);
+			return tempPath;
+		})
+	);
+
 	/** @type {import('./types').SassExportOptions} */
 	const options = {
-		inputFiles: filePaths
+		inputFiles: tempFilePaths
 	};
 
 	const exportedTokens = exporter(options).getStructured();
 	const collection = getSortedOrder(collectTokens(exportedTokens));
+
+	// Clean up temp files
+	await rm(tempDir, { recursive: true, force: true });
 
 	const outfolder = './dist';
 	const outfileStem = path.join(outfolder, 'tokens');
@@ -47,8 +68,13 @@ async function getInputFilesFromIndex(filePathStem, indexPath) {
 	try {
 		const indexFile = (await readFile(indexPath)).toString();
 		const lines = indexFile.split('\n').reduce((arr, line) => {
-			if (line.includes('@import')) {
-				const filePath = line.replace('@import', '').replaceAll(`'`, '').replace(';', '').trim();
+			if (line.includes('@import') || line.includes('@forward')) {
+				const filePath = line
+					.replace('@import', '')
+					.replace('@forward', '')
+					.replaceAll(`'`, '')
+					.replace(';', '')
+					.trim();
 				arr.push(path.join(filePathStem, filePath));
 			}
 			return arr;
