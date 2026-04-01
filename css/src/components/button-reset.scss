@@ -1,8 +1,7 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../mixins/index.scss' as mixins;
 
 .button-reset {
-	@include transparent-effects;
+	@include mixins.transparent-effects;
 
 	display: inline-block;
 	padding: 0;

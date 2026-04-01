@@ -1,11 +1,11 @@
-@use '../tokens/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
 
 // stylelint-disable declaration-block-no-redundant-longhand-properties
 @mixin focus() {
 	outline-color: inherit;
-	outline-offset: $focus-outline-offset;
-	outline-style: $focus-style;
-	outline-width: $focus-width;
+	outline-offset: tokens.$focus-outline-offset;
+	outline-style: tokens.$focus-style;
+	outline-width: tokens.$focus-width;
 }
 
 %focus {
@@ -13,7 +13,7 @@
 }
 
 @mixin focus-visible {
-	@if ($focus-visible-use-polyfill) {
+	@if (tokens.$focus-visible-use-polyfill) {
 		&.focus-visible {
 			@content;
 		}

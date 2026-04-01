@@ -1,5 +1,4 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../mixins/index.scss' as mixins;
 
 $auto-spacing-properties: (
 	('margin-inline', 'margin-inline'),
@@ -25,7 +24,7 @@ $separator: '-';
 	$classicProp: nth($property, 1);
 	$logicalProp: nth($property, 2);
 
-	@include tablet {
+	@include mixins.tablet {
 		.#{$classicProp}#{$separator}auto#{$separator}tablet {
 			#{$logicalProp}: auto !important;
 		}
@@ -36,7 +35,7 @@ $separator: '-';
 	$classicProp: nth($property, 1);
 	$logicalProp: nth($property, 2);
 
-	@include desktop {
+	@include mixins.desktop {
 		.#{$classicProp}#{$separator}auto#{$separator}desktop {
 			#{$logicalProp}: auto !important;
 		}
@@ -47,7 +46,7 @@ $separator: '-';
 	$classicProp: nth($property, 1);
 	$logicalProp: nth($property, 2);
 
-	@include widescreen {
+	@include mixins.widescreen {
 		.#{$classicProp}#{$separator}auto#{$separator}widescreen {
 			#{$logicalProp}: auto !important;
 		}

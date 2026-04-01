@@ -1,21 +1,21 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-@each $item in $positions {
+@each $item in tokens.$positions {
 	.position-#{$item} {
 		position: #{$item} !important;
 	}
 }
 
-@include tablet {
-	@each $item in $positions {
+@include mixins.tablet {
+	@each $item in tokens.$positions {
 		.position-#{$item}-tablet {
 			position: #{$item} !important;
 		}
 	}
 }
 
-@each $side, $direction in $logical-directions {
+@each $side, $direction in tokens.$logical-directions {
 	.#{$side}-0 {
 		inset-#{$direction}: 0 !important;
 	}

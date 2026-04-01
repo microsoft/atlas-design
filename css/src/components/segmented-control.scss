@@ -1,29 +1,29 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
 $sc-padding-sm: 0.5em 1em !default;
 $sc-padding: 0.75em 1.25em !default;
 $sc-padding-lg: 1em 1.5em !default;
 
-$sc-font-color: $primary !default;
-$sc-border: $border-width solid $border !default;
-$sc-border-radius-rounded: $border-radius-rounded;
-$sc-hover-background-color: $primary-background !default;
-$sc-hover-border: $border-width solid $border !default;
-$sc-hover-border-color: $primary-hover !default;
-$sc-active-hover-background-color: $primary-hover !default;
-$sc-active-hover-border-color: $primary-hover !default;
-$sc-active-background-color: $primary !default;
-$sc-active-border-color: $primary !default;
-$sc-active-color: $text-invert !default;
+$sc-font-color: tokens.$primary !default;
+$sc-border: tokens.$border-width solid tokens.$border !default;
+$sc-border-radius-rounded: tokens.$border-radius-rounded;
+$sc-hover-background-color: tokens.$primary-background !default;
+$sc-hover-border: tokens.$border-width solid tokens.$border !default;
+$sc-hover-border-color: tokens.$primary-hover !default;
+$sc-active-hover-background-color: tokens.$primary-hover !default;
+$sc-active-hover-border-color: tokens.$primary-hover !default;
+$sc-active-background-color: tokens.$primary !default;
+$sc-active-border-color: tokens.$primary !default;
+$sc-active-color: tokens.$text-invert !default;
 
 .segmented-controls {
 	display: grid;
 	justify-content: center;
 	width: 100%;
-	grid-gap: $spacer-3;
+	grid-gap: tokens.$spacer-3;
 	grid-template-columns: max-content auto max-content;
-	font-size: $font-size-7;
+	font-size: tokens.$font-size-7;
 	white-space: nowrap;
 
 	.segmented-control-previous,
@@ -35,13 +35,13 @@ $sc-active-color: $text-invert !default;
 		border-radius: $sc-border-radius-rounded;
 		background-color: $sc-active-background-color;
 		color: $sc-active-color;
-		font-weight: $weight-semibold;
+		font-weight: tokens.$weight-semibold;
 		cursor: pointer;
 
 		&:hover {
 			background-color: $sc-active-hover-background-color;
 
-			@include forced-colors {
+			@include mixins.forced-colors {
 				border-color: Highlight;
 				background-color: Highlight;
 				color: HighlightText;
@@ -49,9 +49,9 @@ $sc-active-color: $text-invert !default;
 			}
 		}
 
-		@include focus-visible() {
-			outline-color: $text-invert;
-			outline-offset: -$focus-outline-offset;
+		@include mixins.focus-visible() {
+			outline-color: tokens.$text-invert;
+			outline-offset: -(tokens.$focus-outline-offset);
 		}
 	}
 
@@ -75,21 +75,21 @@ $sc-active-color: $text-invert !default;
 		border-radius: $sc-border-radius-rounded;
 		background-color: transparent;
 		color: $sc-font-color;
-		font-weight: $weight-semibold;
+		font-weight: tokens.$weight-semibold;
 		cursor: pointer;
 		appearance: none;
 		vertical-align: top;
 
-		@include focus-visible() {
-			outline-color: $text-invert;
-			outline-offset: -$focus-outline-offset;
+		@include mixins.focus-visible() {
+			outline-color: tokens.$text-invert;
+			outline-offset: -(tokens.$focus-outline-offset);
 		}
 
 		&:hover {
 			background-color: $sc-hover-background-color;
-			z-index: $zindex-hover;
+			z-index: tokens.$zindex-hover;
 
-			@include forced-colors {
+			@include mixins.forced-colors {
 				background-color: Highlight !important;
 				color: HighlightText !important;
 				forced-color-adjust: none;
@@ -99,14 +99,14 @@ $sc-active-color: $text-invert !default;
 		&[aria-selected='true'] {
 			background-color: $sc-active-background-color;
 			color: $sc-active-color;
-			z-index: $zindex-active;
+			z-index: tokens.$zindex-active;
 
 			&:hover {
 				background-color: $sc-active-hover-background-color;
-				z-index: $zindex-hover;
+				z-index: tokens.$zindex-hover;
 			}
 
-			@include forced-colors {
+			@include mixins.forced-colors {
 				background-color: SelectedItem;
 				color: SelectedItemText;
 				forced-color-adjust: none;
@@ -114,7 +114,7 @@ $sc-active-color: $text-invert !default;
 		}
 	}
 
-	@include tablet {
+	@include mixins.tablet {
 		.segmented-control,
 		.segmented-previous,
 		.segmented-next {
@@ -122,7 +122,7 @@ $sc-active-color: $text-invert !default;
 		}
 	}
 
-	@include desktop {
+	@include mixins.desktop {
 		.segmented-control,
 		.segmented-previous,
 		.segmented-next {

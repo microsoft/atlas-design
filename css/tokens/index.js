@@ -15,6 +15,8 @@ async function createTokens() {
 
 	// sass-export concatenates files via stdin and cannot resolve @use paths.
 	// Create temp copies with @use lines stripped for sass-export processing.
+	// Also strip namespace prefixes (e.g., palette.$foo → $foo) since sass-export
+	// relies on files being concatenated and doesn't understand module namespaces.
 	const tempDir = path.join(os.tmpdir(), 'atlas-tokens-' + Date.now());
 	await mkdir(tempDir, { recursive: true });
 	const tempFilePaths = await Promise.all(
@@ -23,7 +25,8 @@ async function createTokens() {
 			const stripped = content
 				.split('\n')
 				.filter(line => !line.trim().startsWith('@use '))
-				.join('\n');
+				.join('\n')
+				.replace(/[\w-]+\.\$/g, '$');
 			const tempPath = path.join(tempDir, path.basename(fp));
 			await writeFile(tempPath, stripped);
 			return tempPath;

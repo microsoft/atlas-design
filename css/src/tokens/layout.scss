@@ -1,4 +1,4 @@
-@use './breakpoints.scss' as *;
+@use './breakpoints.scss' as breakpoints;
 
 /**
  * @sass-export-section="layout"
@@ -9,7 +9,7 @@ $large-column-gap: 1.5rem !default;
 $reading-max-width: 50rem !default;
 
 $layout-gap: 24px !default;
-$layout-widescreen-width: $breakpoint-widescreen - $layout-gap * 2 !default;
+$layout-widescreen-width: breakpoints.$breakpoint-widescreen - $layout-gap * 2 !default;
 $layout-widescreen-gap: max(
 	$layout-gap,
 	calc(50% - #{$layout-widescreen-width} / 2)

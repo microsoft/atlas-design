@@ -1,16 +1,16 @@
-@use '@microsoft/atlas-css/src/tokens/index.scss' as *;
-@use '@microsoft/atlas-css/src/mixins/index.scss' as *;
+@use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
+@use '@microsoft/atlas-css/src/mixins/index.scss' as mixins;
 
 .tag-input-holder {
-	border: 1px solid $control-border;
+	border: 1px solid tokens.$control-border;
 	height: 2.25rem;
 }
 
 .warning-icon-container {
-	margin-inline-end: $spacer-3;
+	margin-inline-end: tokens.$spacer-3;
 
 	svg {
-		@include fill-current-color();
+		@include mixins.fill-current-color();
 
 		width: 1rem;
 		height: auto;

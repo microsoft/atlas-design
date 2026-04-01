@@ -1,40 +1,39 @@
-@use 'sass:map';
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-$button-color: $text !default;
-$button-background-color: $body-background !default;
+$button-color: tokens.$text !default;
+$button-background-color: tokens.$body-background !default;
 
-$button-lg-font-size: $font-size-6 !default;
-$button-sm-font-size: $font-size-8 !default;
+$button-lg-font-size: tokens.$font-size-6 !default;
+$button-sm-font-size: tokens.$font-size-8 !default;
 
 $button-icon-font-size: 0.875em !default;
 
-$button-border-color: $control-border !default;
-$button-border-width: $control-border-width !default;
-$button-border-radius: $control-radius !default;
+$button-border-color: tokens.$control-border !default;
+$button-border-width: mixins.$control-border-width !default;
+$button-border-radius: mixins.$control-radius !default;
 
 $button-padding-vertical: calc(0.375em - #{$button-border-width}) !default;
 $button-padding-horizontal: 0.75em !default;
 
-$button-hover-color: $text !default;
-$button-hover-border-color: $default-hover !default;
-$button-hover-background-color: $default-hover-invert !default;
+$button-hover-color: tokens.$text !default;
+$button-hover-border-color: tokens.$default-hover !default;
+$button-hover-background-color: tokens.$default-hover-invert !default;
 
-$button-disabled-background-color: $body-background-medium !default;
+$button-disabled-background-color: tokens.$body-background-medium !default;
 $button-disabled-shadow: none !default;
 $button-disabled-opacity: 0.5 !default;
 
-$button-selected-background-color: $selected-background !default;
-$button-selected-border-color: $selected-stroke !default;
-$button-selected-color: $selected-foreground !default;
+$button-selected-background-color: tokens.$selected-background !default;
+$button-selected-border-color: tokens.$selected-stroke !default;
+$button-selected-color: tokens.$selected-foreground !default;
 
 $button-icon-spacing: 0.375em !default;
-$button-font-weight: $weight-semibold !default;
+$button-font-weight: tokens.$weight-semibold !default;
 
 .button {
-	@include control;
-	@include unselectable;
+	@include mixins.control;
+	@include mixins.unselectable;
 
 	justify-content: center;
 	padding-block: $button-padding-vertical;
@@ -116,23 +115,23 @@ $button-font-weight: $weight-semibold !default;
 		pointer-events: none;
 
 		&::after {
-			@include loader;
-			@include center(1em);
+			@include mixins.loader;
+			@include mixins.center(1em);
 
 			position: absolute !important;
-			border-block-end-color: $text;
-			border-inline-start-color: $text;
+			border-block-end-color: tokens.$text;
+			border-inline-start-color: tokens.$text;
 		}
 	}
 
-	@each $name, $color-set in $colors {
-		$base: nth($color-set, $color-index-base);
-		$dark: nth($color-set, $color-index-dark);
-		$background: nth($color-set, $color-index-background);
-		$background-selected: nth($color-set, $color-index-background-selected);
-		$selected: nth($color-set, $color-index-selected);
-		$foreground-selected: nth($color-set, $color-index-foreground-selected);
-		$border-selected: nth($color-set, $color-index-stroke-selected);
+	@each $name, $color-set in tokens.$colors {
+		$base: nth($color-set, tokens.$color-index-base);
+		$dark: nth($color-set, tokens.$color-index-dark);
+		$background: nth($color-set, tokens.$color-index-background);
+		$background-selected: nth($color-set, tokens.$color-index-background-selected);
+		$selected: nth($color-set, tokens.$color-index-selected);
+		$foreground-selected: nth($color-set, tokens.$color-index-foreground-selected);
+		$border-selected: nth($color-set, tokens.$color-index-stroke-selected);
 
 		&.button-#{$name} {
 			@if $name == 'warning' {
@@ -167,7 +166,7 @@ $button-font-weight: $weight-semibold !default;
 }
 
 $button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
-$button-clear-selected-background-color: $selected-background-subtle !default;
+$button-clear-selected-background-color: tokens.$selected-background-subtle !default;
 
 .button.button-clear {
 	border-color: transparent;
@@ -196,13 +195,13 @@ $button-clear-selected-background-color: $selected-background-subtle !default;
 		color: $button-selected-color;
 	}
 
-	@each $name, $color-set in $colors {
-		$base: nth($color-set, $color-index-base);
-		$dark: nth($color-set, $color-index-dark);
-		$background: nth($color-set, $color-index-background);
-		$background-selected: nth($color-set, $color-index-background-selected);
-		$selected: nth($color-set, $color-index-selected);
-		$foreground-selected: nth($color-set, $color-index-foreground-selected);
+	@each $name, $color-set in tokens.$colors {
+		$base: nth($color-set, tokens.$color-index-base);
+		$dark: nth($color-set, tokens.$color-index-dark);
+		$background: nth($color-set, tokens.$color-index-background);
+		$background-selected: nth($color-set, tokens.$color-index-background-selected);
+		$selected: nth($color-set, tokens.$color-index-selected);
+		$foreground-selected: nth($color-set, tokens.$color-index-foreground-selected);
 
 		&.button-#{$name} {
 			color: $base;
@@ -232,10 +231,10 @@ $button-clear-selected-background-color: $selected-background-subtle !default;
 	}
 }
 
-$button-filled-background-color: $alternate-background-medium !default;
-$button-filled-background-color-hover: $alternate-background !default;
-$button-filled-text-color: $text-invert !default;
-$button-filled-background-color-selected: $secondary-selected !default;
+$button-filled-background-color: tokens.$alternate-background-medium !default;
+$button-filled-background-color-hover: tokens.$alternate-background !default;
+$button-filled-text-color: tokens.$text-invert !default;
+$button-filled-background-color-selected: tokens.$secondary-selected !default;
 
 .button.button-filled {
 	border-color: $button-filled-background-color;
@@ -254,19 +253,19 @@ $button-filled-background-color-selected: $secondary-selected !default;
 	}
 
 	&.is-loading::after {
-		@include loader;
+		@include mixins.loader;
 
 		border-color: transparent transparent $button-filled-text-color $button-filled-text-color !important;
 	}
 
-	@each $name, $color-set in $colors {
-		$base: nth($color-set, $color-index-base);
-		$hover: nth($color-set, $color-index-hover);
-		$active: nth($color-set, $color-index-active);
-		$invert: nth($color-set, $color-index-invert);
-		$background: nth($color-set, $color-index-background);
-		$selected: nth($color-set, $color-index-selected);
-		$selected-invert: nth($color-set, $color-index-foreground-selected-invert);
+	@each $name, $color-set in tokens.$colors {
+		$base: nth($color-set, tokens.$color-index-base);
+		$hover: nth($color-set, tokens.$color-index-hover);
+		$active: nth($color-set, tokens.$color-index-active);
+		$invert: nth($color-set, tokens.$color-index-invert);
+		$background: nth($color-set, tokens.$color-index-background);
+		$selected: nth($color-set, tokens.$color-index-selected);
+		$selected-invert: nth($color-set, tokens.$color-index-foreground-selected-invert);
 
 		&.button-#{$name} {
 			border-color: $base;
@@ -287,13 +286,13 @@ $button-filled-background-color-selected: $secondary-selected !default;
 			}
 
 			&.is-selected.is-loading::after {
-				@include loader;
+				@include mixins.loader;
 
 				border-color: transparent transparent $selected-invert $selected-invert !important;
 			}
 
 			&.is-loading::after {
-				@include loader;
+				@include mixins.loader;
 
 				border-color: transparent transparent $invert $invert !important;
 			}

@@ -1,29 +1,29 @@
-@use '@microsoft/atlas-css/src/tokens/index.scss' as *;
-@use '@microsoft/atlas-css/src/mixins/index.scss' as *;
+@use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
+@use '@microsoft/atlas-css/src/mixins/index.scss' as mixins;
 
 $gap-size: 1.5rem;
 
 html {
-	font-size: $document-font-size;
+	font-size: tokens.$document-font-size;
 }
 
 #header-body {
-	padding-block: $layout-2;
+	padding-block: tokens.$layout-2;
 }
 
 #main {
 	display: grid;
 	grid-area: main;
-	padding-block: $layout-3;
-	padding: $layout-gap;
-	background-color: $body-background;
-	gap: $layout-3;
+	padding-block: tokens.$layout-3;
+	padding: tokens.$layout-gap;
+	background-color: tokens.$body-background;
+	gap: tokens.$layout-3;
 	grid-template: auto 1fr / 9fr 1fr;
 	grid-template-areas:
 		'breadcrumbs actions'
 		'article article';
 
-	@include desktop {
+	@include mixins.desktop {
 		grid-template: auto 1fr / 7fr 3fr;
 		grid-template-areas:
 			'breadcrumbs actions'
@@ -50,7 +50,7 @@ html {
 }
 
 .example {
-	padding: $layout-2;
+	padding: tokens.$layout-2;
 
 	&.full-width {
 		padding-inline: 0;
@@ -76,8 +76,8 @@ html {
 		border-radius: 1px;
 		position: absolute;
 
-		background-color: $success;
-		color: $success-invert;
+		background-color: tokens.$success;
+		color: tokens.$success-invert;
 		font-family: monospace;
 		font-size: 18px;
 		content: $content;
@@ -121,7 +121,7 @@ html.debug {
 .header-spacer {
 	width: 2px;
 	height: 100%;
-	border-left: 2px solid $text-subtle;
+	border-left: 2px solid tokens.$text-subtle;
 	display: inline-block;
 	height: 1.5rem;
 	margin-left: 0.5rem;

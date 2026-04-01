@@ -1,21 +1,21 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
-@use './button.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+@use './button.scss' as button;
 
-$code-block-font-size: $font-size-8 !default;
-$code-block-border-color: $code-block-border !default;
-$code-block-border-width: $border-width !default;
-$code-block-border-radius: $border-radius !default;
+$code-block-font-size: tokens.$font-size-8 !default;
+$code-block-border-color: tokens.$code-block-border !default;
+$code-block-border-width: tokens.$border-width !default;
+$code-block-border-radius: tokens.$border-radius !default;
 
 $code-block-header-min-height: 2rem !default;
-$code-block-header-color: $text !default;
-$code-block-header-background-color: $code-header !default;
-$code-block-header-font-weight: $weight-semibold !default;
-$code-block-header-gap: $spacer-2 !default;
-$code-block-header-padding-vertical: $spacer-1 !default;
-$code-block-header-padding-horizontal: $spacer-4 $spacer-3 !default;
+$code-block-header-color: tokens.$text !default;
+$code-block-header-background-color: tokens.$code-header !default;
+$code-block-header-font-weight: tokens.$weight-semibold !default;
+$code-block-header-gap: tokens.$spacer-2 !default;
+$code-block-header-padding-vertical: tokens.$spacer-1 !default;
+$code-block-header-padding-horizontal: tokens.$spacer-4 tokens.$spacer-3 !default;
 
-$code-block-control-padding: calc(0.125em - #{$button-border-width}) !default;
+$code-block-control-padding: calc(0.125em - #{button.$button-border-width}) !default;
 
 .code-block {
 	position: relative;
@@ -37,7 +37,7 @@ $code-block-control-padding: calc(0.125em - #{$button-border-width}) !default;
 		padding-block: $code-block-header-padding-vertical;
 		padding-inline: $code-block-header-padding-horizontal;
 
-		@include tablet {
+		@include mixins.tablet {
 			flex-wrap: nowrap;
 		}
 
@@ -53,14 +53,14 @@ $code-block-control-padding: calc(0.125em - #{$button-border-width}) !default;
 			.button {
 				min-height: auto;
 				outline-color: currentColor;
-				outline-offset: -$focus-width;
-				font-size: $button-sm-font-size;
+				outline-offset: -(tokens.$focus-width);
+				font-size: button.$button-sm-font-size;
 				padding-block: $code-block-control-padding;
 			}
 		}
 	}
 
 	.code-block-body {
-		@include code-block(true);
+		@include mixins.code-block(true);
 	}
 }

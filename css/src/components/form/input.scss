@@ -1,30 +1,30 @@
-@use '../../tokens/index.scss' as *;
-@use '../../mixins/index.scss' as *;
+@use '../../tokens/index.scss' as tokens;
+@use '../../mixins/index.scss' as mixins;
 
-$input-color: $text !default;
-$input-background-color: $body-background !default;
-$input-border-color: $control-border !default;
-$input-border-bottom-color: $control-border-bottom !default;
-$input-placeholder-color: $text-subtle !default;
+$input-color: tokens.$text !default;
+$input-background-color: tokens.$body-background !default;
+$input-border-color: tokens.$control-border !default;
+$input-border-bottom-color: tokens.$control-border-bottom !default;
+$input-placeholder-color: tokens.$text-subtle !default;
 
-$input-hover-color: $text !default;
-$input-hover-border-color: $default-hover !default;
-$input-focus-border-color: $primary !default;
+$input-hover-color: tokens.$text !default;
+$input-hover-border-color: tokens.$default-hover !default;
+$input-focus-border-color: tokens.$primary !default;
 
-$input-disabled-color: $text-subtle !default;
-$input-disabled-background-color: $body-background-medium !default;
-$input-disabled-border-color: $table-border-dark !default;
+$input-disabled-color: tokens.$text-subtle !default;
+$input-disabled-background-color: tokens.$body-background-medium !default;
+$input-disabled-border-color: tokens.$table-border-dark !default;
 
-$input-danger-border-color: $danger !default;
-$input-success-border-color: $success !default;
+$input-danger-border-color: tokens.$danger !default;
+$input-success-border-color: tokens.$success !default;
 
 $input-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 
 $input-icon-size: 2.25em !default;
-$input-icon-color: $text-subtle !default;
+$input-icon-color: tokens.$text-subtle !default;
 
 .input {
-	@include control;
+	@include mixins.control;
 
 	width: 100%;
 	max-width: 100%;
@@ -48,7 +48,7 @@ $input-icon-color: $text-subtle !default;
 		color: $input-disabled-color;
 	}
 
-	@include focus-visible {
+	@include mixins.focus-visible {
 		@extend %focus;
 
 		border-block-end-color: $input-focus-border-color;
@@ -59,17 +59,17 @@ $input-icon-color: $text-subtle !default;
 	}
 
 	&.input-sm {
-		@include control-sm;
+		@include mixins.control-sm;
 	}
 
 	&.input-lg {
-		@include control-lg;
+		@include mixins.control-lg;
 	}
 
 	&.input-danger {
 		border-color: $input-danger-border-color;
 
-		@include focus-visible() {
+		@include mixins.focus-visible() {
 			border-color: $input-border-color;
 			border-block-end-color: $input-danger-border-color;
 			box-shadow: $input-focus-box-shadow-size $input-danger-border-color;
@@ -79,7 +79,7 @@ $input-icon-color: $text-subtle !default;
 	&.input-success {
 		border-color: $input-success-border-color;
 
-		@include focus-visible() {
+		@include mixins.focus-visible() {
 			border-color: $input-border-color;
 			border-block-end-color: $input-success-border-color;
 			box-shadow: $input-focus-box-shadow-size $input-success-border-color;
@@ -103,7 +103,7 @@ $input-icon-color: $text-subtle !default;
 				background: none;
 				color: transparent;
 				inset-inline-end: 0;
-				z-index: $zindex-dropdown;
+				z-index: tokens.$zindex-dropdown;
 			}
 		}
 	}
@@ -113,11 +113,11 @@ $input-icon-color: $text-subtle !default;
 		padding-inline-start: $input-icon-size;
 
 		&.input-icon-right {
-			padding-inline-start: $control-padding-horizontal;
+			padding-inline-start: mixins.$control-padding-horizontal;
 		}
 
 		+ .icon {
-			@include fill-current-color();
+			@include mixins.fill-current-color();
 
 			position: absolute;
 			inset-block-start: 0;
@@ -126,7 +126,7 @@ $input-icon-color: $text-subtle !default;
 			height: 100%;
 			color: $input-icon-color;
 			pointer-events: none;
-			z-index: $zindex-multi;
+			z-index: tokens.$zindex-multi;
 		}
 
 		&.input-sm {

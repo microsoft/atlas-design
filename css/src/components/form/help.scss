@@ -1,10 +1,9 @@
-@use '../../tokens/index.scss' as *;
-@use '../../mixins/index.scss' as *;
+@use '../../tokens/index.scss' as tokens;
 
-$help-color: $text !default;
-$help-danger-color: $danger !default;
-$help-success-color: $success !default;
-$help-font-size: $font-size-8 !default;
+$help-color: tokens.$text !default;
+$help-danger-color: tokens.$danger !default;
+$help-success-color: tokens.$success !default;
+$help-font-size: tokens.$font-size-8 !default;
 
 .help {
 	display: block;

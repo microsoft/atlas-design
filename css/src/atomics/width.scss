@@ -1,6 +1,5 @@
 @use 'sass:list';
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../mixins/index.scss' as mixins;
 
 $universal-widths: auto, fit-content, 100, 150, 200, 250, 300, 350 !default;
 $mobile-incompatible-widths: 400, 450, 500, unset !default;
@@ -19,7 +18,7 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 	}
 }
 
-@include tablet {
+@include mixins.tablet {
 	.width-full-tablet {
 		width: 100% !important;
 	}
@@ -32,7 +31,7 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 	}
 }
 
-@include desktop {
+@include mixins.desktop {
 	.width-full-desktop {
 		width: 100% !important;
 	}

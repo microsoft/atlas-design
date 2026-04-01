@@ -1,14 +1,14 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-$progress-bar-background-color: $secondary-background-glow-high-contrast !default;
-$progress-bar-value-background-color: $primary !default;
-$progress-bar-value-background-color-warning: $warning !default;
-$progress-bar-value-background-color-danger: $danger !default;
-$progress-bar-value-background-color-success: $success !default;
-$progress-bar-height: $spacer-2 !default;
-$progress-bar-height-sm: $spacer-1 !default;
-$progress-bar-border-radius: $border-radius-rounded !default;
+$progress-bar-background-color: tokens.$secondary-background-glow-high-contrast !default;
+$progress-bar-value-background-color: tokens.$primary !default;
+$progress-bar-value-background-color-warning: tokens.$warning !default;
+$progress-bar-value-background-color-danger: tokens.$danger !default;
+$progress-bar-value-background-color-success: tokens.$success !default;
+$progress-bar-height: tokens.$spacer-2 !default;
+$progress-bar-height-sm: tokens.$spacer-1 !default;
+$progress-bar-border-radius: tokens.$border-radius-rounded !default;
 $progress-bar-indeterminate-animation-duration: 2s !default;
 
 .progress-bar {
@@ -101,12 +101,12 @@ $progress-bar-indeterminate-animation-duration: 2s !default;
 			background-color: transparent;
 		}
 
-		@include prefers-reduced-motion {
+		@include mixins.prefers-reduced-motion {
 			animation-duration: 0s;
 		}
 	}
 
-	@include forced-colors {
+	@include mixins.forced-colors {
 		background-color: CanvasText !important;
 
 		&::-webkit-progress-bar {

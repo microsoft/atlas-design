@@ -1,5 +1,4 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
 
 // https://bugs.chromium.org/p/chromium/issues/detail?id=589475&q=details%20box-sizing&can=2
 
@@ -16,19 +15,19 @@ details > * {
 }
 
 :where(a) {
-	color: $hyperlink;
+	color: tokens.$hyperlink;
 	text-decoration: none;
 	cursor: pointer;
 	word-wrap: break-word;
 }
 
 :where(a:hover) {
-	color: $primary-hover;
+	color: tokens.$primary-hover;
 	text-decoration: underline;
 }
 
 :where(a:visited) {
-	color: $visited;
+	color: tokens.$visited;
 }
 
 fieldset {
@@ -37,5 +36,5 @@ fieldset {
 }
 
 ::target-text {
-	background-color: $code-highlight-background;
+	background-color: tokens.$code-highlight-background;
 }

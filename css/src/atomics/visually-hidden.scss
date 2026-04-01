@@ -1,7 +1,6 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../mixins/index.scss' as mixins;
 
 .visually-hidden,
 ::part(visually-hidden) {
-	@include visually-hidden();
+	@include mixins.visually-hidden();
 }

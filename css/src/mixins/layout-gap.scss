@@ -1,10 +1,10 @@
-@use '../tokens/index.scss' as *;
-@use './media-queries.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use './media-queries.scss' as media-queries;
 
 %layout-gap {
-	padding-inline: $layout-gap;
+	padding-inline: tokens.$layout-gap;
 
-	@include widescreen {
-		padding-inline: $layout-widescreen-gap;
+	@include media-queries.widescreen {
+		padding-inline: tokens.$layout-widescreen-gap;
 	}
 }

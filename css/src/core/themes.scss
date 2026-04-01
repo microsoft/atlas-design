@@ -1,27 +1,26 @@
 @use 'sass:map';
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
 
 $root-theme: 'light' !default;
 $print-theme: 'light' !default;
 
 // Ensure that the root theme exists
-@if map.has-key($themes, $root-theme) != true {
-	@error "Cannot build themes because $root-theme (#{$root-theme}) is set to a theme that does not exist in $themes map.";
+@if map.has-key(tokens.$themes, $root-theme) != true {
+	@error "Cannot build themes because $root-theme (#{$root-theme}) is set to a theme that does not exist in tokens.$themes map.";
 }
 
 // Ensure that the print theme exists
-@if map.has-key($themes, $print-theme) != true {
-	@error "Cannot build themes because $print-theme (#{$print-theme}) is set to a theme that does not exist in $themes map.";
+@if map.has-key(tokens.$themes, $print-theme) != true {
+	@error "Cannot build themes because $print-theme (#{$print-theme}) is set to a theme that does not exist in tokens.$themes map.";
 }
 
-$theme-names: map.keys($themes);
+$theme-names: map.keys(tokens.$themes);
 
 // Validation: ensure that all values in the root theme are in the other themes too
-@each $root-color-name, $val in map.get($themes, $root-theme) {
+@each $root-color-name, $val in map.get(tokens.$themes, $root-theme) {
 	@each $theme-name in $theme-names {
 		@if $theme-name != $root-theme {
-			@if map.has-key(map.get($themes, $theme-name), $root-color-name) != true {
+			@if map.has-key(map.get(tokens.$themes, $theme-name), $root-color-name) != true {
 				@error '#{$root-color-name} from #{$root-theme} does not exist in theme: #{$theme-name}.';
 			}
 		}
@@ -30,10 +29,10 @@ $theme-names: map.keys($themes);
 
 // Validation: ensure all properties in non-root themes exist in root
 @each $theme-name in $theme-names {
-	$theme: map.get($themes, $theme-name);
+	$theme: map.get(tokens.$themes, $theme-name);
 
 	@if $theme-name != $root-theme {
-		$root: map.get($themes, $root-theme);
+		$root: map.get(tokens.$themes, $root-theme);
 
 		@each $color-name, $val in $theme {
 			@if map.has-key($root, $color-name) != true {
@@ -43,11 +42,11 @@ $theme-names: map.keys($themes);
 	}
 }
 
-@each $key, $value in $themes {
+@each $key, $value in tokens.$themes {
 	// Set the default theme
 	@if $key == $root-theme {
 		:root {
-			@each $colorName, $colorVal in map.get($themes, $key) {
+			@each $colorName, $colorVal in map.get(tokens.$themes, $key) {
 				// stylelint-disable-next-line custom-property-pattern
 				--theme-#{$colorName}: #{$colorVal};
 			}
@@ -56,7 +55,7 @@ $theme-names: map.keys($themes);
 
 	@if $key == $print-theme {
 		.theme-#{$key} {
-			@each $colorName, $colorVal in map.get($themes, $key) {
+			@each $colorName, $colorVal in map.get(tokens.$themes, $key) {
 				// stylelint-disable-next-line custom-property-pattern
 				--theme-#{$colorName}: #{$colorVal};
 			}
@@ -65,7 +64,7 @@ $theme-names: map.keys($themes);
 		// Set the rest of the themes, exclude them from print styling.
 		@media not print {
 			.theme-#{$key} {
-				@each $colorName, $colorVal in map-get($themes, $key) {
+				@each $colorName, $colorVal in map-get(tokens.$themes, $key) {
 					// stylelint-disable-next-line custom-property-pattern
 					--theme-#{$colorName}: #{$colorVal};
 				}
@@ -77,18 +76,18 @@ $theme-names: map.keys($themes);
 // End validation
 
 %theme-base-styles {
-	outline-color: $text;
-	background-color: $body-background;
-	color: $text;
+	outline-color: tokens.$text;
+	background-color: tokens.$body-background;
+	color: tokens.$text;
 }
 
-@each $key, $value in $themes {
+@each $key, $value in tokens.$themes {
 	.theme-#{$key} {
 		@extend %theme-base-styles;
 	}
 }
 
-@each $key, $value in $color-schemes {
+@each $key, $value in tokens.$color-schemes {
 	.theme-#{$key} {
 		color-scheme: #{$value};
 	}
