@@ -1,7 +1,10 @@
-$hero-padding-xs: $layout-4 !default;
-$hero-padding-sm: $layout-5 !default;
-$hero-padding-default: $layout-6 !default;
-$hero-padding-lg: $layout-7 !default;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
+$hero-padding-xs: tokens.$layout-4 !default;
+$hero-padding-sm: tokens.$layout-5 !default;
+$hero-padding-default: tokens.$layout-6 !default;
+$hero-padding-lg: tokens.$layout-7 !default;
 
 $hero-min-height-xs: 200px !default;
 $hero-min-height-sm: 300px !default;
@@ -11,10 +14,10 @@ $hero-detail-max-width: 500px !default;
 $hero-content-half-width: 50% !default;
 $hero-content-fluid-width: 45% !default;
 $hero-details-content-fluid-width: 35% !default;
-$hero-content-width: $reading-max-width !default;
+$hero-content-width: tokens.$reading-max-width !default;
 
-$hero-image-width: calc((100% - 2 * $layout-gap) * 0.55) !default;
-$hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !default;
+$hero-image-width: calc((100% - 2 * tokens.$layout-gap) * 0.55) !default;
+$hero-image-width-widescreen: calc((100% - 2 * tokens.$layout-widescreen-gap) * 0.55) !default;
 
 .hero {
 	@extend %layout-gap;
@@ -26,10 +29,10 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 	justify-content: space-between;
 
 	.hero-content {
-		z-index: $zindex-active;
+		z-index: tokens.$zindex-active;
 		padding-block: $hero-padding-sm;
 
-		@include desktop {
+		@include mixins.desktop {
 			width: $hero-content-fluid-width;
 			min-height: $hero-min-height-default;
 			padding-block: $hero-padding-default;
@@ -45,13 +48,13 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		display: flex;
 		padding-block: $hero-padding-xs;
 
-		@include tablet {
+		@include mixins.tablet {
 			justify-content: flex-end;
 			padding-block: $hero-padding-sm;
 			padding-inline-start: $hero-padding-xs;
 		}
 
-		@include desktop {
+		@include mixins.desktop {
 			min-height: $hero-min-height-default;
 			padding-block: $hero-padding-default;
 			padding-inline: $hero-padding-sm;
@@ -60,14 +63,14 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		.hero-details-card {
 			align-self: flex-start;
 			backdrop-filter: blur(20px);
-			background-color: #{$body-background};
+			background-color: #{tokens.$body-background};
 
-			@include desktop {
+			@include mixins.desktop {
 				max-width: $hero-detail-max-width;
 				background: linear-gradient(
 					116deg,
-					#{$body-background} 23.94%,
-					#{$border-white-high-contrast} 200%
+					#{tokens.$body-background} 23.94%,
+					#{tokens.$border-white-high-contrast} 200%
 				);
 				margin-inline-start: $hero-padding-xs;
 			}
@@ -76,14 +79,14 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 
 	&:not(.hero-image) {
 		.hero-content {
-			@include desktop {
+			@include mixins.desktop {
 				width: 100%;
 				max-width: $hero-content-width;
 			}
 		}
 	}
 
-	@include desktop {
+	@include mixins.desktop {
 		&.hero-xs {
 			.hero-content {
 				min-height: $hero-min-height-xs;
@@ -108,20 +111,20 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 
 	.hero-card {
 		position: relative;
-		padding: $spacer-5;
+		padding: tokens.$spacer-5;
 		border: none;
 		background-color: transparent;
 		z-index: 1;
 
-		@include tablet {
-			padding: $spacer-10;
+		@include mixins.tablet {
+			padding: tokens.$spacer-10;
 		}
 
-		@include desktop {
-			border-inline: 1px solid $border;
-			border-block-end: 1px solid $border;
-			border-end-start-radius: $border-radius-lg;
-			border-end-end-radius: $border-radius-lg;
+		@include mixins.desktop {
+			border-inline: 1px solid tokens.$border;
+			border-block-end: 1px solid tokens.$border;
+			border-end-start-radius: tokens.$border-radius-lg;
+			border-end-end-radius: tokens.$border-radius-lg;
 		}
 	}
 
@@ -150,15 +153,15 @@ $hero-image-width-widescreen: calc((100% - 2 * $layout-widescreen-gap) * 0.55) !
 		background-repeat: no-repeat;
 		background-size: cover;
 		content: ' ';
-		inset-inline-end: $layout-gap;
+		inset-inline-end: tokens.$layout-gap;
 
-		@include desktop {
+		@include mixins.desktop {
 			display: block;
 		}
 
-		@include widescreen {
+		@include mixins.widescreen {
 			width: $hero-image-width-widescreen;
-			inset-inline-end: $layout-widescreen-gap;
+			inset-inline-end: tokens.$layout-widescreen-gap;
 		}
 
 		@media (forced-colors: active) {

@@ -1,8 +1,11 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 .stretched-link {
 	&::before {
 		position: absolute;
 		content: '';
-		z-index: $zindex-stretched-link;
+		z-index: tokens.$zindex-stretched-link;
 		inset: 0;
 	}
 }

@@ -1,3 +1,5 @@
+@use '../tokens/index.scss' as tokens;
+
 @mixin forced-colors() {
 	@media (forced-colors: active) {
 		@content;

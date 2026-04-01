@@ -1,27 +1,30 @@
-@each $item in $displays {
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
+@each $item in tokens.$displays {
 	.display-#{$item} {
 		display: #{$item} !important;
 	}
 }
 
-@include tablet {
-	@each $item in $displays {
+@include mixins.tablet {
+	@each $item in tokens.$displays {
 		.display-#{$item}-tablet {
 			display: #{$item} !important;
 		}
 	}
 }
 
-@include desktop {
-	@each $item in $displays {
+@include mixins.desktop {
+	@each $item in tokens.$displays {
 		.display-#{$item}-desktop {
 			display: #{$item} !important;
 		}
 	}
 }
 
-@include widescreen {
-	@each $item in $displays {
+@include mixins.widescreen {
+	@each $item in tokens.$displays {
 		.display-#{$item}-widescreen {
 			display: #{$item} !important;
 		}

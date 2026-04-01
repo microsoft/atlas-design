@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 $background-sizes: 100, 200 !default;
 
 @each $size in $background-sizes {

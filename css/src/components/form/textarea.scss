@@ -1,26 +1,29 @@
-$textarea-color: $text !default;
-$textarea-background-color: $body-background !default;
-$textarea-border-color: $control-border !default;
-$textarea-border-bottom-color: $control-border-bottom !default;
-$textarea-placeholder-color: $text-subtle !default;
+@use '../../tokens/index.scss' as tokens;
+@use '../../mixins/index.scss' as mixins;
 
-$textarea-hover-color: $text !default;
-$textarea-hover-border-color: $default-hover !default;
-$textarea-focus-border-color: $primary !default;
+$textarea-color: tokens.$text !default;
+$textarea-background-color: tokens.$body-background !default;
+$textarea-border-color: tokens.$control-border !default;
+$textarea-border-bottom-color: tokens.$control-border-bottom !default;
+$textarea-placeholder-color: tokens.$text-subtle !default;
 
-$textarea-disabled-color: $text-subtle !default;
-$textarea-disabled-background-color: $body-background-medium !default;
-$textarea-disabled-border-color: $table-border-dark !default;
+$textarea-hover-color: tokens.$text !default;
+$textarea-hover-border-color: tokens.$default-hover !default;
+$textarea-focus-border-color: tokens.$primary !default;
 
-$textarea-danger-border-color: $danger !default;
-$textarea-success-border-color: $success !default;
+$textarea-disabled-color: tokens.$text-subtle !default;
+$textarea-disabled-background-color: tokens.$body-background-medium !default;
+$textarea-disabled-border-color: tokens.$table-border-dark !default;
+
+$textarea-danger-border-color: tokens.$danger !default;
+$textarea-success-border-color: tokens.$success !default;
 
 $textarea-focus-box-shadow-size: 0 0.125rem 0 0 !default;
 
-$textarea-margin-spacing: $layout-1 !default;
+$textarea-margin-spacing: tokens.$layout-1 !default;
 
 .textarea {
-	@include control;
+	@include mixins.control;
 
 	display: block;
 	width: 100%;
@@ -56,7 +59,7 @@ $textarea-margin-spacing: $layout-1 !default;
 		color: $textarea-disabled-color;
 	}
 
-	@include focus-visible {
+	@include mixins.focus-visible {
 		@extend %focus;
 
 		border-block-end-color: $textarea-focus-border-color;
@@ -73,7 +76,7 @@ $textarea-margin-spacing: $layout-1 !default;
 	&.textarea-danger {
 		border-color: $textarea-danger-border-color;
 
-		@include focus-visible() {
+		@include mixins.focus-visible() {
 			border-color: $textarea-border-color;
 			border-block-end-color: $textarea-danger-border-color;
 			box-shadow: $textarea-focus-box-shadow-size $textarea-danger-border-color;
@@ -83,7 +86,7 @@ $textarea-margin-spacing: $layout-1 !default;
 	&.textarea-success {
 		border-color: $textarea-success-border-color;
 
-		@include focus-visible() {
+		@include mixins.focus-visible() {
 			border-color: $textarea-border-color;
 			border-block-end-color: $textarea-success-border-color;
 			box-shadow: $textarea-focus-box-shadow-size $textarea-success-border-color;
@@ -97,18 +100,18 @@ $textarea-divider-radius: 0.5rem !default;
 .textarea-form {
 	display: grid;
 	gap: $textarea-form-gap;
-	padding-block: $control-padding-vertical;
-	padding-inline: $control-padding-horizontal;
+	padding-block: mixins.$control-padding-vertical;
+	padding-inline: mixins.$control-padding-horizontal;
 	transition: box-shadow 300ms linear;
-	border-width: $control-border-width;
+	border-width: mixins.$control-border-width;
 	border-style: solid;
-	border-radius: $border-radius;
+	border-radius: tokens.$border-radius;
 	border-color: $textarea-border-color;
 	background-color: $textarea-background-color;
-	font-size: $control-font-size;
+	font-size: mixins.$control-font-size;
 	border-block-end-color: $textarea-border-bottom-color;
 
-	@include prefers-reduced-motion {
+	@include mixins.prefers-reduced-motion {
 		animation-duration: 0s;
 	}
 
@@ -137,7 +140,7 @@ $textarea-divider-radius: 0.5rem !default;
 
 	.textarea-form-footer-divider {
 		height: 70%;
-		border: 1px solid $control-border;
+		border: 1px solid tokens.$control-border;
 		border-radius: $textarea-divider-radius;
 	}
 

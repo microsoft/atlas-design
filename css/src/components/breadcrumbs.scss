@@ -1,11 +1,14 @@
-$breadcrumb-font-size: $font-size-8 !default;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
+$breadcrumb-font-size: tokens.$font-size-8 !default;
 $breadcrumb-spacing-horizontal: 0.25em !default;
 $breadcrumb-spacing-vertical: 0.375em !default;
 $breadcrumb-separator: '\00200B/' !default;
 
 %breadcrumbs-slash {
 	display: inline-block;
-	color: $text-subtle;
+	color: tokens.$text-subtle;
 	content: $breadcrumb-separator;
 }
 

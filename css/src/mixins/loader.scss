@@ -1,11 +1,13 @@
+@use '../tokens/index.scss' as tokens;
+
 %loader {
 	display: block;
 	position: relative;
 	width: 1em;
 	height: 1em;
 	animation: spinAround 500ms infinite linear;
-	border: 2px solid $border;
-	border-radius: $border-radius-rounded;
+	border: 2px solid tokens.$border;
+	border-radius: tokens.$border-radius-rounded;
 	border-block-start-color: transparent;
 	border-inline-end-color: transparent;
 	content: '';

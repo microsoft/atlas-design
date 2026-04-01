@@ -1,4 +1,7 @@
-$chevron-color: $text !default;
+@use '../tokens/index.scss' as tokens;
+@use './control.scss' as control;
+
+$chevron-color: tokens.$text !default;
 $chevron-arrow-size: 0.525em !default;
 $chevron-arrow-border-width: 1px !default;
 $chevron-arrow-actual-width: 0.75em !default;
@@ -19,8 +22,8 @@ $chevron-up-rotate-scale-xy-rtl: $chevron-down-rotate-rtl scaleY(-1) scaleX(-1);
 	border-inline-end: 0;
 	pointer-events: none;
 	content: ' ';
-	z-index: $zindex-active;
-	inset-inline-end: $control-padding-horizontal;
+	z-index: tokens.$zindex-active;
+	inset-inline-end: control.$control-padding-horizontal;
 }
 
 @mixin chevron-right {

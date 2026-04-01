@@ -1,7 +1,10 @@
-%layout-gap {
-	padding-inline: $layout-gap;
+@use '../tokens/index.scss' as tokens;
+@use './media-queries.scss' as media-queries;
 
-	@include widescreen {
-		padding-inline: $layout-widescreen-gap;
+%layout-gap {
+	padding-inline: tokens.$layout-gap;
+
+	@include media-queries.widescreen {
+		padding-inline: tokens.$layout-widescreen-gap;
 	}
 }

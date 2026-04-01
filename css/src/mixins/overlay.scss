@@ -1,3 +1,5 @@
+@use '../tokens/index.scss' as tokens;
+
 %overlay {
 	position: absolute;
 	inset: 0;

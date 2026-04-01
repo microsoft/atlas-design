@@ -1,11 +1,14 @@
-$table-cell-vertical-padding: $spacer-5 !default;
-$table-cell-horizontal-padding: $spacer-6 !default;
-$table-cell-padding-compact: $spacer-3 !default;
-$table-cell-padding-loose: $spacer-8 !default;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-$table-caption-padding: $spacer-6 !default;
-$table-caption-size: $font-size-9 !default;
-$table-caption-spacing: $letter-spacing-medium !default;
+$table-cell-vertical-padding: tokens.$spacer-5 !default;
+$table-cell-horizontal-padding: tokens.$spacer-6 !default;
+$table-cell-padding-compact: tokens.$spacer-3 !default;
+$table-cell-padding-loose: tokens.$spacer-8 !default;
+
+$table-caption-padding: tokens.$spacer-6 !default;
+$table-caption-size: tokens.$font-size-9 !default;
+$table-caption-spacing: tokens.$letter-spacing-medium !default;
 
 .table-wrapper {
 	overflow-x: auto;
@@ -15,18 +18,18 @@ $table-caption-spacing: $letter-spacing-medium !default;
 
 .table {
 	width: 100%;
-	font-size: $font-size-8;
+	font-size: tokens.$font-size-8;
 	border-collapse: collapse;
 	table-layout: auto;
 
 	&:not(.table-simple) {
-		border: 1px solid $table-border-dark;
+		border: 1px solid tokens.$table-border-dark;
 	}
 
 	caption {
 		padding: $table-caption-padding;
 		font-size: $table-caption-size;
-		font-weight: $weight-semibold;
+		font-weight: tokens.$weight-semibold;
 		letter-spacing: $table-caption-spacing;
 		text-align: end;
 		text-transform: uppercase;
@@ -37,7 +40,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 		display: table-cell;
 		word-wrap: break-word;
 		padding: $table-cell-vertical-padding $table-cell-horizontal-padding;
-		border-block-start: 1px solid $table-border-dark;
+		border-block-start: 1px solid tokens.$table-border-dark;
 		line-height: 1.5;
 		vertical-align: top;
 	}
@@ -47,7 +50,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 	}
 
 	&.table-stacked-mobile {
-		@include discouraged-mobile {
+		@include mixins.discouraged-mobile {
 			th,
 			td {
 				display: block;
@@ -66,7 +69,7 @@ $table-caption-spacing: $letter-spacing-medium !default;
 			}
 
 			thead tr > th:last-child {
-				border-block-end: 1px solid $table-border-dark;
+				border-block-end: 1px solid tokens.$table-border-dark;
 			}
 		}
 	}
@@ -83,18 +86,18 @@ $table-caption-spacing: $letter-spacing-medium !default;
 	&.table-complex {
 		thead tr,
 		tfoot tr {
-			background-color: $table-header;
+			background-color: tokens.$table-header;
 		}
 
 		th,
 		td {
-			border: 1px solid $table-border-dark;
+			border: 1px solid tokens.$table-border-dark;
 		}
 	}
 
 	&.table-striped {
 		tbody tr:nth-of-type(even) {
-			background-color: $table-row;
+			background-color: tokens.$table-row;
 		}
 	}
 

@@ -1,3 +1,5 @@
+@use './palette.scss' as palette;
+
 /**
  * @sass-export-section="colors"
  */
@@ -24,7 +26,7 @@ $alternate-background-medium: var(--theme-alternate-background-medium);
 
 $overlay: var(--theme-overlay);
 $overlay-invert: var(--theme-overlay-invert);
-$overlay-static: $palette-black-opacity-50;
+$overlay-static: palette.$palette-black-opacity-50;
 $border: var(--theme-border);
 $border-accent: var(--theme-border-accent);
 

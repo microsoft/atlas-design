@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 /* stylelint-disable selector-max-specificity, max-nesting-depth */
 
 .buttons {
@@ -28,7 +31,7 @@
 		&.is-fullwidth-mobile {
 			margin-inline-end: 0;
 
-			@include tablet {
+			@include mixins.tablet {
 				margin-inline-end: 0.5rem;
 			}
 		}
@@ -61,25 +64,25 @@
 
 			&:hover,
 			&.is-hovered {
-				z-index: $zindex-hover;
+				z-index: tokens.$zindex-hover;
 			}
 
 			&.is-focused,
 			&:active,
 			&.is-active,
 			&.is-selected {
-				z-index: $zindex-focus;
+				z-index: tokens.$zindex-focus;
 
 				&:hover {
-					z-index: $zindex-multi;
+					z-index: tokens.$zindex-multi;
 				}
 			}
 
-			@include focus-visible {
-				z-index: $zindex-focus;
+			@include mixins.focus-visible {
+				z-index: tokens.$zindex-focus;
 
 				&:hover {
-					z-index: $zindex-multi;
+					z-index: tokens.$zindex-multi;
 				}
 			}
 

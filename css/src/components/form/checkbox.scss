@@ -1,20 +1,23 @@
+@use '../../tokens/index.scss' as tokens;
+@use '../../mixins/index.scss' as mixins;
+
 /* stylelint-disable selector-max-specificity, max-nesting-depth, selector-no-qualifying-type */
 
-$checkbox-border-radius: $border-radius !default;
+$checkbox-border-radius: tokens.$border-radius !default;
 $checkbox-border-width: 0.0625em !default;
-$checkbox-unchecked-border-color: $control-border !default;
-$checkbox-invalid-border-color: $danger !default;
-$checkbox-color: $primary !default;
-$checkbox-check-color: $primary-invert !default;
-$checkbox-check-hover-color: $text-subtle !default;
+$checkbox-unchecked-border-color: tokens.$control-border !default;
+$checkbox-invalid-border-color: tokens.$danger !default;
+$checkbox-color: tokens.$primary !default;
+$checkbox-check-color: tokens.$primary-invert !default;
+$checkbox-check-hover-color: tokens.$text-subtle !default;
 $checkbox-size: 1.25em !default;
 $checkbox-check-height: 0.75em !default;
 $checkbox-check-top: 0.125em !default;
 $checkbox-check-width: 0.3125em !default;
 $checkbox-check-thickness: 0.125em !default;
-$checkbox-timing-function: $input-timing-function !default;
-$checkbox-duration: $input-transition-duration !default;
-$checkbox-spacing: $spacer-3 !default;
+$checkbox-timing-function: tokens.$input-timing-function !default;
+$checkbox-duration: tokens.$input-transition-duration !default;
+$checkbox-spacing: tokens.$spacer-3 !default;
 
 @mixin checkmark {
 	display: block;
@@ -63,15 +66,15 @@ $checkbox-spacing: $spacer-3 !default;
 	}
 
 	&.checkbox-sm {
-		@include control-sm;
+		@include mixins.control-sm;
 	}
 
 	&.checkbox-lg {
-		@include control-lg;
+		@include mixins.control-lg;
 	}
 
 	input[type='checkbox'] {
-		@include visually-hidden();
+		@include mixins.visually-hidden();
 
 		&:checked + .checkbox-check {
 			border-color: $checkbox-color;
@@ -96,7 +99,7 @@ $checkbox-spacing: $spacer-3 !default;
 			}
 		}
 
-		@include focus-visible {
+		@include mixins.focus-visible {
 			+ .checkbox-check {
 				@extend %focus;
 			}
@@ -106,11 +109,11 @@ $checkbox-spacing: $spacer-3 !default;
 	&.checkbox-muted {
 		input[type='checkbox'] {
 			&:checked + .checkbox-check {
-				border-color: $text-subtle;
-				background-color: $text-subtle;
+				border-color: tokens.$text-subtle;
+				background-color: tokens.$text-subtle;
 
 				&::before {
-					border-color: $text-invert;
+					border-color: tokens.$text-invert;
 				}
 			}
 		}

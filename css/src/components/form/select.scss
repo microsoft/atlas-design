@@ -1,30 +1,33 @@
+@use '../../tokens/index.scss' as tokens;
+@use '../../mixins/index.scss' as mixins;
+
 /* stylelint-disable selector-no-qualifying-type */
 
-$select-color: $text !default;
-$select-background-color: $body-background !default;
-$select-border-color: $control-border !default;
-$select-border-bottom-color: $control-border-bottom !default;
-$select-placeholder-color: $text-subtle !default;
+$select-color: tokens.$text !default;
+$select-background-color: tokens.$body-background !default;
+$select-border-color: tokens.$control-border !default;
+$select-border-bottom-color: tokens.$control-border-bottom !default;
+$select-placeholder-color: tokens.$text-subtle !default;
 
-$select-hover-color: $text !default;
-$select-hover-border-color: $default-hover !default;
-$select-focus-border-color: $primary !default;
+$select-hover-color: tokens.$text !default;
+$select-hover-border-color: tokens.$default-hover !default;
+$select-focus-border-color: tokens.$primary !default;
 
-$select-disabled-color: $text-subtle !default;
-$select-disabled-background-color: $body-background-medium !default;
-$select-disabled-border-color: $table-border-dark !default;
+$select-disabled-color: tokens.$text-subtle !default;
+$select-disabled-background-color: tokens.$body-background-medium !default;
+$select-disabled-border-color: tokens.$table-border-dark !default;
 
-$select-danger-border-color: $danger !default;
-$select-success-border-color: $success !default;
+$select-danger-border-color: tokens.$danger !default;
+$select-success-border-color: tokens.$success !default;
 
 $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 
 .select {
 	position: relative;
-	font-size: $control-font-size;
+	font-size: mixins.$control-font-size;
 
 	select {
-		@include control;
+		@include mixins.control;
 
 		width: 100%;
 		max-width: 100%;
@@ -40,7 +43,7 @@ $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 			overflow-y: auto;
 
 			option {
-				padding: $control-padding-vertical $control-padding-horizontal;
+				padding: mixins.$control-padding-vertical mixins.$control-padding-horizontal;
 			}
 		}
 
@@ -55,7 +58,7 @@ $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 			color: $select-disabled-color;
 		}
 
-		@include focus-visible {
+		@include mixins.focus-visible {
 			@extend %focus;
 
 			border-block-end-color: $select-focus-border-color;
@@ -68,15 +71,17 @@ $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 
 	&:not(.select-multiple) {
 		select {
-			padding-inline-end: calc($control-padding-horizontal + $chevron-arrow-actual-width);
+			padding-inline-end: calc(
+				mixins.$control-padding-horizontal + mixins.$chevron-arrow-actual-width
+			);
 		}
 
 		&::after {
-			@include chevron-down;
+			@include mixins.chevron-down;
 
 			display: block;
 			position: absolute;
-			inset-block-start: calc(50% - $chevron-arrow-actual-width / 2);
+			inset-block-start: calc(50% - mixins.$chevron-arrow-actual-width / 2);
 		}
 
 		&.select-disabled::after {
@@ -85,17 +90,17 @@ $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 	}
 
 	&.select-sm {
-		font-size: $control-sm-font-size;
+		font-size: mixins.$control-sm-font-size;
 	}
 
 	&.select-lg {
-		font-size: $control-lg-font-size;
+		font-size: mixins.$control-lg-font-size;
 	}
 
 	&.select-danger select {
 		border-color: $select-danger-border-color;
 
-		@include focus-visible() {
+		@include mixins.focus-visible() {
 			border-color: $select-border-color;
 			border-block-end-color: $select-danger-border-color;
 			box-shadow: $select-focus-box-shadow-size $select-danger-border-color;
@@ -105,7 +110,7 @@ $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 	&.select-success select {
 		border-color: $select-success-border-color;
 
-		@include focus-visible() {
+		@include mixins.focus-visible() {
 			border-color: $select-border-color;
 			border-block-end-color: $select-success-border-color;
 			box-shadow: $select-focus-box-shadow-size $select-success-border-color;

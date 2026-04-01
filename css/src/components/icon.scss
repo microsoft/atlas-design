@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 $features-icon: true !default;
 $icon-dimensions: 1em !default;
 

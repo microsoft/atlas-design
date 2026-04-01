@@ -1,22 +1,26 @@
+@use '../../tokens/index.scss' as tokens;
+@use '../../mixins/index.scss' as mixins;
+@use './label.scss' as label;
+
 /* stylelint-disable max-nesting-depth, selector-max-specificity  */
 
 $field-line-height: 1.5 !default;
-$field-error-color: $danger !default;
+$field-error-color: tokens.$danger !default;
 
 .field {
 	&:not(:last-child) {
-		margin-block-end: $spacer-4;
+		margin-block-end: tokens.$spacer-4;
 	}
 
 	.field-description {
-		margin-block-end: $spacer-3;
-		font-size: $font-size-8;
+		margin-block-end: tokens.$spacer-3;
+		font-size: tokens.$font-size-8;
 	}
 
 	.field-label {
-		@include label;
+		@include label.label;
 
-		margin-block-end: $spacer-3;
+		margin-block-end: tokens.$spacer-3;
 
 		&.field-label-inline {
 			display: inline-flex;
@@ -24,16 +28,16 @@ $field-error-color: $danger !default;
 			align-self: flex-end;
 		}
 
-		@include tablet {
+		@include mixins.tablet {
 			flex: 1 0 0;
 		}
 
 		&.field-label-sm {
-			font-size: $font-size-8;
+			font-size: tokens.$font-size-8;
 		}
 
 		&.field-label-lg {
-			font-size: $font-size-6;
+			font-size: tokens.$font-size-6;
 		}
 	}
 
@@ -43,7 +47,7 @@ $field-error-color: $danger !default;
 		}
 
 		&:not(:first-child) {
-			margin-block-start: $spacer-3;
+			margin-block-start: tokens.$spacer-3;
 
 			&.field-body-inline {
 				display: inline-flex;
@@ -54,14 +58,14 @@ $field-error-color: $danger !default;
 
 	.field-error {
 		color: $field-error-color;
-		font-size: $font-size-8;
+		font-size: tokens.$font-size-8;
 		line-height: $field-line-height;
 	}
 }
 
 .required-indicator::after,
 ::part(required-indicator)::after {
-	color: $danger;
+	color: tokens.$danger;
 	content: '*';
 	vertical-align: top;
 }

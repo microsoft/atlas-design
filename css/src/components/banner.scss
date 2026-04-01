@@ -1,13 +1,16 @@
-$banner-background: $info-background !default;
-$banner-padding: $spacer-5 !default;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-$banner-font-size: $font-size-7 !default;
-$banner-color: $info-dark !default;
+$banner-background: tokens.$info-background !default;
+$banner-padding: tokens.$spacer-5 !default;
 
-$banner-border-color: $border-white-high-contrast !default;
-$banner-border-width: $border-width !default;
+$banner-font-size: tokens.$font-size-7 !default;
+$banner-color: tokens.$info-dark !default;
 
-$banner-dismiss-margin: $spacer-2 !default;
+$banner-border-color: tokens.$border-white-high-contrast !default;
+$banner-border-width: tokens.$border-width !default;
+
+$banner-dismiss-margin: tokens.$spacer-2 !default;
 
 .banner {
 	@extend %layout-gap;
@@ -16,11 +19,11 @@ $banner-dismiss-margin: $spacer-2 !default;
 	position: relative;
 	grid-template: auto / 1fr auto;
 	grid-template-areas: 'banner-content dismiss';
-	outline-color: $text;
+	outline-color: tokens.$text;
 	background-color: $banner-background;
 	color: $banner-color;
 	font-size: $banner-font-size;
-	line-height: $line-height-normal;
+	line-height: tokens.$line-height-normal;
 	padding-block: $banner-padding;
 	word-wrap: break-word;
 	word-break: break-word;
@@ -34,15 +37,15 @@ $banner-dismiss-margin: $spacer-2 !default;
 		}
 
 		&::before {
-			@include loader;
+			@include mixins.loader;
 
 			position: absolute;
 			inset-block-start: $banner-padding;
-			inset-inline-start: $layout-gap;
+			inset-inline-start: tokens.$layout-gap;
 			border-color: transparent transparent $banner-color $banner-color;
 
-			@include widescreen {
-				inset-inline-start: $layout-widescreen-gap;
+			@include mixins.widescreen {
+				inset-inline-start: tokens.$layout-widescreen-gap;
 			}
 		}
 	}
@@ -52,11 +55,11 @@ $banner-dismiss-margin: $spacer-2 !default;
 
 		a:not(.button) {
 			color: currentColor;
-			font-weight: $weight-semibold;
+			font-weight: tokens.$weight-semibold;
 			text-decoration: underline;
 
 			.theme-high-contrast & {
-				color: $hyperlink;
+				color: tokens.$hyperlink;
 			}
 
 			&:hover {
@@ -66,7 +69,7 @@ $banner-dismiss-margin: $spacer-2 !default;
 	}
 
 	.banner-dismiss {
-		@include dismiss-square;
+		@include mixins.dismiss-square;
 
 		grid-area: dismiss;
 		margin-inline-start: $banner-dismiss-margin;

@@ -1,13 +1,16 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 .border {
-	border: $border-width solid $border !important;
+	border: tokens.$border-width solid tokens.$border !important;
 }
 
 .border-md {
-	border: $border-width-md solid $border !important;
+	border: tokens.$border-width-md solid tokens.$border !important;
 }
 
 .border-lg {
-	border: $border-width-lg solid $border !important;
+	border: tokens.$border-width-lg solid tokens.$border !important;
 }
 
 .border-none {
@@ -16,17 +19,17 @@
 
 // Rules for each side
 
-@each $border-key, $direction in $logical-directions {
+@each $border-key, $direction in tokens.$logical-directions {
 	.border-#{$border-key} {
-		border-#{$direction}: $border-width solid $border !important;
+		border-#{$direction}: tokens.$border-width solid tokens.$border !important;
 	}
 
 	.border-#{$border-key}-md {
-		border-#{$direction}: $border-width-md solid $border !important;
+		border-#{$direction}: tokens.$border-width-md solid tokens.$border !important;
 	}
 
 	.border-#{$border-key}-lg {
-		border-#{$direction}: $border-width-lg solid $border !important;
+		border-#{$direction}: tokens.$border-width-lg solid tokens.$border !important;
 	}
 
 	.border-#{$border-key}-none {
@@ -34,17 +37,17 @@
 	}
 }
 
-@include tablet {
+@include mixins.tablet {
 	.border-tablet {
-		border: $border-width solid $border !important;
+		border: tokens.$border-width solid tokens.$border !important;
 	}
 
 	.border-md-tablet {
-		border: $border-width-md solid $border !important;
+		border: tokens.$border-width-md solid tokens.$border !important;
 	}
 
 	.border-lg-tablet {
-		border: $border-width-lg solid $border !important;
+		border: tokens.$border-width-lg solid tokens.$border !important;
 	}
 
 	.border-none-tablet {
@@ -53,17 +56,17 @@
 
 	// Rules for each side
 
-	@each $border-key, $direction in $logical-directions {
+	@each $border-key, $direction in tokens.$logical-directions {
 		.border-#{$border-key}-tablet {
-			border-#{$direction}: $border-width solid $border !important;
+			border-#{$direction}: tokens.$border-width solid tokens.$border !important;
 		}
 
 		.border-#{$border-key}-md-tablet {
-			border-#{$direction}: $border-width-md solid $border !important;
+			border-#{$direction}: tokens.$border-width-md solid tokens.$border !important;
 		}
 
 		.border-#{$border-key}-lg-tablet {
-			border-#{$direction}: $border-width-lg solid $border !important;
+			border-#{$direction}: tokens.$border-width-lg solid tokens.$border !important;
 		}
 
 		.border-#{$border-key}-none-tablet {
@@ -75,19 +78,19 @@
 // Radius
 
 .border-radius-sm {
-	border-radius: $border-radius-sm !important;
+	border-radius: tokens.$border-radius-sm !important;
 }
 
 .border-radius {
-	border-radius: $border-radius !important;
+	border-radius: tokens.$border-radius !important;
 }
 
 .border-radius-lg {
-	border-radius: $border-radius-lg !important;
+	border-radius: tokens.$border-radius-lg !important;
 }
 
 .border-radius-rounded {
-	border-radius: $border-radius-rounded !important;
+	border-radius: tokens.$border-radius-rounded !important;
 }
 
 .border-radius-none {
@@ -96,8 +99,8 @@
 
 // Colors
 
-@each $name, $color-set in $colors {
-	$base: nth($color-set, $color-index-base);
+@each $name, $color-set in tokens.$colors {
+	$base: nth($color-set, tokens.$color-index-base);
 
 	.border-color-#{$name} {
 		border-color: $base !important;
@@ -105,13 +108,13 @@
 }
 
 .border-color-accent {
-	border-color: $border-accent !important;
+	border-color: tokens.$border-accent !important;
 }
 
 .border-high-contrast {
-	border: $border-width solid $border-white-high-contrast !important;
+	border: tokens.$border-width solid tokens.$border-white-high-contrast !important;
 
 	&-hover:hover {
-		border: $border-width solid $border-yellow-high-contrast !important;
+		border: tokens.$border-width solid tokens.$border-yellow-high-contrast !important;
 	}
 }

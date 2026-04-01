@@ -1,4 +1,7 @@
-$step-font-size: $font-size-7 !default;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
+$step-font-size: tokens.$font-size-7 !default;
 $steps-gap: 0.4375em !default;
 $steps-size: 0.5em !default;
 
@@ -11,12 +14,12 @@ $steps-size: 0.5em !default;
 	.step {
 		height: $steps-size;
 		aspect-ratio: 1 / 1;
-		border-radius: $border-radius-rounded;
-		background-color: $secondary;
+		border-radius: tokens.$border-radius-rounded;
+		background-color: tokens.$secondary;
 
 		&.step-selected {
 			aspect-ratio: 2 / 1;
-			background-color: $primary;
+			background-color: tokens.$primary;
 		}
 	}
 }

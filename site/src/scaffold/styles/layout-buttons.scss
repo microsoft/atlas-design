@@ -1,3 +1,7 @@
+@use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
+@use '@microsoft/atlas-css/src/mixins/index.scss' as mixins;
+@use '@microsoft/atlas-css/src/components/button.scss' as button;
+
 [data-set-layout][aria-pressed='true'] {
 	@extend .button-primary;
 	@extend .button-filled;

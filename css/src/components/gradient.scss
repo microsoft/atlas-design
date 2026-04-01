@@ -1,6 +1,9 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 $border-gradient-colors: (
-	'body': $body-background,
-	'body-accent': $body-background-accent
+	'body': tokens.$body-background,
+	'body-accent': tokens.$body-background-accent
 ) !default;
 
 @each $name, $var in $border-gradient-colors {
@@ -45,12 +48,12 @@ $border-gradient-direction: (
 			inset-inline: 0;
 		}
 
-		@include forced-colors {
+		@include mixins.forced-colors {
 			display: none !important;
 		}
 	}
 
-	@include tablet {
+	@include mixins.tablet {
 		.gradient-border-to-#{$direction}-tablet:before {
 			border-image: linear-gradient(
 				to #{$direction},
@@ -73,11 +76,11 @@ $border-gradient-direction: (
 	}
 }
 
-@each $name, $gradient in $gradients {
-	$colorStart: nth($gradient, $gradient-color-start-index);
-	$colorEnd: nth($gradient, $gradient-color-end-index);
+@each $name, $gradient in tokens.$gradients {
+	$colorStart: nth($gradient, tokens.$gradient-color-start-index);
+	$colorEnd: nth($gradient, tokens.$gradient-color-end-index);
 
 	.gradient-text-#{$name} {
-		@include gradient-text($colorStart, $colorEnd);
+		@include mixins.gradient-text($colorStart, $colorEnd);
 	}
 }

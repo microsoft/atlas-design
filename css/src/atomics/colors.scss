@@ -1,12 +1,15 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 // Framework colors
 
-@each $name, $color-set in $colors {
-	$base: nth($color-set, $color-index-base);
-	$background: nth($color-set, $color-index-background);
-	$dark: nth($color-set, $color-index-dark);
-	$hover: nth($color-set, $color-index-hover);
-	$active: nth($color-set, $color-index-active);
-	$invert: nth($color-set, $color-index-invert);
+@each $name, $color-set in tokens.$colors {
+	$base: nth($color-set, tokens.$color-index-base);
+	$background: nth($color-set, tokens.$color-index-background);
+	$dark: nth($color-set, tokens.$color-index-dark);
+	$hover: nth($color-set, tokens.$color-index-hover);
+	$active: nth($color-set, tokens.$color-index-active);
+	$invert: nth($color-set, tokens.$color-index-invert);
 
 	.color-#{$name} {
 		@if $name == 'warning' {
@@ -25,7 +28,7 @@
 			}
 		}
 
-		@include focus-visible {
+		@include mixins.focus-visible {
 			color: $hover !important;
 		}
 
@@ -59,10 +62,10 @@
 	}
 }
 
-@include tablet {
-	@each $name, $color-set in $colors {
-		$base: nth($color-set, $color-index-base);
-		$invert: nth($color-set, $color-index-invert);
+@include mixins.tablet {
+	@each $name, $color-set in tokens.$colors {
+		$base: nth($color-set, tokens.$color-index-base);
+		$invert: nth($color-set, tokens.$color-index-invert);
 
 		.background-color-#{$name}-tablet {
 			outline-color: $invert;
@@ -74,19 +77,19 @@
 // Text color
 
 .color-text {
-	color: $text !important;
+	color: tokens.$text !important;
 }
 
 .color-text-invert {
-	color: $text-invert !important;
+	color: tokens.$text-invert !important;
 }
 
 .color-text-subtle {
-	color: $text-subtle !important;
+	color: tokens.$text-subtle !important;
 }
 
 .color-text-overlay-invert {
-	color: $overlay-invert;
+	color: tokens.$overlay-invert;
 }
 
 .color-current-color {
@@ -94,15 +97,15 @@
 }
 
 .color-hyperlink {
-	color: $hyperlink !important;
+	color: tokens.$hyperlink !important;
 }
 
 .fill-current-color {
-	@include fill-current-color();
+	@include mixins.fill-current-color();
 }
 
 .outline-color-text {
-	outline-color: $text !important;
+	outline-color: tokens.$text !important;
 }
 
 .stroke-current-color {
@@ -112,70 +115,70 @@
 // Background color
 
 .background-color-body {
-	outline-color: $text !important;
-	background-color: $body-background !important;
+	outline-color: tokens.$text !important;
+	background-color: tokens.$body-background !important;
 }
 
 .background-color-body-medium {
-	outline-color: $text !important;
-	background-color: $body-background-medium !important;
+	outline-color: tokens.$text !important;
+	background-color: tokens.$body-background-medium !important;
 }
 
 .background-color-alternate {
-	outline-color: $text-invert !important;
-	background-color: $alternate-background !important;
+	outline-color: tokens.$text-invert !important;
+	background-color: tokens.$alternate-background !important;
 }
 
 .background-color-alternate-medium {
-	outline-color: $text-invert !important;
-	background-color: $alternate-background-medium !important;
+	outline-color: tokens.$text-invert !important;
+	background-color: tokens.$alternate-background-medium !important;
 }
 
 .background-color-overlay {
-	outline-color: $overlay-invert;
-	background-color: $overlay !important;
+	outline-color: tokens.$overlay-invert;
+	background-color: tokens.$overlay !important;
 }
 
 .background-color-alternating-grey {
-	border-block-start: 1px solid $border-white-high-contrast;
-	outline-color: $text !important;
+	border-block-start: 1px solid tokens.$border-white-high-contrast;
+	outline-color: tokens.$text !important;
 
 	&:nth-of-type(even) {
-		outline-color: $text;
-		background-color: $body-background;
+		outline-color: tokens.$text;
+		background-color: tokens.$body-background;
 	}
 
 	&:nth-of-type(odd) {
-		outline-color: $text;
-		background-color: $body-background-medium;
+		outline-color: tokens.$text;
+		background-color: tokens.$body-background-medium;
 	}
 }
 
 .background-color-alternating-grey-reversed {
-	border-block-start: 1px solid $border-white-high-contrast;
-	outline-color: $text !important;
+	border-block-start: 1px solid tokens.$border-white-high-contrast;
+	outline-color: tokens.$text !important;
 
 	&:nth-of-type(even) {
-		outline-color: $text;
-		background-color: $body-background-medium;
+		outline-color: tokens.$text;
+		background-color: tokens.$body-background-medium;
 	}
 
 	&:nth-of-type(odd) {
-		outline-color: $text;
-		background-color: $body-background;
+		outline-color: tokens.$text;
+		background-color: tokens.$body-background;
 	}
 }
 
 .background-color-body-accent {
-	outline-color: $text !important;
-	background-color: $body-background-accent !important;
+	outline-color: tokens.$text !important;
+	background-color: tokens.$body-background-accent !important;
 }
 
 .background-color-body-accent-onhover {
 	&:hover,
 	&:focus-within {
-		outline-color: $text !important;
-		background-color: $body-background-accent !important;
+		outline-color: tokens.$text !important;
+		background-color: tokens.$body-background-accent !important;
 	}
 }
 
@@ -186,19 +189,19 @@
 // Static colors - do not change with theme
 
 .color-white-static {
-	color: $white-static !important;
+	color: tokens.$white-static !important;
 }
 
 .color-black-static {
-	color: $black-static !important;
+	color: tokens.$black-static !important;
 }
 
 .background-color-white-static {
-	outline-color: $black-static !important;
-	background-color: $white-static !important;
+	outline-color: tokens.$black-static !important;
+	background-color: tokens.$white-static !important;
 }
 
 .background-color-black-static {
-	outline-color: $white-static !important;
-	background-color: $black-static !important;
+	outline-color: tokens.$white-static !important;
+	background-color: tokens.$black-static !important;
 }

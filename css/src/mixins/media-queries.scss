@@ -1,3 +1,5 @@
+@use '../tokens/index.scss' as tokens;
+
 // Orientation
 
 @mixin orientation-portrait {
@@ -24,26 +26,26 @@
 // Mobile-first screen size media queries
 
 @mixin tablet {
-	@media screen and (min-width: $breakpoint-tablet), print {
+	@media screen and (min-width: tokens.$breakpoint-tablet), print {
 		@content;
 	}
 }
 
 @mixin desktop {
-	@media screen and (min-width: $breakpoint-desktop) {
+	@media screen and (min-width: tokens.$breakpoint-desktop) {
 		@content;
 	}
 }
 
 @mixin widescreen {
-	@media screen and (min-width: $breakpoint-widescreen) {
+	@media screen and (min-width: tokens.$breakpoint-widescreen) {
 		@content;
 	}
 }
 
 // Please avoid using this mixin if possible. It doesn't follow the mobile-first approach to writing CSS.
 @mixin discouraged-mobile {
-	@media screen and (max-width: ($breakpoint-tablet - 1px)) {
+	@media screen and (max-width: (tokens.$breakpoint-tablet - 1px)) {
 		@content;
 	}
 }

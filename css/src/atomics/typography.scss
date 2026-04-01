@@ -1,145 +1,148 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 // Font family
 
 .font-family-monospace {
-	font-family: $monospace-font-stack !important;
+	font-family: tokens.$monospace-font-stack !important;
 	-moz-osx-font-smoothing: auto;
 	-webkit-font-smoothing: auto;
 }
 
 .font-family-quote {
-	font-family: $quote-font-stack !important;
+	font-family: tokens.$quote-font-stack !important;
 }
 
 // Heading sizes
 
 .font-size-h0 {
-	font-size: $font-size-0 !important;
+	font-size: tokens.$font-size-0 !important;
 }
 
 .font-size-h1 {
-	font-size: $font-size-1 !important;
+	font-size: tokens.$font-size-1 !important;
 }
 
 .font-size-h2 {
-	font-size: $font-size-2 !important;
+	font-size: tokens.$font-size-2 !important;
 }
 
 .font-size-h3 {
-	font-size: $font-size-3 !important;
+	font-size: tokens.$font-size-3 !important;
 }
 
 .font-size-h4 {
-	font-size: $font-size-4 !important;
+	font-size: tokens.$font-size-4 !important;
 }
 
 .font-size-h5 {
-	font-size: $font-size-5 !important;
+	font-size: tokens.$font-size-5 !important;
 }
 
 .font-size-h6 {
-	font-size: $font-size-6 !important;
+	font-size: tokens.$font-size-6 !important;
 }
 
-@include tablet {
+@include mixins.tablet {
 	.font-size-h0-tablet {
-		font-size: $font-size-0 !important;
+		font-size: tokens.$font-size-0 !important;
 	}
 
 	.font-size-h1-tablet {
-		font-size: $font-size-1 !important;
+		font-size: tokens.$font-size-1 !important;
 	}
 
 	.font-size-h2-tablet {
-		font-size: $font-size-2 !important;
+		font-size: tokens.$font-size-2 !important;
 	}
 
 	.font-size-h3-tablet {
-		font-size: $font-size-3 !important;
+		font-size: tokens.$font-size-3 !important;
 	}
 
 	.font-size-h4-tablet {
-		font-size: $font-size-4 !important;
+		font-size: tokens.$font-size-4 !important;
 	}
 
 	.font-size-h5-tablet {
-		font-size: $font-size-5 !important;
+		font-size: tokens.$font-size-5 !important;
 	}
 
 	.font-size-h6-tablet {
-		font-size: $font-size-6 !important;
+		font-size: tokens.$font-size-6 !important;
 	}
 }
 
 // Non-heading sizes
 
 .font-size-xxl {
-	font-size: $font-size-4 !important;
+	font-size: tokens.$font-size-4 !important;
 }
 
 .font-size-xl {
-	font-size: $font-size-5 !important;
+	font-size: tokens.$font-size-5 !important;
 }
 
 .font-size-lg {
-	font-size: $font-size-6 !important;
+	font-size: tokens.$font-size-6 !important;
 }
 
 .font-size-md {
-	font-size: $font-size-7 !important;
+	font-size: tokens.$font-size-7 !important;
 }
 
 .font-size-sm {
-	font-size: $font-size-8 !important;
+	font-size: tokens.$font-size-8 !important;
 }
 
 .font-size-xs {
-	font-size: $font-size-9 !important;
+	font-size: tokens.$font-size-9 !important;
 }
 
 // Non-heading sizes
 
-@include tablet {
+@include mixins.tablet {
 	.font-size-xl-tablet {
-		font-size: $font-size-5 !important;
+		font-size: tokens.$font-size-5 !important;
 	}
 
 	.font-size-lg-tablet {
-		font-size: $font-size-6 !important;
+		font-size: tokens.$font-size-6 !important;
 	}
 
 	.font-size-md-tablet {
-		font-size: $font-size-7 !important;
+		font-size: tokens.$font-size-7 !important;
 	}
 
 	.font-size-sm-tablet {
-		font-size: $font-size-8 !important;
+		font-size: tokens.$font-size-8 !important;
 	}
 
 	.font-size-xs-tablet {
-		font-size: $font-size-9 !important;
+		font-size: tokens.$font-size-9 !important;
 	}
 }
 
 // Weight
 
 .font-weight-light {
-	font-weight: $weight-light !important;
+	font-weight: tokens.$weight-light !important;
 }
 
 .font-weight-semilight {
-	font-weight: $weight-semilight !important;
+	font-weight: tokens.$weight-semilight !important;
 }
 
 .font-weight-normal {
-	font-weight: $weight-normal !important;
+	font-weight: tokens.$weight-normal !important;
 }
 
 .font-weight-semibold {
-	font-weight: $weight-semibold !important;
+	font-weight: tokens.$weight-semibold !important;
 }
 
 .font-weight-bold {
-	font-weight: $weight-bold !important;
+	font-weight: tokens.$weight-bold !important;
 }
 
 // Case
@@ -159,7 +162,7 @@
 // Letter Spacing
 
 .letter-spacing-wide {
-	letter-spacing: $letter-spacing-wide !important;
+	letter-spacing: tokens.$letter-spacing-wide !important;
 }
 
 .text-transform-uppercase {
@@ -180,7 +183,7 @@
 	text-align: end !important;
 }
 
-@include tablet {
+@include mixins.tablet {
 	.text-align-left-tablet {
 		text-align: start !important;
 	}
@@ -207,7 +210,7 @@
 // Line height
 
 .line-height-normal {
-	line-height: $line-height-normal !important;
+	line-height: tokens.$line-height-normal !important;
 }
 
 // White space

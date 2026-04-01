@@ -1,3 +1,6 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 .height-full {
 	height: 100% !important;
 }

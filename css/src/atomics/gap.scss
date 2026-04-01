@@ -1,15 +1,18 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 $separator: '-' !default;
 
 $gap-sizes: (
-	('xxs', $layout-1),
-	('xs', $layout-2),
-	('sm', $layout-3),
-	('md', $layout-4),
-	('lg', $layout-5),
-	// ('xl', $layout-6),
-	// ('xxl', $layout-7),
-	// ('xxxl', $layout-8),
-	('none', $layout-0)
+	('xxs', tokens.$layout-1),
+	('xs', tokens.$layout-2),
+	('sm', tokens.$layout-3),
+	('md', tokens.$layout-4),
+	('lg', tokens.$layout-5),
+	// ('xl', tokens.$layout-6),
+	// ('xxl', tokens.$layout-7),
+	// ('xxxl', tokens.$layout-8),
+	('none', tokens.$layout-0)
 );
 
 @function sizeValue($key, $value) {
@@ -26,7 +29,7 @@ $gap-sizes: (
 	}
 }
 
-@include tablet {
+@include mixins.tablet {
 	@each $size in $gap-sizes {
 		$sizeKey: nth($size, 1);
 		$sizeValue: nth($size, 2);
@@ -37,7 +40,7 @@ $gap-sizes: (
 	}
 }
 
-@include desktop {
+@include mixins.desktop {
 	@each $size in $gap-sizes {
 		$sizeKey: nth($size, 1);
 		$sizeValue: nth($size, 2);
@@ -48,7 +51,7 @@ $gap-sizes: (
 	}
 }
 
-@include widescreen {
+@include mixins.widescreen {
 	@each $size in $gap-sizes {
 		$sizeKey: nth($size, 1);
 		$sizeValue: nth($size, 2);

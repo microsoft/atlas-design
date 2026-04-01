@@ -1,14 +1,16 @@
 @use 'sass:math';
-$timeline-content-font-size: $font-size-8 !default;
-$timeline-timestamp-font-size: $font-size-9 !default;
-$timeline-timestamp-font-weight: $weight-semilight !default;
-$timeline-description-padding-top: $spacer-4 !default;
-$timeline-description-line-height: $line-height-normal;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+$timeline-content-font-size: tokens.$font-size-8 !default;
+$timeline-timestamp-font-size: tokens.$font-size-9 !default;
+$timeline-timestamp-font-weight: tokens.$weight-semilight !default;
+$timeline-description-padding-top: tokens.$spacer-4 !default;
+$timeline-description-line-height: tokens.$line-height-normal;
 
-$timeline-item-border-left: $border-width solid $border !default;
-$timeline-item-min-height: $layout-6 !default;
-$timeline-item-padding-bottom: $spacer-7 !default;
-$timeline-item-padding-left: $spacer-8 !default;
+$timeline-item-border-left: tokens.$border-width solid tokens.$border !default;
+$timeline-item-min-height: tokens.$layout-6 !default;
+$timeline-item-padding-bottom: tokens.$spacer-7 !default;
+$timeline-item-padding-left: tokens.$spacer-8 !default;
 
 $timeline-item-template-gap: 8px !default;
 $timeline-item-template-width: 100% !default;
@@ -23,7 +25,7 @@ $timeline-item-badge-transform-rtl: translate(
 );
 
 .timeline {
-	font-size: $document-font-size;
+	font-size: tokens.$document-font-size;
 	container-type: inline-size;
 
 	.timeline-item {
@@ -46,7 +48,7 @@ $timeline-item-badge-transform-rtl: translate(
 			}
 		}
 
-		@container (min-width: #{$container-query-md}) {
+		@container (min-width: #{tokens.$container-query-md}) {
 			.timeline-item-template {
 				display: grid;
 				width: $timeline-item-template-width;
@@ -60,8 +62,8 @@ $timeline-item-badge-transform-rtl: translate(
 
 		.timeline-item-template-title {
 			grid-area: title;
-			font-weight: $weight-semibold;
-			line-height: $line-height-normal;
+			font-weight: tokens.$weight-semibold;
+			line-height: tokens.$line-height-normal;
 		}
 
 		.timeline-item-template-time {
@@ -69,7 +71,7 @@ $timeline-item-badge-transform-rtl: translate(
 			align-content: baseline;
 			font-size: $timeline-timestamp-font-size;
 			font-weight: $timeline-timestamp-font-weight;
-			line-height: $line-height-normal;
+			line-height: tokens.$line-height-normal;
 		}
 
 		.timeline-item-template-description {
