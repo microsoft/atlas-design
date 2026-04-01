@@ -1,14 +1,14 @@
-@use '../tokens/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
 
-$code-block-pre-font-size: $font-size-8 !default;
+$code-block-pre-font-size: tokens.$font-size-8 !default;
 $code-block-pre-spacing: 1em !default;
 $code-block-pre-line-height: 1.3571 !default;
-$code-block-pre-border-color: $code-block-border !default;
-$code-block-pre-border-width: $border-width !default;
-$code-block-pre-border-radius: $border-radius !default;
-$code-block-pre-background-color: $code-block !default;
+$code-block-pre-border-color: tokens.$code-block-border !default;
+$code-block-pre-border-width: tokens.$border-width !default;
+$code-block-pre-border-radius: tokens.$border-radius !default;
+$code-block-pre-background-color: tokens.$code-block !default;
 
-$code-block-pre-padding: $spacer-4 !default;
+$code-block-pre-padding: tokens.$spacer-4 !default;
 
 @mixin code-block($code-block-component: false) {
 	@if $code-block-component == true {
@@ -22,7 +22,7 @@ $code-block-pre-padding: $spacer-4 !default;
 		margin: 0;
 		padding: $code-block-pre-padding;
 		outline-color: currentColor;
-		outline-offset: -$focus-width;
+		outline-offset: -(tokens.$focus-width);
 		font-size: $code-block-pre-font-size;
 		-moz-osx-font-smoothing: auto;
 		-webkit-font-smoothing: auto;
@@ -55,7 +55,7 @@ $code-block-pre-padding: $spacer-4 !default;
 				min-height: 18.9px; // Allow for highlighting of blank lines.
 				margin: 0 $code-block-pre-spacing * -1;
 				padding: 0 $code-block-pre-spacing;
-				color: $text;
+				color: tokens.$text;
 			}
 		}
 	}

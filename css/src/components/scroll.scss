@@ -1,5 +1,5 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
 .scroll-horizontal {
 	overflow-x: auto;

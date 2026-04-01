@@ -1,5 +1,5 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
 // stylelint-disable-next-line keyframes-name-pattern
 @keyframes spinAround {
@@ -54,7 +54,7 @@
 .animation-fade {
 	animation: fade-out 0.4s ease-in forwards;
 
-	@include prefers-reduced-motion {
+	@include mixins.prefers-reduced-motion {
 		animation-duration: 0s;
 	}
 }
@@ -62,7 +62,7 @@
 .animation-slide-up {
 	animation: slide-up-fade-out 0.4s ease-in forwards;
 
-	@include prefers-reduced-motion {
+	@include mixins.prefers-reduced-motion {
 		animation-duration: 0s;
 	}
 }

@@ -1,4 +1,4 @@
-@use '@microsoft/atlas-css/src/tokens/index.scss' as *;
+@use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
 
 .burger {
 	display: block;
@@ -7,16 +7,16 @@
 	background: transparent;
 	width: 48px;
 	height: 48px;
-	border-radius: $border-radius;
-	outline-color: $text;
+	border-radius: tokens.$border-radius;
+	outline-color: tokens.$text;
 	cursor: pointer;
 
 	&[aria-expanded='true'] {
-		outline-color: $text-invert;
+		outline-color: tokens.$text-invert;
 	}
 
 	&:not(.burger-expanded):hover {
-		background-color: $body-background-medium;
+		background-color: tokens.$body-background-medium;
 	}
 
 	.burger-top,
@@ -25,7 +25,7 @@
 		transition: transform 3s cubic-bezier(0.175, 0.885, 0.32, 1.175);
 		display: block;
 		border-radius: 4px;
-		border-top: 4px solid $text;
+		border-top: 4px solid tokens.$text;
 	}
 
 	.burger-middle {

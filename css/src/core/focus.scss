@@ -1,7 +1,7 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-@if ($focus-visible-use-polyfill) {
+@if (tokens.$focus-visible-use-polyfill) {
 	.js-focus-visible .has-default-focus *:focus:not(.focus-visible),
 	.js-focus-visible .default-focus *:focus:not(.focus-visible) {
 		outline: none;
@@ -9,7 +9,7 @@
 
 	.focus-visible.has-inner-focus,
 	.focus-visible.inner-focus {
-		outline-offset: -$focus-width;
+		outline-offset: -(tokens.$focus-width);
 	}
 
 	.has-default-focus,
@@ -32,7 +32,7 @@
 		&.has-inner-focus,
 		&.inner-focus {
 			outline-color: currentColor;
-			outline-offset: -$focus-width;
+			outline-offset: -(tokens.$focus-width);
 		}
 	}
 }
@@ -43,6 +43,6 @@
 	&.has-inner-focus,
 	&.inner-focus {
 		outline-color: currentColor;
-		outline-offset: -$focus-width;
+		outline-offset: -(tokens.$focus-width);
 	}
 }

@@ -1,34 +1,34 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-$font-size-lg: $font-size-6 !default;
-$font-size-sm: $font-size-8 !default;
+$font-size-lg: tokens.$font-size-6 !default;
+$font-size-sm: tokens.$font-size-8 !default;
 
-$pagination-color: $text !default;
-$pagination-border-color: $border !default;
+$pagination-color: tokens.$text !default;
+$pagination-border-color: tokens.$border !default;
 $pagination-margin: 0.25rem !default;
 
-$pagination-hover-color: $primary-hover !default;
-$pagination-hover-border-color: $primary-hover !default;
+$pagination-hover-color: tokens.$primary-hover !default;
+$pagination-hover-border-color: tokens.$primary-hover !default;
 
-$pagination-focus-color: $primary-active !default;
-$pagination-focus-border-color: $primary-active !default;
+$pagination-focus-color: tokens.$primary-active !default;
+$pagination-focus-border-color: tokens.$primary-active !default;
 
-$pagination-active-color: $primary-active !default;
-$pagination-active-border-color: $primary-active !default;
+$pagination-active-color: tokens.$primary-active !default;
+$pagination-active-border-color: tokens.$primary-active !default;
 
-$pagination-disabled-color: $secondary-dark !default;
-$pagination-disabled-background-color: $secondary !default;
-$pagination-disabled-border-color: $secondary !default;
+$pagination-disabled-color: tokens.$secondary-dark !default;
+$pagination-disabled-background-color: tokens.$secondary !default;
+$pagination-disabled-border-color: tokens.$secondary !default;
 
-$pagination-current-color: $text-invert !default;
-$pagination-current-background-color: $primary !default;
-$pagination-current-background-color-hover: $primary-hover !default;
-$pagination-current-border-color: $text-invert !default;
+$pagination-current-color: tokens.$text-invert !default;
+$pagination-current-background-color: tokens.$primary !default;
+$pagination-current-background-color-hover: tokens.$primary-hover !default;
+$pagination-current-border-color: tokens.$text-invert !default;
 
-$pagination-ellipsis-color: $secondary !default;
+$pagination-ellipsis-color: tokens.$secondary !default;
 
-$pagination-shadow-inset: inset 0 1px 2px $box-shadow-color-light;
+$pagination-shadow-inset: inset 0 1px 2px tokens.$box-shadow-color-light;
 
 .pagination {
 	flex-wrap: wrap;
@@ -65,14 +65,14 @@ $pagination-shadow-inset: inset 0 1px 2px $box-shadow-color-light;
 		}
 	}
 
-	@include forced-colors {
+	@include mixins.forced-colors {
 		&::after {
 			display: block;
 			position: absolute;
 			width: 0.375em;
 			height: 0.375em;
 			border: 1px solid LinkText;
-			border-radius: $border-radius-rounded;
+			border-radius: tokens.$border-radius-rounded;
 			background-color: LinkText;
 			content: '';
 			inset-block-start: 0.25em;
@@ -98,9 +98,9 @@ $pagination-shadow-inset: inset 0 1px 2px $box-shadow-color-light;
 .pagination-next,
 .pagination-link,
 .pagination-ellipsis {
-	@include control;
-	@include unselectable;
-	@include transparent-effects;
+	@include mixins.control;
+	@include mixins.unselectable;
+	@include mixins.transparent-effects;
 
 	justify-content: center;
 	font-size: 1em;
@@ -132,7 +132,7 @@ $pagination-shadow-inset: inset 0 1px 2px $box-shadow-color-light;
 }
 
 .pagination-center {
-	@include orientation-landscape {
+	@include mixins.orientation-landscape {
 		.pagination-previous {
 			order: 1;
 		}
@@ -148,7 +148,7 @@ $pagination-shadow-inset: inset 0 1px 2px $box-shadow-color-light;
 	}
 }
 
-@include tablet {
+@include mixins.tablet {
 	.pagination-list {
 		flex-grow: 0;
 		flex-shrink: 1;

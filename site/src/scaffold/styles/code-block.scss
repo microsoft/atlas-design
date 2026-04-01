@@ -1,9 +1,9 @@
-@use '@microsoft/atlas-css/src/tokens/index.scss' as *;
-@use '@microsoft/atlas-css/src/mixins/index.scss' as *;
-@use '@microsoft/atlas-css/src/components/code-block.scss' as *;
+@use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
+@use '@microsoft/atlas-css/src/mixins/index.scss' as mixins;
+@use '@microsoft/atlas-css/src/components/code-block.scss' as code-block;
 
-$code-block-header-filter-font-size: $font-size-8;
-$code-block-header-filter-color: $text-subtle;
+$code-block-header-filter-font-size: tokens.$font-size-8;
+$code-block-header-filter-color: tokens.$text-subtle;
 
 .code-block .code-block-header .code-block-header-action-bar {
 	.code-block-header-filter {
@@ -11,7 +11,7 @@ $code-block-header-filter-color: $text-subtle;
 		max-width: 12ch;
 		min-height: auto;
 		font-size: $code-block-header-filter-font-size;
-		padding-block: $code-block-control-padding;
+		padding-block: code-block.$code-block-control-padding;
 
 		&::placeholder {
 			color: $code-block-header-filter-color;

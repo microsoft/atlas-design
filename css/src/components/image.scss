@@ -1,5 +1,5 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
 $dimensions: 16 24 32 36 48 64 76 88 96 112 128 !default;
 
@@ -30,14 +30,14 @@ $dimensions: 16 24 32 36 48 64 76 88 96 112 128 !default;
 			height: $dimension * 1px;
 		}
 
-		@include tablet {
+		@include mixins.tablet {
 			&.image-#{$dimension}x#{$dimension}-tablet {
 				width: $dimension * 1px;
 				height: $dimension * 1px;
 			}
 		}
 
-		@include desktop {
+		@include mixins.desktop {
 			&.image-#{$dimension}x#{$dimension}-desktop {
 				width: $dimension * 1px;
 				height: $dimension * 1px;

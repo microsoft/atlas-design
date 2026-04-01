@@ -1,5 +1,5 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
 /* stylelint-disable selector-max-specificity, no-descending-specificity  */
 
@@ -8,38 +8,38 @@ $tag-padding-inline: 0.675em !default;
 
 $tag-gap-size: 0.375em !default;
 
-$tag-font-size: $font-size-8 !default;
-$tag-font-size-sm: $font-size-9 !default;
-$tag-font-size-lg: $font-size-7 !default;
-$tag-font-weight: $weight-normal !default;
+$tag-font-size: tokens.$font-size-8 !default;
+$tag-font-size-sm: tokens.$font-size-9 !default;
+$tag-font-size-lg: tokens.$font-size-7 !default;
+$tag-font-weight: tokens.$weight-normal !default;
 
 $tag-icon-font-size: 0.875em !default;
 
-$tag-border-width: $border-width !default;
-$tag-border-radius: $border-radius !default;
-$tag-border-radius-rounded: $border-radius-rounded !default;
-$tag-border-color: $control-border !default;
+$tag-border-width: tokens.$border-width !default;
+$tag-border-radius: tokens.$border-radius !default;
+$tag-border-radius-rounded: tokens.$border-radius-rounded !default;
+$tag-border-color: tokens.$control-border !default;
 
-$tag-color: $secondary-dark !default;
-$tag-color-hover: $primary-dark !default;
-$tag-background-color: $body-background !default;
-$tag-background-hover: $secondary-background-glow-high-contrast !default;
+$tag-color: tokens.$secondary-dark !default;
+$tag-color-hover: tokens.$primary-dark !default;
+$tag-background-color: tokens.$body-background !default;
+$tag-background-hover: tokens.$secondary-background-glow-high-contrast !default;
 
-$tag-color-filled: $text !default;
-$tag-background-filled: $secondary-background-glow-high-contrast !default;
-$tag-color-filled-hover: $primary-hover !default;
-$tag-background-filled-hover: $secondary-background-hover !default;
-$tag-interactive-divider-color-filled: $control-border !default;
-$tag-interactive-color-filled-hover: $secondary-invert !default;
-$tag-interactive-color-filled-close-hover: $primary-dark-hover !default;
+$tag-color-filled: tokens.$text !default;
+$tag-background-filled: tokens.$secondary-background-glow-high-contrast !default;
+$tag-color-filled-hover: tokens.$primary-hover !default;
+$tag-background-filled-hover: tokens.$secondary-background-hover !default;
+$tag-interactive-divider-color-filled: tokens.$control-border !default;
+$tag-interactive-color-filled-hover: tokens.$secondary-invert !default;
+$tag-interactive-color-filled-close-hover: tokens.$primary-dark-hover !default;
 
-$tag-color-primary: $primary-dark !default;
-$tag-color-primary-hover: $primary-hover !default;
-$tag-background-primary: $primary-background !default;
-$tag-background-primary-hover: $primary-background-hover !default;
-$tag-border-color-primary: $primary-background-glow-high-contrast !default;
-$tag-interactive-divider-color-primary: $primary-box-shadow !default;
-$tag-interactive-color-primary-hover: $primary-dark-hover !default;
+$tag-color-primary: tokens.$primary-dark !default;
+$tag-color-primary-hover: tokens.$primary-hover !default;
+$tag-background-primary: tokens.$primary-background !default;
+$tag-background-primary-hover: tokens.$primary-background-hover !default;
+$tag-border-color-primary: tokens.$primary-background-glow-high-contrast !default;
+$tag-interactive-divider-color-primary: tokens.$primary-box-shadow !default;
+$tag-interactive-color-primary-hover: tokens.$primary-dark-hover !default;
 
 $tag-suggestion-radius: 8px !default;
 
@@ -54,7 +54,7 @@ $tag-suggestion-radius: 8px !default;
 	color: $tag-color;
 	font-size: $tag-font-size;
 	font-weight: $tag-font-weight;
-	line-height: $line-height-normal;
+	line-height: tokens.$line-height-normal;
 	white-space: nowrap;
 	gap: $tag-gap-size;
 
@@ -95,7 +95,7 @@ $tag-suggestion-radius: 8px !default;
 		align-items: stretch;
 		padding: 0;
 		border: none;
-		color: $text;
+		color: tokens.$text;
 		gap: 0;
 
 		.tag-popover {
@@ -104,7 +104,7 @@ $tag-suggestion-radius: 8px !default;
 				border: $tag-border-width solid $tag-border-color;
 				border-radius: $tag-border-radius;
 				outline-color: currentColor;
-				outline-offset: -$focus-width;
+				outline-offset: -(tokens.$focus-width);
 				cursor: pointer;
 				overflow: hidden;
 
@@ -128,7 +128,7 @@ $tag-suggestion-radius: 8px !default;
 			border: $tag-border-width solid $tag-border-color;
 			border-radius: 0 $tag-border-radius $tag-border-radius 0;
 			outline-color: currentColor;
-			outline-offset: -$focus-width;
+			outline-offset: -(tokens.$focus-width);
 			background-color: inherit;
 			color: inherit;
 			cursor: pointer;
@@ -221,7 +221,7 @@ $tag-suggestion-radius: 8px !default;
 
 	&:hover,
 	&.is-hovered {
-		background-color: $primary-background;
-		color: $primary-dark;
+		background-color: tokens.$primary-background;
+		color: tokens.$primary-dark;
 	}
 }

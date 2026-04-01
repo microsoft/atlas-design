@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use '../tokens/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
 
 /* stylelint-disable */
 
@@ -17,16 +17,16 @@ $font-size-scaling-factor: 0.75 !default;
 	// font-size to start scaling from
 	$start-rem: max($end-rem * $font-size-scaling-factor, 1rem),
 	// viewport width to stop scaling at
-	$end-width: $breakpoint-desktop,
+	$end-width: tokens.$breakpoint-desktop,
 	// viewport width to start scaling from
 	$start-width: 480px
 ) {
 	$m: math.div(
 			strip-units($end-rem) - strip-units($start-rem),
 			strip-units($end-width) - strip-units($start-width)
-		) * strip-units($document-font-size);
+		) * strip-units(tokens.$document-font-size);
 
-	$y: strip-units($start-rem) * strip-units($document-font-size);
+	$y: strip-units($start-rem) * strip-units(tokens.$document-font-size);
 	$x: strip-units($start-width);
 	$b: $y - $m * $x;
 	$importantValue: if($important, !important, '');

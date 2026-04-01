@@ -1,20 +1,20 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-$notification-background: $secondary-background !default;
-$notification-padding: $spacer-5 !default;
+$notification-background: tokens.$secondary-background !default;
+$notification-padding: tokens.$spacer-5 !default;
 
-$notification-font-size: $font-size-7 !default;
-$notification-color: $text !default;
+$notification-font-size: tokens.$font-size-7 !default;
+$notification-color: tokens.$text !default;
 
-$notification-border-color: $control-border !default;
-$notification-border-width: $border-width !default;
-$notification-border-radius: $border-radius !default;
+$notification-border-color: tokens.$control-border !default;
+$notification-border-width: tokens.$border-width !default;
+$notification-border-radius: tokens.$border-radius !default;
 
 $notification-icon-inline-spacing: 0.375em !default;
 $notification-icon-block-spacing: 0.2em !default;
 
-$notification-dismiss-margin: $spacer-2 !default;
+$notification-dismiss-margin: tokens.$spacer-2 !default;
 
 .notification {
 	display: grid;
@@ -24,18 +24,18 @@ $notification-dismiss-margin: $spacer-2 !default;
 	grid-template-areas: 'notification-content dismiss';
 	border: $notification-border-width solid $notification-border-color;
 	border-radius: $notification-border-radius;
-	outline-color: $text;
+	outline-color: tokens.$text;
 	background-color: $notification-background;
 	color: $notification-color;
 	font-size: $notification-font-size;
-	line-height: $line-height-normal;
+	line-height: tokens.$line-height-normal;
 	word-wrap: break-word;
 	word-break: break-word;
 
-	@each $name, $color-set in $colors {
-		$base: nth($color-set, $color-index-base);
-		$dark: nth($color-set, $color-index-dark);
-		$background: nth($color-set, $color-index-background);
+	@each $name, $color-set in tokens.$colors {
+		$base: nth($color-set, tokens.$color-index-base);
+		$dark: nth($color-set, tokens.$color-index-dark);
+		$background: nth($color-set, tokens.$color-index-background);
 
 		&.notification-#{$name} {
 			border-color: $dark;
@@ -56,7 +56,7 @@ $notification-dismiss-margin: $spacer-2 !default;
 		}
 
 		&::before {
-			@include loader;
+			@include mixins.loader;
 
 			position: absolute;
 			inset-block-start: $notification-padding;
@@ -71,14 +71,14 @@ $notification-dismiss-margin: $spacer-2 !default;
 		.notification-title,
 		a:not(.button) {
 			color: currentColor;
-			font-weight: $weight-semibold;
+			font-weight: tokens.$weight-semibold;
 		}
 
 		a:not(.button) {
 			text-decoration: underline;
 
 			.theme-high-contrast & {
-				color: $hyperlink;
+				color: tokens.$hyperlink;
 			}
 
 			&:hover {
@@ -90,7 +90,7 @@ $notification-dismiss-margin: $spacer-2 !default;
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
-			margin-block-end: $layout-1;
+			margin-block-end: tokens.$layout-1;
 
 			.icon {
 				flex-shrink: 0;
@@ -102,7 +102,7 @@ $notification-dismiss-margin: $spacer-2 !default;
 	}
 
 	.notification-dismiss {
-		@include dismiss-square;
+		@include mixins.dismiss-square;
 
 		grid-area: dismiss;
 		margin-inline-start: $notification-dismiss-margin;

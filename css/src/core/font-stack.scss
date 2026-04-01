@@ -1,31 +1,31 @@
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
 html {
-	font-size: $document-font-size;
+	font-size: tokens.$document-font-size;
 }
 
 html,
 body {
-	font-family: $normal-font-stack;
+	font-family: tokens.$normal-font-stack;
 	-webkit-font-smoothing: antialiased;
-	font-weight: $weight-normal;
+	font-weight: tokens.$weight-normal;
 	text-rendering: optimizeLegibility;
 }
 
 kbd,
 pre,
 samp {
-	font-family: $monospace-font-stack !important;
+	font-family: tokens.$monospace-font-stack !important;
 	-moz-osx-font-smoothing: auto;
 	-webkit-font-smoothing: auto;
 }
 
 code {
 	direction: ltr;
-	font-family: $monospace-font-stack;
+	font-family: tokens.$monospace-font-stack;
 }
 
 a > code {
-	font-family: $normal-font-stack;
+	font-family: tokens.$normal-font-stack;
 }

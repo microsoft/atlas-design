@@ -1,6 +1,6 @@
 @use 'sass:map';
-@use '../tokens/index.scss' as *;
-@use '../mixins/index.scss' as *;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
 $flex-atomics: (
 	'justify-content': (
@@ -65,7 +65,7 @@ $flex-atomics: (
 	}
 }
 
-@include tablet {
+@include mixins.tablet {
 	@each $key in map.keys($flex-atomics) {
 		@each $value in map.get($flex-atomics, $key) {
 			.#{$key}-#{$value}-tablet {
