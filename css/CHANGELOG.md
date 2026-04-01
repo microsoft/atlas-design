@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 5.0.0
+
+### Major Changes
+
+- ea66303: Use at-rules should use namespaces to the degree possible.
+- bb5bef7: Update css build to use @use and @forward instead of @import.
+
+### Patch Changes
+
+- 9a47e84: Updating a few rules with their corresponding logical versions
+
 ## 4.3.1
 
 ### Patch Changes

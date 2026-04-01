@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 1.0.0
+
+### Major Changes
+
+- 9a47e84: Updating a few rules with their corresponding logical versions
+
+### Patch Changes
+
+- bb5bef7: Update css build to use @use and @forward instead of @import.
+
 ## 0.67.1
 
 ### Patch Changes
