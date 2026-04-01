@@ -1,5 +1,4 @@
 @use '../tokens/index.scss' as tokens;
-@use '../mixins/index.scss' as mixins;
 
 $message-font-size-xs: tokens.$font-size-9 !default;
 $message-font-size-sm: tokens.$font-size-8 !default;

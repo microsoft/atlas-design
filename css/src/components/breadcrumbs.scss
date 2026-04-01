@@ -1,5 +1,4 @@
 @use '../tokens/index.scss' as tokens;
-@use '../mixins/index.scss' as mixins;
 
 $breadcrumb-font-size: tokens.$font-size-8 !default;
 $breadcrumb-spacing-horizontal: 0.25em !default;

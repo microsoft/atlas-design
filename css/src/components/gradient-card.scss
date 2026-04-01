@@ -1,5 +1,4 @@
 @use '../tokens/index.scss' as tokens;
-@use '../mixins/index.scss' as mixins;
 
 $gradient-card-padding: tokens.$layout-2 !default;
 $gradient-card-border-radius: tokens.$border-radius-lg !default; //6px

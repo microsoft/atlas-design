@@ -1,5 +1,4 @@
 @use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
-@use '@microsoft/atlas-css/src/mixins/index.scss' as mixins;
 @use '@microsoft/atlas-css/src/components/code-block.scss' as code-block;
 
 $code-block-header-filter-font-size: tokens.$font-size-8;

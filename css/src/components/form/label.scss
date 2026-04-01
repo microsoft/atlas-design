@@ -1,5 +1,4 @@
 @use '../../tokens/index.scss' as tokens;
-@use '../../mixins/index.scss' as mixins;
 
 $label-color: tokens.$text !default;
 $label-font-size: tokens.$font-size-7 !default;
