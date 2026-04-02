@@ -5,12 +5,12 @@
 $quarter-widescreen: math.div(tokens.$breakpoint-widescreen, 4);
 $half-widescreen: math.div(tokens.$breakpoint-widescreen, 2);
 $three-quarters-widescreen: math.div(tokens.$breakpoint-widescreen, 4) * 3;
-$default-flyout-width-desktop: 320px;
-$default-flyout-width-widescreen: 480px;
-$default-aside-min-width: 300px;
-$eighth-widescreen: math.div(tokens.$breakpoint-widescreen, 8); // 225px
-$five-eighths-widescreen: math.div(tokens.$breakpoint-widescreen, 8) * 5; // 1125px
-$layout-menu-collapsed-width: 96px !default;
+$default-flyout-width-desktop: 320px !default;
+$default-flyout-width-widescreen: 480px !default;
+$layout-menu-collapsed-width: 68px !default;
+$menu-max-width: 275px !default;
+$aside-max-width: 275px !default;
+$spacer-width: calc(275px - var(#{tokens.$layout-menu-collapsed-width-name})) !default;
 
 :root {
 	--window-inner-height: 100vh; // to be overwritten by JS
@@ -33,9 +33,8 @@ $layout-menu-collapsed-width: 96px !default;
 		#{tokens.$layout-flyout-width-desktop-custom-property-name}
 	);
 	#{tokens.$layout-menu-collapsed-width-name}: $layout-menu-collapsed-width;
-	#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}: calc(
-		$quarter-widescreen - var(#{tokens.$layout-menu-collapsed-width-name})
-	);
+	#{tokens.$layout-menu-max-width-name}: $menu-max-width;
+	#{tokens.$layout-aside-max-width-name}: $aside-max-width;
 
 	@include mixins.widescreen {
 		#{tokens.$layout-gap-scalable-custom-property-name}: tokens.$layout-widescreen-gap;
@@ -139,8 +138,8 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.tablet {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / minmax(0, 1fr)
-				minmax(0, 2fr);
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto /
+				minmax(0, 1fr) minmax(0, 2fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
@@ -151,25 +150,15 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.desktop {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
-					0,
-					2fr
-				)
-				minmax(0, 1fr);
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto /
+				minmax(0, 275px)
+				minmax(0, 1fr)
+				minmax(0, 275px);
 			grid-template-areas:
 				'header header header'
 				'hero hero hero'
 				'menu main aside'
 				'footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
-			grid-template-areas:
-				'header header header header header'
-				'hero hero hero hero hero'
-				'. menu main aside .'
-				'footer footer footer footer footer';
 		}
 	}
 
@@ -190,48 +179,23 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.desktop {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, 4fr)
-				minmax(0, 23fr) minmax(0, 10fr);
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto /
+				var(#{tokens.$layout-menu-collapsed-width-name})
+				#{$spacer-width}
+				minmax(0, 1fr)
+				minmax(0, 275px);
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
 				'menu . main aside'
 				'footer footer footer footer';
 		}
-
-		@include mixins.widescreen {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, auto) var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, var(#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}))
-				$half-widescreen minmax(0, #{$quarter-widescreen}) minmax(0, auto);
-			grid-template-areas:
-				'header header header header header header'
-				'hero hero hero hero hero hero'
-				'. menu . main aside .'
-				'footer footer footer footer footer footer';
-		}
 	}
 
 	&.layout-flyout-active .layout-body {
 		@include mixins.desktop {
 			grid-template:
-				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero flyout'
-				'menu main aside flyout'
-				'footer footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
+				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 4fr) minmax(0, 1fr)
 				var(#{tokens.$layout-flyout-width-name});
 			grid-template-areas:
 				'header header header header'
@@ -247,21 +211,8 @@ $layout-menu-collapsed-width: 96px !default;
 				auto auto var(--atlas-contained-height) auto / var(
 					#{tokens.$layout-menu-collapsed-width-name}
 				)
-				minmax(0, 2fr) minmax(0, 1fr)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero flyout'
-				'menu main aside flyout'
-				'footer footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				auto auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, 2fr) minmax(0, 1fr)
+				minmax(0, 1fr)
+				minmax(0, 275px)
 				var(#{tokens.$layout-flyout-width-name});
 			grid-template-areas:
 				'header header header header'
@@ -295,21 +246,12 @@ $layout-menu-collapsed-width: 96px !default;
 		@include mixins.desktop {
 			grid-template:
 				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
-				minmax(0, 3fr);
+				minmax(0, 5fr);
 			grid-template-areas:
 				'header header'
 				'hero hero'
 				'menu main'
 				'footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero hero'
-				'. menu main .'
-				'footer footer footer footer';
 		}
 	}
 
@@ -332,27 +274,12 @@ $layout-menu-collapsed-width: 96px !default;
 				minmax(auto, max-content) auto var(--atlas-contained-height) auto / var(
 					#{tokens.$layout-menu-collapsed-width-name}
 				)
-				minmax(0, 4fr)
-				minmax(0, 23fr) minmax(0, 10fr);
+				minmax(0, 2fr) minmax(0, 1fr);
 			grid-template-areas:
 				'header header header header'
 				'hero hero hero hero'
 				'menu . main main'
 				'footer footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, auto) var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, var(#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}))
-				#{$three-quarters-widescreen} minmax(0, auto);
-			grid-template-areas:
-				'header header header header header'
-				'hero hero hero hero hero'
-				'. menu . main .'
-				'footer footer footer footer footer';
 		}
 	}
 
@@ -361,21 +288,7 @@ $layout-menu-collapsed-width: 96px !default;
 			grid-template:
 				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
 					0,
-					3fr
-				)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header'
-				'hero hero flyout'
-				'menu main flyout'
-				'footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
-					0,
-					3fr
+					4fr
 				)
 				var(#{tokens.$layout-flyout-width-name});
 			grid-template-areas:
@@ -400,21 +313,6 @@ $layout-menu-collapsed-width: 96px !default;
 				'menu main flyout'
 				'footer footer footer';
 		}
-
-		@include mixins.widescreen {
-			grid-template:
-				auto auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, var(#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}))
-				minmax(0, 1fr)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero flyout'
-				'menu . main flyout'
-				'footer footer footer footer';
-		}
 	}
 }
 
@@ -429,7 +327,7 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.tablet {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 2fr)
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 5fr)
 				minmax(0, 1fr);
 			grid-template-areas:
 				'header header'
@@ -440,7 +338,7 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.desktop {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr)
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 5fr)
 				minmax(0, 1fr);
 			grid-template-areas:
 				'header header'
@@ -462,21 +360,7 @@ $layout-menu-collapsed-width: 96px !default;
 	&.layout-flyout-active .layout-body {
 		@include mixins.desktop {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(
-					0,
-					1fr
-				)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header'
-				'hero hero flyout'
-				'main aside flyout'
-				'footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 4fr) minmax(
 					0,
 					1fr
 				)

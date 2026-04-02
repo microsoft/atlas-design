@@ -16,8 +16,5 @@
 		"out": true,
 		"dist": true
 	},
-	"typescript.tsc.autoDetect": "off",
-	"github.copilot.enable": {
-		"*": false
-	}
+	"typescript.tsc.autoDetect": "off"
 }

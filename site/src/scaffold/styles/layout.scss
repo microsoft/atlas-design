@@ -16,6 +16,8 @@ html {
 	grid-area: main;
 	padding-block: tokens.$layout-3;
 	padding: tokens.$layout-gap;
+	max-width: tokens.$reading-width-padded;
+	margin-inline: auto;
 	background-color: tokens.$body-background;
 	gap: tokens.$layout-3;
 	grid-template: auto 1fr / 9fr 1fr;

@@ -15,7 +15,7 @@
 	"scripts": {
 		"prebuild": "node toc.js",
 		"prestart": "node toc.js",
-		"start": "cross-env PARCEL_WORKERS=0 parcel \"./src/**/*.md\" --port 1111",
+		"start": "cross-env PARCEL_WORKERS=0 parcel serve \"./src/**/*.md\" --port 2222",
 		"build": "cross-env PARCEL_WORKERS=0 parcel build \"./src/**/*.md\"",
 		"toc": "node toc.js",
 		"type-check": "tsc --noEmit",
