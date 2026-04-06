@@ -12,19 +12,21 @@ html {
 }
 
 #main {
+	background-color: tokens.$body-background;
+}
+
+#main-column {
 	display: grid;
-	grid-area: main;
 	padding-block: tokens.$layout-3;
 	padding: tokens.$layout-gap;
-	background-color: tokens.$body-background;
 	gap: tokens.$layout-3;
-	grid-template: auto 1fr / 9fr 1fr;
+	grid-template: auto 1fr / minmax(0, 9fr) minmax(0, 1fr);
 	grid-template-areas:
 		'breadcrumbs actions'
 		'article article';
 
 	@include mixins.desktop {
-		grid-template: auto 1fr / 7fr 3fr;
+		grid-template: auto 1fr / minmax(0, 7fr) minmax(0, 3fr);
 		grid-template-areas:
 			'breadcrumbs actions'
 			'article article';

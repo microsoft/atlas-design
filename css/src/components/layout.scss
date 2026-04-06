@@ -25,8 +25,9 @@ $layout-menu-collapsed-width: 96px !default;
 	max-inline-size: 100vw;
 
 	// --layout-gutter by default, see tokens/layout.scss
-	#{tokens.$layout-gap-custom-property-name}: tokens.$layout-gap;
-	#{tokens.$layout-gap-scalable-custom-property-name}: tokens.$layout-gap;
+	#{tokens.$layout-gap-custom-property-name}: tokens.$layout-gap-narrow;
+	#{tokens.$layout-gap-scalable-custom-property-name}: tokens.$layout-gap-narrow;
+
 	#{tokens.$layout-flyout-width-desktop-custom-property-name}: $default-flyout-width-desktop;
 	#{tokens.$layout-flyout-width-widescreen-custom-property-name}: $default-flyout-width-widescreen;
 	#{tokens.$layout-flyout-width-name}: var(
@@ -36,6 +37,11 @@ $layout-menu-collapsed-width: 96px !default;
 	#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}: calc(
 		$quarter-widescreen - var(#{tokens.$layout-menu-collapsed-width-name})
 	);
+
+	@include mixins.desktop {
+		#{tokens.$layout-gap-custom-property-name}: tokens.$layout-gap;
+		#{tokens.$layout-gap-scalable-custom-property-name}: tokens.$layout-gap;
+	}
 
 	@include mixins.widescreen {
 		#{tokens.$layout-gap-scalable-custom-property-name}: tokens.$layout-widescreen-gap;
