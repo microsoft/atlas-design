@@ -44,6 +44,7 @@ export const pages: LocalPageConfig[] = [
 	{ pathname: '/components/overview.html', name: 'Components/overview', routes },
 	{ pathname: '/components/popover.html', name: 'Components/popover', routes },
 	{ pathname: '/components/radio.html', name: 'Components/radio', routes },
+	{ pathname: '/components/reading-width.html', name: 'Components/reading-width', routes },
 	{ pathname: '/components/scroll.html', name: 'Components/scroll', routes },
 	{ pathname: '/components/select.html', name: 'Components/select', routes },
 	{ pathname: '/components/table.html', name: 'Components/table', routes },
