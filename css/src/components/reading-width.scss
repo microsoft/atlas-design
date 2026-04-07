@@ -1,0 +1,5 @@
+@use '../tokens/index.scss' as tokens;
+
+.reading-width {
+	max-inline-size: min(100%, #{tokens.$reading-width-padded});
+}
