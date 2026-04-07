@@ -28,4 +28,4 @@ Apply the `.reading-width` class to any container whose content should be constr
 
 ## Recommended implementation
 
-It's a good idea to use `.reading-width` in combination with a container that is centered either within the viewport or a parent element. Try using it in combination with `margin-inline-auto` to automatically center the content horizontally. If used in a grid, you may need to ensure the grid-column that container the reading-width container uses the `minmax` function to ensure it `margin-inline-auto` does not break outside the layout.
+Use `.reading-width` within a container that is centered in the viewport or a parent element. Pair it with `.margin-inline-auto` to automatically center the content horizontally. If used in a grid, ensure the grid column containing the `.reading-width` container uses the `minmax` function so that margin-inline-auto does not cause content to break outside the layout.
