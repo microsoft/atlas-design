@@ -1,5 +1,12 @@
 # @microsoft/atlas-site
 
+## 1.0.1
+
+### Patch Changes
+
+- ff8267c: Fix the development server's file watcher, which stopped watching at the npm module boundary after a dependency upgrade.
+- 15478c0: Add the .reading-width component to the site's article-like content.
+
 ## 1.0.0
 
 ### Major Changes

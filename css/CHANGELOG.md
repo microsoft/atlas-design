@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 5.1.0
+
+### Minor Changes
+
+- 15478c0: Add a new .reading-width class to help constrain content to a good recommended reading width.
+
+### Patch Changes
+
+- 27bcfc6: Reduce h2 and h6 typography token sizes by 2px and align markdown h6 to token sizing.
+- 15478c0: Adjust --layout-gap variable to use the correct mobile padding of 1rem (16px) to match header. Desktop and wider screens are unaffected.
+
 ## 5.0.0
 
 ### Major Changes
