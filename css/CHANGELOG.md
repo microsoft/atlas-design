@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 5.2.0
+
+### Minor Changes
+
+- e4c3f65: Updated body-background-medium theme color to use #FAFAFA palette token.
+
+### Patch Changes
+
+- fbdf52e: Revert former change that reassigned font-size-6 to 1rem, since font-size-7 was already that value. Applies font-size-7 to h6s in `.markdown` class.
+
 ## 5.1.0
 
 ### Minor Changes
