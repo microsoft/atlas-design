@@ -43,10 +43,6 @@ $banner-dismiss-margin: tokens.$spacer-2 !default;
 			inset-block-start: $banner-padding;
 			inset-inline-start: tokens.$layout-gap;
 			border-color: transparent transparent $banner-color $banner-color;
-
-			@include mixins.widescreen {
-				inset-inline-start: tokens.$layout-widescreen-gap;
-			}
 		}
 	}
 

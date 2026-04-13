@@ -3,8 +3,4 @@
 
 %layout-gap {
 	padding-inline: tokens.$layout-gap;
-
-	@include media-queries.widescreen {
-		padding-inline: tokens.$layout-widescreen-gap;
-	}
 }
