@@ -43,12 +43,20 @@ export function initLayoutPageControls() {
 		}
 
 		safeViewTransition(() => {
-			if (!collapseBehaviorAllowed(layoutToSet)) {
+			if (!menuCollapseBehaviorAllowed(layoutToSet)) {
 				const collapseTrigger = document.querySelector(
 					'[data-menu-collapse-toggle]'
 				) as HTMLButtonElement;
 				if (collapseTrigger) {
 					handleMenuCollapse(collapseTrigger, false);
+				}
+			}
+			if (!asideCollapseBehaviorAllowed(layoutToSet)) {
+				const collapseTrigger = document.querySelector(
+					'[data-aside-collapse-toggle]'
+				) as HTMLButtonElement;
+				if (collapseTrigger) {
+					handleAsideCollapse(collapseTrigger, false);
 				}
 			}
 			setLayoutClass(layoutToSet);
@@ -98,13 +106,33 @@ export function initLayoutPageControls() {
 		}
 
 		const currentLayout = getCurrentLayoutClass();
-		if (!collapseBehaviorAllowed(currentLayout)) {
+		if (!menuCollapseBehaviorAllowed(currentLayout)) {
 			return;
 		}
 
 		const isCollapsed = document.documentElement.classList.contains('layout-menu-collapsed');
 		safeViewTransition(() => {
 			handleMenuCollapse(trigger, !isCollapsed);
+		});
+	});
+
+	// Aside collapse behavior
+	window.addEventListener('click', (e: MouseEvent) => {
+		const trigger =
+			e.target instanceof Element &&
+			(e.target.closest('[data-aside-collapse-toggle]') as HTMLElement);
+		if (!trigger) {
+			return;
+		}
+
+		const currentLayout = getCurrentLayoutClass();
+		if (!asideCollapseBehaviorAllowed(currentLayout)) {
+			return;
+		}
+
+		const isCollapsed = document.documentElement.classList.contains('layout-aside-collapsed');
+		safeViewTransition(() => {
+			handleAsideCollapse(trigger, !isCollapsed);
 		});
 	});
 
@@ -211,6 +239,25 @@ function safeViewTransition(cb: () => void) {
 	}
 }
 
-function collapseBehaviorAllowed(layoutClass: string) {
+function handleAsideCollapse(trigger: HTMLElement, shouldCollapse: boolean) {
+	const method: 'add' | 'remove' = shouldCollapse ? 'add' : 'remove';
+	// eslint-disable-next-line security/detect-object-injection
+	trigger.classList[method]('button-filled');
+	trigger.setAttribute('aria-expanded', String(!shouldCollapse));
+	// eslint-disable-next-line security/detect-object-injection
+	document.documentElement.classList[method]('layout-aside-collapsed');
+
+	window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+}
+
+function menuCollapseBehaviorAllowed(layoutClass: string) {
 	return layoutClass === 'layout-holy-grail' || layoutClass === 'layout-sidecar-left';
+}
+
+function asideCollapseBehaviorAllowed(layoutClass: string) {
+	return (
+		layoutClass === 'layout-holy-grail' ||
+		layoutClass === 'layout-sidecar-right' ||
+		layoutClass === 'layout-twin'
+	);
 }
