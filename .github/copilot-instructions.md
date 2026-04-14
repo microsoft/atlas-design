@@ -41,7 +41,7 @@ npm run screenshots:all    # All themes
 - `css/` - SCSS framework (`@microsoft/atlas-css`) - tokens, mixins, atomics, components
 - `js/` - TypeScript behaviors (`@microsoft/atlas-js`) - behaviors, elements, utilities
 - `site/` - Documentation site built with Parcel and Markdown
-- `site/src/scaffold` - Contains SCSS and JS that is not appropriate for publishing in our npm packages and is for the site only
+- `site/src/scaffold` - Contains HTML page templates, SCSS, and JS that is not appropriate for publishing in our npm packages and is for the site only
 - `integration/` - Playwright tests for visual regression and accessibility
 - `extension/` - VS Code extension for class IntelliSense
 - `plugins/stylelint-config-atlas/` - Shared Stylelint configuration
