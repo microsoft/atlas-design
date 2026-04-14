@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
 
@@ -33,9 +34,9 @@ $notification-dismiss-margin: tokens.$spacer-2 !default;
 	word-break: break-word;
 
 	@each $name, $color-set in tokens.$colors {
-		$base: nth($color-set, tokens.$color-index-base);
-		$dark: nth($color-set, tokens.$color-index-dark);
-		$background: nth($color-set, tokens.$color-index-background);
+		$base: list.nth($color-set, tokens.$color-index-base);
+		$dark: list.nth($color-set, tokens.$color-index-dark);
+		$background: list.nth($color-set, tokens.$color-index-background);
 
 		&.notification-#{$name} {
 			border-color: $dark;

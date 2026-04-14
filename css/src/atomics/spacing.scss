@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
 
@@ -32,18 +33,22 @@ $layout-sizes: (
 );
 
 @function sizeValue($key, $value) {
-	@return if($key == 'none', 0, $value);
+	@if $key == 'none' {
+		@return 0;
+	}
+
+	@return $value;
 }
 
 // Pattern: <cssproperty>-<value>-<screen>
 
 @each $property in $logical-spacing-properties {
-	$classicProp: nth($property, 1);
-	$logicalProp: nth($property, 2);
+	$classicProp: list.nth($property, 1);
+	$logicalProp: list.nth($property, 2);
 
 	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		$sizeKey: list.nth($size, 1);
+		$sizeValue: list.nth($size, 2);
 
 		// .<property>-<value>
 		.#{$classicProp}#{$separator}#{$sizeKey} {
@@ -54,12 +59,12 @@ $layout-sizes: (
 
 @include mixins.tablet {
 	@each $property in $logical-spacing-properties {
-		$classicProp: nth($property, 1);
-		$logicalProp: nth($property, 2);
+		$classicProp: list.nth($property, 1);
+		$logicalProp: list.nth($property, 2);
 
 		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
+			$sizeKey: list.nth($size, 1);
+			$sizeValue: list.nth($size, 2);
 
 			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}tablet {
 				#{$logicalProp}: $sizeValue !important;
@@ -70,12 +75,12 @@ $layout-sizes: (
 
 @include mixins.desktop {
 	@each $property in $logical-spacing-properties {
-		$classicProp: nth($property, 1);
-		$logicalProp: nth($property, 2);
+		$classicProp: list.nth($property, 1);
+		$logicalProp: list.nth($property, 2);
 
 		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
+			$sizeKey: list.nth($size, 1);
+			$sizeValue: list.nth($size, 2);
 
 			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}desktop {
 				#{$logicalProp}: $sizeValue !important;
@@ -86,12 +91,12 @@ $layout-sizes: (
 
 @include mixins.widescreen {
 	@each $property in $logical-spacing-properties {
-		$classicProp: nth($property, 1);
-		$logicalProp: nth($property, 2);
+		$classicProp: list.nth($property, 1);
+		$logicalProp: list.nth($property, 2);
 
 		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
+			$sizeKey: list.nth($size, 1);
+			$sizeValue: list.nth($size, 2);
 
 			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}widescreen {
 				#{$logicalProp}: $sizeValue !important;

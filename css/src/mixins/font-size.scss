@@ -29,8 +29,10 @@ $font-size-scaling-factor: 0.75 !default;
 	$y: strip-units($start-rem) * strip-units(tokens.$document-font-size);
 	$x: strip-units($start-width);
 	$b: $y - $m * $x;
-	$importantValue: if($important, !important, '');
-
-	font-size: clamp(#{$start-rem}, #{$b}px + #{$m * 100}vw, #{$end-rem}) #{$importantValue};
+	@if $important {
+		font-size: clamp(#{$start-rem}, #{$b}px + #{$m * 100}vw, #{$end-rem}) !important;
+	} @else {
+		font-size: clamp(#{$start-rem}, #{$b}px + #{$m * 100}vw, #{$end-rem});
+	}
 }
 /* stylelint-enable */

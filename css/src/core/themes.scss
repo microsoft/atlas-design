@@ -64,7 +64,7 @@ $theme-names: map.keys(tokens.$themes);
 		// Set the rest of the themes, exclude them from print styling.
 		@media not print {
 			.theme-#{$key} {
-				@each $colorName, $colorVal in map-get(tokens.$themes, $key) {
+				@each $colorName, $colorVal in map.get(tokens.$themes, $key) {
 					// stylelint-disable-next-line custom-property-pattern
 					--theme-#{$colorName}: #{$colorVal};
 				}

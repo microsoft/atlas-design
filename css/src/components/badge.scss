@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../tokens/index.scss' as tokens;
 
 $badge-icon-padding-block: 0.5em !default;
@@ -31,10 +32,10 @@ $badge-border-radius: tokens.$border-radius-rounded !default;
 	gap: $badge-gap-size;
 
 	@each $name, $color-set in tokens.$colors {
-		$base: nth($color-set, tokens.$color-index-base);
-		$invert: nth($color-set, tokens.$color-index-invert);
-		$dark: nth($color-set, tokens.$color-index-dark);
-		$background: nth($color-set, tokens.$color-index-background);
+		$base: list.nth($color-set, tokens.$color-index-base);
+		$invert: list.nth($color-set, tokens.$color-index-invert);
+		$dark: list.nth($color-set, tokens.$color-index-dark);
+		$background: list.nth($color-set, tokens.$color-index-background);
 
 		@if $name == 'secondary' {
 			border-color: $dark;
@@ -56,10 +57,10 @@ $badge-border-radius: tokens.$border-radius-rounded !default;
 
 	&.badge-filled {
 		@each $name, $color-set in tokens.$colors {
-			$base: nth($color-set, tokens.$color-index-base);
-			$invert: nth($color-set, tokens.$color-index-invert);
-			$dark: nth($color-set, tokens.$color-index-dark);
-			$background: nth($color-set, tokens.$color-index-background);
+			$base: list.nth($color-set, tokens.$color-index-base);
+			$invert: list.nth($color-set, tokens.$color-index-invert);
+			$dark: list.nth($color-set, tokens.$color-index-dark);
+			$background: list.nth($color-set, tokens.$color-index-background);
 
 			@if $name == 'secondary' {
 				border-color: $base;

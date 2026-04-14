@@ -12,7 +12,12 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 }
 
 @each $width in $universal-widths {
-	$unit: if($width != auto and $width != fit-content, 'px', '');
+	$unit: '';
+
+	@if $width != auto and $width != fit-content {
+		$unit: 'px';
+	}
+
 	.width-#{$width} {
 		width: #{$width}#{$unit} !important;
 	}
@@ -24,7 +29,12 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 	}
 
 	@each $width in $all-widths {
-		$unit: if($width != auto and $width != unset and $width != fit-content, 'px', '');
+		$unit: '';
+
+		@if $width != auto and $width != unset and $width != fit-content {
+			$unit: 'px';
+		}
+
 		.width-#{$width}-tablet {
 			width: #{$width}#{$unit} !important;
 		}
@@ -37,7 +47,12 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 	}
 
 	@each $width in $all-widths {
-		$unit: if($width != auto and $width != unset and $width != fit-content, 'px', '');
+		$unit: '';
+
+		@if $width != auto and $width != unset and $width != fit-content {
+			$unit: 'px';
+		}
+
 		.width-#{$width}-desktop {
 			width: #{$width}#{$unit} !important;
 		}

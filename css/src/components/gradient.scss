@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
 
@@ -77,8 +78,8 @@ $border-gradient-direction: (
 }
 
 @each $name, $gradient in tokens.$gradients {
-	$colorStart: nth($gradient, tokens.$gradient-color-start-index);
-	$colorEnd: nth($gradient, tokens.$gradient-color-end-index);
+	$colorStart: list.nth($gradient, tokens.$gradient-color-start-index);
+	$colorEnd: list.nth($gradient, tokens.$gradient-color-end-index);
 
 	.gradient-text-#{$name} {
 		@include mixins.gradient-text($colorStart, $colorEnd);
