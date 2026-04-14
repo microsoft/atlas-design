@@ -1,3 +1,5 @@
+@use 'sass:color';
+@use 'sass:list';
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
 
@@ -125,13 +127,13 @@ $button-font-weight: tokens.$weight-semibold !default;
 	}
 
 	@each $name, $color-set in tokens.$colors {
-		$base: nth($color-set, tokens.$color-index-base);
-		$dark: nth($color-set, tokens.$color-index-dark);
-		$background: nth($color-set, tokens.$color-index-background);
-		$background-selected: nth($color-set, tokens.$color-index-background-selected);
-		$selected: nth($color-set, tokens.$color-index-selected);
-		$foreground-selected: nth($color-set, tokens.$color-index-foreground-selected);
-		$border-selected: nth($color-set, tokens.$color-index-stroke-selected);
+		$base: list.nth($color-set, tokens.$color-index-base);
+		$dark: list.nth($color-set, tokens.$color-index-dark);
+		$background: list.nth($color-set, tokens.$color-index-background);
+		$background-selected: list.nth($color-set, tokens.$color-index-background-selected);
+		$selected: list.nth($color-set, tokens.$color-index-selected);
+		$foreground-selected: list.nth($color-set, tokens.$color-index-foreground-selected);
+		$border-selected: list.nth($color-set, tokens.$color-index-stroke-selected);
 
 		&.button-#{$name} {
 			@if $name == 'warning' {
@@ -165,7 +167,7 @@ $button-font-weight: tokens.$weight-semibold !default;
 	}
 }
 
-$button-clear-hover-background-color: transparentize(#8e8e8e, 0.95) !default;
+$button-clear-hover-background-color: color.adjust(#8e8e8e, $alpha: -0.95) !default;
 $button-clear-selected-background-color: tokens.$selected-background-subtle !default;
 
 .button.button-clear {
@@ -196,12 +198,12 @@ $button-clear-selected-background-color: tokens.$selected-background-subtle !def
 	}
 
 	@each $name, $color-set in tokens.$colors {
-		$base: nth($color-set, tokens.$color-index-base);
-		$dark: nth($color-set, tokens.$color-index-dark);
-		$background: nth($color-set, tokens.$color-index-background);
-		$background-selected: nth($color-set, tokens.$color-index-background-selected);
-		$selected: nth($color-set, tokens.$color-index-selected);
-		$foreground-selected: nth($color-set, tokens.$color-index-foreground-selected);
+		$base: list.nth($color-set, tokens.$color-index-base);
+		$dark: list.nth($color-set, tokens.$color-index-dark);
+		$background: list.nth($color-set, tokens.$color-index-background);
+		$background-selected: list.nth($color-set, tokens.$color-index-background-selected);
+		$selected: list.nth($color-set, tokens.$color-index-selected);
+		$foreground-selected: list.nth($color-set, tokens.$color-index-foreground-selected);
 
 		&.button-#{$name} {
 			color: $base;
@@ -259,13 +261,13 @@ $button-filled-background-color-selected: tokens.$secondary-selected !default;
 	}
 
 	@each $name, $color-set in tokens.$colors {
-		$base: nth($color-set, tokens.$color-index-base);
-		$hover: nth($color-set, tokens.$color-index-hover);
-		$active: nth($color-set, tokens.$color-index-active);
-		$invert: nth($color-set, tokens.$color-index-invert);
-		$background: nth($color-set, tokens.$color-index-background);
-		$selected: nth($color-set, tokens.$color-index-selected);
-		$selected-invert: nth($color-set, tokens.$color-index-foreground-selected-invert);
+		$base: list.nth($color-set, tokens.$color-index-base);
+		$hover: list.nth($color-set, tokens.$color-index-hover);
+		$active: list.nth($color-set, tokens.$color-index-active);
+		$invert: list.nth($color-set, tokens.$color-index-invert);
+		$background: list.nth($color-set, tokens.$color-index-background);
+		$selected: list.nth($color-set, tokens.$color-index-selected);
+		$selected-invert: list.nth($color-set, tokens.$color-index-foreground-selected-invert);
 
 		&.button-#{$name} {
 			border-color: $base;

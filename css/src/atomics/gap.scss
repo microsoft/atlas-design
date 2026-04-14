@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
 
@@ -16,12 +17,16 @@ $gap-sizes: (
 );
 
 @function sizeValue($key, $value) {
-	@return if($key == 'none', 0, $value);
+	@if $key == 'none' {
+		@return 0;
+	}
+
+	@return $value;
 }
 
 @each $size in $gap-sizes {
-	$sizeKey: nth($size, 1);
-	$sizeValue: nth($size, 2);
+	$sizeKey: list.nth($size, 1);
+	$sizeValue: list.nth($size, 2);
 
 	// .<property>-<value>
 	.gap#{$separator}#{$sizeKey} {
@@ -31,8 +36,8 @@ $gap-sizes: (
 
 @include mixins.tablet {
 	@each $size in $gap-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		$sizeKey: list.nth($size, 1);
+		$sizeValue: list.nth($size, 2);
 
 		.gap#{$separator}#{$sizeKey}#{$separator}tablet {
 			gap: $sizeValue !important;
@@ -42,8 +47,8 @@ $gap-sizes: (
 
 @include mixins.desktop {
 	@each $size in $gap-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		$sizeKey: list.nth($size, 1);
+		$sizeValue: list.nth($size, 2);
 
 		.gap#{$separator}#{$sizeKey}#{$separator}desktop {
 			gap: $sizeValue !important;
@@ -53,8 +58,8 @@ $gap-sizes: (
 
 @include mixins.widescreen {
 	@each $size in $gap-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		$sizeKey: list.nth($size, 1);
+		$sizeValue: list.nth($size, 2);
 
 		.gap#{$separator}#{$sizeKey}#{$separator}widescreen {
 			gap: $sizeValue !important;

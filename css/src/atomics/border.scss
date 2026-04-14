@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
 
@@ -100,7 +101,7 @@
 // Colors
 
 @each $name, $color-set in tokens.$colors {
-	$base: nth($color-set, tokens.$color-index-base);
+	$base: list.nth($color-set, tokens.$color-index-base);
 
 	.border-color-#{$name} {
 		border-color: $base !important;
