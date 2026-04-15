@@ -2,6 +2,7 @@
 @use '../mixins/index.scss' as mixins;
 
 $default-flyout-width-desktop: 320px;
+$default-flyout-width-widescreen: 480px;
 $layout-menu-collapsed-width: 68px !default;
 $layout-menu-expanded-target-width: 275px !default;
 $layout-aside-collapsed-width: 68px !default;
@@ -40,6 +41,10 @@ $layout-aside-expanded-target-width: 275px !default;
 	@include mixins.desktop {
 		#{tokens.$layout-gap-custom-property-name}: tokens.$layout-gap;
 		#{tokens.$layout-gap-scalable-custom-property-name}: tokens.$layout-gap;
+	}
+
+	@include mixins.widescreen {
+		#{tokens.$layout-flyout-width-desktop-custom-property-name}: $default-flyout-width-widescreen;
 	}
 }
 
