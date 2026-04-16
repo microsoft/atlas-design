@@ -49,6 +49,7 @@ $palette-grey-210: #424242 !default;
 $palette-grey-220: #3d3d3d !default;
 $palette-grey-230: #383838 !default;
 $palette-grey-240: #333 !default;
+$palette-grey-245: #2e2e2e !default;
 $palette-grey-250: #292929 !default;
 $palette-grey-260: #242424 !default;
 $palette-grey-270: #1a1a1a !default;
@@ -85,6 +86,8 @@ $palette-white-opacity-60: hsl(0deg 0% 100% / 60%);
 $palette-white-opacity-70: hsl(0deg 0% 100% / 70%);
 $palette-white-opacity-80: hsl(0deg 0% 100% / 80%);
 $palette-white-opacity-90: hsl(0deg 0% 100% / 90%);
+
+$palette-grey-opacity-5: hsl(0deg 0% 56% / 5%) !default;
 
 // Values used for shadows
 
