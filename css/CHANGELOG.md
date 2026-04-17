@@ -1,5 +1,20 @@
 # @microsoft/atlas-css
 
+## 6.0.0
+
+### Major Changes
+
+- 866964c: Site header no longer applies extra padding on wide screens. This change matches the changes to layouts.
+- 866964c: Both the `.layout-body-menu` and `.layout-body-aside` have a narrower maximum width applied, circa 275px wide. These containers still scale down as required on narrower widths.
+- 866964c: Layouts no longer apply a maximum site width, instead elements are anchored to the sides of the screen regardless of scaling.
+- 866964c: The `.banner`, `.hero`, and `.site-header` components no longer have a maximum width applied on wide screen sizes. Pairs with changes made to the .layout class.
+- 866964c: To match layout changes that remove the site's max width, `.layout-margin` and `.layout-padding` classes have been updated, removing their larger, `calc`ed values that applied to widescreen.
+
+### Patch Changes
+
+- 035a1ea: Resolve Dart Sass deprecation warnings. `nth` to `list.nth`; `if(` to `@if `; `transparentize` to `color.adjust(color, alpha)`; `map-get` to `map.get`.
+- 866964c: Narrow the `.layout-body-menu`'s collapsed width significantly.
+
 ## 5.2.0
 
 ### Minor Changes
