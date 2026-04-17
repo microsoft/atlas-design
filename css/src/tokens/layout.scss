@@ -22,6 +22,12 @@ $layout-gap-scalable-custom-property-name: '--layout-gap-scalable' !default;
 $layout-flyout-width-name: '--layout-flyout-width' !default;
 $layout-flyout-width-desktop-custom-property-name: '--layout-flyout-width-desktop' !default;
 $layout-flyout-width-widescreen-custom-property-name: '--layout-flyout-width-widescreen' !default;
+$layout-menu-width-name: '--layout-menu-width' !default;
 $layout-menu-collapsed-width-name: '--layout-menu-collapsed-width' !default;
-$layout-menu-collapsed-width-widescreen-spacer-width-name: '--layout-menu-collapsed-width-widescreen' !default;
+$layout-menu-expanded-target-width-name: '--layout-menu-expanded-target-width' !default;
+$layout-aside-width-name: '--layout-aside-width' !default;
+$layout-aside-collapsed-width-name: '--layout-aside-collapsed-width' !default;
+$layout-aside-expanded-target-width-name: '--layout-aside-expanded-target-width' !default;
+$layout-menu-spacer-width-name: '--layout-menu-spacer-width' !default;
+$layout-aside-spacer-width-name: '--layout-aside-spacer-width' !default;
 //@end-sass-export-section

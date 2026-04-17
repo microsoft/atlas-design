@@ -16,20 +16,21 @@ The layout component provides a flexible and efficient way to structure the majo
 
 This page is utilizing the holy grail layout, but you can use the buttons below to toggle layouts and test them out by resizing the screen. Try the "Toggle container labels" button below to see the css classes on each of the containers inside `.layout`.
 
-<div class="buttons buttons-addons margin-top-sm display-flex">
+<div class="buttons buttons-addons margin-top-sm">
   <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
   <button class="button" data-set-layout="layout-twin">Twin</button>
   <button class="button" data-set-layout="layout-single">Single</button>
   <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
   <button class="button" data-set-layout="layout-sidecar-right">Sidecar right</button>
 </div>
-<div class="buttons buttons-addons display-flex">
+<div class="buttons">
 	<button class="button" data-menu-collapse-toggle aria-expanded="true">Collapse menu</button>
+	<button class="button" data-aside-collapse-toggle aria-expanded="true">Collapse aside</button>
 	<button class="button" data-toggle-debug aria-pressed="false">Toggle container labels</button>
 	<button class="button" data-toggle-layout-height-constraint aria-pressed="false">Constrain layout height</button>
 	
 </div>
-<div class="buttons buttons-addons display-flex">
+<div class="buttons">
 	<button class="button button-filled" data-toggle-hero-visibility aria-pressed="true">Toggle hero</button>
 	<button class="button button-filled" data-toggle-footer-visibility aria-pressed="true">Toggle footer</button>
 	<button class="button" data-toggle-flyout-visibility aria-pressed="false">Toggle flyout</button>
@@ -79,7 +80,7 @@ The layout components behavior is inextricably bound to Atlas's breakpoints. On 
 
 ## Available layouts
 
-There are two available layouts.
+There are five available layouts.
 
 - [`layout-single`](#layout-single)
 - [`layout-holy-grail`](#holy-grail-layout)
@@ -100,6 +101,8 @@ Allowed elements: all.
 Can have its height constrained? No.
 
 Can have its menu collapsed? No.
+
+Can have its aside collapsed? No.
 
 ```Text
    Narrow
@@ -138,10 +141,12 @@ Can have its height constrained? Yes, on desktop screens and wider. This differs
 
 Can have its menu collapsed? Yes, on tablet screens and wider.
 
+Can have its aside collapsed? Yes, on desktop screens and wider.
+
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```Text
-   Narrow         Tablet           Widescreen
+   Narrow         Tablet           Desktop
   ┌────────────┐ ┌──────────────┐ ┌──────────────────────┐
   │ Header     │ │Header        │ │ Header               │
   ├────────────┤ ├──────────────┤ ├──────────────────────┤
@@ -159,12 +164,11 @@ The following block is arranged from narrow widths on the left to wider widths o
 
 The specification for this layout is as follows.
 
-| Screensize | Behavior                                                                                                                      |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Narrow     | All elements are stacked.                                                                                                     |
-| Tablet     | Menu and main are side by side. Main is wider than menu. Aside has a collapsed height and is tucked under main.               |
-| Desktop    | Menu, main, aside are side by side. Main is wider than menu.                                                                  |
-| Widescreen | Same as desktop with scaling gutter that keeps combined width of menu, main, aside to the width of the widescreen breakpoint. |
+| Screensize | Behavior                                                                                                        |
+| ---------- | --------------------------------------------------------------------------------------------------------------- |
+| Narrow     | All elements are stacked.                                                                                       |
+| Tablet     | Menu and main are side by side. Main is wider than menu. Aside has a collapsed height and is tucked under main. |
+| Desktop    | Menu, main, aside are side by side. Main is wider than menu.                                                    |
 
 ### Sidecar left layout
 
@@ -180,32 +184,33 @@ Can have its height constrained? Yes, on tablet screens and wider.
 
 Can have its menu collapsed? Yes, on tablet screens and wider.
 
+Can have its aside collapsed? No (aside is not present).
+
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```txt
-   Narrow           Tablet           Widescreen
-  ┌────────────┐   ┌──────────────┐ ┌──────────────────────┐
-  │ Header     │   │Header        │ │ Header               │
-  ├────────────┤   ├──────────────┤ ├──────────────────────┤
-  │ Hero       │   │Hero          │ │ Hero                 │
-  ├────────────┤   ├─────┬────────┤ ├──────┬───────────────┤
-  │ Menu       │   │Menu │ Main   │ │ Menu │ Main          │
-  ├────────────┤   │     │        │ │      │               │
-  │ Main       │   │     │        │ │      │               │
-  │            │   │     │        │ │      │               │
-  │            │   │     │        │ │      │               │
-  ├────────────┤   ├─────┴────────┤ ├──────┴───────────────┤
-  │ Footer     │   │Footer        │ │ Footer               │
-  └────────────┘   └──────────────┘ └──────────────────────┘
+   Narrow           Tablet and wider
+  ┌────────────┐   ┌──────────────┐
+  │ Header     │   │Header        │
+  ├────────────┤   ├──────────────┤
+  │ Hero       │   │Hero          │
+  ├────────────┤   ├─────┬────────┤
+  │ Menu       │   │Menu │ Main   │
+  ├────────────┤   │     │        │
+  │ Main       │   │     │        │
+  │            │   │     │        │
+  │            │   │     │        │
+  ├────────────┤   ├─────┴────────┤
+  │ Footer     │   │Footer        │
+  └────────────┘   └──────────────┘
 ```
 
 The specification for this layout is as follows.
 
-| Screensize       | Behavior                                                                                                                         |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Narrow           | All elements are stacked.                                                                                                        |
-| Tablet - desktop | Menu and main are side by side. Main is wider than menu.                                                                         |
-| Widescreen       | Same as tablet-desktop with scaling gutter that keeps combined width of menu and main to the width of the widescreen breakpoint. |
+| Screensize       | Behavior                                                 |
+| ---------------- | -------------------------------------------------------- |
+| Narrow           | All elements are stacked.                                |
+| Tablet and wider | Menu and main are side by side. Main is wider than menu. |
 
 ### Sidecar right layout
 
@@ -219,34 +224,35 @@ Allowed elements: all except `layout-body-menu`.
 
 Can have its height constrained? Yes, on tablet screens and wider.
 
-Can have its menu collapsed? No
+Can have its menu collapsed? No.
+
+Can have its aside collapsed? Yes, on tablet screens and wider.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
 ```txt
-  Narrow           Tablet                   Widescreen
- ┌──────────────┐ ┌──────────────────────┐ ┌──────────────────────┐
- │Header        │ │ Header               │ │ Header               │
- ├──────────────┤ ├──────────────────────┤ ├──────────────────────┤
- │Hero          │ │ Hero                 │ │ Hero                 │
- ├──────────────┤ ├───────────────┬──────┤ ├───────────────┬──────┤
- │Main          │ │ Main          │ Aside│ │ Main          │ Aside│
- │              │ │               │      │ │               │      │
- │              │ │               │      │ │               │      │
- ├──────────────┤ │               │      │ │               │      │
- │Aside         │ │               │      │ │               │      │
- ├──────────────┤ ├───────────────┴──────┤ ├───────────────┴──────┤
- │Footer        │ │ Footer               │ │ Footer               │
- └──────────────┘ └──────────────────────┘ └──────────────────────┘
+  Narrow           Tablet and wider
+ ┌──────────────┐ ┌──────────────────────┐
+ │Header        │ │ Header               │
+ ├──────────────┤ ├──────────────────────┤
+ │Hero          │ │ Hero                 │
+ ├──────────────┤ ├───────────────┬──────┤
+ │Main          │ │ Main          │ Aside│
+ │              │ │               │      │
+ │              │ │               │      │
+ ├──────────────┤ │               │      │
+ │Aside         │ │               │      │
+ ├──────────────┤ ├───────────────┴──────┤
+ │Footer        │ │ Footer               │
+ └──────────────┘ └──────────────────────┘
 ```
 
 The specification for this layout is as follows.
 
-| Screensize       | Behavior                                                                                                                          |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Narrow           | All elements are stacked.                                                                                                         |
-| Tablet - desktop | Main and aside are side by side. Main is wider than aside.                                                                        |
-| Widescreen       | Same as tablet-desktop with scaling gutter that keeps combined width of main and aside to the width of the widescreen breakpoint. |
+| Screensize       | Behavior                                                   |
+| ---------------- | ---------------------------------------------------------- |
+| Narrow           | All elements are stacked.                                  |
+| Tablet and wider | Main and aside are side by side. Main is wider than aside. |
 
 ### Twin layout
 
@@ -259,6 +265,8 @@ Required elements: all except `layout-body-hero` and `layout-body-menu` (see all
 Allowed elements: all except `layout-body-menu`.
 
 Can have its height constrained? Yes, on tablet screens and wider.
+
+Can have its aside collapsed? Yes, on tablet screens and wider.
 
 The following block is arranged from narrow widths on the left to wider widths on the right.
 
@@ -313,9 +321,7 @@ A flyout is a container that appears on the side of the screen. It provides addi
 
 1. **It is not available on narrow and tablet-size screens.** There simply isn't room for it. This means that whatever content is available in this sidebar, should be rendered elsewhere on narrow/tablet screen sizes. Typically, this would be done in a modal that renders "on top" of the other containers. Atlas does not implement this for you.
 1. The flyout can be shown/hidden by adding/removing the `.layout-flyout-active` class to the `.layout` element.
-1. The default widths of the flyout on both desktop and widescreen can be customized with the following CSS variables.
-   1. `--layout-flyout-width-desktop` will affect the desktop breakpoint.
-   1. `--layout-flyout-width-widescreen` will affect the widescreen (largest) breakpoint.
+1. The default width of the flyout on desktop can be customized with the `--layout-flyout-width-desktop` CSS variable.
 1. This means developers must handle mobile and tablet widths with a different solution, such using a modal on narrow screens.
 1. On expand/collapse of the flyout, it's recommended developers perform manual focus handling to ensure that focus is not lost for screenreaders.
 1. The same should happen on resize.
@@ -323,6 +329,10 @@ A flyout is a container that appears on the side of the screen. It provides addi
 ## Collapsing the left-hand menu
 
 In certain scenarios, it may be advantageous to collapse the left-hand menu element on layouts that have this container. To do this, add `.layout-menu-collapsed` to the `html` element of your page. This will hide the menu element and rearrange containers on layouts that support it, such as `layout-holy-grail` and `layout-sidecar-left`.
+
+## Collapsing the right-hand aside
+
+Similarly, the right-hand aside can be collapsed by adding `.layout-aside-collapsed` to the `html` element. This narrows the aside to a minimal width on layouts that support it: `layout-holy-grail`, `layout-sidecar-right`, and `layout-twin`.
 
 ## Accessibility Concerns
 
@@ -342,6 +352,55 @@ Grid areas, the CSS feature powering the layout component, have the potential to
 1. Footer
 
 See WCAG on [Making the DOM order match the visual order](https://www.w3.org/TR/WCAG20-TECHS/C27.html) for more information on this topic.
+
+## Customizing layout dimensions with CSS variables
+
+The layout component exposes several CSS custom properties that let you tune column widths and spacing without writing new grid definitions. Override these variables on the `.layout` element (or any ancestor) to customize dimensions site-wide, or scope them to a specific page.
+
+### Menu and aside widths
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `--layout-menu-expanded-target-width` | `275px` | The width of the menu column when expanded. |
+| `--layout-menu-collapsed-width` | `68px` | The width of the menu column when collapsed via `.layout-menu-collapsed`. |
+| `--layout-aside-expanded-target-width` | `275px` | The width of the aside column when expanded. |
+| `--layout-aside-collapsed-width` | `68px` | The width of the aside column when collapsed via `.layout-aside-collapsed`. |
+
+For example, to make the menu wider on a particular page:
+
+```css
+.layout {
+	--layout-menu-expanded-target-width: 350px;
+}
+```
+
+Or to make the aside narrower:
+
+```css
+.layout {
+	--layout-aside-expanded-target-width: 200px;
+}
+```
+
+### Flyout width
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `--layout-flyout-width-desktop` | `320px` | The width of the flyout container on desktop screens. |
+
+```css
+.layout {
+	--layout-flyout-width-desktop: 400px;
+}
+```
+
+### Layout gap
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `--layout-gap` | `16px` (narrow), `24px` (desktop) | The inline padding applied by `.layout-padding` and consumed by full-width elements like hero and site header. |
+
+These variables are consumed by the grid definitions internally — you do not need to redefine any grid templates. Simply set the variable and the layout will adapt.
 
 ## Advanced topic - switching layouts on the fly
 

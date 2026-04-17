@@ -17,7 +17,6 @@ $hero-details-content-fluid-width: 35% !default;
 $hero-content-width: tokens.$reading-max-width !default;
 
 $hero-image-width: calc((100% - 2 * tokens.$layout-gap) * 0.55) !default;
-$hero-image-width-widescreen: calc((100% - 2 * tokens.$layout-widescreen-gap) * 0.55) !default;
 
 .hero {
 	@extend %layout-gap;
@@ -157,11 +156,6 @@ $hero-image-width-widescreen: calc((100% - 2 * tokens.$layout-widescreen-gap) * 
 
 		@include mixins.desktop {
 			display: block;
-		}
-
-		@include mixins.widescreen {
-			width: $hero-image-width-widescreen;
-			inset-inline-end: tokens.$layout-widescreen-gap;
 		}
 
 		@media (forced-colors: active) {

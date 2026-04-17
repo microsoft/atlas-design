@@ -1,16 +1,12 @@
-@use 'sass:math';
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
 
-$quarter-widescreen: math.div(tokens.$breakpoint-widescreen, 4);
-$half-widescreen: math.div(tokens.$breakpoint-widescreen, 2);
-$three-quarters-widescreen: math.div(tokens.$breakpoint-widescreen, 4) * 3;
 $default-flyout-width-desktop: 320px;
 $default-flyout-width-widescreen: 480px;
-$default-aside-min-width: 300px;
-$eighth-widescreen: math.div(tokens.$breakpoint-widescreen, 8); // 225px
-$five-eighths-widescreen: math.div(tokens.$breakpoint-widescreen, 8) * 5; // 1125px
-$layout-menu-collapsed-width: 96px !default;
+$layout-menu-collapsed-width: 68px !default;
+$layout-menu-expanded-target-width: 275px !default;
+$layout-aside-collapsed-width: 68px !default;
+$layout-aside-expanded-target-width: 275px !default;
 
 :root {
 	--window-inner-height: 100vh; // to be overwritten by JS
@@ -29,14 +25,18 @@ $layout-menu-collapsed-width: 96px !default;
 	#{tokens.$layout-gap-scalable-custom-property-name}: tokens.$layout-gap-narrow;
 
 	#{tokens.$layout-flyout-width-desktop-custom-property-name}: $default-flyout-width-desktop;
-	#{tokens.$layout-flyout-width-widescreen-custom-property-name}: $default-flyout-width-widescreen;
 	#{tokens.$layout-flyout-width-name}: var(
 		#{tokens.$layout-flyout-width-desktop-custom-property-name}
 	);
 	#{tokens.$layout-menu-collapsed-width-name}: $layout-menu-collapsed-width;
-	#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}: calc(
-		$quarter-widescreen - var(#{tokens.$layout-menu-collapsed-width-name})
-	);
+	#{tokens.$layout-menu-expanded-target-width-name}: $layout-menu-expanded-target-width;
+	#{tokens.$layout-aside-collapsed-width-name}: $layout-aside-collapsed-width;
+	#{tokens.$layout-aside-expanded-target-width-name}: $layout-aside-expanded-target-width;
+
+	#{tokens.$layout-menu-width-name}: var(#{tokens.$layout-menu-expanded-target-width-name});
+	#{tokens.$layout-aside-width-name}: var(#{tokens.$layout-aside-expanded-target-width-name});
+	#{tokens.$layout-menu-spacer-width-name}: 0px;
+	#{tokens.$layout-aside-spacer-width-name}: 0px;
 
 	@include mixins.desktop {
 		#{tokens.$layout-gap-custom-property-name}: tokens.$layout-gap;
@@ -44,11 +44,7 @@ $layout-menu-collapsed-width: 96px !default;
 	}
 
 	@include mixins.widescreen {
-		#{tokens.$layout-gap-scalable-custom-property-name}: tokens.$layout-widescreen-gap;
-		// sets widescreen custom prop
-		#{tokens.$layout-flyout-width-name}: var(
-			#{tokens.$layout-flyout-width-widescreen-custom-property-name}
-		);
+		#{tokens.$layout-flyout-width-desktop-custom-property-name}: $default-flyout-width-widescreen;
 	}
 }
 
@@ -145,7 +141,9 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.tablet {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / minmax(0, 1fr)
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / var(
+					#{tokens.$layout-menu-width-name}
+				)
 				minmax(0, 2fr);
 			grid-template-areas:
 				'header header'
@@ -157,117 +155,26 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.desktop {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
-					0,
-					2fr
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / var(
+					#{tokens.$layout-menu-width-name}
 				)
-				minmax(0, 1fr);
-			grid-template-areas:
-				'header header header'
-				'hero hero hero'
-				'menu main aside'
-				'footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$half-widescreen} #{$quarter-widescreen} auto;
+				var(#{tokens.$layout-menu-spacer-width-name})
+				minmax(0, 1fr)
+				var(#{tokens.$layout-aside-spacer-width-name})
+				minmax(0, var(#{tokens.$layout-aside-width-name}));
 			grid-template-areas:
 				'header header header header header'
 				'hero hero hero hero hero'
-				'. menu main aside .'
+				'menu . main . aside'
 				'footer footer footer footer footer';
-		}
-	}
-
-	&.layout-menu-collapsed .layout-body {
-		@include mixins.tablet {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, 1fr);
-			grid-template-areas:
-				'header header'
-				'hero hero'
-				'menu main'
-				'menu aside'
-				'footer footer';
-		}
-
-		@include mixins.desktop {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, 4fr)
-				minmax(0, 23fr) minmax(0, 10fr);
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero hero'
-				'menu . main aside'
-				'footer footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, auto) var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, var(#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}))
-				$half-widescreen minmax(0, #{$quarter-widescreen}) minmax(0, auto);
-			grid-template-areas:
-				'header header header header header header'
-				'hero hero hero hero hero hero'
-				'. menu . main aside .'
-				'footer footer footer footer footer footer';
 		}
 	}
 
 	&.layout-flyout-active .layout-body {
 		@include mixins.desktop {
 			grid-template:
-				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero flyout'
-				'menu main aside flyout'
-				'footer footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				auto auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero flyout'
-				'menu main aside flyout'
-				'footer footer footer footer';
-		}
-	}
-
-	&.layout-flyout-active.layout-menu-collapsed .layout-body {
-		@include mixins.desktop {
-			grid-template:
-				auto auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, 2fr) minmax(0, 1fr)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero flyout'
-				'menu main aside flyout'
-				'footer footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				auto auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, 2fr) minmax(0, 1fr)
+				auto auto var(--atlas-contained-height) auto / var(#{tokens.$layout-menu-width-name})
+				minmax(0, 1fr) minmax(0, var(#{tokens.$layout-aside-width-name}))
 				var(#{tokens.$layout-flyout-width-name});
 			grid-template-areas:
 				'header header header header'
@@ -289,41 +196,8 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.tablet {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
-				minmax(0, 2fr);
-			grid-template-areas:
-				'header header'
-				'hero hero'
-				'menu main'
-				'footer footer';
-		}
-
-		@include mixins.desktop {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
-				minmax(0, 3fr);
-			grid-template-areas:
-				'header header'
-				'hero hero'
-				'menu main'
-				'footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$quarter-widescreen} #{$three-quarters-widescreen} auto;
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero hero'
-				'. menu main .'
-				'footer footer footer footer';
-		}
-	}
-
-	&.layout-menu-collapsed .layout-body {
-		@include mixins.tablet {
-			grid-template:
 				minmax(auto, max-content) auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
+					#{tokens.$layout-menu-width-name}
 				)
 				minmax(0, 1fr);
 			grid-template-areas:
@@ -332,71 +206,13 @@ $layout-menu-collapsed-width: 96px !default;
 				'menu main'
 				'footer footer';
 		}
-
-		@include mixins.desktop {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, 4fr)
-				minmax(0, 23fr) minmax(0, 10fr);
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero hero'
-				'menu . main main'
-				'footer footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, auto) var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, var(#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}))
-				#{$three-quarters-widescreen} minmax(0, auto);
-			grid-template-areas:
-				'header header header header header'
-				'hero hero hero hero hero'
-				'. menu . main .'
-				'footer footer footer footer footer';
-		}
 	}
 
 	&.layout-flyout-active .layout-body {
 		@include mixins.desktop {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
-					0,
-					3fr
-				)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header'
-				'hero hero flyout'
-				'menu main flyout'
-				'footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
-					0,
-					3fr
-				)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header'
-				'hero hero flyout'
-				'menu main flyout'
-				'footer footer footer';
-		}
-	}
-
-	&.layout-flyout-active.layout-menu-collapsed .layout-body {
-		@include mixins.desktop {
-			grid-template:
-				auto auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / var(
+					#{tokens.$layout-menu-width-name}
 				)
 				minmax(0, 1fr)
 				var(#{tokens.$layout-flyout-width-name});
@@ -405,21 +221,6 @@ $layout-menu-collapsed-width: 96px !default;
 				'hero hero flyout'
 				'menu main flyout'
 				'footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				auto auto var(--atlas-contained-height) auto / var(
-					#{tokens.$layout-menu-collapsed-width-name}
-				)
-				minmax(0, var(#{tokens.$layout-menu-collapsed-width-widescreen-spacer-width-name}))
-				minmax(0, 1fr)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero flyout'
-				'menu . main flyout'
-				'footer footer footer footer';
 		}
 	}
 }
@@ -435,56 +236,22 @@ $layout-menu-collapsed-width: 96px !default;
 
 		@include mixins.tablet {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 2fr)
-				minmax(0, 1fr);
-			grid-template-areas:
-				'header header'
-				'hero hero'
-				'main aside '
-				'footer footer';
-		}
-
-		@include mixins.desktop {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr)
-				minmax(0, 1fr);
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
+				minmax(0, var(#{tokens.$layout-aside-width-name}));
 			grid-template-areas:
 				'header header'
 				'hero hero'
 				'main aside'
 				'footer footer';
 		}
-
-		@include mixins.widescreen {
-			grid-template: minmax(auto, max-content) auto var(--atlas-contained-height) auto / auto #{$three-quarters-widescreen} #{$quarter-widescreen} auto;
-			grid-template-areas:
-				'header header header header'
-				'hero hero hero hero'
-				'. main aside .'
-				'footer footer footer footer';
-		}
 	}
 
 	&.layout-flyout-active .layout-body {
 		@include mixins.desktop {
 			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(
+				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr) minmax(
 					0,
-					1fr
-				)
-				var(#{tokens.$layout-flyout-width-name});
-			grid-template-areas:
-				'header header header'
-				'hero hero flyout'
-				'main aside flyout'
-				'footer footer footer';
-		}
-
-		@include mixins.widescreen {
-			grid-template:
-				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 3fr) minmax(
-					0,
-					1fr
+					var(#{tokens.$layout-aside-width-name})
 				)
 				var(#{tokens.$layout-flyout-width-name});
 			grid-template-areas:
@@ -505,7 +272,6 @@ $layout-menu-collapsed-width: 96px !default;
 		grid-template: minmax(auto, max-content) auto auto 1fr auto / minmax(0, 1fr);
 		grid-template-areas: 'header' 'hero' 'main' 'aside' 'footer';
 
-		// note that to make some extra room this layout is not constrained by the widescreen breakpoint like others
 		@include mixins.tablet {
 			grid-template:
 				minmax(auto, max-content) auto var(--atlas-contained-height) auto / minmax(0, 1fr)
@@ -533,6 +299,22 @@ $layout-menu-collapsed-width: 96px !default;
 				'footer footer footer';
 		}
 	}
+}
+
+.layout.layout-aside-collapsed {
+	#{tokens.$layout-aside-width-name}: var(#{tokens.$layout-aside-collapsed-width-name});
+	#{tokens.$layout-aside-spacer-width-name}: calc(
+		var(#{tokens.$layout-aside-expanded-target-width-name}) -
+			var(#{tokens.$layout-aside-collapsed-width-name})
+	);
+}
+
+.layout.layout-menu-collapsed {
+	#{tokens.$layout-menu-width-name}: var(#{tokens.$layout-menu-collapsed-width-name});
+	#{tokens.$layout-menu-spacer-width-name}: calc(
+		var(#{tokens.$layout-menu-expanded-target-width-name}) -
+			var(#{tokens.$layout-menu-collapsed-width-name})
+	);
 }
 
 @mixin constrained-layout-child {
@@ -599,5 +381,4 @@ $layout-menu-collapsed-width: 96px !default;
 		}
 	}
 }
-
 /* stylelint-enable */

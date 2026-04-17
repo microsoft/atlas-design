@@ -6,6 +6,7 @@ const setTwinLayoutSelector = '[data-set-layout="layout-twin"]';
 const setSidecarLeftLayoutSelector = '[data-set-layout="layout-sidecar-left"]';
 const setSidecarRightLayoutSelector = '[data-set-layout="layout-sidecar-right"]';
 const toggleMenuCollapsedSelector = '#main [data-menu-collapse-toggle]';
+const toggleAsideCollapsedSelector = '#main [data-aside-collapse-toggle]';
 const constrainLayoutSelector = '[data-toggle-layout-height-constraint]';
 const hideHeroSelector = '[data-toggle-hero-visibility]';
 const toggleFlyoutSelector = '[data-toggle-flyout-visibility]';
@@ -517,4 +518,107 @@ test('menu-collapsed modifier collapses menu on sidecar-left layout at widescree
 	await page.locator(toggleMenuCollapsedSelector).click();
 	await expect(menuContent).toBeVisible();
 	await expect(collapsedButton).toBeHidden();
+});
+
+test('aside-collapsed modifier collapses aside on holy-grail layout at widescreen @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	// Ensure we're on holy-grail layout (default)
+	const layoutHtml = page.locator('.layout.layout-holy-grail');
+	await expect(layoutHtml).toBeVisible();
+
+	const aside = page.locator('.layout-body-aside');
+	await expect(aside).toBeVisible();
+
+	// Get aside width before collapse
+	const boxBefore = await aside.boundingBox();
+	expect(boxBefore).not.toBeNull();
+	const widthBefore = boxBefore!.width;
+
+	// Toggle aside-collapsed modifier
+	await page.locator(toggleAsideCollapsedSelector).click();
+
+	const layoutWithModifier = page.locator('.layout.layout-holy-grail.layout-aside-collapsed');
+	await expect(layoutWithModifier).toBeVisible();
+
+	// Aside should still be visible but narrower
+	await expect(aside).toBeVisible();
+	const boxAfter = await aside.boundingBox();
+	expect(boxAfter).not.toBeNull();
+	expect(boxAfter!.width).toBeLessThan(widthBefore);
+
+	// Main should still be visible
+	const main = layoutWithModifier.locator('.layout-body-main');
+	await expect(main).toBeVisible();
+
+	// Toggle again to expand aside
+	await page.locator(toggleAsideCollapsedSelector).click();
+	await expect(layoutWithModifier).toBeHidden();
+	// Wait for view transition to complete and aside to reach expanded width
+	await expect(async () => {
+		const boxRestored = await aside.boundingBox();
+		expect(boxRestored).not.toBeNull();
+		expect(boxRestored!.width).toBeGreaterThan(boxAfter!.width);
+	}).toPass();
+});
+
+test('aside-collapsed modifier collapses aside on sidecar-right layout at widescreen @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	// Switch to sidecar-right layout
+	await page.locator(setSidecarRightLayoutSelector).click();
+	await page.waitForTimeout(300);
+
+	const layoutHtml = page.locator('.layout.layout-sidecar-right');
+	await expect(layoutHtml).toBeVisible();
+
+	const aside = page.locator('.layout-body-aside');
+	await expect(aside).toBeVisible();
+
+	// Get aside width before collapse
+	const boxBefore = await aside.boundingBox();
+	expect(boxBefore).not.toBeNull();
+	const widthBefore = boxBefore!.width;
+
+	// Toggle aside-collapsed modifier
+	await page.locator(toggleAsideCollapsedSelector).click();
+
+	const layoutWithModifier = page.locator('.layout.layout-sidecar-right.layout-aside-collapsed');
+	await expect(layoutWithModifier).toBeVisible();
+
+	// Aside should still be visible but narrower
+	await expect(aside).toBeVisible();
+	const boxAfter = await aside.boundingBox();
+	expect(boxAfter).not.toBeNull();
+	expect(boxAfter!.width).toBeLessThan(widthBefore);
+
+	// Main should still be visible
+	const main = layoutWithModifier.locator('.layout-body-main');
+	await expect(main).toBeVisible();
+
+	// Toggle again to expand aside
+	await page.locator(toggleAsideCollapsedSelector).click();
+	await expect(layoutWithModifier).toBeHidden();
+	// Wait for view transition to complete and aside to reach expanded width
+	await expect(async () => {
+		const boxRestored = await aside.boundingBox();
+		expect(boxRestored).not.toBeNull();
+		expect(boxRestored!.width).toBeGreaterThan(boxAfter!.width);
+	}).toPass();
 });
