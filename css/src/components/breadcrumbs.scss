@@ -1,38 +1,107 @@
 @use '../tokens/index.scss' as tokens;
 
 $breadcrumb-font-size: tokens.$font-size-8 !default;
+$breadcrumb-hover-background-color: tokens.$default-hover-invert !default;
 $breadcrumb-spacing-horizontal: 0.25em !default;
 $breadcrumb-spacing-vertical: 0.375em !default;
-$breadcrumb-separator: '\00200B/' !default;
+$breadcrumb-separator-gap: 0.25em !default;
+$breadcrumb-separator-offset: 0.0625em !default;
 
-%breadcrumbs-slash {
+%breadcrumbs-separator {
 	display: inline-block;
-	color: tokens.$text-subtle;
-	content: $breadcrumb-separator;
+	flex-shrink: 0;
+	width: max(0.4em, 7px);
+	height: max(0.4em, 7px);
+	aspect-ratio: 1;
+	rotate: -135deg;
+	transform-origin: center;
+	border: 1px solid tokens.$text-subtle;
+	border-block-start: 0;
+	border-inline-end: 0;
+	pointer-events: none;
+	content: ' ';
+	vertical-align: 0.1em;
 }
 
 .breadcrumbs {
+	color: tokens.$text-subtle;
 	font-size: $breadcrumb-font-size;
 
 	.breadcrumbs-item {
 		display: inline-block;
+		align-items: center;
 		padding-block: $breadcrumb-spacing-vertical;
 
-		&:not(.breadcrumbs-item-slashless)::after {
-			@extend %breadcrumbs-slash;
+		a {
+			padding-block: calc(#{$breadcrumb-spacing-vertical} - 1px);
+			padding-inline: calc(#{$breadcrumb-spacing-horizontal} - 1px);
+			border: 1px solid transparent;
+			border-radius: tokens.$border-radius;
+			outline-offset: -(tokens.$focus-width);
+			background-color: transparent;
+			color: tokens.$text-subtle;
+			line-height: 1;
+			text-decoration: none;
 
-			margin-inline: $breadcrumb-spacing-horizontal;
+			&:visited {
+				color: tokens.$text-subtle;
+			}
+
+			&:hover {
+				background-color: $breadcrumb-hover-background-color;
+				text-decoration: none;
+			}
+
+			&:active {
+				background-color: $breadcrumb-hover-background-color;
+				text-decoration: none;
+			}
+		}
+
+		&:not(.breadcrumbs-item-slashless):not(.breadcrumbs-item-current)::after {
+			@extend %breadcrumbs-separator;
+
+			margin-inline-start: $breadcrumb-spacing-horizontal;
+			margin-inline-end: calc($breadcrumb-spacing-horizontal + $breadcrumb-separator-gap);
+		}
+
+		// stylelint-disable selector-max-specificity
+
+		&:dir(rtl):not(.breadcrumbs-item-slashless):not(.breadcrumbs-item-current)::after {
+			rotate: -225deg;
+		}
+		// stylelint-enable selector-max-specificity
+
+		&.breadcrumbs-item-current,
+		&.breadcrumbs-item-slashless {
+			color: tokens.$text-subtle;
+			font-weight: tokens.$weight-semibold;
+			pointer-events: none;
+
+			span {
+				padding-block: calc(#{$breadcrumb-spacing-vertical} - 1px);
+				padding-inline: calc(#{$breadcrumb-spacing-horizontal} - 1px);
+				border: 1px solid transparent;
+				line-height: 1;
+			}
 		}
 	}
 
 	// stylelint-disable selector-max-specificity
 
-	&.breadcrumbs-initial-slash {
+	&.breadcrumbs-initial-slash,
+	&.breadcrumbs-initial-separator {
 		.breadcrumbs-item:first-child::before,
 		.breadcrumbs-item[hidden] + .breadcrumbs-item::before {
-			@extend %breadcrumbs-slash;
+			@extend %breadcrumbs-separator;
 
-			margin-inline: 0.0625em $breadcrumb-spacing-horizontal;
+			margin-inline: $breadcrumb-separator-offset
+				calc($breadcrumb-spacing-horizontal + $breadcrumb-separator-gap);
+		}
+
+		.breadcrumbs-item:dir(rtl):first-child::before,
+		.breadcrumbs-item:dir(rtl)[hidden] + .breadcrumbs-item::before {
+			rotate: -225deg;
 		}
 	}
 	// stylelint-enable

@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use 'sass:list';
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
@@ -167,7 +166,7 @@ $button-font-weight: tokens.$weight-semibold !default;
 	}
 }
 
-$button-clear-hover-background-color: color.adjust(#8e8e8e, $alpha: -0.95) !default;
+$button-clear-hover-background-color: tokens.$default-hover-invert !default;
 $button-clear-selected-background-color: tokens.$selected-background-subtle !default;
 
 .button.button-clear {
