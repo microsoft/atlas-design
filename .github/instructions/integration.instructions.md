@@ -68,9 +68,31 @@ Before running tests:
 1. Install Playwright: `npx playwright install`
 2. Start the site server: `npm run start` (in site folder, port 1111)
 
+## Testing CSS Component Behavior
+
+Some integration tests verify CSS-driven behavior (e.g., layout collapsing, height constraints) rather than JavaScript behavior. These tests work by:
+
+1. **Navigating to the component's documentation page** — The site's interactive controls (buttons with `data-*` attributes like `data-set-layout`, `data-menu-collapse-toggle`, `data-aside-collapse-toggle`) toggle CSS classes on the page.
+2. **Measuring CSS state** — Use `page.evaluate()` to read computed dimensions (e.g., `getBoundingClientRect().width`, `scrollHeight`) before and after toggling.
+3. **Asserting the change** — Compare measurements to verify the CSS took effect (e.g., aside width decreased after collapse).
+
+### Viewport-Based Test Skipping
+
+Tests that depend on a specific screen size use `testInfo.project.name` to skip:
+
+```typescript
+test.skip(
+	testInfo.project.name !== 'Widescreen Chromium',
+	'Skip test if display screen is not widescreen'
+);
+```
+
+Tag test titles with `@desktop` or `@narrow` to indicate the intended viewport.
+
 ## When Making Changes
 
 1. Add new pages to accessibility test list
 2. Update visual baselines if intentional visual changes are made
 3. Write integration tests for new JavaScript behaviors
-4. Run full test suite before submitting changes
+4. When adding CSS modifier classes (e.g., collapse toggles), add integration tests that verify the modifier's visual effect at the appropriate viewport size
+5. Run full test suite before submitting changes
