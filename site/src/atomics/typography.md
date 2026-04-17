@@ -14,6 +14,7 @@ classPrefixes:
   - text-wrap
   - line-height
   - white-space
+  - word-break
 ---
 
 # Typography Atomics
@@ -32,6 +33,7 @@ The typography scale is designed for great readability across the platform. This
 | `text-wrap`       | `pretty`, `balance`                                                         | N\A        |
 | `line-height`     | `normal`                                                         | N\A        |
 | `white-space`     | `normal`, `nowrap`, `pre`, `pre-wrap`                            | N\A        |
+| `word-break`      | `break-word`                                                     | N\A        |
 
 ## Font size
 
@@ -159,5 +161,15 @@ For example, show white space:
 <p class="white-space-pre-wrap">
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 	labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+</p>
+```
+
+## Word break
+
+Use `.word-break-break-word` to allow long words to break between characters to prevent overflow. This is useful for content that may contain long, unbreakable strings such as URLs or file paths.
+
+```html
+<p class="word-break-break-word">
+	Thisisaverylongwordthatwillnotbreakwithoutthewordbreakbreakwordclasshttps://example.com/very/long/url/that/keeps/going/and/going
 </p>
 ```
