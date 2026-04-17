@@ -4,6 +4,8 @@ $breadcrumb-font-size: tokens.$font-size-8 !default;
 $breadcrumb-hover-background-color: tokens.$default-hover-invert !default;
 $breadcrumb-spacing-horizontal: 0.25em !default;
 $breadcrumb-spacing-vertical: 0.375em !default;
+$breadcrumb-separator-gap: 0.25em !default;
+$breadcrumb-separator-offset: 0.0625em !default;
 
 %breadcrumbs-separator {
 	display: inline-block;
@@ -11,7 +13,7 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 	width: max(0.4em, 7px);
 	height: max(0.4em, 7px);
 	aspect-ratio: 1;
-	transform: rotate(-135deg);
+	rotate: -135deg;
 	transform-origin: center;
 	border: 1px solid tokens.$text-subtle;
 	border-block-start: 0;
@@ -31,8 +33,8 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 		padding-block: $breadcrumb-spacing-vertical;
 
 		a {
-			padding-block: calc(0.375em - 1px);
-			padding-inline: calc(0.375em - 1px);
+			padding-block: calc(#{$breadcrumb-spacing-vertical} - 1px);
+			padding-inline: calc(#{$breadcrumb-spacing-horizontal} - 1px);
 			border: 1px solid transparent;
 			border-radius: tokens.$border-radius;
 			outline-offset: -(tokens.$focus-width);
@@ -59,14 +61,14 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 		&:not(.breadcrumbs-item-slashless):not(.breadcrumbs-item-current)::after {
 			@extend %breadcrumbs-separator;
 
-			margin-inline-start: 0.25em;
-			margin-inline-end: calc($breadcrumb-spacing-horizontal + 0.25em);
+			margin-inline-start: $breadcrumb-spacing-horizontal;
+			margin-inline-end: calc($breadcrumb-spacing-horizontal + $breadcrumb-separator-gap);
 		}
 
 		// stylelint-disable selector-max-specificity
 
 		&:dir(rtl):not(.breadcrumbs-item-slashless):not(.breadcrumbs-item-current)::after {
-			transform: rotate(-225deg);
+			rotate: -225deg;
 		}
 		// stylelint-enable selector-max-specificity
 
@@ -77,9 +79,10 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 			pointer-events: none;
 
 			span {
-				padding-block: calc(0.375em - 1px);
-				padding-inline: calc(0.375em - 1px);
+				padding-block: calc(#{$breadcrumb-spacing-vertical} - 1px);
+				padding-inline: calc(#{$breadcrumb-spacing-horizontal} - 1px);
 				border: 1px solid transparent;
+				line-height: 1;
 			}
 		}
 	}
@@ -92,12 +95,13 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 		.breadcrumbs-item[hidden] + .breadcrumbs-item::before {
 			@extend %breadcrumbs-separator;
 
-			margin-inline: 0.0625em calc($breadcrumb-spacing-horizontal + 0.25em);
+			margin-inline: $breadcrumb-separator-offset
+				calc($breadcrumb-spacing-horizontal + $breadcrumb-separator-gap);
 		}
 
 		.breadcrumbs-item:dir(rtl):first-child::before,
 		.breadcrumbs-item:dir(rtl)[hidden] + .breadcrumbs-item::before {
-			transform: rotate(-225deg);
+			rotate: -225deg;
 		}
 	}
 	// stylelint-enable
