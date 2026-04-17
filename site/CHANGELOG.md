@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.0.2
+
+### Patch Changes
+
+- 866964c: Update the full screen button behavior to remove reading width from the main column element. This allows for the continued testing of full width elements like hero and site header.
+
 ## 1.0.1
 
 ### Patch Changes
