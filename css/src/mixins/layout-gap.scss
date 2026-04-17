@@ -1,6 +1,7 @@
 @use '../tokens/index.scss' as tokens;
+@use '../tokens/layout.scss' as layout;
 @use './media-queries.scss' as media-queries;
 
 %layout-gap {
-	padding-inline: tokens.$layout-gap;
+	padding-inline: var(#{layout.$layout-gap-custom-property-name});
 }
