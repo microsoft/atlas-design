@@ -1,8 +1,7 @@
 @use '../tokens/index.scss' as tokens;
 
 $breadcrumb-font-size: tokens.$font-size-8 !default;
-$breadcrumb-font-color: tokens.$breadcrumb-text !default;
-$breadcrumb-hover-background-color: tokens.$breadcrumb-hover !default;
+$breadcrumb-hover-background-color: tokens.$default-hover-invert !default;
 $breadcrumb-spacing-horizontal: 0.25em !default;
 $breadcrumb-spacing-vertical: 0.375em !default;
 
@@ -23,7 +22,7 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 }
 
 .breadcrumbs {
-	color: $breadcrumb-font-color;
+	color: tokens.$text-subtle;
 	font-size: $breadcrumb-font-size;
 
 	.breadcrumbs-item {
@@ -38,19 +37,21 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 			border-radius: tokens.$border-radius;
 			outline-offset: -(tokens.$focus-width);
 			background-color: transparent;
-			color: $breadcrumb-font-color;
+			color: tokens.$text-subtle;
 			line-height: 1;
 			text-decoration: none;
 
+			&:visited {
+				color: tokens.$text-subtle;
+			}
+
 			&:hover {
 				background-color: $breadcrumb-hover-background-color;
-				color: tokens.$breadcrumb-hover-text;
 				text-decoration: none;
 			}
 
 			&:active {
-				background-color: tokens.$breadcrumb-active;
-				color: tokens.$breadcrumb-active-text;
+				background-color: $breadcrumb-hover-background-color;
 				text-decoration: none;
 			}
 		}
@@ -71,7 +72,7 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 
 		&.breadcrumbs-item-current,
 		&.breadcrumbs-item-slashless {
-			color: tokens.$breadcrumb-current-text;
+			color: tokens.$text-subtle;
 			font-weight: tokens.$weight-semibold;
 			pointer-events: none;
 
