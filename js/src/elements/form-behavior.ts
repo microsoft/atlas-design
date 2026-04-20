@@ -256,10 +256,11 @@ export class FormBehaviorElement extends HTMLElement {
 				return;
 			}
 
-			const request = new Request(beforeSubmitEvent.detail.url, beforeSubmitEvent.detail.init);
-			let response: Response;
+			let request: Request | undefined;
+			let response: Response | undefined;
 
 			try {
+				request = new Request(beforeSubmitEvent.detail.url, beforeSubmitEvent.detail.init);
 				response = await fetch(request);
 
 				if (response.ok) {
@@ -280,55 +281,33 @@ export class FormBehaviorElement extends HTMLElement {
 						response.headers.get('location') ?? this.getAttribute('navigation-href')
 					);
 				} else {
-					const { errorAlert, errorList } = this.getErrorAlert(form);
-					const errorText = document.createElement('li');
-					errorText.innerText = this.locStrings.weEncounteredAnUnexpectedError;
+					let errorHeadingText = this.locStrings.weEncounteredAnUnexpectedError;
 
 					// custom text for version mismatch
-					if (response.status === 401) {
-						errorText.innerText = this.locStrings.notAuthenticated;
+					switch (response.status) {
+						case 401:
+							errorHeadingText = this.locStrings.notAuthenticated;
+							break;
+						case 403:
+							errorHeadingText = this.locStrings.notAuthorized;
+							break;
+						case 412:
+							errorHeadingText = this.locStrings.contentHasChanged;
+							break;
+						case 429:
+							errorHeadingText = this.locStrings.tooManyRequests;
+							break;
 					}
-					if (response.status === 403) {
-						errorText.innerText = this.locStrings.notAuthorized;
-					}
-					if (response.status === 412) {
-						errorText.innerText = this.locStrings.contentHasChanged;
-					}
-					if (response.status === 429) {
-						errorText.innerText = this.locStrings.tooManyRequests;
-					}
-					this.dispatchEvent(
-						new CustomEvent('submission-error', {
-							detail: {
-								form,
-								request,
-								response
-							},
-							bubbles: true
-						})
-					);
 
-					errorList.appendChild(errorText);
-					errorAlert.hidden = false;
-					errorAlert.focus();
+					this.submissionError(form, errorHeadingText, request, response);
 				}
 			} catch {
-				const { errorAlert, errorList } = this.getErrorAlert(form);
-				const errorText = document.createElement('li');
-				errorText.innerText = this.locStrings.weEncounteredAnUnexpectedError;
-				this.dispatchEvent(
-					new CustomEvent('submission-error', {
-						detail: {
-							form,
-							request,
-							response: undefined
-						},
-						bubbles: true
-					})
+				this.submissionError(
+					form,
+					this.locStrings.weEncounteredAnUnexpectedError,
+					request,
+					response
 				);
-				errorList.appendChild(errorText);
-				errorAlert.hidden = false;
-				errorAlert.focus();
 				return;
 			}
 		} finally {
@@ -377,6 +356,30 @@ export class FormBehaviorElement extends HTMLElement {
 			};
 		}
 		return this.createErrorAlert(form);
+	}
+
+	submissionError(
+		form: HTMLFormElement,
+		errorHeading: string,
+		request?: Request,
+		response?: Response
+	) {
+		const { errorAlert, errorList } = this.getErrorAlert(form);
+		const errorText = document.createElement('li');
+		errorText.innerText = errorHeading;
+		this.dispatchEvent(
+			new CustomEvent('submission-error', {
+				detail: {
+					form,
+					request,
+					response
+				},
+				bubbles: true
+			})
+		);
+		errorList.appendChild(errorText);
+		errorAlert.hidden = false;
+		errorAlert.focus();
 	}
 
 	validateRequired(input: HTMLValueElement, label: string): string | null {
