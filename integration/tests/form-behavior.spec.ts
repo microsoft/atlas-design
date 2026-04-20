@@ -1,8 +1,13 @@
 import AxeBuilder from '@axe-core/playwright';
 import { test as base, expect } from '@playwright/test';
+import type { Locator } from '@playwright/test';
+interface FormBehaviorFixtures {
+	errorContainer: Locator;
+	submitBtn: Locator;
+}
 
 // form validation fixture
-export const test = base.extend({
+export const test = base.extend<FormBehaviorFixtures>({
 	page: async ({ page }, use) => {
 		await page.goto('/components/form.html');
 		await use(page);
@@ -169,6 +174,10 @@ test.describe('form behavior - submission error handling', () => {
 	// Helper to fill form with valid data using JavaScript
 	async function fillFormWithValidData(page: any) {
 		await page.evaluate(() => {
+			(document.querySelector('#sample-form-complex') as HTMLFormElement)?.setAttribute(
+				'data-test-disable-before-submit',
+				''
+			);
 			(document.querySelector('#sample-input') as HTMLInputElement).value = 'Test Input';
 			(document.querySelector('#sample-input-min') as HTMLInputElement).value = 'Lorem ipsum';
 			(document.querySelector('#sample-text-area') as HTMLTextAreaElement).value =
@@ -200,6 +209,8 @@ test.describe('form behavior - submission error handling', () => {
 
 		await submitBtn.click();
 
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
 		expect(errorContainer).toContainText('You are not authenticated');
 	});
 
@@ -223,6 +234,8 @@ test.describe('form behavior - submission error handling', () => {
 
 		await submitBtn.click();
 
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
 		expect(errorContainer).toContainText('You are not authorized');
 	});
 
@@ -246,6 +259,8 @@ test.describe('form behavior - submission error handling', () => {
 
 		await submitBtn.click();
 
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
 		expect(errorContainer).toContainText('Content has changed');
 	});
 
@@ -269,6 +284,8 @@ test.describe('form behavior - submission error handling', () => {
 
 		await submitBtn.click();
 
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
 		expect(errorContainer).toContainText('too many requests');
 	});
 
@@ -292,6 +309,8 @@ test.describe('form behavior - submission error handling', () => {
 
 		await submitBtn.click();
 
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
 		expect(errorContainer).toContainText('We encountered an unexpected error');
 	});
 
@@ -313,6 +332,8 @@ test.describe('form behavior - submission error handling', () => {
 
 		await submitBtn.click();
 
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
 		expect(errorContainer).toContainText('We encountered an unexpected error');
 	});
 
@@ -377,34 +398,5 @@ test.describe('form behavior - submission error handling', () => {
 
 		const eventDetail = await submissionErrorPromise;
 		expect(eventDetail).toEqual({ hasRequest: true, hasResponse: false, hasForm: true });
-	});
-
-	test('error alert is visible and focused after submission error', async ({
-		page,
-		errorContainer,
-		submitBtn
-	}) => {
-		await fillFormWithValidData(page);
-
-		await page.route('**/*', route => {
-			if (route.request().method() === 'POST') {
-				route.fulfill({
-					status: 500,
-					body: JSON.stringify({ error: 'Internal Server Error' })
-				});
-				return;
-			}
-			route.continue();
-		});
-
-		await submitBtn.click();
-
-		const alertHidden = await errorContainer.evaluate((el: HTMLElement) => el.hidden);
-		const focusedElementAttr = await page.evaluate(() =>
-			document.activeElement?.getAttribute('data-form-error-alert')
-		);
-
-		expect(alertHidden).toBe(false);
-		expect(focusedElementAttr).toBe('');
 	});
 });

@@ -50,6 +50,11 @@ export function handleMockFormSubmit() {
 		form.addEventListener(
 			'beforesubmit',
 			e => {
+				// Opt-out flag for tests or scenarios that need the real form-behavior submission flow.
+				if (form.hasAttribute('data-test-disable-before-submit')) {
+					return;
+				}
+
 				e.preventDefault();
 
 				if (form.hasAttribute('test-async-before-submit')) {
