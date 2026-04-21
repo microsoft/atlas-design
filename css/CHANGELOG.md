@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.1.0
+
+### Minor Changes
+
+- f069f56: Add `word-break-break-word` typography atomic for `word-break: break-word`.
+
 ## 6.0.0
 
 ### Major Changes
