@@ -175,7 +175,7 @@ test.describe('form behavior - submission error handling', () => {
 	async function fillFormWithValidData(page: any) {
 		await page.evaluate(() => {
 			(document.querySelector('#sample-form-complex') as HTMLFormElement)?.setAttribute(
-				'data-test-disable-before-submit',
+				'data-test-allow-default-action',
 				''
 			);
 			(document.querySelector('#sample-input') as HTMLInputElement).value = 'Test Input';

@@ -50,8 +50,10 @@ export function handleMockFormSubmit() {
 		form.addEventListener(
 			'beforesubmit',
 			e => {
-				// Opt-out flag for tests or scenarios that need the form submission flow.
-				if (!form.hasAttribute('data-test-disable-before-submit')) {
+				// By default, prevent the real form submission so the demo form on a doc page
+				// can only show the preview of what data would be submitted.
+				// Adding `data-test-allow-default-action` to the form allows the submission to proceed normally.
+				if (!form.hasAttribute('data-test-allow-default-action')) {
 					e.preventDefault();
 				}
 
