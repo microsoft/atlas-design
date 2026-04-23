@@ -125,6 +125,11 @@
 	background-color: tokens.$body-background-medium !important;
 }
 
+.background-color-body-dark {
+	outline-color: tokens.$text !important;
+	background-color: tokens.$body-background-dark !important;
+}
+
 .background-color-alternate {
 	outline-color: tokens.$text-invert !important;
 	background-color: tokens.$alternate-background !important;
