@@ -1,18 +1,19 @@
 @use '../tokens/index.scss' as tokens;
 
 $breadcrumb-font-size: tokens.$font-size-8 !default;
-$breadcrumb-font-color: tokens.$breadcrumb-text !default;
-$breadcrumb-hover-background-color: tokens.$breadcrumb-hover !default;
+$breadcrumb-hover-background-color: tokens.$default-hover-invert !default;
 $breadcrumb-spacing-horizontal: 0.25em !default;
 $breadcrumb-spacing-vertical: 0.375em !default;
+$breadcrumb-separator-gap: 0.25em !default;
+$breadcrumb-separator-offset: 0.0625em !default;
 
 %breadcrumbs-separator {
 	display: inline-block;
-	flex-shrink: 0;
+	flex-shrink: 0; // Prevents breakage when inline-flex is applied to this element in other contexts
 	width: max(0.4em, 7px);
 	height: max(0.4em, 7px);
 	aspect-ratio: 1;
-	transform: rotate(-135deg);
+	rotate: -135deg;
 	transform-origin: center;
 	border: 1px solid tokens.$text-subtle;
 	border-block-start: 0;
@@ -23,34 +24,34 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 }
 
 .breadcrumbs {
-	color: $breadcrumb-font-color;
+	color: tokens.$text-subtle;
 	font-size: $breadcrumb-font-size;
 
 	.breadcrumbs-item {
 		display: inline-block;
-		align-items: center;
+		align-items: center; // Prevents breakage when inline-flex is applied to this element in other contexts
 		padding-block: $breadcrumb-spacing-vertical;
 
 		a {
-			padding-block: calc(0.375em - 1px);
-			padding-inline: calc(0.375em - 1px);
+			padding-block: calc(#{$breadcrumb-spacing-vertical} - 1px);
+			padding-inline: calc(#{$breadcrumb-spacing-horizontal} - 1px);
 			border: 1px solid transparent;
 			border-radius: tokens.$border-radius;
 			outline-offset: -(tokens.$focus-width);
 			background-color: transparent;
-			color: $breadcrumb-font-color;
+			color: tokens.$text-subtle;
 			line-height: 1;
 			text-decoration: none;
 
-			&:hover {
-				background-color: $breadcrumb-hover-background-color;
-				color: tokens.$breadcrumb-hover-text;
-				text-decoration: none;
+			&:visited,
+			&:focus-visible {
+				color: tokens.$text-subtle;
 			}
 
+			&:hover,
 			&:active {
-				background-color: tokens.$breadcrumb-active;
-				color: tokens.$breadcrumb-active-text;
+				background-color: $breadcrumb-hover-background-color;
+				color: tokens.$text-subtle;
 				text-decoration: none;
 			}
 		}
@@ -58,27 +59,28 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 		&:not(.breadcrumbs-item-slashless):not(.breadcrumbs-item-current)::after {
 			@extend %breadcrumbs-separator;
 
-			margin-inline-start: 0.25em;
-			margin-inline-end: calc($breadcrumb-spacing-horizontal + 0.25em);
+			margin-inline-start: $breadcrumb-spacing-horizontal;
+			margin-inline-end: calc($breadcrumb-spacing-horizontal + $breadcrumb-separator-gap);
 		}
 
 		// stylelint-disable selector-max-specificity
 
 		&:dir(rtl):not(.breadcrumbs-item-slashless):not(.breadcrumbs-item-current)::after {
-			transform: rotate(-225deg);
+			rotate: -225deg;
 		}
 		// stylelint-enable selector-max-specificity
 
 		&.breadcrumbs-item-current,
 		&.breadcrumbs-item-slashless {
-			color: tokens.$breadcrumb-current-text;
+			color: tokens.$text-subtle;
 			font-weight: tokens.$weight-semibold;
 			pointer-events: none;
 
 			span {
-				padding-block: calc(0.375em - 1px);
-				padding-inline: calc(0.375em - 1px);
+				padding-block: calc(#{$breadcrumb-spacing-vertical} - 1px);
+				padding-inline: calc(#{$breadcrumb-spacing-horizontal} - 1px);
 				border: 1px solid transparent;
+				line-height: 1;
 			}
 		}
 	}
@@ -91,12 +93,13 @@ $breadcrumb-spacing-vertical: 0.375em !default;
 		.breadcrumbs-item[hidden] + .breadcrumbs-item::before {
 			@extend %breadcrumbs-separator;
 
-			margin-inline: 0.0625em calc($breadcrumb-spacing-horizontal + 0.25em);
+			margin-inline: $breadcrumb-separator-offset
+				calc($breadcrumb-spacing-horizontal + $breadcrumb-separator-gap);
 		}
 
 		.breadcrumbs-item:dir(rtl):first-child::before,
 		.breadcrumbs-item:dir(rtl)[hidden] + .breadcrumbs-item::before {
-			transform: rotate(-225deg);
+			rotate: -225deg;
 		}
 	}
 	// stylelint-enable
