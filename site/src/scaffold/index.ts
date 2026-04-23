@@ -13,6 +13,7 @@ import { initFullScreenToggle } from './scripts/full-screen-toggle';
 import { initLayoutPageControls } from './scripts/layout-page';
 import { handleFullScreenNavButton } from './scripts/mobile-navigation';
 import { initReadingDirectionButtons } from './scripts/direction-buttons';
+import { initChevronToggle } from './scripts/chevron-toggle';
 
 initTheme();
 initDismiss();
@@ -27,3 +28,4 @@ handleFullScreenNavButton();
 initLayoutPageControls();
 initLayout();
 initReadingDirectionButtons();
+initChevronToggle();

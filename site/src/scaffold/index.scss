@@ -8,6 +8,7 @@
 @use './styles/layout-buttons.scss';
 @use './styles/direction-change.scss';
 @use './styles/orbit.scss';
+@use './styles/chevron.scss';
 
 // hack to mark markdown logo on '/' look a tad different, excludes header logo
 main img[src^='/atlas-light.'] {

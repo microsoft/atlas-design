@@ -65,7 +65,8 @@ $popover-chevron-color: tokens.$border !default;
 
 			[dir='rtl'] & {
 				&::before {
-					transform: rotate(-135deg);
+					--chevron-rotate: #{tokens.$rotate-up-rtl};
+
 					inset-inline-start: var(--caret-left, 50%);
 					inset-inline-end: var(--caret-left, 50%);
 				}
@@ -94,7 +95,8 @@ $popover-chevron-color: tokens.$border !default;
 
 			[dir='rtl'] & {
 				&::before {
-					transform: rotate(45deg);
+					--chevron-rotate: #{tokens.$rotate-down-rtl};
+
 					inset-inline-start: var(--caret-left, 50%);
 					inset-inline-end: var(--caret-left, 50%);
 				}

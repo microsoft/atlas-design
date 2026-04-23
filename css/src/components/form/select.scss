@@ -82,6 +82,8 @@ $select-focus-box-shadow-size: 0 0.0625rem 0 0 !default;
 			display: block;
 			position: absolute;
 			inset-block-start: calc(50% - mixins.$chevron-arrow-actual-width / 2);
+			inset-inline-end: mixins.$control-padding-horizontal;
+			z-index: tokens.$zindex-active;
 		}
 
 		&.select-disabled::after {

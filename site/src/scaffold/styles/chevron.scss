@@ -1,0 +1,42 @@
+@use '../../../../css/src/tokens/index.scss' as tokens;
+@use '../../../../css/src/mixins/index.scss' as mixins;
+
+.chevron-demo::after {
+	@include mixins.chevron;
+}
+
+.chevron-demo:dir(rtl)::after {
+	--chevron-rotate: #{tokens.$rotate-right-rtl};
+}
+
+.chevron-demo-down::after {
+	@include mixins.chevron-down;
+}
+
+.chevron-demo-down:dir(rtl)::after {
+	--chevron-rotate: #{tokens.$rotate-down-rtl};
+}
+
+.chevron-demo-up::after {
+	@include mixins.chevron-up;
+}
+
+.chevron-demo-up:dir(rtl)::after {
+	--chevron-rotate: #{tokens.$rotate-up-rtl};
+}
+
+.chevron-demo-animated::after {
+	@include mixins.chevron-animated;
+}
+
+.chevron-demo-animated:dir(rtl)::after {
+	--chevron-rotate: #{tokens.$rotate-right-rtl};
+}
+
+.chevron-demo-animated[aria-expanded='true']::after {
+	--chevron-rotate: #{tokens.$rotate-down};
+}
+
+.chevron-demo-animated:dir(rtl)[aria-expanded='true']::after {
+	--chevron-rotate: #{tokens.$rotate-down-rtl};
+}

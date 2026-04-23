@@ -1,0 +1,22 @@
+/**
+ * @sass-export-section="rotation"
+ */
+
+// Rotation values for a two-border L-shape (bottom + inline-start).
+// When applied via `rotate`, these produce a visual direction.
+
+// LTR directions
+$rotate-right: -135deg !default;
+$rotate-down: -45deg !default;
+$rotate-up: -225deg !default;
+$rotate-left: -315deg !default;
+
+// RTL directions
+// border-inline-end mirrors the L-shape in RTL, so different
+// values are needed for the same visual direction.
+$rotate-right-rtl: -225deg !default;
+$rotate-down-rtl: -315deg !default;
+$rotate-up-rtl: -135deg !default;
+$rotate-left-rtl: -45deg !default;
+
+//@end-sass-export-section

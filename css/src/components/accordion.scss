@@ -62,49 +62,48 @@ $accordion-transition: transform 0.15s !default;
 
 	&:not(.accordion-icon-end) {
 		summary::before {
-			@include mixins.chevron-right;
+			@include mixins.chevron-animated;
 
-			transition: $accordion-transition;
+			--chevron-rotate: #{tokens.$rotate-right};
 		}
 
 		&:dir(rtl) summary::before {
-			@include mixins.chevron-right-rtl;
+			--chevron-rotate: #{tokens.$rotate-right-rtl};
 		}
 	}
 
 	&.accordion-icon-end {
 		summary::after {
-			@include mixins.chevron-down;
+			@include mixins.chevron-animated;
 
-			transition: $accordion-transition;
+			--chevron-rotate: #{tokens.$rotate-down};
 		}
 
 		&:dir(rtl) summary::after {
-			@include mixins.chevron-down-rtl;
+			--chevron-rotate: #{tokens.$rotate-down-rtl};
 		}
 	}
 
 	&[open] {
 		&:not(.accordion-icon-end) {
 			summary::before {
-				transform: mixins.$chevron-down-rotate translate(calc(mixins.$chevron-arrow-size / 2), 0);
+				--chevron-rotate: #{tokens.$rotate-down};
 			}
 
 			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
 			&:dir(rtl) summary::before {
-				transform: mixins.$chevron-down-rotate-rtl
-					translate(calc(mixins.$chevron-arrow-size / 2 * -1), 0);
+				--chevron-rotate: #{tokens.$rotate-down-rtl};
 			}
 		}
 
 		&.accordion-icon-end {
 			summary::after {
-				transform: mixins.$chevron-up-rotate-scale-xy;
+				--chevron-rotate: #{tokens.$rotate-up};
 			}
 
 			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
 			&:dir(rtl) summary::after {
-				transform: mixins.$chevron-up-rotate-scale-xy-rtl;
+				--chevron-rotate: #{tokens.$rotate-up-rtl};
 			}
 		}
 	}

@@ -1,57 +1,107 @@
 @use '../tokens/index.scss' as tokens;
 @use './control.scss' as control;
+@use './media-queries.scss' as media;
 
-$chevron-color: tokens.$text !default;
+// === CSS variable defaults ===
+
+$chevron-size: max(0.4em, 7px) !default;
+$chevron-color: tokens.$text-subtle !default;
+$chevron-border-width: 1px !default;
+$chevron-vertical-align: 0.1em !default;
+$chevron-transition-duration: 0.15s !default;
+
+// === Backward-compatible Sass variables ===
+
 $chevron-arrow-size: 0.525em !default;
 $chevron-arrow-border-width: 1px !default;
 $chevron-arrow-actual-width: 0.75em !default;
-$chevron-down-rotate: rotate(-45deg) !default;
-$chevron-down-rotate-rtl: rotate(-315deg) !default;
-$chevron-right-rotate-rtl: rotate(-225deg) !default;
-$chevron-right-rotate: rotate(-135deg) !default;
-$chevron-up-rotate: rotate(-225deg) !default;
+$chevron-right-rotate: rotate(tokens.$rotate-right) !default;
+$chevron-down-rotate: rotate(tokens.$rotate-down) !default;
+$chevron-down-rotate-rtl: rotate(tokens.$rotate-down-rtl) !default;
+$chevron-right-rotate-rtl: rotate(tokens.$rotate-right-rtl) !default;
+$chevron-up-rotate: rotate(tokens.$rotate-up) !default;
 $chevron-up-rotate-scale-xy: $chevron-down-rotate scaleY(-1) scaleX(-1);
 $chevron-up-rotate-scale-xy-rtl: $chevron-down-rotate-rtl scaleY(-1) scaleX(-1);
 
+// === Base chevron placeholder ===
+// An L-shaped border rotated to form a directional chevron indicator.
+// All visual properties are driven by CSS custom properties for
+// contextual overrides (RTL, expanded states, theming).
+
 %chevron {
-	width: $chevron-arrow-size;
-	height: $chevron-arrow-size;
+	--chevron-size: #{$chevron-size};
+	--chevron-color: #{$chevron-color};
+	--chevron-border-width: #{$chevron-border-width};
+	--chevron-rotate: #{tokens.$rotate-right};
+	--chevron-vertical-align: #{$chevron-vertical-align};
+	--chevron-transition-duration: #{$chevron-transition-duration};
+
+	display: inline-block;
+	flex-shrink: 0;
+	width: var(--chevron-size);
+	height: var(--chevron-size);
+	aspect-ratio: 1;
+	rotate: var(--chevron-rotate);
 	transform-origin: center;
-	border: $chevron-arrow-border-width solid $chevron-color;
+	border: var(--chevron-border-width) solid var(--chevron-color);
 	border-block-start: 0;
 	border-inline-end: 0;
 	pointer-events: none;
 	content: ' ';
-	z-index: tokens.$zindex-active;
-	inset-inline-end: control.$control-padding-horizontal;
+	vertical-align: var(--chevron-vertical-align);
 }
+
+// Animated chevron with smooth rotation transition.
+// Use for interactive elements that change direction (e.g., expand/collapse).
+
+%chevron-animated {
+	@extend %chevron;
+
+	transition: rotate var(--chevron-transition-duration) ease;
+
+	@include media.prefers-reduced-motion {
+		transition-duration: 0s;
+	}
+}
+
+// === Convenience mixins ===
+
+@mixin chevron {
+	@extend %chevron;
+}
+
+@mixin chevron-animated {
+	@extend %chevron-animated;
+}
+
+// === Direction mixins ===
 
 @mixin chevron-right {
 	@extend %chevron;
 
-	transform: $chevron-right-rotate;
+	--chevron-rotate: #{tokens.$rotate-right};
 }
 
 @mixin chevron-right-rtl {
 	@extend %chevron;
 
-	transform: $chevron-right-rotate-rtl;
+	--chevron-rotate: #{tokens.$rotate-right-rtl};
 }
 
 @mixin chevron-down {
 	@extend %chevron;
 
-	transform: $chevron-down-rotate;
+	--chevron-rotate: #{tokens.$rotate-down};
 }
 
 @mixin chevron-down-rtl {
 	@extend %chevron;
 
-	transform: $chevron-down-rotate-rtl;
+	--chevron-rotate: #{tokens.$rotate-down-rtl};
 }
 
 @mixin chevron-up {
 	@extend %chevron;
 
-	transform: $chevron-up-rotate;
+	--chevron-rotate: #{tokens.$rotate-up};
 }
