@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.1.0
+
+### Minor Changes
+
+- 6ac4765: Add back background-color-body-dark, as an alternative to the newer lighter medium variable that is #FAFAFA.
+
 ## 1.0.2
 
 ### Patch Changes
