@@ -334,6 +334,27 @@ In certain scenarios, it may be advantageous to collapse the left-hand menu elem
 
 Similarly, the right-hand aside can be collapsed by adding `.layout-aside-collapsed` to the `html` element. This narrows the aside to a minimal width on layouts that support it: `layout-holy-grail`, `layout-sidecar-right`, and `layout-twin`.
 
+## Scaling container widths
+
+On wider screens, the menu and aside containers automatically scale up to give navigation and supplementary content more room. This happens at two breakpoints:
+
+| Screen width | Sidebar width |
+| --- | --- |
+| Below `1500px` | `275px` (default) |
+| `1500px` and above | `320px` |
+| `1800px` and above | `450px` |
+
+When the [flyout](#an-optional-flyout-container) is active, sidebar widths step down one notch to make room for the flyout column. If the sidebars are already at the default `275px`, no further reduction occurs.
+
+| Screen width | Sidebar width (flyout active) |
+| --- | --- |
+| Below `1500px` | `275px` (unchanged) |
+| `1500px` and above | `275px` (stepped down from `320px`) |
+| `1800px` and above | `320px` (stepped down from `450px`) |
+| `2300px` and above | `450px` (no reduction) |
+
+This scaling is built in and requires no additional classes or configuration. The values can still be overridden with the `--layout-menu-expanded-target-width` and `--layout-aside-expanded-target-width` CSS variables described in [Customizing layout dimensions with CSS variables](#customizing-layout-dimensions-with-css-variables).
+
 ## Accessibility Concerns
 
 ### ARIA landmarks
