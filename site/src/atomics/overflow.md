@@ -11,7 +11,7 @@ classPrefixes:
 
 # Overflow
 
-At times, you'll need to determine the overflow behavior of an element. Atlas provides several classes to do this.
+At times, you'll need to determine the overflow behavior of an element. Atlas provides several classes to do this. For directional scrolling containers and snap scroll patterns, see the [scroll component](~/src/components/scroll.md).
 
 | cssproperty        | value                         | screensize |
 | ------------------ | ----------------------------- | ---------- |
@@ -72,7 +72,7 @@ Use `.scrollbar-width-thin` to render a thinner scrollbar on elements with overf
 
 ## Scrollbar gutter
 
-When using automatic overflow, as with the [scrolling components](../components/scroll.md), the sudden appearance or disappearance of a container's scrollbar can cause the container's content to jump around. While this might be fine if the scrollbar appears or disappears as a result of the user zooming or resizing their browser, it can look clunky otherwise — such as when messages are appended to a constrained-width or constrained-height chat container, resulting in a scrollbar where there wasn't one previously.
+When using automatic overflow, as with the [scrolling components](~/src/components/scroll.md), the sudden appearance or disappearance of a container's scrollbar can cause the container's content to jump around. While this might be fine if the scrollbar appears or disappears as a result of the user zooming or resizing their browser, it can look clunky otherwise — such as when messages are appended to a constrained-width or constrained-height chat container, resulting in a scrollbar where there wasn't one previously.
 
 To see this default behavior, resize the below example until its scrollbar appears.
 

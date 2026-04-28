@@ -9,7 +9,7 @@ classPrefixes:
 
 # Scrolling
 
-There are two components that help modify the scroll direction of a particular container.
+There are two components that help modify the scroll direction of a particular container. For overflow-related utility classes such as `overflow-hidden`, `scrollbar-width-thin`, and scrollbar gutter helpers, see [overflow atomics](~/src/atomics/overflow.md).
 
 ## Horizontal scrolling
 
@@ -143,4 +143,4 @@ _Note: `data-focusable-if-scrollable`, the attribute we use to programmatically 
 
 ## Avoiding jumping text with scrollbar gutters
 
-In some cases, the appearance or disappearance of a scrollbar can cause that container's contents to jump around. This might be fine if the scrollbar is appearing as a result of the user opting to zoom or resize their browser, but when that's not the case, the jumping can be extra noticeable. If you're noticing this in your scrolling component, consider applying a [scrollbar gutter atomic](../atomics/overflow.md#scrollbar-gutter).
+In some cases, the appearance or disappearance of a scrollbar can cause that container's contents to jump around. This might be fine if the scrollbar is appearing as a result of the user opting to zoom or resize their browser, but when that's not the case, the jumping can be extra noticeable. If you're noticing this in your scrolling component, consider applying a [scrollbar gutter atomic](~/src/atomics/overflow.md#scrollbar-gutter).
