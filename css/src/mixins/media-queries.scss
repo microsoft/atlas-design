@@ -50,6 +50,26 @@
 	}
 }
 
+// Layout-specific breakpoints for scaling sidebar widths on wider screens.
+// These are custom one-offs and should not be used outside of the layout component.
+@mixin discouraged-sidebar-medium {
+	@media screen and (width >= 1500px) {
+		@content;
+	}
+}
+
+@mixin discouraged-sidebar-wide {
+	@media screen and (width >= 1800px) {
+		@content;
+	}
+}
+
+@mixin discouraged-sidebar-ultrawide {
+	@media screen and (width >= 2300px) {
+		@content;
+	}
+}
+
 @mixin print {
 	@media print {
 		@content;
