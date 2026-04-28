@@ -5,6 +5,7 @@ template: standard
 classType: Atomics
 classPrefixes:
   - overflow
+  - scrollbar-width
   - scrollbar-gutter
 ---
 
@@ -16,6 +17,7 @@ At times, you'll need to determine the overflow behavior of an element. Atlas pr
 | ------------------ | ----------------------------- | ---------- |
 | `overflow`         | `hidden`                      | `tablet`   |
 | `overflow-x`       | `hidden`                      | `tablet`   |
+| `scrollbar-width`  | `thin`                        |            |
 | `scrollbar-gutter` | `stable`, `stable-both-edges` |            |
 
 ## Usage
@@ -45,6 +47,26 @@ You can use `.overflow-x-hidden` to set the clipping behavior for the left/right
 			</p>
 		</div>
 	</div>
+</div>
+```
+
+## Scrollbar width
+
+Use `.scrollbar-width-thin` to render a thinner scrollbar on elements with overflow. This is useful for reducing visual weight on scrollable containers where a full-size scrollbar feels heavy.
+
+```html
+<div
+	class="scrollbar-width-thin scroll-vertical max-height-30vh background-color-primary inner-focus"
+	data-focusable-if-scrollable
+	style="resize: vertical"
+>
+	<p class="color-success-invert font-size-xl margin-bottom">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+		labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+		laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+		voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+		non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>
 </div>
 ```
 
