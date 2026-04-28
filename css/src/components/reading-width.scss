@@ -1,5 +1,10 @@
 @use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
 .reading-width {
 	max-inline-size: min(100%, #{tokens.$reading-width-padded});
+
+	@include mixins.widescreen {
+		max-inline-size: min(100%, #{tokens.$reading-width-padded-widescreen});
+	}
 }

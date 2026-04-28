@@ -34,9 +34,13 @@ $line-height-normal: 1.3;
 
 // Reading width
 $optimal-reading-width: 688px !default;
+$optimal-reading-width-widescreen: 900px !default;
 $reading-width-padding: 24px !default;
 $reading-width-padded: calc(
 	#{$optimal-reading-width} + (var(#{layout.$layout-gap-custom-property-name}) * 2)
+) !default;
+$reading-width-padded-widescreen: calc(
+	#{$optimal-reading-width-widescreen} + (var(#{layout.$layout-gap-custom-property-name}) * 2)
 ) !default;
 
 //@end-sass-export-section
