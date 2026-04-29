@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.3.0
+
+### Minor Changes
+
+- 17d8d64: Update docs related to atomics/overflow and components/scroll to point at each other.
+
 ## 1.2.0
 
 ### Minor Changes
