@@ -342,7 +342,7 @@ On wider screens, the menu and aside containers automatically scale up to give n
 | --- | --- |
 | Below `1500px` | `275px` (default) |
 | `1500px` and above | `320px` |
-| `1800px` and above | `450px` |
+| `2000px` and above | `450px` |
 
 When the [flyout](#an-optional-flyout-container) is active, sidebar widths step down one notch to make room for the flyout column. If the sidebars are already at the default `275px`, no further reduction occurs.
 
@@ -350,8 +350,8 @@ When the [flyout](#an-optional-flyout-container) is active, sidebar widths step 
 | --- | --- |
 | Below `1500px` | `275px` (unchanged) |
 | `1500px` and above | `275px` (stepped down from `320px`) |
-| `1800px` and above | `320px` (stepped down from `450px`) |
-| `2300px` and above | `450px` (no reduction) |
+| `2000px` and above | `320px` (stepped down from `450px`) |
+| `2500px` and above | `450px` (no reduction) |
 
 This scaling is built in and requires no additional classes or configuration. The values can still be overridden with the `--layout-menu-expanded-target-width` and `--layout-aside-expanded-target-width` CSS variables described in [Customizing layout dimensions with CSS variables](#customizing-layout-dimensions-with-css-variables).
 
