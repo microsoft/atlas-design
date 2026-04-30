@@ -42,5 +42,6 @@ $reading-width-padded: calc(
 $reading-width-padded-widescreen: calc(
 	#{$optimal-reading-width-widescreen} + (var(#{layout.$layout-gap-custom-property-name}) * 2)
 ) !default;
+$breakpoint-reading-width-wide: 2000px !default;
 
 //@end-sass-export-section
