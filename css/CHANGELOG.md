@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.5.0
+
+### Minor Changes
+
+- 2be587c: Reading width component now uses a dedicated breakpoint token (`$breakpoint-reading-width-wide: 2000px`) instead of the global widescreen breakpoint (1800px).
+
 ## 6.4.1
 
 ### Patch Changes
