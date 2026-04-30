@@ -9,7 +9,7 @@ classPrefixes:
 
 # Reading width
 
-The reading width component constrains an element's maximum width to an optimal reading measure. This improves readability for long-form text content by preventing lines from becoming too wide, which can make it difficult for readers to track from the end of one line to the beginning of the next. On widescreen viewports (1800px and above), the maximum width expands to 900px to take advantage of the additional space.
+The reading width component constrains an element's maximum width to an optimal reading measure. This improves readability for long-form text content by preventing lines from becoming too wide, which can make it difficult for readers to track from the end of one line to the beginning of the next. On wide viewports (2000px and above), the maximum width expands to 900px to take advantage of the additional space.
 
 ## Usage
 
