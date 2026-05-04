@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.4.0
+
+### Minor Changes
+
+- 15b9034: Document icon-mirrored-rtl on the .icon component.
+
 ## 1.3.0
 
 ### Minor Changes

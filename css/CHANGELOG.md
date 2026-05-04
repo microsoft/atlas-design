@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.6.0
+
+### Minor Changes
+
+- 15b9034: Add icon-mirrored-rtl modifier to the .icon component. icon-mirrored-rtl flips an icon along its inline axis in RTL only.
+
 ## 6.5.0
 
 ### Minor Changes
