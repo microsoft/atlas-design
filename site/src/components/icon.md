@@ -71,3 +71,19 @@ SVG elements can also be placed within an Icon element.
 	</svg>
 </button>
 ```
+
+### Direction-aware icons
+
+Some icons like arrows should point the opposite way in right-to-left (RTL) reading modes, so they continue to follow the document's writing direction.
+
+The `icon-mirrored-rtl` modifier mirrors the icon along its inline axis in RTL only. It has no effect in left-to-right (LTR) reading mode.
+
+> **Only apply `icon-mirrored-rtl` to icons that should be mirrored in RTL.** Many icons, such as logos, must look identical in both directions. As a rule of thumb: only mirror icons that point or move left/right.
+
+```html
+<button class="button" aria-label="Collapse navigation">
+	<span class="icon icon-mirrored-rtl" aria-hidden="true">
+		<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg>
+	</span>
+</button>
+```
