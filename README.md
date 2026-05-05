@@ -68,6 +68,56 @@ Behaviors and elements beyond the scope of CSS are found in the `/js` folder.
 npm install --save @microsoft/atlas-js
 ```
 
+## Using Atlas with AI Agents
+
+The Atlas MCP Server exposes Atlas Design System resources to AI agents and copilots via the [Model Context Protocol](https://modelcontextprotocol.io/). This helps AI assistants discover and use Atlas CSS classes, components, and design tokens in your projects.
+
+### Install via npm
+
+```sh
+npm install -g @microsoft/atlas-mcp
+```
+
+### Configure with GitHub Copilot
+
+Add to your `.github/copilot-mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "atlas": {
+      "command": "npx",
+      "args": ["-y", "@microsoft/atlas-mcp"]
+    }
+  }
+}
+```
+
+### Configure with Claude Desktop
+
+Add to your Claude configuration:
+
+```json
+{
+  "mcpServers": {
+    "atlas": {
+      "command": "npx",
+      "args": ["-y", "@microsoft/atlas-mcp"]
+    }
+  }
+}
+```
+
+### Available Tools
+
+- **search_classes** - Search 1200+ CSS classes by name or pattern
+- **get_component** - Get component details with code examples
+- **list_components** - List all available components
+- **list_atomics** - List atomic utility classes by category
+- **get_code_examples** - Get HTML/CSS code snippets from documentation
+
+See `/mcp/README.md` for full documentation.
+
 ## Contributing
 
 While this project is open source, its primary purpose is to serve Microsoft web properties through a CSS-first implementation of a design system. We do appreciate contributions to our documentation (`/site` folder), our framework (`/css`), and its companion scripts (`/js`).
