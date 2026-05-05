@@ -60,7 +60,8 @@
 			"site",
 			"js",
 			"integration",
-			"extension"
+			"extension",
+			"mcp"
 		]
 	},
 	"installConfig": {
