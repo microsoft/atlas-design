@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.5.0
+
+### Minor Changes
+
+- 6849993: Update docs for site-header to include the correct atomics for background color for cards.
+
 ## 1.4.0
 
 ### Minor Changes
