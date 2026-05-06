@@ -126,7 +126,7 @@ Below are the examples of both content options, with a set of links and a set of
 		<div class="site-header-panel-content">
 			<ul class="site-header-panel-cards">
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 1
@@ -138,7 +138,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</article>
 				</li>
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 2
@@ -150,7 +150,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</article>
 				</li>
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 3
@@ -162,7 +162,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</article>
 				</li>
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 4
@@ -174,7 +174,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</article>
 				</li>
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 5
@@ -186,7 +186,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</article>
 				</li>
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 6
@@ -198,7 +198,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</article>
 				</li>
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 7
@@ -210,7 +210,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</article>
 				</li>
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 8
@@ -222,7 +222,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</article>
 				</li>
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 9
@@ -236,7 +236,7 @@ Below are the examples of both content options, with a set of links and a set of
 			</ul>
 		</div>
 		<section class="site-header-panel-featured-content">
-			<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+			<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 				<div class="card-content">
 					<p class="card-supertitle">Supertitle</p>
 					<a href="#!" class="card-title color-text stretched-link">
@@ -247,7 +247,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</p>
 				</div>
 			</article>
-			<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+			<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 				<div class="card-content">
 					<p class="card-supertitle">Supertitle</p>
 					<a href="#!" class="card-title color-text stretched-link">
@@ -272,7 +272,7 @@ Below are the examples of both content options, with a set of links and a set of
             <!-- 9 cards max -->
 			<ul class="site-header-panel-cards">
 				<li>
-					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 						<div class="card-content">
 							<a href="#!" class="card-title color-text stretched-link">
 								Card 1
@@ -290,7 +290,7 @@ Below are the examples of both content options, with a set of links and a set of
 		<!-- Featured content -->
 		<!-- 2 cards max -->
 		<section class="site-header-panel-featured-content">
-			<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+			<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 				<div class="card-content">
 					<p class="card-supertitle">Supertitle</p>
 					<a href="#!" class="card-title color-text stretched-link">
@@ -425,7 +425,7 @@ Below are the examples of both content options, with a set of links and a set of
 			</a>
 		</div>
 		<section class="site-header-panel-featured-content">
-			<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+			<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 				<div class="card-content">
 					<p class="card-supertitle">Supertitle</p>
 					<a href="#!" class="card-title color-text stretched-link">
@@ -436,7 +436,7 @@ Below are the examples of both content options, with a set of links and a set of
 					</p>
 				</div>
 			</article>
-			<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+			<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 				<div class="card-content">
 					<p class="card-supertitle">Supertitle</p>
 					<a href="#!" class="card-title color-text stretched-link">
@@ -477,7 +477,7 @@ Below are the examples of both content options, with a set of links and a set of
 		<!-- Featured content -->
 		<!-- 2 cards max -->
 		<section class="site-header-panel-featured-content">
-			<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none">
+			<article class="card position-relative background-color-body-accent-onhover background-color-body-dark box-shadow-none">
 				<div class="card-content">
 					<p class="card-supertitle">Supertitle</p>
 					<a href="#!" class="card-title color-text stretched-link">
