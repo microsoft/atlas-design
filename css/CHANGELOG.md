@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.6.1
+
+### Patch Changes
+
+- a2f1537: update dark theme body-background-dark variable to be a little lighter, instead of black
+
 ## 6.6.0
 
 ### Minor Changes
