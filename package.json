@@ -92,5 +92,8 @@
 		"endOfLine": "auto"
 	},
 	"author": "Microsoft Corporation",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"npm": "^11.12.1"
+	}
 }
