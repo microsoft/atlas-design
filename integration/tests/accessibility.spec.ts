@@ -56,6 +56,7 @@ const pathnames = [
 	'/components/textarea.html',
 	'/components/timeline.html',
 	'/components/toggle.html',
+	'/components/tree.html',
 	'/patterns/article-header.html',
 	'/patterns/chat.html',
 	'/patterns/thread-history.html',

@@ -126,7 +126,7 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 	}
 
 	&-item.is-expanded > .tree-expander > .tree-expander-indicator {
-		rotate: $tree-expanded-rotation;
+		rotate: $tree-expanded-rotation; // TODO: compare expanded chevron between this and prod - see if docs-ui is influencing the styling
 	}
 
 	&.tree-static {
