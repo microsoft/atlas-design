@@ -1,0 +1,137 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
+$tree-font-size: tokens.$font-size-8 !default;
+$tree-indent: tokens.$spacer-5 !default;
+$tree-item-vertical-padding: tokens.$spacer-2 !default;
+$tree-item-gap: tokens.$spacer-2 !default;
+$tree-easing: ease-in-out !default;
+$tree-transition-duration: 0.15s !default;
+$tree-expanded-rotation: 90deg !default;
+$tree-selected-color: tokens.$text-glow-high-contrast !default;
+$tree-selected-background: tokens.$selected-background-subtle !default;
+$tree-selected-font-weight: tokens.$weight-semibold !default;
+
+.tree {
+	position: relative;
+	font-size: $tree-font-size;
+	line-height: 1.75;
+
+	&,
+	&-group {
+		list-style-type: none;
+		margin-block-end: 0;
+	}
+
+	&-group {
+		margin-inline-start: $tree-indent;
+	}
+
+	&-item {
+		margin-block-start: $tree-item-gap;
+
+		> .tree-group {
+			display: none;
+		}
+
+		&.is-expanded > .tree-group {
+			display: block;
+		}
+
+		&.tree-leaf {
+			color: tokens.$text !important;
+		}
+
+		&.is-selected {
+			background-color: $tree-selected-background;
+			color: $tree-selected-color !important;
+			font-weight: $tree-selected-font-weight;
+
+			@include mixins.forced-colors {
+				background-color: SelectedItem;
+				color: SelectedItemText !important;
+				forced-color-adjust: none;
+			}
+		}
+	}
+
+	&-item.tree-leaf.has-icon {
+		display: flex;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		.icon {
+			flex-shrink: 0;
+			align-items: baseline;
+			width: 1rem;
+			font-size: tokens.$font-size-9;
+			line-height: 2;
+		}
+
+		> span:not(.icon) {
+			padding-inline-start: tokens.$spacer-3;
+		}
+	}
+
+	/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
+	&-item.tree-leaf.has-icon > span:not(.icon):hover {
+		text-decoration: underline !important;
+	}
+
+	// Focus: suppress outline on branch nodes, delegate to expander
+
+	&-item:not(.tree-leaf) {
+		outline: none !important;
+
+		@include mixins.focus-visible {
+			> .tree-expander {
+				@include mixins.focus();
+			}
+		}
+	}
+
+	&-item.tree-leaf,
+	&-expander {
+		display: block;
+		padding-inline-start: $tree-indent;
+		padding-block-start: $tree-item-vertical-padding;
+		padding-block-end: $tree-item-vertical-padding;
+		border-radius: tokens.$border-radius;
+		outline-offset: -(tokens.$focus-width) !important;
+	}
+
+	&-expander {
+		position: relative;
+		cursor: pointer;
+		user-select: none;
+		word-wrap: break-word;
+
+		.tree-expander-indicator {
+			display: inline-block;
+			position: absolute;
+			inset-block-start: tokens.$spacer-3;
+			inset-inline-start: 0;
+			transition: rotate $tree-transition-duration $tree-easing;
+			rotate: 0deg;
+			color: tokens.$text-subtle;
+			font-size: tokens.$font-size-9;
+			font-weight: tokens.$weight-semibold;
+
+			&:dir(rtl) {
+				rotate: 180deg;
+			}
+		}
+	}
+
+	&-item.is-expanded > .tree-expander > .tree-expander-indicator {
+		rotate: $tree-expanded-rotation;
+	}
+
+	&.tree-static {
+		.tree-item.tree-leaf {
+			padding-inline-start: 0 !important;
+		}
+	}
+}
