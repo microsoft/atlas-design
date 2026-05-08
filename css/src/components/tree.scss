@@ -7,7 +7,6 @@ $tree-item-vertical-padding: tokens.$spacer-2 !default;
 $tree-item-gap: tokens.$spacer-2 !default;
 $tree-easing: ease-in-out !default;
 $tree-transition-duration: 0.15s !default;
-$tree-expanded-rotation: 90deg !default;
 $tree-selected-color: tokens.$text-glow-high-contrast !default;
 $tree-selected-background: tokens.$selected-background-subtle !default;
 $tree-selected-font-weight: tokens.$weight-semibold !default;
@@ -108,25 +107,24 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		user-select: none;
 		word-wrap: break-word;
 
-		.tree-expander-indicator {
-			display: inline-block;
-			position: absolute;
-			inset-block-start: tokens.$spacer-3;
-			inset-inline-start: 0;
-			transition: rotate $tree-transition-duration $tree-easing;
-			rotate: 0deg;
-			color: tokens.$text-subtle;
-			font-size: tokens.$font-size-9;
-			font-weight: tokens.$weight-semibold;
+		&::before {
+			@include mixins.chevron-right;
 
-			&:dir(rtl) {
-				rotate: 180deg;
-			}
+			position: absolute;
+			inset-block-start: tokens.$spacer-4;
+			inset-inline-start: 0;
+			inset-inline-end: auto;
+			transition: transform $tree-transition-duration $tree-easing;
+			font-size: tokens.$font-size-9;
+		}
+
+		&:dir(rtl)::before {
+			@include mixins.chevron-right-rtl;
 		}
 	}
 
-	&-item.is-expanded > .tree-expander > .tree-expander-indicator {
-		rotate: $tree-expanded-rotation; // TODO: compare expanded chevron between this and prod - see if docs-ui is influencing the styling
+	&-item.is-expanded > .tree-expander::before {
+		transform: mixins.$chevron-down-rotate translate(calc(mixins.$chevron-arrow-size / 2), 0);
 	}
 
 	&.tree-static {

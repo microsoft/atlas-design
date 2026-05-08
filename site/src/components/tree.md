@@ -19,7 +19,6 @@ A tree with expandable branch nodes and selectable leaf nodes. Branch nodes use 
 <ul class="tree" role="tree" aria-label="Table of contents">
 	<li class="tree-item is-expanded" role="treeitem" aria-expanded="true" tabindex="0" aria-level="1" aria-setsize="3" aria-posinset="1">
 		<span class="tree-expander">
-			<span class="tree-expander-indicator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 448 448" fill="currentColor"><path d="M328.968 224l-187.31 187.312-22.626-22.625L283.72 224 119.032 59.312l22.625-22.624L328.967 224z"/></svg></span>
 			Getting started
 		</span>
 		<ul class="tree-group" role="group">
@@ -33,7 +32,6 @@ A tree with expandable branch nodes and selectable leaf nodes. Branch nodes use 
 	</li>
 	<li class="tree-item" role="treeitem" aria-expanded="false" tabindex="-1" aria-level="1" aria-setsize="3" aria-posinset="2">
 		<span class="tree-expander">
-			<span class="tree-expander-indicator" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 448 448" fill="currentColor"><path d="M328.968 224l-187.31 187.312-22.626-22.625L283.72 224 119.032 59.312l22.625-22.624L328.967 224z"/></svg></span>
 			Configuration
 		</span>
 	</li>
@@ -73,8 +71,7 @@ A non-collapsible tree where all items are visible. Add the `tree-static` class 
 | `.tree-group` | `ul` | Nested group of child items |
 | `.tree-item` | `li` or `a` | A tree node (branch or leaf) |
 | `.tree-leaf` | `a` | Leaf node (no children) |
-| `.tree-expander` | `span` | Clickable expander for branch nodes |
-| `.tree-expander-indicator` | `span` | Icon indicating expand/collapse state |
+| `.tree-expander` | `span` | Clickable expander for branch nodes (chevron drawn via CSS `::before`) |
 | `.is-expanded` | modifier | Applied to expanded branch nodes |
 | `.is-selected` | modifier | Applied to the currently active item |
 
