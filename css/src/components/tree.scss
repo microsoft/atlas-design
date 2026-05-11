@@ -123,8 +123,15 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		}
 	}
 
-	&-item.is-expanded > .tree-expander::before {
-		transform: mixins.$chevron-down-rotate translate(calc(mixins.$chevron-arrow-size / 2), 0);
+	&-item.is-expanded > .tree-expander {
+		&::before {
+			transform: mixins.$chevron-down-rotate translate(calc(mixins.$chevron-arrow-size / 2), 0);
+		}
+
+		&:dir(rtl)::before {
+			transform: mixins.$chevron-down-rotate-rtl
+				translate(calc(mixins.$chevron-arrow-size / 2 * -1), 0);
+		}
 	}
 
 	&.tree-static {
