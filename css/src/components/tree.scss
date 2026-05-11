@@ -115,6 +115,7 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 			inset-inline-start: 0;
 			inset-inline-end: auto;
 			transition: transform $tree-transition-duration $tree-easing;
+			border-color: tokens.$text-subtle;
 			font-size: tokens.$font-size-9;
 		}
 
@@ -131,12 +132,6 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		&:dir(rtl)::before {
 			transform: mixins.$chevron-down-rotate-rtl
 				translate(calc(mixins.$chevron-arrow-size / 2 * -1), 0);
-		}
-	}
-
-	&.tree-static {
-		.tree-item.tree-leaf {
-			padding-inline-start: 0 !important;
 		}
 	}
 }
