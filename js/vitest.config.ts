@@ -4,7 +4,7 @@ export default defineConfig({
 	test: {
 		environment: 'jsdom',
 		include: ['test/**/*.test.ts'],
-		reporters: process.env.GITHUB_ACTIONS ? ['default', 'github-actions'] : ['default'],
+		reporters: process.env.GITHUB_ACTIONS === 'true' ? ['default', 'github-actions'] : ['default'],
 		coverage: {
 			provider: 'v8',
 			reporter: ['text', 'json-summary', 'html'],
