@@ -41,6 +41,27 @@ A tree with expandable branch nodes and selectable leaf nodes. Branch nodes use 
 </ul>
 ```
 
+## Static tree
+
+A tree without expanders — all items are leaf nodes. No additional class is needed; simply omit `.tree-expander` elements.
+
+```html
+<ul class="tree" role="tree" aria-label="Page sections">
+	<li role="none">
+		<a class="tree-item tree-leaf is-selected" role="treeitem" tabindex="0" aria-current="page" aria-level="1" aria-setsize="4" aria-posinset="1" href="#">Introduction</a>
+	</li>
+	<li role="none">
+		<a class="tree-item tree-leaf" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="4" aria-posinset="2" href="#">Prerequisites</a>
+	</li>
+	<li role="none">
+		<a class="tree-item tree-leaf" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="4" aria-posinset="3" href="#">Steps</a>
+	</li>
+	<li role="none">
+		<a class="tree-item tree-leaf" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="4" aria-posinset="4" href="#">Next steps</a>
+	</li>
+</ul>
+```
+
 ## Accessibility
 
 Keyboard navigation (arrow keys, Home, End) and focus management should be handled by the consuming application's JavaScript.
