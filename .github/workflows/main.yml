@@ -45,6 +45,10 @@ jobs:
       - name: Run lint
         run: npm run lint;
 
+      # Run unit tests
+      - name: Run tests
+        run: npm test;
+
       # Run Dart Sass build
       - name: Build CSS
         run: |
