@@ -45,9 +45,27 @@ jobs:
       - name: Run lint
         run: npm run lint;
 
-      # Run unit tests
+      # Run unit tests with coverage
       - name: Run tests
-        run: npm test;
+        run: npm run test:coverage;
+
+      - name: Report coverage summary
+        if: always()
+        run: |
+          $json = Get-Content js/coverage/coverage-summary.json | ConvertFrom-Json
+          $lines = $json.total.lines.pct
+          $branches = $json.total.branches.pct
+          $functions = $json.total.functions.pct
+          $statements = $json.total.statements.pct
+          Write-Output "## Code Coverage Summary" >> $env:GITHUB_STEP_SUMMARY
+          Write-Output "" >> $env:GITHUB_STEP_SUMMARY
+          Write-Output "| Metric | Coverage |" >> $env:GITHUB_STEP_SUMMARY
+          Write-Output "|--------|----------|" >> $env:GITHUB_STEP_SUMMARY
+          Write-Output "| Lines | ${lines}% |" >> $env:GITHUB_STEP_SUMMARY
+          Write-Output "| Branches | ${branches}% |" >> $env:GITHUB_STEP_SUMMARY
+          Write-Output "| Functions | ${functions}% |" >> $env:GITHUB_STEP_SUMMARY
+          Write-Output "| Statements | ${statements}% |" >> $env:GITHUB_STEP_SUMMARY
+        shell: pwsh
 
       # Run Dart Sass build
       - name: Build CSS

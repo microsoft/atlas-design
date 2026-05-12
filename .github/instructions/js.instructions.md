@@ -27,6 +27,8 @@ js/
 
 - `npm run build` - Compile TypeScript to JavaScript
 - `npm run lint` - Run ESLint on TypeScript files
+- `npm run test` - Run unit tests with Vitest
+- `npm run test:coverage` - Run unit tests with code coverage report
 - `npm run prepublishOnly` - Lint and build before publishing
 
 ## When to Add JavaScript
@@ -63,9 +65,36 @@ Behavioral tests are in the `integration` package:
 - Tests use Playwright
 - Run from repository root: `npm run integration`
 
+## Unit Testing
+
+Unit tests use [Vitest](https://vitest.dev/) with a jsdom environment for DOM APIs.
+
+### Running Tests
+
+- `npm run test` - Run all unit tests (from `js/` folder or repo root)
+- `npm run test:coverage` - Run tests with code coverage report
+- `npx vitest --watch` - Watch mode during development (from `js/` folder)
+- `npx vitest run src/utilities/util.test.ts` - Run a specific test file
+
+### Writing Tests
+
+1. **Place test files next to source** - Use `*.test.ts` suffix (e.g., `util.test.ts` beside `util.ts`)
+2. **Import from vitest** - Use `import { describe, it, expect } from 'vitest'`
+3. **Use jsdom for DOM tests** - The test environment provides `document`, `window`, etc.
+4. **Test pure functions directly** - For utilities, test inputs and outputs
+5. **Test DOM behaviors** - For behaviors/elements, create DOM fixtures and assert side effects
+
+### Coverage
+
+- Coverage uses the `v8` provider via `@vitest/coverage-v8`
+- Reports are generated in `js/coverage/` (text, JSON summary, and HTML)
+- Coverage runs automatically in CI and is reported in the GitHub Actions job summary
+
 ## When Making Changes
 
 1. Run `npm run lint` before committing
 2. Build with `npm run build` to verify compilation
-3. Test interactively with the site package
-4. Add integration tests for new behaviors in the `integration` package
+3. Run `npm run test` to ensure all unit tests pass
+4. Test interactively with the site package
+5. Add unit tests for new utilities and pure functions
+6. Add integration tests for new behaviors in the `integration` package

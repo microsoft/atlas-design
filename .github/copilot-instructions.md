@@ -27,6 +27,10 @@ npm run integration        # Run Playwright integration tests
 npm run integration:debug  # Debug mode with browser
 npx playwright test -g "test name"  # Run single test (from integration folder)
 
+# Unit testing (js package)
+npm run test               # Run Vitest unit tests
+npm run test:coverage      # Run with code coverage report
+
 # Visual regression
 npm run screenshots:light  # Light theme only
 npm run screenshots:all    # All themes

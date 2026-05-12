@@ -10,6 +10,7 @@
 		"lint": "eslint . --ext .ts",
 		"prebuild": "rimraf dist",
 		"test": "vitest run",
+		"test:coverage": "vitest run --coverage",
 		"prepublishOnly": "npm run lint && npm run build"
 	},
 	"homepage": "https://github.com/microsoft/atlas-design",
@@ -37,6 +38,7 @@
 	"author": "Microsoft Corporation",
 	"license": "MIT",
 	"devDependencies": {
+		"@vitest/coverage-v8": "^4.1.6",
 		"eslint": "^8.43.0",
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-jasmine": "^4.1.3",
