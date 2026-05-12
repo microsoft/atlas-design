@@ -20,6 +20,7 @@ js/
 │   ├── elements/     # Custom elements / web components
 │   ├── utilities/    # Shared utility functions
 │   └── index.ts      # Main entry point
+├── test/             # Unit tests (mirrors src/ structure)
 └── dist/             # Compiled JavaScript output
 ```
 
@@ -78,7 +79,7 @@ Unit tests use [Vitest](https://vitest.dev/) with a jsdom environment for DOM AP
 
 ### Writing Tests
 
-1. **Place test files next to source** - Use `*.test.ts` suffix (e.g., `util.test.ts` beside `util.ts`)
+1. **Place test files in `test/`** - Mirror the `src/` folder structure (e.g., `test/utilities/util.test.ts` for `src/utilities/util.ts`)
 2. **Import from vitest** - Use `import { describe, it, expect } from 'vitest'`
 3. **Use jsdom for DOM tests** - The test environment provides `document`, `window`, etc.
 4. **Test pure functions directly** - For utilities, test inputs and outputs

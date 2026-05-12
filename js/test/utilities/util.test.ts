@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateElementId, kebabToCamelCase } from './util';
+import { generateElementId, kebabToCamelCase } from '../../src/utilities/util';
 
 describe('generateElementId', () => {
 	it('should return a string starting with "bx-"', () => {
