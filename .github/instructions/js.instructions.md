@@ -29,7 +29,7 @@ js/
 - `npm run build` - Compile TypeScript to JavaScript
 - `npm run lint` - Run ESLint on TypeScript files
 - `npm run test` - Run unit tests with Vitest
-- `npm run test:coverage` - Run unit tests with code coverage report
+- `npm run test:cov` - Run unit tests with code coverage report
 - `npm run prepublishOnly` - Lint and build before publishing
 
 ## When to Add JavaScript

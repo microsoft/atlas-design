@@ -47,7 +47,7 @@ jobs:
 
       # Run unit tests with coverage
       - name: Run tests
-        run: npm run test:coverage;
+        run: npm run test:cov;
 
       # Run Dart Sass build
       - name: Build CSS
