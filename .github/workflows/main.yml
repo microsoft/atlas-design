@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Ensure build and lint
+name: Ensure build, lint, and test
 
 # Controls when the action will run.
 on:
