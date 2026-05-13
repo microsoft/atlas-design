@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Ensure build and lint
+name: Ensure build, lint, and test
 
 # Controls when the action will run.
 on:
@@ -44,6 +44,10 @@ jobs:
       # Run lint
       - name: Run lint
         run: npm run lint;
+
+      # Run unit tests with coverage
+      - name: Run tests
+        run: npm run test:cov;
 
       # Run Dart Sass build
       - name: Build CSS

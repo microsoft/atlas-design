@@ -7,5 +7,6 @@ dist
 toc.json
 test-results/
 playwright-report/
+coverage/
 .wireit
 .netrc
