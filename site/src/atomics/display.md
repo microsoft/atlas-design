@@ -51,6 +51,10 @@ Here are a few examples of display atomics being used for different screensizes.
 </div>
 ```
 
+## State-based display helpers
+
+Display classes are also available scoped to [layout collapse states](~/src/components/layout.md#state-based-display-helpers). These classes (e.g., `.display-none-layout-menu-collapsed`) only take effect when the corresponding state is active on the `.layout` element.
+
 ## Available classes
 
 List of all available classes:

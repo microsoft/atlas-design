@@ -334,6 +334,34 @@ In certain scenarios, it may be advantageous to collapse the left-hand menu elem
 
 Similarly, the right-hand aside can be collapsed by adding `.layout-aside-collapsed` to the `html` element. This narrows the aside to a minimal width on layouts that support it: `layout-holy-grail`, `layout-sidecar-right`, and `layout-twin`.
 
+## State-based display helpers
+
+When a layout collapse state is active, you may want to show or hide elements inside those containers. Atlas generates display utility classes scoped to each collapse state. These classes only take effect when the corresponding state class is present on the `.layout` element.
+
+The available states are `layout-menu-collapsed` and `layout-aside-collapsed`. For each state, display classes are generated for every value in the standard [display atomics](~/src/atomics/display.md) list: `none`, `block`, `flex`, `grid`, `inline`, `inline-block`, and `inline-flex`.
+
+The class naming pattern is:
+
+```css
+.display-{value}-{state}
+```
+
+For example, to hide an element when the menu is collapsed and show a different element only when the menu is collapsed:
+
+```html
+<nav class="layout-body-menu">
+	<span class="display-none-layout-menu-collapsed">Full menu label</span>
+	<span class="display-none display-block-layout-menu-collapsed">Icon only</span>
+</nav>
+```
+
+| Class | Effect |
+| --- | --- |
+| `.display-none-layout-menu-collapsed` | Hidden when menu is collapsed |
+| `.display-block-layout-menu-collapsed` | `display: block` when menu is collapsed |
+| `.display-flex-layout-aside-collapsed` | `display: flex` when aside is collapsed |
+| `.display-none-layout-aside-collapsed` | Hidden when aside is collapsed |
+
 ## Scaling container widths
 
 On wider screens, the menu and aside containers automatically scale up to give navigation and supplementary content more room. This happens at two breakpoints:
