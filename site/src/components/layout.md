@@ -334,24 +334,52 @@ In certain scenarios, it may be advantageous to collapse the left-hand menu elem
 
 Similarly, the right-hand aside can be collapsed by adding `.layout-aside-collapsed` to the `html` element. This narrows the aside to a minimal width on layouts that support it: `layout-holy-grail`, `layout-sidecar-right`, and `layout-twin`.
 
+## State-based display helpers
+
+When a layout collapse state is active, you may want to show or hide elements inside those containers. Atlas generates display utility classes scoped to each collapse state. These classes only take effect when the corresponding state class is present on the `.layout` element.
+
+The available states are `layout-menu-collapsed` and `layout-aside-collapsed`. For each state, display classes are generated for every value in the standard [display atomics](~/src/atomics/display.md) list: `none`, `block`, `flex`, `grid`, `inline`, `inline-block`, and `inline-flex`.
+
+The class naming pattern is:
+
+```scss
+.display-{value}-{state}
+```
+
+For example, to hide an element when the menu is collapsed and show a different element only when the menu is collapsed:
+
+```html-no-example
+<nav class="layout-body-menu">
+	<span class="display-none-layout-menu-collapsed">Full menu label</span>
+	<span class="display-none display-block-layout-menu-collapsed">Icon only</span>
+</nav>
+```
+
+| Class                                  | Effect                                  |
+| -------------------------------------- | --------------------------------------- |
+| `.display-none-layout-menu-collapsed`  | Hidden when menu is collapsed           |
+| `.display-block-layout-menu-collapsed` | `display: block` when menu is collapsed |
+| `.display-flex-layout-aside-collapsed` | `display: flex` when aside is collapsed |
+| `.display-none-layout-aside-collapsed` | Hidden when aside is collapsed          |
+
 ## Scaling container widths
 
 On wider screens, the menu and aside containers automatically scale up to give navigation and supplementary content more room. This happens at two breakpoints:
 
-| Screen width | Sidebar width |
-| --- | --- |
-| Below `1500px` | `275px` (default) |
-| `1500px` and above | `320px` |
-| `2000px` and above | `450px` |
+| Screen width       | Sidebar width     |
+| ------------------ | ----------------- |
+| Below `1500px`     | `275px` (default) |
+| `1500px` and above | `320px`           |
+| `2000px` and above | `450px`           |
 
 When the [flyout](#an-optional-flyout-container) is active, sidebar widths step down one notch to make room for the flyout column. If the sidebars are already at the default `275px`, no further reduction occurs.
 
-| Screen width | Sidebar width (flyout active) |
-| --- | --- |
-| Below `1500px` | `275px` (unchanged) |
+| Screen width       | Sidebar width (flyout active)       |
+| ------------------ | ----------------------------------- |
+| Below `1500px`     | `275px` (unchanged)                 |
 | `1500px` and above | `275px` (stepped down from `320px`) |
 | `2000px` and above | `320px` (stepped down from `450px`) |
-| `2500px` and above | `450px` (no reduction) |
+| `2500px` and above | `450px` (no reduction)              |
 
 This scaling is built in and requires no additional classes or configuration. The values can still be overridden with the `--layout-menu-expanded-target-width` and `--layout-aside-expanded-target-width` CSS variables described in [Customizing layout dimensions with CSS variables](#customizing-layout-dimensions-with-css-variables).
 
@@ -380,12 +408,12 @@ The layout component exposes several CSS custom properties that let you tune col
 
 ### Menu and aside widths
 
-| Variable | Default | Description |
-| --- | --- | --- |
-| `--layout-menu-expanded-target-width` | `275px` | The width of the menu column when expanded. |
-| `--layout-menu-collapsed-width` | `68px` | The width of the menu column when collapsed via `.layout-menu-collapsed`. |
-| `--layout-aside-expanded-target-width` | `275px` | The width of the aside column when expanded. |
-| `--layout-aside-collapsed-width` | `68px` | The width of the aside column when collapsed via `.layout-aside-collapsed`. |
+| Variable                               | Default | Description                                                                 |
+| -------------------------------------- | ------- | --------------------------------------------------------------------------- |
+| `--layout-menu-expanded-target-width`  | `275px` | The width of the menu column when expanded.                                 |
+| `--layout-menu-collapsed-width`        | `68px`  | The width of the menu column when collapsed via `.layout-menu-collapsed`.   |
+| `--layout-aside-expanded-target-width` | `275px` | The width of the aside column when expanded.                                |
+| `--layout-aside-collapsed-width`       | `68px`  | The width of the aside column when collapsed via `.layout-aside-collapsed`. |
 
 For example, to make the menu wider on a particular page:
 
@@ -405,8 +433,8 @@ Or to make the aside narrower:
 
 ### Flyout width
 
-| Variable | Default | Description |
-| --- | --- | --- |
+| Variable                        | Default | Description                                           |
+| ------------------------------- | ------- | ----------------------------------------------------- |
 | `--layout-flyout-width-desktop` | `320px` | The width of the flyout container on desktop screens. |
 
 ```css
@@ -417,8 +445,8 @@ Or to make the aside narrower:
 
 ### Layout gap
 
-| Variable | Default | Description |
-| --- | --- | --- |
+| Variable       | Default                           | Description                                                                                                    |
+| -------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `--layout-gap` | `16px` (narrow), `24px` (desktop) | The inline padding applied by `.layout-padding` and consumed by full-width elements like hero and site header. |
 
 These variables are consumed by the grid definitions internally — you do not need to redefine any grid templates. Simply set the variable and the layout will adapt.

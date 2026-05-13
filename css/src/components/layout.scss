@@ -412,4 +412,20 @@ $layout-aside-width-wide: 450px !default;
 		}
 	}
 }
+
+/*
+ * For certain classes that toggle the width of layout containers, it is useful to have the ability to toggle the display of elements inside these containers based on the state.
+ */
+$layout-collapse-states: 'layout-menu-collapsed', 'layout-aside-collapsed';
+
+@each $state in $layout-collapse-states {
+	.layout.#{$state} {
+		@each $item in tokens.$displays {
+			.display-#{$item}-#{$state} {
+				display: #{$item} !important;
+			}
+		}
+	}
+}
+
 /* stylelint-enable */
