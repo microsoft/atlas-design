@@ -45,7 +45,7 @@
 		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
 	},
 	"dependencies": {
-		"@microsoft/atlas-css": "^6.0.0"
+		"@microsoft/atlas-css": "^6.6.1"
 	},
 	"devDependencies": {
 		"@types/glob": "^8.1.0",

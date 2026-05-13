@@ -1,6 +1,6 @@
 # Atlas JS - Copilot Instructions
 
-applyTo: "js/**"
+applyTo: "js/\*\*"
 
 This is the `@microsoft/atlas-js` package, providing TypeScript/JavaScript behaviors for the Atlas Design System.
 
@@ -63,6 +63,7 @@ Atlas prioritizes CSS-only solutions. Add JavaScript only when:
 ## Integration Testing
 
 Behavioral tests are in the `integration` package:
+
 - Tests use Playwright
 - Run from repository root: `npm run integration`
 
@@ -73,9 +74,9 @@ Unit tests use [Vitest](https://vitest.dev/) with a jsdom environment for DOM AP
 ### Running Tests
 
 - `npm run test` - Run all unit tests (from `js/` folder or repo root)
-- `npm run test:coverage` - Run tests with code coverage report
+- `npm run test:cov` - Run tests with code coverage report
 - `npx vitest --watch` - Watch mode during development (from `js/` folder)
-- `npx vitest run src/utilities/util.test.ts` - Run a specific test file
+- `npx vitest run test/utilities/util.test.ts` - Run a specific test file
 
 ### Writing Tests
 
