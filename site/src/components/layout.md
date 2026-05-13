@@ -342,7 +342,7 @@ The available states are `layout-menu-collapsed` and `layout-aside-collapsed`. F
 
 The class naming pattern is:
 
-```css
+```scss
 .display-{value}-{state}
 ```
 
