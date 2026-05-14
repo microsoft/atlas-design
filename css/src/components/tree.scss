@@ -32,7 +32,7 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 			display: none;
 		}
 
-		&.is-expanded > .tree-group {
+		&[aria-expanded='true'] > .tree-group {
 			display: block;
 		}
 
@@ -63,7 +63,7 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		outline-offset: -(tokens.$focus-width) !important;
 	}
 
-	.tree-item.tree-leaf:where(.has-icon) {
+	.tree-item.tree-leaf:where(:has(.icon)) {
 		display: flex;
 
 		&:hover {
@@ -83,7 +83,7 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		}
 	}
 
-	.tree-item:where(.tree-leaf.has-icon) > span:not(.icon):hover {
+	.tree-item:where(.tree-leaf:has(.icon)) > span:not(.icon):hover {
 		text-decoration: underline !important;
 	}
 
@@ -122,7 +122,7 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		}
 	}
 
-	.tree-item:where(.is-expanded) > .tree-expander {
+	.tree-item:where([aria-expanded='true']) > .tree-expander {
 		&::before {
 			transform: mixins.$chevron-down-rotate translate(calc(mixins.$chevron-arrow-size / 2), 0);
 		}

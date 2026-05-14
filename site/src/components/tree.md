@@ -17,7 +17,7 @@ A tree with expandable branch nodes and selectable leaf nodes. Branch nodes use 
 
 ```html
 <ul class="tree" role="tree" aria-label="Table of contents">
-	<li class="tree-item is-expanded" role="treeitem" aria-expanded="true" tabindex="0" aria-level="1" aria-setsize="3" aria-posinset="1">
+	<li class="tree-item" role="treeitem" aria-expanded="true" tabindex="0" aria-level="1" aria-setsize="3" aria-posinset="1">
 		<span class="tree-expander">
 			Getting started
 		</span>
@@ -64,4 +64,4 @@ A tree without expanders — all items are leaf nodes. No additional class is ne
 
 ## Accessibility
 
-Keyboard navigation (arrow keys, Home, End) and focus management should be handled by the consuming application's JavaScript.
+The tree component relies on ARIA attributes — `aria-expanded`, `aria-level`, `aria-setsize`, and `aria-posinset` — to convey structure and state to assistive technologies. Keyboard navigation (arrow keys, Home, End) and focus management should be handled by the consuming application's JavaScript.
