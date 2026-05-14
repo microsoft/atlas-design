@@ -17,15 +17,15 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 	line-height: 1.75;
 
 	&,
-	&-group {
+	.tree-group {
 		margin-block-end: 0;
 	}
 
-	&-group {
+	.tree-group {
 		margin-inline-start: $tree-indent;
 	}
 
-	&-item {
+	.tree-item {
 		margin-block-start: $tree-item-gap;
 
 		> .tree-group {
@@ -53,7 +53,17 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		}
 	}
 
-	&-item.tree-leaf.has-icon {
+	.tree-item.tree-leaf,
+	.tree-expander {
+		display: block;
+		padding-inline-start: $tree-indent;
+		padding-block-start: $tree-item-vertical-padding;
+		padding-block-end: $tree-item-vertical-padding;
+		border-radius: tokens.$border-radius;
+		outline-offset: -(tokens.$focus-width) !important;
+	}
+
+	.tree-item.tree-leaf:where(.has-icon) {
 		display: flex;
 
 		&:hover {
@@ -73,14 +83,13 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		}
 	}
 
-	/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
-	&-item.tree-leaf.has-icon > span:not(.icon):hover {
+	.tree-item:where(.tree-leaf.has-icon) > span:not(.icon):hover {
 		text-decoration: underline !important;
 	}
 
 	// Focus: suppress outline on branch nodes, delegate to expander
 
-	&-item:not(.tree-leaf) {
+	.tree-item:not(.tree-leaf) {
 		outline: none !important;
 
 		@include mixins.focus-visible {
@@ -90,17 +99,7 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		}
 	}
 
-	&-item.tree-leaf,
-	&-expander {
-		display: block;
-		padding-inline-start: $tree-indent;
-		padding-block-start: $tree-item-vertical-padding;
-		padding-block-end: $tree-item-vertical-padding;
-		border-radius: tokens.$border-radius;
-		outline-offset: -(tokens.$focus-width) !important;
-	}
-
-	&-expander {
+	.tree-expander {
 		position: relative;
 		cursor: pointer;
 		user-select: none;
@@ -123,7 +122,7 @@ $tree-selected-font-weight: tokens.$weight-semibold !default;
 		}
 	}
 
-	&-item.is-expanded > .tree-expander {
+	.tree-item:where(.is-expanded) > .tree-expander {
 		&::before {
 			transform: mixins.$chevron-down-rotate translate(calc(mixins.$chevron-arrow-size / 2), 0);
 		}
