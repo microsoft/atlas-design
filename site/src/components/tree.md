@@ -9,7 +9,7 @@ classPrefixes:
 
 # Tree
 
-A hierarchical list component that styles the [WAI-ARIA TreeView pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/). Used for navigable structures like tables of contents, file browsers, or nested menus.
+A hierarchical list component for navigable structures like tables of contents, file browsers, or nested menus. Intended to style the [WAI-ARIA TreeView pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/).
 
 ## Basic collapsible tree
 
@@ -17,47 +17,47 @@ A tree with expandable branch nodes and selectable leaf nodes. Branch nodes use 
 
 ```html
 <ul class="tree" role="tree" aria-label="Table of contents">
-	<li class="tree-item" role="treeitem" aria-expanded="true" tabindex="0" aria-level="1" aria-setsize="3" aria-posinset="1">
+	<li class="tree-item" role="treeitem" aria-expanded="true" aria-level="1" aria-setsize="3" aria-posinset="1">
 		<span class="tree-expander">
 			Getting started
 		</span>
 		<ul class="tree-group" role="group">
 			<li role="none">
-				<a class="tree-item tree-leaf is-selected" role="treeitem" tabindex="-1" aria-current="page" aria-level="2" aria-setsize="2" aria-posinset="1" href="#">Overview</a>
+				<a class="tree-item tree-leaf is-selected" role="treeitem" aria-current="page" aria-level="2" aria-setsize="2" aria-posinset="1" href="#">Overview</a>
 			</li>
 			<li role="none">
-				<a class="tree-item tree-leaf" role="treeitem" tabindex="-1" aria-level="2" aria-setsize="2" aria-posinset="2" href="#">Installation</a>
+				<a class="tree-item tree-leaf" role="treeitem" aria-level="2" aria-setsize="2" aria-posinset="2" href="#">Installation</a>
 			</li>
 		</ul>
 	</li>
-	<li class="tree-item" role="treeitem" aria-expanded="false" tabindex="-1" aria-level="1" aria-setsize="3" aria-posinset="2">
+	<li class="tree-item" role="treeitem" aria-expanded="false" aria-level="1" aria-setsize="3" aria-posinset="2">
 		<span class="tree-expander">
 			Configuration
 		</span>
 	</li>
 	<li role="none">
-		<a class="tree-item tree-leaf" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="3" aria-posinset="3" href="#">FAQ</a>
+		<a class="tree-item tree-leaf" role="treeitem" aria-level="1" aria-setsize="3" aria-posinset="3" href="#">FAQ</a>
 	</li>
 </ul>
 ```
 
 ## Static tree
 
-A tree without expanders — all items are leaf nodes. No additional class is needed; simply omit `.tree-expander` elements.
+A tree without expanders — all items are leaf nodes. Simply omit `.tree-expander` elements.
 
 ```html
 <ul class="tree" role="tree" aria-label="Page sections">
 	<li role="none">
-		<a class="tree-item tree-leaf is-selected" role="treeitem" tabindex="0" aria-current="page" aria-level="1" aria-setsize="4" aria-posinset="1" href="#">Introduction</a>
+		<a class="tree-item tree-leaf is-selected" role="treeitem" aria-current="page" aria-level="1" aria-setsize="4" aria-posinset="1" href="#">Introduction</a>
 	</li>
 	<li role="none">
-		<a class="tree-item tree-leaf" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="4" aria-posinset="2" href="#">Prerequisites</a>
+		<a class="tree-item tree-leaf" role="treeitem" aria-level="1" aria-setsize="4" aria-posinset="2" href="#">Prerequisites</a>
 	</li>
 	<li role="none">
-		<a class="tree-item tree-leaf" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="4" aria-posinset="3" href="#">Steps</a>
+		<a class="tree-item tree-leaf" role="treeitem" aria-level="1" aria-setsize="4" aria-posinset="3" href="#">Steps</a>
 	</li>
 	<li role="none">
-		<a class="tree-item tree-leaf" role="treeitem" tabindex="-1" aria-level="1" aria-setsize="4" aria-posinset="4" href="#">Next steps</a>
+		<a class="tree-item tree-leaf" role="treeitem" aria-level="1" aria-setsize="4" aria-posinset="4" href="#">Next steps</a>
 	</li>
 </ul>
 ```
