@@ -51,6 +51,7 @@ export const pages: LocalPageConfig[] = [
 	{ pathname: '/components/textarea.html', name: 'Components/textarea', routes },
 	{ pathname: '/components/timeline.html', name: 'Components/timeline', routes },
 	{ pathname: '/components/toggle.html', name: 'Components/toggle', routes },
+	{ pathname: '/components/tree.html', name: 'Components/tree', routes },
 	{ pathname: '/patterns/article-header.html', name: 'Patterns/article-header', routes },
 	{ pathname: '/patterns/form-validation.html', name: 'Patterns/form-validation', routes },
 	{ pathname: '/patterns/thread-history.html', name: 'Patterns/thread-history', routes }
