@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 1.15.2
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+
 ## 1.15.1
 
 ### Patch Changes

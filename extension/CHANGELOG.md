@@ -1,5 +1,15 @@
 # Change Log
 
+## 0.0.11
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+- Updated dependencies [3de44b6]
+- Updated dependencies [8cb23e3]
+- Updated dependencies [728cc69]
+  - @microsoft/atlas-css@6.7.0
+
 ## 0.0.10
 
 ### Patch Changes

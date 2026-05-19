@@ -1,5 +1,15 @@
 # @microsoft/atlas-site
 
+## 1.6.0
+
+### Minor Changes
+
+- 3de44b6: Add `.tree` component for hierarchical navigation with expand/collapse, selected state, static variant, icon leaf layout, focus delegation, RTL support, and forced-colors accessibility. Documentation and examples added to the site.
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+
 ## 1.5.0
 
 ### Minor Changes
