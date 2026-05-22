@@ -1,5 +1,16 @@
 # @microsoft/atlas-css
 
+## 6.7.0
+
+### Minor Changes
+
+- 3de44b6: Add `.tree` component for hierarchical navigation with expand/collapse, selected state, static variant, icon leaf layout, focus delegation, RTL support, and forced-colors accessibility. Documentation and examples added to the site.
+- 728cc69: Add state-based display helper classes for layout collapse states. When `layout-menu-collapsed` or `layout-aside-collapsed` is active on the `.layout` element, scoped display utilities (e.g., `.display-none-layout-menu-collapsed`, `.display-flex-layout-aside-collapsed`) allow toggling element visibility within those containers.
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+
 ## 6.6.1
 
 ### Patch Changes
