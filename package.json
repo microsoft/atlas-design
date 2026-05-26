@@ -97,5 +97,8 @@
 	"license": "MIT",
 	"dependencies": {
 		"npm": "^11.12.1"
+	},
+	"overrides": {
+		"serialize-javascript": "^7.0.5"
 	}
 }
