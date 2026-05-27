@@ -1,6 +1,6 @@
 # Atlas Design System - Copilot Instructions
 
-The Atlas Design System is a CSS-first framework powering Microsoft Learn. It's a monorepo with seven workspaces: `css`, `js`, `site`, `integration`, `extension`, and two plugins.
+The Atlas Design System is a CSS-first framework powering Microsoft Learn. It's a monorepo with eight workspaces: `css`, `js`, `site`, `integration`, `extension`, and three plugins.
 
 ## Commands
 
@@ -49,7 +49,8 @@ npm run screenshots:all    # All themes
 - `integration/` - Playwright tests for visual regression and accessibility
 - `extension/` - VS Code extension for class IntelliSense
 - `plugins/stylelint-config-atlas/` - Shared Stylelint configuration
-- `plugins/parcel-transformer-markdown-html/` - Markdown-to-HTML transformer
+- `plugins/parcel-transformer-markdown-html/` - Markdown-to-HTML transformer (also hides inline `<script>` tags as HTML comments to dodge a Parcel cold-cache race)
+- `plugins/parcel-optimizer-inline-script-restore/` - Parcel optimizer that restores those hidden inline `<script>` tags after transformers run; see the package README for the full story
 
 **Token flow**: CSS variables are defined in `css/src/tokens/`, exported to JSON/TS via `npm run build:tokens`, and consumed by other packages.
 

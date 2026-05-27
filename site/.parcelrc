@@ -7,5 +7,11 @@
 		"*.md": [
 			"@microsoft/parcel-transformer-markdown-html"
 		]
+	},
+	"optimizers": {
+		"*.html": [
+			"@microsoft/parcel-optimizer-inline-script-restore",
+			"..."
+		]
 	}
 }

@@ -1,34 +1,23 @@
 # Atlas JS
 
-Welcome to TypeScript/JavaScript code backing the Atlas Design system. While Atlas endeavors to find CSS-only strategies for creating modern UI patterns, there are times when writing behavior code is necessary. These cases tend to fall into a one of several categories.
+JavaScript behaviors and lightweight web components for the [Atlas Design System](https://github.com/microsoft/atlas-design). Atlas prefers CSS-first patterns; this package exists for cases where CSS alone cannot meet accessibility requirements or where a lightweight web component is the right fit.
 
-- A component's markup / attributes require changing upon interaction for compatibility with screen readers or other assistive technology.
-- A particular pattern is a good candidate for a re-usable web component. That is, its behavior is relatively straightforward and lightweight.
+## Install
 
-## Installing this package
-
-Install the `@microsoft/atlas-js` package in your project's dependencies.
-
-```
-npm i @microsoft/atlas-js;
+```sh
+npm i @microsoft/atlas-js
 ```
 
-## Accesssing its Typescript through the `src` folder
+## Import
 
-Include the index file directly to add behaviors to your scripts.
-
-```ts
-import '@microsoft/atlas-js/src/index';
-```
-
-## Accessing the built JS through the `dist` folder
+Built JS (default entry, from `dist/`):
 
 ```js
-import '@microsoft/atlas-js/dist/index';
+import '@microsoft/atlas-js';
 ```
 
-Or include a script tag to pull the built JavaScript from UNPKG.
+TypeScript source (for tree-shakeable named imports from `src/`): `import { createLayoutState } from '@microsoft/atlas-js/src/index'`
 
-```html
-<script src="https://unpkg.com/@microsoft/atlas-js@0.0.1/dist/index.js" type="module" defer>
-```
+## Notable behaviors
+
+- **`createLayoutState`** (in `behaviors/layout`) — persists and restores `layout-*` classes on `<html>` across page loads, with optional `document.startViewTransition` support. See the [Layout component docs](https://github.com/microsoft/atlas-design/blob/main/site/src/components/layout.md#persisting-layout-state-across-page-loads) for the inline-script pattern that restores classes **before first paint**, and the JSDoc in [`src/`](https://github.com/microsoft/atlas-design/tree/main/js/src) for full API details.

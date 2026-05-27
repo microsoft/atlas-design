@@ -9,6 +9,50 @@ const allTokens = require('@microsoft/atlas-css/dist/tokens.json');
 const { renderBreadcrumbsMarkup } = require('./breadcrumbs');
 const { buildGithubLink } = require('./github-link');
 
+// Inline-script hide helper.
+//
+// Background: when @parcel/transformer-html sees a `<script>` tag without a
+// `src` attribute it extracts the body as a separate inline-JS child asset
+// and pulls in @parcel/transformer-js, @parcel/transformer-babel, and
+// @parcel/transformer-react-refresh-wrap as dev dependencies. On a cold
+// (no `.parcel-cache`) build this newly-registered transformer dev-dep
+// chain hits a Parcel race condition that surfaces as:
+//
+//   Error: Worker send back a reference to a missing dev dep request.
+//   This might happen due to internal in-memory build caches not being
+//   cleared between builds or due a race condition. This is a bug in Parcel.
+//
+// Workaround: in the markdown → html pass we hide every inline `<script>`
+// inside an HTML comment containing the original attributes and body in
+// base64. The HTML transformer can't see the tag, so it doesn't extract it
+// and the buggy dev-dep chain never gets registered.
+//
+// The companion plugin `@microsoft/parcel-optimizer-inline-script-restore`
+// restores the original `<script>` tags as a Parcel optimizer, which runs
+// on the final bundle after every transformer. A separate plugin is
+// required because Parcel dedupes transformers by name per asset, so
+// re-registering this same transformer for the `*.html` pipeline does not
+// trigger a second invocation (see Transformation.js `runTransformer`).
+//
+// The marker uses only base64 characters between the `::` separators, so
+// `<!--…-->` can never be ambiguous (base64 has no `-`) and HTML comment
+// rules (no `--` inside) are respected.
+const ATLAS_INLINE_SCRIPT_MARKER = 'ATLAS_INLINE_SCRIPT_V1';
+const SCRIPT_TAG_REGEX = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
+
+function hideInlineScripts(html) {
+	return html.replace(SCRIPT_TAG_REGEX, (match, rawAttrs, content) => {
+		// `src`'d scripts reference external assets — Parcel must continue to
+		// resolve and bundle them, so leave them alone.
+		if (/\bsrc\s*=/i.test(rawAttrs)) {
+			return match;
+		}
+		const attrsB64 = Buffer.from(rawAttrs, 'utf8').toString('base64');
+		const contentB64 = Buffer.from(content, 'utf8').toString('base64');
+		return `<!--${ATLAS_INLINE_SCRIPT_MARKER}::${attrsB64}::${contentB64}-->`;
+	});
+}
+
 const languageDisplayNames = {
 	html: 'HTML',
 	js: 'JavaScript',
@@ -231,20 +275,22 @@ module.exports = new Transformer({
 			asset.invalidateOnFileChange(templateFilename);
 			const githubLink = buildGithubLink(asset.filePath);
 			asset.setCode(
-				mustache.render(template, {
-					body: parsedCode,
-					githubLink,
-					toc: { name: 'TOC', entries: tocEntries },
-					breadcrumbs: renderBreadcrumbsMarkup(tocEntries, asset.filePath),
-					...attributes,
-					tokens,
-					cssTokenSource,
-					figmaEmbed,
-					hero
-				})
+				hideInlineScripts(
+					mustache.render(template, {
+						body: parsedCode,
+						githubLink,
+						toc: { name: 'TOC', entries: tocEntries },
+						breadcrumbs: renderBreadcrumbsMarkup(tocEntries, asset.filePath),
+						...attributes,
+						tokens,
+						cssTokenSource,
+						figmaEmbed,
+						hero
+					})
+				)
 			);
 		} else {
-			asset.setCode(parsedCode);
+			asset.setCode(hideInlineScripts(parsedCode));
 		}
 
 		return [asset];

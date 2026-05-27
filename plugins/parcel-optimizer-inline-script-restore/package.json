@@ -1,0 +1,21 @@
+{
+	"name": "@microsoft/parcel-optimizer-inline-script-restore",
+	"version": "1.0.0",
+	"license": "MIT",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/atlas-design"
+	},
+	"main": "lib/index.js",
+	"engines": {
+		"node": "24.15.0",
+		"npm": "11.12.1",
+		"parcel": "2.16.3"
+	},
+	"dependencies": {
+		"parcel": "2.16.3",
+		"@parcel/plugin": "2.16.0",
+		"@parcel/utils": "2.16.0"
+	}
+}
