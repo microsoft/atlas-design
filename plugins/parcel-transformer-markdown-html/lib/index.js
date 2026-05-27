@@ -5,6 +5,7 @@ const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
 const mustache = require('mustache');
 const path = require('path');
+const parse5 = require('parse5');
 const allTokens = require('@microsoft/atlas-css/dist/tokens.json');
 const { renderBreadcrumbsMarkup } = require('./breadcrumbs');
 const { buildGithubLink } = require('./github-link');
@@ -37,20 +38,82 @@ const { buildGithubLink } = require('./github-link');
 // The marker uses only base64 characters between the `::` separators, so
 // `<!--…-->` can never be ambiguous (base64 has no `-`) and HTML comment
 // rules (no `--` inside) are respected.
+//
+// Implementation note: we deliberately use the parse5 HTML parser instead
+// of a regex to locate `<script>` tags. Regex-based HTML tag matching is
+// brittle (browsers accept odd constructions like `</script foo="bar">`,
+// uppercase tag names, etc.) and gets flagged by `js/bad-tag-filter` style
+// security tools. parse5 implements the WHATWG HTML parsing algorithm, so
+// it sees exactly what the browser would.
 const ATLAS_INLINE_SCRIPT_MARKER = 'ATLAS_INLINE_SCRIPT_V1';
-const SCRIPT_TAG_REGEX = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
+
+function findInlineScriptNodes(root) {
+	const scripts = [];
+	const stack = [root];
+	while (stack.length > 0) {
+		const node = stack.pop();
+		if (
+			node.tagName === 'script' &&
+			Array.isArray(node.attrs) &&
+			!node.attrs.some(a => a.name === 'src') &&
+			node.sourceCodeLocation &&
+			node.sourceCodeLocation.startTag
+		) {
+			scripts.push(node);
+		}
+		if (node.childNodes) {
+			for (const child of node.childNodes) {
+				stack.push(child);
+			}
+		}
+	}
+	return scripts;
+}
+
+function serializeAttrs(attrs) {
+	return attrs
+		.map(attr => {
+			const escaped = String(attr.value).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+			return ` ${attr.name}="${escaped}"`;
+		})
+		.join('');
+}
 
 function hideInlineScripts(html) {
-	return html.replace(SCRIPT_TAG_REGEX, (match, rawAttrs, content) => {
-		// `src`'d scripts reference external assets — Parcel must continue to
-		// resolve and bundle them, so leave them alone.
-		if (/\bsrc\s*=/i.test(rawAttrs)) {
-			return match;
-		}
+	// Cheap pre-check: if there is no `<script` substring at all there is
+	// nothing for us to do and we can skip the parse entirely.
+	if (!/<script/i.test(html)) {
+		return html;
+	}
+
+	const fragment = parse5.parseFragment(html, { sourceCodeLocationInfo: true });
+	const scripts = findInlineScriptNodes(fragment);
+	if (scripts.length === 0) {
+		return html;
+	}
+
+	// Sort by start offset descending so we can splice into the original
+	// string without invalidating later offsets.
+	scripts.sort((a, b) => b.sourceCodeLocation.startOffset - a.sourceCodeLocation.startOffset);
+
+	let result = html;
+	for (const node of scripts) {
+		const loc = node.sourceCodeLocation;
+		const startOffset = loc.startOffset;
+		const endOffset = loc.endOffset;
+		const startTagEnd = loc.startTag.endOffset;
+		const endTagStart = loc.endTag ? loc.endTag.startOffset : endOffset;
+
+		const rawAttrs = serializeAttrs(node.attrs);
+		const content = html.slice(startTagEnd, endTagStart);
+
 		const attrsB64 = Buffer.from(rawAttrs, 'utf8').toString('base64');
 		const contentB64 = Buffer.from(content, 'utf8').toString('base64');
-		return `<!--${ATLAS_INLINE_SCRIPT_MARKER}::${attrsB64}::${contentB64}-->`;
-	});
+		const marker = `<!--${ATLAS_INLINE_SCRIPT_MARKER}::${attrsB64}::${contentB64}-->`;
+
+		result = result.slice(0, startOffset) + marker + result.slice(endOffset);
+	}
+	return result;
 }
 
 const languageDisplayNames = {
