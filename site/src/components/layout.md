@@ -18,7 +18,7 @@ The layout component provides a flexible and efficient way to structure the majo
 This page is utilizing the holy grail layout, but you can use the buttons below to toggle layouts and test them out by resizing the screen. Try the "Toggle container labels" button below to see the css classes on each of the containers inside `.layout`.
 
 <div class="buttons buttons-addons margin-top-sm">
-  <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
+  <button class="button" data-set-layout="layout-holy-grail">Holy grail</button>
   <button class="button" data-set-layout="layout-twin">Twin</button>
   <button class="button" data-set-layout="layout-single">Single</button>
   <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
