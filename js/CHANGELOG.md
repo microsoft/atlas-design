@@ -1,5 +1,16 @@
 # @microsoft/atlas-js
 
+## 2.0.0
+
+### Major Changes
+
+- 914af1e: Restructure the output folder to fix a prior issue where `src` was being copied into `dist`.
+
+### Minor Changes
+
+- 914af1e: Add a `contentLoaded` utility that resolves after `DOMContentLoaded`.
+- 914af1e: Add `createLayoutState` to `behaviors/layout` for persisting and restoring `layout-*` classes on `<html>` across page loads, scoped per `viewName` and backed by a configurable storage (defaults to `localStorage`). Restoration and a `MutationObserver` start synchronously inside the factory, and subscribers receive the current matching state on registration with optional `document.startViewTransition` support for the initial restore and subsequent dispatches. After the initial callback flush — or if setup or a queued callback throws — `createLayoutState` sets `data-layout-restored="true"` on `<html>` so CSS hooks (e.g. the new `display-*-until-layout-restored` helpers) don't permanently hide content on failure.
+
 ## 1.15.2
 
 ### Patch Changes
