@@ -71,6 +71,8 @@ Behavioral tests are in the `integration` package:
 
 Unit tests use [Vitest](https://vitest.dev/) with a jsdom environment for DOM APIs.
 
+For detailed conventions, jsdom gotchas, teardown patterns, and the `[ai generated]` spec tag, see [`unit-testing.instructions.md`](./unit-testing.instructions.md). Reusable Copilot prompts live in [`.github/prompts/`](../prompts/) — invoke `/write-unit-tests` or `/improve-test-coverage`.
+
 ### Running Tests
 
 - `npm run test` - Run all unit tests (from `js/` folder or repo root)
