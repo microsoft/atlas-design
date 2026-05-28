@@ -1,5 +1,99 @@
 # @microsoft/atlas-site
 
+## 1.6.0
+
+### Minor Changes
+
+- 3de44b6: Add `.tree` component for hierarchical navigation with expand/collapse, selected state, static variant, icon leaf layout, focus delegation, RTL support, and forced-colors accessibility. Documentation and examples added to the site.
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+
+## 1.5.0
+
+### Minor Changes
+
+- 6849993: Update docs for site-header to include the correct atomics for background color for cards.
+
+## 1.4.0
+
+### Minor Changes
+
+- 15b9034: Document icon-mirrored-rtl on the .icon component.
+
+## 1.3.0
+
+### Minor Changes
+
+- 17d8d64: Update docs related to atomics/overflow and components/scroll to point at each other.
+
+## 1.2.0
+
+### Minor Changes
+
+- bf09962: Adjust the maximum widths of sidebar elements on relevant layouts. The menu and aside elements will continue to have a default width of 275px, but scale up to 320px at 1500px, then 450px at 1800px wide. When the flyout is active and the screen width is below 2300px, each of those containers will scale down one step lower. For example, the `.layout-body-menu` at 1600px will decrease from 320px wide to 275px wide when the flyout is active. Added relevant documentation to the site.
+
+## 1.1.1
+
+### Patch Changes
+
+- 716ea7d: Updated breadcrumbs documentation: replaced .breadcrumbs-item-slashless with .breadcrumbs-item-current, updated "initial slash" section to "initial chevron" using .breadcrumbs-initial-separator, and clarified descriptions for current-page and initial-separator variants.
+
+## 1.1.0
+
+### Minor Changes
+
+- 6ac4765: Add back background-color-body-dark, as an alternative to the newer lighter medium variable that is #FAFAFA.
+
+## 1.0.2
+
+### Patch Changes
+
+- 866964c: Update the full screen button behavior to remove reading width from the main column element. This allows for the continued testing of full width elements like hero and site header.
+
+## 1.0.1
+
+### Patch Changes
+
+- ff8267c: Fix the development server's file watcher, which stopped watching at the npm module boundary after a dependency upgrade.
+- 15478c0: Add the .reading-width component to the site's article-like content.
+
+## 1.0.0
+
+### Major Changes
+
+- 9a47e84: Updating a few rules with their corresponding logical versions
+
+### Patch Changes
+
+- bb5bef7: Update css build to use @use and @forward instead of @import.
+
+## 0.67.1
+
+### Patch Changes
+
+- 7f16a0b: Fixing issues with holy grail and sidecar left when flyout is active and menu is collapsed. Also fixes issues with menu collapsed widths.
+
+## 0.67.0
+
+### Minor Changes
+
+- c856959: Adds support for a new layout modifier .layout-menu-collapse which allows the Holy Grail and Sidecar Left layouts to collapse their left hand menu component.
+- 9b834ef: Update home page to be prettier, then move the readme to the getting-started page.
+
+## 0.66.0
+
+### Minor Changes
+
+- 124aeba: Add a .text-wrap-balance typography atomic
+- 58a83fd: Adding XXL size to non-heading font
+- 5f0abc7: Updating code-block component
+
+### Patch Changes
+
+- 1d113b7: Updating footer copyright
+
 ## 0.65.0
 
 ### Minor Changes

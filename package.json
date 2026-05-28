@@ -4,6 +4,10 @@
 	"description": "The Atlas Design System used by Microsoft's Developer Relations platform.",
 	"private": true,
 	"homepage": "https://github.com/microsoft/atlas-design",
+	"engines": {
+		"node": "24.15.0",
+		"npm": "11.12.1"
+	},
 	"scripts": {
 		"build:css": "npm run build --workspace=@microsoft/atlas-css",
 		"build:js": "npm run build --workspace=@microsoft/atlas-js",
@@ -21,6 +25,8 @@
 		"lint-fix": "npm run lint-fix:site && lint-fix:css",
 		"lint-fix:site": "npm run lint-fix --workspace=@microsoft/atlas-site",
 		"lint:js": "npm run lint --workspace=@microsoft/atlas-js",
+		"test": "npm run test --workspace=@microsoft/atlas-js",
+		"test:cov": "npm run test:cov --workspace=@microsoft/atlas-js",
 		"lint-fix:css": "npm run lint-fix --workspace=@microsoft/atlas-css",
 		"start": "npm run serve:site",
 		"serve:site": "npm run start --workspace=@microsoft/atlas-site",
@@ -88,5 +94,11 @@
 		"endOfLine": "auto"
 	},
 	"author": "Microsoft Corporation",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"npm": "^11.12.1"
+	},
+	"overrides": {
+		"serialize-javascript": "^7.0.5"
+	}
 }

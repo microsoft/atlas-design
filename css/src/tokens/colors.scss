@@ -1,3 +1,5 @@
+@use './palette.scss' as palette;
+
 /**
  * @sass-export-section="colors"
  */
@@ -17,6 +19,7 @@ $box-shadow-color-extra-heavy: var(--theme-box-shadow-extra-heavy);
 
 $body-background: var(--theme-body-background);
 $body-background-medium: var(--theme-body-background-medium);
+$body-background-dark: var(--theme-body-background-dark);
 $body-background-accent: var(--theme-body-background-accent);
 
 $alternate-background: var(--theme-alternate-background);
@@ -24,7 +27,7 @@ $alternate-background-medium: var(--theme-alternate-background-medium);
 
 $overlay: var(--theme-overlay);
 $overlay-invert: var(--theme-overlay-invert);
-$overlay-static: $palette-black-opacity-50;
+$overlay-static: palette.$palette-black-opacity-50;
 $border: var(--theme-border);
 $border-accent: var(--theme-border-accent);
 
@@ -32,6 +35,7 @@ $card-background: var(--theme-card-background);
 
 $code-header: var(--theme-code-header);
 $code-block: var(--theme-code-block);
+$code-block-border: var(--theme-code-block-border);
 $inline-code: var(--theme-inline-code);
 
 $control-border: var(--theme-control-border);

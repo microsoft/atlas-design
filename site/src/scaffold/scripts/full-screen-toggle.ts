@@ -13,12 +13,14 @@ export function initFullScreenToggle() {
 async function handleFullscreen() {
 	const main = document.getElementById('main');
 	const article = document.getElementById('article');
-	if (!main || !article) {
+	const mainColumn = document.getElementById('main-column');
+	if (!main || !article || !mainColumn) {
 		return;
 	}
 
 	const isFullScreened = main?.dataset.isFullScreened === 'true';
 	if (!isFullScreened) {
+		mainColumn.classList.remove('reading-width');
 		article.style.overflow = 'visible';
 		main.style.display = 'block';
 		main.style.overflowX = 'auto';
@@ -27,6 +29,7 @@ async function handleFullscreen() {
 	} else {
 		main.dataset.isFullScreened = 'false';
 		article.style.cssText = '';
+		mainColumn.classList.add('reading-width');
 
 		if (document.fullscreenElement) {
 			await document.exitFullscreen();

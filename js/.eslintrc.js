@@ -1,4 +1,5 @@
 module.exports = {
+	ignorePatterns: ['vitest.config.ts'],
 	env: {
 		browser: true,
 		node: false,

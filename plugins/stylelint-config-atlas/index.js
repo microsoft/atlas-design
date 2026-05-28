@@ -190,6 +190,7 @@ module.exports = {
 			{
 				ignoreAtRules: [
 					'use',
+					'forward',
 					'at-root',
 					'content',
 					'each',

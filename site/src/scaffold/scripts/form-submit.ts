@@ -50,7 +50,12 @@ export function handleMockFormSubmit() {
 		form.addEventListener(
 			'beforesubmit',
 			e => {
-				e.preventDefault();
+				// By default, prevent the real form submission so the demo form on a doc page
+				// can only show the preview of what data would be submitted.
+				// Adding `data-test-allow-default-action` to the form allows the submission to proceed normally.
+				if (!form.hasAttribute('data-test-allow-default-action')) {
+					e.preventDefault();
+				}
 
 				if (form.hasAttribute('test-async-before-submit')) {
 					const customEvent = e as CustomEventInit<{ callback: () => Promise<void> }>;

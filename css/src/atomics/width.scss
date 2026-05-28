@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use '../mixins/index.scss' as mixins;
 
 $universal-widths: auto, fit-content, 100, 150, 200, 250, 300, 350 !default;
 $mobile-incompatible-widths: 400, 450, 500, unset !default;
@@ -11,32 +12,47 @@ $all-widths: list.join($universal-widths, $mobile-incompatible-widths);
 }
 
 @each $width in $universal-widths {
-	$unit: if($width != auto and $width != fit-content, 'px', '');
+	$unit: '';
+
+	@if $width != auto and $width != fit-content {
+		$unit: 'px';
+	}
+
 	.width-#{$width} {
 		width: #{$width}#{$unit} !important;
 	}
 }
 
-@include tablet {
+@include mixins.tablet {
 	.width-full-tablet {
 		width: 100% !important;
 	}
 
 	@each $width in $all-widths {
-		$unit: if($width != auto and $width != unset and $width != fit-content, 'px', '');
+		$unit: '';
+
+		@if $width != auto and $width != unset and $width != fit-content {
+			$unit: 'px';
+		}
+
 		.width-#{$width}-tablet {
 			width: #{$width}#{$unit} !important;
 		}
 	}
 }
 
-@include desktop {
+@include mixins.desktop {
 	.width-full-desktop {
 		width: 100% !important;
 	}
 
 	@each $width in $all-widths {
-		$unit: if($width != auto and $width != unset and $width != fit-content, 'px', '');
+		$unit: '';
+
+		@if $width != auto and $width != unset and $width != fit-content {
+			$unit: 'px';
+		}
+
 		.width-#{$width}-desktop {
 			width: #{$width}#{$unit} !important;
 		}

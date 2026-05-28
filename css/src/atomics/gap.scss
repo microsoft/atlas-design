@@ -1,24 +1,32 @@
+@use 'sass:list';
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 $separator: '-' !default;
 
 $gap-sizes: (
-	('xxs', $layout-1),
-	('xs', $layout-2),
-	('sm', $layout-3),
-	('md', $layout-4),
-	('lg', $layout-5),
-	// ('xl', $layout-6),
-	// ('xxl', $layout-7),
-	// ('xxxl', $layout-8),
-	('none', $layout-0)
+	('xxs', tokens.$layout-1),
+	('xs', tokens.$layout-2),
+	('sm', tokens.$layout-3),
+	('md', tokens.$layout-4),
+	('lg', tokens.$layout-5),
+	// ('xl', tokens.$layout-6),
+	// ('xxl', tokens.$layout-7),
+	// ('xxxl', tokens.$layout-8),
+	('none', tokens.$layout-0)
 );
 
 @function sizeValue($key, $value) {
-	@return if($key == 'none', 0, $value);
+	@if $key == 'none' {
+		@return 0;
+	}
+
+	@return $value;
 }
 
 @each $size in $gap-sizes {
-	$sizeKey: nth($size, 1);
-	$sizeValue: nth($size, 2);
+	$sizeKey: list.nth($size, 1);
+	$sizeValue: list.nth($size, 2);
 
 	// .<property>-<value>
 	.gap#{$separator}#{$sizeKey} {
@@ -26,10 +34,10 @@ $gap-sizes: (
 	}
 }
 
-@include tablet {
+@include mixins.tablet {
 	@each $size in $gap-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		$sizeKey: list.nth($size, 1);
+		$sizeValue: list.nth($size, 2);
 
 		.gap#{$separator}#{$sizeKey}#{$separator}tablet {
 			gap: $sizeValue !important;
@@ -37,10 +45,10 @@ $gap-sizes: (
 	}
 }
 
-@include desktop {
+@include mixins.desktop {
 	@each $size in $gap-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		$sizeKey: list.nth($size, 1);
+		$sizeValue: list.nth($size, 2);
 
 		.gap#{$separator}#{$sizeKey}#{$separator}desktop {
 			gap: $sizeValue !important;
@@ -48,10 +56,10 @@ $gap-sizes: (
 	}
 }
 
-@include widescreen {
+@include mixins.widescreen {
 	@each $size in $gap-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		$sizeKey: list.nth($size, 1);
+		$sizeValue: list.nth($size, 2);
 
 		.gap#{$separator}#{$sizeKey}#{$separator}widescreen {
 			gap: $sizeValue !important;

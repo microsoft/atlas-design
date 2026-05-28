@@ -1,3 +1,7 @@
+@use 'sass:list';
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 $separator: '-' !default;
 $logical-spacing-properties: (
 	('margin', 'margin'),
@@ -17,30 +21,34 @@ $logical-spacing-properties: (
 ) !default;
 
 $layout-sizes: (
-	('xxs', $layout-1),
-	('xs', $layout-2),
-	('sm', $layout-3),
-	('md', $layout-4),
-	('lg', $layout-5),
-	('xl', $layout-6),
-	('xxl', $layout-7),
-	('xxxl', $layout-8),
-	('none', $layout-0)
+	('xxs', tokens.$layout-1),
+	('xs', tokens.$layout-2),
+	('sm', tokens.$layout-3),
+	('md', tokens.$layout-4),
+	('lg', tokens.$layout-5),
+	('xl', tokens.$layout-6),
+	('xxl', tokens.$layout-7),
+	('xxxl', tokens.$layout-8),
+	('none', tokens.$layout-0)
 );
 
 @function sizeValue($key, $value) {
-	@return if($key == 'none', 0, $value);
+	@if $key == 'none' {
+		@return 0;
+	}
+
+	@return $value;
 }
 
 // Pattern: <cssproperty>-<value>-<screen>
 
 @each $property in $logical-spacing-properties {
-	$classicProp: nth($property, 1);
-	$logicalProp: nth($property, 2);
+	$classicProp: list.nth($property, 1);
+	$logicalProp: list.nth($property, 2);
 
 	@each $size in $layout-sizes {
-		$sizeKey: nth($size, 1);
-		$sizeValue: nth($size, 2);
+		$sizeKey: list.nth($size, 1);
+		$sizeValue: list.nth($size, 2);
 
 		// .<property>-<value>
 		.#{$classicProp}#{$separator}#{$sizeKey} {
@@ -49,14 +57,14 @@ $layout-sizes: (
 	}
 }
 
-@include tablet {
+@include mixins.tablet {
 	@each $property in $logical-spacing-properties {
-		$classicProp: nth($property, 1);
-		$logicalProp: nth($property, 2);
+		$classicProp: list.nth($property, 1);
+		$logicalProp: list.nth($property, 2);
 
 		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
+			$sizeKey: list.nth($size, 1);
+			$sizeValue: list.nth($size, 2);
 
 			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}tablet {
 				#{$logicalProp}: $sizeValue !important;
@@ -65,14 +73,14 @@ $layout-sizes: (
 	}
 }
 
-@include desktop {
+@include mixins.desktop {
 	@each $property in $logical-spacing-properties {
-		$classicProp: nth($property, 1);
-		$logicalProp: nth($property, 2);
+		$classicProp: list.nth($property, 1);
+		$logicalProp: list.nth($property, 2);
 
 		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
+			$sizeKey: list.nth($size, 1);
+			$sizeValue: list.nth($size, 2);
 
 			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}desktop {
 				#{$logicalProp}: $sizeValue !important;
@@ -81,14 +89,14 @@ $layout-sizes: (
 	}
 }
 
-@include widescreen {
+@include mixins.widescreen {
 	@each $property in $logical-spacing-properties {
-		$classicProp: nth($property, 1);
-		$logicalProp: nth($property, 2);
+		$classicProp: list.nth($property, 1);
+		$logicalProp: list.nth($property, 2);
 
 		@each $size in $layout-sizes {
-			$sizeKey: nth($size, 1);
-			$sizeValue: nth($size, 2);
+			$sizeKey: list.nth($size, 1);
+			$sizeValue: list.nth($size, 2);
 
 			.#{$classicProp}#{$separator}#{$sizeKey}#{$separator}widescreen {
 				#{$logicalProp}: $sizeValue !important;

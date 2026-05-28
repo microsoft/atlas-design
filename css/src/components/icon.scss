@@ -17,4 +17,10 @@ $icon-dimensions: 1em !default;
 		padding: 0.6rem; // ensures icon is not cut off by rounded border
 		border-radius: 50%;
 	}
+
+	&.icon-mirrored-rtl {
+		&:dir(rtl) {
+			scale: -1 1;
+		}
+	}
 }

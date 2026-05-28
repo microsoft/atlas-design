@@ -1,10 +1,12 @@
+@use '../tokens/index.scss' as tokens;
+
 .media {
 	display: flex;
 	align-items: flex-start;
 
 	+ .media,
 	.media {
-		border-block-start: 1px solid $border;
+		border-block-start: 1px solid tokens.$border;
 		margin-block-start: 1rem;
 		padding-block-start: 1rem;
 	}

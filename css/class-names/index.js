@@ -3,7 +3,7 @@
  */
 
 // @ts-nocheck
-const fs = require('fs-extra');
+const { access, readFile, writeFile, mkdir } = require('fs/promises');
 const path = require('path');
 const atlasTokens = require('../dist/tokens.json');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
@@ -82,7 +82,9 @@ async function createClassNameReferences() {
 
 	const indexPath = path.resolve(filePathStem, '../../dist/index.css');
 
-	if (!(await fs.pathExists(indexPath))) {
+	try {
+		await access(indexPath);
+	} catch {
 		throw new Error(
 			`Index file not found at "${indexPath}". Cannot generate class name references.`
 		);
@@ -90,10 +92,10 @@ async function createClassNameReferences() {
 
 	const classnames = {};
 	const collection = {};
-	const textContents = await fs.readFile(indexPath, 'utf8');
+	const textContents = await readFile(indexPath, 'utf8');
 
 	const cssAST = csstree.parse(textContents);
-	await fs.ensureDir(outfilePath);
+	await mkdir(outfilePath, { recursive: true });
 
 	// await fs.writeJSON(`${outfileStem}-ast.json`, cssAST); // debugging
 
@@ -204,10 +206,10 @@ async function createClassNameReferences() {
 
 	try {
 		console.log(orderedArray.length, 'class names found. Generating a file with their names.');
-		await fs.ensureDir(outfilePath);
+		await mkdir(outfilePath, { recursive: true });
 		await Promise.all([
-			fs.writeJSON(`${outfileStem}.json`, classes),
-			// fs.writeJSON(`${outfileStem}-test.json`, collection), // debugging
+			writeFile(`${outfileStem}.json`, JSON.stringify(classes)),
+			// writeFile(`${outfileStem}-test.json`, JSON.stringify(collection)), // debugging
 
 			quicktypeJSON(
 				'AtlasClassNames',
@@ -249,7 +251,7 @@ async function quicktypeJSON(typeName, jsonString, outfile, targetLanguage = 'ty
 		inputData,
 		lang: targetLanguage
 	});
-	return fs.writeFile(outfile, result.lines.join('\n'));
+	return writeFile(outfile, result.lines.join('\n'));
 }
 
 function namestartsWithColorProp(name) {

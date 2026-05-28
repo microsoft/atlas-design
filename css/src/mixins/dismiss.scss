@@ -1,5 +1,8 @@
+@use '../tokens/index.scss' as tokens;
+@use './transparency.scss' as transparency;
+
 %dismiss {
-	@include transparent-effects;
+	@include transparency.transparent-effects;
 
 	display: inline-block;
 	color: currentColor;
@@ -18,5 +21,5 @@
 	height: 1em;
 	padding: 0;
 	border: 0;
-	border-radius: $border-radius-rounded;
+	border-radius: tokens.$border-radius-rounded;
 }

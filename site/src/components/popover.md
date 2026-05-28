@@ -54,6 +54,7 @@ You can apply almost any class on the `summary` element to achieve the look you 
 ```html
 <details class="popover">
 	<summary class="button border">
+		<span class="visually-hidden">Example button</span>
 		<span class="icon color-primary">
 			<svg class="fill-current-color" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
 				<path

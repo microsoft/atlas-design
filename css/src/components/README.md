@@ -12,16 +12,6 @@ There are a few things to think about when adding a new component, though none o
 - Modifier classes on the main class are also fine.
 - Seek to nest only two levels deep, three at most.
 
-## Direction
-
-When horizontal (inline) direction is important to a component, the user's text direction should be interpolated into the appropriate place(s). This guidance will be updated after Atlas moves to logical properties for direction related styles. See below for an example of how that is
-
-```scss
-.thing-with-side-border {
-	border-#{$user-left}: 1px solid magenta;
-}
-```
-
 ## Class nomenclature within components
 
 The component name itself should be a noun or noun-phrase. Endeavor to choose the shortest applicable word or series of words that best describes the component. Modifiers on a particular component should contain the top level component within the class name. State based class modifiers will follow a different convention, and be prefixed with `is-`.

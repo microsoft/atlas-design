@@ -3,16 +3,25 @@ const layoutsClasses = [
 	'layout-twin',
 	'layout-holy-grail',
 	'layout-sidecar-left',
-	'layout-sidecar-right',
-	'layout-twin'
+	'layout-sidecar-right'
 ];
 
-// A function that removes all classes that begin with layout- on the html element
+// A function that removes all layout classes and sets the new one
 function setLayoutClass(layoutToSet: string) {
 	for (const layoutClass of layoutsClasses) {
 		document.documentElement.classList.remove(layoutClass);
 	}
 	document.documentElement.classList.add(layoutToSet);
+}
+
+// A function that removes all layout classes and sets the new one
+function getCurrentLayoutClass() {
+	for (const layoutClass of layoutsClasses) {
+		if (document.documentElement.classList.contains(layoutClass)) {
+			return layoutClass;
+		}
+	}
+	throw new Error('No layout class present on HTML element');
 }
 
 export function initLayoutPageControls() {
@@ -34,6 +43,22 @@ export function initLayoutPageControls() {
 		}
 
 		safeViewTransition(() => {
+			if (!menuCollapseBehaviorAllowed(layoutToSet)) {
+				const collapseTrigger = document.querySelector(
+					'[data-menu-collapse-toggle]'
+				) as HTMLButtonElement;
+				if (collapseTrigger) {
+					handleMenuCollapse(collapseTrigger, false);
+				}
+			}
+			if (!asideCollapseBehaviorAllowed(layoutToSet)) {
+				const collapseTrigger = document.querySelector(
+					'[data-aside-collapse-toggle]'
+				) as HTMLButtonElement;
+				if (collapseTrigger) {
+					handleAsideCollapse(collapseTrigger, false);
+				}
+			}
 			setLayoutClass(layoutToSet);
 			scrollTo({ behavior: 'instant', top: target.getBoundingClientRect().top - 200 });
 			const setThemeButtons = Array.from(document.querySelectorAll('[data-set-layout]'));
@@ -71,7 +96,62 @@ export function initLayoutPageControls() {
 		window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
 	});
 
-	//
+	// Menu collapse behavior
+	window.addEventListener('click', (e: MouseEvent) => {
+		const trigger =
+			e.target instanceof Element &&
+			(e.target.closest('[data-menu-collapse-toggle]') as HTMLElement);
+		if (!trigger) {
+			return;
+		}
+
+		const currentLayout = getCurrentLayoutClass();
+		if (!menuCollapseBehaviorAllowed(currentLayout)) {
+			return;
+		}
+
+		const isCollapsed = document.documentElement.classList.contains('layout-menu-collapsed');
+		safeViewTransition(() => {
+			handleMenuCollapse(trigger, !isCollapsed);
+		});
+	});
+
+	// Aside collapse behavior
+	window.addEventListener('click', (e: MouseEvent) => {
+		const trigger =
+			e.target instanceof Element &&
+			(e.target.closest('[data-aside-collapse-toggle]') as HTMLElement);
+		if (!trigger) {
+			return;
+		}
+
+		const currentLayout = getCurrentLayoutClass();
+		if (!asideCollapseBehaviorAllowed(currentLayout)) {
+			return;
+		}
+
+		const isCollapsed = document.documentElement.classList.contains('layout-aside-collapsed');
+		safeViewTransition(() => {
+			handleAsideCollapse(trigger, !isCollapsed);
+		});
+	});
+
+	// collapse only button
+	window.addEventListener('click', (e: MouseEvent) => {
+		const target =
+			e.target instanceof Element &&
+			(e.target.closest('[data-menu-collapse-only-trigger]') as HTMLElement);
+		if (!target) {
+			return;
+		}
+		const toggleButton = document.querySelector('[data-menu-collapse-toggle]') as HTMLElement;
+		if (!toggleButton) {
+			throw new Error('Menu collapse toggle button not found in the document');
+		}
+		safeViewTransition(() => {
+			handleMenuCollapse(toggleButton, false);
+		});
+	});
 
 	window.addEventListener('click', (e: MouseEvent) => {
 		const target =
@@ -140,10 +220,44 @@ declare global {
 	}
 }
 
+function handleMenuCollapse(trigger: HTMLElement, shouldCollapse: boolean) {
+	const method: 'add' | 'remove' = shouldCollapse ? 'add' : 'remove';
+	// eslint-disable-next-line security/detect-object-injection
+	trigger.classList[method]('button-filled');
+	trigger.setAttribute('aria-expanded', String(!shouldCollapse));
+	// eslint-disable-next-line security/detect-object-injection
+	document.documentElement.classList[method]('layout-menu-collapsed');
+
+	window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+}
+
 function safeViewTransition(cb: () => void) {
 	if (!document.startViewTransition) {
 		cb();
 	} else {
 		document.startViewTransition(() => cb());
 	}
+}
+
+function handleAsideCollapse(trigger: HTMLElement, shouldCollapse: boolean) {
+	const method: 'add' | 'remove' = shouldCollapse ? 'add' : 'remove';
+	// eslint-disable-next-line security/detect-object-injection
+	trigger.classList[method]('button-filled');
+	trigger.setAttribute('aria-expanded', String(!shouldCollapse));
+	// eslint-disable-next-line security/detect-object-injection
+	document.documentElement.classList[method]('layout-aside-collapsed');
+
+	window.dispatchEvent(new CustomEvent('atlas-layout-change-event'));
+}
+
+function menuCollapseBehaviorAllowed(layoutClass: string) {
+	return layoutClass === 'layout-holy-grail' || layoutClass === 'layout-sidecar-left';
+}
+
+function asideCollapseBehaviorAllowed(layoutClass: string) {
+	return (
+		layoutClass === 'layout-holy-grail' ||
+		layoutClass === 'layout-sidecar-right' ||
+		layoutClass === 'layout-twin'
+	);
 }

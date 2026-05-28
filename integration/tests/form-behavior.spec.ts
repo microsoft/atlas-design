@@ -1,8 +1,13 @@
 import AxeBuilder from '@axe-core/playwright';
 import { test as base, expect } from '@playwright/test';
+import type { Locator } from '@playwright/test';
+interface FormBehaviorFixtures {
+	errorContainer: Locator;
+	submitBtn: Locator;
+}
 
 // form validation fixture
-export const test = base.extend({
+export const test = base.extend<FormBehaviorFixtures>({
 	page: async ({ page }, use) => {
 		await page.goto('/components/form.html');
 		await use(page);
@@ -162,5 +167,236 @@ test.describe('form behavior validation', () => {
 			.include('#sample-form-complex [data-form-error-container]')
 			.analyze();
 		expect(accessibilityScanResults.violations).toEqual([]);
+	});
+});
+
+test.describe('form behavior - submission error handling', () => {
+	// Helper to fill form with valid data using JavaScript
+	async function fillFormWithValidData(page: any) {
+		await page.evaluate(() => {
+			(document.querySelector('#sample-form-complex') as HTMLFormElement)?.setAttribute(
+				'data-test-allow-default-action',
+				''
+			);
+			(document.querySelector('#sample-input') as HTMLInputElement).value = 'Test Input';
+			(document.querySelector('#sample-input-min') as HTMLInputElement).value = 'Lorem ipsum';
+			(document.querySelector('#sample-text-area') as HTMLTextAreaElement).value =
+				'Lorem ipsum dolor sit amet';
+			(document.querySelector('#question-id-1') as HTMLInputElement).checked = true;
+			(document.querySelector('#sample-checkbox') as HTMLInputElement).checked = true;
+			(document.querySelector('#sample-multi-checkbox-2') as HTMLInputElement).checked = true;
+		});
+	}
+
+	test('show notAuthenticated message when form action returns 401', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		await fillFormWithValidData(page);
+
+		// Intercept fetch and return 401 response
+		await page.route('**/*', route => {
+			if (route.request().method() === 'POST') {
+				route.fulfill({
+					status: 401,
+					body: JSON.stringify({ error: 'Unauthorized' })
+				});
+				return;
+			}
+			route.continue();
+		});
+
+		await submitBtn.click();
+
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText('You are not authenticated');
+	});
+
+	test('show notAuthorized message when form action returns 403', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		await fillFormWithValidData(page);
+
+		await page.route('**/*', route => {
+			if (route.request().method() === 'POST') {
+				route.fulfill({
+					status: 403,
+					body: JSON.stringify({ error: 'Forbidden' })
+				});
+				return;
+			}
+			route.continue();
+		});
+
+		await submitBtn.click();
+
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText('You are not authorized');
+	});
+
+	test('show contentHasChanged message when form action returns 412', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		await fillFormWithValidData(page);
+
+		await page.route('**/*', route => {
+			if (route.request().method() === 'POST') {
+				route.fulfill({
+					status: 412,
+					body: JSON.stringify({ error: 'Precondition Failed' })
+				});
+				return;
+			}
+			route.continue();
+		});
+
+		await submitBtn.click();
+
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText('Content has changed');
+	});
+
+	test('show tooManyRequests message when form action returns 429', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		await fillFormWithValidData(page);
+
+		await page.route('**/*', route => {
+			if (route.request().method() === 'POST') {
+				route.fulfill({
+					status: 429,
+					body: JSON.stringify({ error: 'Too Many Requests' })
+				});
+				return;
+			}
+			route.continue();
+		});
+
+		await submitBtn.click();
+
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText('too many requests');
+	});
+
+	test('show generic error message for other error responses', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		await fillFormWithValidData(page);
+
+		await page.route('**/*', route => {
+			if (route.request().method() === 'POST') {
+				route.fulfill({
+					status: 500,
+					body: JSON.stringify({ error: 'Internal Server Error' })
+				});
+				return;
+			}
+			route.continue();
+		});
+
+		await submitBtn.click();
+
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText('We encountered an unexpected error');
+	});
+
+	test('show generic error message when fetch throws an error', async ({
+		page,
+		errorContainer,
+		submitBtn
+	}) => {
+		await fillFormWithValidData(page);
+
+		// Mock fetch to throw an error
+		await page.route('**/*', route => {
+			if (route.request().method() === 'POST') {
+				route.abort('failed');
+				return;
+			}
+			route.continue();
+		});
+
+		await submitBtn.click();
+
+		expect(errorContainer).toBeVisible();
+		expect(errorContainer).toContainText('Please fix the following issues to continue:');
+		expect(errorContainer).toContainText('We encountered an unexpected error');
+	});
+
+	test('dispatch submission-error event on failed response', async ({ page, submitBtn }) => {
+		await fillFormWithValidData(page);
+
+		// Listen for submission-error event
+		const submissionErrorPromise = page.evaluate(() => {
+			return new Promise(resolve => {
+				document.querySelector('form-behavior')?.addEventListener('submission-error', (e: any) => {
+					resolve({
+						hasRequest: !!e.detail.request,
+						hasResponse: !!e.detail.response,
+						hasForm: !!e.detail.form
+					});
+				});
+			});
+		});
+
+		await page.route('**/*', route => {
+			if (route.request().method() === 'POST') {
+				route.fulfill({
+					status: 400,
+					body: JSON.stringify({ error: 'Bad Request' })
+				});
+				return;
+			}
+			route.continue();
+		});
+
+		await submitBtn.click();
+
+		const eventDetail = await submissionErrorPromise;
+		expect(eventDetail).toEqual({ hasRequest: true, hasResponse: true, hasForm: true });
+	});
+
+	test('dispatch submission-error event on network error', async ({ page, submitBtn }) => {
+		await fillFormWithValidData(page);
+
+		// Listen for submission-error event
+		const submissionErrorPromise = page.evaluate(() => {
+			return new Promise(resolve => {
+				document.querySelector('form-behavior')?.addEventListener('submission-error', (e: any) => {
+					resolve({
+						hasRequest: !!e.detail.request,
+						hasResponse: !!e.detail.response,
+						hasForm: !!e.detail.form
+					});
+				});
+			});
+		});
+
+		await page.route('**/*', route => {
+			if (route.request().method() === 'POST') {
+				route.abort('failed');
+				return;
+			}
+			route.continue();
+		});
+
+		await submitBtn.click();
+
+		const eventDetail = await submissionErrorPromise;
+		expect(eventDetail).toEqual({ hasRequest: true, hasResponse: false, hasForm: true });
 	});
 });

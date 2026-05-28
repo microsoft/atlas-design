@@ -45,7 +45,7 @@ Use breadcrumbs to show navigation from the current location to less specific lo
 
 ## Representing the current location
 
-The final item representing the current page is omitted in the default example. If for some reason it must be included add `.breadcrumbs-item-slashless` to the final item to remove slash along with `aria-current="page"` attribute and wrap it into `span` instead of an `anchor` tag.
+The final item representing the current page is omitted in the default example. If for some reason it must be included add `.breadcrumbs-item-current` to the final item along with `aria-current="page"` attribute and wrap it into a `span` instead of an `anchor` tag. This will remove the separator and apply a semibold font weight to indicate the current page.
 
 ```html
 <nav aria-label="breadcrumb example highlighting current location">
@@ -56,23 +56,23 @@ The final item representing the current page is omitted in the default example. 
 		<li class="breadcrumbs-item">
 			<a href="#">Genus</a>
 		</li>
-		<li class="breadcrumbs-item breadcrumbs-item-slashless" aria-current="page">
+		<li class="breadcrumbs-item breadcrumbs-item-current" aria-current="page">
 			<span>Species</span>
 		</li>
 	</ol>
 </nav>
 ```
 
-## An initial slash
+## An initial chevron
 
-Some situations may require the inclusion of a slash previous the first breadcrumb item. If this is the case, you can achieve this with `.breadcrumbs.breadcrumbs-initial-slash`.
+Some situations may require the inclusion of a chevron before the first breadcrumb item. If this is the case, you can achieve this with `.breadcrumbs.breadcrumbs-initial-separator`.
 
-<nav class="margin-top-md" aria-label="breadcrumb example initial slash">
-	<ol class="breadcrumbs breadcrumbs-initial-slash">
+<nav class="margin-top-md" aria-label="breadcrumb example initial chevron">
+	<ol class="breadcrumbs breadcrumbs-initial-separator">
 		<li class="breadcrumbs-item">
 			<a href="#">Genus</a>
 		</li>
-		<li class="breadcrumbs-item breadcrumbs-item-slashless" aria-current="page">
+		<li class="breadcrumbs-item breadcrumbs-item-current" aria-current="page">
 			<span>Species</span>
 		</li>
 	</ol>

@@ -1,0 +1,130 @@
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes pulse-ring {
+	0% {
+		transform: translate(-50%, -50%) scale(0.95);
+		opacity: 1;
+	}
+	50% {
+		transform: translate(-50%, -50%) scale(1.05);
+		opacity: 0.7;
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(0.95);
+		opacity: 1;
+	}
+}
+
+@keyframes orbit {
+	from {
+		transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg);
+	}
+}
+
+.orbit {
+	font-size: 28px;
+	width: 16em;
+	height: 16em;
+
+	.orbit-ring {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		&.orbit-ring-1 {
+			width: 8em;
+			height: 8em;
+			animation: pulse-ring 4s ease-in-out infinite;
+		}
+
+		&.orbit-ring-2 {
+			width: 12em;
+			height: 12em;
+			animation: pulse-ring 4s ease-in-out infinite 0.5s;
+		}
+
+		&.orbit-ring-3 {
+			width: 16em;
+			height: 16em;
+			animation: pulse-ring 4s ease-in-out infinite 1s;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none !important;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	.orbit-center {
+		width: 4em;
+		height: 4em;
+		top: 50%;
+		left: 50%;
+		margin-top: -2em;
+		margin-left: -2em;
+		box-shadow: 0 0 2.4em rgba(0, 120, 212, 0.3);
+		animation: float 6s ease-in-out infinite;
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none !important;
+		}
+	}
+
+	.orbit-logo {
+		width: 2.56em;
+		height: 2.56em;
+		padding-bottom: 0.16em;
+	}
+
+	.orbit-dot {
+		width: 0.64em;
+		height: 0.64em;
+		border-radius: 50%;
+		background: currentColor;
+		top: 50%;
+		left: 50%;
+		margin: -0.32em 0 0 -0.32em;
+
+		&.orbit-dot-1 {
+			--orbit-radius: 4em;
+			animation: orbit 8s linear infinite;
+		}
+
+		&.orbit-dot-2 {
+			--orbit-radius: 6em;
+			animation: orbit 12s linear infinite reverse;
+		}
+
+		&.orbit-dot-3 {
+			--orbit-radius: 8em;
+			animation: orbit 16s linear infinite;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none !important;
+
+			&.orbit-dot-1 {
+				transform: translateX(4em);
+			}
+
+			&.orbit-dot-2 {
+				transform: translateY(-6em);
+			}
+
+			&.orbit-dot-3 {
+				transform: translateX(-8em);
+			}
+		}
+	}
+}

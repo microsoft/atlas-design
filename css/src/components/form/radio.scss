@@ -1,13 +1,16 @@
+@use '../../tokens/index.scss' as tokens;
+@use '../../mixins/index.scss' as mixins;
+
 $radio-circle-size: 1.25em !default;
 $radio-dot-size: 0.625em !default;
 $radio-shadow-radius: 0.15em !default;
-$radio-border-color: $control-border !default;
-$radio-border-width: $control-border-width !default;
-$radio-dot-checked-color: $primary !default;
-$radio-dot-color: $text-subtle !default;
-$radio-dot-hover-unchecked-color: $control-border !default;
-$radio-timing-function: $input-timing-function !default;
-$radio-duration: $input-transition-duration !default;
+$radio-border-color: tokens.$control-border !default;
+$radio-border-width: mixins.$control-border-width !default;
+$radio-dot-checked-color: tokens.$primary !default;
+$radio-dot-color: tokens.$text-subtle !default;
+$radio-dot-hover-unchecked-color: tokens.$control-border !default;
+$radio-timing-function: tokens.$input-timing-function !default;
+$radio-duration: tokens.$input-transition-duration !default;
 $radio-animation: boop !default;
 $radio-spacing: 0.5em !default;
 
@@ -17,14 +20,14 @@ $radio-spacing: 0.5em !default;
 	width: $radio-dot-size;
 	height: $radio-dot-size;
 	margin: auto;
-	border-radius: $border-radius-rounded;
+	border-radius: tokens.$border-radius-rounded;
 	content: '';
 	overflow: hidden;
 }
 
 @mixin radio-dot-checked {
 	background: $radio-dot-checked-color;
-	box-shadow: inset 0 0 0 $radio-shadow-radius $body-background;
+	box-shadow: inset 0 0 0 $radio-shadow-radius tokens.$body-background;
 }
 
 .radio {
@@ -40,13 +43,13 @@ $radio-spacing: 0.5em !default;
 		width: $radio-circle-size;
 		height: $radio-circle-size;
 		border: $radio-border-width solid $radio-border-color;
-		border-radius: $border-radius-rounded;
-		background-color: $body-background;
+		border-radius: tokens.$border-radius-rounded;
+		background-color: tokens.$body-background;
 		color: $radio-dot-color;
 		cursor: pointer;
 		appearance: none;
 
-		@include forced-colors {
+		@include mixins.forced-colors {
 			border-color: CanvasText !important;
 			background-color: unset !important;
 
@@ -67,7 +70,7 @@ $radio-spacing: 0.5em !default;
 			@extend %focus;
 		}
 
-		@include focus-visible {
+		@include mixins.focus-visible {
 			@extend %focus;
 		}
 	}
@@ -80,7 +83,7 @@ $radio-spacing: 0.5em !default;
 		animation: $radio-animation $radio-duration $radio-timing-function 1;
 		border-color: $radio-dot-checked-color;
 
-		@include forced-colors {
+		@include mixins.forced-colors {
 			border-color: CanvasText !important;
 			background-color: unset !important;
 			box-shadow: none !important;
@@ -95,9 +98,9 @@ $radio-spacing: 0.5em !default;
 	&:hover {
 		.radio-dot:not(:checked):not([disabled]) {
 			background: $radio-dot-hover-unchecked-color;
-			box-shadow: inset 0 0 0 $radio-shadow-radius $body-background;
+			box-shadow: inset 0 0 0 $radio-shadow-radius tokens.$body-background;
 
-			@include forced-colors {
+			@include mixins.forced-colors {
 				background-color: unset !important;
 				box-shadow: none !important;
 

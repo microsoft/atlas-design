@@ -1,3 +1,6 @@
+@use 'sass:list';
+@use '../mixins/index.scss' as mixins;
+
 $auto-spacing-properties: (
 	('margin-inline', 'margin-inline'),
 	('margin-left', 'margin-inline-start'),
@@ -8,8 +11,8 @@ $auto-spacing-properties: (
 $separator: '-';
 
 @each $property in $auto-spacing-properties {
-	$classicProp: nth($property, 1);
-	$logicalProp: nth($property, 2);
+	$classicProp: list.nth($property, 1);
+	$logicalProp: list.nth($property, 2);
 
 	// .<property>-auto
 	.#{$classicProp}#{$separator}auto {
@@ -19,10 +22,10 @@ $separator: '-';
 
 // .<property>-auto-<screensize>
 @each $property in $auto-spacing-properties {
-	$classicProp: nth($property, 1);
-	$logicalProp: nth($property, 2);
+	$classicProp: list.nth($property, 1);
+	$logicalProp: list.nth($property, 2);
 
-	@include tablet {
+	@include mixins.tablet {
 		.#{$classicProp}#{$separator}auto#{$separator}tablet {
 			#{$logicalProp}: auto !important;
 		}
@@ -30,10 +33,10 @@ $separator: '-';
 }
 
 @each $property in $auto-spacing-properties {
-	$classicProp: nth($property, 1);
-	$logicalProp: nth($property, 2);
+	$classicProp: list.nth($property, 1);
+	$logicalProp: list.nth($property, 2);
 
-	@include desktop {
+	@include mixins.desktop {
 		.#{$classicProp}#{$separator}auto#{$separator}desktop {
 			#{$logicalProp}: auto !important;
 		}
@@ -41,10 +44,10 @@ $separator: '-';
 }
 
 @each $property in $auto-spacing-properties {
-	$classicProp: nth($property, 1);
-	$logicalProp: nth($property, 2);
+	$classicProp: list.nth($property, 1);
+	$logicalProp: list.nth($property, 2);
 
-	@include widescreen {
+	@include mixins.widescreen {
 		.#{$classicProp}#{$separator}auto#{$separator}widescreen {
 			#{$logicalProp}: auto !important;
 		}

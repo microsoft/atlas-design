@@ -1,11 +1,14 @@
-$accordion-font-size-sm: $font-size-9 !default;
-$accordion-font-size-md: $font-size-8 !default;
-$accordion-font-size-lg: $font-size-7 !default;
-$accordion-font-size-xl: $font-size-6 !default;
-$accordion-font-size-xxl: $font-size-5 !default;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
 
-$accordion-gap: $layout-2 !default;
-$accordion-spacing: $spacer-4 !default;
+$accordion-font-size-sm: tokens.$font-size-9 !default;
+$accordion-font-size-md: tokens.$font-size-8 !default;
+$accordion-font-size-lg: tokens.$font-size-7 !default;
+$accordion-font-size-xl: tokens.$font-size-6 !default;
+$accordion-font-size-xxl: tokens.$font-size-5 !default;
+
+$accordion-gap: tokens.$layout-2 !default;
+$accordion-spacing: tokens.$spacer-4 !default;
 $accordion-transition: transform 0.15s !default;
 
 // Spacing and font-size
@@ -59,48 +62,49 @@ $accordion-transition: transform 0.15s !default;
 
 	&:not(.accordion-icon-end) {
 		summary::before {
-			@include chevron-right;
+			@include mixins.chevron-right;
 
 			transition: $accordion-transition;
 		}
 
 		&:dir(rtl) summary::before {
-			@include chevron-right-rtl;
+			@include mixins.chevron-right-rtl;
 		}
 	}
 
 	&.accordion-icon-end {
 		summary::after {
-			@include chevron-down;
+			@include mixins.chevron-down;
 
 			transition: $accordion-transition;
 		}
 
 		&:dir(rtl) summary::after {
-			@include chevron-down-rtl;
+			@include mixins.chevron-down-rtl;
 		}
 	}
 
 	&[open] {
 		&:not(.accordion-icon-end) {
 			summary::before {
-				transform: $chevron-down-rotate translate(calc($chevron-arrow-size / 2), 0);
+				transform: mixins.$chevron-down-rotate translate(calc(mixins.$chevron-arrow-size / 2), 0);
 			}
 
 			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
 			&:dir(rtl) summary::before {
-				transform: $chevron-down-rotate-rtl translate(calc($chevron-arrow-size / 2 * -1), 0);
+				transform: mixins.$chevron-down-rotate-rtl
+					translate(calc(mixins.$chevron-arrow-size / 2 * -1), 0);
 			}
 		}
 
 		&.accordion-icon-end {
 			summary::after {
-				transform: $chevron-up-rotate-scale-xy;
+				transform: mixins.$chevron-up-rotate-scale-xy;
 			}
 
 			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
 			&:dir(rtl) summary::after {
-				transform: $chevron-up-rotate-scale-xy-rtl;
+				transform: mixins.$chevron-up-rotate-scale-xy-rtl;
 			}
 		}
 	}

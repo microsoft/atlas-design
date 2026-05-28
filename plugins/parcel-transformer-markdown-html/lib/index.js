@@ -29,16 +29,14 @@ let filterIds = 0;
 function createFilterableCodeBlock(code, language, displayName) {
 	filterIds++;
 	return `
-	<div class="code-block margin-top-xs min-height-30vh">
+	<div class="code-block margin-top-xs">
 		<div class="code-block-header">
 			<span class="code-block-header-language" data-hljs-language="${language}">${displayName}</span>
-			<input
-			class="code-block-header-filter align-self-center"
-			data-code-filter-input="${filterIds}"
-			placeholder="Filter ..."
-			type="search" />
+			<div class="code-block-header-action-bar">
+				<input id="filter" class="input code-block-header-filter" data-code-filter-input="${filterIds}" placeholder="Filter ..." type="search" />
+			</div>
 		</div>
-		<div class="code-block-body max-height-30vh overflow-y-scroll inner-focus" data-focusable-if-scrollable>
+		<div class="code-block-body max-height-30vh inner-focus" data-focusable-if-scrollable>
 			<pre><code data-code-filter-code="${filterIds}">${code}</code></pre>
 		</div>
 	</div>`;

@@ -1,9 +1,12 @@
-$card-color: $text !default;
-$card-shadow: $box-shadow-light;
-$card-padding: $spacer-5;
-$card-border-radius: $border-radius-sm;
-$card-row-gap: $spacer-3 !default;
-$card-column-gap: $spacer-5 !default;
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
+$card-color: tokens.$text !default;
+$card-shadow: tokens.$box-shadow-light;
+$card-padding: tokens.$spacer-5;
+$card-border-radius: tokens.$border-radius-sm;
+$card-row-gap: tokens.$spacer-3 !default;
+$card-column-gap: tokens.$spacer-5 !default;
 
 .card {
 	display: flex;
@@ -12,10 +15,10 @@ $card-column-gap: $spacer-5 !default;
 	justify-content: flex-start;
 	max-width: 100%;
 	padding: $card-padding 0 0;
-	border: 1px solid $border-white-high-contrast;
+	border: 1px solid tokens.$border-white-high-contrast;
 	border-radius: $card-border-radius;
-	outline-color: $text;
-	background-color: $card-background;
+	outline-color: tokens.$text;
+	background-color: tokens.$card-background;
 	color: $card-color;
 	box-shadow: $card-shadow;
 
@@ -33,7 +36,7 @@ $card-column-gap: $spacer-5 !default;
 		display: grid;
 		flex-grow: 1;
 		padding: $card-padding;
-		grid-template: auto / 1fr $spacer-10;
+		grid-template: auto / 1fr tokens.$spacer-10;
 		gap: $card-row-gap $card-column-gap;
 		grid-template-areas:
 			'supertitle supertitle'
@@ -43,15 +46,15 @@ $card-column-gap: $spacer-5 !default;
 		/* stylelint-disable no-descending-specificity */
 
 		.card-title {
-			margin-block-end: $spacer-5;
+			margin-block-end: tokens.$spacer-5;
 		}
 	}
 
 	.card-template-icon {
 		margin-block-start: auto;
 		grid-area: icon;
-		width: $spacer-10;
-		height: $spacer-10;
+		width: tokens.$spacer-10;
+		height: tokens.$spacer-10;
 	}
 
 	.card-template-detail {
@@ -59,7 +62,7 @@ $card-column-gap: $spacer-5 !default;
 		flex-direction: column;
 		align-self: stretch;
 		justify-content: flex-end;
-		font-size: $font-size-9;
+		font-size: tokens.$font-size-9;
 		line-height: 1.25;
 		grid-area: detail;
 	}
@@ -75,7 +78,7 @@ $card-column-gap: $spacer-5 !default;
 
 			img,
 			svg {
-				@include overlay;
+				@include mixins.overlay;
 
 				display: block;
 				width: 100%;
@@ -98,10 +101,10 @@ $card-column-gap: $spacer-5 !default;
 	// optional prescriptive inner elements
 
 	.card-supertitle {
-		@include line-clamp(1);
+		@include mixins.line-clamp(1);
 
-		font-size: $font-size-9;
-		letter-spacing: $letter-spacing-wide;
+		font-size: tokens.$font-size-9;
+		letter-spacing: tokens.$letter-spacing-wide;
 		line-height: 1;
 		text-transform: uppercase;
 		grid-area: supertitle;
@@ -110,15 +113,15 @@ $card-column-gap: $spacer-5 !default;
 	// includes some resets for <a> and <button>
 
 	.card-title {
-		@include line-clamp(3);
+		@include mixins.line-clamp(3);
 
 		flex-grow: 1;
 		margin: 0;
 		padding: 0;
 		border: none;
-		color: $primary;
-		font-size: $font-size-7;
-		font-weight: $weight-semibold;
+		color: tokens.$primary;
+		font-size: tokens.$font-size-7;
+		font-weight: tokens.$weight-semibold;
 		line-height: 1.25;
 		text-align: start;
 		text-decoration: none;
@@ -134,7 +137,7 @@ $card-column-gap: $spacer-5 !default;
 		}
 
 		&:visited {
-			color: $visited;
+			color: tokens.$visited;
 		}
 	}
 
@@ -156,11 +159,11 @@ $card-column-gap: $spacer-5 !default;
 	}
 
 	.card-content-description {
-		@include line-clamp(4);
+		@include mixins.line-clamp(4);
 
 		max-height: inherit;
 		padding-block-end: 0;
-		font-size: $font-size-8;
+		font-size: tokens.$font-size-8;
 		line-height: 1.25;
 	}
 
@@ -168,7 +171,7 @@ $card-column-gap: $spacer-5 !default;
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: space-between;
-		border-block-start: 1px solid $border;
+		border-block-start: 1px solid tokens.$border;
 		margin-inline: $card-padding;
 
 		// Artificial alignment of card item, intended for use on when there's only a single .card-footer-items
@@ -232,14 +235,14 @@ $card-column-gap: $spacer-5 !default;
 		}
 	}
 
-	@include tablet {
+	@include mixins.tablet {
 		&.card-horizontal {
 			flex-flow: row wrap;
 
 			.card-content {
 				padding-inline-start: 0;
 				max-width: calc(100% - 7rem);
-				padding-inline-end: $spacer-10 + $spacer-5;
+				padding-inline-end: tokens.$spacer-10 + tokens.$spacer-5;
 			}
 
 			.card-footer {

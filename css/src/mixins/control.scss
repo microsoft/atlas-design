@@ -1,8 +1,10 @@
-$control-radius: $border-radius !default;
+@use '../tokens/index.scss' as tokens;
 
-$control-font-size: $font-size-7 !default;
-$control-sm-font-size: $font-size-8 !default;
-$control-lg-font-size: $font-size-6 !default;
+$control-radius: tokens.$border-radius !default;
+
+$control-font-size: tokens.$font-size-7 !default;
+$control-sm-font-size: tokens.$font-size-8 !default;
+$control-lg-font-size: tokens.$font-size-6 !default;
 
 $control-border-width: 1px !default;
 

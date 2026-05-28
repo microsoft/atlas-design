@@ -18,6 +18,6 @@
 	},
 	"typescript.tsc.autoDetect": "off",
 	"github.copilot.enable": {
-		"*": false
+		"*": true
 	}
 }

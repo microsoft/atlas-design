@@ -1,14 +1,17 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 /*
  * For use on <button> elements to emulate the appearance of standard <a> tags.
 */
 
 .link-button {
-	@include transparent-effects;
+	@include mixins.transparent-effects;
 
 	display: inline-block;
 	padding: 0;
 	border: none;
-	color: $hyperlink;
+	color: tokens.$hyperlink;
 	cursor: pointer;
 
 	&:active,
@@ -19,16 +22,16 @@
 	&.is-focused,
 	&:hover,
 	&.is-hovered {
-		color: $primary-hover;
+		color: tokens.$primary-hover;
 		text-decoration: underline !important;
 	}
 
-	@include focus-visible {
-		color: $primary-hover;
+	@include mixins.focus-visible {
+		color: tokens.$primary-hover;
 		text-decoration: underline !important;
 	}
 
 	&:visited {
-		color: $visited;
+		color: tokens.$visited;
 	}
 }

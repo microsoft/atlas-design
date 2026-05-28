@@ -1,5 +1,143 @@
 # @microsoft/atlas-css
 
+## 6.7.0
+
+### Minor Changes
+
+- 3de44b6: Add `.tree` component for hierarchical navigation with expand/collapse, selected state, static variant, icon leaf layout, focus delegation, RTL support, and forced-colors accessibility. Documentation and examples added to the site.
+- 728cc69: Add state-based display helper classes for layout collapse states. When `layout-menu-collapsed` or `layout-aside-collapsed` is active on the `.layout` element, scoped display utilities (e.g., `.display-none-layout-menu-collapsed`, `.display-flex-layout-aside-collapsed`) allow toggling element visibility within those containers.
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+
+## 6.6.1
+
+### Patch Changes
+
+- a2f1537: update dark theme body-background-dark variable to be a little lighter, instead of black
+
+## 6.6.0
+
+### Minor Changes
+
+- 15b9034: Add icon-mirrored-rtl modifier to the .icon component. icon-mirrored-rtl flips an icon along its inline axis in RTL only.
+
+## 6.5.0
+
+### Minor Changes
+
+- 2be587c: Reading width component now uses a dedicated breakpoint token (`$breakpoint-reading-width-wide: 2000px`) instead of the global widescreen breakpoint (1800px).
+
+## 6.4.1
+
+### Patch Changes
+
+- 3609f36: Modify the sidebar specific breakpoints to be wider. Sidebars to scale to 450px wide at 2000px. Flyout active downscaling to start at 2500px screen width.
+
+## 6.4.0
+
+### Minor Changes
+
+- dd49a5a: Add `scrollbar-width-thin` atomic class for applying `scrollbar-width: thin` to scrollable elements.
+- 8a2fae5: Expand reading-width max width to 900px at the widescreen breakpoint.
+- bf09962: Adjust the maximum widths of sidebar elements on relevant layouts. The menu and aside elements will continue to have a default width of 275px, but scale up to 320px at 1500px, then 450px at 1800px wide. When the flyout is active and the screen width is below 2300px, each of those containers will scale down one step lower. For example, the `.layout-body-menu` at 1600px will decrease from 320px wide to 275px wide when the flyout is active. Added relevant documentation to the site.
+
+### Patch Changes
+
+- fc9f298: Button, input, textarea, select and site-header colors changed to reflect the change in the $body-background-medium variable.
+
+## 6.3.0
+
+### Minor Changes
+
+- 716ea7d: Breadcrumbs: replaced forward-slash separators with chevron icons, added hover background styling to links, added .breadcrumbs-item-current class for current page, added RTL support, and added .breadcrumbs-initial-separator alias. Button: switched button-clear hover background from hardcoded color to $default-hover-invert token. Tokens: added $palette-grey-245, adjusted dark theme hover-invert and background-selected values.
+
+## 6.2.0
+
+### Minor Changes
+
+- 6ac4765: Add back background-color-body-dark, as an alternative to the newer lighter medium variable that is #FAFAFA.
+
+## 6.1.0
+
+### Minor Changes
+
+- f069f56: Add `word-break-break-word` typography atomic for `word-break: break-word`.
+
+## 6.0.0
+
+### Major Changes
+
+- 866964c: Site header no longer applies extra padding on wide screens. This change matches the changes to layouts.
+- 866964c: Both the `.layout-body-menu` and `.layout-body-aside` have a narrower maximum width applied, circa 275px wide. These containers still scale down as required on narrower widths.
+- 866964c: Layouts no longer apply a maximum site width, instead elements are anchored to the sides of the screen regardless of scaling.
+- 866964c: The `.banner`, `.hero`, and `.site-header` components no longer have a maximum width applied on wide screen sizes. Pairs with changes made to the .layout class.
+- 866964c: To match layout changes that remove the site's max width, `.layout-margin` and `.layout-padding` classes have been updated, removing their larger, `calc`ed values that applied to widescreen.
+
+### Patch Changes
+
+- 035a1ea: Resolve Dart Sass deprecation warnings. `nth` to `list.nth`; `if(` to `@if `; `transparentize` to `color.adjust(color, alpha)`; `map-get` to `map.get`.
+- 866964c: Narrow the `.layout-body-menu`'s collapsed width significantly.
+
+## 5.2.0
+
+### Minor Changes
+
+- e4c3f65: Updated body-background-medium theme color to use #FAFAFA palette token.
+
+### Patch Changes
+
+- fbdf52e: Revert former change that reassigned font-size-6 to 1rem, since font-size-7 was already that value. Applies font-size-7 to h6s in `.markdown` class.
+
+## 5.1.0
+
+### Minor Changes
+
+- 15478c0: Add a new .reading-width class to help constrain content to a good recommended reading width.
+
+### Patch Changes
+
+- 27bcfc6: Reduce h2 and h6 typography token sizes by 2px and align markdown h6 to token sizing.
+- 15478c0: Adjust --layout-gap variable to use the correct mobile padding of 1rem (16px) to match header. Desktop and wider screens are unaffected.
+
+## 5.0.0
+
+### Major Changes
+
+- ea66303: Use at-rules should use namespaces to the degree possible.
+- bb5bef7: Update css build to use @use and @forward instead of @import.
+
+### Patch Changes
+
+- 9a47e84: Updating a few rules with their corresponding logical versions
+
+## 4.3.1
+
+### Patch Changes
+
+- 7f16a0b: Fixing issues with holy grail and sidecar left when flyout is active and menu is collapsed. Also fixes issues with menu collapsed widths.
+
+## 4.3.0
+
+### Minor Changes
+
+- c856959: Adds support for a new layout modifier .layout-menu-collapse which allows the Holy Grail and Sidecar Left layouts to collapse their left hand menu component.
+
+## 4.2.0
+
+### Minor Changes
+
+- 5f0abc7: Creating code-block component and adding relevant documentation
+- 124aeba: Add a .text-wrap-balance typography atomic
+- 58a83fd: Adding XXL size to non-heading font
+
+## 4.1.0
+
+### Minor Changes
+
+- 5c1544e: Updated dark mode theme colors: changed text from grey ($palette-grey-30-deprecated) to white ($palette-white) and body background from $palette-grey-270 to $palette-grey-280 for improved contrast and readability
+
 ## 4.0.0
 
 ### Major Changes

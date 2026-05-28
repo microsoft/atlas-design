@@ -1,3 +1,5 @@
+@use '../mixins/index.scss' as mixins;
+
 .overflow-hidden {
 	overflow: hidden !important;
 }
@@ -6,7 +8,7 @@
 	overflow-x: hidden !important;
 }
 
-@include tablet {
+@include mixins.tablet {
 	.overflow-hidden-tablet {
 		overflow: hidden !important;
 	}
@@ -14,6 +16,10 @@
 	.overflow-x-hidden-tablet {
 		overflow-x: hidden !important;
 	}
+}
+
+.scrollbar-width-thin {
+	scrollbar-width: thin !important;
 }
 
 .scrollbar-gutter-stable {

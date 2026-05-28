@@ -1,5 +1,17 @@
 # @microsoft/stylelint-config-atlas
 
+## 5.0.1
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+
+## 5.0.0
+
+### Major Changes
+
+- bb5bef7: Update css build to use @use and @forward instead of @import.
+
 ## 4.1.0
 
 ### Minor Changes

@@ -1,5 +1,17 @@
 # @microsoft/atlas-js
 
+## 1.15.2
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+
+## 1.15.1
+
+### Patch Changes
+
+- 9268637: Updating form behavior to catch unexpected errors in form's action
+
 ## 1.15.0
 
 ### Minor Changes

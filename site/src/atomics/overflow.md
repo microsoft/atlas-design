@@ -5,17 +5,19 @@ template: standard
 classType: Atomics
 classPrefixes:
   - overflow
+  - scrollbar-width
   - scrollbar-gutter
 ---
 
 # Overflow
 
-At times, you'll need to determine the overflow behavior of an element. Atlas provides several classes to do this.
+At times, you'll need to determine the overflow behavior of an element. Atlas provides several classes to do this. For directional scrolling containers and snap scroll patterns, see the [scroll component](~/src/components/scroll.md).
 
 | cssproperty        | value                         | screensize |
 | ------------------ | ----------------------------- | ---------- |
 | `overflow`         | `hidden`                      | `tablet`   |
 | `overflow-x`       | `hidden`                      | `tablet`   |
+| `scrollbar-width`  | `thin`                        |            |
 | `scrollbar-gutter` | `stable`, `stable-both-edges` |            |
 
 ## Usage
@@ -39,7 +41,7 @@ You can use `.overflow-x-hidden` to set the clipping behavior for the left/right
 ```html
 <div class="border-radius-lg">
 	<div class="">
-		<div class="overflow-x-hidden" style="width: 100px">
+		<div class="overflow-x-hidden" style="width: 100px" data-focusable-if-scrollable>
 			<p class="font-size-xl" style="width: 150px">
 				This text is clipped on its right edge because we gave the parent container overflow-hidden.
 			</p>
@@ -48,9 +50,29 @@ You can use `.overflow-x-hidden` to set the clipping behavior for the left/right
 </div>
 ```
 
+## Scrollbar width
+
+Use `.scrollbar-width-thin` to render a thinner scrollbar on elements with overflow. This is useful for reducing visual weight on scrollable containers where a full-size scrollbar feels heavy.
+
+```html
+<div
+	class="scrollbar-width-thin scroll-vertical max-height-30vh background-color-primary inner-focus"
+	data-focusable-if-scrollable
+	style="resize: vertical"
+>
+	<p class="color-success-invert font-size-xl margin-bottom">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+		labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+		laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+		voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+		non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>
+</div>
+```
+
 ## Scrollbar gutter
 
-When using automatic overflow, as with the [scrolling components](../components/scroll.md), the sudden appearance or disappearance of a container's scrollbar can cause the container's content to jump around. While this might be fine if the scrollbar appears or disappears as a result of the user zooming or resizing their browser, it can look clunky otherwise — such as when messages are appended to a constrained-width or constrained-height chat container, resulting in a scrollbar where there wasn't one previously.
+When using automatic overflow, as with the [scrolling components](~/src/components/scroll.md), the sudden appearance or disappearance of a container's scrollbar can cause the container's content to jump around. While this might be fine if the scrollbar appears or disappears as a result of the user zooming or resizing their browser, it can look clunky otherwise — such as when messages are appended to a constrained-width or constrained-height chat container, resulting in a scrollbar where there wasn't one previously.
 
 To see this default behavior, resize the below example until its scrollbar appears.
 

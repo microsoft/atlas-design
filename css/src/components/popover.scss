@@ -1,12 +1,15 @@
+@use '../tokens/index.scss' as tokens;
+@use '../mixins/index.scss' as mixins;
+
 /* stylelint-disable max-nesting-depth, selector-max-specificity  */
 
-$popover-background-color: $body-background !default;
-$popover-border: $border-width solid $border !default;
-$popover-border-radius: $border-radius !default;
-$popover-shadow: $box-shadow-heavy !default;
+$popover-background-color: tokens.$body-background !default;
+$popover-border: tokens.$border-width solid tokens.$border !default;
+$popover-border-radius: tokens.$border-radius !default;
+$popover-shadow: tokens.$box-shadow-heavy !default;
 $popover-width: 224px !default;
 
-$popover-chevron-color: $border !default;
+$popover-chevron-color: tokens.$border !default;
 
 .popover {
 	display: inline-block;
@@ -23,7 +26,7 @@ $popover-chevron-color: $border !default;
 	.popover-content {
 		position: absolute;
 		width: $popover-width;
-		padding: $spacer-5;
+		padding: tokens.$spacer-5;
 		transform: none;
 		inset-inline-start: 0;
 		border: $popover-border;
@@ -33,13 +36,13 @@ $popover-chevron-color: $border !default;
 
 		// hide popover until after position is calculated, then show
 		visibility: hidden;
-		z-index: $zindex-popover;
+		z-index: tokens.$zindex-popover;
 	}
 
 	&.popover-top {
 		.popover-content {
 			inset-block-end: 100%;
-			margin-block-end: $spacer-3;
+			margin-block-end: tokens.$spacer-3;
 		}
 	}
 
@@ -49,12 +52,12 @@ $popover-chevron-color: $border !default;
 			overflow: visible;
 
 			&::before {
-				@include chevron-up;
+				@include mixins.chevron-up;
 
 				position: absolute;
 				inset-inline-start: var(--caret-left, 50%);
 				inset-inline-end: auto;
-				inset-block-start: calc($chevron-arrow-size / -1.75);
+				inset-block-start: calc(mixins.$chevron-arrow-size / -1.75);
 				border-color: $popover-chevron-color;
 				background-color: $popover-background-color;
 				z-index: 2;
@@ -73,17 +76,17 @@ $popover-chevron-color: $border !default;
 	&.popover-caret.popover-caret-bottom {
 		.popover-content {
 			margin-block-start: 0;
-			margin-block-end: $spacer-3;
+			margin-block-end: tokens.$spacer-3;
 			overflow: visible;
 
 			&::before {
-				@include chevron-down;
+				@include mixins.chevron-down;
 
 				position: absolute;
 				inset-inline-start: var(--caret-left, 50%);
 				inset-inline-end: auto;
 				inset-block-start: auto;
-				inset-block-end: calc($chevron-arrow-size / -1.75);
+				inset-block-end: calc(mixins.$chevron-arrow-size / -1.75);
 				border-color: $popover-chevron-color;
 				background-color: $popover-background-color;
 				z-index: 2;

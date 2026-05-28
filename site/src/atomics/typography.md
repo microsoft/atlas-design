@@ -14,6 +14,7 @@ classPrefixes:
   - text-wrap
   - line-height
   - white-space
+  - word-break
 ---
 
 # Typography Atomics
@@ -22,16 +23,17 @@ The typography scale is designed for great readability across the platform. This
 
 | cssproperty       | value                                                            | screensize |
 | ----------------- | ---------------------------------------------------------------- | ---------- |
-| `font-size`       | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `xs`, `sm`, `md`, `lg`, `xl` | `tablet`   |
+| `font-size`       | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `xs`, `sm`, `md`, `lg`, `xl`, `xxl` | `tablet`   |
 | `font-weight`     | `semilight`, `light`, `normal`, `semibold` `bold`                | N\A        |
 | `font-style`      | `italic`                                                         | N\A        |
 | `text-decoration` | `underline`, `none`                                              | N\A        |
 | `letter-spacing`  | `wide`                                                           | N\A        |
 | `text-transform`  | `uppercase`                                                      | N\A        |
 | `text-align`      | `left`, `center`, `right`                                        | `tablet`   |
-| `text-wrap`       | `pretty`                                                         | N\A        |
+| `text-wrap`       | `pretty`, `balance`                                                         | N\A        |
 | `line-height`     | `normal`                                                         | N\A        |
 | `white-space`     | `normal`, `nowrap`, `pre`, `pre-wrap`                            | N\A        |
+| `word-break`      | `break-word`                                                     | N\A        |
 
 ## Font size
 
@@ -56,6 +58,7 @@ These sizes are tied to the default heading sizes renderer within the [markdown 
 The following classes targets text that are not headings.
 
 ```html
+<p class="font-size-xxl">Extra extra large text</p>
 <p class="font-size-xl">Extra large text</p>
 <p class="font-size-lg">Large text</p>
 <p class="font-size-md">Medium text</p>
@@ -132,9 +135,20 @@ If your browser supports pretty text-wrapping, resize your browser window and no
 </p>
 ```
 
-`.text-wrap-pretty` has two caveats:
+Use `.text-wrap-balance` to create more visually balanced line lengths, making a text block appear more uniform. 
 
-- **Support:** As of March 2024, [support is mainly available in Chromium browsers](https://caniuse.com/mdn-css_properties_text-wrap_pretty). Browsers which don't support this rule will ignore it and break lines as usual. Treat this as a progressive enhancement.
+If your browser supports balance text-wrapping, resize your browser window to view the differences between how these two paragraphs break. 
+
+```html
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+<p class="text-wrap-balance margin-top-xxs">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
+</p>
+```
+
+`.text-wrap-pretty` and `.text-wrap-balance` have two caveats:
+
+- **Support:** As of October 2024, [support is mainly available in Chromium browsers](https://caniuse.com/mdn-css_properties_text-wrap_pretty). Browsers which don't support this rule will ignore it and break lines as usual. Treat this as a progressive enhancement.
 - **Performance:** Calculating optimal line breaks can be expensive, especially for larger blocks of text. Use, but use sparingly.
 
 ## White space
@@ -147,5 +161,15 @@ For example, show white space:
 <p class="white-space-pre-wrap">
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 	labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+</p>
+```
+
+## Word break
+
+Use `.word-break-break-word` to allow long words to break between characters to prevent overflow. This is useful for content that may contain long, unbreakable strings such as URLs or file paths.
+
+```html
+<p class="word-break-break-word">
+	Thisisaverylongwordthatwillnotbreakwithoutthewordbreakbreakwordclasshttps://example.com/very/long/url/that/keeps/going/and/going
 </p>
 ```

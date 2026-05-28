@@ -1,8 +1,8 @@
-@import './label.scss';
-@import './help.scss';
-@import './checkbox.scss';
-@import './input.scss';
-@import './textarea.scss';
-@import './select.scss';
-@import './radio.scss';
-@import './form.scss';
+@forward './label.scss';
+@forward './help.scss';
+@forward './checkbox.scss';
+@forward './input.scss';
+@forward './textarea.scss';
+@forward './select.scss';
+@forward './radio.scss';
+@forward './form.scss';

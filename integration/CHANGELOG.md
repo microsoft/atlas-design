@@ -1,5 +1,11 @@
 # @microsoft/atlas-integration
 
+## 1.8.1
+
+### Patch Changes
+
+- 8cb23e3: Update dependencies.
+
 ## 1.8.0
 
 ### Minor Changes

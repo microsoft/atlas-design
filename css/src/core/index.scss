@@ -1,7 +1,7 @@
-@import './normalize.scss';
-@import './minireset.scss';
-@import './themes.scss';
-@import './font-stack.scss';
-@import './animations.scss';
-@import './focus.scss';
-@import './bare-elements.scss';
+@forward './normalize.scss';
+@forward './minireset.scss';
+@forward './themes.scss';
+@forward './font-stack.scss';
+@forward './animations.scss';
+@forward './focus.scss';
+@forward './bare-elements.scss';

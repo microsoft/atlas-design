@@ -1,16 +1,30 @@
-@import '@microsoft/atlas-css/src/index.scss';
-@import './styles/form.scss';
-@import './styles/height.scss';
-@import './styles/layout.scss';
-@import './styles/overflow.scss';
-@import './styles/code-block.scss';
-@import './styles/burger.scss';
-@import './styles/layout-buttons.scss';
-@import './styles/direction-change.scss';
+@use '../../../css/src/index.scss';
+@use './styles/form.scss';
+@use './styles/height.scss';
+@use './styles/layout.scss';
+@use './styles/overflow.scss';
+@use './styles/code-block.scss';
+@use './styles/burger.scss';
+@use './styles/layout-buttons.scss';
+@use './styles/direction-change.scss';
+@use './styles/orbit.scss';
 
 // hack to mark markdown logo on '/' look a tad different, excludes header logo
 main img[src^='/atlas-light.'] {
 	width: 64px;
 	height: auto;
-	margin-bottom: 18px;
+	margin-block-end: 18px;
+}
+
+// add temporary layout-menu-collapsed classes for site functionality, might bring this into the css package if it is useful
+
+.layout.layout-menu-collapsed.layout-holy-grail .hide-on-menu-collapsed,
+.layout.layout-menu-collapsed.layout-sidecar-left .hide-on-menu-collapsed {
+	display: none !important;
+}
+
+.layout.layout-single .show-on-menu-collapsed,
+.layout.layout-holy-grail:not(.layout-menu-collapsed) .show-on-menu-collapsed,
+.layout.layout-sidecar-left:not(.layout-menu-collapsed) .show-on-menu-collapsed {
+	display: none !important;
 }

@@ -1,3 +1,5 @@
+@use './breakpoints.scss' as breakpoints;
+
 /**
  * @sass-export-section="layout"
  */
@@ -6,8 +8,9 @@ $column-gap: 0.75rem !default;
 $large-column-gap: 1.5rem !default;
 $reading-max-width: 50rem !default;
 
+$layout-gap-narrow: 16px !default;
 $layout-gap: 24px !default;
-$layout-widescreen-width: $breakpoint-widescreen - $layout-gap * 2 !default;
+$layout-widescreen-width: breakpoints.$breakpoint-widescreen - $layout-gap * 2 !default;
 $layout-widescreen-gap: max(
 	$layout-gap,
 	calc(50% - #{$layout-widescreen-width} / 2)
@@ -19,5 +22,12 @@ $layout-gap-scalable-custom-property-name: '--layout-gap-scalable' !default;
 $layout-flyout-width-name: '--layout-flyout-width' !default;
 $layout-flyout-width-desktop-custom-property-name: '--layout-flyout-width-desktop' !default;
 $layout-flyout-width-widescreen-custom-property-name: '--layout-flyout-width-widescreen' !default;
-
+$layout-menu-width-name: '--layout-menu-width' !default;
+$layout-menu-collapsed-width-name: '--layout-menu-collapsed-width' !default;
+$layout-menu-expanded-target-width-name: '--layout-menu-expanded-target-width' !default;
+$layout-aside-width-name: '--layout-aside-width' !default;
+$layout-aside-collapsed-width-name: '--layout-aside-collapsed-width' !default;
+$layout-aside-expanded-target-width-name: '--layout-aside-expanded-target-width' !default;
+$layout-menu-spacer-width-name: '--layout-menu-spacer-width' !default;
+$layout-aside-spacer-width-name: '--layout-aside-spacer-width' !default;
 //@end-sass-export-section
