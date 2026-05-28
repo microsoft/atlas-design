@@ -537,7 +537,7 @@ Place this synchronous IIFE in `<head>` before the bundle. It reads the same `lo
 		(function () {
 			try {
 				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
-					var view = state['my-storage-key'] || {};
+				var view = state['my-storage-key'] || {};
 				var html = document.documentElement;
 				for (var c in view) {
 					if (view[c]) html.classList.add(c);
