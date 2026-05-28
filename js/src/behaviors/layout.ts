@@ -58,9 +58,15 @@ export function initLayout() {
 
 /**
  * Observes `layout-*` class changes on a root element (default: `<html>`) and
- * persists them via a Storage backend, scoped per `viewName`. Consumers
- * `subscribe()` to specific class transitions; a new subscription replays
- * immediately if the current state already matches.
+ * persists them via a Storage backend, bucketed per `storageKey` (which
+ * defaults to `viewName`). Consumers `subscribe()` to specific class
+ * transitions; a new subscription replays immediately if the current state
+ * already matches.
+ *
+ * `viewName` is the view's identity — it appears in `LayoutCallbackEvent`s
+ * and is the default bucket key. `storageKey` overrides only the bucket,
+ * letting two views with different `viewName`s share persisted state while
+ * each keeps its own identity in event payloads.
  *
  * Restoration and the `MutationObserver` are wired synchronously inside the
  * factory — by return time the instance is live. Subscriber callbacks are
@@ -96,7 +102,7 @@ export interface LayoutStateView {
 }
 
 export interface LayoutStatePersisted {
-	[viewName: string]: LayoutStateView;
+	[storageKey: string]: LayoutStateView;
 }
 
 export interface LayoutStateOptions {
@@ -105,12 +111,22 @@ export interface LayoutStateOptions {
 	/** Storage backend matching `getItem`/`setItem`. Defaults to `localStorage`. */
 	storage?: Pick<Storage, 'getItem' | 'setItem'>;
 	/**
-	 * Scope for stored state, e.g. per page template. May be a static string
-	 * or a getter function that is called every time a view name is needed —
-	 * the function variant lets a single instance follow a dynamically
-	 * changing "current view" without being recreated.
+	 * Identity of the current view, surfaced in `LayoutCallbackEvent.viewName`.
+	 * May be a static string or a getter that is called every time the view
+	 * name is needed — the function variant lets a single instance follow a
+	 * dynamically changing "current view" without being recreated. Also used
+	 * as the default `storageKey` when none is provided.
 	 */
 	viewName?: string | (() => string);
+	/**
+	 * Bucket key under the `atlas-layout-preferences` storage entry. Defaults
+	 * to `viewName`. Pass an explicit `storageKey` when distinct views (with
+	 * different `viewName`s) should share persisted `layout-*` state — e.g.
+	 * a "docs article" and "docs landing" template both restoring the same
+	 * sidebar-collapsed preference. Like `viewName`, accepts a getter for
+	 * dynamic resolution.
+	 */
+	storageKey?: string | (() => string);
 	/**
 	 * Subscriber callbacks are queued until this resolves. Defaults to a
 	 * resolved promise (fires on next microtask). Pass `contentLoaded` to
@@ -144,9 +160,9 @@ export interface LayoutStateInstance {
 		callback: LayoutCallback,
 		options?: LayoutSubscribeOptions
 	): () => void;
-	/** Persisted view state for this view name. */
+	/** Persisted layout state for this instance's `storageKey` bucket. */
 	getViewState(): LayoutStateView;
-	/** Persisted state across all view names. */
+	/** Persisted state across all `storageKey` buckets. */
 	getState(): LayoutStatePersisted;
 	/** Stop observing. Subscriptions remain registered. */
 	stop(): void;
@@ -168,6 +184,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		root: targetRoot = document.documentElement,
 		storage = window.localStorage,
 		viewName: viewNameOption = 'default',
+		storageKey: storageKeyOption,
 		deferCallbacksUntil = Promise.resolve(),
 		useViewTransitionOnRestore = false
 	} = options;
@@ -176,12 +193,29 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const STORAGE_KEY = 'atlas-layout-preferences';
 	const RESTORED_ATTRIBUTE = 'data-layout-restored';
 
+	// Coerce unsafe object keys to 'default' so prototype-key writes can't
+	// corrupt the persisted state map.
+	function sanitizeKey(raw: string): string {
+		return raw === '__proto__' || raw === 'prototype' || raw === 'constructor' ? 'default' : raw;
+	}
+
 	// Resolve the view name on demand so consumers can pass a getter and have
 	// each persistence / dispatch call see the current value. Unsafe object
 	// keys are coerced to 'default' to keep storage writes prototype-safe.
 	function getViewName(): string {
 		const raw = typeof viewNameOption === 'function' ? viewNameOption() : viewNameOption;
-		return raw === '__proto__' || raw === 'prototype' || raw === 'constructor' ? 'default' : raw;
+		return sanitizeKey(raw);
+	}
+
+	// Resolve the storage bucket on demand. Falls back to the resolved
+	// viewName when no explicit storageKey was supplied, preserving the
+	// previous `{ [viewName]: ... }` storage shape for existing callers.
+	function getStorageKey(): string {
+		if (storageKeyOption === undefined) {
+			return getViewName();
+		}
+		const raw = typeof storageKeyOption === 'function' ? storageKeyOption() : storageKeyOption;
+		return sanitizeKey(raw);
 	}
 
 	const subscriptions = new Set<LayoutSubscription>();
@@ -345,7 +379,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	}
 
 	function getViewState(): LayoutStateView {
-		return loadState()[getViewName()] ?? {};
+		return loadState()[getStorageKey()] ?? {};
 	}
 
 	function isClassApplied(className: string): boolean {
@@ -431,16 +465,16 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		if (added.length + removed.length === 0) {
 			return;
 		}
-		const currentViewName = getViewName();
+		const currentStorageKey = getStorageKey();
 		const state = loadState();
-		const viewState = state[currentViewName] ?? {};
+		const viewState = state[currentStorageKey] ?? {};
 		for (const c of added) {
 			viewState[c] = true;
 		}
 		for (const c of removed) {
 			viewState[c] = false;
 		}
-		state[currentViewName] = viewState;
+		state[currentStorageKey] = viewState;
 		saveState(state);
 	}
 

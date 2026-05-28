@@ -515,6 +515,17 @@ unsubscribe();
 
 The `viewName` option scopes persisted state — pages with different `viewName`s read and write separate `localStorage` buckets, so a layout toggled on one page doesn't bleed into another. Pass a function (`viewName: () => currentView`) to follow a runtime-varying view name without recreating the instance.
 
+When distinct views should _share_ persisted state — e.g. a "docs article" and "docs landing" template both restoring the same sidebar-collapsed preference — pass a `storageKey` that overrides only the persistence bucket. `viewName` stays in `LayoutCallbackEvent.viewName` for telemetry and debugging; the persisted classes live under the shared `storageKey` instead. `storageKey` defaults to `viewName` and also accepts a getter.
+
+```typescript
+const layoutState = createLayoutState({
+	viewName: 'docs-article',
+	storageKey: 'docs-shared'
+});
+```
+
+If you also use the inline restore script below, update the `state[...]` lookup to read from the shared `storageKey` instead of the `viewName`.
+
 Calling `createLayoutState()` from a module bundle restores classes, but **not before first paint** — module scripts run after HTML parse, so the browser briefly renders the original markup layout, causing a visible reflow.
 
 ### Inline restore script in `<head>`

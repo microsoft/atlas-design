@@ -1189,4 +1189,240 @@ describe('createLayoutState', () => {
 			});
 		});
 	});
+
+	describe('storageKey option', () => {
+		it('restores from storageKey instead of viewName when both are set', () => {
+			const persisted = {
+				'docs-article': { 'layout-single': true },
+				'docs-shared': { 'layout-twin': true }
+			};
+			const { storage } = createFakeStorage({
+				[STORAGE_KEY]: JSON.stringify(persisted)
+			});
+			const root = createRoot();
+			const state = track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'docs-article',
+					storageKey: 'docs-shared'
+				})
+			);
+			expect(state.getViewState()).toEqual({ 'layout-twin': true });
+			expect(root.classList.contains('layout-twin')).toBe(true);
+			expect(root.classList.contains('layout-single')).toBe(false);
+		});
+
+		it('persists mutations to storageKey, not viewName', async () => {
+			const root = createRoot();
+			const { storage, data } = createFakeStorage();
+			track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'docs-article',
+					storageKey: 'docs-shared',
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			root.classList.add('layout-menu-collapsed');
+			await flush();
+			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+				'docs-shared': { 'layout-menu-collapsed': true }
+			});
+		});
+
+		it('lets two instances with different viewNames share the same storageKey bucket', async () => {
+			const rootA = createRoot();
+			const rootB = createRoot();
+			const { storage, data } = createFakeStorage();
+
+			const instanceA = track(
+				createLayoutState({
+					root: rootA,
+					storage,
+					viewName: 'docs-article',
+					storageKey: 'docs-shared',
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			rootA.classList.add('layout-menu-collapsed');
+			await flush();
+
+			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+				'docs-shared': { 'layout-menu-collapsed': true }
+			});
+
+			const instanceB = track(
+				createLayoutState({
+					root: rootB,
+					storage,
+					viewName: 'docs-landing',
+					storageKey: 'docs-shared',
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+
+			expect(rootB.classList.contains('layout-menu-collapsed')).toBe(true);
+			expect(instanceA.getViewState()).toEqual({ 'layout-menu-collapsed': true });
+			expect(instanceB.getViewState()).toEqual({ 'layout-menu-collapsed': true });
+		});
+
+		it('keeps viewName in subscriber event payloads, not storageKey', async () => {
+			const root = createRoot();
+			const { storage } = createFakeStorage();
+			const state = track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'docs-article',
+					storageKey: 'docs-shared',
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			const cb = vi.fn();
+			state.subscribe('layout-twin', 'added', cb);
+
+			root.classList.add('layout-twin');
+			await flush();
+			expect(cb).toHaveBeenLastCalledWith({
+				className: 'layout-twin',
+				isApplied: true,
+				viewName: 'docs-article'
+			});
+		});
+
+		it('falls back to viewName when storageKey is omitted (default)', async () => {
+			const root = createRoot();
+			const { storage, data } = createFakeStorage();
+			track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'solo',
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			root.classList.add('layout-twin');
+			await flush();
+			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+				solo: { 'layout-twin': true }
+			});
+		});
+
+		it('accepts a function that returns the storage key', () => {
+			const persisted = {
+				alpha: { 'layout-single': true },
+				beta: { 'layout-twin': true }
+			};
+			const { storage } = createFakeStorage({
+				[STORAGE_KEY]: JSON.stringify(persisted)
+			});
+			const root = createRoot();
+			const state = track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'view-x',
+					storageKey: () => 'beta'
+				})
+			);
+			expect(state.getViewState()).toEqual({ 'layout-twin': true });
+			expect(root.classList.contains('layout-twin')).toBe(true);
+		});
+
+		it('calls the storageKey function each time the bucket is needed', async () => {
+			const root = createRoot();
+			const { storage, data } = createFakeStorage();
+			let currentKey = 'bucket-a';
+			const state = track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'static-view',
+					storageKey: () => currentKey,
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+
+			root.classList.add('layout-twin');
+			await flush();
+			expect(state.getViewState()).toEqual({ 'layout-twin': true });
+
+			currentKey = 'bucket-b';
+			root.classList.add('layout-single');
+			await flush();
+
+			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+				'bucket-a': { 'layout-twin': true },
+				'bucket-b': { 'layout-single': true }
+			});
+			expect(state.getViewState()).toEqual({
+				'layout-single': true
+			});
+		});
+
+		it('coerces unsafe storageKey strings to "default"', async () => {
+			const root = createRoot();
+			const { storage, data } = createFakeStorage();
+			track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'safe-view',
+					storageKey: '__proto__',
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			root.classList.add('layout-twin');
+			await flush();
+			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+				default: { 'layout-twin': true }
+			});
+		});
+
+		it('coerces unsafe keys returned by the storageKey function to "default"', async () => {
+			const root = createRoot();
+			const { storage, data } = createFakeStorage();
+			track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'safe-view',
+					storageKey: () => 'constructor',
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			root.classList.add('layout-twin');
+			await flush();
+			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+				default: { 'layout-twin': true }
+			});
+		});
+
+		it('does not write to viewName bucket when storageKey is set', async () => {
+			const root = createRoot();
+			const { storage, data } = createFakeStorage({
+				[STORAGE_KEY]: JSON.stringify({
+					'old-private': { 'layout-single': true }
+				})
+			});
+			track(
+				createLayoutState({
+					root,
+					storage,
+					viewName: 'old-private',
+					storageKey: 'shared',
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			root.classList.add('layout-twin');
+			await flush();
+
+			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+				'old-private': { 'layout-single': true },
+				shared: { 'layout-twin': true }
+			});
+		});
+	});
 });
