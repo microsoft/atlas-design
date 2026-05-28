@@ -5,6 +5,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>{{title}} | Atlas Design | Microsoft</title>
+		<script>
+			(function () {
+					var s = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
+					var v = s['{{{layoutViewName}}}'] || {};
+					var html = document.documentElement;
+					for (var c in v) {
+						if (v[c]) html.classList.add(c);
+						else html.classList.remove(c);
+					}
+			})();
+		</script>
 		<meta property="og:title" content="{{title}}" />
 		<meta property="og:type" content="website" />
 		<meta name="color-scheme" content="light dark" />
@@ -30,7 +41,7 @@
 							<path d="M11.5216 0.5H0V11.9067H11.5216V0.5Z" fill="#f25022" />
 							<path d="M24.2418 0.5H12.7202V11.9067H24.2418V0.5Z" fill="#7fba00" />
 							<path d="M11.5216 13.0933H0V24.5H11.5216V13.0933Z" fill="#00a4ef" />
-							<path d="M24.2418 13.0933H12.7202V24.5H24.2418V13.0933Z" fill="#ffb900" />
+							<path d="M24.2418 13.093312.7202V24.5H24.2418V13.0933Z" fill="#ffb900" />
 						</svg>
 					</a>
 

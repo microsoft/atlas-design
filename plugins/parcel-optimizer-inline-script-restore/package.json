@@ -1,6 +1,6 @@
 {
-	"name": "@microsoft/parcel-transformer-markdown-html",
-	"version": "2.7.3",
+	"name": "@microsoft/parcel-optimizer-inline-script-restore",
+	"version": "1.0.0",
 	"license": "MIT",
 	"private": true,
 	"repository": {
@@ -14,14 +14,8 @@
 		"parcel": "2.16.3"
 	},
 	"dependencies": {
-		"@microsoft/atlas-css": "6.7.0",
 		"parcel": "2.16.3",
 		"@parcel/plugin": "2.16.0",
-		"@parcel/utils": "2.16.0",
-		"marked": "^5.1.0",
-		"highlight.js": "11.11.1",
-		"front-matter": "4.0.2",
-		"mustache": "4.2.0",
-		"parse5": "7.3.0"
+		"@parcel/utils": "2.16.0"
 	}
 }

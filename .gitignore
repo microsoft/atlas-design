@@ -10,3 +10,4 @@ playwright-report/
 coverage/
 .wireit
 .netrc
+js/coverage

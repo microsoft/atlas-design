@@ -622,3 +622,48 @@ test('aside-collapsed modifier collapses aside on sidecar-right layout at widesc
 		expect(boxRestored!.width).toBeGreaterThan(boxAfter!.width);
 	}).toPass();
 });
+
+test('layout-menu-collapsed state persists across a page reload @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	const html = page.locator('html');
+
+	// Default holy-grail layout starts with the menu expanded.
+	await expect(html).not.toHaveClass(/\blayout-menu-collapsed\b/);
+
+	// Collapse the menu. createLayoutState should persist this to
+	// localStorage under the 'atlas-layout-page' view name.
+	await page.locator(toggleMenuCollapsedSelector).click();
+	await expect(html).toHaveClass(/\blayout-menu-collapsed\b/);
+
+	// Wait for the persisted state to land in localStorage so we know the
+	// inline restore script in <head> will pick it up on reload.
+	await expect
+		.poll(() =>
+			page.evaluate(() => {
+				try {
+					const stored = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
+					return Boolean(stored['atlas-layout-page']?.['layout-menu-collapsed']);
+				} catch {
+					return false;
+				}
+			})
+		)
+		.toBe(true);
+
+	// After reload, the inline restore script should re-apply
+	// layout-menu-collapsed to <html> before first paint, so the collapsed
+	// menu state survives across navigations without a layout flash.
+	await page.reload();
+	await page.waitForLoadState('domcontentloaded');
+
+	await expect(html).toHaveClass(/\blayout-menu-collapsed\b/);
+});

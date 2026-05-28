@@ -416,7 +416,7 @@ $layout-aside-width-wide: 450px !default;
 /*
  * For certain classes that toggle the width of layout containers, it is useful to have the ability to toggle the display of elements inside these containers based on the state.
  */
-$layout-collapse-states: 'layout-menu-collapsed', 'layout-aside-collapsed';
+$layout-collapse-states: 'layout-menu-collapsed', 'layout-aside-collapsed', 'layout-flyout-active';
 
 @each $state in $layout-collapse-states {
 	.layout.#{$state} {
@@ -424,6 +424,17 @@ $layout-collapse-states: 'layout-menu-collapsed', 'layout-aside-collapsed';
 			.display-#{$item}-#{$state} {
 				display: #{$item} !important;
 			}
+		}
+	}
+}
+
+/*
+ * Prevent in-flux elements from showing before the layout state from atlas-js has resolved.
+ */
+html:not([data-layout-restored]) {
+	@each $item in tokens.$displays {
+		.display-#{$item}-until-layout-restored {
+			display: #{$item} !important;
 		}
 	}
 }

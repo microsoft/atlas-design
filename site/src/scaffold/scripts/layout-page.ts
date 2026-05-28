@@ -1,3 +1,5 @@
+import { createLayoutState } from '@microsoft/atlas-js/src/index';
+
 const layoutsClasses = [
 	'layout-single',
 	'layout-twin',
@@ -25,6 +27,49 @@ function getCurrentLayoutClass() {
 }
 
 export function initLayoutPageControls() {
+	// Only the layout demo page contains the layout-set buttons.
+	// On every other site page this function should be a no-op so we don't
+	// persist or restore layout-* classes that don't belong to it.
+	if (!document.querySelector('[data-set-layout]')) {
+		return;
+	}
+
+	// Persist `layout-*` classes on <html> and replay them when the layout
+	// demo page reloads. Subscribers below sync each demo button's UI to the
+	// restored state, then re-fire on subsequent toggles so click handlers
+	// don't need to update aria attributes themselves.
+	const layoutState = createLayoutState({
+		viewName: 'atlas-layout-page',
+		useViewTransitionOnRestore: true
+	});
+
+	for (const layoutClass of layoutsClasses) {
+		layoutState.subscribe(layoutClass, 'always', ({ isApplied }) => {
+			const button = document.querySelector<HTMLButtonElement>(
+				`[data-set-layout="${layoutClass}"]`
+			);
+			if (button) {
+				button.setAttribute('aria-pressed', String(isApplied));
+			}
+		});
+	}
+
+	layoutState.subscribe('layout-menu-collapsed', 'always', ({ isApplied }) => {
+		syncCollapseTrigger('[data-menu-collapse-toggle]', isApplied);
+	});
+
+	layoutState.subscribe('layout-aside-collapsed', 'always', ({ isApplied }) => {
+		syncCollapseTrigger('[data-aside-collapse-toggle]', isApplied);
+	});
+
+	layoutState.subscribe('layout-constrained', 'always', ({ isApplied }) => {
+		syncToggleButton('[data-toggle-layout-height-constraint]', isApplied);
+	});
+
+	layoutState.subscribe('layout-flyout-active', 'always', ({ isApplied }) => {
+		syncToggleButton('[data-toggle-flyout-visibility]', isApplied);
+	});
+
 	window.addEventListener('click', (e: MouseEvent) => {
 		const target =
 			e.target instanceof Element && (e.target.closest('[data-set-layout]') as HTMLElement);
@@ -260,4 +305,22 @@ function asideCollapseBehaviorAllowed(layoutClass: string) {
 		layoutClass === 'layout-sidecar-right' ||
 		layoutClass === 'layout-twin'
 	);
+}
+
+function syncCollapseTrigger(selector: string, isCollapsed: boolean): void {
+	const trigger = document.querySelector<HTMLButtonElement>(selector);
+	if (!trigger) {
+		return;
+	}
+	trigger.classList.toggle('button-filled', isCollapsed);
+	trigger.setAttribute('aria-expanded', String(!isCollapsed));
+}
+
+function syncToggleButton(selector: string, isApplied: boolean): void {
+	const trigger = document.querySelector<HTMLButtonElement>(selector);
+	if (!trigger) {
+		return;
+	}
+	trigger.classList.toggle('button-filled', isApplied);
+	trigger.setAttribute('aria-pressed', String(isApplied));
 }

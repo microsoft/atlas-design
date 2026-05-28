@@ -5,9 +5,116 @@ const hljs = require('highlight.js');
 const frontMatter = require('front-matter');
 const mustache = require('mustache');
 const path = require('path');
+const parse5 = require('parse5');
 const allTokens = require('@microsoft/atlas-css/dist/tokens.json');
 const { renderBreadcrumbsMarkup } = require('./breadcrumbs');
 const { buildGithubLink } = require('./github-link');
+
+// Inline-script hide helper.
+//
+// Background: when @parcel/transformer-html sees a `<script>` tag without a
+// `src` attribute it extracts the body as a separate inline-JS child asset
+// and pulls in @parcel/transformer-js, @parcel/transformer-babel, and
+// @parcel/transformer-react-refresh-wrap as dev dependencies. On a cold
+// (no `.parcel-cache`) build this newly-registered transformer dev-dep
+// chain hits a Parcel race condition that surfaces as:
+//
+//   Error: Worker send back a reference to a missing dev dep request.
+//   This might happen due to internal in-memory build caches not being
+//   cleared between builds or due a race condition. This is a bug in Parcel.
+//
+// Workaround: in the markdown → html pass we hide every inline `<script>`
+// inside an HTML comment containing the original attributes and body in
+// base64. The HTML transformer can't see the tag, so it doesn't extract it
+// and the buggy dev-dep chain never gets registered.
+//
+// The companion plugin `@microsoft/parcel-optimizer-inline-script-restore`
+// restores the original `<script>` tags as a Parcel optimizer, which runs
+// on the final bundle after every transformer. A separate plugin is
+// required because Parcel dedupes transformers by name per asset, so
+// re-registering this same transformer for the `*.html` pipeline does not
+// trigger a second invocation (see Transformation.js `runTransformer`).
+//
+// The marker uses only base64 characters between the `::` separators, so
+// `<!--…-->` can never be ambiguous (base64 has no `-`) and HTML comment
+// rules (no `--` inside) are respected.
+//
+// Implementation note: we deliberately use the parse5 HTML parser instead
+// of a regex to locate `<script>` tags. Regex-based HTML tag matching is
+// brittle (browsers accept odd constructions like `</script foo="bar">`,
+// uppercase tag names, etc.) and gets flagged by `js/bad-tag-filter` style
+// security tools. parse5 implements the WHATWG HTML parsing algorithm, so
+// it sees exactly what the browser would.
+const ATLAS_INLINE_SCRIPT_MARKER = 'ATLAS_INLINE_SCRIPT_V1';
+
+function findInlineScriptNodes(root) {
+	const scripts = [];
+	const stack = [root];
+	while (stack.length > 0) {
+		const node = stack.pop();
+		if (
+			node.tagName === 'script' &&
+			Array.isArray(node.attrs) &&
+			!node.attrs.some(a => a.name === 'src') &&
+			node.sourceCodeLocation &&
+			node.sourceCodeLocation.startTag
+		) {
+			scripts.push(node);
+		}
+		if (node.childNodes) {
+			for (const child of node.childNodes) {
+				stack.push(child);
+			}
+		}
+	}
+	return scripts;
+}
+
+function serializeAttrs(attrs) {
+	return attrs
+		.map(attr => {
+			const escaped = String(attr.value).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+			return ` ${attr.name}="${escaped}"`;
+		})
+		.join('');
+}
+
+function hideInlineScripts(html) {
+	// Cheap pre-check: if there is no `<script` substring at all there is
+	// nothing for us to do and we can skip the parse entirely.
+	if (!/<script/i.test(html)) {
+		return html;
+	}
+
+	const fragment = parse5.parseFragment(html, { sourceCodeLocationInfo: true });
+	const scripts = findInlineScriptNodes(fragment);
+	if (scripts.length === 0) {
+		return html;
+	}
+
+	// Sort by start offset descending so we can splice into the original
+	// string without invalidating later offsets.
+	scripts.sort((a, b) => b.sourceCodeLocation.startOffset - a.sourceCodeLocation.startOffset);
+
+	let result = html;
+	for (const node of scripts) {
+		const loc = node.sourceCodeLocation;
+		const startOffset = loc.startOffset;
+		const endOffset = loc.endOffset;
+		const startTagEnd = loc.startTag.endOffset;
+		const endTagStart = loc.endTag ? loc.endTag.startOffset : endOffset;
+
+		const rawAttrs = serializeAttrs(node.attrs);
+		const content = html.slice(startTagEnd, endTagStart);
+
+		const attrsB64 = Buffer.from(rawAttrs, 'utf8').toString('base64');
+		const contentB64 = Buffer.from(content, 'utf8').toString('base64');
+		const marker = `<!--${ATLAS_INLINE_SCRIPT_MARKER}::${attrsB64}::${contentB64}-->`;
+
+		result = result.slice(0, startOffset) + marker + result.slice(endOffset);
+	}
+	return result;
+}
 
 const languageDisplayNames = {
 	html: 'HTML',
@@ -231,20 +338,22 @@ module.exports = new Transformer({
 			asset.invalidateOnFileChange(templateFilename);
 			const githubLink = buildGithubLink(asset.filePath);
 			asset.setCode(
-				mustache.render(template, {
-					body: parsedCode,
-					githubLink,
-					toc: { name: 'TOC', entries: tocEntries },
-					breadcrumbs: renderBreadcrumbsMarkup(tocEntries, asset.filePath),
-					...attributes,
-					tokens,
-					cssTokenSource,
-					figmaEmbed,
-					hero
-				})
+				hideInlineScripts(
+					mustache.render(template, {
+						body: parsedCode,
+						githubLink,
+						toc: { name: 'TOC', entries: tocEntries },
+						breadcrumbs: renderBreadcrumbsMarkup(tocEntries, asset.filePath),
+						...attributes,
+						tokens,
+						cssTokenSource,
+						figmaEmbed,
+						hero
+					})
+				)
 			);
 		} else {
-			asset.setCode(parsedCode);
+			asset.setCode(hideInlineScripts(parsedCode));
 		}
 
 		return [asset];

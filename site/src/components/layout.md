@@ -6,6 +6,7 @@ classType: Component
 classPrefixes:
   - layout
 hero: true
+layoutViewName: atlas-layout-page
 ---
 
 # Layout
@@ -17,7 +18,7 @@ The layout component provides a flexible and efficient way to structure the majo
 This page is utilizing the holy grail layout, but you can use the buttons below to toggle layouts and test them out by resizing the screen. Try the "Toggle container labels" button below to see the css classes on each of the containers inside `.layout`.
 
 <div class="buttons buttons-addons margin-top-sm">
-  <button class="button" data-set-layout="layout-holy-grail" aria-pressed="true">Holy grail</button>
+  <button class="button" data-set-layout="layout-holy-grail">Holy grail</button>
   <button class="button" data-set-layout="layout-twin">Twin</button>
   <button class="button" data-set-layout="layout-single">Single</button>
   <button class="button" data-set-layout="layout-sidecar-left">Sidecar left</button>
@@ -362,6 +363,26 @@ For example, to hide an element when the menu is collapsed and show a different 
 | `.display-flex-layout-aside-collapsed` | `display: flex` when aside is collapsed |
 | `.display-none-layout-aside-collapsed` | Hidden when aside is collapsed          |
 
+### Display helpers gated on JS restoration
+
+When `createLayoutState` (from `@microsoft/atlas-js`) finishes applying stored layout state, it sets `data-layout-restored="true"` on `<html>`. These helpers apply only while that attribute is absent, letting you hide content until JS initializes or show a placeholder only while it boots.
+
+```scss
+.display-{value}-until-layout-restored
+```
+
+Generated values: `none`, `block`, `flex`, `grid`, `inline`, `inline-block`, `inline-flex`.
+
+```html-no-example
+<!-- Hidden until restored. -->
+<div class="display-none-until-layout-restored">…</div>
+
+<!-- Shown only until restored. -->
+<div class="display-block-until-layout-restored">Loading…</div>
+```
+
+Use these only with the [inline restoration snippet](#persisting-layout-state-across-page-loads); without `createLayoutState`, the attribute is never set and the rules keep applying.
+
 ## Scaling container widths
 
 On wider screens, the menu and aside containers automatically scale up to give navigation and supplementary content more room. This happens at two breakpoints:
@@ -461,3 +482,66 @@ document.documentElement.classList.add('layout-holy-grail');
 ```
 
 You'll seldom have occasion to do this in the middle of a user's visit, but it can be useful for things like opening a code editor in a wider layout or adopting a focused reading mode.
+
+## Persisting layout state across page loads
+
+`@microsoft/atlas-js` exports `createLayoutState`, which persists `layout-*` classes on `<html>` to `localStorage` and restores them the next time the page loads. See the [atlas-js README](https://github.com/microsoft/atlas-design/tree/main/js#readme) for the API. Skip this section if your page layout never changes after load.
+
+### Creating layout state and subscribing to changes
+
+Import `createLayoutState` from `@microsoft/atlas-js` and call it once per page (typically from your main module entry). It returns a `LayoutStateInstance` whose `subscribe()` method fires whenever a watched `layout-*` class is added to or removed from `<html>` — including the initial restoration on page load. A new subscriber replays immediately if the current state already matches, so the same callback that reacts to user toggles can also sync UI on first load.
+
+```typescript
+const layoutState = createLayoutState({
+	viewName: 'my-view-name',
+	useViewTransitionOnRestore: true
+});
+
+// Keep a "Collapse menu" button's `aria-expanded` in sync with the layout
+// class. Fires once on restoration with the persisted state, and again on
+// every later toggle. Pass `'added'` or `'removed'` to filter; `'always'`
+// fires for both.
+const unsubscribe = layoutState.subscribe('layout-menu-collapsed', 'always', ({ isApplied }) => {
+	const button = document.querySelector<HTMLButtonElement>('[data-menu-collapse-toggle]');
+	button?.setAttribute('aria-expanded', String(!isApplied));
+});
+
+// Toggling the class on <html> persists the change and fires the subscriber.
+document.documentElement.classList.toggle('layout-menu-collapsed');
+
+// Drop the subscription when it's no longer needed.
+unsubscribe();
+```
+
+The `viewName` option scopes persisted state — pages with different `viewName`s read and write separate `localStorage` buckets, so a layout toggled on one page doesn't bleed into another. Pass a function (`viewName: () => currentView`) to follow a runtime-varying view name without recreating the instance.
+
+Calling `createLayoutState()` from a module bundle restores classes, but **not before first paint** — module scripts run after HTML parse, so the browser briefly renders the original markup layout, causing a visible reflow.
+
+### Inline restore script in `<head>`
+
+Place this synchronous IIFE in `<head>` before the bundle. It reads the same `localStorage` key that `createLayoutState` uses and applies the saved classes to `<html>` during parse:
+
+```html-no-example
+<head>
+	<script>
+		(function () {
+			try {
+				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
+				var view = state['my-view-name'] || {};
+				var html = document.documentElement;
+				for (var c in view) {
+					if (view[c]) html.classList.add(c);
+					else html.classList.remove(c);
+				}
+			} catch (e) {}
+		})();
+	</script>
+	<script type="module" src="/your-bundle.js"></script>
+</head>
+```
+
+Atlas ships ready-made helpers for this — see [Display helpers gated on JS restoration](#display-helpers-gated-on-js-restoration). The sentinel is a data attribute rather than a `layout-*` class, so `createLayoutState` does not persist it.
+
+### Content Security Policy
+
+Inline `<script>` requires `'unsafe-inline'` or a `'sha256-...'` hash in `script-src`. Atlas places the snippet **before** the CSP `<meta>` tag so the policy applies only to later elements; alternatively, add the script body's SHA-256 hash to `script-src`.
