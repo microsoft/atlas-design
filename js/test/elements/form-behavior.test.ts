@@ -519,4 +519,603 @@ describe('FormBehaviorElement', () => {
 		const { behavior } = makeForm(``);
 		expect(() => behavior.handleEvent(new Event('weird'))).toThrow(/Unexpected event/);
 	});
+
+	it('handleEvent routes submit to handleSubmitEvent [ai generated]', () => {
+		const { behavior } = makeForm(``);
+		const spy = vi.spyOn(behavior, 'handleSubmitEvent').mockImplementation(async () => {});
+		try {
+			behavior.handleEvent(new Event('submit'));
+			expect(spy).toHaveBeenCalledTimes(1);
+		} finally {
+			spy.mockRestore();
+		}
+	});
+
+	it('handleEvent routes beforeunload to handleUnloadEvent [ai generated]', () => {
+		const { behavior } = makeForm(``);
+		const spy = vi.spyOn(behavior, 'handleUnloadEvent').mockImplementation(async () => {});
+		try {
+			behavior.handleEvent(new Event('beforeunload'));
+			expect(spy).toHaveBeenCalledTimes(1);
+		} finally {
+			spy.mockRestore();
+		}
+	});
+
+	it('handleEvent routes change to clearValidationErrors and commit [ai generated]', () => {
+		const { behavior } = makeForm(``);
+		const clearSpy = vi.spyOn(behavior, 'clearValidationErrors').mockImplementation(() => {});
+		const commitSpy = vi.spyOn(behavior, 'commit').mockImplementation(() => {});
+		try {
+			const ev = new Event('change');
+			behavior.handleEvent(ev);
+			expect(clearSpy).toHaveBeenCalledTimes(1);
+			expect(commitSpy).toHaveBeenCalledTimes(1);
+		} finally {
+			clearSpy.mockRestore();
+			commitSpy.mockRestore();
+		}
+	});
+
+	it('handleEvent routes input to clearValidationErrors and scheduleCommit [ai generated]', () => {
+		const { behavior } = makeForm(``);
+		const clearSpy = vi.spyOn(behavior, 'clearValidationErrors').mockImplementation(() => {});
+		const scheduleSpy = vi.spyOn(behavior, 'scheduleCommit').mockImplementation(() => {});
+		try {
+			behavior.handleEvent(new Event('input'));
+			expect(clearSpy).toHaveBeenCalledTimes(1);
+			expect(scheduleSpy).toHaveBeenCalledTimes(1);
+		} finally {
+			clearSpy.mockRestore();
+			scheduleSpy.mockRestore();
+		}
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* handleUnloadEvent                                                  */
+	/* ------------------------------------------------------------------ */
+
+	it('handleUnloadEvent does nothing when the form is clean [ai generated]', async () => {
+		const { behavior } = makeForm(`
+			<input name="title" value="hello" />
+		`);
+		const event = new Event('beforeunload') as BeforeUnloadEvent;
+		const preventSpy = vi.spyOn(event, 'preventDefault');
+		await behavior.handleUnloadEvent(event);
+		expect(preventSpy).not.toHaveBeenCalled();
+	});
+
+	it('handleUnloadEvent prevents navigation and sets returnValue when dirty [ai generated]', async () => {
+		const { form, behavior } = makeForm(`
+			<input name="title" value="hello" />
+		`);
+		(form.querySelector('input') as HTMLInputElement).value = 'changed';
+		const event = new Event('beforeunload') as BeforeUnloadEvent;
+		const preventSpy = vi.spyOn(event, 'preventDefault');
+		await behavior.handleUnloadEvent(event);
+		expect(preventSpy).toHaveBeenCalledTimes(1);
+		// jsdom coerces Event.returnValue to a boolean on plain Event objects
+		// (legacy property). Asserting truthy is enough — source sets a string.
+		expect(event.returnValue).toBeTruthy();
+	});
+
+	it('handleUnloadEvent stays silent when nounload is set even if dirty [ai generated]', async () => {
+		const { form, behavior } = makeForm(`
+			<input name="title" value="hello" />
+		`);
+		behavior.setAttribute('nounload', '');
+		(form.querySelector('input') as HTMLInputElement).value = 'changed';
+		const event = new Event('beforeunload') as BeforeUnloadEvent;
+		const preventSpy = vi.spyOn(event, 'preventDefault');
+		await behavior.handleUnloadEvent(event);
+		expect(preventSpy).not.toHaveBeenCalled();
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* commit / scheduleCommit                                            */
+	/* ------------------------------------------------------------------ */
+
+	it('commit normalizes text values on change events [ai generated]', () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<input id="t" name="t" type="text" value="hi" />
+			</div></div>
+		`);
+		const input = form.querySelector('#t') as HTMLInputElement;
+		input.value = '  spaced  ';
+		const ev = new Event('change');
+		Object.defineProperty(ev, 'target', { value: input });
+		behavior.commit(ev);
+		expect(input.value).toBe('spaced');
+		expect(behavior.isDirty).toBe(true);
+	});
+
+	it('commit ignores events whose target is not in the form [ai generated]', () => {
+		const { behavior } = makeForm(``);
+		const stray = document.createElement('input');
+		stray.type = 'text';
+		const ev = new Event('change');
+		Object.defineProperty(ev, 'target', { value: stray });
+		expect(() => behavior.commit(ev)).not.toThrow();
+		expect(behavior.isDirty).toBe(false);
+	});
+
+	it('scheduleCommit defers commit to a later tick [ai generated]', () => {
+		vi.useFakeTimers();
+		try {
+			const { form, behavior } = makeForm(`
+				<div class="field"><div class="field-body">
+					<input id="t" name="t" type="text" value="hi" />
+				</div></div>
+			`);
+			const input = form.querySelector('#t') as HTMLInputElement;
+			input.value = 'changed';
+			const ev = new Event('input');
+			Object.defineProperty(ev, 'target', { value: input });
+			behavior.scheduleCommit(ev);
+			expect(behavior.isDirty).toBe(false);
+			vi.advanceTimersByTime(400);
+			expect(behavior.isDirty).toBe(true);
+		} finally {
+			vi.useRealTimers();
+		}
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* createErrorAlert / getErrorAlert                                   */
+	/* ------------------------------------------------------------------ */
+
+	it('createErrorAlert returns the same alert when called twice via getErrorAlert [ai generated]', () => {
+		const { form, behavior } = makeForm(``);
+		const first = behavior.getErrorAlert(form);
+		const second = behavior.getErrorAlert(form);
+		expect(second.errorAlert).toBe(first.errorAlert);
+		expect(second.errorList).toBe(first.errorList);
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* clearValidationErrors                                              */
+	/* ------------------------------------------------------------------ */
+
+	it('clearValidationErrors removes a field error and hides the alert when empty [ai generated]', () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<label for="x">X</label>
+				<input id="x" name="x" type="text" required />
+			</div></div>
+		`);
+		const input = form.querySelector('#x') as HTMLInputElement;
+		const errors: import('../../src/elements/form-behavior').FormValidationError[] = [];
+		const { errorList, errorAlert } = behavior.getErrorAlert(form);
+		behavior.runBasicValidation(input, true, errors, errorList, false);
+		errorAlert.hidden = false;
+		expect(errorList.querySelector(`a[href="#${input.id}"]`)).not.toBeNull();
+		behavior.clearValidationErrors(input);
+		expect(errorList.querySelector(`a[href="#${input.id}"]`)).toBeNull();
+		expect(errorAlert.hidden).toBe(true);
+	});
+
+	it('clearValidationErrors ignores non-validatable targets [ai generated]', () => {
+		const { behavior } = makeForm(``);
+		const button = document.createElement('button');
+		expect(() => behavior.clearValidationErrors(button)).not.toThrow();
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* runBasicValidation                                                 */
+	/* ------------------------------------------------------------------ */
+
+	it('runBasicValidation flags a checkbox by toggling its label is-invalid class [ai generated]', () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<label class="checkbox" for="agree">
+					<input id="agree" name="agree" type="checkbox" required />
+					I agree
+				</label>
+			</div></div>
+		`);
+		const input = form.querySelector('#agree') as HTMLInputElement;
+		const errors: import('../../src/elements/form-behavior').FormValidationError[] = [];
+		const { errorList } = behavior.getErrorAlert(form);
+		behavior.runBasicValidation(input, true, errors, errorList, false);
+		expect(errors).toHaveLength(1);
+		expect(input.closest('label.checkbox')?.classList.contains('is-invalid')).toBe(true);
+	});
+
+	it('runBasicValidation flags a radio by toggling its label is-invalid class [ai generated]', () => {
+		const { form, behavior } = makeForm(`
+			<div class="field">
+				<div class="field-label">Color</div>
+				<div class="field-body">
+					<label class="radio" for="red">
+						<input id="red" name="color" type="radio" required />
+						Red
+					</label>
+				</div>
+			</div>
+		`);
+		const input = form.querySelector('#red') as HTMLInputElement;
+		const errors: import('../../src/elements/form-behavior').FormValidationError[] = [];
+		const { errorList } = behavior.getErrorAlert(form);
+		behavior.runBasicValidation(input, true, errors, errorList, false);
+		expect(input.closest('label.radio')?.classList.contains('is-invalid')).toBe(true);
+	});
+
+	it('runBasicValidation records an error but skips DOM when input has no id [ai generated]', () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<input name="x" type="text" required aria-label="No-id field" />
+			</div></div>
+		`);
+		const input = form.querySelector('input') as HTMLInputElement;
+		const errors: import('../../src/elements/form-behavior').FormValidationError[] = [];
+		const { errorList } = behavior.getErrorAlert(form);
+		behavior.runBasicValidation(input, true, errors, errorList, false);
+		expect(errors).toHaveLength(1);
+		expect(errorList.children).toHaveLength(0);
+	});
+
+	it('runBasicValidation does not modify the DOM when displayValidity is false [ai generated]', () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<label for="x">X</label>
+				<input id="x" name="x" type="text" required />
+			</div></div>
+		`);
+		const input = form.querySelector('#x') as HTMLInputElement;
+		const errors: import('../../src/elements/form-behavior').FormValidationError[] = [];
+		const { errorList } = behavior.getErrorAlert(form);
+		behavior.runBasicValidation(input, false, errors, errorList, false);
+		expect(errors).toHaveLength(1);
+		expect(errorList.children).toHaveLength(0);
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* validateForm                                                       */
+	/* ------------------------------------------------------------------ */
+
+	it('validateForm returns valid: true when all inputs pass [ai generated]', async () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<label for="x">X</label>
+				<input id="x" name="x" type="text" value="ok" />
+			</div></div>
+		`);
+		const result = await behavior.validateForm(form);
+		expect(result.valid).toBe(true);
+	});
+
+	it('validateForm collects errors and reveals the alert [ai generated]', async () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<label for="x">Title</label>
+				<input id="x" name="x" type="text" required />
+			</div></div>
+		`);
+		const result = await behavior.validateForm(form);
+		expect(result.valid).toBe(false);
+		const alert = form.querySelector('[data-form-error-alert]') as HTMLDivElement;
+		expect(alert.hidden).toBe(false);
+	});
+
+	it('validateForm skips combobox elements [ai generated]', async () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<label for="combo">Pick</label>
+				<input id="combo" name="combo" type="text" required role="combobox" />
+			</div></div>
+		`);
+		const result = await behavior.validateForm(form);
+		expect(result.valid).toBe(true);
+	});
+
+	it('validateForm skips aria-hidden elements [ai generated]', async () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<label for="h">Hidden</label>
+				<input id="h" name="h" type="text" required aria-hidden="true" />
+			</div></div>
+		`);
+		const result = await behavior.validateForm(form);
+		expect(result.valid).toBe(true);
+	});
+
+	it('validateForm only validates the first radio in a group [ai generated]', async () => {
+		const { form, behavior } = makeForm(`
+			<div class="field">
+				<div class="field-label">Color</div>
+				<div class="field-body">
+					<label class="radio" for="r1"><input id="r1" name="color" type="radio" required /> Red</label>
+					<label class="radio" for="r2"><input id="r2" name="color" type="radio" required /> Blue</label>
+				</div>
+			</div>
+		`);
+		const result = await behavior.validateForm(form);
+		if (result.valid) throw new Error('expected invalid result');
+		expect(result.errors).toHaveLength(1);
+		expect(result.errors[0].input.id).toBe('r1');
+	});
+
+	it('validateForm dispatches form-validating for data-skip-validation inputs and skips them [ai generated]', async () => {
+		const { form, behavior } = makeForm(`
+			<div class="field"><div class="field-body">
+				<label for="x">X</label>
+				<input id="x" name="x" type="text" required data-skip-validation />
+			</div></div>
+		`);
+		const handler = vi.fn();
+		behavior.addEventListener('form-validating', handler);
+		const result = await behavior.validateForm(form);
+		expect(result.valid).toBe(true);
+		expect(handler).toHaveBeenCalled();
+	});
+
+	/* ------------------------------------------------------------------ */
+	/* handleSubmitEvent — full async submit flow                         */
+	/* ------------------------------------------------------------------ */
+
+	function makeSubmitForm(extraAttrs = '', innerHTML = '') {
+		const form = document.createElement('form');
+		form.action = 'https://example.test/submit?_method=POST';
+		form.method = 'POST';
+		form.innerHTML = `
+			<form-behavior new ${extraAttrs}></form-behavior>
+			<div class="field"><div class="field-body">
+				<label for="title">Title</label>
+				<input id="title" name="title" type="text" value="hi" />
+				<button type="submit">Save</button>
+			</div></div>
+			${innerHTML}
+		`;
+		document.body.appendChild(form);
+		const behavior = form.querySelector('form-behavior') as FormBehaviorElement;
+		return { form, behavior };
+	}
+
+	it('handleSubmitEvent fires a fetch with the form payload and dispatches aftersubmit on 2xx [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		const after = vi.fn();
+		behavior.addEventListener('aftersubmit', after);
+		const fetchSpy = vi
+			.spyOn(window, 'fetch')
+			.mockResolvedValue(new Response('ok', { status: 200 }));
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			expect(fetchSpy).toHaveBeenCalledTimes(1);
+			expect(after).toHaveBeenCalledTimes(1);
+			expect(behavior.hasAttribute('new')).toBe(false);
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent shows the no-changes message when canSave is false [ai generated]', async () => {
+		const form = document.createElement('form');
+		form.innerHTML = `<form-behavior></form-behavior>
+			<input name="title" value="hi" />`;
+		document.body.appendChild(form);
+		const behavior = form.querySelector('form-behavior') as FormBehaviorElement;
+		const validating = vi.fn();
+		behavior.addEventListener('form-validating', validating);
+		const fetchSpy = vi.spyOn(window, 'fetch');
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			expect(fetchSpy).not.toHaveBeenCalled();
+			expect(validating).toHaveBeenCalledTimes(1);
+			expect(form.querySelector('#no-edits-error')).not.toBeNull();
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent does not fetch when nosubmit is set [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm('nosubmit');
+		const fetchSpy = vi.spyOn(window, 'fetch');
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			expect(fetchSpy).not.toHaveBeenCalled();
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent honors a cancelled beforesubmit event [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		behavior.addEventListener('beforesubmit', e => e.preventDefault());
+		const fetchSpy = vi.spyOn(window, 'fetch');
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			expect(fetchSpy).not.toHaveBeenCalled();
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent aborts when the beforesubmit callback throws [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		behavior.addEventListener('beforesubmit', e => {
+			(e as CustomEvent<{ callback: () => Promise<void> }>).detail.callback = async () => {
+				throw new Error('halt');
+			};
+		});
+		const fetchSpy = vi.spyOn(window, 'fetch');
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			expect(fetchSpy).not.toHaveBeenCalled();
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent shows the 401 error message when the server responds with 401 [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue(new Response('', { status: 401 }));
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			const li = form.querySelector('[data-form-error-alert] li') as HTMLLIElement;
+			expect(li?.innerText).toBe(defaultMessageStrings.notAuthenticated);
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent shows the 403 error message when the server responds with 403 [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue(new Response('', { status: 403 }));
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			const li = form.querySelector('[data-form-error-alert] li') as HTMLLIElement;
+			expect(li?.innerText).toBe(defaultMessageStrings.notAuthorized);
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent shows the 412 error message when the server responds with 412 [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue(new Response('', { status: 412 }));
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			const li = form.querySelector('[data-form-error-alert] li') as HTMLLIElement;
+			expect(li?.innerText).toBe(defaultMessageStrings.contentHasChanged);
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent shows the 429 error message when the server responds with 429 [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue(new Response('', { status: 429 }));
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			const li = form.querySelector('[data-form-error-alert] li') as HTMLLIElement;
+			expect(li?.innerText).toBe(defaultMessageStrings.tooManyRequests);
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent shows the generic error message when fetch rejects [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		const fetchSpy = vi.spyOn(window, 'fetch').mockRejectedValue(new Error('network'));
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			const li = form.querySelector('[data-form-error-alert] li') as HTMLLIElement;
+			expect(li?.innerText).toBe(defaultMessageStrings.weEncounteredAnUnexpectedError);
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent does nothing when already submitting [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		behavior.submitting = true;
+		const fetchSpy = vi.spyOn(window, 'fetch');
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			expect(fetchSpy).not.toHaveBeenCalled();
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent forwards header-* attributes to the fetch headers [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm('header-x-custom="atlas"');
+		const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue(new Response('', { status: 200 }));
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			const request = fetchSpy.mock.calls[0][0] as Request;
+			expect(request.headers.get('x-custom')).toBe('atlas');
+			expect(request.headers.get('content-type')).toBe('application/json');
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent does not fetch when synchronous validation fails [ai generated]', async () => {
+		const form = document.createElement('form');
+		form.action = 'https://example.test/submit';
+		form.innerHTML = `
+			<form-behavior new></form-behavior>
+			<div class="field"><div class="field-body">
+				<label for="req">Required</label>
+				<input id="req" name="req" type="text" required />
+				<button type="submit">Save</button>
+			</div></div>
+		`;
+		document.body.appendChild(form);
+		const behavior = form.querySelector('form-behavior') as FormBehaviorElement;
+		const fetchSpy = vi.spyOn(window, 'fetch');
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			expect(fetchSpy).not.toHaveBeenCalled();
+			const alert = form.querySelector('[data-form-error-alert]') as HTMLDivElement;
+			expect(alert.hidden).toBe(false);
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent toggles the submit button busy state during submission [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+		let busyDuringFetch = false;
+		const fetchSpy = vi.spyOn(window, 'fetch').mockImplementation(async () => {
+			busyDuringFetch = submitBtn.disabled || submitBtn.classList.contains('is-loading');
+			return new Response('', { status: 200 });
+		});
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'submitter', { value: submitBtn });
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			expect(busyDuringFetch).toBe(true);
+			expect(submitBtn.classList.contains('is-loading')).toBe(false);
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
+
+	it('handleSubmitEvent uses the submitter button formAction when present [ai generated]', async () => {
+		const { form, behavior } = makeSubmitForm();
+		const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+		submitBtn.formAction = 'https://example.test/alt';
+		const fetchSpy = vi.spyOn(window, 'fetch').mockResolvedValue(new Response('', { status: 200 }));
+		try {
+			const event = new Event('submit');
+			Object.defineProperty(event, 'submitter', { value: submitBtn });
+			Object.defineProperty(event, 'currentTarget', { value: form });
+			await behavior.handleSubmitEvent(event);
+			const request = fetchSpy.mock.calls[0][0] as Request;
+			expect(request.url).toBe('https://example.test/alt');
+		} finally {
+			fetchSpy.mockRestore();
+		}
+	});
 });
