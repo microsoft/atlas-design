@@ -6,7 +6,7 @@ classType: Component
 classPrefixes:
   - layout
 hero: true
-layoutViewName: atlas-layout-page
+layoutStorageKey: atlas-layout-page
 ---
 
 # Layout
@@ -493,7 +493,7 @@ Import `createLayoutState` from `@microsoft/atlas-js` and call it once per page 
 
 ```typescript
 const layoutState = createLayoutState({
-	viewName: 'my-view-name',
+	storageKey: 'my-storage-key',
 	useViewTransitionOnRestore: true
 });
 
@@ -513,18 +513,17 @@ document.documentElement.classList.toggle('layout-menu-collapsed');
 unsubscribe();
 ```
 
-The `viewName` option scopes persisted state — pages with different `viewName`s read and write separate `localStorage` buckets, so a layout toggled on one page doesn't bleed into another. Pass a function (`viewName: () => currentView`) to follow a runtime-varying view name without recreating the instance.
+The `storageKey` option scopes persisted state — pages with different `storageKey`s read and write separate `localStorage` buckets, so a layout toggled on one page doesn't bleed into another. Pass a function (`storageKey: () => currentKey`) to follow a runtime-varying key without recreating the instance. The resolved key is surfaced on `LayoutCallbackEvent.storageKey` so subscribers can disambiguate when one callback handles multiple instances.
 
-When distinct views should _share_ persisted state — e.g. a "docs article" and "docs landing" template both restoring the same sidebar-collapsed preference — pass a `storageKey` that overrides only the persistence bucket. `viewName` stays in `LayoutCallbackEvent.viewName` for telemetry and debugging; the persisted classes live under the shared `storageKey` instead. `storageKey` defaults to `viewName` and also accepts a getter.
+When distinct pages should _share_ persisted state — e.g. a "docs article" and "docs landing" template both restoring the same sidebar-collapsed preference — pass the same `storageKey` from each:
 
 ```typescript
 const layoutState = createLayoutState({
-	viewName: 'docs-article',
 	storageKey: 'docs-shared'
 });
 ```
 
-If you also use the inline restore script below, update the `state[...]` lookup to read from the shared `storageKey` instead of the `viewName`.
+If you also use the inline restore script below, read from the same `storageKey` in the `state[...]` lookup.
 
 Calling `createLayoutState()` from a module bundle restores classes, but **not before first paint** — module scripts run after HTML parse, so the browser briefly renders the original markup layout, causing a visible reflow.
 
@@ -538,7 +537,7 @@ Place this synchronous IIFE in `<head>` before the bundle. It reads the same `lo
 		(function () {
 			try {
 				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
-				var view = state['my-view-name'] || {};
+					var view = state['my-storage-key'] || {};
 				var html = document.documentElement;
 				for (var c in view) {
 					if (view[c]) html.classList.add(c);

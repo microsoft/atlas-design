@@ -175,20 +175,20 @@ describe('createLayoutState', () => {
 			const { storage } = createFakeStorage({
 				[STORAGE_KEY]: JSON.stringify(persisted)
 			});
-			const state = track(createLayoutState({ storage, viewName: 'viewA' }));
+			const state = track(createLayoutState({ storage, storageKey: 'viewA' }));
 			expect(state.getState()).toEqual(persisted);
 			expect(state.getViewState()).toEqual({ 'layout-twin': true });
 		});
 
-		it('returns empty view state when this view name has no stored entry [ai generated]', () => {
+		it('returns empty view state when this storage key has no stored entry [ai generated]', () => {
 			const { storage } = createFakeStorage({
 				[STORAGE_KEY]: JSON.stringify({ other: { 'layout-twin': true } })
 			});
-			const state = track(createLayoutState({ storage, viewName: 'mine' }));
+			const state = track(createLayoutState({ storage, storageKey: 'mine' }));
 			expect(state.getViewState()).toEqual({});
 		});
 
-		it('falls back to "default" view name when none is provided [ai generated]', () => {
+		it('falls back to "default" storage key when none is provided [ai generated]', () => {
 			const { storage } = createFakeStorage({
 				[STORAGE_KEY]: JSON.stringify({ default: { 'layout-twin': true } })
 			});
@@ -207,7 +207,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -224,7 +224,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -241,7 +241,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -260,7 +260,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						useViewTransitionOnRestore: true,
 						deferCallbacksUntil: Promise.resolve()
 					})
@@ -304,7 +304,7 @@ describe('createLayoutState', () => {
 						createLayoutState({
 							root,
 							storage,
-							viewName: 'v',
+							storageKey: 'v',
 							useViewTransitionOnRestore: true,
 							deferCallbacksUntil: Promise.resolve()
 						})
@@ -335,7 +335,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -353,7 +353,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -369,7 +369,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -386,7 +386,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -405,7 +405,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -430,7 +430,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'mine',
+					storageKey: 'mine',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -451,7 +451,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -465,7 +465,7 @@ describe('createLayoutState', () => {
 			expect(cb).toHaveBeenCalledWith({
 				className: 'layout-twin',
 				isApplied: true,
-				viewName: 'v'
+				storageKey: 'v'
 			});
 		});
 
@@ -477,7 +477,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -491,7 +491,7 @@ describe('createLayoutState', () => {
 			expect(cb).toHaveBeenCalledWith({
 				className: 'layout-twin',
 				isApplied: false,
-				viewName: 'v'
+				storageKey: 'v'
 			});
 		});
 
@@ -502,7 +502,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -527,7 +527,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -539,7 +539,7 @@ describe('createLayoutState', () => {
 			expect(cb).toHaveBeenCalledWith({
 				className: 'layout-twin',
 				isApplied: true,
-				viewName: 'v'
+				storageKey: 'v'
 			});
 		});
 
@@ -550,7 +550,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -569,7 +569,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -580,7 +580,7 @@ describe('createLayoutState', () => {
 			expect(cb).toHaveBeenCalledWith({
 				className: 'layout-twin',
 				isApplied: true,
-				viewName: 'v'
+				storageKey: 'v'
 			});
 		});
 
@@ -591,7 +591,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -621,7 +621,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: deferPromise
 				})
 			);
@@ -644,7 +644,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -668,7 +668,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -690,7 +690,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -718,7 +718,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -765,7 +765,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						useViewTransitionOnRestore: true,
 						deferCallbacksUntil: Promise.resolve()
 					})
@@ -804,7 +804,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -835,7 +835,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -871,7 +871,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -915,7 +915,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: deferPromise
 				})
 			);
@@ -931,7 +931,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -946,7 +946,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -962,7 +962,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -979,7 +979,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'v',
+					storageKey: 'v',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -1010,7 +1010,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage: throwingStorage,
-						viewName: 'v',
+						storageKey: 'v',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				).toThrow('storage exploded');
@@ -1031,7 +1031,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -1059,7 +1059,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root,
 						storage,
-						viewName: 'v',
+						storageKey: 'v',
 						deferCallbacksUntil: Promise.reject(new Error('defer rejected'))
 					})
 				);
@@ -1075,27 +1075,27 @@ describe('createLayoutState', () => {
 		});
 	});
 
-	describe('viewName accessor', () => {
-		it('accepts a function that returns the view name [ai generated]', () => {
+	describe('storageKey accessor', () => {
+		it('accepts a function that returns the storage key [ai generated]', () => {
 			const { storage } = createFakeStorage({
 				[STORAGE_KEY]: JSON.stringify({
 					alpha: { 'layout-twin': true },
 					beta: { 'layout-single': true }
 				})
 			});
-			const state = track(createLayoutState({ storage, viewName: () => 'alpha' }));
+			const state = track(createLayoutState({ storage, storageKey: () => 'alpha' }));
 			expect(state.getViewState()).toEqual({ 'layout-twin': true });
 		});
 
-		it('calls the function each time the view name is needed [ai generated]', async () => {
+		it('calls the function each time the storage key is needed [ai generated]', async () => {
 			const root = createRoot();
 			const { storage, data } = createFakeStorage();
-			let currentView = 'alpha';
+			let currentKey = 'alpha';
 			const state = track(
 				createLayoutState({
 					root,
 					storage,
-					viewName: () => currentView,
+					storageKey: () => currentKey,
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -1104,7 +1104,7 @@ describe('createLayoutState', () => {
 			await flush();
 			expect(state.getViewState()).toEqual({ 'layout-twin': true });
 
-			currentView = 'beta';
+			currentKey = 'beta';
 			root.classList.add('layout-single');
 			await flush();
 
@@ -1115,15 +1115,15 @@ describe('createLayoutState', () => {
 			expect(state.getViewState()).toEqual({ 'layout-single': true });
 		});
 
-		it('passes the resolved viewName at fire time to subscriber events [ai generated]', async () => {
+		it('passes the resolved storageKey at fire time to subscriber events [ai generated]', async () => {
 			const root = createRoot();
 			const { storage } = createFakeStorage();
-			let currentView = 'alpha';
+			let currentKey = 'alpha';
 			const state = track(
 				createLayoutState({
 					root,
 					storage,
-					viewName: () => currentView,
+					storageKey: () => currentKey,
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -1135,10 +1135,10 @@ describe('createLayoutState', () => {
 			expect(cb).toHaveBeenLastCalledWith({
 				className: 'layout-twin',
 				isApplied: true,
-				viewName: 'alpha'
+				storageKey: 'alpha'
 			});
 
-			currentView = 'beta';
+			currentKey = 'beta';
 			root.classList.remove('layout-twin');
 			state.subscribe('layout-twin', 'removed', cb);
 			root.classList.add('layout-twin');
@@ -1147,7 +1147,7 @@ describe('createLayoutState', () => {
 			expect(cb).toHaveBeenLastCalledWith({
 				className: 'layout-twin',
 				isApplied: false,
-				viewName: 'beta'
+				storageKey: 'beta'
 			});
 		});
 
@@ -1158,7 +1158,7 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root,
 					storage,
-					viewName: () => '__proto__',
+					storageKey: () => '__proto__',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -1170,14 +1170,14 @@ describe('createLayoutState', () => {
 			});
 		});
 
-		it('still coerces unsafe static viewName strings to "default" [ai generated]', async () => {
+		it('coerces unsafe static storageKey strings to "default" [ai generated]', async () => {
 			const root = createRoot();
 			const { storage, data } = createFakeStorage();
 			const state = track(
 				createLayoutState({
 					root,
 					storage,
-					viewName: 'prototype',
+					storageKey: 'prototype',
 					deferCallbacksUntil: Promise.resolve()
 				})
 			);
@@ -1188,51 +1188,8 @@ describe('createLayoutState', () => {
 				default: { 'layout-twin': true }
 			});
 		});
-	});
 
-	describe('storageKey option', () => {
-		it('restores from storageKey instead of viewName when both are set', () => {
-			const persisted = {
-				'docs-article': { 'layout-single': true },
-				'docs-shared': { 'layout-twin': true }
-			};
-			const { storage } = createFakeStorage({
-				[STORAGE_KEY]: JSON.stringify(persisted)
-			});
-			const root = createRoot();
-			const state = track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'docs-article',
-					storageKey: 'docs-shared'
-				})
-			);
-			expect(state.getViewState()).toEqual({ 'layout-twin': true });
-			expect(root.classList.contains('layout-twin')).toBe(true);
-			expect(root.classList.contains('layout-single')).toBe(false);
-		});
-
-		it('persists mutations to storageKey, not viewName', async () => {
-			const root = createRoot();
-			const { storage, data } = createFakeStorage();
-			track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'docs-article',
-					storageKey: 'docs-shared',
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-			root.classList.add('layout-menu-collapsed');
-			await flush();
-			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
-				'docs-shared': { 'layout-menu-collapsed': true }
-			});
-		});
-
-		it('lets two instances with different viewNames share the same storageKey bucket', async () => {
+		it('lets two instances with the same storageKey share persisted state [ai generated]', async () => {
 			const rootA = createRoot();
 			const rootB = createRoot();
 			const { storage, data } = createFakeStorage();
@@ -1241,7 +1198,6 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root: rootA,
 					storage,
-					viewName: 'docs-article',
 					storageKey: 'docs-shared',
 					deferCallbacksUntil: Promise.resolve()
 				})
@@ -1257,7 +1213,6 @@ describe('createLayoutState', () => {
 				createLayoutState({
 					root: rootB,
 					storage,
-					viewName: 'docs-landing',
 					storageKey: 'docs-shared',
 					deferCallbacksUntil: Promise.resolve()
 				})
@@ -1266,163 +1221,6 @@ describe('createLayoutState', () => {
 			expect(rootB.classList.contains('layout-menu-collapsed')).toBe(true);
 			expect(instanceA.getViewState()).toEqual({ 'layout-menu-collapsed': true });
 			expect(instanceB.getViewState()).toEqual({ 'layout-menu-collapsed': true });
-		});
-
-		it('keeps viewName in subscriber event payloads, not storageKey', async () => {
-			const root = createRoot();
-			const { storage } = createFakeStorage();
-			const state = track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'docs-article',
-					storageKey: 'docs-shared',
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-			const cb = vi.fn();
-			state.subscribe('layout-twin', 'added', cb);
-
-			root.classList.add('layout-twin');
-			await flush();
-			expect(cb).toHaveBeenLastCalledWith({
-				className: 'layout-twin',
-				isApplied: true,
-				viewName: 'docs-article'
-			});
-		});
-
-		it('falls back to viewName when storageKey is omitted (default)', async () => {
-			const root = createRoot();
-			const { storage, data } = createFakeStorage();
-			track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'solo',
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-			root.classList.add('layout-twin');
-			await flush();
-			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
-				solo: { 'layout-twin': true }
-			});
-		});
-
-		it('accepts a function that returns the storage key', () => {
-			const persisted = {
-				alpha: { 'layout-single': true },
-				beta: { 'layout-twin': true }
-			};
-			const { storage } = createFakeStorage({
-				[STORAGE_KEY]: JSON.stringify(persisted)
-			});
-			const root = createRoot();
-			const state = track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'view-x',
-					storageKey: () => 'beta'
-				})
-			);
-			expect(state.getViewState()).toEqual({ 'layout-twin': true });
-			expect(root.classList.contains('layout-twin')).toBe(true);
-		});
-
-		it('calls the storageKey function each time the bucket is needed', async () => {
-			const root = createRoot();
-			const { storage, data } = createFakeStorage();
-			let currentKey = 'bucket-a';
-			const state = track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'static-view',
-					storageKey: () => currentKey,
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-
-			root.classList.add('layout-twin');
-			await flush();
-			expect(state.getViewState()).toEqual({ 'layout-twin': true });
-
-			currentKey = 'bucket-b';
-			root.classList.add('layout-single');
-			await flush();
-
-			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
-				'bucket-a': { 'layout-twin': true },
-				'bucket-b': { 'layout-single': true }
-			});
-			expect(state.getViewState()).toEqual({
-				'layout-single': true
-			});
-		});
-
-		it('coerces unsafe storageKey strings to "default"', async () => {
-			const root = createRoot();
-			const { storage, data } = createFakeStorage();
-			track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'safe-view',
-					storageKey: '__proto__',
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-			root.classList.add('layout-twin');
-			await flush();
-			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
-				default: { 'layout-twin': true }
-			});
-		});
-
-		it('coerces unsafe keys returned by the storageKey function to "default"', async () => {
-			const root = createRoot();
-			const { storage, data } = createFakeStorage();
-			track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'safe-view',
-					storageKey: () => 'constructor',
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-			root.classList.add('layout-twin');
-			await flush();
-			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
-				default: { 'layout-twin': true }
-			});
-		});
-
-		it('does not write to viewName bucket when storageKey is set', async () => {
-			const root = createRoot();
-			const { storage, data } = createFakeStorage({
-				[STORAGE_KEY]: JSON.stringify({
-					'old-private': { 'layout-single': true }
-				})
-			});
-			track(
-				createLayoutState({
-					root,
-					storage,
-					viewName: 'old-private',
-					storageKey: 'shared',
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-			root.classList.add('layout-twin');
-			await flush();
-
-			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
-				'old-private': { 'layout-single': true },
-				shared: { 'layout-twin': true }
-			});
 		});
 	});
 });

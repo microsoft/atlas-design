@@ -640,7 +640,7 @@ test('layout-menu-collapsed state persists across a page reload @desktop', async
 	await expect(html).not.toHaveClass(/\blayout-menu-collapsed\b/);
 
 	// Collapse the menu. createLayoutState should persist this to
-	// localStorage under the 'atlas-layout-page' view name.
+	// localStorage under the 'atlas-layout-page' storage key.
 	await page.locator(toggleMenuCollapsedSelector).click();
 	await expect(html).toHaveClass(/\blayout-menu-collapsed\b/);
 

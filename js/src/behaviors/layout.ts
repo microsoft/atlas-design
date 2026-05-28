@@ -58,15 +58,14 @@ export function initLayout() {
 
 /**
  * Observes `layout-*` class changes on a root element (default: `<html>`) and
- * persists them via a Storage backend, bucketed per `storageKey` (which
- * defaults to `viewName`). Consumers `subscribe()` to specific class
- * transitions; a new subscription replays immediately if the current state
- * already matches.
+ * persists them via a Storage backend, bucketed per `storageKey` (defaults
+ * to `'default'`). Consumers `subscribe()` to specific class transitions; a
+ * new subscription replays immediately if the current state already matches.
  *
- * `viewName` is the view's identity — it appears in `LayoutCallbackEvent`s
- * and is the default bucket key. `storageKey` overrides only the bucket,
- * letting two views with different `viewName`s share persisted state while
- * each keeps its own identity in event payloads.
+ * `storageKey` identifies the bucket under the shared `atlas-layout-preferences`
+ * storage entry and is surfaced in `LayoutCallbackEvent`s. Distinct pages
+ * with different keys read and write separate buckets; pages that should
+ * share persisted state simply pass the same `storageKey`.
  *
  * Restoration and the `MutationObserver` are wired synchronously inside the
  * factory — by return time the instance is live. Subscriber callbacks are
@@ -92,7 +91,7 @@ export type LayoutClassWhen = 'added' | 'removed' | 'always';
 export interface LayoutCallbackEvent {
 	className: string;
 	isApplied: boolean;
-	viewName: string;
+	storageKey: string;
 }
 
 export type LayoutCallback = (event: LayoutCallbackEvent) => void;
@@ -111,20 +110,14 @@ export interface LayoutStateOptions {
 	/** Storage backend matching `getItem`/`setItem`. Defaults to `localStorage`. */
 	storage?: Pick<Storage, 'getItem' | 'setItem'>;
 	/**
-	 * Identity of the current view, surfaced in `LayoutCallbackEvent.viewName`.
-	 * May be a static string or a getter that is called every time the view
-	 * name is needed — the function variant lets a single instance follow a
-	 * dynamically changing "current view" without being recreated. Also used
-	 * as the default `storageKey` when none is provided.
-	 */
-	viewName?: string | (() => string);
-	/**
-	 * Bucket key under the `atlas-layout-preferences` storage entry. Defaults
-	 * to `viewName`. Pass an explicit `storageKey` when distinct views (with
-	 * different `viewName`s) should share persisted `layout-*` state — e.g.
-	 * a "docs article" and "docs landing" template both restoring the same
-	 * sidebar-collapsed preference. Like `viewName`, accepts a getter for
-	 * dynamic resolution.
+	 * Bucket key under the `atlas-layout-preferences` storage entry, and the
+	 * identifier surfaced in `LayoutCallbackEvent.storageKey`. Pages with
+	 * different `storageKey`s persist independently; pages that should share
+	 * persisted state — e.g. a "docs article" and "docs landing" template
+	 * both restoring the same sidebar-collapsed preference — pass the same
+	 * `storageKey`. May be a static string or a getter called every time the
+	 * key is needed, letting a single instance follow a dynamically changing
+	 * key without being recreated. Defaults to `'default'`.
 	 */
 	storageKey?: string | (() => string);
 	/**
@@ -183,8 +176,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const {
 		root: targetRoot = document.documentElement,
 		storage = window.localStorage,
-		viewName: viewNameOption = 'default',
-		storageKey: storageKeyOption,
+		storageKey: storageKeyOption = 'default',
 		deferCallbacksUntil = Promise.resolve(),
 		useViewTransitionOnRestore = false
 	} = options;
@@ -199,21 +191,9 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return raw === '__proto__' || raw === 'prototype' || raw === 'constructor' ? 'default' : raw;
 	}
 
-	// Resolve the view name on demand so consumers can pass a getter and have
-	// each persistence / dispatch call see the current value. Unsafe object
-	// keys are coerced to 'default' to keep storage writes prototype-safe.
-	function getViewName(): string {
-		const raw = typeof viewNameOption === 'function' ? viewNameOption() : viewNameOption;
-		return sanitizeKey(raw);
-	}
-
-	// Resolve the storage bucket on demand. Falls back to the resolved
-	// viewName when no explicit storageKey was supplied, preserving the
-	// previous `{ [viewName]: ... }` storage shape for existing callers.
+	// Resolve the storage bucket on demand so consumers can pass a getter
+	// and have each persistence / dispatch call see the current value.
 	function getStorageKey(): string {
-		if (storageKeyOption === undefined) {
-			return getViewName();
-		}
 		const raw = typeof storageKeyOption === 'function' ? storageKeyOption() : storageKeyOption;
 		return sanitizeKey(raw);
 	}
@@ -398,14 +378,14 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 
 	function fireMatching(className: string, applied: boolean): void {
 		// Resolve once per fire so every event in this batch carries the same
-		// viewName as the storage write that just happened.
-		const eventViewName = getViewName();
+		// storageKey as the storage write that just happened.
+		const eventStorageKey = getStorageKey();
 		for (const sub of subscriptions) {
 			if (sub.className === className && matches(sub, applied)) {
 				const { callback, useViewTransition } = sub;
 				dispatch(() => {
 					startOptionalViewTransition(useViewTransition, () => {
-						callback({ className, isApplied: applied, viewName: eventViewName });
+						callback({ className, isApplied: applied, storageKey: eventStorageKey });
 					});
 				});
 			}
@@ -428,11 +408,11 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 
 		const applied = isClassApplied(className);
 		if (matches(sub, applied)) {
-			const eventViewName = getViewName();
+			const eventStorageKey = getStorageKey();
 			const { useViewTransition } = sub;
 			dispatch(() => {
 				startOptionalViewTransition(useViewTransition, () => {
-					callback({ className, isApplied: applied, viewName: eventViewName });
+					callback({ className, isApplied: applied, storageKey: eventStorageKey });
 				});
 			});
 		}

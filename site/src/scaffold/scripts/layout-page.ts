@@ -39,7 +39,7 @@ export function initLayoutPageControls() {
 	// restored state, then re-fire on subsequent toggles so click handlers
 	// don't need to update aria attributes themselves.
 	const layoutState = createLayoutState({
-		viewName: 'atlas-layout-page',
+		storageKey: 'atlas-layout-page',
 		useViewTransitionOnRestore: true
 	});
 
