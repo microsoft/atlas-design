@@ -12,7 +12,7 @@
 		<script>
 			(function () {
 					var s = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
-					var v = s['{{{layoutViewName}}}'] || {};
+					var v = s['{{{layoutStorageKey}}}'] || {};
 					var html = document.documentElement;
 					for (var c in v) {
 						if (v[c]) html.classList.add(c);

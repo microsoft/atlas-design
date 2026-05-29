@@ -58,9 +58,14 @@ export function initLayout() {
 
 /**
  * Observes `layout-*` class changes on a root element (default: `<html>`) and
- * persists them via a Storage backend, scoped per `viewName`. Consumers
- * `subscribe()` to specific class transitions; a new subscription replays
- * immediately if the current state already matches.
+ * persists them via a Storage backend, bucketed per `storageKey` (defaults
+ * to `'default'`). Consumers `subscribe()` to specific class transitions; a
+ * new subscription replays immediately if the current state already matches.
+ *
+ * `storageKey` identifies the bucket under the shared `atlas-layout-preferences`
+ * storage entry and is surfaced in `LayoutCallbackEvent`s. Distinct pages
+ * with different keys read and write separate buckets; pages that should
+ * share persisted state simply pass the same `storageKey`.
  *
  * Restoration and the `MutationObserver` are wired synchronously inside the
  * factory — by return time the instance is live. Subscriber callbacks are
@@ -86,7 +91,7 @@ export type LayoutClassWhen = 'added' | 'removed' | 'always';
 export interface LayoutCallbackEvent {
 	className: string;
 	isApplied: boolean;
-	viewName: string;
+	storageKey: string;
 }
 
 export type LayoutCallback = (event: LayoutCallbackEvent) => void;
@@ -96,7 +101,7 @@ export interface LayoutStateView {
 }
 
 export interface LayoutStatePersisted {
-	[viewName: string]: LayoutStateView;
+	[storageKey: string]: LayoutStateView;
 }
 
 export interface LayoutStateOptions {
@@ -105,12 +110,16 @@ export interface LayoutStateOptions {
 	/** Storage backend matching `getItem`/`setItem`. Defaults to `localStorage`. */
 	storage?: Pick<Storage, 'getItem' | 'setItem'>;
 	/**
-	 * Scope for stored state, e.g. per page template. May be a static string
-	 * or a getter function that is called every time a view name is needed —
-	 * the function variant lets a single instance follow a dynamically
-	 * changing "current view" without being recreated.
+	 * Bucket key under the `atlas-layout-preferences` storage entry, and the
+	 * identifier surfaced in `LayoutCallbackEvent.storageKey`. Pages with
+	 * different `storageKey`s persist independently; pages that should share
+	 * persisted state — e.g. a "docs article" and "docs landing" template
+	 * both restoring the same sidebar-collapsed preference — pass the same
+	 * `storageKey`. May be a static string or a getter called every time the
+	 * key is needed, letting a single instance follow a dynamically changing
+	 * key without being recreated. Defaults to `'default'`.
 	 */
-	viewName?: string | (() => string);
+	storageKey?: string | (() => string);
 	/**
 	 * Subscriber callbacks are queued until this resolves. Defaults to a
 	 * resolved promise (fires on next microtask). Pass `contentLoaded` to
@@ -144,9 +153,9 @@ export interface LayoutStateInstance {
 		callback: LayoutCallback,
 		options?: LayoutSubscribeOptions
 	): () => void;
-	/** Persisted view state for this view name. */
+	/** Persisted layout state for this instance's `storageKey` bucket. */
 	getViewState(): LayoutStateView;
-	/** Persisted state across all view names. */
+	/** Persisted state across all `storageKey` buckets. */
 	getState(): LayoutStatePersisted;
 	/** Stop observing. Subscriptions remain registered. */
 	stop(): void;
@@ -167,7 +176,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const {
 		root: targetRoot = document.documentElement,
 		storage = window.localStorage,
-		viewName: viewNameOption = 'default',
+		storageKey: storageKeyOption = 'default',
 		deferCallbacksUntil = Promise.resolve(),
 		useViewTransitionOnRestore = false
 	} = options;
@@ -176,12 +185,17 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const STORAGE_KEY = 'atlas-layout-preferences';
 	const RESTORED_ATTRIBUTE = 'data-layout-restored';
 
-	// Resolve the view name on demand so consumers can pass a getter and have
-	// each persistence / dispatch call see the current value. Unsafe object
-	// keys are coerced to 'default' to keep storage writes prototype-safe.
-	function getViewName(): string {
-		const raw = typeof viewNameOption === 'function' ? viewNameOption() : viewNameOption;
+	// Coerce unsafe object keys to 'default' so prototype-key writes can't
+	// corrupt the persisted state map.
+	function sanitizeKey(raw: string): string {
 		return raw === '__proto__' || raw === 'prototype' || raw === 'constructor' ? 'default' : raw;
+	}
+
+	// Resolve the storage bucket on demand so consumers can pass a getter
+	// and have each persistence / dispatch call see the current value.
+	function getStorageKey(): string {
+		const raw = typeof storageKeyOption === 'function' ? storageKeyOption() : storageKeyOption;
+		return sanitizeKey(raw);
 	}
 
 	const subscriptions = new Set<LayoutSubscription>();
@@ -345,7 +359,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	}
 
 	function getViewState(): LayoutStateView {
-		return loadState()[getViewName()] ?? {};
+		return loadState()[getStorageKey()] ?? {};
 	}
 
 	function isClassApplied(className: string): boolean {
@@ -364,14 +378,14 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 
 	function fireMatching(className: string, applied: boolean): void {
 		// Resolve once per fire so every event in this batch carries the same
-		// viewName as the storage write that just happened.
-		const eventViewName = getViewName();
+		// storageKey as the storage write that just happened.
+		const eventStorageKey = getStorageKey();
 		for (const sub of subscriptions) {
 			if (sub.className === className && matches(sub, applied)) {
 				const { callback, useViewTransition } = sub;
 				dispatch(() => {
 					startOptionalViewTransition(useViewTransition, () => {
-						callback({ className, isApplied: applied, viewName: eventViewName });
+						callback({ className, isApplied: applied, storageKey: eventStorageKey });
 					});
 				});
 			}
@@ -394,11 +408,11 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 
 		const applied = isClassApplied(className);
 		if (matches(sub, applied)) {
-			const eventViewName = getViewName();
+			const eventStorageKey = getStorageKey();
 			const { useViewTransition } = sub;
 			dispatch(() => {
 				startOptionalViewTransition(useViewTransition, () => {
-					callback({ className, isApplied: applied, viewName: eventViewName });
+					callback({ className, isApplied: applied, storageKey: eventStorageKey });
 				});
 			});
 		}
@@ -431,16 +445,16 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		if (added.length + removed.length === 0) {
 			return;
 		}
-		const currentViewName = getViewName();
+		const currentStorageKey = getStorageKey();
 		const state = loadState();
-		const viewState = state[currentViewName] ?? {};
+		const viewState = state[currentStorageKey] ?? {};
 		for (const c of added) {
 			viewState[c] = true;
 		}
 		for (const c of removed) {
 			viewState[c] = false;
 		}
-		state[currentViewName] = viewState;
+		state[currentStorageKey] = viewState;
 		saveState(state);
 	}
 
