@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.8.1
+
+### Patch Changes
+
+- 6eb0683: Add `palette.$palette-purple-d` (`#6659a5`) and apply it to the light theme visited link color for improved accessibility contrast.
+
 ## 6.8.0
 
 ### Minor Changes
