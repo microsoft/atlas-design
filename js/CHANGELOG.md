@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 2.0.1
+
+### Patch Changes
+
+- aea271e: Rename `viewName` to `storageKey` on `createLayoutState` (and on `LayoutCallbackEvent`).
+
 ## 2.0.0
 
 ### Major Changes
