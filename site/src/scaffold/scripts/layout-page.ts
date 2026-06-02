@@ -1,4 +1,4 @@
-import { createLayoutState } from '@microsoft/atlas-js/src/index';
+import { createLayoutState, setLayoutExclusions } from '@microsoft/atlas-js/src/index';
 
 const layoutsClasses = [
 	'layout-single',
@@ -38,10 +38,32 @@ export function initLayoutPageControls() {
 	// demo page reloads. Subscribers below sync each demo button's UI to the
 	// restored state, then re-fire on subsequent toggles so click handlers
 	// don't need to update aria attributes themselves.
+	//
+	// `excludesScope` opts this view into a secondary, persisted blocklist
+	// stored under `localStorage['atlas-layout-exclusions']`. Other views
+	// that share `storageKey: 'atlas-layout-page'` can supply a different
+	// `excludesScope` (or none) so they read the same shared preferences but
+	// skip the classes they don't own. Because the rules live in storage,
+	// the inline pre-paint IIFE in `standard.html` honors them too — no
+	// flash of the wrong layout state during hard reloads or SPA hops into
+	// a view with different ownership.
 	const layoutState = createLayoutState({
 		storageKey: 'atlas-layout-page',
+		excludesScope: 'atlas-layout-page-view',
 		useViewTransitionOnRestore: true
 	});
+
+	// Example: an SPA router landing on a "flyout-only" sibling view would
+	// seed the blocklist before render so menu/aside state from other views
+	// can't bleed in:
+	//
+	//   setLayoutExclusions('flyout-only-view', [
+	//       'layout-menu-collapsed',
+	//       'layout-aside-collapsed'
+	//   ]);
+	//
+	// The demo page owns every class it persists, so it clears its scope.
+	setLayoutExclusions('atlas-layout-page-view', []);
 
 	for (const layoutClass of layoutsClasses) {
 		layoutState.subscribe(layoutClass, 'always', ({ isApplied }) => {

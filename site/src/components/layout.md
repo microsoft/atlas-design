@@ -7,6 +7,7 @@ classPrefixes:
   - layout
 hero: true
 layoutStorageKey: atlas-layout-page
+layoutExcludesScope: atlas-layout-page-view
 ---
 
 # Layout

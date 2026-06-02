@@ -9,8 +9,18 @@
 			(function () {
 					var s = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
 					var v = s['{{{layoutStorageKey}}}'] || {};
+					var scope = '{{{layoutExcludesScope}}}';
+					var blocked = {};
+					if (scope) {
+						var x = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
+						var sx = Object.prototype.hasOwnProperty.call(x, scope) ? x[scope] : null;
+						if (sx && typeof sx === 'object') {
+							blocked = sx;
+						}
+					}
 					var html = document.documentElement;
 					for (var c in v) {
+						if (Object.prototype.hasOwnProperty.call(blocked, c)) continue;
 						if (v[c]) html.classList.add(c);
 						else html.classList.remove(c);
 					}
