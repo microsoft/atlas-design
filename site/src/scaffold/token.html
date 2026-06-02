@@ -15,9 +15,9 @@
 					var v = s['{{{layoutStorageKey}}}'] || {};
 					var k = '{{{layoutExcludesKey}}}';
 					var blocked = {};
-						if (k) {
+					if (k) {
 						var x = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
-							var sx = Object.prototype.hasOwnProperty.call(x, k) ? x[k] : null;
+						var sx = Object.prototype.hasOwnProperty.call(x, k) ? x[k] : null;
 						if (sx && typeof sx === 'object') {
 							blocked = sx;
 						}
