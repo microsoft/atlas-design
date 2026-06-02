@@ -121,6 +121,18 @@ export interface LayoutStateOptions {
 	 */
 	storageKey?: string | (() => string);
 	/**
+	 * Per-instance allowlist of `layout-*` classes this view participates in.
+	 * When set, restoration only applies listed classes from the bucket,
+	 * MutationObserver only persists changes to listed classes, and observed
+	 * mutations of other `layout-*` classes are ignored entirely. Lets views
+	 * that share a `storageKey` opt out of the slices of state that don't
+	 * apply to them — e.g. a flyout-only view in a group that also persists
+	 * menu collapse listens to and writes back only `layout-flyout-active`.
+	 * When omitted (the default), every observed `layout-*` class is in
+	 * scope, matching the original single-bucket behavior.
+	 */
+	classes?: string[];
+	/**
 	 * Subscriber callbacks are queued until this resolves. Defaults to a
 	 * resolved promise (fires on next microtask). Pass `contentLoaded` to
 	 * wait for `DOMContentLoaded`.
@@ -177,6 +189,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		root: targetRoot = document.documentElement,
 		storage = window.localStorage,
 		storageKey: storageKeyOption = 'default',
+		classes: classesOption,
 		deferCallbacksUntil = Promise.resolve(),
 		useViewTransitionOnRestore = false
 	} = options;
@@ -184,6 +197,14 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const CLASS_PREFIX = 'layout-';
 	const STORAGE_KEY = 'atlas-layout-preferences';
 	const RESTORED_ATTRIBUTE = 'data-layout-restored';
+
+	// Allowlist of classes this view participates in. `null` means
+	// "everything with the layout- prefix" (original behavior).
+	const allowedClasses: Set<string> | null = classesOption ? new Set(classesOption) : null;
+
+	function isInScope(className: string): boolean {
+		return allowedClasses ? allowedClasses.has(className) : true;
+	}
 
 	// Coerce unsafe object keys to 'default' so prototype-key writes can't
 	// corrupt the persisted state map.
@@ -425,6 +446,11 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	function restoreInitialState(): void {
 		const viewState = getViewState();
 		for (const className of Object.keys(viewState)) {
+			// Skip classes outside the allowlist so views that share a bucket
+			// don't inherit slices of state they don't participate in.
+			if (!isInScope(className)) {
+				continue;
+			}
 			targetRoot.classList.toggle(className, viewState[className]);
 		}
 	}
@@ -433,9 +459,17 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return className.startsWith(CLASS_PREFIX);
 	}
 
+	function inScopeForObserver(className: string): boolean {
+		return matchesPrefix(className) && isInScope(className);
+	}
+
 	function diffClasses(newList: string[], oldList: string[]) {
-		const filteredNew = newList.filter(matchesPrefix);
-		const filteredOld = oldList.filter(matchesPrefix);
+		// Filtering by allowlist here means out-of-scope class changes are
+		// invisible to both `persistChanges` and `fireMatching`, so toggling
+		// e.g. `layout-flyout-active` on a view that only owns
+		// `layout-menu-collapsed` is a complete no-op for this instance.
+		const filteredNew = newList.filter(inScopeForObserver);
+		const filteredOld = oldList.filter(inScopeForObserver);
 		const added = filteredNew.filter(c => !filteredOld.includes(c));
 		const removed = filteredOld.filter(c => !filteredNew.includes(c));
 		return { added, removed };

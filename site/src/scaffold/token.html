@@ -11,13 +11,22 @@
 		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src 'self' https://www.figma.com/; img-src data: 'self' https://github.com/ https://badge.fury.io/ https://*.cloudfront.net https://via.placeholder.com https://docs.microsoft.com https://learn.microsoft.com; style-src 'self' 'unsafe-inline'" >
 		<script>
 			(function () {
+				try {
 					var s = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
 					var v = s['{{{layoutStorageKey}}}'] || {};
 					var html = document.documentElement;
+					var allow = [{{#layoutAllowedClasses}}'{{.}}',{{/layoutAllowedClasses}}];
+					var allowSet = null;
+					if (allow.length) {
+						allowSet = {};
+						for (var i = 0; i < allow.length; i++) allowSet[allow[i]] = true;
+					}
 					for (var c in v) {
+						if (allowSet && !allowSet[c]) continue;
 						if (v[c]) html.classList.add(c);
 						else html.classList.remove(c);
 					}
+				} catch (e) {}
 			})();
 		</script>
 		<link rel="stylesheet" href="~/src/scaffold/index.scss">

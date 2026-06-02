@@ -35,11 +35,19 @@ export function initLayoutPageControls() {
 	}
 
 	// Persist `layout-*` classes on <html> and replay them when the layout
-	// demo page reloads. Subscribers below sync each demo button's UI to the
-	// restored state, then re-fire on subsequent toggles so click handlers
-	// don't need to update aria attributes themselves.
+	// demo page reloads. The demo page is "full" — it participates in every
+	// slice — so it lists them all in `classes`. A flyout-only view in the
+	// same group would pass `storageKey: 'atlas-layout-page'` with
+	// `classes: ['layout-flyout-active']` and silently skip the rest.
 	const layoutState = createLayoutState({
 		storageKey: 'atlas-layout-page',
+		classes: [
+			...layoutsClasses,
+			'layout-menu-collapsed',
+			'layout-aside-collapsed',
+			'layout-flyout-active',
+			'layout-constrained'
+		],
 		useViewTransitionOnRestore: true
 	});
 

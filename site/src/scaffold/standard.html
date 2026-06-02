@@ -7,13 +7,24 @@
 		<title>{{title}} | Atlas Design | Microsoft</title>
 		<script>
 			(function () {
+				try {
 					var s = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
 					var v = s['{{{layoutStorageKey}}}'] || {};
 					var html = document.documentElement;
+					// Optional per-view allowlist mirrors the JS bundle's
+					// `classes` option so pre-paint restore stays in scope.
+					var allow = [{{#layoutAllowedClasses}}'{{.}}',{{/layoutAllowedClasses}}];
+					var allowSet = null;
+					if (allow.length) {
+						allowSet = {};
+						for (var i = 0; i < allow.length; i++) allowSet[allow[i]] = true;
+					}
 					for (var c in v) {
+						if (allowSet && !allowSet[c]) continue;
 						if (v[c]) html.classList.add(c);
 						else html.classList.remove(c);
 					}
+				} catch (e) {}
 			})();
 		</script>
 		<meta property="og:title" content="{{title}}" />
