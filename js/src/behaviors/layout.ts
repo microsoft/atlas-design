@@ -129,16 +129,32 @@ export interface LayoutStateOptions {
 	 * Lets views that share a primary `storageKey` opt into different
 	 * exclusion rules without changing the shared state model. Because the
 	 * rules live in storage rather than in code, they survive SPA
-	 * navigation and direct hard reloads (the inline `<head>` IIFE reads
-	 * the same entry, so pre-paint restore stays in scope). Update at any
-	 * time via the free helper `setLayoutExclusions(scope, classes)`.
+	 * navigation and direct hard reloads — the inline `<head>` IIFE reads
+	 * the same entry, so pre-paint restore stays in scope.
+	 *
+	 * Pair with `excludes` to have this instance seed/refresh the entry on
+	 * construction. Omitted entirely → no exclusions consulted (matches the
+	 * original behavior).
 	 *
 	 * May be a static string or a getter called every time the scope is
 	 * needed, letting a single instance follow a dynamically changing scope
-	 * without being recreated. Omitted entirely → no exclusions consulted
-	 * (matches the original behavior).
+	 * without being recreated.
 	 */
 	excludesScope?: string | (() => string);
+	/**
+	 * Class names this view excludes from layout persistence. On
+	 * construction the instance writes this list into
+	 * `localStorage['atlas-layout-exclusions'][excludesScope]`, overwriting
+	 * any prior entry for that scope. Subsequent restore and persist
+	 * operations — and the inline pre-paint IIFE on the next page load —
+	 * read the persisted entry and skip these classes in both directions.
+	 *
+	 * Requires `excludesScope` to be set; ignored otherwise. Pass an empty
+	 * array to clear the scope's blocklist without removing the scope key.
+	 * Omitted entirely → the instance does not touch the exclusions entry,
+	 * but still honors whatever is already persisted there.
+	 */
+	excludes?: string[];
 	/**
 	 * Subscriber callbacks are queued until this resolves. Defaults to a
 	 * resolved promise (fires on next microtask). Pass `contentLoaded` to
@@ -207,24 +223,13 @@ function sanitizeExclusionsKey(raw: string): string {
 	return raw === '__proto__' || raw === 'prototype' || raw === 'constructor' ? 'default' : raw;
 }
 
-function loadExclusions(storage: Pick<Storage, 'getItem' | 'setItem'>): LayoutExclusionsPersisted {
-	const raw = storage.getItem(EXCLUSIONS_STORAGE_KEY);
-	if (!raw) {
-		return {};
-	}
-	try {
-		return JSON.parse(raw) as LayoutExclusionsPersisted;
-	} catch {
-		return {};
-	}
-}
-
 export function createLayoutState(options: LayoutStateOptions = {}): LayoutStateInstance {
 	const {
 		root: targetRoot = document.documentElement,
 		storage = window.localStorage,
 		storageKey: storageKeyOption = 'default',
 		excludesScope: excludesScopeOption,
+		excludes: excludesOption,
 		deferCallbacksUntil = Promise.resolve(),
 		useViewTransitionOnRestore = false
 	} = options;
@@ -257,6 +262,50 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return sanitizeKey(raw);
 	}
 
+	// Seed the persisted exclusions for this instance's scope from the
+	// `excludes` option. Runs once at construction so the very next page
+	// load's inline IIFE sees the rules in storage. No-op when either
+	// `excludes` or `excludesScope` is omitted, so consumers can use just
+	// the scope to read pre-existing rules.
+	function writeConfiguredExclusions(): void {
+		if (excludesOption === undefined) {
+			return;
+		}
+		const scope = getExcludesScope();
+		if (scope === null) {
+			return;
+		}
+		const raw = storage.getItem(EXCLUSIONS_STORAGE_KEY);
+		let state: LayoutExclusionsPersisted = {};
+		if (raw) {
+			try {
+				const parsed = JSON.parse(raw) as LayoutExclusionsPersisted;
+				if (parsed && typeof parsed === 'object') {
+					state = parsed;
+				}
+			} catch {
+				// Treat unparseable storage as empty and overwrite below.
+			}
+		}
+		const next: { [className: string]: true } = {};
+		for (const c of excludesOption) {
+			next[c] = true;
+		}
+		state[scope] = next;
+		try {
+			storage.setItem(EXCLUSIONS_STORAGE_KEY, JSON.stringify(state));
+		} catch (err) {
+			// Quota / storage-disabled. Persist filtering still works via
+			// in-memory `excludesOption`, but cross-load IIFE pre-paint
+			// won't see the rules. Surface so consumers can react.
+			// eslint-disable-next-line no-console
+			console.error(
+				'createLayoutState: failed to write atlas-layout-exclusions; in-memory exclusions still apply',
+				err
+			);
+		}
+	}
+
 	// Read the persisted exclusions for the current scope. Returns an empty
 	// set when no scope is configured, no entry exists, or the data is
 	// unparseable. Uses own-property semantics so a tampered `__proto__`
@@ -283,6 +332,8 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		}
 		return new Set(Object.keys(scoped));
 	}
+
+	writeConfiguredExclusions();
 
 	const subscriptions = new Set<LayoutSubscription>();
 	let observer: MutationObserver | null = null;
@@ -619,50 +670,4 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		getState: loadState,
 		stop
 	};
-}
-
-/* -------------------------------------------------------------------------- */
-/* Layout exclusions helpers                                                  */
-/* -------------------------------------------------------------------------- */
-
-/**
- * Replace the entire blocklist for `scope` in the `atlas-layout-exclusions`
- * storage entry. Subsequent restores and persists (in this tab and others
- * once they next read) will see the updated rules. Pass an empty array to
- * clear the scope's rules without removing the scope key itself.
- *
- * Intended to be called by SPA routers on navigation, by an app shell at
- * boot to seed per-view rules, or by experiment plumbing — any source that
- * wants to teach the inline IIFE and the live instances what to skip.
- */
-export function setLayoutExclusions(
-	scope: string,
-	classes: string[],
-	storage: Pick<Storage, 'getItem' | 'setItem'> = window.localStorage
-): void {
-	const safeScope = sanitizeExclusionsKey(scope);
-	const state = loadExclusions(storage);
-	const next: { [className: string]: true } = {};
-	for (const c of classes) {
-		next[c] = true;
-	}
-	state[safeScope] = next;
-	storage.setItem(EXCLUSIONS_STORAGE_KEY, JSON.stringify(state));
-}
-
-/**
- * Read the current blocklist for `scope` as an array of class names. Reads
- * `atlas-layout-exclusions` fresh on every call.
- */
-export function getLayoutExclusions(
-	scope: string,
-	storage: Pick<Storage, 'getItem' | 'setItem'> = window.localStorage
-): string[] {
-	const safeScope = sanitizeExclusionsKey(scope);
-	const state = loadExclusions(storage);
-	const scoped = Object.prototype.hasOwnProperty.call(state, safeScope) ? state[safeScope] : null;
-	if (!scoped || typeof scoped !== 'object') {
-		return [];
-	}
-	return Object.keys(scoped);
 }
