@@ -553,6 +553,61 @@ Place this synchronous IIFE in `<head>` before the bundle. It reads the same `lo
 
 Atlas ships ready-made helpers for this — see [Display helpers gated on JS restoration](#display-helpers-gated-on-js-restoration). The sentinel is a data attribute rather than a `layout-*` class, so `createLayoutState` does not persist it.
 
+### Excluding classes per view (advanced)
+
+When a view shares `storageKey` with others but does not own every `layout-*` class — for example an editor view with no left nav — list those classes in `excludes`. They will not be restored, persisted, or dispatched to subscribers for that view.
+
+```typescript
+const layoutState = createLayoutState({
+	storageKey: 'docs-shared',
+	excludesScope: 'editor-view',
+	excludes: ['layout-menu-collapsed', 'layout-aside-collapsed']
+});
+```
+
+| Option           | Effect                                                                                                                                                |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `excludesScope`  | Names this view's blocklist inside a second `localStorage` entry, `atlas-layout-exclusions`. Distinct from `storageKey`.                              |
+| `excludes`       | Classes blocked for this view. Construction writes the list to `atlas-layout-exclusions[excludesScope]`, replacing any prior list. Pass `[]` to clear. |
+
+Exclusions apply symmetrically:
+
+1. **Restore** — excluded classes are not applied to `<html>` during initial restore.
+2. **Persist** — adding or removing an excluded class on `<html>` is not written to `storageKey`.
+3. **Subscribers** — `subscribe()` callbacks for an excluded class never fire, including the immediate replay at subscribe time.
+
+Other views can reuse the same `storageKey` with a different `excludesScope`, or omit `excludesScope` entirely. Each scope's exclusions stay isolated.
+
+For pre-paint restore to honor exclusions, the inline IIFE must read `atlas-layout-exclusions` too:
+
+```html-no-example
+<head>
+	<script>
+		(function () {
+			try {
+				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
+				var view = state['my-storage-key'] || {};
+				var scope = 'editor-view';
+				var blocked = {};
+				if (scope) {
+					var ex = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
+					var sx = Object.prototype.hasOwnProperty.call(ex, scope) ? ex[scope] : null;
+					if (sx && typeof sx === 'object') blocked = sx;
+				}
+				var html = document.documentElement;
+				for (var c in view) {
+					if (Object.prototype.hasOwnProperty.call(blocked, c)) continue;
+					if (view[c]) html.classList.add(c);
+					else html.classList.remove(c);
+				}
+			} catch (e) {}
+		})();
+	</script>
+</head>
+```
+
+Exclusion rules are re-read on every persist and dispatch, so updates take effect without recreating the instance. Supplying `excludesScope` without `excludes` makes the instance a read-only consumer of rules written elsewhere.
+
 ### Content Security Policy
 
 Inline `<script>` requires `'unsafe-inline'` or a `'sha256-...'` hash in `script-src`. Atlas places the snippet **before** the CSP `<meta>` tag so the policy applies only to later elements; alternatively, add the script body's SHA-256 hash to `script-src`.
