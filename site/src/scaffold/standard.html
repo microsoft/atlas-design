@@ -9,11 +9,11 @@
 			(function () {
 					var s = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
 					var v = s['{{{layoutStorageKey}}}'] || {};
-					var scope = '{{{layoutExcludesScope}}}';
+					var k = '{{{layoutExcludesKey}}}';
 					var blocked = {};
-					if (scope) {
+						if (k) {
 						var x = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
-						var sx = Object.prototype.hasOwnProperty.call(x, scope) ? x[scope] : null;
+							var sx = Object.prototype.hasOwnProperty.call(x, k) ? x[k] : null;
 						if (sx && typeof sx === 'object') {
 							blocked = sx;
 						}

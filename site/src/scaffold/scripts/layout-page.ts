@@ -39,29 +39,29 @@ export function initLayoutPageControls() {
 	// restored state, then re-fire on subsequent toggles so click handlers
 	// don't need to update aria attributes themselves.
 	//
-	// `excludesScope` opts this view into a secondary, persisted blocklist
+	// `excludesKey` opts this view into a secondary, persisted blocklist
 	// stored under `localStorage['atlas-layout-exclusions']`. Other views
 	// that share `storageKey: 'atlas-layout-page'` can declare a different
-	// `excludesScope` (or none) so they read the same shared preferences
+	// `excludesKey` (or none) so they read the same shared preferences
 	// but skip the classes they don't own. Pair with `excludes` to have
-	// the library seed/refresh the scope's blocklist on construction;
+	// the library seed/refresh the key's blocklist on construction;
 	// because the rules then live in storage, the inline pre-paint IIFE
 	// in `standard.html` honors them on the next page load — no flash of
 	// the wrong layout state.
 	//
 	// The demo page owns every class it persists, so it seeds an empty
 	// blocklist. A "flyout-only" sibling view sharing this `storageKey`
-	// would declare its own scope and exclude the classes it doesn't
+	// would declare its own key and exclude the classes it doesn't
 	// manage, e.g.:
 	//
 	//   createLayoutState({
 	//       storageKey: 'atlas-layout-page',
-	//       excludesScope: 'flyout-only-view',
+	//       excludesKey: 'flyout-only-view',
 	//       excludes: ['layout-menu-collapsed', 'layout-aside-collapsed']
 	//   });
 	const layoutState = createLayoutState({
 		storageKey: 'atlas-layout-page',
-		excludesScope: 'atlas-layout-page-view',
+		excludesKey: 'atlas-layout-page-view',
 		excludes: [],
 		useViewTransitionOnRestore: true
 	});

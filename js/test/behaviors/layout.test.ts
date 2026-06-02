@@ -1243,14 +1243,14 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e'
+						excludesKey: 'view-e'
 					})
 				);
 				expect(root.classList.contains('layout-twin')).toBe(true);
 				expect(root.classList.contains('layout-menu-collapsed')).toBe(false);
 			});
 
-			it('applies all persisted classes when no excludesScope is set', () => {
+			it('applies all persisted classes when no excludesKey is set', () => {
 				const root = createRoot();
 				const { storage } = createFakeStorage({
 					[STORAGE_KEY]: JSON.stringify({
@@ -1280,7 +1280,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e'
+						excludesKey: 'view-e'
 					})
 				);
 				expect(root.classList.contains('layout-menu-collapsed')).toBe(true);
@@ -1297,7 +1297,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e'
+						excludesKey: 'view-e'
 					})
 				);
 				expect(root.classList.contains('layout-twin')).toBe(true);
@@ -1317,7 +1317,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -1342,7 +1342,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -1362,7 +1362,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -1389,7 +1389,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root: createRoot(),
 						storage,
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						excludes: ['layout-menu-collapsed', 'layout-aside-collapsed']
 					})
 				);
@@ -1414,7 +1414,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root: createRoot(),
 						storage,
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						excludes: ['layout-menu-collapsed']
 					})
 				);
@@ -1433,7 +1433,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root: createRoot(),
 						storage,
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						excludes: ['layout-menu-collapsed']
 					})
 				);
@@ -1453,7 +1453,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root: createRoot(),
 						storage,
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						excludes: []
 					})
 				);
@@ -1470,7 +1470,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root: createRoot(),
 						storage,
-						excludesScope: 'view-e'
+						excludesKey: 'view-e'
 					})
 				);
 				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
@@ -1478,7 +1478,7 @@ describe('createLayoutState', () => {
 				});
 			});
 
-			it('does not write to the exclusions entry when excludesScope is omitted', () => {
+			it('does not write to the exclusions entry when excludesKey is omitted', () => {
 				const { storage, data } = createFakeStorage();
 				track(
 					createLayoutState({
@@ -1498,7 +1498,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root: createRoot(),
 						storage,
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						excludes: ['layout-menu-collapsed']
 					})
 				);
@@ -1508,7 +1508,7 @@ describe('createLayoutState', () => {
 			});
 		});
 
-		describe('excludesScope option', () => {
+		describe('excludesKey option', () => {
 			it('accepts a function that returns the scope', () => {
 				const root = createRoot();
 				const { storage } = createFakeStorage({
@@ -1522,7 +1522,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: () => 'view-e'
+						excludesKey: () => 'view-e'
 					})
 				);
 				expect(root.classList.contains('layout-menu-collapsed')).toBe(false);
@@ -1542,7 +1542,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: () => currentScope,
+						excludesKey: () => currentScope,
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -1575,7 +1575,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root: createRoot(),
 						storage,
-						excludesScope: '__proto__',
+						excludesKey: '__proto__',
 						excludes: ['layout-menu-collapsed']
 					})
 				);
@@ -1590,7 +1590,7 @@ describe('createLayoutState', () => {
 					createLayoutState({
 						root: createRoot(),
 						storage,
-						excludesScope: () => 'prototype',
+						excludesKey: () => 'prototype',
 						excludes: ['layout-menu-collapsed']
 					})
 				);
@@ -1612,7 +1612,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e'
+						excludesKey: 'view-e'
 					})
 				);
 				// 'view-e' has no rules in storage, so the class should restore.
@@ -1620,7 +1620,7 @@ describe('createLayoutState', () => {
 			});
 		});
 
-		describe('shared storageKey, different excludesScope', () => {
+		describe('shared storageKey, different excludesKey', () => {
 			it('lets two views share persisted state while honoring distinct exclusion scopes', async () => {
 				const rootE = createRoot();
 				const rootF = createRoot();
@@ -1632,7 +1632,7 @@ describe('createLayoutState', () => {
 						root: rootE,
 						storage,
 						storageKey: 'main-app',
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						excludes: ['layout-menu-collapsed', 'layout-aside-collapsed'],
 						deferCallbacksUntil: Promise.resolve()
 					})
@@ -1643,7 +1643,7 @@ describe('createLayoutState', () => {
 						root: rootF,
 						storage,
 						storageKey: 'main-app',
-						excludesScope: 'view-f',
+						excludesKey: 'view-f',
 						excludes: ['layout-flyout-active'],
 						deferCallbacksUntil: Promise.resolve()
 					})
@@ -1690,7 +1690,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -1727,7 +1727,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -1751,7 +1751,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
@@ -1787,7 +1787,7 @@ describe('createLayoutState', () => {
 						root,
 						storage,
 						storageKey: 'v',
-						excludesScope: 'view-e',
+						excludesKey: 'view-e',
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);

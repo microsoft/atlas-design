@@ -7,7 +7,7 @@ classPrefixes:
   - layout
 hero: true
 layoutStorageKey: atlas-layout-page
-layoutExcludesScope: atlas-layout-page-view
+layoutExcludesKey: atlas-layout-page-view
 ---
 
 # Layout
@@ -560,15 +560,15 @@ When a view shares `storageKey` with others but does not own every `layout-*` cl
 ```typescript
 const layoutState = createLayoutState({
 	storageKey: 'docs-shared',
-	excludesScope: 'editor-view',
+	excludesKey: 'editor-view',
 	excludes: ['layout-menu-collapsed', 'layout-aside-collapsed']
 });
 ```
 
 | Option           | Effect                                                                                                                                                |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `excludesScope`  | Names this view's blocklist inside a second `localStorage` entry, `atlas-layout-exclusions`. Distinct from `storageKey`.                              |
-| `excludes`       | Classes blocked for this view. Construction writes the list to `atlas-layout-exclusions[excludesScope]`, replacing any prior list. Pass `[]` to clear. |
+| `excludesKey`  | Names this view's blocklist inside a second `localStorage` entry, `atlas-layout-exclusions`. Distinct from `storageKey`.                              |
+| `excludes`       | Classes blocked for this view. Construction writes the list to `atlas-layout-exclusions[excludesKey]`, replacing any prior list. Pass `[]` to clear. |
 
 Exclusions apply symmetrically:
 
@@ -576,7 +576,7 @@ Exclusions apply symmetrically:
 2. **Persist** — adding or removing an excluded class on `<html>` is not written to `storageKey`.
 3. **Subscribers** — `subscribe()` callbacks for an excluded class never fire, including the immediate replay at subscribe time.
 
-Other views can reuse the same `storageKey` with a different `excludesScope`, or omit `excludesScope` entirely. Each scope's exclusions stay isolated.
+Other views can reuse the same `storageKey` with a different `excludesKey`, or omit `excludesKey` entirely. Each key's exclusions stay isolated.
 
 For pre-paint restore to honor exclusions, the inline IIFE must read `atlas-layout-exclusions` too:
 
@@ -587,11 +587,11 @@ For pre-paint restore to honor exclusions, the inline IIFE must read `atlas-layo
 			try {
 				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
 				var view = state['my-storage-key'] || {};
-				var scope = 'editor-view';
+				var key = 'editor-view';
 				var blocked = {};
-				if (scope) {
+				if (key) {
 					var ex = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
-					var sx = Object.prototype.hasOwnProperty.call(ex, scope) ? ex[scope] : null;
+					var sx = Object.prototype.hasOwnProperty.call(ex, key) ? ex[key] : null;
 					if (sx && typeof sx === 'object') blocked = sx;
 				}
 				var html = document.documentElement;
@@ -606,7 +606,7 @@ For pre-paint restore to honor exclusions, the inline IIFE must read `atlas-layo
 </head>
 ```
 
-Exclusion rules are re-read on every persist and dispatch, so updates take effect without recreating the instance. Supplying `excludesScope` without `excludes` makes the instance a read-only consumer of rules written elsewhere.
+Exclusion rules are re-read on every persist and dispatch, so updates take effect without recreating the instance. Supplying `excludesKey` without `excludes` makes the instance a read-only consumer of rules written elsewhere.
 
 ### Content Security Policy
 

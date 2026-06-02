@@ -122,8 +122,8 @@ export interface LayoutStateOptions {
 	storageKey?: string | (() => string);
 	/**
 	 * Lookup key into the secondary `atlas-layout-exclusions` storage entry.
-	 * The entry's shape is `{ [scope]: { [className]: true } }`; if a class
-	 * appears under this scope (regardless of value), the instance and the
+	 * The entry's shape is `{ [key]: { [className]: true } }`; if a class
+	 * appears under this key (regardless of value), the instance and the
 	 * inline IIFE both skip it everywhere: restore, persist, AND subscriber
 	 * dispatch (including the immediate replay at `subscribe()` time).
 	 *
@@ -131,28 +131,28 @@ export interface LayoutStateOptions {
 	 * exclusion rules without changing the shared state model. Because the
 	 * rules live in storage rather than in code, they survive SPA
 	 * navigation and direct hard reloads — the inline `<head>` IIFE reads
-	 * the same entry, so pre-paint restore stays in scope.
+	 * the same entry, so pre-paint restore honors them.
 	 *
 	 * Pair with `excludes` to have this instance seed/refresh the entry on
 	 * construction. Omitted entirely → no exclusions consulted (matches the
 	 * original behavior).
 	 *
-	 * May be a static string or a getter called every time the scope is
-	 * needed, letting a single instance follow a dynamically changing scope
+	 * May be a static string or a getter called every time the key is
+	 * needed, letting a single instance follow a dynamically changing key
 	 * without being recreated.
 	 */
-	excludesScope?: string | (() => string);
+	excludesKey?: string | (() => string);
 	/**
 	 * Class names this view excludes from layout persistence. On
 	 * construction the instance writes this list into
-	 * `localStorage['atlas-layout-exclusions'][excludesScope]`, overwriting
-	 * any prior entry for that scope. Subsequent restore, persist, and
+	 * `localStorage['atlas-layout-exclusions'][excludesKey]`, overwriting
+	 * any prior entry for that key. Subsequent restore, persist, and
 	 * subscriber dispatch — plus the inline pre-paint IIFE on the next
 	 * page load — read the persisted entry and skip these classes
 	 * symmetrically.
 	 *
-	 * Requires `excludesScope` to be set; ignored otherwise. Pass an empty
-	 * array to clear the scope's blocklist without removing the scope key.
+	 * Requires `excludesKey` to be set; ignored otherwise. Pass an empty
+	 * array to clear the key's blocklist without removing the entry.
 	 * Omitted entirely → the instance does not touch the exclusions entry,
 	 * but still honors whatever is already persisted there.
 	 */
@@ -211,12 +211,12 @@ type DocumentWithViewTransition = Document & {
 
 /**
  * Shape of the secondary `atlas-layout-exclusions` storage entry — a map of
- * scope key → object whose own keys name the `layout-*` classes blocked
- * within that scope. Value associated with each key is ignored; presence is
+ * key → object whose own keys name the `layout-*` classes blocked under
+ * that entry. Value associated with each class is ignored; presence is
  * what matters.
  */
 export interface LayoutExclusionsPersisted {
-	[scope: string]: { [className: string]: true };
+	[key: string]: { [className: string]: true };
 }
 
 const EXCLUSIONS_STORAGE_KEY = 'atlas-layout-exclusions';
@@ -230,7 +230,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		root: targetRoot = document.documentElement,
 		storage = window.localStorage,
 		storageKey: storageKeyOption = 'default',
-		excludesScope: excludesScopeOption,
+		excludesKey: excludesKeyOption,
 		excludes: excludesOption,
 		deferCallbacksUntil = Promise.resolve(),
 		useViewTransitionOnRestore = false
@@ -253,28 +253,27 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return sanitizeKey(raw);
 	}
 
-	// Resolve the excludes scope on demand. Null means "no scope was
-	// configured" — exclusions are skipped entirely.
-	function getExcludesScope(): string | null {
-		if (excludesScopeOption === undefined) {
+	// Resolve the excludes key on demand. Null means none was configured —
+	// exclusions are skipped entirely.
+	function getExcludesKey(): string | null {
+		if (excludesKeyOption === undefined) {
 			return null;
 		}
-		const raw =
-			typeof excludesScopeOption === 'function' ? excludesScopeOption() : excludesScopeOption;
+		const raw = typeof excludesKeyOption === 'function' ? excludesKeyOption() : excludesKeyOption;
 		return sanitizeKey(raw);
 	}
 
-	// Seed the persisted exclusions for this instance's scope from the
+	// Seed the persisted exclusions for this instance's key from the
 	// `excludes` option. Runs once at construction so the very next page
 	// load's inline IIFE sees the rules in storage. No-op when either
-	// `excludes` or `excludesScope` is omitted, so consumers can use just
-	// the scope to read pre-existing rules.
+	// `excludes` or `excludesKey` is omitted, so consumers can use just
+	// the key to read pre-existing rules.
 	function writeConfiguredExclusions(): void {
 		if (excludesOption === undefined) {
 			return;
 		}
-		const scope = getExcludesScope();
-		if (scope === null) {
+		const key = getExcludesKey();
+		if (key === null) {
 			return;
 		}
 		const raw = storage.getItem(EXCLUSIONS_STORAGE_KEY);
@@ -293,7 +292,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		for (const c of excludesOption) {
 			next[c] = true;
 		}
-		state[scope] = next;
+		state[key] = next;
 		try {
 			storage.setItem(EXCLUSIONS_STORAGE_KEY, JSON.stringify(state));
 		} catch (err) {
@@ -308,13 +307,13 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		}
 	}
 
-	// Read the persisted exclusions for the current scope. Returns an empty
-	// set when no scope is configured, no entry exists, or the data is
+	// Read the persisted exclusions for the current key. Returns an empty
+	// set when no key is configured, no entry exists, or the data is
 	// unparseable. Uses own-property semantics so a tampered `__proto__`
 	// key can't poison the blocklist.
 	function getExcludedClasses(): Set<string> {
-		const scope = getExcludesScope();
-		if (scope === null) {
+		const key = getExcludesKey();
+		if (key === null) {
 			return new Set();
 		}
 		const raw = storage.getItem(EXCLUSIONS_STORAGE_KEY);
@@ -327,8 +326,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		} catch {
 			return new Set();
 		}
-		const scoped =
-			parsed && Object.prototype.hasOwnProperty.call(parsed, scope) ? parsed[scope] : null;
+		const scoped = parsed && Object.prototype.hasOwnProperty.call(parsed, key) ? parsed[key] : null;
 		if (!scoped || typeof scoped !== 'object') {
 			return new Set();
 		}
