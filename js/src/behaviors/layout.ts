@@ -124,7 +124,8 @@ export interface LayoutStateOptions {
 	 * Lookup key into the secondary `atlas-layout-exclusions` storage entry.
 	 * The entry's shape is `{ [scope]: { [className]: true } }`; if a class
 	 * appears under this scope (regardless of value), the instance and the
-	 * inline IIFE both skip it during restore AND during persist.
+	 * inline IIFE both skip it everywhere: restore, persist, AND subscriber
+	 * dispatch (including the immediate replay at `subscribe()` time).
 	 *
 	 * Lets views that share a primary `storageKey` opt into different
 	 * exclusion rules without changing the shared state model. Because the
@@ -145,9 +146,10 @@ export interface LayoutStateOptions {
 	 * Class names this view excludes from layout persistence. On
 	 * construction the instance writes this list into
 	 * `localStorage['atlas-layout-exclusions'][excludesScope]`, overwriting
-	 * any prior entry for that scope. Subsequent restore and persist
-	 * operations — and the inline pre-paint IIFE on the next page load —
-	 * read the persisted entry and skip these classes in both directions.
+	 * any prior entry for that scope. Subsequent restore, persist, and
+	 * subscriber dispatch — plus the inline pre-paint IIFE on the next
+	 * page load — read the persisted entry and skip these classes
+	 * symmetrically.
 	 *
 	 * Requires `excludesScope` to be set; ignored otherwise. Pass an empty
 	 * array to clear the scope's blocklist without removing the scope key.
@@ -515,7 +517,11 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 
 	function fireMatching(className: string, applied: boolean): void {
 		// Resolve once per fire so every event in this batch carries the same
-		// storageKey as the storage write that just happened.
+		// storageKey as the storage write that just happened, and so any
+		// exclusion rules added between observer fires apply consistently.
+		if (getExcludedClasses().has(className)) {
+			return;
+		}
 		const eventStorageKey = getStorageKey();
 		for (const sub of subscriptions) {
 			if (sub.className === className && matches(sub, applied)) {
@@ -544,7 +550,10 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		subscriptions.add(sub);
 
 		const applied = isClassApplied(className);
-		if (matches(sub, applied)) {
+		// Symmetric with fireMatching: an excluded class is not ours, so
+		// skip the initial replay too. Re-evaluated on subsequent mutations
+		// in case the rules change.
+		if (matches(sub, applied) && !getExcludedClasses().has(className)) {
 			const eventStorageKey = getStorageKey();
 			const { useViewTransition } = sub;
 			dispatch(() => {

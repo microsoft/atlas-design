@@ -1676,5 +1676,137 @@ describe('createLayoutState', () => {
 				void viewF;
 			});
 		});
+
+		describe('subscribers', () => {
+			it('does not fire subscribers for excluded classes when mutated', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				const blockedCb = vi.fn();
+				const allowedCb = vi.fn();
+				state.subscribe('layout-menu-collapsed', 'always', blockedCb);
+				state.subscribe('layout-twin', 'always', allowedCb);
+				await flush();
+				blockedCb.mockClear();
+				allowedCb.mockClear();
+
+				root.classList.add('layout-menu-collapsed');
+				root.classList.add('layout-twin');
+				await flush();
+
+				expect(blockedCb).not.toHaveBeenCalled();
+				expect(allowedCb).toHaveBeenCalledWith({
+					className: 'layout-twin',
+					isApplied: true,
+					storageKey: 'v'
+				});
+			});
+
+			it('does not replay an excluded class at subscribe time', () => {
+				const root = createRoot();
+				root.classList.add('layout-menu-collapsed');
+				const { storage } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-menu-collapsed', 'always', cb);
+				// Subscribe-time replay runs synchronously when
+				// deferCallbacksUntil is already resolved at construction; the
+				// `dispatch` queue would drain on the next microtask, but the
+				// branch we care about is the `matches(...) && !blocked` guard
+				// — flush to make sure no callback was queued.
+				return flush().then(() => {
+					expect(cb).not.toHaveBeenCalled();
+				});
+			});
+
+			it('re-evaluates exclusions per fire so newly-blocked classes stop firing mid-life', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-menu-collapsed', 'always', cb);
+				await flush();
+				cb.mockClear();
+
+				// No exclusion yet — first toggle fires.
+				root.classList.add('layout-menu-collapsed');
+				await flush();
+				expect(cb).toHaveBeenCalledTimes(1);
+
+				// External writer blocks the class — next toggle is silent.
+				storage.setItem(
+					EXCLUSIONS_KEY,
+					JSON.stringify({ 'view-e': { 'layout-menu-collapsed': true } })
+				);
+				root.classList.remove('layout-menu-collapsed');
+				await flush();
+				expect(cb).toHaveBeenCalledTimes(1);
+			});
+
+			it('re-evaluates exclusions per fire so newly-unblocked classes start firing mid-life', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-menu-collapsed', 'always', cb);
+				await flush();
+				cb.mockClear();
+
+				// Blocked — first toggle is silent.
+				root.classList.add('layout-menu-collapsed');
+				await flush();
+				expect(cb).not.toHaveBeenCalled();
+
+				// External writer clears the rule — next toggle fires.
+				storage.setItem(EXCLUSIONS_KEY, JSON.stringify({ 'view-e': {} }));
+				root.classList.remove('layout-menu-collapsed');
+				await flush();
+				expect(cb).toHaveBeenCalledTimes(1);
+			});
+		});
 	});
 });
