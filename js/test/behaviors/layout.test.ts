@@ -1223,4 +1223,458 @@ describe('createLayoutState', () => {
 			expect(instanceB.getViewState()).toEqual({ 'layout-menu-collapsed': true });
 		});
 	});
+
+	describe('exclusions', () => {
+		const EXCLUSIONS_KEY = 'atlas-layout-exclusions';
+
+		describe('restore', () => {
+			it('skips classes listed for this scope during initial restore', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({
+						v: { 'layout-twin': true, 'layout-menu-collapsed': true }
+					}),
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e'
+					})
+				);
+				expect(root.classList.contains('layout-twin')).toBe(true);
+				expect(root.classList.contains('layout-menu-collapsed')).toBe(false);
+			});
+
+			it('applies all persisted classes when no excludesScope is set', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({
+						v: { 'layout-twin': true, 'layout-menu-collapsed': true }
+					}),
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'some-other-scope': { 'layout-menu-collapsed': true }
+					})
+				});
+				track(createLayoutState({ root, storage, storageKey: 'v' }));
+				expect(root.classList.contains('layout-twin')).toBe(true);
+				expect(root.classList.contains('layout-menu-collapsed')).toBe(true);
+			});
+
+			it('ignores exclusions stored under unrelated scopes', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({
+						v: { 'layout-menu-collapsed': true }
+					}),
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-f': { 'layout-menu-collapsed': true }
+					})
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e'
+					})
+				);
+				expect(root.classList.contains('layout-menu-collapsed')).toBe(true);
+			});
+
+			it('treats unparseable exclusions JSON as no rules', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-twin': true } }),
+					[EXCLUSIONS_KEY]: 'not-json-{'
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e'
+					})
+				);
+				expect(root.classList.contains('layout-twin')).toBe(true);
+			});
+		});
+
+		describe('persist', () => {
+			it('does not write blocked classes to primary storage when added', async () => {
+				const root = createRoot();
+				const { storage, data } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				root.classList.add('layout-twin');
+				root.classList.add('layout-menu-collapsed');
+				await flush();
+				expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+					v: { 'layout-twin': true }
+				});
+			});
+
+			it('does not write blocked classes to primary storage when removed', async () => {
+				const root = createRoot();
+				root.classList.add('layout-menu-collapsed');
+				const { storage, data } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				root.classList.add('layout-twin');
+				root.classList.remove('layout-menu-collapsed');
+				await flush();
+				expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+					v: { 'layout-twin': true }
+				});
+			});
+
+			it('re-reads exclusions on every persist so storage updates between mutations are honored', async () => {
+				const root = createRoot();
+				const { storage, data } = createFakeStorage();
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				root.classList.add('layout-menu-collapsed');
+				await flush();
+				expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+					v: { 'layout-menu-collapsed': true }
+				});
+
+				// External writer (e.g. an SPA router) adds an exclusion mid-life.
+				storage.setItem(EXCLUSIONS_KEY, JSON.stringify({ 'view-e': { 'layout-twin': true } }));
+				root.classList.add('layout-twin');
+				await flush();
+				expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+					v: { 'layout-menu-collapsed': true }
+				});
+			});
+		});
+
+		describe('storage seeding from excludes option', () => {
+			it('writes the configured list to the exclusions entry on init', () => {
+				const { storage, data } = createFakeStorage();
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludesScope: 'view-e',
+						excludes: ['layout-menu-collapsed', 'layout-aside-collapsed']
+					})
+				);
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
+					'view-e': {
+						'layout-menu-collapsed': true,
+						'layout-aside-collapsed': true
+					}
+				});
+			});
+
+			it('overwrites prior rules for the same scope (replace, not merge)', () => {
+				const { storage, data } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': {
+							'layout-twin': true,
+							'layout-aside-collapsed': true
+						}
+					})
+				});
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludesScope: 'view-e',
+						excludes: ['layout-menu-collapsed']
+					})
+				);
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
+					'view-e': { 'layout-menu-collapsed': true }
+				});
+			});
+
+			it('leaves other scopes intact when seeding this scope', () => {
+				const { storage, data } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-f': { 'layout-flyout-active': true }
+					})
+				});
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludesScope: 'view-e',
+						excludes: ['layout-menu-collapsed']
+					})
+				);
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
+					'view-f': { 'layout-flyout-active': true },
+					'view-e': { 'layout-menu-collapsed': true }
+				});
+			});
+
+			it('clears the scope when excludes is an empty array', () => {
+				const { storage, data } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludesScope: 'view-e',
+						excludes: []
+					})
+				);
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({ 'view-e': {} });
+			});
+
+			it('does not touch the exclusions entry when excludes is omitted', () => {
+				const { storage, data } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludesScope: 'view-e'
+					})
+				);
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
+					'view-e': { 'layout-menu-collapsed': true }
+				});
+			});
+
+			it('does not write to the exclusions entry when excludesScope is omitted', () => {
+				const { storage, data } = createFakeStorage();
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludes: ['layout-menu-collapsed']
+					})
+				);
+				expect(data[EXCLUSIONS_KEY]).toBeUndefined();
+			});
+
+			it('recovers from malformed prior exclusions JSON by writing a fresh entry', () => {
+				const { storage, data } = createFakeStorage({
+					[EXCLUSIONS_KEY]: 'not-json-{'
+				});
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludesScope: 'view-e',
+						excludes: ['layout-menu-collapsed']
+					})
+				);
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
+					'view-e': { 'layout-menu-collapsed': true }
+				});
+			});
+		});
+
+		describe('excludesScope option', () => {
+			it('accepts a function that returns the scope', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-menu-collapsed': true } }),
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true }
+					})
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: () => 'view-e'
+					})
+				);
+				expect(root.classList.contains('layout-menu-collapsed')).toBe(false);
+			});
+
+			it('calls the function each time the scope is needed', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[EXCLUSIONS_KEY]: JSON.stringify({
+						'view-e': { 'layout-menu-collapsed': true },
+						'view-f': { 'layout-twin': true }
+					})
+				});
+				let currentScope = 'view-e';
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: () => currentScope,
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+
+				// Under view-e: 'layout-menu-collapsed' is blocked, 'layout-twin'
+				// is allowed.
+				root.classList.add('layout-twin');
+				root.classList.add('layout-menu-collapsed');
+				await flush();
+				expect(JSON.parse(storage.getItem(STORAGE_KEY) || '{}')).toEqual({
+					v: { 'layout-twin': true }
+				});
+
+				// Switch to view-f: 'layout-twin' is now blocked, 'layout-aside-collapsed'
+				// is allowed. The getter must be re-evaluated so the new scope's
+				// rules apply to subsequent persists.
+				currentScope = 'view-f';
+				root.classList.add('layout-aside-collapsed');
+				root.classList.remove('layout-twin');
+				await flush();
+				expect(JSON.parse(storage.getItem(STORAGE_KEY) || '{}')).toEqual({
+					// layout-twin stays true: its removal was blocked by view-f.
+					v: { 'layout-twin': true, 'layout-aside-collapsed': true }
+				});
+			});
+
+			it('coerces unsafe static scope strings to "default"', () => {
+				const { storage, data } = createFakeStorage();
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludesScope: '__proto__',
+						excludes: ['layout-menu-collapsed']
+					})
+				);
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
+					default: { 'layout-menu-collapsed': true }
+				});
+			});
+
+			it('coerces unsafe scope strings returned by the function to "default"', () => {
+				const { storage, data } = createFakeStorage();
+				track(
+					createLayoutState({
+						root: createRoot(),
+						storage,
+						excludesScope: () => 'prototype',
+						excludes: ['layout-menu-collapsed']
+					})
+				);
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
+					default: { 'layout-menu-collapsed': true }
+				});
+			});
+
+			it('uses own-property lookups so __proto__-keyed entries cannot poison the blocklist', () => {
+				const root = createRoot();
+				const poisoned =
+					'{"v":{"layout-menu-collapsed":true},"__proto__":{"layout-menu-collapsed":true}}';
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-menu-collapsed': true } }),
+					[EXCLUSIONS_KEY]: poisoned
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						excludesScope: 'view-e'
+					})
+				);
+				// 'view-e' has no rules in storage, so the class should restore.
+				expect(root.classList.contains('layout-menu-collapsed')).toBe(true);
+			});
+		});
+
+		describe('shared storageKey, different excludesScope', () => {
+			it('lets two views share persisted state while honoring distinct exclusion scopes', async () => {
+				const rootE = createRoot();
+				const rootF = createRoot();
+				const { storage, data } = createFakeStorage();
+
+				// View E owns flyout state, blocks menu/aside.
+				const viewE = track(
+					createLayoutState({
+						root: rootE,
+						storage,
+						storageKey: 'main-app',
+						excludesScope: 'view-e',
+						excludes: ['layout-menu-collapsed', 'layout-aside-collapsed'],
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				// View F owns menu state, blocks flyout.
+				const viewF = track(
+					createLayoutState({
+						root: rootF,
+						storage,
+						storageKey: 'main-app',
+						excludesScope: 'view-f',
+						excludes: ['layout-flyout-active'],
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+
+				// View E toggles its concern; View F toggles its concern.
+				rootE.classList.add('layout-flyout-active');
+				rootF.classList.add('layout-menu-collapsed');
+				// Each view also attempts to toggle a class the OTHER owns — these
+				// must be filtered out on persist so views can't write through each
+				// other's exclusions.
+				rootE.classList.add('layout-menu-collapsed');
+				rootF.classList.add('layout-flyout-active');
+				await flush();
+
+				expect(JSON.parse(data[STORAGE_KEY])).toEqual({
+					'main-app': {
+						'layout-flyout-active': true,
+						'layout-menu-collapsed': true
+					}
+				});
+				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
+					'view-e': {
+						'layout-menu-collapsed': true,
+						'layout-aside-collapsed': true
+					},
+					'view-f': { 'layout-flyout-active': true }
+				});
+				void viewE;
+				void viewF;
+			});
+		});
+	});
 });
