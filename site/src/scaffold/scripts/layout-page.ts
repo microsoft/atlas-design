@@ -35,11 +35,33 @@ export function initLayoutPageControls() {
 	}
 
 	// Persist `layout-*` classes on <html> and replay them when the layout
-	// demo page reloads. Subscribers below sync each demo button's UI to the
-	// restored state, then re-fire on subsequent toggles so click handlers
-	// don't need to update aria attributes themselves.
+	// demo page reloads. The demo page uses per-concern buckets so a view
+	// that only cares about the flyout (or only the menu) can opt into just
+	// the slice that applies — see also the per-bucket IIFE in
+	// `site/src/scaffold/standard.html`.
 	const layoutState = createLayoutState({
-		storageKey: 'atlas-layout-page',
+		buckets: [
+			{
+				storageKey: 'atlas-layout-page-layout',
+				classes: layoutsClasses
+			},
+			{
+				storageKey: 'atlas-layout-page-menu',
+				classes: ['layout-menu-collapsed']
+			},
+			{
+				storageKey: 'atlas-layout-page-aside',
+				classes: ['layout-aside-collapsed']
+			},
+			{
+				storageKey: 'atlas-layout-page-flyout',
+				classes: ['layout-flyout-active']
+			},
+			{
+				storageKey: 'atlas-layout-page-constrained',
+				classes: ['layout-constrained']
+			}
+		],
 		useViewTransitionOnRestore: true
 	});
 

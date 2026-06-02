@@ -58,14 +58,24 @@ export function initLayout() {
 
 /**
  * Observes `layout-*` class changes on a root element (default: `<html>`) and
- * persists them via a Storage backend, bucketed per `storageKey` (defaults
- * to `'default'`). Consumers `subscribe()` to specific class transitions; a
- * new subscription replays immediately if the current state already matches.
+ * persists them via a Storage backend, bucketed under the shared
+ * `atlas-layout-preferences` storage entry. Consumers `subscribe()` to
+ * specific class transitions; a new subscription replays immediately if the
+ * current state already matches.
  *
- * `storageKey` identifies the bucket under the shared `atlas-layout-preferences`
- * storage entry and is surfaced in `LayoutCallbackEvent`s. Distinct pages
- * with different keys read and write separate buckets; pages that should
- * share persisted state simply pass the same `storageKey`.
+ * Bucket layout is configured one of two ways:
+ *
+ *  - `storageKey` (single-bucket shorthand): every observed `layout-*` class
+ *    is persisted under one key. Distinct pages with different `storageKey`s
+ *    persist independently; pages that should share state pass the same key.
+ *    Defaults to `'default'`.
+ *
+ *  - `buckets` (per-concern): an array of `{ storageKey, classes? }` entries.
+ *    Each bucket owns a subset of `layout-*` classes; a single instance
+ *    fans reads and writes out to every bucket it lists. Lets distinct views
+ *    opt into the slices of state that apply to them (e.g. a flyout-only
+ *    view lists just the flyout bucket while a full view lists both flyout
+ *    and menu buckets, all sharing per-concern state).
  *
  * Restoration and the `MutationObserver` are wired synchronously inside the
  * factory — by return time the instance is live. Subscriber callbacks are
@@ -91,6 +101,9 @@ export type LayoutClassWhen = 'added' | 'removed' | 'always';
 export interface LayoutCallbackEvent {
 	className: string;
 	isApplied: boolean;
+	/** Resolved key of the bucket that owns this class. For class changes
+	 *  that aren't claimed by any bucket the event still fires; `storageKey`
+	 *  then holds the first bucket's resolved key as a stable fallback. */
 	storageKey: string;
 }
 
@@ -104,22 +117,51 @@ export interface LayoutStatePersisted {
 	[storageKey: string]: LayoutStateView;
 }
 
+/**
+ * A storage bucket within an `atlas-layout-preferences` entry. A bucket
+ * owns a subset of `layout-*` classes and is what `createLayoutState`
+ * reads/writes when those classes change on the root.
+ */
+export interface LayoutBucket {
+	/** Bucket key under `atlas-layout-preferences`. Static, or a getter for
+	 *  runtime-varying keys (resolved on every read/write). */
+	storageKey: string | (() => string);
+	/**
+	 * Classes this bucket owns. Omit to make the bucket a catch-all that
+	 * claims any observed `layout-*` class not listed on another bucket. At
+	 * most one catch-all per instance; later catch-alls are treated as empty
+	 * (own no classes).
+	 */
+	classes?: string[];
+}
+
 export interface LayoutStateOptions {
 	/** Element whose classList is observed and toggled. Defaults to `<html>`. */
 	root?: HTMLElement;
 	/** Storage backend matching `getItem`/`setItem`. Defaults to `localStorage`. */
 	storage?: Pick<Storage, 'getItem' | 'setItem'>;
 	/**
-	 * Bucket key under the `atlas-layout-preferences` storage entry, and the
-	 * identifier surfaced in `LayoutCallbackEvent.storageKey`. Pages with
-	 * different `storageKey`s persist independently; pages that should share
-	 * persisted state — e.g. a "docs article" and "docs landing" template
-	 * both restoring the same sidebar-collapsed preference — pass the same
-	 * `storageKey`. May be a static string or a getter called every time the
-	 * key is needed, letting a single instance follow a dynamically changing
-	 * key without being recreated. Defaults to `'default'`.
+	 * Single-bucket shorthand: equivalent to `buckets: [{ storageKey }]` (a
+	 * catch-all bucket that owns every observed `layout-*` class). Mutually
+	 * exclusive with `buckets`; if both are supplied, `buckets` wins.
+	 *
+	 * Pages with different `storageKey`s persist independently; pages that
+	 * should share persisted state pass the same `storageKey`. May be a
+	 * static string or a getter called every time the key is needed.
+	 * Defaults to `'default'` when neither `storageKey` nor `buckets` is set.
 	 */
 	storageKey?: string | (() => string);
+	/**
+	 * Per-concern buckets, each owning a slice of the `layout-*` classes a
+	 * view cares about. Lets distinct views opt into the concerns that apply
+	 * to them — e.g. a flyout-only view lists just the flyout bucket, while
+	 * a full view lists both flyout and menu buckets, and all share the same
+	 * persisted state per concern. Class changes are routed to the first
+	 * bucket whose `classes` includes them; unclaimed classes fall through
+	 * to the catch-all (a bucket with no `classes` field) if present, or are
+	 * ignored. Mutually exclusive with `storageKey`.
+	 */
+	buckets?: LayoutBucket[];
 	/**
 	 * Subscriber callbacks are queued until this resolves. Defaults to a
 	 * resolved promise (fires on next microtask). Pass `contentLoaded` to
@@ -153,9 +195,11 @@ export interface LayoutStateInstance {
 		callback: LayoutCallback,
 		options?: LayoutSubscribeOptions
 	): () => void;
-	/** Persisted layout state for this instance's `storageKey` bucket. */
+	/** Merged view of every bucket this instance manages (later buckets
+	 *  override earlier ones on key collision). */
 	getViewState(): LayoutStateView;
-	/** Persisted state across all `storageKey` buckets. */
+	/** Persisted state across all `storageKey` buckets in storage, including
+	 *  those not owned by this instance. */
 	getState(): LayoutStatePersisted;
 	/** Stop observing. Subscriptions remain registered. */
 	stop(): void;
@@ -176,7 +220,8 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const {
 		root: targetRoot = document.documentElement,
 		storage = window.localStorage,
-		storageKey: storageKeyOption = 'default',
+		storageKey: storageKeyOption,
+		buckets: bucketsOption,
 		deferCallbacksUntil = Promise.resolve(),
 		useViewTransitionOnRestore = false
 	} = options;
@@ -191,11 +236,55 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return raw === '__proto__' || raw === 'prototype' || raw === 'constructor' ? 'default' : raw;
 	}
 
-	// Resolve the storage bucket on demand so consumers can pass a getter
-	// and have each persistence / dispatch call see the current value.
-	function getStorageKey(): string {
-		const raw = typeof storageKeyOption === 'function' ? storageKeyOption() : storageKeyOption;
-		return sanitizeKey(raw);
+	interface NormalizedBucket {
+		resolveKey(): string;
+		ownsClass(className: string): boolean;
+		isCatchAll: boolean;
+	}
+
+	// Normalize options into an internal bucket list. `buckets` wins over
+	// `storageKey`; legacy single-key callers get a single catch-all bucket
+	// so behavior is unchanged.
+	function normalizeBuckets(): NormalizedBucket[] {
+		const source: LayoutBucket[] = bucketsOption?.length
+			? bucketsOption
+			: [{ storageKey: storageKeyOption ?? 'default' }];
+
+		let catchAllSeen = false;
+		return source.map(b => {
+			const isCatchAll = b.classes === undefined && !catchAllSeen;
+			if (b.classes === undefined) {
+				catchAllSeen = true;
+			}
+			const owned = b.classes ? new Set(b.classes) : null;
+			return {
+				resolveKey(): string {
+					const raw = typeof b.storageKey === 'function' ? b.storageKey() : b.storageKey;
+					return sanitizeKey(raw);
+				},
+				ownsClass(className: string): boolean {
+					return owned ? owned.has(className) : isCatchAll;
+				},
+				isCatchAll
+			};
+		});
+	}
+
+	const normalizedBuckets = normalizeBuckets();
+
+	// First bucket's key — used as a stable fallback for `event.storageKey`
+	// when a class isn't claimed by any bucket.
+	function fallbackKey(): string {
+		return normalizedBuckets[0].resolveKey();
+	}
+
+	function findOwner(className: string): NormalizedBucket | null {
+		for (const b of normalizedBuckets) {
+			if (b.ownsClass(className)) {
+				return b;
+			}
+		}
+		return null;
 	}
 
 	const subscriptions = new Set<LayoutSubscription>();
@@ -359,7 +448,17 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	}
 
 	function getViewState(): LayoutStateView {
-		return loadState()[getStorageKey()] ?? {};
+		// Merged view of every bucket this instance manages, so consumers
+		// don't have to know which bucket owns which class.
+		const state = loadState();
+		const merged: LayoutStateView = {};
+		for (const b of normalizedBuckets) {
+			const view = state[b.resolveKey()] ?? {};
+			for (const k of Object.keys(view)) {
+				merged[k] = view[k];
+			}
+		}
+		return merged;
 	}
 
 	function isClassApplied(className: string): boolean {
@@ -378,8 +477,10 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 
 	function fireMatching(className: string, applied: boolean): void {
 		// Resolve once per fire so every event in this batch carries the same
-		// storageKey as the storage write that just happened.
-		const eventStorageKey = getStorageKey();
+		// storageKey as the storage write that just happened. Owner key when
+		// the class is claimed by a bucket; first-bucket key otherwise.
+		const owner = findOwner(className);
+		const eventStorageKey = owner ? owner.resolveKey() : fallbackKey();
 		for (const sub of subscriptions) {
 			if (sub.className === className && matches(sub, applied)) {
 				const { callback, useViewTransition } = sub;
@@ -408,7 +509,8 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 
 		const applied = isClassApplied(className);
 		if (matches(sub, applied)) {
-			const eventStorageKey = getStorageKey();
+			const owner = findOwner(className);
+			const eventStorageKey = owner ? owner.resolveKey() : fallbackKey();
 			const { useViewTransition } = sub;
 			dispatch(() => {
 				startOptionalViewTransition(useViewTransition, () => {
@@ -423,9 +525,14 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	}
 
 	function restoreInitialState(): void {
-		const viewState = getViewState();
-		for (const className of Object.keys(viewState)) {
-			targetRoot.classList.toggle(className, viewState[className]);
+		// Apply each bucket's persisted view independently so per-concern
+		// buckets stay isolated even when one is empty.
+		const state = loadState();
+		for (const b of normalizedBuckets) {
+			const view = state[b.resolveKey()] ?? {};
+			for (const className of Object.keys(view)) {
+				targetRoot.classList.toggle(className, view[className]);
+			}
 		}
 	}
 
@@ -445,16 +552,45 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		if (added.length + removed.length === 0) {
 			return;
 		}
-		const currentStorageKey = getStorageKey();
-		const state = loadState();
-		const viewState = state[currentStorageKey] ?? {};
+		// Group changes by owning bucket so we issue at most one write per
+		// bucket. Classes with no owner are dropped — the instance simply
+		// doesn't persist them.
+		const perBucket = new Map<NormalizedBucket, { added: string[]; removed: string[] }>();
+		function bucketFor(b: NormalizedBucket) {
+			let entry = perBucket.get(b);
+			if (!entry) {
+				entry = { added: [], removed: [] };
+				perBucket.set(b, entry);
+			}
+			return entry;
+		}
 		for (const c of added) {
-			viewState[c] = true;
+			const owner = findOwner(c);
+			if (owner) {
+				bucketFor(owner).added.push(c);
+			}
 		}
 		for (const c of removed) {
-			viewState[c] = false;
+			const owner = findOwner(c);
+			if (owner) {
+				bucketFor(owner).removed.push(c);
+			}
 		}
-		state[currentStorageKey] = viewState;
+		if (perBucket.size === 0) {
+			return;
+		}
+		const state = loadState();
+		for (const [bucket, changes] of perBucket) {
+			const key = bucket.resolveKey();
+			const viewState = state[key] ?? {};
+			for (const c of changes.added) {
+				viewState[c] = true;
+			}
+			for (const c of changes.removed) {
+				viewState[c] = false;
+			}
+			state[key] = viewState;
+		}
 		saveState(state);
 	}
 

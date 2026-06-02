@@ -6,7 +6,12 @@ classType: Component
 classPrefixes:
   - layout
 hero: true
-layoutStorageKey: atlas-layout-page
+layoutStorageKeys:
+  - atlas-layout-page-layout
+  - atlas-layout-page-menu
+  - atlas-layout-page-aside
+  - atlas-layout-page-flyout
+  - atlas-layout-page-constrained
 ---
 
 # Layout
