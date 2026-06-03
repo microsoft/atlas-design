@@ -667,3 +667,58 @@ test('layout-menu-collapsed state persists across a page reload @desktop', async
 
 	await expect(html).toHaveClass(/\blayout-menu-collapsed\b/);
 });
+
+test('createLayoutState seeds atlas-layout-exclusions on init and leaves sibling keys alone @desktop', async ({
+	page
+}, testInfo) => {
+	test.skip(
+		testInfo.project.name !== 'Widescreen Chromium',
+		'Skip test if display screen is not widescreen'
+	);
+
+	// Pre-seed the secondary atlas-layout-exclusions entry with two scopes:
+	// the demo's own excludesKey ('atlas-layout-page-view') plus an unrelated
+	// scope. The demo passes `excludes: []`, so on init the bundle's
+	// createLayoutState should overwrite its own scope to `{}` and leave the
+	// unrelated scope untouched — this is the whole point of keying multiple
+	// views' blocklists into a single shared entry.
+	await page.addInitScript(() => {
+		try {
+			localStorage.setItem(
+				'atlas-layout-exclusions',
+				JSON.stringify({
+					'atlas-layout-page-view': { sentinel: true },
+					'untouched-view': { 'layout-menu-collapsed': true }
+				})
+			);
+		} catch {
+			// Storage may be unavailable in some test contexts; the assertion
+			// below will fail loudly rather than silently passing.
+		}
+	});
+
+	await page.goto('/components/layout.html');
+	await page.waitForLoadState('domcontentloaded');
+
+	// Poll until both invariants hold so the test is not racing the bundle's
+	// init work.
+	await expect
+		.poll(() =>
+			page.evaluate(() => {
+				try {
+					const stored = JSON.parse(
+						localStorage.getItem('atlas-layout-exclusions') || '{}'
+					) as Record<string, Record<string, unknown>>;
+					const own = stored['atlas-layout-page-view'];
+					const sibling = stored['untouched-view'];
+					const ownIsEmptyObject =
+						!!own && typeof own === 'object' && Object.keys(own).length === 0;
+					const siblingIntact = !!sibling && sibling['layout-menu-collapsed'] === true;
+					return ownIsEmptyObject && siblingIntact;
+				} catch {
+					return false;
+				}
+			})
+		)
+		.toBe(true);
+});

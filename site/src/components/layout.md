@@ -7,6 +7,7 @@ classPrefixes:
   - layout
 hero: true
 layoutStorageKey: atlas-layout-page
+layoutExcludesKey: atlas-layout-page-view
 ---
 
 # Layout
@@ -529,17 +530,29 @@ Calling `createLayoutState()` from a module bundle restores classes, but **not b
 
 ### Inline restore script in `<head>`
 
-Place this synchronous IIFE in `<head>` before the bundle. It reads the same `localStorage` key that `createLayoutState` uses and applies the saved classes to `<html>` during parse:
+Place this synchronous IIFE in `<head>` before the bundle to restore persisted `layout-*` classes before first paint. Set `storageKey` to match the value passed to `createLayoutState()`. Leave `excludesKey` empty unless you use the [exclusions API](#excluding-classes-per-view-advanced) below.
 
 ```html-no-example
 <head>
 	<script>
 		(function () {
 			try {
+				var storageKey = 'my-storage-key';
+				var excludesKey = '';
+
 				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
-				var view = state['my-storage-key'] || {};
+				var view = state[storageKey] || {};
+				var excluded = {};
+
+				if (excludesKey) {
+					var ex = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
+					var sx = Object.prototype.hasOwnProperty.call(ex, excludesKey) ? ex[excludesKey] : null;
+					if (sx && typeof sx === 'object') excluded = sx;
+				}
+
 				var html = document.documentElement;
 				for (var c in view) {
+					if (Object.prototype.hasOwnProperty.call(excluded, c)) continue;
 					if (view[c]) html.classList.add(c);
 					else html.classList.remove(c);
 				}
@@ -550,7 +563,23 @@ Place this synchronous IIFE in `<head>` before the bundle. It reads the same `lo
 </head>
 ```
 
-Atlas ships ready-made helpers for this — see [Display helpers gated on JS restoration](#display-helpers-gated-on-js-restoration). The sentinel is a data attribute rather than a `layout-*` class, so `createLayoutState` does not persist it.
+Atlas ships ready-made helpers — see [Display helpers gated on JS restoration](#display-helpers-gated-on-js-restoration). Those helpers use a data attribute, not a `layout-*` class, so `createLayoutState` does not persist them.
+
+### Excluding classes per view (advanced)
+
+Use `excludes` when a view shares `storageKey` with others but should ignore some `layout-*` classes — for example an editor view with no left nav. Excluded classes are not restored, persisted, or sent to subscribers.
+
+```typescript
+const layoutState = createLayoutState({
+	storageKey: 'docs-shared',
+	excludesKey: 'editor-view',
+	excludes: ['layout-menu-collapsed', 'layout-aside-collapsed']
+});
+```
+
+`excludesKey` names this view's list inside a second `localStorage` entry (`atlas-layout-exclusions`); `excludes` is the list of `layout-*` class names to write there on construction. Pass `[]` to clear; omit `excludes` to consume rules written by another view.
+
+To honor exclusions before first paint, set `excludesKey` in the [inline restore script above](#inline-restore-script-in-head) to the same value.
 
 ### Content Security Policy
 
