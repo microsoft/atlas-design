@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 2.1.0
+
+### Minor Changes
+
+- f6f0ea2: Add `excludesKey` and `excludes` options to `createLayoutState` so views that share a `storageKey` can opt specific `layout-*` classes out of restore, persist, and subscriber dispatch. Rules are persisted under a new `localStorage` entry, `atlas-layout-exclusions`, and honored by the inline pre-paint script.
+
 ## 2.0.1
 
 ### Patch Changes
