@@ -530,17 +530,29 @@ Calling `createLayoutState()` from a module bundle restores classes, but **not b
 
 ### Inline restore script in `<head>`
 
-Place this synchronous IIFE in `<head>` before the bundle. It reads the same `localStorage` key that `createLayoutState` uses and applies the saved classes to `<html>` during parse:
+Place this synchronous IIFE in `<head>` before the bundle to restore persisted `layout-*` classes before first paint. Set `storageKey` to match the value passed to `createLayoutState()`. Leave `excludesKey` empty unless you use the [exclusions API](#excluding-classes-per-view-advanced) below.
 
 ```html-no-example
 <head>
 	<script>
 		(function () {
 			try {
+				var storageKey = 'my-storage-key';
+				var excludesKey = '';
+
 				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
-				var view = state['my-storage-key'] || {};
+				var view = state[storageKey] || {};
+				var excluded = {};
+
+				if (excludesKey) {
+					var ex = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
+					var sx = Object.prototype.hasOwnProperty.call(ex, excludesKey) ? ex[excludesKey] : null;
+					if (sx && typeof sx === 'object') excluded = sx;
+				}
+
 				var html = document.documentElement;
 				for (var c in view) {
+					if (Object.prototype.hasOwnProperty.call(excluded, c)) continue;
 					if (view[c]) html.classList.add(c);
 					else html.classList.remove(c);
 				}
@@ -551,11 +563,11 @@ Place this synchronous IIFE in `<head>` before the bundle. It reads the same `lo
 </head>
 ```
 
-Atlas ships ready-made helpers for this — see [Display helpers gated on JS restoration](#display-helpers-gated-on-js-restoration). The sentinel is a data attribute rather than a `layout-*` class, so `createLayoutState` does not persist it.
+Atlas ships ready-made helpers — see [Display helpers gated on JS restoration](#display-helpers-gated-on-js-restoration). Those helpers use a data attribute, not a `layout-*` class, so `createLayoutState` does not persist them.
 
 ### Excluding classes per view (advanced)
 
-When a view shares `storageKey` with others but does not own every `layout-*` class — for example an editor view with no left nav — list those classes in `excludes`. They will not be restored, persisted, or dispatched to subscribers for that view.
+Use `excludes` when a view shares `storageKey` with others but should ignore some `layout-*` classes — for example an editor view with no left nav. Excluded classes are not restored, persisted, or sent to subscribers.
 
 ```typescript
 const layoutState = createLayoutState({
@@ -565,48 +577,9 @@ const layoutState = createLayoutState({
 });
 ```
 
-| Option           | Effect                                                                                                                                                |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `excludesKey`  | Names this view's blocklist inside a second `localStorage` entry, `atlas-layout-exclusions`. Distinct from `storageKey`.                              |
-| `excludes`       | Classes blocked for this view. Construction writes the list to `atlas-layout-exclusions[excludesKey]`, replacing any prior list. Pass `[]` to clear. |
+`excludesKey` names this view's list inside a second `localStorage` entry (`atlas-layout-exclusions`); `excludes` is the list of `layout-*` class names to write there on construction. Pass `[]` to clear; omit `excludes` to consume rules written by another view.
 
-Exclusions apply symmetrically:
-
-1. **Restore** — excluded classes are not applied to `<html>` during initial restore.
-2. **Persist** — adding or removing an excluded class on `<html>` is not written to `storageKey`.
-3. **Subscribers** — `subscribe()` callbacks for an excluded class never fire, including the immediate replay at subscribe time.
-
-Other views can reuse the same `storageKey` with a different `excludesKey`, or omit `excludesKey` entirely. Each key's exclusions stay isolated.
-
-For pre-paint restore to honor exclusions, the inline IIFE must read `atlas-layout-exclusions` too:
-
-```html-no-example
-<head>
-	<script>
-		(function () {
-			try {
-				var state = JSON.parse(localStorage.getItem('atlas-layout-preferences') || '{}');
-				var view = state['my-storage-key'] || {};
-				var key = 'editor-view';
-				var blocked = {};
-				if (key) {
-					var ex = JSON.parse(localStorage.getItem('atlas-layout-exclusions') || '{}');
-					var sx = Object.prototype.hasOwnProperty.call(ex, key) ? ex[key] : null;
-					if (sx && typeof sx === 'object') blocked = sx;
-				}
-				var html = document.documentElement;
-				for (var c in view) {
-					if (Object.prototype.hasOwnProperty.call(blocked, c)) continue;
-					if (view[c]) html.classList.add(c);
-					else html.classList.remove(c);
-				}
-			} catch (e) {}
-		})();
-	</script>
-</head>
-```
-
-Exclusion rules are re-read on every persist and dispatch, so updates take effect without recreating the instance. Supplying `excludesKey` without `excludes` makes the instance a read-only consumer of rules written elsewhere.
+To honor exclusions before first paint, set `excludesKey` in the [inline restore script above](#inline-restore-script-in-head) to the same value.
 
 ### Content Security Policy
 
