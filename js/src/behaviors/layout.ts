@@ -68,6 +68,32 @@ export function initLayout() {
  *
  * View transitions coalesce same-microtask callbacks and skip while another is
  * animating, avoiding `InvalidStateError` aborts.
+ *
+ * ### SPA integration
+ *
+ * Create the instance once at boot. Pair `suspend()` with `resume()` around
+ * navigations that mutate `<html>`'s class list:
+ *
+ * ```ts
+ * const layoutState = createLayoutState({
+ *   storageKey:  () => currentRoute.layoutKey,     // getter, re-read on resume
+ *   excludesKey: () => currentRoute.excludesKey,
+ *   excludes:    () => currentRoute.excludes
+ * });
+ *
+ * router.on('beforeNavigate', () => layoutState.suspend());
+ * router.on('afterNavigate',  () => layoutState.resume());
+ * ```
+ *
+ * Subscribers registered once at boot stay live across every navigation — no
+ * re-registration required. `resume()` re-fires matching subscribers against
+ * the freshly-restored state, so subscriber callbacks **must be idempotent**
+ * and should look up DOM each time (don't capture stale element references).
+ *
+ * **Order matters.** Call `suspend()` BEFORE any DOM mutation that touches
+ * `<html>`'s class list, and `resume()` AFTER. `suspend()` disconnects the
+ * observer synchronously so mutations during the navigation window cannot
+ * leak into the persisted state.
  */
 
 export type LayoutClassWhen = 'added' | 'removed' | 'always';
@@ -108,10 +134,12 @@ export interface LayoutStateOptions {
 	excludesKey?: string | (() => string);
 	/**
 	 * Classes to write into `atlas-layout-exclusions[excludesKey]` on
-	 * construction. Requires `excludesKey`. Empty array clears the blocklist;
-	 * omission leaves any persisted entry untouched.
+	 * construction and on every `resume()`. Requires `excludesKey`. Empty
+	 * array clears the blocklist; omission leaves any persisted entry
+	 * untouched. Getter is re-read per write so SPA route changes can supply
+	 * different exclusions.
 	 */
-	excludes?: string[];
+	excludes?: string[] | (() => string[]);
 	/** Delays initial subscriber callbacks. Defaults to next microtask. */
 	deferCallbacksUntil?: Promise<unknown>;
 	/** Wrap initial restoration in `document.startViewTransition` if available. */
@@ -126,7 +154,9 @@ export interface LayoutSubscribeOptions {
 export interface LayoutStateInstance {
 	/**
 	 * Subscribe to `className` transitions. Replays once if the current state
-	 * matches (queued behind `deferCallbacksUntil`). Returns an unsubscribe fn.
+	 * matches (queued behind `deferCallbacksUntil`). Returns an unsubscribe fn
+	 * which is always safe to call (including after `dispose()`). Throws if
+	 * the instance has been disposed.
 	 */
 	subscribe(
 		className: string,
@@ -134,12 +164,35 @@ export interface LayoutStateInstance {
 		callback: LayoutCallback,
 		options?: LayoutSubscribeOptions
 	): () => void;
-	/** Current bucket state. */
+	/** Current bucket state. Safe to call after `dispose()`. */
 	getViewState(): LayoutStateView;
-	/** All bucket state. */
+	/** All bucket state. Safe to call after `dispose()`. */
 	getState(): LayoutStatePersisted;
-	/** Stop observing; subscriptions remain registered. */
-	stop(): void;
+	/**
+	 * Pause observation and clear `data-layout-restored` so until-restored
+	 * CSS gates re-engage. Subscriptions are preserved. `MutationObserver`
+	 * is disconnected synchronously, so it is safe to call immediately
+	 * before a DOM swap that overwrites `<html>`'s class list. Idempotent.
+	 * Throws if disposed.
+	 */
+	suspend(): void;
+	/**
+	 * Resume observation. Re-reads `storageKey`, `excludesKey`, and
+	 * `excludes` getters, re-writes any configured exclusions, re-restores
+	 * persisted state, replays matching subscribers against the new state,
+	 * and re-sets `data-layout-restored`. No-op when not currently
+	 * suspended. Throws if disposed.
+	 */
+	resume(): void;
+	/**
+	 * Permanently tear down: disconnect the observer, clear all
+	 * subscriptions and pending queues, and remove `data-layout-restored`.
+	 * After dispose, `subscribe()`, `suspend()`, and `resume()` throw;
+	 * `getViewState()` and `getState()` still work (they read from
+	 * `storage`); previously-returned unsubscribe functions remain safe
+	 * no-ops. Idempotent.
+	 */
+	dispose(): void;
 }
 
 export interface LayoutSubscription {
@@ -178,6 +231,8 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const CLASS_PREFIX = 'layout-';
 	const STORAGE_KEY = 'atlas-layout-preferences';
 	const RESTORED_ATTRIBUTE = 'data-layout-restored';
+	const DISPOSED_MESSAGE =
+		'LayoutStateInstance has been disposed; create a new instance with createLayoutState()';
 
 	// Coerce prototype keys to avoid poisoning the persisted state map.
 	function sanitizeKey(raw: string): string {
@@ -198,9 +253,18 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return sanitizeKey(raw);
 	}
 
+	// Re-read per call so SPA route changes pick up a new exclusion list.
+	function getConfiguredExcludes(): string[] | undefined {
+		if (excludesOption === undefined) {
+			return undefined;
+		}
+		return typeof excludesOption === 'function' ? excludesOption() : excludesOption;
+	}
+
 	// Seed exclusions so the next pre-paint IIFE sees them.
 	function writeConfiguredExclusions(): void {
-		if (excludesOption === undefined) {
+		const excludes = getConfiguredExcludes();
+		if (excludes === undefined) {
 			return;
 		}
 		const key = getExcludesKey();
@@ -220,7 +284,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 			}
 		}
 		const next: { [className: string]: true } = {};
-		for (const c of excludesOption) {
+		for (const c of excludes) {
 			next[c] = true;
 		}
 		state[key] = next;
@@ -259,17 +323,17 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return new Set(Object.keys(scoped));
 	}
 
-	writeConfiguredExclusions();
-
 	const subscriptions = new Set<LayoutSubscription>();
 	let observer: MutationObserver | null = null;
 	let callbacksReady = false;
-	const pendingCallbacks: (() => void)[] = [];
+	let pendingCallbacks: (() => void)[] = [];
+	let suspended = false;
+	let disposed = false;
 
 	// Per-instance gate: coalesce same-microtask callbacks; run sync while active
 	// to avoid `InvalidStateError`.
 	let activeTransitionCount = 0;
-	const pendingTransitionFns: (() => void)[] = [];
+	let pendingTransitionFns: (() => void)[] = [];
 	let transitionMicrotaskQueued = false;
 
 	function dispatch(invoke: () => void): void {
@@ -285,11 +349,33 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		targetRoot.setAttribute(RESTORED_ATTRIBUTE, 'true');
 	}
 
+	function clearRestored(): void {
+		targetRoot.removeAttribute(RESTORED_ATTRIBUTE);
+	}
+
 	function flushPendingCallbacks(): void {
+		// Disposed before the deferred flush resolved: drop the queue and
+		// leave the attribute cleared.
+		if (disposed) {
+			pendingCallbacks = [];
+			return;
+		}
+		// Suspended before the deferred flush resolved: keep the queue
+		// dangling (resume() will overwrite it from current state) and
+		// leave the attribute cleared so until-restored CSS stays engaged.
+		if (suspended) {
+			return;
+		}
 		callbacksReady = true;
-		const queued = pendingCallbacks.splice(0);
+		const queued = pendingCallbacks;
+		pendingCallbacks = [];
 		try {
 			for (const invoke of queued) {
+				// Re-check between callbacks so a callback that calls dispose()
+				// stops draining the rest.
+				if (disposed) {
+					return;
+				}
 				try {
 					invoke();
 				} catch (err) {
@@ -299,7 +385,9 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 				}
 			}
 		} finally {
-			markRestored();
+			if (!disposed) {
+				markRestored();
+			}
 		}
 	}
 
@@ -346,7 +434,13 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		transitionMicrotaskQueued = true;
 		queueMicrotask(() => {
 			transitionMicrotaskQueued = false;
-			const batch = pendingTransitionFns.splice(0);
+			// Suspended or disposed during the microtask window: the queue
+			// was cleared, nothing to do.
+			if (disposed || suspended) {
+				return;
+			}
+			const batch = pendingTransitionFns;
+			pendingTransitionFns = [];
 			if (batch.length === 0) {
 				return;
 			}
@@ -449,12 +543,35 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		}
 	}
 
+	function replayMatchingSubscribers(): void {
+		const excluded = getExcludedClasses();
+		const eventStorageKey = getStorageKey();
+		for (const sub of subscriptions) {
+			if (excluded.has(sub.className)) {
+				continue;
+			}
+			const applied = isClassApplied(sub.className);
+			if (!matches(sub, applied)) {
+				continue;
+			}
+			const { callback, useViewTransition, className } = sub;
+			dispatch(() => {
+				startOptionalViewTransition(useViewTransition, () => {
+					callback({ className, isApplied: applied, storageKey: eventStorageKey });
+				});
+			});
+		}
+	}
+
 	function subscribe(
 		className: string,
 		when: LayoutClassWhen,
 		callback: LayoutCallback,
 		subscribeOptions: LayoutSubscribeOptions = {}
 	): () => void {
+		if (disposed) {
+			throw new Error(DISPOSED_MESSAGE);
+		}
 		const sub: LayoutSubscription = {
 			className,
 			when,
@@ -534,10 +651,111 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		saveState(state);
 	}
 
-	function stop(): void {
+	function mutationCallback(mutations: MutationRecord[]): void {
+		// Belt + suspenders: disconnect should prevent us reaching here, but
+		// a callback that disposed mid-batch should stop further processing.
+		if (disposed) {
+			return;
+		}
+		for (const mutation of mutations) {
+			if (disposed) {
+				return;
+			}
+			const oldClasses = (mutation.oldValue ?? '').split(/\s+/);
+			const newClasses = Array.from((mutation.target as Element).classList);
+			const { added, removed } = diffClasses(newClasses, oldClasses);
+
+			persistChanges(added, removed);
+
+			for (const c of added) {
+				fireMatching(c, true);
+			}
+			for (const c of removed) {
+				fireMatching(c, false);
+			}
+		}
+	}
+
+	function attachObserver(): void {
+		observer = new MutationObserver(mutationCallback);
+		observer.observe(targetRoot, {
+			attributes: true,
+			attributeFilter: ['class'],
+			attributeOldValue: true
+		});
+	}
+
+	function suspend(): void {
+		if (disposed) {
+			throw new Error(DISPOSED_MESSAGE);
+		}
+		if (suspended) {
+			return;
+		}
+		suspended = true;
 		observer?.disconnect();
 		observer = null;
+		clearRestored();
+		// Drop in-flight batched VTs; their target state is about to be
+		// replaced by whatever resume() restores.
+		pendingTransitionFns = [];
 	}
+
+	function resume(): void {
+		if (disposed) {
+			throw new Error(DISPOSED_MESSAGE);
+		}
+		if (!suspended) {
+			return;
+		}
+		suspended = false;
+
+		// Re-write exclusions FIRST so restore + replay see the right list.
+		writeConfiguredExclusions();
+
+		// Re-restore persisted state to the root. Use the sync transition
+		// path so the restore can't be aborted by a subsequent batch.
+		startOptionalViewTransition(useViewTransitionOnRestore, restoreInitialState, {
+			sync: true
+		});
+
+		// Reset the dispatch gate and clear any leftover queue so resume
+		// behaves like a fresh creation for subscriber-replay purposes.
+		callbacksReady = false;
+		pendingCallbacks = [];
+
+		// Queue replays for every subscriber whose current state matches.
+		replayMatchingSubscribers();
+
+		// Re-attach the observer AFTER restore so the restore itself doesn't
+		// echo back through persistChanges.
+		attachObserver();
+
+		// Drain on next microtask, same as initial creation.
+		Promise.resolve().then(flushPendingCallbacks, err => {
+			if (disposed) {
+				return;
+			}
+			// eslint-disable-next-line no-console
+			console.error('createLayoutState: resume flush rejected; flushing anyway', err);
+			flushPendingCallbacks();
+		});
+	}
+
+	function dispose(): void {
+		if (disposed) {
+			return;
+		}
+		disposed = true;
+		observer?.disconnect();
+		observer = null;
+		clearRestored();
+		subscriptions.clear();
+		pendingCallbacks = [];
+		pendingTransitionFns = [];
+	}
+
+	writeConfiguredExclusions();
 
 	// Mark restored even on setup failure so CSS gates can't strand content.
 	try {
@@ -545,30 +763,12 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 			sync: true
 		});
 
-		observer = new MutationObserver(mutations => {
-			for (const mutation of mutations) {
-				const oldClasses = (mutation.oldValue ?? '').split(/\s+/);
-				const newClasses = Array.from((mutation.target as Element).classList);
-				const { added, removed } = diffClasses(newClasses, oldClasses);
-
-				persistChanges(added, removed);
-
-				for (const c of added) {
-					fireMatching(c, true);
-				}
-				for (const c of removed) {
-					fireMatching(c, false);
-				}
-			}
-		});
-
-		observer.observe(targetRoot, {
-			attributes: true,
-			attributeFilter: ['class'],
-			attributeOldValue: true
-		});
+		attachObserver();
 
 		deferCallbacksUntil.then(flushPendingCallbacks, err => {
+			if (disposed) {
+				return;
+			}
 			// eslint-disable-next-line no-console
 			console.error(
 				'createLayoutState: deferCallbacksUntil rejected; flushing pending callbacks anyway',
@@ -587,6 +787,8 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		subscribe,
 		getViewState,
 		getState: loadState,
-		stop
+		suspend,
+		resume,
+		dispose
 	};
 }
