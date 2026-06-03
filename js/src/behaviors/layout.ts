@@ -4,14 +4,14 @@ const setLayoutCssVariables = () => {
 	const header = document.querySelector('.layout-body-header');
 	const headerHeight = header?.clientHeight || 0;
 	const headerCssProp = headerHeight ? `${headerHeight}px` : '0px';
-	const headerY = header?.getBoundingClientRect().y || 0; // determine if header is visible, assign visible heights as well
+	const headerY = header?.getBoundingClientRect().y || 0;
 	const visibleHeaderHeight = Math.max(0, headerY + headerHeight);
 	const visibleHeaderCssProp = `${visibleHeaderHeight}px`;
 
 	const footer = document.querySelector('.layout-body-footer');
 	const footerHeight = footer?.clientHeight || 0;
 	const footerCssProp = footerHeight ? `${footerHeight}px` : '0px';
-	const footerY = footer?.getBoundingClientRect().y || 0; // determine if header and footer are visible, assign visible heights as well
+	const footerY = footer?.getBoundingClientRect().y || 0;
 
 	const visibleFooterHeight =
 		footerY < window.innerHeight ? Math.min(window.innerHeight - footerY, footerHeight) : 0;
@@ -46,7 +46,7 @@ export function initLayout() {
 
 	window.addEventListener('DOMContentLoaded', dispatchAtlasLayoutUpdateEvent);
 
-	// determine if header/footer are visible below the top of the viewport - remove with atlas-js 1.13.1
+	// TODO: remove with atlas-js 1.13.1.
 	window.addEventListener('scroll', dispatchAtlasLayoutUpdateEvent, {
 		passive: true
 	});
@@ -57,33 +57,17 @@ export function initLayout() {
 /* -------------------------------------------------------------------------- */
 
 /**
- * Observes `layout-*` class changes on a root element (default: `<html>`) and
- * persists them via a Storage backend, bucketed per `storageKey` (defaults
- * to `'default'`). Consumers `subscribe()` to specific class transitions; a
- * new subscription replays immediately if the current state already matches.
+ * Persists `layout-*` class state per `storageKey`. Instance is live on return.
  *
- * `storageKey` identifies the bucket under the shared `atlas-layout-preferences`
- * storage entry and is surfaced in `LayoutCallbackEvent`s. Distinct pages
- * with different keys read and write separate buckets; pages that should
- * share persisted state simply pass the same `storageKey`.
+ * Subscribers fire on class transitions, with an immediate replay if the current
+ * state already matches. Initial replay waits for `deferCallbacksUntil`.
  *
- * Restoration and the `MutationObserver` are wired synchronously inside the
- * factory — by return time the instance is live. Subscriber callbacks are
- * queued until `deferCallbacksUntil` resolves (default: a resolved promise,
- * so they fire on the next microtask) so they can safely touch the DOM.
+ * `data-layout-restored="true"` is always set after the initial flush — even on
+ * setup or callback failure — so CSS gated on it cannot leave content hidden.
+ * Setup errors are re-thrown.
  *
- * After the initial flush, sets `data-layout-restored="true"` on the root.
- * The attribute is set even if setup throws, `deferCallbacksUntil` rejects,
- * or a queued subscriber throws — CSS rules gated on it (e.g.
- * `display-*-until-layout-restored`) won't permanently hide content. Setup
- * errors are re-thrown.
- *
- * View-transition coordination: requests to wrap restoration or a
- * subscriber callback in `document.startViewTransition` are coordinated per
- * instance to avoid `InvalidStateError` aborts. Subscriber callbacks queued
- * in the same microtask coalesce into a single transition; any request made
- * while a transition is already animating runs synchronously instead of
- * starting (and aborting) another one.
+ * View transitions coalesce same-microtask callbacks and skip while another is
+ * animating, avoiding `InvalidStateError` aborts.
  */
 
 export type LayoutClassWhen = 'added' | 'removed' | 'always';
@@ -105,84 +89,44 @@ export interface LayoutStatePersisted {
 }
 
 export interface LayoutStateOptions {
-	/** Element whose classList is observed and toggled. Defaults to `<html>`. */
+	/** Observed element. Defaults to `<html>`. */
 	root?: HTMLElement;
-	/** Storage backend matching `getItem`/`setItem`. Defaults to `localStorage`. */
+	/** Storage backend. Defaults to `localStorage`. */
 	storage?: Pick<Storage, 'getItem' | 'setItem'>;
 	/**
-	 * Bucket key under the `atlas-layout-preferences` storage entry, and the
-	 * identifier surfaced in `LayoutCallbackEvent.storageKey`. Pages with
-	 * different `storageKey`s persist independently; pages that should share
-	 * persisted state — e.g. a "docs article" and "docs landing" template
-	 * both restoring the same sidebar-collapsed preference — pass the same
-	 * `storageKey`. May be a static string or a getter called every time the
-	 * key is needed, letting a single instance follow a dynamically changing
-	 * key without being recreated. Defaults to `'default'`.
+	 * Bucket key under `atlas-layout-preferences` and the value surfaced as
+	 * `LayoutCallbackEvent.storageKey`. Same key shares state. Getter is
+	 * re-read per operation. Defaults to `'default'`.
 	 */
 	storageKey?: string | (() => string);
 	/**
-	 * Lookup key into the secondary `atlas-layout-exclusions` storage entry.
-	 * The entry's shape is `{ [key]: { [className]: true } }`; if a class
-	 * appears under this key (regardless of value), the instance and the
-	 * inline IIFE both skip it everywhere: restore, persist, AND subscriber
-	 * dispatch (including the immediate replay at `subscribe()` time).
-	 *
-	 * Lets views that share a primary `storageKey` opt into different
-	 * exclusion rules without changing the shared state model. Because the
-	 * rules live in storage rather than in code, they survive SPA
-	 * navigation and direct hard reloads — the inline `<head>` IIFE reads
-	 * the same entry, so pre-paint restore honors them.
-	 *
-	 * Pair with `excludes` to have this instance seed/refresh the entry on
-	 * construction. Omitted entirely → no exclusions consulted (matches the
-	 * original behavior).
-	 *
-	 * May be a static string or a getter called every time the key is
-	 * needed, letting a single instance follow a dynamically changing key
-	 * without being recreated.
+	 * Key into `atlas-layout-exclusions`. Classes listed under this key are
+	 * skipped during restore, persist, subscriber dispatch (including initial
+	 * replay), and the inline pre-paint restore. Getter is re-read per
+	 * operation. Omit to disable exclusion lookup.
 	 */
 	excludesKey?: string | (() => string);
 	/**
-	 * Class names this view excludes from layout persistence. On
-	 * construction the instance writes this list into
-	 * `localStorage['atlas-layout-exclusions'][excludesKey]`, overwriting
-	 * any prior entry for that key. Subsequent restore, persist, and
-	 * subscriber dispatch — plus the inline pre-paint IIFE on the next
-	 * page load — read the persisted entry and skip these classes
-	 * symmetrically.
-	 *
-	 * Requires `excludesKey` to be set; ignored otherwise. Pass an empty
-	 * array to clear the key's blocklist without removing the entry.
-	 * Omitted entirely → the instance does not touch the exclusions entry,
-	 * but still honors whatever is already persisted there.
+	 * Classes to write into `atlas-layout-exclusions[excludesKey]` on
+	 * construction. Requires `excludesKey`. Empty array clears the blocklist;
+	 * omission leaves any persisted entry untouched.
 	 */
 	excludes?: string[];
-	/**
-	 * Subscriber callbacks are queued until this resolves. Defaults to a
-	 * resolved promise (fires on next microtask). Pass `contentLoaded` to
-	 * wait for `DOMContentLoaded`.
-	 */
+	/** Delays initial subscriber callbacks. Defaults to next microtask. */
 	deferCallbacksUntil?: Promise<unknown>;
 	/** Wrap initial restoration in `document.startViewTransition` if available. */
 	useViewTransitionOnRestore?: boolean;
 }
 
 export interface LayoutSubscribeOptions {
-	/**
-	 * Wrap this callback's invocation in `document.startViewTransition` if
-	 * available. Multiple subscriptions firing in the same microtask coalesce
-	 * into a single transition, and the wrap is skipped (callback runs
-	 * synchronously) when another transition is already animating, so
-	 * subscribers can opt in without worrying about aborting each other.
-	 */
+	/** Wrap in a coalesced view transition; runs sync if one is already active. */
 	useViewTransition?: boolean;
 }
 
 export interface LayoutStateInstance {
 	/**
-	 * Register a callback for transitions of `className`. Fires immediately
-	 * if the current state already matches (queued behind
-	 * `deferCallbacksUntil`). Returns an unsubscribe function.
+	 * Subscribe to `className` transitions. Replays once if the current state
+	 * matches (queued behind `deferCallbacksUntil`). Returns an unsubscribe fn.
 	 */
 	subscribe(
 		className: string,
@@ -190,11 +134,11 @@ export interface LayoutStateInstance {
 		callback: LayoutCallback,
 		options?: LayoutSubscribeOptions
 	): () => void;
-	/** Persisted layout state for this instance's `storageKey` bucket. */
+	/** Current bucket state. */
 	getViewState(): LayoutStateView;
-	/** Persisted state across all `storageKey` buckets. */
+	/** All bucket state. */
 	getState(): LayoutStatePersisted;
-	/** Stop observing. Subscriptions remain registered. */
+	/** Stop observing; subscriptions remain registered. */
 	stop(): void;
 }
 
@@ -209,12 +153,7 @@ type DocumentWithViewTransition = Document & {
 	startViewTransition?: (updateCallback: () => void) => unknown;
 };
 
-/**
- * Shape of the secondary `atlas-layout-exclusions` storage entry — a map of
- * key → object whose own keys name the `layout-*` classes blocked under
- * that entry. Value associated with each class is ignored; presence is
- * what matters.
- */
+/** `atlas-layout-exclusions` shape: key → set of excluded `layout-*` class names. */
 export interface LayoutExclusionsPersisted {
 	[key: string]: { [className: string]: true };
 }
@@ -240,21 +179,17 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const STORAGE_KEY = 'atlas-layout-preferences';
 	const RESTORED_ATTRIBUTE = 'data-layout-restored';
 
-	// Coerce unsafe object keys to 'default' so prototype-key writes can't
-	// corrupt the persisted state map.
+	// Coerce prototype keys to avoid poisoning the persisted state map.
 	function sanitizeKey(raw: string): string {
 		return sanitizeExclusionsKey(raw);
 	}
 
-	// Resolve the storage bucket on demand so consumers can pass a getter
-	// and have each persistence / dispatch call see the current value.
 	function getStorageKey(): string {
 		const raw = typeof storageKeyOption === 'function' ? storageKeyOption() : storageKeyOption;
 		return sanitizeKey(raw);
 	}
 
-	// Resolve the excludes key on demand. Null means none was configured —
-	// exclusions are skipped entirely.
+	// Null disables exclusions.
 	function getExcludesKey(): string | null {
 		if (excludesKeyOption === undefined) {
 			return null;
@@ -263,11 +198,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return sanitizeKey(raw);
 	}
 
-	// Seed the persisted exclusions for this instance's key from the
-	// `excludes` option. Runs once at construction so the very next page
-	// load's inline IIFE sees the rules in storage. No-op when either
-	// `excludes` or `excludesKey` is omitted, so consumers can use just
-	// the key to read pre-existing rules.
+	// Seed exclusions so the next pre-paint IIFE sees them.
 	function writeConfiguredExclusions(): void {
 		if (excludesOption === undefined) {
 			return;
@@ -285,7 +216,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 					state = parsed;
 				}
 			} catch {
-				// Treat unparseable storage as empty and overwrite below.
+				// Unparseable: overwrite below.
 			}
 		}
 		const next: { [className: string]: true } = {};
@@ -296,9 +227,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		try {
 			storage.setItem(EXCLUSIONS_STORAGE_KEY, JSON.stringify(state));
 		} catch (err) {
-			// Quota / storage-disabled. Persist filtering still works via
-			// in-memory `excludesOption`, but cross-load IIFE pre-paint
-			// won't see the rules. Surface so consumers can react.
+			// In-memory exclusions still apply; pre-paint restore won't see them.
 			// eslint-disable-next-line no-console
 			console.error(
 				'createLayoutState: failed to write atlas-layout-exclusions; in-memory exclusions still apply',
@@ -307,10 +236,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		}
 	}
 
-	// Read the persisted exclusions for the current key. Returns an empty
-	// set when no key is configured, no entry exists, or the data is
-	// unparseable. Uses own-property semantics so a tampered `__proto__`
-	// key can't poison the blocklist.
+	// Own-property lookup prevents prototype poisoning.
 	function getExcludedClasses(): Set<string> {
 		const key = getExcludesKey();
 		if (key === null) {
@@ -340,11 +266,8 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	let callbacksReady = false;
 	const pendingCallbacks: (() => void)[] = [];
 
-	// View-transition coordination (per instance). `activeTransitionCount`
-	// gates new transitions so callbacks fired while one is animating run
-	// synchronously instead of aborting it with InvalidStateError.
-	// `pendingTransitionFns` lets subscriber callbacks queued in the same
-	// microtask coalesce into a single transition.
+	// Per-instance gate: coalesce same-microtask callbacks; run sync while active
+	// to avoid `InvalidStateError`.
 	let activeTransitionCount = 0;
 	const pendingTransitionFns: (() => void)[] = [];
 	let transitionMicrotaskQueued = false;
@@ -357,7 +280,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		}
 	}
 
-	// Sentinel attribute (not a class, to stay out of the layout-* persistence path).
+	// Attribute, not class, to stay off the `layout-*` persistence path.
 	function markRestored(): void {
 		targetRoot.setAttribute(RESTORED_ATTRIBUTE, 'true');
 	}
@@ -370,7 +293,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 				try {
 					invoke();
 				} catch (err) {
-					// Isolate one bad subscriber; keep draining.
+					// Keep draining after a subscriber error.
 					// eslint-disable-next-line no-console
 					console.error('createLayoutState: a subscriber callback threw during initial flush', err);
 				}
@@ -402,8 +325,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 			fn();
 			return;
 		}
-		// A transition is already animating — starting another now would abort
-		// it with InvalidStateError. Apply the change without a transition.
+		// Run sync to avoid aborting the active transition.
 		if (activeTransitionCount > 0) {
 			fn();
 			return;
@@ -428,9 +350,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 			if (batch.length === 0) {
 				return;
 			}
-			// Something else (e.g. a sync restore in another instance) started
-			// a transition between scheduling and now. Apply the batched
-			// changes without a transition so we don't abort it.
+			// Another transition started since scheduling; run sync to avoid aborting it.
 			if (activeTransitionCount > 0) {
 				invokeTransitionCallbacks(batch);
 				return;
@@ -461,9 +381,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		if (finished && typeof finished.then === 'function') {
 			finished.then(settle, settle);
 		} else {
-			// No .finished (e.g. a test stub). Treat the transition as
-			// complete immediately so subsequent calls can either batch or
-			// start a fresh transition cleanly.
+			// No `.finished` (e.g. test stub); settle immediately to unblock follow-ups.
 			settle();
 		}
 	}
@@ -514,9 +432,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	}
 
 	function fireMatching(className: string, applied: boolean): void {
-		// Resolve once per fire so every event in this batch carries the same
-		// storageKey as the storage write that just happened, and so any
-		// exclusion rules added between observer fires apply consistently.
+		// One exclusion snapshot per dispatch; one key read so events match the write.
 		if (getExcludedClasses().has(className)) {
 			return;
 		}
@@ -548,9 +464,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		subscriptions.add(sub);
 
 		const applied = isClassApplied(className);
-		// Symmetric with fireMatching: an excluded class is not ours, so
-		// skip the initial replay too. Re-evaluated on subsequent mutations
-		// in case the rules change.
+		// Excluded classes skip initial replay too.
 		if (matches(sub, applied) && !getExcludedClasses().has(className)) {
 			const eventStorageKey = getStorageKey();
 			const { useViewTransition } = sub;
@@ -568,9 +482,9 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 
 	function restoreInitialState(): void {
 		const viewState = getViewState();
-		const blocked = getExcludedClasses();
+		const excluded = getExcludedClasses();
 		for (const className of Object.keys(viewState)) {
-			if (blocked.has(className)) {
+			if (excluded.has(className)) {
 				continue;
 			}
 			targetRoot.classList.toggle(className, viewState[className]);
@@ -593,22 +507,21 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		if (added.length + removed.length === 0) {
 			return;
 		}
-		// Refresh on every write so any rules added by a SPA router between
-		// observer fires are honored without needing the instance to know.
-		const blocked = getExcludedClasses();
+		// Refresh per write to catch SPA-updated exclusions.
+		const excluded = getExcludedClasses();
 		const currentStorageKey = getStorageKey();
 		const state = loadState();
 		const viewState = state[currentStorageKey] ?? {};
 		let touched = false;
 		for (const c of added) {
-			if (blocked.has(c)) {
+			if (excluded.has(c)) {
 				continue;
 			}
 			viewState[c] = true;
 			touched = true;
 		}
 		for (const c of removed) {
-			if (blocked.has(c)) {
+			if (excluded.has(c)) {
 				continue;
 			}
 			viewState[c] = false;
@@ -626,8 +539,7 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		observer = null;
 	}
 
-	// Wired synchronously so the instance is live on return. Wrapped so a
-	// failure can't strand CSS rules keyed on `data-layout-restored`.
+	// Mark restored even on setup failure so CSS gates can't strand content.
 	try {
 		startOptionalViewTransition(useViewTransitionOnRestore, restoreInitialState, {
 			sync: true
