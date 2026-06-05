@@ -31,7 +31,7 @@
 		"eslint-plugin-import": "^2.27.5",
 		"@microsoft/atlas-css": "6.8.1",
 		"eslint-config-prettier": "^8.8.0",
-		"parcel": "2.16.3",
+		"parcel": "2.16.4",
 		"lightningcss": "1.30.2",
 		"@parcel/transformer-sass": "2.16.3",
 		"@microsoft/parcel-transformer-markdown-html": "2.7.5",
