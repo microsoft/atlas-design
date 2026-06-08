@@ -577,7 +577,7 @@ const layoutState = createLayoutState({
 });
 ```
 
-`excludesKey` names this view's list inside a second `localStorage` entry (`atlas-layout-exclusions`); `excludes` is the list of `layout-*` class names to write there on construction. Pass `[]` to clear; omit `excludes` to consume rules written by another view. Pass a function (`excludes: () => currentList`) to follow a runtime-varying exclusion list — the getter is re-read on every persist and every `resume()`, so route changes can supply different lists without recreating the instance.
+`excludesKey` names this view's list inside a second `localStorage` entry (`atlas-layout-exclusions`); `excludes` is the list of `layout-*` class names to write there on construction. Pass `[]` to clear this view's list; omit `excludes` to read the existing list under `excludesKey` without overwriting it. Pass a getter (`excludes: () => currentList`) to follow a runtime-varying exclusion list — it is re-read on every persist and every `resume()`, so route changes can supply different lists without recreating the instance.
 
 To honor exclusions before first paint, set `excludesKey` in the [inline restore script above](#inline-restore-script-in-head) to the same value.
 
@@ -607,10 +607,10 @@ router.on('afterNavigate', () => layoutState.resume());
 
 Two rules to follow:
 
-1. **Call `suspend()` BEFORE any DOM mutation that touches `<html>`'s class list.** The observer is disconnected synchronously inside `suspend()`, so class changes during the navigation window cannot leak into the persisted state. Reversing the order will write the destination page's server-rendered classes into the previous route's storage bucket.
-2. **Keep subscriber callbacks idempotent.** `resume()` re-fires every matching subscriber on every navigation. Callbacks should look up DOM each time they run (don't capture stale element references from page A and use them on page B), and should treat being called repeatedly with the same state as a no-op.
+1. **Call `suspend()` BEFORE any DOM mutation that touches `<html>`'s class list.** Reversing the order writes the destination page's server-rendered classes into the previous route's storage bucket.
+2. **Keep subscriber callbacks idempotent.** `resume()` re-fires every matching subscriber on every navigation, so look up the DOM on each run (don't reuse element references across routes) and treat repeated calls with the same state as a no-op.
 
-`dispose()` is also available for full teardown — useful in tests or when unmounting a widget that owned the layout state. After `dispose()`, `subscribe()` / `suspend()` / `resume()` throw; `getViewState()` / `getState()` still work (they read from `localStorage`); previously-returned `unsubscribe` functions remain safe no-ops. Most SPAs won't need it.
+`dispose()` fully tears down the instance — useful in tests or when unmounting a widget that owns the layout state. Afterward, `subscribe()` / `suspend()` / `resume()` throw, while `getViewState()` / `getState()` still read from `localStorage`. Most SPAs won't need it.
 
 ### Content Security Policy
 

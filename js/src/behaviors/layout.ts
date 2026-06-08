@@ -59,8 +59,9 @@ export function initLayout() {
 /**
  * Persists `layout-*` class state per `storageKey`. Instance is live on return.
  *
- * Subscribers fire on class transitions, with an immediate replay if the current
- * state already matches. Initial replay waits for `deferCallbacksUntil`.
+ * A subscriber fires when its watched class enters the requested state; if the
+ * class is already in that state, the callback is queued for an initial replay
+ * once `deferCallbacksUntil` resolves.
  *
  * `data-layout-restored="true"` is always set after the initial flush — even on
  * setup or callback failure — so CSS gated on it cannot leave content hidden.
@@ -87,12 +88,12 @@ export function initLayout() {
  *
  * Subscribers registered once at boot stay live across every navigation — no
  * re-registration required. `resume()` re-fires matching subscribers against
- * the freshly-restored state, so subscriber callbacks **must be idempotent**
- * and should look up DOM each time (don't capture stale element references).
+ * the freshly-restored state, so callbacks **must be idempotent** and should
+ * look up the DOM each time (don't capture stale element references).
  *
  * **Order matters.** Call `suspend()` BEFORE any DOM mutation that touches
  * `<html>`'s class list, and `resume()` AFTER. `suspend()` disconnects the
- * observer synchronously so mutations during the navigation window cannot
+ * observer synchronously, so mutations during the navigation window cannot
  * leak into the persisted state.
  */
 
@@ -133,11 +134,11 @@ export interface LayoutStateOptions {
 	 */
 	excludesKey?: string | (() => string);
 	/**
-	 * Classes to write into `atlas-layout-exclusions[excludesKey]` on
-	 * construction and on every `resume()`. Requires `excludesKey`. Empty
-	 * array clears the blocklist; omission leaves any persisted entry
-	 * untouched. Getter is re-read per write so SPA route changes can supply
-	 * different exclusions.
+	 * Classes to store under the current `excludesKey` in
+	 * `atlas-layout-exclusions`, written on construction and on every
+	 * `resume()`. Requires `excludesKey`. An empty array clears the list;
+	 * omission leaves any persisted entry untouched. The getter is re-read
+	 * per write, so SPA route changes can supply different exclusions.
 	 */
 	excludes?: string[] | (() => string[]);
 	/** Delays initial subscriber callbacks. Defaults to next microtask. */
@@ -164,16 +165,16 @@ export interface LayoutStateInstance {
 		callback: LayoutCallback,
 		options?: LayoutSubscribeOptions
 	): () => void;
-	/** Current bucket state. Safe to call after `dispose()`. */
+	/** State stored under the current `storageKey`. Safe to call after `dispose()`. */
 	getViewState(): LayoutStateView;
-	/** All bucket state. Safe to call after `dispose()`. */
+	/** State for all `storageKey` buckets. Safe to call after `dispose()`. */
 	getState(): LayoutStatePersisted;
 	/**
-	 * Pause observation and clear `data-layout-restored` so until-restored
-	 * CSS gates re-engage. Subscriptions are preserved. `MutationObserver`
-	 * is disconnected synchronously, so it is safe to call immediately
-	 * before a DOM swap that overwrites `<html>`'s class list. Idempotent.
-	 * Throws if disposed.
+	 * Pause observation and clear `data-layout-restored` so CSS that waits for
+	 * layout restoration re-engages. Subscriptions are preserved. The
+	 * `MutationObserver` is disconnected synchronously, so this is safe to call
+	 * immediately before a DOM swap that overwrites `<html>`'s class list.
+	 * Idempotent. Throws if disposed.
 	 */
 	suspend(): void;
 	/**
@@ -234,8 +235,13 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 	const DISPOSED_MESSAGE =
 		'LayoutStateInstance has been disposed; create a new instance with createLayoutState()';
 
-	// Coerce prototype keys to avoid poisoning the persisted state map.
-	function sanitizeKey(raw: string): string {
+	// Coerce prototype keys, and nullish getter results, to avoid poisoning the
+	// persisted state map or writing a literal "undefined" / "null" bucket when
+	// a route getter resolves to nothing.
+	function sanitizeKey(raw: string | null | undefined): string {
+		if (raw == null) {
+			return 'default';
+		}
 		return sanitizeExclusionsKey(raw);
 	}
 
@@ -244,12 +250,17 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		return sanitizeKey(raw);
 	}
 
-	// Null disables exclusions.
+	// Null disables exclusions — both when the option is omitted and when a
+	// getter resolves to nullish for the current route, so a route with no
+	// scope reads and writes no exclusions instead of a junk bucket.
 	function getExcludesKey(): string | null {
 		if (excludesKeyOption === undefined) {
 			return null;
 		}
 		const raw = typeof excludesKeyOption === 'function' ? excludesKeyOption() : excludesKeyOption;
+		if (raw == null) {
+			return null;
+		}
 		return sanitizeKey(raw);
 	}
 
@@ -360,8 +371,8 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 			pendingCallbacks = [];
 			return;
 		}
-		// Suspended before the deferred flush resolved: keep the queue
-		// dangling (resume() will overwrite it from current state) and
+		// Suspended before the deferred flush resolved: leave the queued
+		// callbacks unflushed (resume() replaces them from current state) and
 		// leave the attribute cleared so until-restored CSS stays engaged.
 		if (suspended) {
 			return;
@@ -696,8 +707,8 @@ export function createLayoutState(options: LayoutStateOptions = {}): LayoutState
 		observer?.disconnect();
 		observer = null;
 		clearRestored();
-		// Drop in-flight batched VTs; their target state is about to be
-		// replaced by whatever resume() restores.
+		// Drop in-flight batched view transitions; resume() will restore the
+		// route's current layout state in their place.
 		pendingTransitionFns = [];
 	}
 

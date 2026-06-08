@@ -899,7 +899,7 @@ describe('createLayoutState', () => {
 				expect(root.hasAttribute('data-layout-restored')).toBe(false);
 			});
 
-			it('is idempotent (calling twice does not throw) [ai generated]', () => {
+			it('suspend() is idempotent [ai generated]', () => {
 				const root = createRoot();
 				const { storage } = createFakeStorage();
 				const state = track(
@@ -1340,7 +1340,7 @@ describe('createLayoutState', () => {
 					);
 					state.dispose();
 					await flush();
-					// The rejection-side console.error is gated on `disposed`.
+					// The console.error in the rejection handler is skipped after disposal.
 					expect(errSpy).not.toHaveBeenCalledWith(
 						expect.stringContaining('deferCallbacksUntil rejected'),
 						expect.anything()
@@ -1370,7 +1370,7 @@ describe('createLayoutState', () => {
 						deferCallbacksUntil: Promise.resolve()
 					})
 				);
-				// Boot-time subscriber registered ONCE — must survive every nav.
+				// Registered once at boot; should still fire after every navigation.
 				const cb = vi.fn();
 				state.subscribe('layout-menu-collapsed', 'always', cb);
 				await flush();
@@ -1696,6 +1696,28 @@ describe('createLayoutState', () => {
 			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
 				default: { 'layout-twin': true }
 			});
+		});
+
+		it('coerces a nullish storageKey returned by the function to "default" [ai generated]', async () => {
+			const root = createRoot();
+			const { storage, data } = createFakeStorage();
+			const state = track(
+				createLayoutState({
+					root,
+					storage,
+					// Simulate a route getter that resolves to nothing — a runtime
+					// type violation, since the option is declared `() => string`.
+					storageKey: () => undefined as unknown as string,
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			root.classList.add('layout-twin');
+			await flush();
+			// State lands in the "default" bucket, never a literal "undefined" key.
+			expect(state.getViewState()).toEqual({ 'layout-twin': true });
+			const persisted = JSON.parse(data[STORAGE_KEY]) as Record<string, unknown>;
+			expect(persisted).toEqual({ default: { 'layout-twin': true } });
+			expect(Object.prototype.hasOwnProperty.call(persisted, 'undefined')).toBe(false);
 		});
 
 		it('lets two instances with the same storageKey share persisted state [ai generated]', async () => {
@@ -2106,6 +2128,28 @@ describe('createLayoutState', () => {
 				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
 					default: { 'layout-menu-collapsed': true }
 				});
+			});
+
+			it('treats a nullish excludesKey getter as no exclusion scope (skips lookup and write)', () => {
+				const root = createRoot();
+				const { storage, data } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-menu-collapsed': true } })
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						// Route getter resolves to nothing (runtime type violation).
+						excludesKey: () => undefined as unknown as string,
+						excludes: ['layout-menu-collapsed']
+					})
+				);
+				// Exclusions are disabled for this route, so the persisted class
+				// still restores...
+				expect(root.classList.contains('layout-menu-collapsed')).toBe(true);
+				// ...and nothing is written under a literal "undefined" bucket.
+				expect(data[EXCLUSIONS_KEY]).toBeUndefined();
 			});
 
 			it('uses own-property lookups so __proto__-keyed entries cannot poison the blocklist', () => {
