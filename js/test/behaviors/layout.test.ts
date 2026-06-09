@@ -2,6 +2,7 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } 
 import { createLayoutState, LayoutStateInstance } from '../../src/behaviors/layout';
 
 const STORAGE_KEY = 'atlas-layout-preferences';
+const EXCLUSIONS_STORAGE_KEY = 'atlas-layout-exclusions';
 
 /* -------------------------------------------------------------------------- */
 /* Test helpers                                                               */
@@ -131,11 +132,11 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-	// Disconnect any LayoutStateInstance MutationObservers before the next
-	// test starts mutating the DOM. `stop()` is idempotent.
+	// Dispose any LayoutStateInstance MutationObservers before the next
+	// test starts mutating the DOM. `dispose()` is idempotent.
 	while (liveInstances.length) {
 		try {
-			liveInstances.pop()?.stop();
+			liveInstances.pop()?.dispose();
 		} catch {
 			// Best-effort: never let teardown failures mask the real assertion.
 		}
@@ -863,43 +864,551 @@ describe('createLayoutState', () => {
 		});
 	});
 
-	describe('stop()', () => {
-		it('stops processing further mutations [ai generated]', async () => {
-			const root = createRoot();
-			const { storage } = createFakeStorage();
-			const state = track(
-				createLayoutState({
-					root,
-					storage,
-					storageKey: 'v',
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-			const cb = vi.fn();
-			// 'added' avoids the immediate replay (class is absent).
-			state.subscribe('layout-twin', 'added', cb);
-			await flush();
-			state.stop();
-			root.classList.add('layout-twin');
-			await flush();
-			expect(cb).not.toHaveBeenCalled();
-			expect(state.getViewState()).toEqual({});
+	describe('suspend() / resume() / dispose()', () => {
+		describe('suspend()', () => {
+			it('stops processing further mutations [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-twin', 'added', cb);
+				await flush();
+				state.suspend();
+				root.classList.add('layout-twin');
+				await flush();
+				expect(cb).not.toHaveBeenCalled();
+				expect(state.getViewState()).toEqual({});
+			});
+
+			it('removes the data-layout-restored attribute from the root [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				await flush();
+				expect(root.getAttribute('data-layout-restored')).toBe('true');
+				state.suspend();
+				expect(root.hasAttribute('data-layout-restored')).toBe(false);
+			});
+
+			it('suspend() is idempotent [ai generated]', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				expect(() => {
+					state.suspend();
+					state.suspend();
+				}).not.toThrow();
+			});
+
+			it('preserves subscriptions for replay by resume() [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-twin': true } })
+				});
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-twin', 'always', cb);
+				await flush();
+				cb.mockClear();
+				state.suspend();
+				state.resume();
+				await flush();
+				// Subscription persisted across suspend/resume and replayed.
+				expect(cb).toHaveBeenCalledWith(
+					expect.objectContaining({ className: 'layout-twin', isApplied: true })
+				);
+			});
+
+			it('suspend() throws when called after dispose() [ai generated]', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				state.dispose();
+				expect(() => state.suspend()).toThrow(/disposed/);
+			});
 		});
 
-		it('is safe to call multiple times [ai generated]', () => {
-			const root = createRoot();
-			const { storage } = createFakeStorage();
-			const state = track(
-				createLayoutState({
-					root,
-					storage,
-					deferCallbacksUntil: Promise.resolve()
-				})
-			);
-			expect(() => {
-				state.stop();
-				state.stop();
-			}).not.toThrow();
+		describe('resume()', () => {
+			it('is a no-op when called on a non-suspended instance [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ default: { 'layout-twin': true } })
+				});
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-twin', 'always', cb);
+				await flush();
+				cb.mockClear();
+				state.resume();
+				await flush();
+				// No-op: subscriber not re-fired.
+				expect(cb).not.toHaveBeenCalled();
+			});
+
+			it('re-attaches the observer so subsequent class changes fire callbacks [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-twin', 'added', cb);
+				await flush();
+				state.suspend();
+				state.resume();
+				await flush();
+				cb.mockClear();
+				root.classList.add('layout-twin');
+				await flush();
+				expect(cb).toHaveBeenCalledWith(
+					expect.objectContaining({ className: 'layout-twin', isApplied: true })
+				);
+			});
+
+			it('re-restores persisted state from the current storageKey bucket [ai generated]', async () => {
+				const root = createRoot();
+				const { storage, data } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({
+						pageA: { 'layout-twin': true },
+						pageB: { 'layout-holy-grail': true }
+					})
+				});
+				let key = 'pageA';
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: () => key,
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				await flush();
+				expect(root.classList.contains('layout-twin')).toBe(true);
+				expect(root.classList.contains('layout-holy-grail')).toBe(false);
+
+				state.suspend();
+				// Simulate SPA DOM swap: replace <html>'s class list with the
+				// destination page's server-rendered classes (none in this case).
+				root.className = '';
+				key = 'pageB';
+				state.resume();
+				await flush();
+
+				expect(root.classList.contains('layout-twin')).toBe(false);
+				expect(root.classList.contains('layout-holy-grail')).toBe(true);
+				// And the old bucket is untouched.
+				const persisted = JSON.parse(data[STORAGE_KEY]) as Record<string, Record<string, boolean>>;
+				expect(persisted.pageA).toEqual({ 'layout-twin': true });
+			});
+
+			it('re-reads the excludesKey getter so a route change picks up new exclusions [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ shared: { 'layout-twin': true } }),
+					[EXCLUSIONS_STORAGE_KEY]: JSON.stringify({
+						pageA: {},
+						pageB: { 'layout-twin': true }
+					})
+				});
+				let excludesKey = 'pageA';
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'shared',
+						excludesKey: () => excludesKey,
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				await flush();
+				expect(root.classList.contains('layout-twin')).toBe(true);
+
+				state.suspend();
+				root.className = '';
+				excludesKey = 'pageB';
+				state.resume();
+				await flush();
+
+				// pageB excludes 'layout-twin' so restore skipped it.
+				expect(root.classList.contains('layout-twin')).toBe(false);
+			});
+
+			it('re-reads the excludes getter and re-writes to the current excludesKey bucket [ai generated]', async () => {
+				const root = createRoot();
+				const { storage, data } = createFakeStorage();
+				let exclusionList: string[] = ['layout-twin'];
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						excludesKey: 'view',
+						excludes: () => exclusionList,
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				await flush();
+				const seeded = JSON.parse(data[EXCLUSIONS_STORAGE_KEY]) as Record<
+					string,
+					Record<string, true>
+				>;
+				expect(seeded.view).toEqual({ 'layout-twin': true });
+
+				exclusionList = ['layout-holy-grail'];
+				state.suspend();
+				state.resume();
+				await flush();
+
+				const reseeded = JSON.parse(data[EXCLUSIONS_STORAGE_KEY]) as Record<
+					string,
+					Record<string, true>
+				>;
+				expect(reseeded.view).toEqual({
+					'layout-holy-grail': true
+				});
+			});
+
+			it('re-fires matching subscribers against the freshly restored state [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({
+						pageA: { 'layout-menu-collapsed': true },
+						pageB: { 'layout-menu-collapsed': false }
+					})
+				});
+				let key = 'pageA';
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: () => key,
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-menu-collapsed', 'always', cb);
+				await flush();
+				expect(cb).toHaveBeenLastCalledWith(
+					expect.objectContaining({ isApplied: true, storageKey: 'pageA' })
+				);
+				cb.mockClear();
+
+				state.suspend();
+				root.className = '';
+				key = 'pageB';
+				state.resume();
+				await flush();
+
+				expect(cb).toHaveBeenCalledWith(
+					expect.objectContaining({ isApplied: false, storageKey: 'pageB' })
+				);
+			});
+
+			it('re-sets data-layout-restored after the resume flush [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				await flush();
+				state.suspend();
+				expect(root.hasAttribute('data-layout-restored')).toBe(false);
+				state.resume();
+				await flush();
+				expect(root.getAttribute('data-layout-restored')).toBe('true');
+			});
+
+			it('resume() throws when called after dispose() [ai generated]', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				state.dispose();
+				expect(() => state.resume()).toThrow(/disposed/);
+			});
+
+			it('correctly replays subscribers when suspend() runs before the initial flush [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-twin': true } })
+				});
+				let resolveDefer: () => void = () => undefined;
+				const defer = new Promise<void>(r => {
+					resolveDefer = r;
+				});
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						deferCallbacksUntil: defer
+					})
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-twin', 'always', cb);
+				// Suspend BEFORE the initial deferred flush has resolved.
+				state.suspend();
+				resolveDefer();
+				await flush();
+				// Initial flush was suppressed; attribute stays cleared.
+				expect(root.hasAttribute('data-layout-restored')).toBe(false);
+				expect(cb).not.toHaveBeenCalled();
+
+				state.resume();
+				await flush();
+				// Resume re-queues and flushes correctly.
+				expect(cb).toHaveBeenCalledWith(
+					expect.objectContaining({ className: 'layout-twin', isApplied: true })
+				);
+				expect(root.getAttribute('data-layout-restored')).toBe('true');
+			});
+		});
+
+		describe('dispose()', () => {
+			it('disconnects the observer so subsequent class changes do not fire callbacks [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-twin', 'added', cb);
+				await flush();
+				state.dispose();
+				root.classList.add('layout-twin');
+				await flush();
+				expect(cb).not.toHaveBeenCalled();
+			});
+
+			it('removes the data-layout-restored attribute [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				await flush();
+				expect(root.getAttribute('data-layout-restored')).toBe('true');
+				state.dispose();
+				expect(root.hasAttribute('data-layout-restored')).toBe(false);
+			});
+
+			it('is idempotent [ai generated]', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				expect(() => {
+					state.dispose();
+					state.dispose();
+				}).not.toThrow();
+			});
+
+			it('causes subscribe() to throw [ai generated]', () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				state.dispose();
+				expect(() => state.subscribe('layout-twin', 'always', () => undefined)).toThrow(/disposed/);
+			});
+
+			it('keeps getViewState() and getState() working (they read from storage) [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-twin': true } })
+				});
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				await flush();
+				state.dispose();
+				expect(state.getViewState()).toEqual({ 'layout-twin': true });
+				expect(state.getState()).toEqual({ v: { 'layout-twin': true } });
+			});
+
+			it('makes previously-returned unsubscribe functions safe no-ops [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const state = track(
+					createLayoutState({ root, storage, deferCallbacksUntil: Promise.resolve() })
+				);
+				const unsubscribe = state.subscribe('layout-twin', 'always', () => undefined);
+				await flush();
+				state.dispose();
+				expect(() => unsubscribe()).not.toThrow();
+			});
+
+			it('clears pending callbacks queued before the initial flush (markRestored not called) [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-twin': true } })
+				});
+				let resolveDefer: () => void = () => undefined;
+				const defer = new Promise<void>(r => {
+					resolveDefer = r;
+				});
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						deferCallbacksUntil: defer
+					})
+				);
+				const cb = vi.fn();
+				state.subscribe('layout-twin', 'always', cb);
+				// Dispose BEFORE the initial flush resolves.
+				state.dispose();
+				resolveDefer();
+				await flush();
+				expect(cb).not.toHaveBeenCalled();
+				expect(root.hasAttribute('data-layout-restored')).toBe(false);
+			});
+
+			it('stops draining when a subscriber callback disposes mid-flush [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({
+						v: { 'layout-twin': true, 'layout-holy-grail': true }
+					})
+				});
+				let resolveDefer: () => void = () => undefined;
+				const defer = new Promise<void>(r => {
+					resolveDefer = r;
+				});
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						deferCallbacksUntil: defer
+					})
+				);
+				const cbA = vi.fn(() => state.dispose());
+				const cbB = vi.fn();
+				state.subscribe('layout-twin', 'always', cbA);
+				state.subscribe('layout-holy-grail', 'always', cbB);
+				resolveDefer();
+				await flush();
+				expect(cbA).toHaveBeenCalledTimes(1);
+				// cbB queued behind cbA; the disposed check between callbacks prevents it.
+				expect(cbB).not.toHaveBeenCalled();
+				expect(root.hasAttribute('data-layout-restored')).toBe(false);
+			});
+
+			it('suppresses the deferCallbacksUntil rejection handler [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage();
+				const errSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+				try {
+					const defer = Promise.reject(new Error('boom'));
+					const state = track(
+						createLayoutState({
+							root,
+							storage,
+							deferCallbacksUntil: defer
+						})
+					);
+					state.dispose();
+					await flush();
+					// The console.error in the rejection handler is skipped after disposal.
+					expect(errSpy).not.toHaveBeenCalledWith(
+						expect.stringContaining('deferCallbacksUntil rejected'),
+						expect.anything()
+					);
+					expect(root.hasAttribute('data-layout-restored')).toBe(false);
+				} finally {
+					errSpy.mockRestore();
+				}
+			});
+		});
+
+		describe('SPA integration scenario', () => {
+			it('survives a full suspend-swap-resume cycle without losing subscribers [ai generated]', async () => {
+				const root = createRoot();
+				const { storage } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({
+						pageA: { 'layout-menu-collapsed': true },
+						pageB: { 'layout-menu-collapsed': false }
+					})
+				});
+				let routeKey = 'pageA';
+				const state = track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: () => routeKey,
+						deferCallbacksUntil: Promise.resolve()
+					})
+				);
+				// Registered once at boot; should still fire after every navigation.
+				const cb = vi.fn();
+				state.subscribe('layout-menu-collapsed', 'always', cb);
+				await flush();
+				expect(cb).toHaveBeenLastCalledWith(
+					expect.objectContaining({ isApplied: true, storageKey: 'pageA' })
+				);
+
+				// Simulate navigation A -> B
+				state.suspend();
+				root.className = ''; // DOM swap wipes <html>'s classes
+				routeKey = 'pageB';
+				state.resume();
+				await flush();
+				expect(cb).toHaveBeenLastCalledWith(
+					expect.objectContaining({ isApplied: false, storageKey: 'pageB' })
+				);
+
+				// User toggles on pageB — should fire and persist to pageB bucket.
+				cb.mockClear();
+				root.classList.add('layout-menu-collapsed');
+				await flush();
+				expect(cb).toHaveBeenCalledWith(
+					expect.objectContaining({ isApplied: true, storageKey: 'pageB' })
+				);
+				expect(state.getViewState()).toEqual({ 'layout-menu-collapsed': true });
+
+				// Simulate navigation B -> A
+				cb.mockClear();
+				state.suspend();
+				root.className = '';
+				routeKey = 'pageA';
+				state.resume();
+				await flush();
+				// pageA's persisted state still has layout-menu-collapsed=true.
+				expect(cb).toHaveBeenCalledWith(
+					expect.objectContaining({ isApplied: true, storageKey: 'pageA' })
+				);
+			});
 		});
 	});
 
@@ -1187,6 +1696,28 @@ describe('createLayoutState', () => {
 			expect(JSON.parse(data[STORAGE_KEY])).toEqual({
 				default: { 'layout-twin': true }
 			});
+		});
+
+		it('coerces a nullish storageKey returned by the function to "default" [ai generated]', async () => {
+			const root = createRoot();
+			const { storage, data } = createFakeStorage();
+			const state = track(
+				createLayoutState({
+					root,
+					storage,
+					// Simulate a route getter that resolves to nothing — a runtime
+					// type violation, since the option is declared `() => string`.
+					storageKey: () => undefined as unknown as string,
+					deferCallbacksUntil: Promise.resolve()
+				})
+			);
+			root.classList.add('layout-twin');
+			await flush();
+			// State lands in the "default" bucket, never a literal "undefined" key.
+			expect(state.getViewState()).toEqual({ 'layout-twin': true });
+			const persisted = JSON.parse(data[STORAGE_KEY]) as Record<string, unknown>;
+			expect(persisted).toEqual({ default: { 'layout-twin': true } });
+			expect(Object.prototype.hasOwnProperty.call(persisted, 'undefined')).toBe(false);
 		});
 
 		it('lets two instances with the same storageKey share persisted state [ai generated]', async () => {
@@ -1597,6 +2128,28 @@ describe('createLayoutState', () => {
 				expect(JSON.parse(data[EXCLUSIONS_KEY])).toEqual({
 					default: { 'layout-menu-collapsed': true }
 				});
+			});
+
+			it('treats a nullish excludesKey getter as no exclusion scope (skips lookup and write)', () => {
+				const root = createRoot();
+				const { storage, data } = createFakeStorage({
+					[STORAGE_KEY]: JSON.stringify({ v: { 'layout-menu-collapsed': true } })
+				});
+				track(
+					createLayoutState({
+						root,
+						storage,
+						storageKey: 'v',
+						// Route getter resolves to nothing (runtime type violation).
+						excludesKey: () => undefined as unknown as string,
+						excludes: ['layout-menu-collapsed']
+					})
+				);
+				// Exclusions are disabled for this route, so the persisted class
+				// still restores...
+				expect(root.classList.contains('layout-menu-collapsed')).toBe(true);
+				// ...and nothing is written under a literal "undefined" bucket.
+				expect(data[EXCLUSIONS_KEY]).toBeUndefined();
 			});
 
 			it('uses own-property lookups so __proto__-keyed entries cannot poison the blocklist', () => {

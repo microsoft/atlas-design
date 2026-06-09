@@ -577,9 +577,40 @@ const layoutState = createLayoutState({
 });
 ```
 
-`excludesKey` names this view's list inside a second `localStorage` entry (`atlas-layout-exclusions`); `excludes` is the list of `layout-*` class names to write there on construction. Pass `[]` to clear; omit `excludes` to consume rules written by another view.
+`excludesKey` names this view's list inside a second `localStorage` entry (`atlas-layout-exclusions`); `excludes` is the list of `layout-*` class names to write there on construction. Pass `[]` to clear this view's list; omit `excludes` to read the existing list under `excludesKey` without overwriting it. Pass a getter (`excludes: () => currentList`) to follow a runtime-varying exclusion list — it is re-read on every persist and every `resume()`, so route changes can supply different lists without recreating the instance.
 
 To honor exclusions before first paint, set `excludesKey` in the [inline restore script above](#inline-restore-script-in-head) to the same value.
+
+### Integrating with a client-side router
+
+If your site swaps page content via client-side navigation (e.g. fetching new HTML and replacing the `<html>` class list without a hard reload), pair `suspend()` with `resume()` around each navigation so a single long-lived instance can serve every route. Subscribers registered once at boot stay live — no re-registration needed.
+
+```typescript
+const layoutState = createLayoutState({
+	storageKey: () => currentRoute.layoutKey,
+	excludesKey: () => currentRoute.excludesKey,
+	excludes: () => currentRoute.excludes,
+	useViewTransitionOnRestore: false
+});
+
+// Subscribers added once at boot survive every navigation.
+layoutState.subscribe('layout-menu-collapsed', 'always', ({ isApplied }) => {
+	const button = document.querySelector<HTMLButtonElement>('[data-menu-collapse-toggle]');
+	button?.setAttribute('aria-expanded', String(!isApplied));
+});
+
+router.on('beforeNavigate', () => layoutState.suspend());
+router.on('afterNavigate', () => layoutState.resume());
+```
+
+`suspend()` disconnects the `MutationObserver` synchronously and removes `data-layout-restored` so [until-restored helpers](#display-helpers-gated-on-js-restoration) re-engage during the navigation. `resume()` re-reads the `storageKey` / `excludesKey` / `excludes` getters, re-restores persisted state for the new route's bucket, replays matching subscribers against the freshly-restored state, re-attaches the observer, and re-sets `data-layout-restored`.
+
+Two rules to follow:
+
+1. **Call `suspend()` BEFORE any DOM mutation that touches `<html>`'s class list.** Reversing the order writes the destination page's server-rendered classes into the previous route's storage bucket.
+2. **Keep subscriber callbacks idempotent.** `resume()` re-fires every matching subscriber on every navigation, so look up the DOM on each run (don't reuse element references across routes) and treat repeated calls with the same state as a no-op.
+
+`dispose()` fully tears down the instance — useful in tests or when unmounting a widget that owns the layout state. Afterward, `subscribe()` / `suspend()` / `resume()` throw, while `getViewState()` / `getState()` still read from `localStorage`. Most SPAs won't need it.
 
 ### Content Security Policy
 
