@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.8.2
+
+### Patch Changes
+
+- 996f0f9: Relaxed the `engines` field to allow any Node 24 / npm 11 release (`^24.0.0` / `^11.0.0`) instead of pinning a single exact version. This stops `EBADENGINE` warnings for downstream consumers running other patch versions of Node 24.
+
 ## 6.8.1
 
 ### Patch Changes

@@ -1,5 +1,27 @@
 # @microsoft/atlas-js
 
+## 3.0.0
+
+### Major Changes
+
+- bbf0dfb: Replace `LayoutStateInstance.stop()` with `suspend()`, `resume()`, and `dispose()` so a single long-lived layout state instance can serve every route in a client-side-routed app:
+
+  - `suspend()` — synchronously disconnects the observer and clears `data-layout-restored`. Subscriptions are preserved.
+  - `resume()` — re-reads the `storageKey` / `excludesKey` / `excludes` getters, re-restores persisted state, and replays matching subscribers against the freshly-restored state.
+  - `dispose()` — hard teardown that clears subscriptions and pending queues. Afterward, `subscribe()` / `suspend()` / `resume()` throw, `getViewState()` / `getState()` still work (they read from storage), and previously-returned unsubscribe functions remain safe no-ops.
+
+  The `excludes` option now also accepts a getter (`string[] | (() => string[])`), re-read on every persist and every `resume()`, so SPA route changes can supply different exclusion lists without recreating the instance.
+
+  **Migrating from `stop()`:** Replace each `state.stop()` call with `state.suspend()` when you will call `state.resume()` on the matching router event, or with `state.dispose()` for full teardown or test cleanup. `suspend()` also removes `data-layout-restored`, so drop any manual clearing you did around `stop()`.
+
+### Minor Changes
+
+- bbf0dfb: Add `excludesKey` and `excludes` options to `createLayoutState` so views that share a `storageKey` can prevent specific `layout-*` classes from being restored, persisted, or sent to subscribers. Rules persist under a new `localStorage` entry, `atlas-layout-exclusions`, and are honored by the inline pre-paint script.
+
+### Patch Changes
+
+- 996f0f9: Relaxed the `engines` field to allow any Node 24 / npm 11 release (`^24.0.0` / `^11.0.0`) instead of pinning a single exact version. This stops `EBADENGINE` warnings for downstream consumers running other patch versions of Node 24.
+
 ## 2.1.0
 
 ### Minor Changes
