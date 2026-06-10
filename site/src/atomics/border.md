@@ -69,6 +69,7 @@ There are a few classes available to set border radius:
 | `border-radius-sm`      | `0.125rem` |
 | `border-radius`         | `0.25rem`  |
 | `border-radius-lg`      | `0.375rem` |
+| `border-radius-xl`      | `0.5rem`   |
 | `border-radius-rounded` | `290486px` |
 | `border-radius-none`    | `0px`      |
 
@@ -81,6 +82,9 @@ There are a few classes available to set border radius:
 </div>
 <div class="border border-radius-lg padding-sm margin-top-xs">
 	<p>Large radius</p>
+</div>
+<div class="border border-radius-xl padding-sm margin-top-xs">
+	<p>Extra large radius</p>
 </div>
 <div class="border border-radius-rounded padding-sm margin-top-xs">
 	<p>Rounded</p>
