@@ -10,13 +10,13 @@ import {
 	loadTokens,
 	loadComponents,
 	loadAtomics,
+	loadPatterns,
 	searchClasses,
 	getComponent,
 	getComponentClasses,
 	getClassesByCategory,
-	type ClassInfo,
-	type ComponentDoc,
-	type AtomicDoc
+	getPattern,
+	type CodeExample
 } from './data/loader.js';
 
 export function createServer(): McpServer {
@@ -77,6 +77,29 @@ export function createServer(): McpServer {
 						uri: 'atlas://tokens',
 						mimeType: 'application/json',
 						text: JSON.stringify(tokens, null, 2)
+					}
+				]
+			};
+		}
+	);
+
+	server.resource(
+		'atlas://patterns',
+		'Atlas page-level patterns (multi-component HTML compositions)',
+		async () => {
+			const patterns = loadPatterns();
+			const summary = patterns.map(p => ({
+				name: p.name,
+				title: p.title,
+				description: p.description,
+				exampleCount: p.examples.length
+			}));
+			return {
+				contents: [
+					{
+						uri: 'atlas://patterns',
+						mimeType: 'application/json',
+						text: JSON.stringify(summary, null, 2)
 					}
 				]
 			};
@@ -177,19 +200,21 @@ export function createServer(): McpServer {
 
 	server.tool(
 		'get_code_examples',
-		'Get HTML/CSS code examples for a specific Atlas component or atomic category.',
+		'Get canonical Atlas HTML snippets for a component, pattern, or atomic category. Use these to build HTML pages. Each snippet includes the heading it was documented under.',
 		{
 			name: z
 				.string()
-				.describe('Component or atomic category name (e.g., "button", "spacing", "colors")'),
+				.describe(
+					'Component, pattern, or atomic category name (e.g., "button", "card", "spacing")'
+				),
 			type: z
-				.enum(['component', 'atomic'])
+				.enum(['component', 'pattern', 'atomic'])
 				.optional()
-				.describe('Type of documentation to search (default: searches both)')
+				.describe('Where to look (default: searches components, patterns, and atomics)')
 		},
 		async ({ name, type }) => {
 			const nameLower = name.toLowerCase();
-			let examples: { source: string; examples: { language: string; code: string }[] }[] = [];
+			const examples: { source: string; examples: CodeExample[] }[] = [];
 
 			if (!type || type === 'component') {
 				const component = getComponent(nameLower);
@@ -197,6 +222,16 @@ export function createServer(): McpServer {
 					examples.push({
 						source: `component/${component.name}`,
 						examples: component.examples
+					});
+				}
+			}
+
+			if (!type || type === 'pattern') {
+				const pattern = getPattern(nameLower);
+				if (pattern && pattern.examples.length > 0) {
+					examples.push({
+						source: `pattern/${pattern.name}`,
+						examples: pattern.examples
 					});
 				}
 			}
@@ -217,9 +252,10 @@ export function createServer(): McpServer {
 					content: [
 						{
 							type: 'text',
-							text: `No code examples found for "${name}". Try list_components or list_atomics to see available options.`
+							text: `No HTML examples found for "${name}". Try list_components, list_patterns, or list_atomics to see available options.`
 						}
-					]
+					],
+					isError: true
 				};
 			}
 
@@ -252,6 +288,34 @@ export function createServer(): McpServer {
 									title: c.title,
 									description: c.description,
 									classPrefixes: c.classPrefixes
+								}))
+							},
+							null,
+							2
+						)
+					}
+				]
+			};
+		}
+	);
+
+	server.tool(
+		'list_patterns',
+		'List Atlas page-level patterns — multi-component HTML compositions you can adapt to build pages.',
+		{},
+		async () => {
+			const patterns = loadPatterns();
+			return {
+				content: [
+					{
+						type: 'text',
+						text: JSON.stringify(
+							{
+								count: patterns.length,
+								patterns: patterns.map(p => ({
+									name: p.name,
+									title: p.title,
+									description: p.description
 								}))
 							},
 							null,
@@ -366,7 +430,8 @@ export function createServer(): McpServer {
 								2
 							)
 						}
-					]
+					],
+					isError: true
 				};
 			}
 
