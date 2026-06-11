@@ -1,147 +1,82 @@
 # Atlas MCP Server
 
-A Model Context Protocol (MCP) server that exposes Atlas Design System resources to AI agents and copilots.
+A [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes Atlas Design System resources — CSS classes, components, atomic utilities, and design tokens — to AI agents and copilots, so they can discover and apply Atlas correctly in your projects.
 
-## Overview
+## Quick start
 
-This MCP server provides tools and resources for discovering and using Atlas CSS classes, components, and design tokens. It enables AI assistants to help developers use Atlas effectively in their projects.
+Add the server to your MCP client config and it runs on demand via `npx` (no install required):
+
+```json
+{
+	"mcpServers": {
+		"atlas": {
+			"command": "npx",
+			"args": ["-y", "@microsoft/atlas-mcp"]
+		}
+	}
+}
+```
+
+For GitHub Copilot, put this in `.github/copilot-mcp.json`. For Claude Desktop, put it in your `claude_desktop_config.json`.
 
 ## Installation
 
-### Via npm (recommended for external users)
+Install globally, or run on demand with `npx`:
 
 ```bash
 npm install -g @microsoft/atlas-mcp
-```
-
-Or run directly with npx (no installation required):
-
-```bash
+# or
 npx @microsoft/atlas-mcp
 ```
 
-### From source (for contributors)
-
-From the repository root:
+Contributors building from source, run from the repository root:
 
 ```bash
 npm install
 npm run build -w @microsoft/atlas-mcp
 ```
 
-## Configuration
+## Tools
 
-### GitHub Copilot CLI
+| Tool                | Description                                                                    | Parameters                                                                                                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `search_classes`    | Search CSS classes by exact name or partial text.                              | `query` (required); `category` (optional: `component` or `atomic`; omit to search all); `limit` (optional: default 50, max 100)                                            |
+| `get_component`     | Get a component's description, available classes, and code examples.           | `name` (required) — e.g. `button`, `card`, `badge`                                                                                                                         |
+| `get_code_examples` | Get HTML/CSS examples for a component or an atomic category.                   | `name` (required); `type` (optional: `component` or `atomic`; omit to search both)                                                                                         |
+| `list_components`   | List all components with their descriptions.                                   | none                                                                                                                                                                       |
+| `list_atomics`      | List atomic utility classes by category.                                       | `category` (optional): one of `spacing`, `color`, `display`, `flex`, `typography`, `border`, `background`, `position`, `size`, `other`; omit for a count of every category |
+| `get_class_details` | Get a class's metadata, including theme colors or size values when they apply. | `className` (required) — e.g. `color-primary`, `margin-lg`                                                                                                                 |
 
-Add to your project's `.github/copilot-mcp.json`:
+Example calls:
 
-```json
-{
-  "mcpServers": {
-    "atlas": {
-      "command": "npx",
-      "args": ["-y", "@microsoft/atlas-mcp"]
-    }
-  }
-}
+```js
+search_classes({ query: 'button', category: 'component' });
+get_component({ name: 'button' });
+get_code_examples({ name: 'spacing', type: 'atomic' });
+list_atomics({ category: 'spacing' });
+get_class_details({ className: 'color-primary' });
 ```
 
-## Available Tools
+## Resources
 
-### `search_classes`
-Search Atlas CSS classes by name or pattern.
-
-**Parameters:**
-- `query` (string, required): Search query to match against class names
-- `category` (string, optional): Filter by "component" or "atomic"
-- `limit` (number, optional): Maximum results (default: 50, max: 100)
-
-**Example:** Search for button-related classes
-```
-search_classes({ query: "button", category: "component" })
-```
-
-### `get_component`
-Get detailed information about a specific Atlas component.
-
-**Parameters:**
-- `name` (string, required): Component name (e.g., "button", "card", "badge")
-
-**Example:** Get button component details
-```
-get_component({ name: "button" })
-```
-
-### `get_code_examples`
-Get HTML/CSS code examples for a component or atomic category.
-
-**Parameters:**
-- `name` (string, required): Component or atomic category name
-- `type` (string, optional): "component" or "atomic"
-
-**Example:** Get spacing examples
-```
-get_code_examples({ name: "spacing", type: "atomic" })
-```
-
-### `list_components`
-List all available Atlas components with descriptions.
-
-**Example:**
-```
-list_components({})
-```
-
-### `list_atomics`
-List Atlas atomic utility classes by category.
-
-**Parameters:**
-- `category` (string, optional): One of: spacing, color, display, flex, typography, border, background, position, size, other
-
-**Example:** List all spacing classes
-```
-list_atomics({ category: "spacing" })
-```
-
-### `get_class_details`
-Get detailed information about a specific CSS class including theme colors and size values.
-
-**Parameters:**
-- `className` (string, required): The CSS class name
-
-**Example:** Get details for color-primary
-```
-get_class_details({ className: "color-primary" })
-```
-
-## Available Resources
-
-### `atlas://components`
-Full catalog of Atlas components with metadata.
-
-### `atlas://atomics`
-All atomic utility classes organized by category (spacing, color, display, flex, typography, border, background, position, size).
-
-### `atlas://tokens`
-Design tokens including colors, spacing, typography, shadows, and more.
+| URI                  | Contents                                                      |
+| -------------------- | ------------------------------------------------------------- |
+| `atlas://components` | Component catalog with metadata                               |
+| `atlas://atomics`    | Atomic utility classes organized by category                  |
+| `atlas://tokens`     | Design tokens: colors, spacing, typography, shadows, and more |
 
 ## Development
 
 ```bash
-# Build the MCP server
-npm run build -w @microsoft/atlas-mcp
-
-# Watch mode for development
-npm run dev -w @microsoft/atlas-mcp
+npm run build -w @microsoft/atlas-mcp   # build
+npm run dev -w @microsoft/atlas-mcp     # watch mode
 ```
 
-## Prerequisites
-
-The MCP server requires built Atlas CSS artifacts. Ensure you've run:
+The server reads pre-bundled data that is generated from built Atlas CSS files. Before building the server, generate those files from the repository root:
 
 ```bash
 npm run build:css
 npm run build:class-names
 ```
 
-These commands generate `css/dist/class-names.json` and `css/dist/tokens.json` which the MCP server reads.
+This produces `css/dist/class-names.json` and `css/dist/tokens.json`; the server's build step bundles both into `data/atlas-data.json`.
