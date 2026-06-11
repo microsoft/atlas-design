@@ -38,6 +38,7 @@ export interface ComponentDoc {
 }
 
 export interface CodeExample {
+	title?: string;
 	language: string;
 	code: string;
 }
@@ -49,10 +50,18 @@ export interface AtomicDoc {
 	examples: CodeExample[];
 }
 
+export interface PatternDoc {
+	name: string;
+	title: string;
+	description: string;
+	examples: CodeExample[];
+}
+
 interface AtlasData {
 	classNames: Record<string, ClassInfo>;
 	tokens: Record<string, unknown>;
 	components: ComponentDoc[];
+	patterns: PatternDoc[];
 	atomics: AtomicDoc[];
 	generatedAt: string;
 }
@@ -106,6 +115,21 @@ export function loadAtomics(): AtomicDoc[] {
 }
 
 /**
+ * Load all page-level patterns (multi-component HTML compositions)
+ */
+export function loadPatterns(): PatternDoc[] {
+	return loadData().patterns;
+}
+
+/**
+ * Get a specific pattern by name
+ */
+export function getPattern(name: string): PatternDoc | undefined {
+	const patterns = loadPatterns();
+	return patterns.find(p => p.name.toLowerCase() === name.toLowerCase());
+}
+
+/**
  * Search class names by pattern
  */
 export function searchClasses(
@@ -116,8 +140,8 @@ export function searchClasses(
 	const components = loadComponents();
 	const limit = options?.limit || 50;
 
-	// Get component prefixes for categorization
-	const componentPrefixes = new Set(components.flatMap(c => c.classPrefixes));
+	// Get component prefixes for categorization (computed once, not per iteration)
+	const componentPrefixes = Array.from(new Set(components.flatMap(c => c.classPrefixes)));
 
 	const queryLower = query.toLowerCase();
 	const results: ClassInfo[] = [];
@@ -130,7 +154,7 @@ export function searchClasses(
 
 		// Filter by category if specified
 		if (options?.category) {
-			const isComponent = Array.from(componentPrefixes).some(prefix => name.startsWith(prefix));
+			const isComponent = componentPrefixes.some(prefix => name.startsWith(prefix));
 			if (options.category === 'component' && !isComponent) continue;
 			if (options.category === 'atomic' && isComponent) continue;
 		}
