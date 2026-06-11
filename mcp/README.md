@@ -36,6 +36,17 @@ npm install
 npm run build -w @microsoft/atlas-mcp
 ```
 
+## Building a page
+
+Compose outside-in — lay out the largest structures first:
+
+1. **Page layout** — start with the `layout` component if the page needs an overall frame.
+2. **Containers** — arrange regions with atomic grid/flex utilities (`display-grid`, `display-flex`, `gap-*`, `justify-content-*`).
+3. **Large components** — drop in `card`, `media`, `hero`, and the like.
+4. **Small elements** — fill them with `button`, `input`, `badge`, `icon`.
+
+Call `get_composition_guide` (or read `atlas://composition`) for this as structured data, then pull canonical HTML with `get_code_examples` and `list_patterns`.
+
 ## Tools
 
 Building HTML is the point — reach for the snippet and listing tools first. The class tools are supporting reference.

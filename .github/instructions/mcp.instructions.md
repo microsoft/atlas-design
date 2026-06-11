@@ -54,16 +54,18 @@ Only HTML code fences become examples (`html`, `abut-html`, `html-no-indent`, `h
 
 ## Available Tools
 
-1. **get_code_examples** - Get canonical HTML snippets (component, pattern, or atomic) to build pages
-2. **list_components** - List all components
-3. **list_patterns** - List page-level patterns (multi-component HTML compositions)
-4. **list_atomics** - List atomic classes by category
-5. **get_component** - Get component details and HTML examples
-6. **search_classes** - (Supporting) Search CSS classes by name or pattern
-7. **get_class_details** - (Supporting) Get class color/size metadata
+1. **get_composition_guide** - How to assemble a page (layout → atomic containers → large components → small elements)
+2. **get_code_examples** - Get canonical HTML snippets (component, pattern, or atomic) to build pages
+3. **list_components** - List all components
+4. **list_patterns** - List page-level patterns (multi-component HTML compositions)
+5. **list_atomics** - List atomic classes by category
+6. **get_component** - Get component details and HTML examples
+7. **search_classes** - (Supporting) Search CSS classes by name or pattern
+8. **get_class_details** - (Supporting) Get class color/size metadata
 
 ## Available Resources
 
+- `atlas://composition` - How to compose a page (layout → atomics → large → small)
 - `atlas://components` - Component catalog
 - `atlas://patterns` - Page-level patterns (HTML compositions)
 - `atlas://atomics` - Atomic classes by category
