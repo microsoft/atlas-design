@@ -84,12 +84,12 @@ Add to your `.github/copilot-mcp.json`:
 
 ```json
 {
-  "mcpServers": {
-    "atlas": {
-      "command": "npx",
-      "args": ["-y", "@microsoft/atlas-mcp"]
-    }
-  }
+	"mcpServers": {
+		"atlas": {
+			"command": "npx",
+			"args": ["-y", "@microsoft/atlas-mcp"]
+		}
+	}
 }
 ```
 
@@ -99,18 +99,18 @@ Add to your Claude configuration:
 
 ```json
 {
-  "mcpServers": {
-    "atlas": {
-      "command": "npx",
-      "args": ["-y", "@microsoft/atlas-mcp"]
-    }
-  }
+	"mcpServers": {
+		"atlas": {
+			"command": "npx",
+			"args": ["-y", "@microsoft/atlas-mcp"]
+		}
+	}
 }
 ```
 
 ### Available Tools
 
-- **search_classes** - Search 1200+ CSS classes by name or pattern
+- **search_classes** - Search Atlas CSS classes by name or pattern
 - **get_component** - Get component details with code examples
 - **list_components** - List all available components
 - **list_atomics** - List atomic utility classes by category

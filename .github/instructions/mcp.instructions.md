@@ -1,8 +1,8 @@
 # Atlas MCP Server - Copilot Instructions
 
-applyTo: "mcp/**"
+applyTo: "mcp/\*\*"
 
-This is the `@microsoft/atlas-mcp` package, a Model Context Protocol server that exposes Atlas Design System resources to AI agents.
+This is the `@microsoft/atlas-mcp` package, a Model Context Protocol (MCP) server that exposes Atlas Design System resources — components, atomic classes, design tokens, and code examples — to AI agents.
 
 ## Package Overview
 
@@ -19,7 +19,7 @@ mcp/
 │   ├── index.ts          # Entry point with stdio transport
 │   ├── server.ts         # MCP server setup, tools, and resources
 │   └── data/
-│       └── loader.ts     # Data loading from css/dist and site/src
+│       └── loader.ts     # Loads the pre-bundled data/atlas-data.json at runtime
 ├── dist/                 # Compiled JavaScript output
 ├── package.json
 ├── tsconfig.json
@@ -34,14 +34,15 @@ mcp/
 
 ## Dependencies
 
-- `@modelcontextprotocol/sdk` - Official MCP SDK
+- `@modelcontextprotocol/sdk` - Official Model Context Protocol SDK
 - `zod` - Schema validation for tool inputs
 - `front-matter` - Parse markdown frontmatter
 
 ## Data Sources
 
-The server reads from:
-- `css/dist/class-names.json` - All CSS class names with metadata
+At build time, `scripts/build-data.js` bundles these sources into `data/atlas-data.json`. At runtime, the server reads only that bundle (see `src/data/loader.ts`):
+
+- `css/dist/class-names.json` - CSS class names with color and size metadata
 - `css/dist/tokens.json` - Design tokens
 - `site/src/components/*.md` - Component documentation
 - `site/src/atomics/*.md` - Atomic class documentation
@@ -63,14 +64,14 @@ The server reads from:
 
 ## Coding Guidelines
 
-1. **Use Zod for schemas** - All tool inputs use Zod validation
-2. **Cache loaded data** - Data is cached in memory for performance
-3. **Return JSON content** - Tools return JSON in text content blocks
-4. **Handle errors gracefully** - Return helpful error messages
+1. **Validate inputs with Zod** - Define every tool input with a Zod schema.
+2. **Cache loaded data** - Class names, tokens, and docs are cached in memory after first load.
+3. **Return JSON content** - Return each tool result as JSON in the `text` field of an MCP content block.
+4. **Handle errors gracefully** - Return helpful error messages instead of throwing.
 
 ## When Making Changes
 
-1. Run `npm run build` to verify compilation
-2. Test with MCP inspector or direct JSON-RPC calls
-3. Ensure data paths resolve correctly relative to dist/
-4. Update README.md if adding new tools or resources
+1. Run `npm run build` to verify compilation.
+2. Test the server with the MCP Inspector or direct JSON-RPC calls.
+3. Ensure data paths resolve from the compiled `dist/` directory — this is the easiest thing to break.
+4. Update `README.md` when adding or changing tools or resources.
