@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.10.0
+
+### Minor Changes
+
+- Add support for border-radius-xl
+
 ## 6.9.0
 
 ### Minor Changes

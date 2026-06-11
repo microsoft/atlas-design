@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.8.0
+
+### Minor Changes
+
+- Add support for border-radius-xl
+
 ## 1.7.0
 
 ### Minor Changes
