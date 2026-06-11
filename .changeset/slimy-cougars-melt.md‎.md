@@ -3,4 +3,4 @@
 '@microsoft/atlas-css': minor
 ---
 
-Adding Border radius large
+Add support for border-radius-xl
