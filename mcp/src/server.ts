@@ -18,6 +18,7 @@ import {
 	getPattern,
 	type CodeExample
 } from './data/loader.js';
+import { compositionGuide } from './data/guidance.js';
 
 export function createServer(): McpServer {
 	const server = new McpServer({
@@ -28,6 +29,22 @@ export function createServer(): McpServer {
 	// ============================================
 	// RESOURCES
 	// ============================================
+
+	server.resource(
+		'atlas://composition',
+		'How to compose Atlas pages (layout → atomic containers → large components → small elements)',
+		async () => {
+			return {
+				contents: [
+					{
+						uri: 'atlas://composition',
+						mimeType: 'application/json',
+						text: JSON.stringify(compositionGuide, null, 2)
+					}
+				]
+			};
+		}
+	);
 
 	server.resource('atlas://components', 'Atlas component catalog', async () => {
 		const components = loadComponents();
@@ -109,6 +126,22 @@ export function createServer(): McpServer {
 	// ============================================
 	// TOOLS
 	// ============================================
+
+	server.tool(
+		'get_composition_guide',
+		'How to assemble an Atlas page: the recommended outside-in order — page layout, then atomic grid/flex containers, then large components (e.g. card), then small elements (e.g. button, input). Call this first when building a UI.',
+		{},
+		async () => {
+			return {
+				content: [
+					{
+						type: 'text',
+						text: JSON.stringify(compositionGuide, null, 2)
+					}
+				]
+			};
+		}
+	);
 
 	server.tool(
 		'search_classes',
