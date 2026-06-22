@@ -31,8 +31,8 @@ export function createServer(): McpServer {
 	// ============================================
 
 	server.resource(
-		'atlas://composition',
 		'How to compose Atlas pages (layout → atomic containers → large components → small elements)',
+		'atlas://composition',
 		async () => {
 			return {
 				contents: [
@@ -46,7 +46,7 @@ export function createServer(): McpServer {
 		}
 	);
 
-	server.resource('atlas://components', 'Atlas component catalog', async () => {
+	server.resource('Atlas component catalog', 'atlas://components', async () => {
 		const components = loadComponents();
 		const summary = components.map(c => ({
 			name: c.name,
@@ -67,8 +67,8 @@ export function createServer(): McpServer {
 	});
 
 	server.resource(
-		'atlas://atomics',
 		'Atlas atomic utility classes organized by category',
+		'atlas://atomics',
 		async () => {
 			const categories = getClassesByCategory();
 			return {
@@ -84,8 +84,8 @@ export function createServer(): McpServer {
 	);
 
 	server.resource(
-		'atlas://tokens',
 		'Atlas design tokens (colors, spacing, typography, etc.)',
+		'atlas://tokens',
 		async () => {
 			const tokens = loadTokens();
 			return {
@@ -101,8 +101,8 @@ export function createServer(): McpServer {
 	);
 
 	server.resource(
-		'atlas://patterns',
 		'Atlas page-level patterns (multi-component HTML compositions)',
+		'atlas://patterns',
 		async () => {
 			const patterns = loadPatterns();
 			const summary = patterns.map(p => ({
