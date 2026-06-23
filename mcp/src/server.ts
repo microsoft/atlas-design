@@ -18,7 +18,16 @@ import {
 	getPattern,
 	type CodeExample
 } from './data/loader.js';
-import { compositionGuide } from './data/guidance.js';
+import { compositionGuide, getStructuralDependencies } from './data/guidance.js';
+
+/**
+ * Build a `structuralDependencies` note for a lookup response, or an empty
+ * object when the name has no known structural dependency.
+ */
+function buildDepNote(name: string): { structuralDependencies?: unknown } {
+	const deps = getStructuralDependencies(name);
+	return deps.length > 0 ? { structuralDependencies: deps } : {};
+}
 
 export function createServer(): McpServer {
 	const server = new McpServer({
@@ -209,6 +218,7 @@ export function createServer(): McpServer {
 			}
 
 			const classes = getComponentClasses(name);
+			const structuralDependencies = getStructuralDependencies(component.name);
 			return {
 				content: [
 					{
@@ -220,6 +230,7 @@ export function createServer(): McpServer {
 								description: component.description,
 								classPrefixes: component.classPrefixes,
 								availableClasses: classes.map(c => c.name),
+								...(structuralDependencies.length > 0 ? { structuralDependencies } : {}),
 								examples: component.examples
 							},
 							null,
@@ -296,7 +307,7 @@ export function createServer(): McpServer {
 				content: [
 					{
 						type: 'text',
-						text: JSON.stringify({ name, examples }, null, 2)
+						text: JSON.stringify({ name, examples, ...buildDepNote(name) }, null, 2)
 					}
 				]
 			};

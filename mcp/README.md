@@ -47,6 +47,8 @@ Compose outside-in — lay out the largest structures first:
 
 Call `get_composition_guide` (or read `atlas://composition`) for this as structured data, then pull canonical HTML with `get_code_examples` and `list_patterns`.
 
+Some components only render correctly inside a required ancestor (for example, `hero` and `banner` need a `.layout` ancestor to inherit `--layout-gap`, or their horizontal padding collapses). These are reported as a `structuralDependencies` field on `get_composition_guide`, `get_component`, and `get_code_examples` — check it before using a component standalone.
+
 ## Tools
 
 Building HTML is the point — reach for the snippet and listing tools first. The class tools are supporting reference.
