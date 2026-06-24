@@ -110,11 +110,14 @@ Add to your Claude configuration:
 
 ### Available Tools
 
-- **search_classes** - Search Atlas CSS classes by name or pattern
-- **get_component** - Get component details with code examples
+- **get_composition_guide** - Get the outside-in guidance for composing a page, including structural dependencies
+- **get_code_examples** - Get canonical HTML snippets from documentation
+- **get_component** - Get a component's description, classes, and HTML examples
 - **list_components** - List all available components
+- **list_patterns** - List page-level patterns (multi-component compositions)
 - **list_atomics** - List atomic utility classes by category
-- **get_code_examples** - Get HTML/CSS code snippets from documentation
+- **search_classes** - Search Atlas CSS classes by name or pattern
+- **get_class_details** - Get a class's metadata, including theme colors or size values
 
 See `/mcp/README.md` for full documentation.
 
