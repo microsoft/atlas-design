@@ -8,7 +8,7 @@ This is the `@microsoft/atlas-site` package, the documentation website for the A
 
 - **Name**: `@microsoft/atlas-site`
 - **Type**: Documentation site (private package)
-- **Build Tool**: Parcel
+- **Build Tool**: Eleventy (11ty)
 - **Content Format**: Markdown with frontmatter
 
 ## Project Structure
@@ -21,10 +21,13 @@ site/
 │   ├── components/        # Component documentation
 │   ├── patterns/          # Pattern documentation
 │   ├── tokens/            # Design token documentation
-│   └── scaffold/          # Page templates
+│   └── scaffold/          # Page templates (mustache), styles, TOC data
+├── lib/                   # Markdown renderer + Eleventy helpers
 ├── dist/                  # Built site output
-├── toc.js                 # Table of contents generator
-└── *.template             # Scaffold templates
+├── eleventy.config.js     # Eleventy configuration
+├── build-assets.mjs       # SCSS (dart-sass) + TS (esbuild) compiler
+├── dev.mjs                # Dev server runner (asset watch + eleventy --serve)
+└── toc.js                 # Table of contents generator
 ```
 
 ## Key Commands
@@ -63,7 +66,9 @@ template: component
 
 - `@microsoft/atlas-css` - Styles for the site
 - `@microsoft/atlas-js` - JavaScript behaviors
-- `@microsoft/parcel-transformer-markdown-html` - Markdown processing
+- `marked` + `mustache` + `highlight.js` - Markdown rendering and templating (see `lib/`)
+- `@11ty/eleventy` - Static site generator
+- `sass` + `esbuild` - Compile the scaffold SCSS/TypeScript (`build-assets.mjs`)
 
 ## When Making Changes
 
