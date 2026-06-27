@@ -10,7 +10,9 @@
 @use './styles/orbit.scss';
 
 // hack to mark markdown logo on '/' look a tad different, excludes header logo
-main img[src^='/atlas-light.'] {
+// match on filename suffix so it survives URL relativization (paths may be
+// `atlas-light.svg`, `../atlas-light.svg`, or `/atlas-light.svg` depending on depth)
+main img[src$='atlas-light.svg'] {
 	width: 64px;
 	height: auto;
 	margin-block-end: 18px;

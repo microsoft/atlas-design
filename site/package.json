@@ -7,16 +7,11 @@
 		"node": "^24.0.0",
 		"npm": "^11.0.0"
 	},
-	"targets": {
-		"default": {
-			"includeNodeModules": true
-		}
-	},
 	"scripts": {
 		"prebuild": "node toc.js",
 		"prestart": "node toc.js",
-		"start": "cross-env PARCEL_WORKERS=0 parcel \"./src/**/*.md\" --port 1111",
-		"build": "cross-env PARCEL_WORKERS=0 parcel build \"./src/**/*.md\"",
+		"start": "node dev.mjs",
+		"build": "node build-assets.mjs && eleventy",
 		"toc": "node toc.js",
 		"type-check": "tsc --noEmit",
 		"prelint": "npm run type-check",
@@ -24,21 +19,20 @@
 		"lint-fix": "eslint . --ext .ts --fix"
 	},
 	"devDependencies": {
-		"cross-env": "^7.0.3",
-		"eslint": "^8.43.0",
+		"@11ty/eleventy": "^3.1.6",
+		"@microsoft/atlas-css": "6.10.0",
+		"@microsoft/atlas-js": "^3.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
-		"eslint-plugin-import": "^2.27.5",
-		"@microsoft/atlas-css": "6.10.0",
+		"esbuild": "^0.28.1",
+		"eslint": "^8.43.0",
 		"eslint-config-prettier": "^8.8.0",
-		"parcel": "2.16.3",
-		"lightningcss": "1.30.2",
-		"@parcel/transformer-sass": "2.16.3",
-		"@microsoft/parcel-transformer-markdown-html": "2.7.8",
-		"@microsoft/parcel-optimizer-inline-script-restore": "1.0.1",
-		"fs-extra": "^11.1.1",
+		"eslint-plugin-import": "^2.27.5",
 		"front-matter": "^4.0.2",
-		"typescript": "^5.1.5",
-		"@microsoft/atlas-js": "^3.0.0"
+		"highlight.js": "^11.11.1",
+		"marked": "^5.1.2",
+		"mustache": "^4.2.0",
+		"sass": "^1.101.0",
+		"typescript": "^5.1.5"
 	}
 }
