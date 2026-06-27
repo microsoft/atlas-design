@@ -14,3 +14,7 @@ CSS framework and scaffold TypeScript with dart-sass + esbuild and hot-reloads
 the browser on CSS changes — the primary CSS-development workflow. The generated
 `dist/routes-for-class-prefixes.json` (consumed by the VS Code extension) and the
 markdown sources (consumed by the MCP server) are unchanged.
+
+A site-only CSS selector that sized the homepage logo was matched against the
+hashed asset path Parcel produced; it is now matched on the asset filename so it
+survives the new build-time URL relativization.
