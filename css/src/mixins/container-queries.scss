@@ -1,0 +1,67 @@
+@use 'sass:string';
+@use '../tokens/index.scss' as tokens;
+
+/// Sets an element as a container query context.
+/// @param {String} $name [null] - Optional container name for targeted queries.
+/// @param {String} $type [inline-size] - The container type (inline-size or size).
+@mixin container($name: null, $type: inline-size) {
+	container-type: $type;
+
+	@if $name {
+		container-name: $name;
+	}
+}
+
+// Mobile-first container query mixins
+
+/// @param {String} $name [null] - Optional container name to target.
+@mixin container-320($name: null) {
+	$prefix: '';
+
+	@if $name {
+		$prefix: $name + ' ';
+	}
+
+	@container #{$prefix}(min-width: #{tokens.$container-query-320}) {
+		@content;
+	}
+}
+
+/// @param {String} $name [null] - Optional container name to target.
+@mixin container-480($name: null) {
+	$prefix: '';
+
+	@if $name {
+		$prefix: $name + ' ';
+	}
+
+	@container #{$prefix}(min-width: #{tokens.$container-query-480}) {
+		@content;
+	}
+}
+
+/// @param {String} $name [null] - Optional container name to target.
+@mixin container-640($name: null) {
+	$prefix: '';
+
+	@if $name {
+		$prefix: $name + ' ';
+	}
+
+	@container #{$prefix}(min-width: #{tokens.$container-query-640}) {
+		@content;
+	}
+}
+
+/// @param {String} $name [null] - Optional container name to target.
+@mixin container-800($name: null) {
+	$prefix: '';
+
+	@if $name {
+		$prefix: $name + ' ';
+	}
+
+	@container #{$prefix}(min-width: #{tokens.$container-query-800}) {
+		@content;
+	}
+}
