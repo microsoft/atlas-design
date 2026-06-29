@@ -186,4 +186,18 @@ Screen sizes are represented by one of the following strings:
 
 Use a mobile first approach when using Atomics, including the universally applicable class (i.e. the one that does not have a screensize at the end), and when necessary overwrite its values on larger screens.
 
+## CSS Custom Properties for Component Customization
+
+Complex components like `layout` expose CSS custom properties so consumers can tune dimensions without rewriting grid templates. These properties are declared in `src/tokens/` and given default values in the component file. For example, the layout component defines properties such as `--layout-menu-expanded-target-width`, `--layout-aside-expanded-target-width`, and `--layout-flyout-width-desktop`.
+
+When adding customizable dimensions to a component:
+
+1. Declare the property name variable in the relevant tokens file with `!default`.
+2. Set a default value on the component's root selector using `var()`.
+3. Document the available custom properties in the site documentation.
+
+## Layout Modifier Classes
+
+Layout modifier classes (e.g., `.layout-menu-collapsed`, `.layout-aside-collapsed`, `.layout-flyout-active`, `.layout-constrained`) are applied directly to the `.layout` element rather than being nested inside it. This keeps specificity flat and allows the modifiers to adjust CSS custom property values at the component root, which then cascade into the grid definitions.
+
 ## Remember! Adding any new CSS in the /css folder means updating documentation in the /site folder too.
