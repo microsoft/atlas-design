@@ -3,10 +3,22 @@
 	"version": "3.0.0",
 	"public": true,
 	"description": "Scripts backing the Atlas Design System used by Microsoft's Developer Relations.",
+	"type": "module",
 	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"./src/*": "./src/*",
+		"./dist/*": "./dist/*",
+		"./package.json": "./package.json"
+	},
 	"source": "src/index.ts",
 	"scripts": {
 		"build": "tsc --project \"./tsconfig.json\" --outDir \"./dist\" --declaration true --declarationMap true",
+		"postbuild": "node ./scripts/append-js-extensions.mjs",
 		"lint": "eslint . --ext .ts",
 		"prebuild": "rimraf dist",
 		"test": "vitest run",
