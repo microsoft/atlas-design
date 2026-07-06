@@ -34,6 +34,19 @@ site/
 - `npm run toc` - Regenerate table of contents
 - `npm run lint` - Run ESLint on TypeScript files
 
+## Scaffold Templates and Scripts
+
+The `site/src/scaffold/` folder contains more than just SCSS — it holds the **HTML page templates** (e.g., `standard.html`, `token.html`) that wrap every documentation page, and **TypeScript scripts** in `site/src/scaffold/scripts/` that power interactive demos on documentation pages.
+
+Scaffold scripts handle behaviors like:
+
+- Toggling layout classes (e.g., switching between `layout-holy-grail` and `layout-twin`)
+- Collapsing/expanding menu and aside containers
+- Full-screen toggle for component demos
+- Height constraint toggling
+
+These scripts are site-only (not published in `@microsoft/atlas-js`). When adding new interactive controls to documentation pages, add the behavior script here and wire it up via `data-*` attributes in the HTML templates.
+
 ## Content Guidelines
 
 ### Markdown Files
