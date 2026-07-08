@@ -87,4 +87,4 @@ export default function (eleventyConfig) {
 	return {
 		dir: { input: INPUT_DIR, output: OUTPUT_DIR }
 	};
-};
+}
