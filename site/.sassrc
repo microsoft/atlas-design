@@ -1,5 +1,5 @@
 {
-	"includePaths": [
+	"loadPaths": [
 		"../node_modules"
 	],
 	"quietDeps": true
