@@ -6,8 +6,8 @@
 // the Parcel-specific inline-`<script>` hiding hack is omitted — Eleventy does
 // not have the Parcel dev-dep race the hack worked around, so inline scripts
 // simply pass through.
-const { marked } = require('marked');
-const hljs = require('highlight.js');
+import { marked } from 'marked';
+import hljs from 'highlight.js';
 
 const languageDisplayNames = {
 	html: 'HTML',
@@ -168,4 +168,4 @@ function extractH1AndFirstP(htmlString) {
 	return { h1, p, html };
 }
 
-module.exports = { marked, createExample, extractH1AndFirstP };
+export { marked, createExample, extractH1AndFirstP };

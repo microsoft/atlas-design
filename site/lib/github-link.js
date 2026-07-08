@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 
 /**
  * Build the "edit this page on GitHub" link for a page given its
@@ -11,4 +11,4 @@ function buildGithubLink(srcRelativePath) {
 	return `https://github.com/microsoft/atlas-design/blob/main/site/src/${currentItemHref}`;
 }
 
-module.exports.buildGithubLink = buildGithubLink;
+export { buildGithubLink };

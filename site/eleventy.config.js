@@ -1,12 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const { renderPage, parseFrontmatter } = require('./lib/render-page');
-const { rewriteHtml } = require('./lib/url-rewrite');
+import fs from 'fs';
+import path from 'path';
+import { renderPage, parseFrontmatter } from './lib/render-page.js';
+import { rewriteHtml } from './lib/url-rewrite.js';
 
 const INPUT_DIR = 'src';
 const OUTPUT_DIR = 'dist';
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
 	// Only markdown files are treated as templates. Everything else in src/
 	// (scaffold html/ts/scss, media, svg) is either ignored or passed through.
 	eleventyConfig.setTemplateFormats(['md']);
@@ -15,7 +15,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ 'src/atlas-light.svg': 'atlas-light.svg' });
 	eleventyConfig.addPassthroughCopy({ 'src/scaffold/media': 'scaffold/media' });
 
-	// The compiled CSS/JS (produced by build-assets.mjs) lives in the output
+	// The compiled CSS/JS (produced by build-assets.js) lives in the output
 	// folder. Let the dev server watch them directly so a CSS/JS recompile
 	// triggers a fast browser reload without a full Eleventy rebuild — this is
 	// the primary CSS-development loop.

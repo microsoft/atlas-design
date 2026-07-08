@@ -1,7 +1,7 @@
 // @ts-nocheck
-const path = require('path');
-const { readdir, readFile, stat, writeFile, mkdir } = require('fs/promises');
-const frontMatter = require('front-matter');
+import path from 'path';
+import { readdir, readFile, stat, writeFile, mkdir } from 'fs/promises';
+import frontMatter from 'front-matter';
 
 const siteDir = path.join(process.cwd(), '/src/');
 

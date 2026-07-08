@@ -3,20 +3,70 @@
 	"version": "1.9.0",
 	"license": "MIT",
 	"private": true,
+	"type": "module",
 	"engines": {
 		"node": "^24.0.0",
 		"npm": "^11.0.0"
 	},
 	"scripts": {
-		"prebuild": "node toc.js",
-		"prestart": "node toc.js",
-		"start": "node dev.mjs",
-		"build": "node build-assets.mjs && eleventy",
-		"toc": "node toc.js",
+		"start": "wireit",
+		"build": "wireit",
+		"build-assets": "wireit",
+		"toc": "wireit",
 		"type-check": "tsc --noEmit",
 		"prelint": "npm run type-check",
 		"lint": "eslint . --ext .ts",
 		"lint-fix": "eslint . --ext .ts --fix"
+	},
+	"wireit": {
+		"toc": {
+			"command": "node toc.js",
+			"files": [
+				"toc.js",
+				"src/**/*.md"
+			],
+			"output": [
+				"src/scaffold/toc.json",
+				"dist/routes-for-class-prefixes.json"
+			]
+		},
+		"build-assets": {
+			"command": "node build-assets.js",
+			"files": [
+				"build-assets.js",
+				"src/scaffold/**/*.scss",
+				"src/scaffold/**/*.ts",
+				"../css/src/**/*.scss"
+			],
+			"output": [
+				"dist/scaffold/**"
+			]
+		},
+		"build": {
+			"command": "eleventy",
+			"dependencies": [
+				"toc",
+				"build-assets"
+			],
+			"files": [
+				"eleventy.config.js",
+				"lib/**/*.js",
+				"src/**/*.md",
+				"src/scaffold/*.html"
+			],
+			"output": [
+				"dist/**",
+				"!dist/scaffold/**",
+				"!dist/routes-for-class-prefixes.json"
+			],
+			"clean": "if-file-deleted"
+		},
+		"start": {
+			"command": "node dev.js",
+			"dependencies": [
+				"toc"
+			]
+		}
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.6",
@@ -33,6 +83,7 @@
 		"marked": "^5.1.2",
 		"mustache": "^4.2.0",
 		"sass": "^1.101.0",
-		"typescript": "^5.1.5"
+		"typescript": "^5.1.5",
+		"wireit": "0.14.9"
 	}
 }

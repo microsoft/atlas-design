@@ -3,14 +3,19 @@
 // Mirrors the logic of `@microsoft/parcel-transformer-markdown-html`:
 // frontmatter -> (import file | body) -> marked -> mustache template, with
 // breadcrumbs, github edit link, token tables and hero extraction.
-const fs = require('fs');
-const path = require('path');
-const frontMatter = require('front-matter');
-const mustache = require('mustache');
+import fs from 'fs';
+import path from 'path';
+import { createRequire } from 'module';
+import frontMatter from 'front-matter';
+import mustache from 'mustache';
+import { marked, extractH1AndFirstP } from './markdown-renderer.js';
+import { renderBreadcrumbsMarkup } from './breadcrumbs.js';
+import { buildGithubLink } from './github-link.js';
+
+// Load the generated token map with a CJS require so we don't depend on JSON
+// import attributes (keeps compatibility with the repo's Prettier version).
+const require = createRequire(import.meta.url);
 const allTokens = require('@microsoft/atlas-css/dist/tokens.json');
-const { marked, extractH1AndFirstP } = require('./markdown-renderer');
-const { renderBreadcrumbsMarkup } = require('./breadcrumbs');
-const { buildGithubLink } = require('./github-link');
 
 const siteDir = process.cwd();
 const templateDir = path.join(siteDir, 'src', 'scaffold');
@@ -96,4 +101,4 @@ function renderPage({ rawContent, srcRelativePath, toc }) {
 	});
 }
 
-module.exports = { renderPage, parseFrontmatter };
+export { renderPage, parseFrontmatter };

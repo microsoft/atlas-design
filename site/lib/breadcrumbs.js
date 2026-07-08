@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 
 /**
  * @typedef {object} tocEntry
@@ -102,4 +102,4 @@ function renderBreadcrumbs(breadcrumbs) {
 	return `<div id="breadcrumbs-holder"><ol class="breadcrumbs">${itemMarkup}</ol></div>`;
 }
 
-module.exports.renderBreadcrumbsMarkup = renderBreadcrumbsMarkup;
+export { renderBreadcrumbsMarkup };

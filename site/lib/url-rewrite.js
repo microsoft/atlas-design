@@ -8,7 +8,7 @@
 //   3. relativize every root-absolute URL against the current page so the site
 //      works when served from a subpath (e.g. microsoft.github.io/atlas-design)
 //      as well as a domain root (design.learn.microsoft.com) and the dev server.
-const path = require('path');
+import path from 'path';
 
 const EXTERNAL = /^(?:[a-z]+:|\/\/|#|mailto:|tel:|data:)/i;
 
@@ -87,4 +87,4 @@ function rewriteHtml(html, outputPath, distDir) {
 	return out;
 }
 
-module.exports = { rewriteHtml };
+export { rewriteHtml };
