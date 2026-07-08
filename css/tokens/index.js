@@ -2,7 +2,31 @@ const { readFile, writeFile, mkdir, rm } = require('fs/promises');
 const path = require('path');
 const os = require('os');
 const { quicktype, InputData, jsonInputForTargetLanguage } = require('quicktype-core');
+const sass = require('sass');
 const { exporter } = require('sass-export');
+
+// sass-export@2.1.2 is unmaintained and compiles token values with the
+// deprecated legacy `sass.renderSync` API, wrapping each value in the global
+// `inspect()` built-in. Both are deprecated (legacy-js-api is removed in Dart
+// Sass 2.0, global-builtin in 3.0) and flood the build with warnings. It
+// resolves the same cached `sass` module we require here, so we route its
+// single legacy call through the modern `compileString` API and silence the
+// global-builtin deprecation, which originates in sass-export's own wrapper
+// rather than any Atlas source. The stripped token files contain no
+// `@use`/`@import`, so no load paths are needed, and sass-export only reads
+// `.css` off the returned object.
+const legacyRenderSync = sass.renderSync.bind(sass);
+sass.renderSync = options => {
+	if (options && typeof options.data === 'string') {
+		const { css } = sass.compileString(options.data, {
+			loadPaths: options.includePaths,
+			style: options.outputStyle,
+			silenceDeprecations: ['global-builtin']
+		});
+		return { css };
+	}
+	return legacyRenderSync(options);
+};
 
 createTokens();
 
