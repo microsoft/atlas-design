@@ -54,8 +54,6 @@
 	"workspaces": {
 		"packages": [
 			"css",
-			"plugins/parcel-transformer-markdown-html",
-			"plugins/parcel-optimizer-inline-script-restore",
 			"plugins/stylelint-config-atlas",
 			"site",
 			"js",

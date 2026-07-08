@@ -1,9 +1,9 @@
 // Shared markdown renderer for the Eleventy build.
 //
-// This is a faithful port of the marked configuration used by
-// `@microsoft/parcel-transformer-markdown-html` so the generated body markup
-// matches the previous Parcel output. The only intentional difference is that
-// the Parcel-specific inline-`<script>` hiding hack is omitted — Eleventy does
+// This is a faithful port of the marked configuration used by the previous
+// Parcel-based markdown transformer so the generated body markup matches the
+// previous Parcel output. The only intentional difference is that the
+// Parcel-specific inline-`<script>` hiding hack is omitted — Eleventy does
 // not have the Parcel dev-dep race the hack worked around, so inline scripts
 // simply pass through.
 import { marked } from 'marked';

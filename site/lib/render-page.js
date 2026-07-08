@@ -1,6 +1,6 @@
 // Page orchestrator for the Eleventy build.
 //
-// Mirrors the logic of `@microsoft/parcel-transformer-markdown-html`:
+// Mirrors the logic of the previous Parcel-based markdown transformer:
 // frontmatter -> (import file | body) -> marked -> mustache template, with
 // breadcrumbs, github edit link, token tables and hero extraction.
 import fs from 'fs';
