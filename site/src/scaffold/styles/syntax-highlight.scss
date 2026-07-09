@@ -1,0 +1,324 @@
+// Syntax highlighting for highlight.js output in code blocks.
+//
+// The Eleventy markdown renderer (lib/markdown-renderer.js) runs
+// `hljs.highlight()` on every fenced code block and injects the resulting
+// `.hljs-*` token spans into `<code>`. Without a theme those spans render as
+// plain text, so this file supplies the colors.
+//
+// Each Atlas theme reproduces a well-known highlight.js / GitHub theme so the
+// site's code matches highlighting developers already recognize:
+//   - light         -> GitHub light (Primer `prettylights-syntax`)
+//   - dark          -> GitHub dark (Primer `prettylights-syntax`)
+//   - high-contrast -> highlight.js `night-owl.css` (a vivid dark theme; Atlas
+//     high-contrast is a dark color scheme, so it pairs well on the black
+//     code-block background)
+//
+// Colors are GitHub's current, accessibility-tuned Primer values rather than
+// the older highlight.js `github.css` snapshot: the Atlas code-block background
+// is #fafafa (light) / #1f1f1f (dark), not GitHub's pure #fff / #0d1117, and
+// several of the 2021 github.css colors dropped below the WCAG 2 AA 4.5:1 text
+// contrast threshold on those backgrounds. A few values are nudged further
+// (dark `section`, and night-owl `comment` / `quote` / `deletion`) so every
+// token clears 4.5:1 on the exact Atlas code-block background it renders on.
+//
+// Rules are scoped by theme class (set on `<html>`) rather than by custom
+// properties because night-owl assigns different colors to classes that the
+// GitHub themes group together. Only the token spans are colored — the Atlas
+// code-block component keeps ownership of the background and base text color.
+
+@use 'sass:map';
+
+// GitHub light and dark share one selector structure (same theme, two
+// palettes), so a single mixin drives both from a color map.
+$github-light: (
+	'keyword': #cf222e,
+	'entity': #6639ba,
+	'constant': #0550ae,
+	'string': #0a3069,
+	'built-in': #953800,
+	'comment': #59636e,
+	'entity-tag': #0550ae,
+	'section': #0550ae,
+	'bullet': #3b2300,
+	'addition-text': #116329,
+	'addition-background': #dafbe1,
+	'deletion-text': #82071e,
+	'deletion-background': #ffebe9
+);
+
+// GitHub dark, with `section` brightened from Primer's #1f6feb (3.56:1 on the
+// Atlas #1f1f1f code block) to #58a6ff (6.53:1) so headings clear AA.
+$github-dark: (
+	'keyword': #ff7b72,
+	'entity': #d2a8ff,
+	'constant': #79c0ff,
+	'string': #a5d6ff,
+	'built-in': #ffa657,
+	'comment': #9198a1,
+	'entity-tag': #7ee787,
+	'section': #58a6ff,
+	'bullet': #f2cc60,
+	'addition-text': #aff5b4,
+	'addition-background': #033a16,
+	'deletion-text': #ffdcd7,
+	'deletion-background': #67060c
+);
+
+@mixin github-syntax($colors) {
+	.hljs-doctag,
+	.hljs-keyword,
+	.hljs-meta .hljs-keyword,
+	.hljs-template-tag,
+	.hljs-template-variable,
+	.hljs-type,
+	.hljs-variable.language_ {
+		color: map.get($colors, 'keyword');
+	}
+
+	.hljs-title,
+	.hljs-title.class_,
+	.hljs-title.class_.inherited__,
+	.hljs-title.function_ {
+		color: map.get($colors, 'entity');
+	}
+
+	.hljs-attr,
+	.hljs-attribute,
+	.hljs-literal,
+	.hljs-meta,
+	.hljs-number,
+	.hljs-operator,
+	.hljs-variable,
+	.hljs-selector-attr,
+	.hljs-selector-class,
+	.hljs-selector-id {
+		color: map.get($colors, 'constant');
+	}
+
+	.hljs-regexp,
+	.hljs-string,
+	.hljs-meta .hljs-string {
+		color: map.get($colors, 'string');
+	}
+
+	.hljs-built_in,
+	.hljs-symbol {
+		color: map.get($colors, 'built-in');
+	}
+
+	.hljs-comment,
+	.hljs-code,
+	.hljs-formula {
+		color: map.get($colors, 'comment');
+	}
+
+	.hljs-name,
+	.hljs-quote,
+	.hljs-selector-tag,
+	.hljs-selector-pseudo {
+		color: map.get($colors, 'entity-tag');
+	}
+
+	.hljs-section {
+		color: map.get($colors, 'section');
+		font-weight: bold;
+	}
+
+	.hljs-bullet {
+		color: map.get($colors, 'bullet');
+	}
+
+	.hljs-emphasis {
+		font-style: italic;
+	}
+
+	.hljs-strong {
+		font-weight: bold;
+	}
+
+	.hljs-addition {
+		background-color: map.get($colors, 'addition-background');
+		color: map.get($colors, 'addition-text');
+	}
+
+	.hljs-deletion {
+		background-color: map.get($colors, 'deletion-background');
+		color: map.get($colors, 'deletion-text');
+	}
+}
+
+.theme-light .code-block {
+	@include github-syntax($github-light);
+}
+
+.theme-dark .code-block {
+	@include github-syntax($github-dark);
+}
+
+// Night Owl (c) Sarah Drasner / highlight.js adaptation (c) Carl Baxter.
+// Reproduced from highlight.js `night-owl.css`, minus its `.hljs`
+// background/base color so the Atlas code-block styling shows through.
+.theme-high-contrast .code-block {
+	.hljs-keyword {
+		color: #c792ea;
+		font-style: italic;
+	}
+
+	.hljs-built_in {
+		color: #addb67;
+		font-style: italic;
+	}
+
+	.hljs-type {
+		color: #82aaff;
+	}
+
+	.hljs-literal {
+		color: #ff5874;
+	}
+
+	.hljs-number {
+		color: #f78c6c;
+	}
+
+	.hljs-regexp {
+		color: #5ca7e4;
+	}
+
+	.hljs-string {
+		color: #ecc48d;
+	}
+
+	.hljs-subst {
+		color: #d3423e;
+	}
+
+	.hljs-symbol {
+		color: #82aaff;
+	}
+
+	.hljs-class {
+		color: #ffcb8b;
+	}
+
+	.hljs-function {
+		color: #82aaff;
+	}
+
+	.hljs-title {
+		color: #dcdcaa;
+		font-style: italic;
+	}
+
+	.hljs-params {
+		color: #7fdbca;
+	}
+
+	.hljs-comment {
+		// night-owl #637777 is 4.44:1 on #000; nudged to clear AA.
+		color: #748a8a;
+		font-style: italic;
+	}
+
+	.hljs-doctag {
+		color: #7fdbca;
+	}
+
+	.hljs-meta,
+	.hljs-meta .hljs-keyword {
+		color: #82aaff;
+	}
+
+	.hljs-meta .hljs-string {
+		color: #ecc48d;
+	}
+
+	.hljs-section {
+		color: #82b1ff;
+	}
+
+	.hljs-tag,
+	.hljs-name,
+	.hljs-attr {
+		color: #7fdbca;
+	}
+
+	.hljs-attribute {
+		color: #80cbc4;
+	}
+
+	.hljs-variable {
+		color: #addb67;
+	}
+
+	.hljs-bullet {
+		color: #d9f5dd;
+	}
+
+	.hljs-code {
+		color: #80cbc4;
+	}
+
+	.hljs-emphasis {
+		color: #c792ea;
+		font-style: italic;
+	}
+
+	.hljs-strong {
+		color: #addb67;
+		font-weight: bold;
+	}
+
+	.hljs-formula {
+		color: #c792ea;
+	}
+
+	.hljs-link {
+		color: #ff869a;
+	}
+
+	.hljs-quote {
+		// night-owl #697098 is 4.37:1 on #000; nudged to clear AA.
+		color: #7a82ad;
+		font-style: italic;
+	}
+
+	.hljs-selector-tag {
+		color: #ff6363;
+	}
+
+	.hljs-selector-id {
+		color: #fad430;
+	}
+
+	.hljs-selector-class {
+		color: #addb67;
+		font-style: italic;
+	}
+
+	.hljs-selector-attr,
+	.hljs-selector-pseudo {
+		color: #c792ea;
+		font-style: italic;
+	}
+
+	.hljs-template-tag {
+		color: #c792ea;
+	}
+
+	.hljs-template-variable {
+		color: #addb67;
+	}
+
+	.hljs-addition {
+		color: #addb67;
+		font-style: italic;
+	}
+
+	.hljs-deletion {
+		// night-owl's translucent #ef535090 is 2.47:1 on #000; solid in-palette
+		// red clears AA.
+		color: #ff6363;
+		font-style: italic;
+	}
+}
