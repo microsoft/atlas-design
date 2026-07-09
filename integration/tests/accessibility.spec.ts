@@ -23,7 +23,6 @@ const pathnames = [
 	'/components/breadcrumbs.html',
 	'/components/button.html',
 	'/components/card.html',
-	'/components/chat.html',
 	'/components/checkbox.html',
 	'/components/code-block.html',
 	'/components/dismiss.html',

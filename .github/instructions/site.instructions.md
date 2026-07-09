@@ -8,7 +8,7 @@ This is the `@microsoft/atlas-site` package, the documentation website for the A
 
 - **Name**: `@microsoft/atlas-site`
 - **Type**: Documentation site (private package)
-- **Build Tool**: Parcel
+- **Build Tool**: Eleventy (11ty)
 - **Content Format**: Markdown with frontmatter
 
 ## Project Structure
@@ -21,11 +21,17 @@ site/
 │   ├── components/        # Component documentation
 │   ├── patterns/          # Pattern documentation
 │   ├── tokens/            # Design token documentation
-│   └── scaffold/          # Page templates
+│   └── scaffold/          # Page templates (mustache), styles, TOC data
+├── lib/                   # Markdown renderer + Eleventy helpers
 ├── dist/                  # Built site output
-├── toc.js                 # Table of contents generator
-└── *.template             # Scaffold templates
+├── eleventy.config.js     # Eleventy configuration
+├── build-assets.js        # SCSS (dart-sass) + TS (esbuild) compiler
+├── dev.js                 # Dev server runner (asset watch + eleventy --serve)
+└── toc.js                 # Table of contents generator
 ```
+
+The site is ESM (`"type": "module"` in `package.json`); all build scripts are
+plain `.js` using `import`/`export`.
 
 ## Key Commands
 
@@ -33,6 +39,22 @@ site/
 - `npm run build` - Build production site
 - `npm run toc` - Regenerate table of contents
 - `npm run lint` - Run ESLint on TypeScript files
+
+## Build pipeline (wireit)
+
+Build steps and their prebuild dependencies are wired with
+[wireit](https://github.com/google/wireit), mirroring the `css/` package:
+
+- `toc` - runs `toc.js` → `src/scaffold/toc.json` + `dist/routes-for-class-prefixes.json`
+- `build-assets` - runs `build-assets.js` → `dist/scaffold/**`
+- `build` - runs `eleventy`, depends on `toc` + `build-assets`
+- `start` - runs `dev.js`, depends on `toc` (the dev server then watches assets itself)
+
+Because dependencies are declared in the `wireit` config, there are no
+`prebuild`/`prestart` npm hooks. The dev server also watches for `.md` files
+being added or removed: it regenerates the TOC, prunes stale output, and
+restarts Eleventy so new pages appear (and removed pages 404) without a manual
+restart.
 
 ## Content Guidelines
 
@@ -63,7 +85,9 @@ template: component
 
 - `@microsoft/atlas-css` - Styles for the site
 - `@microsoft/atlas-js` - JavaScript behaviors
-- `@microsoft/parcel-transformer-markdown-html` - Markdown processing
+- `marked` + `mustache` + `highlight.js` - Markdown rendering and templating (see `lib/`)
+- `@11ty/eleventy` - Static site generator
+- `sass` + `esbuild` - Compile the scaffold SCSS/TypeScript (`build-assets.js`)
 
 ## When Making Changes
 

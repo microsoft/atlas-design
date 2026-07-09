@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 
 /**
  * @typedef {object} tocEntry
@@ -10,21 +10,17 @@ const path = require('path');
  */
 
 /**
- * Take in the current file path, find it in the table of contents if able.
- * Then traverse back up the tree, creating a breadcrumb structure.
+ * Take in the current page's src-relative path (e.g. "atomics/spacing.md"),
+ * find it in the table of contents if able, then traverse back up the tree,
+ * creating a breadcrumb structure.
  * @param {tocEntry[]} entries
+ * @param {string} srcRelativePath posix-style path relative to site/src
  * @returns {string}
  */
-function renderBreadcrumbsMarkup(entries, currentAssetFilePath) {
-	let currentPath = currentAssetFilePath.split(`site\\src\\`);
-	if (!currentPath[1]) {
-		currentPath = currentAssetFilePath.split(`site/src/`);
-	}
-	if (!currentPath[1]) {
-		throw new Error(`Error parsing asset for breadcrumbs in "${currentAssetFilePath}"`);
-	}
+function renderBreadcrumbsMarkup(entries, srcRelativePath) {
+	const normalized = srcRelativePath.split(path.sep).join('/').replace(/^\/+/, '');
 	// Should be able to match TOC file with path created here
-	const currentItemHref = path.join(`~/src`, currentPath[1]).replaceAll('\\', '/');
+	const currentItemHref = `~/src/${normalized}`;
 
 	let breadcrumbs = [];
 	let currentFound = false;
@@ -45,7 +41,6 @@ function renderBreadcrumbsMarkup(entries, currentAssetFilePath) {
 			// if the entry matches the current, push into breadcrumbs
 			if (entry.href === currentItemHref) {
 				breadcrumbs.push(entry);
-				currentBreadcrumb = entry;
 				currentFound = true;
 				return;
 			}
@@ -107,4 +102,4 @@ function renderBreadcrumbs(breadcrumbs) {
 	return `<div id="breadcrumbs-holder"><ol class="breadcrumbs">${itemMarkup}</ol></div>`;
 }
 
-module.exports.renderBreadcrumbsMarkup = renderBreadcrumbsMarkup;
+export { renderBreadcrumbsMarkup };

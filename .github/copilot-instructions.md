@@ -44,13 +44,11 @@ npm run screenshots:all    # All themes
 
 - `css/` - SCSS framework (`@microsoft/atlas-css`) - tokens, mixins, atomics, components
 - `js/` - TypeScript behaviors (`@microsoft/atlas-js`) - behaviors, elements, utilities
-- `site/` - Documentation site built with Parcel and Markdown
+- `site/` - Documentation site built with Eleventy (11ty) and Markdown
 - `site/src/scaffold` - Contains SCSS and JS that is not appropriate for publishing in our npm packages and is for the site only
 - `integration/` - Playwright tests for visual regression and accessibility
 - `extension/` - VS Code extension for class IntelliSense
 - `plugins/stylelint-config-atlas/` - Shared Stylelint configuration
-- `plugins/parcel-transformer-markdown-html/` - Markdown-to-HTML transformer (also hides inline `<script>` tags as HTML comments to dodge a Parcel cold-cache race)
-- `plugins/parcel-optimizer-inline-script-restore/` - Parcel optimizer that restores those hidden inline `<script>` tags after transformers run; see the package README for the full story
 
 **Token flow**: CSS variables are defined in `css/src/tokens/`, exported to JSON/TS via `npm run build:tokens`, and consumed by other packages.
 
