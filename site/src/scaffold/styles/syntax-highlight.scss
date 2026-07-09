@@ -13,6 +13,12 @@
 //     high-contrast is a dark color scheme, so it pairs well on the black
 //     code-block background)
 //
+// GitHub light and dark share one selector structure and differ only in their
+// palette, so — mirroring the framework's own theming (css/src/core/themes.scss)
+// — each theme emits its palette as `--syntax-*` custom properties and the
+// token selectors are declared a single time that consumes them. Night-owl
+// groups classes differently, so it keeps its own block.
+//
 // Colors are GitHub's current, accessibility-tuned Primer values rather than
 // the older highlight.js `github.css` snapshot: the Atlas code-block background
 // is #fafafa (light) / #1f1f1f (dark), not GitHub's pure #fff / #0d1117, and
@@ -21,15 +27,10 @@
 // (dark `section`, and night-owl `comment` / `quote` / `deletion`) so every
 // token clears 4.5:1 on the exact Atlas code-block background it renders on.
 //
-// Rules are scoped by theme class (set on `<html>`) rather than by custom
-// properties because night-owl assigns different colors to classes that the
-// GitHub themes group together. Only the token spans are colored — the Atlas
-// code-block component keeps ownership of the background and base text color.
+// Only the token spans are colored — the Atlas code-block component keeps
+// ownership of the background and base text color.
 
-@use 'sass:map';
-
-// GitHub light and dark share one selector structure (same theme, two
-// palettes), so a single mixin drives both from a color map.
+// GitHub light palette.
 $github-light: (
 	'keyword': #cf222e,
 	'entity': #6639ba,
@@ -46,8 +47,9 @@ $github-light: (
 	'deletion-background': #ffebe9
 );
 
-// GitHub dark, with `section` brightened from Primer's #1f6feb (3.56:1 on the
-// Atlas #1f1f1f code block) to #58a6ff (6.53:1) so headings clear AA.
+// GitHub dark palette, with `section` brightened from Primer's #1f6feb
+// (3.56:1 on the Atlas #1f1f1f code block) to #58a6ff (6.53:1) so headings
+// clear AA.
 $github-dark: (
 	'keyword': #ff7b72,
 	'entity': #d2a8ff,
@@ -64,7 +66,22 @@ $github-dark: (
 	'deletion-background': #67060c
 );
 
-@mixin github-syntax($colors) {
+.theme-light .code-block {
+	@each $name, $value in $github-light {
+		--syntax-#{$name}: #{$value};
+	}
+}
+
+.theme-dark .code-block {
+	@each $name, $value in $github-dark {
+		--syntax-#{$name}: #{$value};
+	}
+}
+
+// Consume the palette once. `:where()` keeps specificity flat and scopes the
+// shared structure to the two GitHub themes, leaving high-contrast to the
+// night-owl block below.
+:where(.theme-light, .theme-dark) .code-block {
 	.hljs-doctag,
 	.hljs-keyword,
 	.hljs-meta .hljs-keyword,
@@ -72,14 +89,14 @@ $github-dark: (
 	.hljs-template-variable,
 	.hljs-type,
 	.hljs-variable.language_ {
-		color: map.get($colors, 'keyword');
+		color: var(--syntax-keyword);
 	}
 
 	.hljs-title,
 	.hljs-title.class_,
 	.hljs-title.class_.inherited__,
 	.hljs-title.function_ {
-		color: map.get($colors, 'entity');
+		color: var(--syntax-entity);
 	}
 
 	.hljs-attr,
@@ -92,40 +109,40 @@ $github-dark: (
 	.hljs-selector-attr,
 	.hljs-selector-class,
 	.hljs-selector-id {
-		color: map.get($colors, 'constant');
+		color: var(--syntax-constant);
 	}
 
 	.hljs-regexp,
 	.hljs-string,
 	.hljs-meta .hljs-string {
-		color: map.get($colors, 'string');
+		color: var(--syntax-string);
 	}
 
 	.hljs-built_in,
 	.hljs-symbol {
-		color: map.get($colors, 'built-in');
+		color: var(--syntax-built-in);
 	}
 
 	.hljs-comment,
 	.hljs-code,
 	.hljs-formula {
-		color: map.get($colors, 'comment');
+		color: var(--syntax-comment);
 	}
 
 	.hljs-name,
 	.hljs-quote,
 	.hljs-selector-tag,
 	.hljs-selector-pseudo {
-		color: map.get($colors, 'entity-tag');
+		color: var(--syntax-entity-tag);
 	}
 
 	.hljs-section {
-		color: map.get($colors, 'section');
+		color: var(--syntax-section);
 		font-weight: bold;
 	}
 
 	.hljs-bullet {
-		color: map.get($colors, 'bullet');
+		color: var(--syntax-bullet);
 	}
 
 	.hljs-emphasis {
@@ -137,22 +154,14 @@ $github-dark: (
 	}
 
 	.hljs-addition {
-		background-color: map.get($colors, 'addition-background');
-		color: map.get($colors, 'addition-text');
+		background-color: var(--syntax-addition-background);
+		color: var(--syntax-addition-text);
 	}
 
 	.hljs-deletion {
-		background-color: map.get($colors, 'deletion-background');
-		color: map.get($colors, 'deletion-text');
+		background-color: var(--syntax-deletion-background);
+		color: var(--syntax-deletion-text);
 	}
-}
-
-.theme-light .code-block {
-	@include github-syntax($github-light);
-}
-
-.theme-dark .code-block {
-	@include github-syntax($github-dark);
 }
 
 // Night Owl (c) Sarah Drasner / highlight.js adaptation (c) Carl Baxter.
