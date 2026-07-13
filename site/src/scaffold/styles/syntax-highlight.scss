@@ -5,180 +5,326 @@
 // `.hljs-*` token spans into `<code>`. Without a theme those spans render as
 // plain text, so this file supplies the colors.
 //
-// Each Atlas theme reproduces a well-known highlight.js / GitHub theme so the
-// site's code matches highlighting developers already recognize:
+// Each Atlas theme reproduces a well-known highlight.js / GitHub theme:
 //   - light         -> GitHub light (Primer `prettylights-syntax`)
 //   - dark          -> GitHub dark (Primer `prettylights-syntax`)
-//   - high-contrast -> highlight.js `night-owl.css` (a vivid dark theme; Atlas
-//     high-contrast is a dark color scheme, so it pairs well on the black
-//     code-block background)
+//   - high-contrast -> highlight.js `night-owl.css`
 //
-// GitHub light and dark share one selector structure and differ only in
-// palette, so — mirroring the framework's own theming (css/src/tokens/themes.scss
-// + css/src/core/themes.scss) — the palettes live in a single map keyed by
-// theme name, are emitted as `--theme-syntax-*` custom properties by one loop,
-// and the token selectors are declared once that consume them. Night-owl groups
-// classes differently, so it keeps its own block.
+// Theme selectors only declare `--theme-syntax-*` custom properties. The
+// highlight.js selectors consume those properties once in the shared
+// `.code-block` block. Light is also declared at the root so printing a dark
+// theme falls back to the print theme, matching css/src/core/themes.scss.
 //
-// Print, like core/themes.scss, is driven by a single base theme: the base
-// (light) palette applies unconditionally and the non-base overrides are gated
-// behind `@media not print`. The framework already reverts the code-block
-// background to the light token under print, so gating keeps dark/high-contrast
-// syntax colors from printing onto that light background.
-//
-// Colors are GitHub's current, accessibility-tuned Primer values rather than
-// the older highlight.js `github.css` snapshot: the Atlas code-block background
-// is #fafafa (light) / #1f1f1f (dark), not GitHub's pure #fff / #0d1117, and
-// several of the 2021 github.css colors dropped below the WCAG 2 AA 4.5:1 text
-// contrast threshold on those backgrounds. A few values are nudged further
-// (dark `section`, and night-owl `comment` / `quote` / `deletion`) so every
-// token clears 4.5:1 on the exact Atlas code-block background it renders on.
-//
-// Only the token spans are colored — the Atlas code-block component keeps
-// ownership of the background and base text color.
+// Only token spans are styled. The Atlas code-block component keeps ownership
+// of the background and base text color.
 
-@use 'sass:list';
-@use 'sass:map';
-
-// Palettes keyed by theme name, mirroring the tokens.$themes map shape. `dark`
-// brightens `section` from Primer's #1f6feb (3.56:1 on the Atlas #1f1f1f code
-// block) to #58a6ff (6.53:1) so headings clear AA. Every theme must define the
-// same roles; the validation below enforces it.
-$syntax-themes: (
-	'light': (
-		'keyword': #cf222e,
-		'entity': #6639ba,
-		'constant': #0550ae,
-		'string': #0a3069,
-		'built-in': #953800,
-		'comment': #59636e,
-		'entity-tag': #0550ae,
-		'section': #0550ae,
-		'bullet': #3b2300,
-		'addition-text': #116329,
-		'addition-background': #dafbe1,
-		'deletion-text': #82071e,
-		'deletion-background': #ffebe9
-	),
-	'dark': (
-		'keyword': #ff7b72,
-		'entity': #d2a8ff,
-		'constant': #79c0ff,
-		'string': #a5d6ff,
-		'built-in': #ffa657,
-		'comment': #9198a1,
-		'entity-tag': #7ee787,
-		'section': #58a6ff,
-		'bullet': #f2cc60,
-		'addition-text': #aff5b4,
-		'addition-background': #033a16,
-		'deletion-text': #ffdcd7,
-		'deletion-background': #67060c
-	)
-) !default;
-
-// The base theme's palette applies unconditionally and is the print fallback,
-// analogous to $root-theme / $print-theme in core/themes.scss.
-$syntax-base-theme: 'light' !default;
-
-// Validation (mirrors the key-parity checks in core/themes.scss): every theme
-// must define exactly the base theme's roles, so a missing role can't silently
-// fall back to the base text color.
-$_base-roles: map.keys(map.get($syntax-themes, $syntax-base-theme));
-@each $theme, $palette in $syntax-themes {
-	@if list.length(map.keys($palette)) != list.length($_base-roles) {
-		@error 'Syntax theme "#{$theme}" defines a different set of roles than "#{$syntax-base-theme}".';
-	}
-	@each $role in $_base-roles {
-		@if not map.has-key($palette, $role) {
-			@error 'Syntax theme "#{$theme}" is missing role "#{$role}".';
-		}
-	}
+@mixin github-syntax-aliases {
+	--theme-syntax-doctag: var(--theme-syntax-keyword);
+	--theme-syntax-meta-keyword: var(--theme-syntax-keyword);
+	--theme-syntax-template-tag: var(--theme-syntax-keyword);
+	--theme-syntax-template-variable: var(--theme-syntax-keyword);
+	--theme-syntax-type: var(--theme-syntax-keyword);
+	--theme-syntax-language-variable: var(--theme-syntax-keyword);
+	--theme-syntax-title: var(--theme-syntax-entity);
+	--theme-syntax-attr: var(--theme-syntax-constant);
+	--theme-syntax-attribute: var(--theme-syntax-constant);
+	--theme-syntax-literal: var(--theme-syntax-constant);
+	--theme-syntax-meta: var(--theme-syntax-constant);
+	--theme-syntax-number: var(--theme-syntax-constant);
+	--theme-syntax-operator: var(--theme-syntax-constant);
+	--theme-syntax-variable: var(--theme-syntax-constant);
+	--theme-syntax-selector-attr: var(--theme-syntax-constant);
+	--theme-syntax-selector-class: var(--theme-syntax-constant);
+	--theme-syntax-selector-id: var(--theme-syntax-constant);
+	--theme-syntax-regexp: var(--theme-syntax-string);
+	--theme-syntax-meta-string: var(--theme-syntax-string);
+	--theme-syntax-symbol: var(--theme-syntax-built-in);
+	--theme-syntax-code: var(--theme-syntax-comment);
+	--theme-syntax-formula: var(--theme-syntax-comment);
+	--theme-syntax-name: var(--theme-syntax-entity-tag);
+	--theme-syntax-quote: var(--theme-syntax-entity-tag);
+	--theme-syntax-selector-tag: var(--theme-syntax-entity-tag);
+	--theme-syntax-selector-pseudo: var(--theme-syntax-entity-tag);
+	--theme-syntax-subst: currentColor;
+	--theme-syntax-class: currentColor;
+	--theme-syntax-function: currentColor;
+	--theme-syntax-params: currentColor;
+	--theme-syntax-tag: currentColor;
+	--theme-syntax-emphasis: currentColor;
+	--theme-syntax-strong: currentColor;
+	--theme-syntax-link: currentColor;
+	--theme-syntax-keyword-font-style: normal;
+	--theme-syntax-built-in-font-style: normal;
+	--theme-syntax-title-font-style: normal;
+	--theme-syntax-comment-font-style: normal;
+	--theme-syntax-section-font-weight: bold;
+	--theme-syntax-emphasis-font-style: italic;
+	--theme-syntax-strong-font-weight: bold;
+	--theme-syntax-quote-font-style: normal;
+	--theme-syntax-selector-class-font-style: normal;
+	--theme-syntax-selector-attr-font-style: normal;
+	--theme-syntax-selector-pseudo-font-style: normal;
+	--theme-syntax-addition-font-style: normal;
+	--theme-syntax-deletion-font-style: normal;
 }
 
-// Base palette: unconditional so print falls back to it.
-.code-block {
-	@each $name, $value in map.get($syntax-themes, $syntax-base-theme) {
-		// stylelint-disable-next-line custom-property-pattern
-		--theme-syntax-#{$name}: #{$value};
-	}
+:root,
+.theme-light {
+	--theme-syntax-keyword: #cf222e;
+	--theme-syntax-entity: #6639ba;
+	--theme-syntax-constant: #0550ae;
+	--theme-syntax-string: #0a3069;
+	--theme-syntax-built-in: #953800;
+	--theme-syntax-comment: #59636e;
+	--theme-syntax-entity-tag: #0550ae;
+	--theme-syntax-section: #0550ae;
+	--theme-syntax-bullet: #3b2300;
+	--theme-syntax-addition-text: #116329;
+	--theme-syntax-addition-background: #dafbe1;
+	--theme-syntax-deletion-text: #82071e;
+	--theme-syntax-deletion-background: #ffebe9;
+
+	@include github-syntax-aliases;
 }
 
-// Non-base palettes override on screen only.
 @media not print {
-	@each $theme, $palette in $syntax-themes {
-		@if $theme != $syntax-base-theme {
-			.theme-#{$theme} .code-block {
-				@each $name, $value in $palette {
-					// stylelint-disable-next-line custom-property-pattern
-					--theme-syntax-#{$name}: #{$value};
-				}
-			}
-		}
+	.theme-dark {
+		--theme-syntax-keyword: #ff7b72;
+		--theme-syntax-entity: #d2a8ff;
+		--theme-syntax-constant: #79c0ff;
+		--theme-syntax-string: #a5d6ff;
+		--theme-syntax-built-in: #ffa657;
+		--theme-syntax-comment: #9198a1;
+		--theme-syntax-entity-tag: #7ee787;
+		--theme-syntax-section: #58a6ff;
+		--theme-syntax-bullet: #f2cc60;
+		--theme-syntax-addition-text: #aff5b4;
+		--theme-syntax-addition-background: #033a16;
+		--theme-syntax-deletion-text: #ffdcd7;
+		--theme-syntax-deletion-background: #67060c;
+
+		@include github-syntax-aliases;
+	}
+
+	// Night Owl (c) Sarah Drasner / highlight.js adaptation (c) Carl Baxter.
+	.theme-high-contrast {
+		--theme-syntax-keyword: #c792ea;
+		--theme-syntax-built-in: #addb67;
+		--theme-syntax-type: #82aaff;
+		--theme-syntax-literal: #ff5874;
+		--theme-syntax-number: #f78c6c;
+		--theme-syntax-regexp: #5ca7e4;
+		--theme-syntax-string: #ecc48d;
+		--theme-syntax-subst: #d3423e;
+		--theme-syntax-symbol: var(--theme-syntax-type);
+		--theme-syntax-class: #ffcb8b;
+		--theme-syntax-function: var(--theme-syntax-type);
+		--theme-syntax-title: #dcdcaa;
+		--theme-syntax-params: #7fdbca;
+		// Night Owl's original comment color is adjusted to clear AA.
+		--theme-syntax-comment: #748a8a;
+		--theme-syntax-doctag: var(--theme-syntax-params);
+		--theme-syntax-meta: var(--theme-syntax-type);
+		--theme-syntax-meta-keyword: var(--theme-syntax-type);
+		--theme-syntax-meta-string: var(--theme-syntax-string);
+		--theme-syntax-section: #82b1ff;
+		--theme-syntax-tag: var(--theme-syntax-params);
+		--theme-syntax-name: var(--theme-syntax-params);
+		--theme-syntax-attr: var(--theme-syntax-params);
+		--theme-syntax-attribute: #80cbc4;
+		--theme-syntax-variable: var(--theme-syntax-built-in);
+		--theme-syntax-language-variable: var(--theme-syntax-variable);
+		--theme-syntax-operator: currentColor;
+		--theme-syntax-bullet: #d9f5dd;
+		--theme-syntax-code: var(--theme-syntax-attribute);
+		--theme-syntax-emphasis: var(--theme-syntax-keyword);
+		--theme-syntax-strong: var(--theme-syntax-built-in);
+		--theme-syntax-formula: var(--theme-syntax-keyword);
+		--theme-syntax-link: #ff869a;
+		// Night Owl's original quote color is adjusted to clear AA.
+		--theme-syntax-quote: #7a82ad;
+		--theme-syntax-selector-tag: #ff6363;
+		--theme-syntax-selector-id: #fad430;
+		--theme-syntax-selector-class: var(--theme-syntax-built-in);
+		--theme-syntax-selector-attr: var(--theme-syntax-keyword);
+		--theme-syntax-selector-pseudo: var(--theme-syntax-keyword);
+		--theme-syntax-template-tag: var(--theme-syntax-keyword);
+		--theme-syntax-template-variable: var(--theme-syntax-built-in);
+		--theme-syntax-addition-text: var(--theme-syntax-built-in);
+		--theme-syntax-addition-background: transparent;
+		--theme-syntax-deletion-text: var(--theme-syntax-selector-tag);
+		--theme-syntax-deletion-background: transparent;
+		--theme-syntax-keyword-font-style: italic;
+		--theme-syntax-built-in-font-style: italic;
+		--theme-syntax-title-font-style: italic;
+		--theme-syntax-comment-font-style: italic;
+		--theme-syntax-section-font-weight: normal;
+		--theme-syntax-emphasis-font-style: italic;
+		--theme-syntax-strong-font-weight: bold;
+		--theme-syntax-quote-font-style: italic;
+		--theme-syntax-selector-class-font-style: italic;
+		--theme-syntax-selector-attr-font-style: italic;
+		--theme-syntax-selector-pseudo-font-style: italic;
+		--theme-syntax-addition-font-style: italic;
+		--theme-syntax-deletion-font-style: italic;
 	}
 }
 
-// Consume the palette once. `:where()` keeps specificity flat and scopes the
-// shared structure to the two GitHub themes, leaving high-contrast to the
-// night-owl block below.
-:where(.theme-light, .theme-dark) .code-block {
-	.hljs-doctag,
-	.hljs-keyword,
-	.hljs-meta .hljs-keyword,
-	.hljs-template-tag,
-	.hljs-template-variable,
-	.hljs-type,
-	.hljs-variable.language_ {
+.code-block {
+	.hljs-doctag {
+		color: var(--theme-syntax-doctag);
+	}
+
+	.hljs-keyword {
 		color: var(--theme-syntax-keyword);
+		font-style: var(--theme-syntax-keyword-font-style);
+	}
+
+	.hljs-meta .hljs-keyword {
+		color: var(--theme-syntax-meta-keyword);
+	}
+
+	.hljs-template-tag {
+		color: var(--theme-syntax-template-tag);
+	}
+
+	.hljs-template-variable {
+		color: var(--theme-syntax-template-variable);
+	}
+
+	.hljs-type {
+		color: var(--theme-syntax-type);
+	}
+
+	.hljs-variable.language_ {
+		color: var(--theme-syntax-language-variable);
 	}
 
 	.hljs-title,
 	.hljs-title.class_,
 	.hljs-title.class_.inherited__,
 	.hljs-title.function_ {
-		color: var(--theme-syntax-entity);
+		color: var(--theme-syntax-title);
+		font-style: var(--theme-syntax-title-font-style);
 	}
 
-	.hljs-attr,
-	.hljs-attribute,
-	.hljs-literal,
-	.hljs-meta,
-	.hljs-number,
-	.hljs-operator,
-	.hljs-variable,
-	.hljs-selector-attr,
-	.hljs-selector-class,
+	.hljs-attr {
+		color: var(--theme-syntax-attr);
+	}
+
+	.hljs-attribute {
+		color: var(--theme-syntax-attribute);
+	}
+
+	.hljs-literal {
+		color: var(--theme-syntax-literal);
+	}
+
+	.hljs-meta {
+		color: var(--theme-syntax-meta);
+	}
+
+	.hljs-number {
+		color: var(--theme-syntax-number);
+	}
+
+	.hljs-operator {
+		color: var(--theme-syntax-operator);
+	}
+
+	.hljs-variable {
+		color: var(--theme-syntax-variable);
+	}
+
+	.hljs-selector-attr {
+		color: var(--theme-syntax-selector-attr);
+		font-style: var(--theme-syntax-selector-attr-font-style);
+	}
+
+	.hljs-selector-class {
+		color: var(--theme-syntax-selector-class);
+		font-style: var(--theme-syntax-selector-class-font-style);
+	}
+
 	.hljs-selector-id {
-		color: var(--theme-syntax-constant);
+		color: var(--theme-syntax-selector-id);
 	}
 
-	.hljs-regexp,
-	.hljs-string,
-	.hljs-meta .hljs-string {
+	.hljs-regexp {
+		color: var(--theme-syntax-regexp);
+	}
+
+	.hljs-string {
 		color: var(--theme-syntax-string);
 	}
 
-	.hljs-built_in,
-	.hljs-symbol {
+	.hljs-meta .hljs-string {
+		color: var(--theme-syntax-meta-string);
+	}
+
+	.hljs-subst {
+		color: var(--theme-syntax-subst);
+	}
+
+	.hljs-built_in {
 		color: var(--theme-syntax-built-in);
+		font-style: var(--theme-syntax-built-in-font-style);
 	}
 
-	.hljs-comment,
-	.hljs-code,
-	.hljs-formula {
+	.hljs-symbol {
+		color: var(--theme-syntax-symbol);
+	}
+
+	.hljs-class {
+		color: var(--theme-syntax-class);
+	}
+
+	.hljs-function {
+		color: var(--theme-syntax-function);
+	}
+
+	.hljs-params {
+		color: var(--theme-syntax-params);
+	}
+
+	.hljs-comment {
 		color: var(--theme-syntax-comment);
+		font-style: var(--theme-syntax-comment-font-style);
 	}
 
-	.hljs-name,
-	.hljs-quote,
-	.hljs-selector-tag,
+	.hljs-code {
+		color: var(--theme-syntax-code);
+	}
+
+	.hljs-formula {
+		color: var(--theme-syntax-formula);
+	}
+
+	.hljs-tag {
+		color: var(--theme-syntax-tag);
+	}
+
+	.hljs-name {
+		color: var(--theme-syntax-name);
+	}
+
+	.hljs-quote {
+		color: var(--theme-syntax-quote);
+		font-style: var(--theme-syntax-quote-font-style);
+	}
+
+	.hljs-selector-tag {
+		color: var(--theme-syntax-selector-tag);
+	}
+
 	.hljs-selector-pseudo {
-		color: var(--theme-syntax-entity-tag);
+		color: var(--theme-syntax-selector-pseudo);
+		font-style: var(--theme-syntax-selector-pseudo-font-style);
 	}
 
 	.hljs-section {
 		color: var(--theme-syntax-section);
-		font-weight: bold;
+		font-weight: var(--theme-syntax-section-font-weight);
 	}
 
 	.hljs-bullet {
@@ -186,191 +332,28 @@ $_base-roles: map.keys(map.get($syntax-themes, $syntax-base-theme));
 	}
 
 	.hljs-emphasis {
-		font-style: italic;
+		color: var(--theme-syntax-emphasis);
+		font-style: var(--theme-syntax-emphasis-font-style);
 	}
 
 	.hljs-strong {
-		font-weight: bold;
+		color: var(--theme-syntax-strong);
+		font-weight: var(--theme-syntax-strong-font-weight);
+	}
+
+	.hljs-link {
+		color: var(--theme-syntax-link);
 	}
 
 	.hljs-addition {
 		background-color: var(--theme-syntax-addition-background);
 		color: var(--theme-syntax-addition-text);
+		font-style: var(--theme-syntax-addition-font-style);
 	}
 
 	.hljs-deletion {
 		background-color: var(--theme-syntax-deletion-background);
 		color: var(--theme-syntax-deletion-text);
-	}
-}
-
-// Night Owl (c) Sarah Drasner / highlight.js adaptation (c) Carl Baxter.
-// Reproduced from highlight.js `night-owl.css`, minus its `.hljs`
-// background/base color so the Atlas code-block styling shows through. Gated
-// out of print so it doesn't paint onto the light background print reverts to.
-@media not print {
-	.theme-high-contrast .code-block {
-		.hljs-keyword {
-			color: #c792ea;
-			font-style: italic;
-		}
-
-		.hljs-built_in {
-			color: #addb67;
-			font-style: italic;
-		}
-
-		.hljs-type {
-			color: #82aaff;
-		}
-
-		.hljs-literal {
-			color: #ff5874;
-		}
-
-		.hljs-number {
-			color: #f78c6c;
-		}
-
-		.hljs-regexp {
-			color: #5ca7e4;
-		}
-
-		.hljs-string {
-			color: #ecc48d;
-		}
-
-		.hljs-subst {
-			color: #d3423e;
-		}
-
-		.hljs-symbol {
-			color: #82aaff;
-		}
-
-		.hljs-class {
-			color: #ffcb8b;
-		}
-
-		.hljs-function {
-			color: #82aaff;
-		}
-
-		.hljs-title {
-			color: #dcdcaa;
-			font-style: italic;
-		}
-
-		.hljs-params {
-			color: #7fdbca;
-		}
-
-		.hljs-comment {
-			// night-owl #637777 is 4.44:1 on #000; nudged to clear AA.
-			color: #748a8a;
-			font-style: italic;
-		}
-
-		.hljs-doctag {
-			color: #7fdbca;
-		}
-
-		.hljs-meta,
-		.hljs-meta .hljs-keyword {
-			color: #82aaff;
-		}
-
-		.hljs-meta .hljs-string {
-			color: #ecc48d;
-		}
-
-		.hljs-section {
-			color: #82b1ff;
-		}
-
-		.hljs-tag,
-		.hljs-name,
-		.hljs-attr {
-			color: #7fdbca;
-		}
-
-		.hljs-attribute {
-			color: #80cbc4;
-		}
-
-		.hljs-variable {
-			color: #addb67;
-		}
-
-		.hljs-bullet {
-			color: #d9f5dd;
-		}
-
-		.hljs-code {
-			color: #80cbc4;
-		}
-
-		.hljs-emphasis {
-			color: #c792ea;
-			font-style: italic;
-		}
-
-		.hljs-strong {
-			color: #addb67;
-			font-weight: bold;
-		}
-
-		.hljs-formula {
-			color: #c792ea;
-		}
-
-		.hljs-link {
-			color: #ff869a;
-		}
-
-		.hljs-quote {
-			// night-owl #697098 is 4.37:1 on #000; nudged to clear AA.
-			color: #7a82ad;
-			font-style: italic;
-		}
-
-		.hljs-selector-tag {
-			color: #ff6363;
-		}
-
-		.hljs-selector-id {
-			color: #fad430;
-		}
-
-		.hljs-selector-class {
-			color: #addb67;
-			font-style: italic;
-		}
-
-		.hljs-selector-attr,
-		.hljs-selector-pseudo {
-			color: #c792ea;
-			font-style: italic;
-		}
-
-		.hljs-template-tag {
-			color: #c792ea;
-		}
-
-		.hljs-template-variable {
-			color: #addb67;
-		}
-
-		.hljs-addition {
-			color: #addb67;
-			font-style: italic;
-		}
-
-		.hljs-deletion {
-			// night-owl's translucent #ef535090 is 2.47:1 on #000; solid
-			// in-palette red clears AA.
-			color: #ff6363;
-			font-style: italic;
-		}
+		font-style: var(--theme-syntax-deletion-font-style);
 	}
 }
