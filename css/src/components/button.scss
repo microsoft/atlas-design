@@ -25,9 +25,9 @@ $button-disabled-background-color: tokens.$body-background-dark !default;
 $button-disabled-shadow: none !default;
 $button-disabled-opacity: 0.5 !default;
 
-$button-selected-background-color: tokens.$selected-background !default;
-$button-selected-border-color: tokens.$selected-stroke !default;
-$button-selected-color: tokens.$selected-foreground !default;
+$button-selected-background-color: tokens.$secondary-background-selected !default;
+$button-selected-border-color: tokens.$secondary-stroke-selected !default;
+$button-selected-color: tokens.$secondary-foreground-selected !default;
 
 $button-icon-spacing: 0.375em !default;
 $button-font-weight: tokens.$weight-semibold !default;
