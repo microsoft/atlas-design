@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.11.1
+
+### Patch Changes
+
+- f8511d9: Updating secondary button selected state colors.
+
 ## 6.11.0
 
 ### Minor Changes
