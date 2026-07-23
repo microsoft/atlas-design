@@ -101,6 +101,12 @@ $table-caption-spacing: tokens.$letter-spacing-medium !default;
 		}
 	}
 
+	&.table-cell-max-width {
+		td {
+			max-width: 40rem;
+		}
+	}
+
 	&.table-sm {
 		th,
 		td {
