@@ -5,6 +5,10 @@ $table-cell-vertical-padding: tokens.$spacer-5 !default;
 $table-cell-horizontal-padding: tokens.$spacer-6 !default;
 $table-cell-padding-compact: tokens.$spacer-3 !default;
 $table-cell-padding-loose: tokens.$spacer-8 !default;
+$table-cell-max-width: min(10rem, 60vw) !default;
+$table-cell-max-width-tablet: 18rem !default;
+$table-cell-max-width-desktop: 24rem !default;
+$table-cell-max-width-widescreen: 30rem !default;
 
 $table-caption-padding: tokens.$spacer-6 !default;
 $table-caption-size: tokens.$font-size-9 !default;
@@ -103,7 +107,19 @@ $table-caption-spacing: tokens.$letter-spacing-medium !default;
 
 	&.table-cell-max-width {
 		td {
-			max-width: 40rem;
+			max-width: $table-cell-max-width;
+
+			@include mixins.tablet {
+				max-width: $table-cell-max-width-tablet;
+			}
+
+			@include mixins.desktop {
+				max-width: $table-cell-max-width-desktop;
+			}
+
+			@include mixins.widescreen {
+				max-width: $table-cell-max-width-widescreen;
+			}
 		}
 	}
 
