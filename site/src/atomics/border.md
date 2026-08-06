@@ -64,14 +64,18 @@ Here is an example of applying border to specific side of the element:
 
 There are a few classes available to set border radius:
 
-| class                   | size       |
-| ----------------------- | ---------- |
-| `border-radius-sm`      | `0.125rem` |
-| `border-radius`         | `0.25rem`  |
-| `border-radius-lg`      | `0.375rem` |
-| `border-radius-xl`      | `0.5rem`   |
-| `border-radius-rounded` | `290486px` |
-| `border-radius-none`    | `0px`      |
+| class                             | size       |
+| --------------------------------- | ---------- |
+| `border-radius-sm`                | `0.125rem` |
+| `border-radius`                   | `0.25rem`  |
+| `border-radius-lg`                | `0.375rem` |
+| `border-radius-xl`                | `0.5rem`   |
+| `border-radius-rounded`           | `290486px` |
+| `border-top-left-radius-none`     | `0px`      |
+| `border-top-right-radius-none`    | `0px`      |
+| `border-bottom-left-radius-none`  | `0px`      |
+| `border-bottom-right-radius-none` | `0px`      |
+| `border-radius-none`              | `0px`      |
 
 ```html
 <div class="border border-radius-sm padding-sm">
@@ -89,11 +93,16 @@ There are a few classes available to set border radius:
 <div class="border border-radius-rounded padding-sm margin-top-xs">
 	<p>Rounded</p>
 </div>
+<div
+	class="border border-radius-xl border-bottom-left-radius-none border-bottom-right-radius-none padding-sm margin-top-xs"
+>
+	<p>Border radius reset on bottom</p>
+</div>
 ```
 
 ### Size
 
-Additionally `-md` and `-lg` may be added for a thicker border.
+Additionally `-md`, `-lg` and `-xl` may be added for a thicker border.
 
 ```html
 <div class="border-md padding-sm">
@@ -107,6 +116,12 @@ Additionally `-md` and `-lg` may be added for a thicker border.
 </div>
 <div class="border-lg-tablet padding-sm margin-top-xs">
 	<p>Large border on tablet+</p>
+</div>
+<div class="border-xl padding-sm margin-top-xs">
+	<p>Extra large border</p>
+</div>
+<div class="border-xl-tablet padding-sm margin-top-xs">
+	<p>Extra large border on tablet+</p>
 </div>
 ```
 
