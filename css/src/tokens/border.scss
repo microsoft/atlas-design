@@ -2,8 +2,9 @@
  * @sass-export-section="border"
  */
 $border-width: 1px !default;
-$border-width-md: 0.125rem !default;
-$border-width-lg: 0.25rem !default;
+$border-width-md: 0.125rem !default; // 2px
+$border-width-lg: 0.25rem !default; // 4px
+$border-width-xl: 0.5rem !default; // 8px
 
 $border-radius-sm: 0.125rem !default; // 2px
 $border-radius: 0.25rem !default; // 4px
