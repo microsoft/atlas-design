@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.10.0
+
+### Minor Changes
+
+- 1060f35: Adding thicker border atomic - `border-xl`, and border radius reset atomics - `border-{side}-radius-none`.
+
 ## 1.9.1
 
 ### Patch Changes

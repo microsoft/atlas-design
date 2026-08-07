@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 6.12.0
+
+### Minor Changes
+
+- 1060f35: Adding thicker border atomic - `border-xl`, and border radius reset atomics - `border-{side}-radius-none`.
+
+### Patch Changes
+
+- 57c1102: Updating card component's border radius default value.
+
 ## 6.11.1
 
 ### Patch Changes
