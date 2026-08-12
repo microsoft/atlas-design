@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.12.1
+
+### Patch Changes
+
+- 8e5f0fb: Adding border-color-transparent atomic
+
 ## 6.12.0
 
 ### Minor Changes
