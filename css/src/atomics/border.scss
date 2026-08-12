@@ -148,6 +148,10 @@
 	border-color: tokens.$border-accent !important;
 }
 
+.border-color-transparent {
+	border-color: transparent !important;
+}
+
 .border-high-contrast {
 	border: tokens.$border-width solid tokens.$border-white-high-contrast !important;
 

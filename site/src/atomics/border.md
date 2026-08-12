@@ -16,12 +16,12 @@ Applying the `border` atomic to the element will add a 1px border to it.
 
 Various atomics available to modify different options.
 
-| modifier                | value                                                       | screensize | visibility |
-| ----------------------- | ----------------------------------------------------------- | ---------- | ---------- |
-| [direction](#direction) | `top`, `right`, `bottom`, `left`                            | `tablet`   | `none`     |
-| [size](#size)           | `md`, `lg`, `xl`                                            | `tablet`   | N\A        |
-| [radius](#radius)       | `sm`, `lg`, `xl`, `rounded`, `none`, `{corner}-none`        | N\A        | N\A        |
-| [colors](#colors)       | `primary`, `danger`, `warning`, `success`, `info`, `accent` | N\A        | N\A        |
+| modifier                | value                                                                      | screensize | visibility |
+| ----------------------- | -------------------------------------------------------------------------- | ---------- | ---------- |
+| [direction](#direction) | `top`, `right`, `bottom`, `left`                                           | `tablet`   | `none`     |
+| [size](#size)           | `md`, `lg`, `xl`                                                           | `tablet`   | N\A        |
+| [radius](#radius)       | `sm`, `lg`, `xl`, `rounded`, `none`, `{corner}-none`                       | N\A        | N\A        |
+| [colors](#colors)       | `primary`, `danger`, `warning`, `success`, `info`, `accent`, `transparent` | N\A        | N\A        |
 
 ## Usage
 
@@ -149,9 +149,9 @@ Border radius can be removed from the element by using the `border-radius-none` 
 
 The color of a border can be modified using the following atomics.
 
-| modifiers | color name                                                  | screensize |
-| --------- | ----------------------------------------------------------- | ---------- |
-| colors    | `primary`, `danger`, `warning`, `success`, `info`, `accent` | N\A        |
+| modifiers | color name                                                                 | screensize |
+| --------- | -------------------------------------------------------------------------- | ---------- |
+| colors    | `primary`, `danger`, `warning`, `success`, `info`, `accent`, `transparent` | N\A        |
 
 ```html
 <div class="border-color-success border-left-lg border-radius padding-block-sm">
