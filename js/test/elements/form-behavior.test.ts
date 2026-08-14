@@ -148,7 +148,8 @@ describe('navigateAfterSubmit', () => {
 			'\tjava\nscript:alert(1)',
 			'data:text/html,<script>alert(1)</script>',
 			'vbscript:msgbox(1)',
-			'blob:https://example.test/abc'
+			'blob:https://example.test/abc',
+			'http://example.test/next'
 		];
 
 		let errorSpy: MockInstance;

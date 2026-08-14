@@ -781,8 +781,6 @@ function canValidate(
 	return isValueElement(target, form) && (target as HTMLValueElement).type !== 'hidden';
 }
 
-const safeNavigationProtocols = ['http:', 'https:'];
-
 function getSafeNavigationHref(href: string | null): string | null {
 	if (!href) {
 		return null;
@@ -795,7 +793,7 @@ function getSafeNavigationHref(href: string | null): string | null {
 
 	try {
 		const url = new URL(trimmed, window.location.href);
-		return safeNavigationProtocols.includes(url.protocol) ? trimmed : null;
+		return url.protocol === 'https:' ? trimmed : null;
 	} catch {
 		return null;
 	}
