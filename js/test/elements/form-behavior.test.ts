@@ -69,6 +69,7 @@ describe('navigateAfterSubmit', () => {
 		originalLocation = window.location;
 		const fakeLocation = {
 			href: 'https://example.test/',
+			origin: 'https://example.test',
 			pathname: '/',
 			search: '',
 			hash: '',
@@ -149,7 +150,9 @@ describe('navigateAfterSubmit', () => {
 			'data:text/html,<script>alert(1)</script>',
 			'vbscript:msgbox(1)',
 			'blob:https://example.test/abc',
-			'http://example.test/next'
+			'http://example.test/next',
+			'https://other.test/next',
+			'//other.test/next'
 		];
 
 		let errorSpy: MockInstance;
@@ -196,9 +199,9 @@ describe('navigateAfterSubmit', () => {
 			expect(errorSpy).not.toHaveBeenCalled();
 		});
 
-		it('preserves absolute cross-origin https navigation [ai generated]', () => {
-			expect(navigateAfterSubmit('https://other.test/next', 'replace')).toBe(true);
-			expect(window.location.replace).toHaveBeenCalledWith('https://other.test/next');
+		it('preserves absolute same-origin https navigation [ai generated]', () => {
+			expect(navigateAfterSubmit('https://example.test/next', 'replace')).toBe(true);
+			expect(window.location.replace).toHaveBeenCalledWith('https://example.test/next');
 			expect(errorSpy).not.toHaveBeenCalled();
 		});
 

@@ -793,7 +793,9 @@ function hardenNavigationHref(href: string | null): string | null {
 
 	try {
 		const url = new URL(trimmed, window.location.href);
-		return url.protocol.startsWith('https:') ? trimmed : null;
+		return url.protocol.startsWith('https:') && url.origin === window.location.origin
+			? trimmed
+			: null;
 	} catch {
 		return null;
 	}
