@@ -781,7 +781,34 @@ function canValidate(
 	return isValueElement(target, form) && (target as HTMLValueElement).type !== 'hidden';
 }
 
-export function navigateAfterSubmit(href: string | null, navigationStep: NavigationSteps) {
+function hardenNavigationHref(href: string | null): string | null {
+	if (!href) {
+		return null;
+	}
+
+	const trimmed = href.trim();
+	if (!trimmed) {
+		return null;
+	}
+
+	try {
+		const url = new URL(trimmed, window.location.href);
+		return url.protocol.startsWith('https:') && url.origin === window.location.origin
+			? trimmed
+			: null;
+	} catch {
+		return null;
+	}
+}
+
+export function navigateAfterSubmit(requestedHref: string | null, navigationStep: NavigationSteps) {
+	// Never hand an unvalidated url to a navigation sink; `javascript:` urls execute script.
+	const href = hardenNavigationHref(requestedHref);
+	if (requestedHref && !href && navigationStep !== null && navigationStep !== 'reload') {
+		// eslint-disable-next-line no-console
+		console.error(`navigateAfterSubmit: refusing to navigate to an unsafe url`, requestedHref);
+	}
+
 	switch (navigationStep) {
 		case null:
 			// do nothing.
