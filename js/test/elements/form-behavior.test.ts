@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { MockInstance } from 'vitest';
 import {
 	collectCustomElementsByName,
 	defaultMessageStrings,
@@ -138,6 +139,73 @@ describe('navigateAfterSubmit', () => {
 		expect(() => navigateAfterSubmit('/any', 'mystery' as unknown as null)).toThrow(
 			/Unexpected navigation attribute/
 		);
+	});
+
+	describe('unsafe url handling', () => {
+		const unsafeHrefs = [
+			'javascript:alert(1)',
+			'JaVaScRiPt:alert(1)',
+			'\tjava\nscript:alert(1)',
+			'data:text/html,<script>alert(1)</script>',
+			'vbscript:msgbox(1)',
+			'blob:https://example.test/abc'
+		];
+
+		let errorSpy: MockInstance;
+		beforeEach(() => {
+			errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+		});
+		afterEach(() => {
+			errorSpy.mockRestore();
+		});
+
+		for (const href of unsafeHrefs) {
+			it(`"follow" refuses to navigate to ${JSON.stringify(href)} [ai generated]`, () => {
+				expect(navigateAfterSubmit(href, 'follow')).toBe(false);
+				expect(window.location.href).toBe('https://example.test/');
+				expect(errorSpy).toHaveBeenCalledTimes(1);
+			});
+
+			it(`"replace" refuses to navigate to ${JSON.stringify(href)} [ai generated]`, () => {
+				expect(navigateAfterSubmit(href, 'replace')).toBe(false);
+				expect(window.location.replace).not.toHaveBeenCalled();
+				expect(errorSpy).toHaveBeenCalledTimes(1);
+			});
+		}
+
+		it('"hash-reload" refuses an unsafe href without touching history or reloading [ai generated]', () => {
+			const pushSpy = vi.spyOn(window.history, 'pushState').mockImplementation(() => {});
+			try {
+				expect(navigateAfterSubmit('javascript:alert(1)', 'hash-reload')).toBe(false);
+				expect(pushSpy).not.toHaveBeenCalled();
+				expect(window.location.reload).not.toHaveBeenCalled();
+			} finally {
+				pushSpy.mockRestore();
+			}
+		});
+
+		it('"reload" still reloads and does not warn, since it ignores the href [ai generated]', () => {
+			expect(navigateAfterSubmit('javascript:alert(1)', 'reload')).toBe(true);
+			expect(window.location.reload).toHaveBeenCalledTimes(1);
+			expect(errorSpy).not.toHaveBeenCalled();
+		});
+
+		it('does not warn for a safe href [ai generated]', () => {
+			expect(navigateAfterSubmit('/next', 'follow')).toBe(true);
+			expect(errorSpy).not.toHaveBeenCalled();
+		});
+
+		it('preserves absolute cross-origin https navigation [ai generated]', () => {
+			expect(navigateAfterSubmit('https://other.test/next', 'replace')).toBe(true);
+			expect(window.location.replace).toHaveBeenCalledWith('https://other.test/next');
+			expect(errorSpy).not.toHaveBeenCalled();
+		});
+
+		it('trims surrounding whitespace from a safe href [ai generated]', () => {
+			expect(navigateAfterSubmit('  /next  ', 'replace')).toBe(true);
+			expect(window.location.replace).toHaveBeenCalledWith('/next');
+			expect(errorSpy).not.toHaveBeenCalled();
+		});
 	});
 });
 

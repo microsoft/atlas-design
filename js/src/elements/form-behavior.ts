@@ -781,31 +781,62 @@ function canValidate(
 	return isValueElement(target, form) && (target as HTMLValueElement).type !== 'hidden';
 }
 
+const safeNavigationProtocols = ['http:', 'https:'];
+
+function getSafeNavigationHref(href: string | null): string | null {
+	if (!href) {
+		return null;
+	}
+
+	const trimmed = href.trim();
+	if (!trimmed) {
+		return null;
+	}
+
+	try {
+		const url = new URL(trimmed, window.location.href);
+		return safeNavigationProtocols.includes(url.protocol) ? trimmed : null;
+	} catch {
+		return null;
+	}
+}
+
 export function navigateAfterSubmit(href: string | null, navigationStep: NavigationSteps) {
+	// Never hand an unvalidated url to a navigation sink; `javascript:` urls execute script.
+	const safeHref = getSafeNavigationHref(href);
+	if (href && !safeHref && navigationStep !== null && navigationStep !== 'reload') {
+		// eslint-disable-next-line no-console
+		console.error(`navigateAfterSubmit: refusing to navigate to an unsafe url`, href);
+	}
+
 	switch (navigationStep) {
 		case null:
 			// do nothing.
 			return false;
 		case 'follow':
-			if (href) {
-				location.href = href;
+			if (safeHref) {
+				location.href = safeHref;
 				return true;
 			}
 			return false;
 		case 'hash-reload':
-			if (href) {
-				const search = href.includes('?') ? '' : window.location.search;
-				if (href !== search + window.location.hash) {
+			if (safeHref) {
+				const search = safeHref.includes('?') ? '' : window.location.search;
+				if (safeHref !== search + window.location.hash) {
 					const state = (history.state || {}) as Record<string, any>;
-					window.history.pushState(state, document.title, window.location.pathname + search + href); // prevents scrolling to spot until reload
+					window.history.pushState(
+						state,
+						document.title,
+						window.location.pathname + search + safeHref
+					); // prevents scrolling to spot until reload
 				}
 				location.reload();
 				return true;
 			}
 			return false;
 		case 'replace':
-			if (href) {
-				location.replace(href);
+			if (safeHref) {
+				location.replace(safeHref);
 				return true;
 			}
 			return false;
