@@ -781,7 +781,7 @@ function canValidate(
 	return isValueElement(target, form) && (target as HTMLValueElement).type !== 'hidden';
 }
 
-function getSafeNavigationHref(href: string | null): string | null {
+function hardenNavigationHref(href: string | null): string | null {
 	if (!href) {
 		return null;
 	}
@@ -793,18 +793,18 @@ function getSafeNavigationHref(href: string | null): string | null {
 
 	try {
 		const url = new URL(trimmed, window.location.href);
-		return url.protocol === 'https:' ? trimmed : null;
+		return url.protocol.startsWith('https:') ? trimmed : null;
 	} catch {
 		return null;
 	}
 }
 
-export function navigateAfterSubmit(href: string | null, navigationStep: NavigationSteps) {
+export function navigateAfterSubmit(requestedHref: string | null, navigationStep: NavigationSteps) {
 	// Never hand an unvalidated url to a navigation sink; `javascript:` urls execute script.
-	const safeHref = getSafeNavigationHref(href);
-	if (href && !safeHref && navigationStep !== null && navigationStep !== 'reload') {
+	const href = hardenNavigationHref(requestedHref);
+	if (requestedHref && !href && navigationStep !== null && navigationStep !== 'reload') {
 		// eslint-disable-next-line no-console
-		console.error(`navigateAfterSubmit: refusing to navigate to an unsafe url`, href);
+		console.error(`navigateAfterSubmit: refusing to navigate to an unsafe url`, requestedHref);
 	}
 
 	switch (navigationStep) {
@@ -812,29 +812,25 @@ export function navigateAfterSubmit(href: string | null, navigationStep: Navigat
 			// do nothing.
 			return false;
 		case 'follow':
-			if (safeHref) {
-				location.href = safeHref;
+			if (href) {
+				location.href = href;
 				return true;
 			}
 			return false;
 		case 'hash-reload':
-			if (safeHref) {
-				const search = safeHref.includes('?') ? '' : window.location.search;
-				if (safeHref !== search + window.location.hash) {
+			if (href) {
+				const search = href.includes('?') ? '' : window.location.search;
+				if (href !== search + window.location.hash) {
 					const state = (history.state || {}) as Record<string, any>;
-					window.history.pushState(
-						state,
-						document.title,
-						window.location.pathname + search + safeHref
-					); // prevents scrolling to spot until reload
+					window.history.pushState(state, document.title, window.location.pathname + search + href); // prevents scrolling to spot until reload
 				}
 				location.reload();
 				return true;
 			}
 			return false;
 		case 'replace':
-			if (safeHref) {
-				location.replace(safeHref);
+			if (href) {
+				location.replace(href);
 				return true;
 			}
 			return false;
