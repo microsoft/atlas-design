@@ -35,6 +35,7 @@ $color-danger: tokens.$danger;
 	&.is-hovered,
 	&:active {
 		background-color: tokens.$default-hover-invert;
+		text-decoration: none !important;
 	}
 
 	.api-link-button-method {
