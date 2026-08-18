@@ -18,6 +18,7 @@ const pathnames = [
 	'/atomics/typography.html',
 	'/components/overview.html',
 	'/components/accordion.html',
+	'/components/api-link-button.html',
 	'/components/badge.html',
 	'/components/banner.html',
 	'/components/breadcrumbs.html',
