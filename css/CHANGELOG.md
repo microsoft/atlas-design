@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.13.0
+
+### Minor Changes
+
+- 55856dd: Add the API link button component for responsive HTTP method and API path links, including documentation and accessibility coverage.
+
 ## 6.12.1
 
 ### Patch Changes
