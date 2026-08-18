@@ -30,6 +30,7 @@ export const pages: LocalPageConfig[] = [
 	// { pathname: '/atomics/typography.html', name: 'Atomics/typography', routes },
 	// { pathname: '/atomics/width.html', name: 'Atomics/width', routes },
 	{ pathname: '/atomics/colors.html', name: 'Atomics/colors', routes },
+	{ pathname: '/components/api-link-button.html', name: 'Components/api-link-button', routes },
 	{ pathname: '/components/breadcrumbs.html', name: 'Components/breadcrumbs', routes },
 	{ pathname: '/components/button.html', name: 'Components/button', routes },
 	{ pathname: '/components/checkbox.html', name: 'Components/checkbox', routes },

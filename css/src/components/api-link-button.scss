@@ -1,0 +1,80 @@
+@use '../mixins/control.scss';
+@use '../tokens/index.scss' as tokens;
+
+$color-primary: tokens.$primary;
+$color-success: tokens.$success;
+$color-danger: tokens.$danger;
+
+.api-link-button-container {
+	container: api-link-button-container / inline-size;
+}
+
+.api-link-button {
+	@extend %control;
+
+	display: grid;
+	align-items: start;
+	width: 100%;
+	grid-template-columns: 7ch minmax(0, 1fr);
+	gap: tokens.$layout-2;
+	padding-inline: 0.75em;
+	border-color: transparent;
+	background-color: transparent;
+	color: tokens.$text;
+	font-family: tokens.$monospace-font-stack;
+	font-size: tokens.$font-size-6;
+	font-weight: tokens.$weight-semibold;
+	text-decoration: none;
+	cursor: pointer;
+
+	&:visited {
+		color: tokens.$text;
+	}
+
+	&:hover,
+	&.is-hovered,
+	&:active {
+		background-color: tokens.$default-hover-invert;
+		text-decoration: none !important;
+	}
+
+	.api-link-button-method {
+		grid-area: 1 / 1;
+		text-align: start;
+		text-transform: uppercase;
+
+		&[data-method='get'] {
+			color: #{$color-primary};
+		}
+
+		&[data-method='post'] {
+			color: #{$color-success};
+		}
+
+		&[data-method='delete'] {
+			color: #{$color-danger};
+		}
+	}
+
+	.api-link-button-text {
+		grid-area: 1 / 2;
+		min-inline-size: 0;
+		overflow-wrap: anywhere;
+		text-align: start;
+	}
+}
+
+@container api-link-button-container (max-width: 300px) {
+	.api-link-button {
+		grid-template-columns: minmax(0, 1fr);
+		row-gap: tokens.$layout-1;
+
+		.api-link-button-method {
+			grid-area: 1 / 1;
+		}
+
+		.api-link-button-text {
+			grid-area: 2 / 1;
+		}
+	}
+}
