@@ -13,6 +13,7 @@ import { initFullScreenToggle } from './scripts/full-screen-toggle';
 import { initLayoutPageControls } from './scripts/layout-page';
 import { handleFullScreenNavButton } from './scripts/mobile-navigation';
 import { initReadingDirectionButtons } from './scripts/direction-buttons';
+import { initAdaptiveGridDemos } from './scripts/adaptive-grid-demo';
 
 // Run layout-state restoration as early as possible so any previously
 // selected layout is applied to <html> before the first paint, avoiding a
@@ -31,3 +32,4 @@ handleFocusableIfScrollable();
 handleFullScreenNavButton();
 initLayout();
 initReadingDirectionButtons();
+initAdaptiveGridDemos();

@@ -11,7 +11,7 @@ $adaptive-grid-columns-2-min-width: 400px !default;
 		grid-template-columns: minmax(0, 1fr);
 		gap: $adaptive-grid-gap;
 
-		> * {
+		> .adaptive-grid-item {
 			min-inline-size: 0;
 		}
 	}

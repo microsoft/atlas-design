@@ -1,0 +1,21 @@
+@use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
+
+.adaptive-grid-demo {
+	--adaptive-grid-demo-width: 600px;
+
+	.adaptive-grid-demo-controls {
+		display: flex;
+		align-items: center;
+		gap: tokens.$layout-2;
+		margin-block-end: tokens.$layout-2;
+	}
+
+	.adaptive-grid-demo-slider {
+		flex: 1;
+		min-inline-size: 0;
+	}
+
+	.adaptive-grid-demo-preview {
+		inline-size: min(100%, var(--adaptive-grid-demo-width));
+	}
+}
