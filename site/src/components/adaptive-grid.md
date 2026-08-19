@@ -44,11 +44,85 @@ Resize the available content area to see this example switch between one and two
 
 ## Interactive container size
 
-Use the slider to change this grid's inline size. The control updates a CSS custom property on the
-demo parent, making the grid switch to two columns at exactly 400px without changing the viewport.
+Use the button groups to apply the column modifier and gap atomics, then use the slider to change
+this grid's inline size. The slider updates a CSS custom property on the demo parent, making the
+grid switch to two columns at exactly 400px without changing the viewport.
 
 ```html
-<div class="adaptive-grid-demo" data-adaptive-grid-resizer>
+<div
+	class="adaptive-grid-demo border border-radius padding-sm margin-top-sm"
+	data-adaptive-grid-resizer
+>
+	<div class="adaptive-grid-demo-options">
+		<div>
+			<p class="font-weight-semibold" id="adaptive-grid-columns-label">Columns</p>
+			<div
+				class="buttons buttons-addons"
+				role="group"
+				aria-labelledby="adaptive-grid-columns-label"
+			>
+				<button
+					class="button"
+					type="button"
+					aria-pressed="false"
+					data-adaptive-grid-class=""
+					data-adaptive-grid-class-group="columns"
+				>
+					Default
+				</button>
+				<button
+					class="button"
+					type="button"
+					aria-pressed="true"
+					data-adaptive-grid-class="adaptive-grid-columns-2"
+					data-adaptive-grid-class-group="columns"
+				>
+					.adaptive-grid-columns-2
+				</button>
+			</div>
+		</div>
+		<div>
+			<p class="font-weight-semibold" id="adaptive-grid-gap-label">Gap</p>
+			<div class="buttons buttons-addons" role="group" aria-labelledby="adaptive-grid-gap-label">
+				<button
+					class="button"
+					type="button"
+					aria-pressed="true"
+					data-adaptive-grid-class=""
+					data-adaptive-grid-class-group="gap"
+				>
+					Default
+				</button>
+				<button
+					class="button"
+					type="button"
+					aria-pressed="false"
+					data-adaptive-grid-class="gap-none"
+					data-adaptive-grid-class-group="gap"
+				>
+					.gap-none
+				</button>
+				<button
+					class="button"
+					type="button"
+					aria-pressed="false"
+					data-adaptive-grid-class="gap-xs"
+					data-adaptive-grid-class-group="gap"
+				>
+					.gap-xs
+				</button>
+				<button
+					class="button"
+					type="button"
+					aria-pressed="false"
+					data-adaptive-grid-class="gap-lg"
+					data-adaptive-grid-class-group="gap"
+				>
+					.gap-lg
+				</button>
+			</div>
+		</div>
+	</div>
 	<div class="adaptive-grid-demo-controls">
 		<label for="adaptive-grid-width">Container width</label>
 		<input

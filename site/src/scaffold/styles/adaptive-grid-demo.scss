@@ -1,10 +1,23 @@
 @use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
+@use '@microsoft/atlas-css/src/components/button.scss' as button;
+
+[data-adaptive-grid-class][aria-pressed='true'] {
+	@extend .button-primary;
+	@extend .button-filled;
+}
 
 .adaptive-grid-demo {
 	--adaptive-grid-demo-width: 600px;
 
+	.adaptive-grid-demo-options {
+		display: grid;
+		gap: tokens.$layout-2;
+		margin-block-end: tokens.$layout-2;
+	}
+
 	.adaptive-grid-demo-controls {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		gap: tokens.$layout-2;
 		margin-block-end: tokens.$layout-2;
