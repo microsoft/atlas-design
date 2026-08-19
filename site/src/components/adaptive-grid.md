@@ -48,10 +48,7 @@ Use the button groups to apply the column modifier and gap atomics, then use the
 this grid's inline size. The slider updates a CSS custom property on the demo parent, making the
 grid switch to two columns at exactly 400px without changing the viewport.
 
-<div
-	class="adaptive-grid-demo padding-sm margin-top-sm"
-	data-adaptive-grid-resizer
->
+<div class="adaptive-grid-demo margin-top-sm" data-adaptive-grid-resizer>
 	<div class="adaptive-grid-demo-options">
 		<div>
 			<p
@@ -143,7 +140,7 @@ grid switch to two columns at exactly 400px without changing the viewport.
 		<output for="adaptive-grid-width" data-adaptive-grid-resizer-output>600px</output>
 	</div>
 	<div
-		class="adaptive-grid adaptive-grid-columns-2 adaptive-grid-demo-preview border border-radius"
+		class="adaptive-grid adaptive-grid-columns-2 adaptive-grid-demo-preview border border-radius padding-sm"
 	>
 		<div class="adaptive-grid-content">
 			<div class="adaptive-grid-item border border-radius padding-sm">Item 1</div>
