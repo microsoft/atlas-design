@@ -19,6 +19,8 @@ container, its direct `.adaptive-grid-content` child receives the grid layout, a
 grid child uses `.adaptive-grid-item`. A CSS container cannot query its own size to style itself,
 so the separate inner element makes the component self-contained.
 
+[Jump to the interactive example](#interactive-container-size).
+
 ## Two-column adaptive grid
 
 Resize the available content area to see this example switch between one and two columns.
@@ -41,6 +43,50 @@ Resize the available content area to see this example switch between one and two
 	</div>
 </div>
 ```
+
+## Container size, not viewport size
+
+The same modifier can produce different layouts in the same viewport because each grid queries
+its own wrapper. The 350px example remains one column, while the 500px example becomes two
+columns when the viewport is wide enough to apply that width.
+
+```html
+<div class="adaptive-grid adaptive-grid-columns-2 width-350">
+	<div class="adaptive-grid-content">
+		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 1</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 2</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 3</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 4</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 5</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 6</div>
+	</div>
+</div>
+```
+
+```html
+<div class="adaptive-grid adaptive-grid-columns-2 width-500-tablet">
+	<div class="adaptive-grid-content">
+		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 1</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 2</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 3</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 4</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 5</div>
+		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 6</div>
+	</div>
+</div>
+```
+
+## Intrinsic sizing
+
+Every track uses `minmax(0, 1fr)`, and direct `.adaptive-grid-item` children have
+`min-inline-size: 0`. This allows long code, tables, and other intrinsically wide content to
+shrink within a track instead of forcing the grid wider than its container. Consumers can apply
+an appropriate overflow or wrapping treatment to the content itself.
+
+The default gap and two-column threshold can be configured before loading Atlas Sass with
+`$adaptive-grid-gap` and `$adaptive-grid-columns-2-min-width`. Future column counts or weighted
+presets can be added as component-prefixed modifiers without changing the wrapper and content
+structure.
 
 ## Interactive container size
 
@@ -179,47 +225,3 @@ The component markup used in the preview is:
 	</div>
 </div>
 ```
-
-## Container size, not viewport size
-
-The same modifier can produce different layouts in the same viewport because each grid queries
-its own wrapper. The 350px example remains one column, while the 500px example becomes two
-columns when the viewport is wide enough to apply that width.
-
-```html
-<div class="adaptive-grid adaptive-grid-columns-2 width-350">
-	<div class="adaptive-grid-content">
-		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 1</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 2</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 3</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 4</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 5</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Narrow item 6</div>
-	</div>
-</div>
-```
-
-```html
-<div class="adaptive-grid adaptive-grid-columns-2 width-500-tablet">
-	<div class="adaptive-grid-content">
-		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 1</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 2</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 3</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 4</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 5</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Wide item 6</div>
-	</div>
-</div>
-```
-
-## Intrinsic sizing
-
-Every track uses `minmax(0, 1fr)`, and direct `.adaptive-grid-item` children have
-`min-inline-size: 0`. This allows long code, tables, and other intrinsically wide content to
-shrink within a track instead of forcing the grid wider than its container. Consumers can apply
-an appropriate overflow or wrapping treatment to the content itself.
-
-The default gap and two-column threshold can be configured before loading Atlas Sass with
-`$adaptive-grid-gap` and `$adaptive-grid-columns-2-min-width`. Future column counts or weighted
-presets can be added as component-prefixed modifiers without changing the wrapper and content
-structure.
