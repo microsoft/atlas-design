@@ -49,7 +49,7 @@ this grid's inline size. The slider updates a CSS custom property on the demo pa
 grid switch to two columns at exactly 400px without changing the viewport.
 
 <div
-	class="adaptive-grid-demo border border-radius padding-sm margin-top-sm"
+	class="adaptive-grid-demo padding-sm margin-top-sm"
 	data-adaptive-grid-resizer
 >
 	<div class="adaptive-grid-demo-options">
@@ -142,7 +142,9 @@ grid switch to two columns at exactly 400px without changing the viewport.
 		/>
 		<output for="adaptive-grid-width" data-adaptive-grid-resizer-output>600px</output>
 	</div>
-	<div class="adaptive-grid adaptive-grid-columns-2 adaptive-grid-demo-preview">
+	<div
+		class="adaptive-grid adaptive-grid-columns-2 adaptive-grid-demo-preview border border-radius"
+	>
 		<div class="adaptive-grid-content">
 			<div class="adaptive-grid-item border border-radius padding-sm">Item 1</div>
 			<div class="adaptive-grid-item border border-radius padding-sm">Item 2</div>
