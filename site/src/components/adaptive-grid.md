@@ -11,8 +11,8 @@ classPrefixes:
 
 The adaptive grid arranges content according to the space available to the grid itself, rather
 than the viewport. It uses one equal-width column by default. Add
-`.adaptive-grid-columns-2` to use two equal-width columns when the container is at least 400px
-wide.
+`.adaptive-grid-columns-2` to use two equal-width columns when the query container's content box
+is at least 400px wide.
 
 The wrapper, content, and item classes are required. `.adaptive-grid` establishes the named query
 container, its direct `.adaptive-grid-content` child receives the grid layout, and each direct
@@ -83,16 +83,15 @@ Every track uses `minmax(0, 1fr)`, and direct `.adaptive-grid-item` children hav
 shrink within a track instead of forcing the grid wider than its container. Consumers can apply
 an appropriate overflow or wrapping treatment to the content itself.
 
-The default gap and two-column threshold can be configured before loading Atlas Sass with
-`$adaptive-grid-gap` and `$adaptive-grid-columns-2-min-width`. Future column counts or weighted
-presets can be added as component-prefixed modifiers without changing the wrapper and content
-structure.
+Consumers compiling Atlas Sass can configure the default gap and two-column threshold with
+`$adaptive-grid-gap` and `$adaptive-grid-columns-2-min-width`.
 
 ## Interactive container size
 
 Use the button groups to apply the column modifier and gap atomics, then use the slider to change
-this grid's inline size. The slider updates a CSS custom property on the demo parent, making the
-grid switch to two columns at exactly 400px without changing the viewport.
+this preview's outer inline size. The slider updates a CSS custom property on the demo parent
+without changing the viewport. The grid switches to two columns when its queried content box
+reaches 400px; the displayed outer width also includes its border and padding.
 
 <div class="adaptive-grid-demo margin-top-sm" data-adaptive-grid-resizer>
 	<div class="adaptive-grid-demo-options">
@@ -173,7 +172,7 @@ grid switch to two columns at exactly 400px without changing the viewport.
 		</div>
 	</div>
 	<div class="adaptive-grid-demo-controls">
-		<label for="adaptive-grid-width">Container width</label>
+		<label for="adaptive-grid-width">Preview outer width</label>
 		<input
 			class="adaptive-grid-demo-slider"
 			id="adaptive-grid-width"
