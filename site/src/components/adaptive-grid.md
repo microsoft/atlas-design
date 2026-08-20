@@ -9,8 +9,8 @@ classPrefixes:
 
 # Adaptive grid
 
-The adaptive grid arranges content according to the space available to the grid itself, rather
-than the viewport. It uses one equal-width column by default. Add
+The adaptive grid uses CSS container queries to arrange content according to the space available
+to the grid itself, rather than the viewport. It uses one equal-width column by default. Add
 `.adaptive-grid-columns-2` to use two equal-width columns when the query container's content box
 is at least 400px wide.
 
