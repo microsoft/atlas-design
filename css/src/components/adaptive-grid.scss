@@ -1,0 +1,26 @@
+@use '../tokens/index.scss' as tokens;
+
+$adaptive-grid-gap: tokens.$layout-2 !default;
+$adaptive-grid-columns-2-min-width: 400px !default;
+
+.adaptive-grid {
+	container: adaptive-grid / inline-size;
+
+	> .adaptive-grid-content {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: $adaptive-grid-gap;
+
+		> .adaptive-grid-item {
+			min-inline-size: 0;
+		}
+	}
+
+	&.adaptive-grid-columns-2 {
+		@container adaptive-grid (min-width: #{$adaptive-grid-columns-2-min-width}) {
+			> .adaptive-grid-content {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+	}
+}
