@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.14.0
+
+### Minor Changes
+
+- e6da3a5: Add a container-aware adaptive grid component and equal-track grid template atomics.
+
 ## 6.13.0
 
 ### Minor Changes
