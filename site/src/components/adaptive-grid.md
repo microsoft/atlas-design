@@ -48,14 +48,14 @@ Resize the available content area to see this example switch between one and two
 
 Choose exactly one two-column modifier. Do not combine column modifiers on the same grid.
 
-| Modifier                                 | Minimum content-box width              |
-| ---------------------------------------- | -------------------------------------- |
-| `.adaptive-grid-columns-2`               | 400px by default; configurable in Sass |
-| `.adaptive-grid-columns-2-min-width-600` | 600px                                  |
-| `.adaptive-grid-columns-2-min-width-800` | 800px                                  |
+| Modifier                                 | Minimum content-box width |
+| ---------------------------------------- | ------------------------- |
+| `.adaptive-grid-columns-2`               | 400px                     |
+| `.adaptive-grid-columns-2-min-width-600` | 600px                     |
+| `.adaptive-grid-columns-2-min-width-800` | 800px                     |
 
-The numeric suffixes are fixed pixel thresholds. Borders and padding are outside the queried
-content box and do not count toward the minimum width.
+These are the default pixel thresholds. Borders and padding are outside the queried content box
+and do not count toward the minimum width.
 
 ## Container size, not viewport size
 
@@ -96,10 +96,8 @@ Every track uses `minmax(0, 1fr)`, and direct `.adaptive-grid-item` children hav
 shrink within a track instead of forcing the grid wider than its container. Consumers can apply
 an appropriate overflow or wrapping treatment to the content itself.
 
-Consumers compiling Atlas Sass can configure the default gap and the unsuffixed two-column
-threshold with `$adaptive-grid-gap` and `$adaptive-grid-columns-2-min-width`. The
-`.adaptive-grid-columns-2-min-width-600` and `.adaptive-grid-columns-2-min-width-800` thresholds
-are fixed.
+Consumers compiling Atlas Sass can configure the default gap with `$adaptive-grid-gap` and the
+two-column class and threshold pairs with `$adaptive-grid-columns-2-variants`.
 
 ## Interactive container size
 
