@@ -35,9 +35,11 @@ these decisions when extending the component.
   existing generic container-query tokens.
 - CSS custom properties cannot supply size-query thresholds. Do not expose a raw track-template
   custom property or weaken the zero-minimum track invariant as a workaround.
-- Literal threshold variants require design review. If approved, keep `columns`, encode both the
-  count and an explicit minimum-width marker, and avoid ambiguous names such as
-  `.adaptive-grid-2`, `.adaptive-grid-2-800`, or `.adaptive-grid-columns-800`.
+- Literal threshold variants require design review. Use
+  `.adaptive-grid-columns-N-min-width-PX` for approved, fixed pixel thresholds; do not expose
+  literal thresholds as configurable Sass variables. Keep these variants mutually exclusive with
+  other column modifiers, and avoid ambiguous names such as `.adaptive-grid-2`,
+  `.adaptive-grid-2-800`, or `.adaptive-grid-columns-800`.
 - Do not overload numeric column modifiers with weighted or asymmetric layouts. Such layouts need
   separately named presets and a concrete use case.
 

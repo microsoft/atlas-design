@@ -8,7 +8,11 @@ const CLASS_GROUPS = new Map([
 		'columns',
 		{
 			selector: '.adaptive-grid-demo-preview',
-			classes: ['adaptive-grid-columns-2']
+			classes: [
+				'adaptive-grid-columns-2',
+				'adaptive-grid-columns-2-min-width-600',
+				'adaptive-grid-columns-2-min-width-800'
+			]
 		}
 	],
 	[
