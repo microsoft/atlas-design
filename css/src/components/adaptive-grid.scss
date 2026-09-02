@@ -3,6 +3,12 @@
 $adaptive-grid-gap: tokens.$layout-2 !default;
 $adaptive-grid-columns-2-min-width: 400px !default;
 
+$_adaptive-grid-columns-2-variants: (
+	adaptive-grid-columns-2: $adaptive-grid-columns-2-min-width,
+	adaptive-grid-columns-2-min-width-600: 600px,
+	adaptive-grid-columns-2-min-width-800: 800px
+);
+
 @mixin _adaptive-grid-columns-2-at($min-width) {
 	@container adaptive-grid (min-width: #{$min-width}) {
 		> .adaptive-grid-content {
@@ -24,15 +30,9 @@ $adaptive-grid-columns-2-min-width: 400px !default;
 		}
 	}
 
-	&.adaptive-grid-columns-2 {
-		@include _adaptive-grid-columns-2-at($adaptive-grid-columns-2-min-width);
-	}
-
-	&.adaptive-grid-columns-2-min-width-600 {
-		@include _adaptive-grid-columns-2-at(600px);
-	}
-
-	&.adaptive-grid-columns-2-min-width-800 {
-		@include _adaptive-grid-columns-2-at(800px);
+	@each $class-name, $min-width in $_adaptive-grid-columns-2-variants {
+		&.#{$class-name} {
+			@include _adaptive-grid-columns-2-at($min-width);
+		}
 	}
 }
