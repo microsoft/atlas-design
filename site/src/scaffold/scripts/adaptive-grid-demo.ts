@@ -2,7 +2,9 @@ const RESIZER_SELECTOR = '[data-adaptive-grid-resizer]';
 const INPUT_SELECTOR = '[data-adaptive-grid-resizer-input]';
 const OUTPUT_SELECTOR = '[data-adaptive-grid-resizer-output]';
 const CLASS_BUTTON_SELECTOR = '[data-adaptive-grid-class]';
+const WORKSPACE_SELECTOR = '.adaptive-grid-demo-workspace';
 const WIDTH_PROPERTY = '--adaptive-grid-demo-width';
+const MIN_PREVIEW_WIDTH = 240;
 const CLASS_GROUPS = new Map([
 	[
 		'columns',
@@ -25,6 +27,31 @@ const CLASS_GROUPS = new Map([
 ]);
 
 export function initAdaptiveGridDemos() {
+	const resizeObserver = new ResizeObserver(entries => {
+		for (const entry of entries) {
+			const workspace = entry.target;
+			const demo = workspace.closest<HTMLElement>(RESIZER_SELECTOR);
+			const input = demo?.querySelector<HTMLInputElement>(INPUT_SELECTOR);
+			const output = demo?.querySelector<HTMLOutputElement>(OUTPUT_SELECTOR);
+			const availableWidth = Math.floor(workspace.getBoundingClientRect().width);
+
+			if (!demo || !input || !output) {
+				throw new Error('Misconfigured adaptive grid demo');
+			}
+			if (availableWidth < 1) {
+				continue;
+			}
+
+			input.min = String(Math.min(MIN_PREVIEW_WIDTH, availableWidth));
+			input.max = String(availableWidth);
+			updateDemoWidth(demo, input, output, Math.min(Number(input.value), availableWidth));
+		}
+	});
+
+	for (const workspace of document.querySelectorAll<HTMLElement>(WORKSPACE_SELECTOR)) {
+		resizeObserver.observe(workspace);
+	}
+
 	window.addEventListener('input', event => {
 		const input = event.target instanceof Element && event.target.closest(INPUT_SELECTOR);
 		if (!(input instanceof HTMLInputElement)) {
@@ -39,8 +66,7 @@ export function initAdaptiveGridDemos() {
 			throw new Error('Misconfigured adaptive grid demo');
 		}
 
-		demo.style.setProperty(WIDTH_PROPERTY, `${width}px`);
-		output.value = `${width}px`;
+		updateDemoWidth(demo, input, output, width);
 	});
 
 	window.addEventListener('click', event => {
@@ -77,4 +103,15 @@ export function initAdaptiveGridDemos() {
 			);
 		}
 	});
+}
+
+function updateDemoWidth(
+	demo: HTMLElement,
+	input: HTMLInputElement,
+	output: HTMLOutputElement,
+	width: number
+) {
+	input.value = String(width);
+	demo.style.setProperty(WIDTH_PROPERTY, `${width}px`);
+	output.value = `${width}px`;
 }
