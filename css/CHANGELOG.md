@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 6.15.0
+
+### Minor Changes
+
+- 5d48070: Add 600px and 800px default minimum-width options to the two-column adaptive grid.
+
+### Patch Changes
+
+- 5d48070: Replace the adaptive grid's standalone two-column threshold variable with a configurable variant map.
+
 ## 6.14.0
 
 ### Minor Changes
