@@ -10,9 +10,9 @@ classPrefixes:
 # Adaptive grid
 
 The adaptive grid uses CSS container queries to arrange content according to the space available
-to the grid itself, rather than the viewport. It uses one equal-width column by default. Add
-`.adaptive-grid-columns-2` to use two equal-width columns when the query container's content box
-is at least 400px wide.
+to the grid itself, rather than the viewport. It uses one equal-width column by default. Add one
+column modifier to use two equal-width columns when the query container's content box reaches the
+modifier's minimum width.
 
 The wrapper, content, and item classes are required. `.adaptive-grid` establishes the named query
 container, its direct `.adaptive-grid-content` child receives the grid layout, and each direct
@@ -43,6 +43,19 @@ Resize the available content area to see this example switch between one and two
 	</div>
 </div>
 ```
+
+### Two-column thresholds
+
+Choose exactly one two-column modifier. Do not combine column modifiers on the same grid.
+
+| Modifier                                 | Minimum content-box width |
+| ---------------------------------------- | ------------------------- |
+| `.adaptive-grid-columns-2`               | 400px                     |
+| `.adaptive-grid-columns-2-min-width-600` | 600px                     |
+| `.adaptive-grid-columns-2-min-width-800` | 800px                     |
+
+These are the default pixel thresholds. Borders and padding are outside the queried content box
+and do not count toward the minimum width.
 
 ## Container size, not viewport size
 
@@ -83,15 +96,15 @@ Every track uses `minmax(0, 1fr)`, and direct `.adaptive-grid-item` children hav
 shrink within a track instead of forcing the grid wider than its container. Consumers can apply
 an appropriate overflow or wrapping treatment to the content itself.
 
-Consumers compiling Atlas Sass can configure the default gap and two-column threshold with
-`$adaptive-grid-gap` and `$adaptive-grid-columns-2-min-width`.
+Consumers compiling Atlas Sass can configure the default gap with `$adaptive-grid-gap` and the
+two-column class and threshold pairs with `$adaptive-grid-columns-2-variants`.
 
 ## Interactive container size
 
-Use the button groups to apply the column modifier and gap atomics, then use the slider to change
+Use the button groups to apply a column modifier and gap atomics, then use the slider to change
 this preview's outer inline size. The slider updates a CSS custom property on the demo parent
 without changing the viewport. The grid switches to two columns when its queried content box
-reaches 400px; the displayed outer width also includes its border and padding.
+reaches the selected threshold; the displayed outer width also includes its border and padding.
 
 <div class="adaptive-grid-demo margin-top-sm" data-adaptive-grid-resizer>
 	<div class="adaptive-grid-demo-options">
@@ -124,6 +137,24 @@ reaches 400px; the displayed outer width also includes its border and padding.
 					data-adaptive-grid-class-group="columns"
 				>
 					.adaptive-grid-columns-2
+				</button>
+				<button
+					class="button"
+					type="button"
+					aria-pressed="false"
+					data-adaptive-grid-class="adaptive-grid-columns-2-min-width-600"
+					data-adaptive-grid-class-group="columns"
+				>
+					.adaptive-grid-columns-2-min-width-600
+				</button>
+				<button
+					class="button"
+					type="button"
+					aria-pressed="false"
+					data-adaptive-grid-class="adaptive-grid-columns-2-min-width-800"
+					data-adaptive-grid-class-group="columns"
+				>
+					.adaptive-grid-columns-2-min-width-800
 				</button>
 			</div>
 		</div>
@@ -178,7 +209,7 @@ reaches 400px; the displayed outer width also includes its border and padding.
 			id="adaptive-grid-width"
 			type="range"
 			min="240"
-			max="800"
+			max="1000"
 			value="600"
 			data-adaptive-grid-resizer-input
 		/>
