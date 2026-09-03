@@ -1,4 +1,5 @@
 @use '@microsoft/atlas-css/src/tokens/index.scss' as tokens;
+@use '@microsoft/atlas-css/src/mixins/index.scss' as mixins;
 @use '@microsoft/atlas-css/src/components/button.scss' as button;
 
 [data-adaptive-grid-class][aria-pressed='true'] {
@@ -13,6 +14,21 @@
 		display: grid;
 		gap: tokens.$layout-2;
 		margin-block-end: tokens.$layout-2;
+	}
+
+	.adaptive-grid-demo-workspace {
+		@include mixins.desktop {
+			--adaptive-grid-demo-available-width: min(
+				1000px,
+				calc(
+					100vw - var(--layout-menu-width) - var(--layout-menu-spacer-width) -
+						var(--layout-aside-spacer-width) - var(--layout-aside-width) - (var(--layout-gap) * 2)
+				)
+			);
+
+			inline-size: var(--adaptive-grid-demo-available-width);
+			margin-inline: calc((100% - var(--adaptive-grid-demo-available-width)) / 2);
+		}
 	}
 
 	.adaptive-grid-demo-option-label {

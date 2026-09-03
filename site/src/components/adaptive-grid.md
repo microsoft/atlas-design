@@ -102,9 +102,12 @@ two-column class and threshold pairs with `$adaptive-grid-columns-2-variants`.
 ## Interactive container size
 
 Use the button groups to apply a column modifier and gap atomics, then use the slider to change
-this preview's outer inline size. The slider updates a CSS custom property on the demo parent
-without changing the viewport. The grid switches to two columns when its queried content box
-reaches the selected threshold; the displayed outer width also includes its border and padding.
+this preview's inline size. The slider updates a CSS custom property on the demo parent without
+changing the viewport. The grid switches to two columns when its queried content box reaches the
+selected threshold.
+
+Use this interactive example on a wide screen. On narrower screens, the slider is limited to the
+available space, so larger column thresholds may not be reachable.
 
 <div class="adaptive-grid-demo margin-top-sm" data-adaptive-grid-resizer>
 	<div class="adaptive-grid-demo-options">
@@ -166,15 +169,6 @@ reaches the selected threshold; the displayed outer width also includes its bord
 				<button
 					class="button"
 					type="button"
-					aria-pressed="true"
-					data-adaptive-grid-class=""
-					data-adaptive-grid-class-group="gap"
-				>
-					Default
-				</button>
-				<button
-					class="button"
-					type="button"
 					aria-pressed="false"
 					data-adaptive-grid-class="gap-none"
 					data-adaptive-grid-class-group="gap"
@@ -184,11 +178,11 @@ reaches the selected threshold; the displayed outer width also includes its bord
 				<button
 					class="button"
 					type="button"
-					aria-pressed="false"
+					aria-pressed="true"
 					data-adaptive-grid-class="gap-xs"
 					data-adaptive-grid-class-group="gap"
 				>
-					.gap-xs
+					.gap-xs (default)
 				</button>
 				<button
 					class="button"
@@ -202,56 +196,37 @@ reaches the selected threshold; the displayed outer width also includes its bord
 			</div>
 		</div>
 	</div>
-	<div class="adaptive-grid-demo-controls">
-		<label for="adaptive-grid-width">Preview outer width</label>
-		<input
-			class="adaptive-grid-demo-slider"
-			id="adaptive-grid-width"
-			type="range"
-			min="240"
-			max="1000"
-			value="600"
-			data-adaptive-grid-resizer-input
-		/>
-		<output for="adaptive-grid-width" data-adaptive-grid-resizer-output>600px</output>
-	</div>
 	<div
-		class="adaptive-grid adaptive-grid-columns-2 adaptive-grid-demo-preview border border-radius padding-sm"
+		class="adaptive-grid-demo-workspace background-color-body-accent border-radius padding-block-sm"
 	>
-		<div class="adaptive-grid-content">
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 1</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 2</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 3</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 4</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 5</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 6</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 7</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 8</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 9</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 10</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 11</div>
-			<div class="adaptive-grid-item border border-radius padding-sm">Item 12</div>
+		<div class="adaptive-grid-demo-controls padding-inline-sm">
+			<label for="adaptive-grid-width">Preview width</label>
+			<input
+				class="adaptive-grid-demo-slider"
+				id="adaptive-grid-width"
+				type="range"
+				min="240"
+				max="1000"
+				value="600"
+				data-adaptive-grid-resizer-input
+			/>
+			<output for="adaptive-grid-width" data-adaptive-grid-resizer-output>600px</output>
+		</div>
+		<div class="adaptive-grid adaptive-grid-columns-2 adaptive-grid-demo-preview">
+			<div class="adaptive-grid-content gap-xs">
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 1</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 2</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 3</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 4</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 5</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 6</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 7</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 8</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 9</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 10</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 11</div>
+				<div class="adaptive-grid-item border border-radius padding-sm background-color-body">Item 12</div>
+			</div>
 		</div>
 	</div>
 </div>
-
-The component markup used in the preview is:
-
-```html-no-example
-<div class="adaptive-grid adaptive-grid-columns-2">
-	<div class="adaptive-grid-content">
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 1</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 2</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 3</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 4</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 5</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 6</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 7</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 8</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 9</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 10</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 11</div>
-		<div class="adaptive-grid-item border border-radius padding-sm">Item 12</div>
-	</div>
-</div>
-```
