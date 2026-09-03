@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.13.0
+
+### Minor Changes
+
+- 5d48070: Add 600px and 800px default minimum-width options to the two-column adaptive grid.
+
 ## 1.12.0
 
 ### Minor Changes
