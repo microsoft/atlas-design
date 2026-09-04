@@ -17,17 +17,17 @@ $accordion-transition: transform 0.15s !default;
 	$icon-before-offset-size: calc($font-size - 0.375rem);
 	$icon-after-offset-size: calc($font-size - 0.5rem);
 
-	summary {
+	> summary {
 		font-size: $font-size;
 	}
 
-	&:not(.accordion-icon-end) summary {
+	&:not(.accordion-icon-end) > summary {
 		&::before {
 			margin-block-start: $icon-before-offset-size;
 		}
 	}
 
-	&.accordion-icon-end summary {
+	&.accordion-icon-end > summary {
 		&::after {
 			margin-block-start: $icon-after-offset-size;
 		}
@@ -37,7 +37,7 @@ $accordion-transition: transform 0.15s !default;
 .accordion {
 	@include accordion-summary-sizes($accordion-font-size-md);
 
-	summary {
+	> summary {
 		display: flex;
 		line-height: 1.5;
 		list-style: none;
@@ -61,49 +61,49 @@ $accordion-transition: transform 0.15s !default;
 	}
 
 	&:not(.accordion-icon-end) {
-		summary::before {
+		> summary::before {
 			@include mixins.chevron-right;
 
 			transition: $accordion-transition;
 		}
 
-		&:dir(rtl) summary::before {
+		&:dir(rtl) > summary::before {
 			@include mixins.chevron-right-rtl;
 		}
 	}
 
 	&.accordion-icon-end {
-		summary::after {
+		> summary::after {
 			@include mixins.chevron-down;
 
 			transition: $accordion-transition;
 		}
 
-		&:dir(rtl) summary::after {
+		&:dir(rtl) > summary::after {
 			@include mixins.chevron-down-rtl;
 		}
 	}
 
 	&[open] {
 		&:not(.accordion-icon-end) {
-			summary::before {
+			> summary::before {
 				transform: mixins.$chevron-down-rotate translate(calc(mixins.$chevron-arrow-size / 2), 0);
 			}
 
 			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
-			&:dir(rtl) summary::before {
+			&:dir(rtl) > summary::before {
 				transform: mixins.$chevron-down-rotate-rtl
 					translate(calc(mixins.$chevron-arrow-size / 2 * -1), 0);
 			}
 		}
 
 		&.accordion-icon-end {
-			summary::after {
+			> summary::after {
 				transform: mixins.$chevron-up-rotate-scale-xy;
 			}
 
 			/* stylelint-disable-next-line selector-max-specificity, rule-empty-line-before */
-			&:dir(rtl) summary::after {
+			&:dir(rtl) > summary::after {
 				transform: mixins.$chevron-up-rotate-scale-xy-rtl;
 			}
 		}
