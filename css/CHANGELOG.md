@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 6.15.1
+
+### Patch Changes
+
+- 944aa39: Fix nested accordion chevrons so each indicator follows its own open state.
+
 ## 6.15.0
 
 ### Minor Changes
