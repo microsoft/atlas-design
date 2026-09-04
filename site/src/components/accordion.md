@@ -46,6 +46,37 @@ Here is an example of a standard `.accordion` usage. By default, accordion items
 
 ## Attributes
 
+### Nested accordions
+
+Each nested accordion follows its own open or closed state.
+
+```html
+<details class="accordion" open>
+	<summary>
+		<div class="accordion-header">Open parent accordion</div>
+	</summary>
+	<div class="accordion-content">
+		<details class="accordion">
+			<summary>
+				<div class="accordion-header">Closed child accordion</div>
+			</summary>
+			<div class="accordion-content">
+				<p>Child accordion panel</p>
+			</div>
+		</details>
+
+		<details class="accordion" open>
+			<summary>
+				<div class="accordion-header">Open child accordion</div>
+			</summary>
+			<div class="accordion-content">
+				<p>Child accordion panel</p>
+			</div>
+		</details>
+	</div>
+</details>
+```
+
 ### Open
 
 To load the accordion component in the expanded state by default, add the `open` attribute to the `<details>` element.
