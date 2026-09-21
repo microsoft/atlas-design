@@ -13,7 +13,7 @@
 	"icon": "icons/atlas-icon-512.png",
 	"engines": {
 		"vscode": "^1.71.0",
-		"node": "^24.0.0",
+		"node": "^26.0.0",
 		"npm": "^11.0.0"
 	},
 	"categories": [
@@ -30,7 +30,7 @@
 		"classes"
 	],
 	"main": "./out/main.js",
-	"packageManager": "npm@11.8.0",
+	"packageManager": "npm@11.19.1",
 	"scripts": {
 		"test-compile": "tsc -p ./",
 		"pretest": "npm run compile && npm run lint",
@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"@types/glob": "^8.1.0",
 		"@types/mocha": "^10.0.1",
-		"@types/node": "24.x",
+		"@types/node": "26.x",
 		"@types/vscode": "^1.79.1",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
