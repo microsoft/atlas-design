@@ -3,6 +3,8 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
 	test: {
 		environment: 'jsdom',
+		// Use jsdom's per-window storage instead of Node's file-backed Web Storage.
+		execArgv: ['--no-experimental-webstorage'],
 		include: ['test/**/*.test.ts'],
 		reporters: process.env.GITHUB_ACTIONS === 'true' ? ['default', 'github-actions'] : ['default'],
 		coverage: {

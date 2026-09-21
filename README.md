@@ -33,7 +33,7 @@ Looking for information about the Atlas CSS framework? Start in `/css`!
 ## Development
 
 - Ensure [git](https://git-scm.com/) is installed.
-- Ensure that have downloaded and installed a version of [NodeJS](https://nodejs.org/en/download/releases/) that supports monorepos. It's currently recommended you download NodeJS version 24.18.0 and use with NPM at a greater version than 8.19.2.
+- Install [Node.js](https://nodejs.org/en/download/releases/) 26 and npm 11. The recommended Node.js version is 26.8.2, pinned in `.nvmrc` for local development and CI. All minor and patch releases of Node.js 26 and npm 11 are supported by the package engine ranges.
 - Alternatively, you can install NPM with NVM: [mac](https://github.com/nvm-sh/nvm) | [windows](https://github.com/coreybutler/nvm-windows).
 - If contributing code, please read about using [changesets](https://github.com/atlassian/changesets) and [semantic versioning bump types](https://semver.org/).
 - Clone the repostory.

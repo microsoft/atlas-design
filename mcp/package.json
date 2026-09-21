@@ -9,7 +9,7 @@
 		"atlas-mcp": "./dist/index.js"
 	},
 	"engines": {
-		"node": "^24.0.0",
+		"node": "^26.0.0",
 		"npm": "^11.0.0"
 	},
 	"scripts": {
@@ -58,7 +58,7 @@
 		"zod": "^3.25.0"
 	},
 	"devDependencies": {
-		"@types/node": "^24.0.0",
+		"@types/node": "^26.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.62.0",
 		"@typescript-eslint/parser": "^5.62.0",
 		"eslint": "^8.43.0",
