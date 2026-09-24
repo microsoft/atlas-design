@@ -3,6 +3,8 @@
 
 $color-primary: tokens.$primary;
 $color-success: tokens.$success;
+$color-warning: tokens.$warning;
+$color-info: tokens.$info;
 $color-danger: tokens.$danger;
 
 .api-link-button-container {
@@ -49,6 +51,14 @@ $color-danger: tokens.$danger;
 
 		&[data-method='post'] {
 			color: #{$color-success};
+		}
+
+		&[data-method='put'] {
+			color: #{$color-warning};
+		}
+
+		&[data-method='patch'] {
+			color: #{$color-info};
 		}
 
 		&[data-method='delete'] {
