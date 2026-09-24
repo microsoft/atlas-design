@@ -43,6 +43,19 @@ By default, badges are secondary badges.
 | Warning | `.badge.badge-warning`<br />`.badge.badge-warning.badge-clear`<br />`.badge.badge-warning.badge-filled` | <span class="badge badge-warning">Badge</span> | <span class="badge badge-warning badge-clear">Clear</span> | <span class="badge badge-warning badge-filled">Filled</span> |
 | Success | `.badge.badge-success`<br />`.badge.badge-success.badge-clear`<br />`.badge.badge-success.badge-filled` | <span class="badge badge-success">Badge</span> | <span class="badge badge-success badge-clear">Clear</span> | <span class="badge badge-success badge-filled">Filled</span> |
 
+### Badge-specific colors
+
+#### Highlight badge
+
+Use the badge-specific `badge-highlight` class to visually highlight informational badges. Do not
+combine it with the `badge-clear` or `badge-filled` variants.
+
+```html
+<span class="badge badge-highlight">Architecture</span>
+<span class="badge badge-highlight">Guide</span>
+<span class="badge badge-highlight">Solution Idea</span>
+```
+
 ### Badge with icon
 
 Badges can include icons and text. To do this, nest the [icon component](./icon.md) inside a badge.

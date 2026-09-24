@@ -50,6 +50,12 @@ $badge-border-radius: tokens.$border-radius-rounded !default;
 		}
 	}
 
+	&.badge-highlight:not(.badge-clear, .badge-filled) {
+		border-color: tokens.$badge-highlight-foreground;
+		background-color: tokens.$badge-highlight-background;
+		color: tokens.$badge-highlight-foreground;
+	}
+
 	&.badge-clear {
 		border-color: transparent;
 		background-color: transparent;
