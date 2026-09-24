@@ -1,5 +1,11 @@
 # @microsoft/atlas-site
 
+## 1.13.1
+
+### Patch Changes
+
+- 34abcd1: Fixing MS logo svg
+
 ## 1.13.0
 
 ### Minor Changes

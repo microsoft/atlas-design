@@ -1,5 +1,15 @@
 # @microsoft/atlas-css
 
+## 7.0.0
+
+### Major Changes
+
+- 8622405: Upgrade the required Node.js major version from 24 to 26. Engine ranges accept all Node.js 26 and npm 11 minor and patch releases.
+
+### Patch Changes
+
+- 0d4c076: Reduce the API link button font size
+
 ## 6.15.1
 
 ### Patch Changes

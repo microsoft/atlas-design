@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-site",
-	"version": "1.13.0",
+	"version": "1.13.1",
 	"license": "MIT",
 	"private": true,
 	"type": "module",
@@ -70,8 +70,8 @@
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.6",
-		"@microsoft/atlas-css": "6.15.1",
-		"@microsoft/atlas-js": "^4.0.0",
+		"@microsoft/atlas-css": "7.0.0",
+		"@microsoft/atlas-js": "^5.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
 		"esbuild": "^0.28.1",
