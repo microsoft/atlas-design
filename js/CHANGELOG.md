@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 5.0.0
+
+### Major Changes
+
+- 8622405: Upgrade the required Node.js major version from 24 to 26. Engine ranges accept all Node.js 26 and npm 11 minor and patch releases.
+
 ## 4.0.0
 
 ### Major Changes
