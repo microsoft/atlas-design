@@ -33,6 +33,10 @@ Although we favor unabbreviated names in our design system, we've made one excep
 - extra large - xl
 - extra extra large - xl
 
+## Container query token and mixin naming
+
+Container query tokens and mixins use the pixel value in the name rather than t-shirt sizes (e.g., `$container-query-480` and `@include container-480` instead of `$container-query-md` and `@include container-md`). This differs from the t-shirt size convention used elsewhere because container query breakpoints describe the intrinsic width of a component's container, not a relative size within a component's own API. A pixel-named token is immediately unambiguous — `container-480` tells you the exact threshold — whereas `container-md` would require looking up the value, and could be confused with viewport breakpoints that also use t-shirt sizes.
+
 ## Example
 
 ```scss
