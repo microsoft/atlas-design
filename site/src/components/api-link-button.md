@@ -39,4 +39,17 @@ The narrow layout reduces the vertical gap between the method and path to keep t
 
 ## Method colors
 
-Set `data-method` on `.api-link-button-method` to apply the semantic color for `get`, `post`, or `delete`. Other methods inherit the surrounding text color.
+Set `data-method` on `.api-link-button-method` to apply the method color for `get`, `post`, `put`, `patch`, or `delete`. Other methods inherit the surrounding text color.
+
+```html
+<div class="api-link-button-container">
+	<a class="api-link-button" href="#method-colors" aria-label="Replace a response">
+		<span class="api-link-button-method" data-method="put">put</span>
+		<span class="api-link-button-text">/openai/v1/responses/{response_id}</span>
+	</a>
+	<a class="api-link-button" href="#method-colors" aria-label="Update a response">
+		<span class="api-link-button-method" data-method="patch">patch</span>
+		<span class="api-link-button-text">/openai/v1/responses/{response_id}</span>
+	</a>
+</div>
+```
