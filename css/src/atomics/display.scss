@@ -1,6 +1,10 @@
 @use '../tokens/index.scss' as tokens;
 @use '../mixins/index.scss' as mixins;
 
+.content-visibility-auto {
+	content-visibility: auto !important;
+}
+
 @each $item in tokens.$displays {
 	.display-#{$item} {
 		display: #{$item} !important;
