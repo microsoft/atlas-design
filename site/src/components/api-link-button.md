@@ -43,12 +43,24 @@ Set `data-method` on `.api-link-button-method` to apply the method color for `ge
 
 ```html
 <div class="api-link-button-container">
+	<a class="api-link-button" href="#method-colors" aria-label="Get a response">
+		<span class="api-link-button-method" data-method="get">get</span>
+		<span class="api-link-button-text">/openai/v1/responses/{response_id}</span>
+	</a>
+	<a class="api-link-button" href="#method-colors" aria-label="Create a response">
+		<span class="api-link-button-method" data-method="post">post</span>
+		<span class="api-link-button-text">/openai/v1/responses</span>
+	</a>
 	<a class="api-link-button" href="#method-colors" aria-label="Replace a response">
 		<span class="api-link-button-method" data-method="put">put</span>
 		<span class="api-link-button-text">/openai/v1/responses/{response_id}</span>
 	</a>
 	<a class="api-link-button" href="#method-colors" aria-label="Update a response">
 		<span class="api-link-button-method" data-method="patch">patch</span>
+		<span class="api-link-button-text">/openai/v1/responses/{response_id}</span>
+	</a>
+	<a class="api-link-button" href="#method-colors" aria-label="Delete a response">
+		<span class="api-link-button-method" data-method="delete">delete</span>
 		<span class="api-link-button-text">/openai/v1/responses/{response_id}</span>
 	</a>
 </div>
