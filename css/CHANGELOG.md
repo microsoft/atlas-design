@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 7.0.1
+
+### Patch Changes
+
+- fe76d85: Add API link button colors for PUT and PATCH methods.
+
 ## 7.0.0
 
 ### Major Changes
