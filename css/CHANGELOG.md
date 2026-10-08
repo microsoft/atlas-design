@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 7.1.0
+
+### Minor Changes
+
+- 861ca97: Add the content-visibility-auto atomic to defer rendering off-screen content.
+
 ## 7.0.1
 
 ### Patch Changes
