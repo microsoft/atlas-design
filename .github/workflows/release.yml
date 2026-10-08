@@ -33,21 +33,8 @@ jobs:
         run: npm ci
 
       # https://github.com/changesets/action
-      - name: Publish on version increment
+      - name: Create or update Changesets version PR
         uses: changesets/action@v1
-        id: changesets
-        with:
-          publish: npx changeset publish
         env:
           HOME: ${{ github.workspace }} # https://github.com/changesets/action/issues/147
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # When changesets has published a new version of @microsoft/atlas-css, then we can attempt to publish a new extension version too.
-      - name: Publish VSCode extension on version increment
-        #
-        if: ${{ steps.changesets.outputs.published == 'true' && contains(steps.changesets.outputs.publishedPackages.*.name, '@microsoft/atlas-css') }}
-        run: npm run publish:extension
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
