@@ -1,10 +1,10 @@
 // @ts-check
 
 import { mkdir, readFile, rm, writeFile } from 'fs/promises';
+import { glob } from 'glob';
 import { basename, dirname, join, resolve, sep } from 'path';
 import * as pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
-import { promisify } from 'util';
 import {
 	baselineDirectory,
 	diffDirectory,
@@ -12,7 +12,7 @@ import {
 	screenshotsRoot
 } from './locations';
 import { generateHtmlReport } from './report';
-export const glob = promisify(require('glob'));
+export { glob };
 
 export const diffExt = '.diff.png';
 /**
@@ -84,23 +84,17 @@ async function compare(
 		rm(outDir, { recursive: true, force: true }).then(() => mkdir(outDir, { recursive: true }))
 	]);
 
-	const sourceMap = sourceKeys.reduce(
-		(m: { set: (arg0: any, arg1: string) => any }, f: any) => m.set(f, join(sourceDir, f)),
-		new Map()
-	);
-	const targetMap = targetKeys.reduce(
-		(m: { set: (arg0: any, arg1: string) => any }, f: any) => m.set(f, join(targetDir, f)),
-		new Map()
-	);
+	const sourceMap = new Map(sourceKeys.map(f => [f, join(sourceDir, f)]));
+	const targetMap = new Map(targetKeys.map(f => [f, join(targetDir, f)]));
 	const manifest: VisualDiffReportManifest = [];
 	const writePromises = [];
 	for (const [key, sourceFilename] of sourceMap) {
-		if (!targetMap.has(key)) {
+		const targetFilename = targetMap.get(key);
+		if (targetFilename === undefined) {
 			console.log(`Skipping comparison: baseline dir does not contain '${key}'.`);
 			continue;
 		}
 
-		const targetFilename = targetMap.get(key);
 		const [source, target] = await Promise.all([
 			readFile(sourceFilename),
 			readFile(targetFilename)

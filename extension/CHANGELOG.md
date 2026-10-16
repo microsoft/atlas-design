@@ -1,5 +1,10 @@
 # Change Log
 
+## Unreleased
+
+- Update packaging and test dependencies to patched releases.
+- Update test discovery for the promise-based glob API.
+
 ## 0.0.12
 
 ### Patch Changes

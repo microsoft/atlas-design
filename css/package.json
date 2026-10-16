@@ -77,19 +77,17 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@microsoft/stylelint-config-atlas": "5.0.1",
-		"@parcel/transformer-sass": "2.16.3",
+		"@parcel/transformer-sass": "2.16.4",
 		"css-tree": "^2.3.1",
 		"eslint-plugin-security": "^1.7.1",
 		"fs-extra": "^11.1.1",
-		"parcel": "2.16.3",
+		"parcel": "2.16.4",
 		"lightningcss": "^1.25.1",
 		"prettier": "^2.8.8",
 		"quicktype-core": "^23.0.48",
 		"grass": "^1.0.2",
 		"sass-export": "^2.1.2",
-		"stylelint": "16.10.0",
-		"stylelint-config-prettier": "9.0.5",
-		"stylelint-prettier": "^3.0.0",
-		"wireit": "0.14.9"
+		"stylelint": "16.26.1",
+		"wireit": "0.14.13"
 	}
 }

@@ -33,7 +33,7 @@
 	"packageManager": "npm@11.19.1",
 	"scripts": {
 		"test-compile": "tsc -p ./",
-		"pretest": "npm run compile && npm run lint",
+		"pretest": "npm run test-compile && npm run lint",
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js",
 		"vsce:package": "vsce package",
@@ -48,18 +48,17 @@
 		"@microsoft/atlas-css": "^7.0.0"
 	},
 	"devDependencies": {
-		"@types/glob": "^8.1.0",
 		"@types/mocha": "^10.0.1",
 		"@types/node": "26.x",
-		"@types/vscode": "^1.79.1",
+		"@types/vscode": "1.71.0",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
 		"@vscode/test-electron": "^2.3.3",
-		"@vscode/vsce": "^3.9.2",
+		"@vscode/vsce": "^4.0.0",
 		"esbuild": "^0.28.1",
 		"eslint": "^8.43.0",
-		"glob": "^10.3.1",
-		"mocha": "^10.2.0",
+		"glob": "^13.0.6",
+		"mocha": "^12.0.3",
 		"typescript": "^5.1.5"
 	}
 }

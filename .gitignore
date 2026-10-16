@@ -11,3 +11,4 @@ coverage/
 .wireit
 .netrc
 js/coverage
+extension/.vscode-test/
