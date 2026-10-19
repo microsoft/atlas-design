@@ -1,6 +1,6 @@
 {
 	"name": "@microsoft/atlas-mcp",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "MCP server exposing Atlas Design System resources to AI agents",
 	"type": "module",
 	"main": "dist/index.js",

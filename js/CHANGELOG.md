@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 5.1.0
+
+### Minor Changes
+
+- e1f190e: Update dependencies
+
 ## 5.0.0
 
 ### Major Changes
