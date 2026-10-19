@@ -1,5 +1,11 @@
 # @microsoft/atlas-css
 
+## 7.2.0
+
+### Minor Changes
+
+- e1f190e: Update dependencies
+
 ## 7.1.0
 
 ### Minor Changes

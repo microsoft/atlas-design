@@ -1,5 +1,11 @@
 # @microsoft/atlas-mcp
 
+## 1.1.0
+
+### Minor Changes
+
+- e1f190e: Update dependencies
+
 ## 1.0.0
 
 ### Major Changes

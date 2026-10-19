@@ -70,8 +70,8 @@
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.6",
-		"@microsoft/atlas-css": "7.1.0",
-		"@microsoft/atlas-js": "^5.0.0",
+		"@microsoft/atlas-css": "7.2.0",
+		"@microsoft/atlas-js": "^5.1.0",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
 		"esbuild": "^0.28.1",
