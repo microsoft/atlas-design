@@ -4,3 +4,11 @@ dist
 .cache
 .parcel-cache
 standard.html
+.wireit
+.vscode-test
+coverage
+test-results
+playwright-report
+extension/out
+mcp/data/atlas-data.json
+site/src/scaffold/toc.json
