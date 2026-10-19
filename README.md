@@ -147,26 +147,11 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 
 ## Updating dependencies
 
-Refresh compatible dependencies across the workspaces and retain the lockfile so unrelated major versions do not change. Update pinned versions in the relevant `package.json` files first. Major updates require checking the affected APIs; keep Husky on 4.x unless migrating its hooks.
+The following commands can be used to update broadly update dependencies. (Note: we omit major updates to husky because of major api changes and a general preference for version 4.x)
 
 ```sh
-npm update --workspaces --include-workspace-root
-npm install
-npm ci
-npm audit
+npm exec --package npm-check-updates --workspaces --include-workspace-root -- npm-check-updates --upgrade --reject husky
+npm exec --package npm-check-updates --workspaces --include-workspace-root -- npm-check-updates --upgrade --target minor
+rm package-lock.json
+npm i
 ```
-
-Commit both the manifests and `package-lock.json`. Check the resolved versions with `npm ls`; an override alone does not prove that the lockfile or installed tree uses the patched release. The `serialize-javascript` override requires 7.1.2 or later in the 7.x line: 7.0.3 fixes the original code-execution advisory but is affected by a subsequent denial-of-service advisory.
-
-Validate builds, lint, unit tests, and `npm run start` after updating. The development server should serve documentation and scaffold assets on port 1111 and rebuild when sources change.
-
-### Remaining compliance findings
-
-The October 2026 dependency refresh addresses 78 of the 83 security alerts in the original compliance scan, covering 63 of 65 distinct CVEs. The new locked versions were checked against each advisory's affected-version range. Five security alerts and nine legal-review alerts still need attention:
-
-- `braces` 3.0.3 and `sprintf-js` 1.0.3 still have advisories with no patched release. They remain transitive dependencies of build/lint tooling and YAML parsers. Do not force unrelated major versions or suppress these findings; recheck upstream fixes.
-- ESLint 8 still brings in `keyv` 4.5.4, which is affected by the namespace-isolation advisory. Remediation requires a compatible upstream fix or a separate ESLint/cache-tooling migration; overriding it with Keyv 5 changes its module API.
-- The `string_decoder` advisory recommends assessing transitive use and use of Node's built-in decoder. This repository requires Node 26, above the advisory's Node 15 mitigation, but the compliance finding still needs assessment.
-- MPL-2.0 and Artistic-2.0 alerts for accessibility, CSS, and file-detection tooling require distribution/legal review, not a version-only upgrade.
-
-Compliance alerts reflect the last scanned build. Rescan the updated lockfile through the official pipeline before treating alerts as resolved.
