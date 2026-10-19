@@ -12,7 +12,7 @@
 	},
 	"icon": "icons/atlas-icon-512.png",
 	"engines": {
-		"vscode": "^1.71.0",
+		"vscode": "^1.140.0",
 		"node": "^26.0.0",
 		"npm": "^11.0.0"
 	},
@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"@types/mocha": "^10.0.1",
 		"@types/node": "26.x",
-		"@types/vscode": "1.71.0",
+		"@types/vscode": "1.140.0",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",
 		"@typescript-eslint/parser": "^5.60.1",
 		"@vscode/test-electron": "^2.3.3",
