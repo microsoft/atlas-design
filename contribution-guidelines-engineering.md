@@ -30,21 +30,21 @@ This post provides some contribution guidelines for CSS/Scss in Atlas.
 
 - try using [`npm link`](https://docs.npmjs.com/cli/v7/commands/npm-link) to view the impact on existing systems that import Atlas.
 
-## Enable the Changeset bot with a fine-grain PAT
+## Changesets GitHub App
 
-The changeset bot needs some permissions in order to access our repo to help us with releases. If the release action begins to fail, it may be due to an expired token.
+The release workflow uses the
+[`atlas-design-changeset-bot`](https://github.com/apps/atlas-design-changeset-bot) GitHub App
+instead of a personal access token. The App is installed only on `microsoft/atlas-design` and
+has write access to repository contents and pull requests.
 
-1. In Github, go to your settings
-1. Go to Developer Settings
-1. Select Personal Access Tokens, and Fine-grained tokens
-1. Note! You can just click "Regenerate token" if you have an existing one already.
-1. Name the token something like "changeset-bot-token-[createdate]", where [createdate] follows the following format: "12-31-2023" as represents the date you made this token.
-1. Changesets requires the following permissions:
-   - Read access to actions variables, metadata, and secrets
-   - Read and Write access to actions, code, discussions, and pull requests
-1. Select a date for its expiration.
-1. Submit form.
-1. Copy value of token. It will looks something like `github_pat_*********************************`
-1. Got to Atlas settings, Secrets, Actions.
-1. Edit value of "RELEASE_GITHUB" with value of created token.
-1. Save.
+The repository Actions configuration contains:
+
+- Variable `ATLAS_CHANGESETS_APP_CLIENT_ID`
+- Secret `ATLAS_CHANGESETS_APP_PRIVATE_KEY`
+
+If App authentication fails:
+
+1. Verify the App is still installed on `microsoft/atlas-design`.
+1. Verify the Actions variable and secret are configured.
+1. If the private key must be rotated, an App Manager should generate a replacement key, update
+   `ATLAS_CHANGESETS_APP_PRIVATE_KEY`, validate the release workflow, and then delete the old key.
