@@ -147,6 +147,24 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 
 ## Updating dependencies
 
+### Temporary braces security override
+
+The root `braces` test dependency is pinned to commit
+`a795ee83ecd011131b2d618fe754ac5a8e124dae` from
+[micromatch/braces#88](https://github.com/micromatch/braces/pull/88), and `overrides.braces` applies
+that same source to every transitive installation. This unmerged upstream patch
+mitigates [CVE-2026-93687](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) by bounding parser nesting
+and validating AST depth and cycles before recursive traversal. Patterns or ASTs exceeding the safe
+depth of 128 throw `SyntaxError`; normal brace expansion and glob patterns remain supported.
+
+There is no patched npm release at the time of this change. The pinned source still reports version
+`3.0.3`, so version-based scanners may continue reporting the advisory. Do not suppress the alert.
+Replace this temporary override with an official patched release once available, regenerate the
+lockfile, and run `npm run test:dependencies` alongside the normal build and lint checks. These
+regressions run in CI and must continue passing when the override is changed or removed.
+
+### Updating package versions
+
 The following commands can be used to update broadly update dependencies. (Note: we omit major updates to husky because of major api changes and a general preference for version 4.x)
 
 ```sh

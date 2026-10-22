@@ -46,6 +46,9 @@ jobs:
       - name: Check formatting
         run: npm run prettier-check;
 
+      - name: Check dependency security regressions
+        run: npm run test:dependencies;
+
       # Run lint
       - name: Run lint
         run: npm run lint;
