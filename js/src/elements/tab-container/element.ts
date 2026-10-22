@@ -190,8 +190,25 @@ export class TabContainerElement extends HTMLElement {
 	}
 
 	#setupComplete = false;
+	#initializationObserver?: MutationObserver;
 	#internals!: ElementInternals | null;
 	connectedCallback(): void {
+		if (this.#setupComplete) {
+			return;
+		}
+
+		if (!this.#hasCompleteTabPanelSet()) {
+			this.#initializationObserver ||= new MutationObserver(() => {
+				if (this.#hasCompleteTabPanelSet()) {
+					this.#initializationObserver?.disconnect();
+					this.#initializationObserver = undefined;
+					this.connectedCallback();
+				}
+			});
+			this.#initializationObserver.observe(this, { childList: true, subtree: true });
+			return;
+		}
+
 		this.#internals ||= this.attachInternals ? this.attachInternals() : null;
 		const shadowRoot =
 			this.shadowRoot || this.attachShadow({ mode: 'open', slotAssignment: 'manual' });
@@ -236,6 +253,21 @@ export class TabContainerElement extends HTMLElement {
 		this.addEventListener('click', this.#handleNavClick);
 
 		this.#setupComplete = true;
+	}
+
+	disconnectedCallback(): void {
+		this.#initializationObserver?.disconnect();
+		this.#initializationObserver = undefined;
+	}
+
+	#hasCompleteTabPanelSet(): boolean {
+		const tabs = Array.from(this.querySelectorAll('[role=tab]')).filter(
+			tab => tab.closest(this.tagName) === this
+		);
+		const panels = Array.from(this.querySelectorAll('[role=tabpanel]')).filter(
+			panel => panel.closest(this.tagName) === this
+		);
+		return tabs.length > 0 && panels.length >= tabs.length;
 	}
 
 	attributeChangedCallback(name: string) {
