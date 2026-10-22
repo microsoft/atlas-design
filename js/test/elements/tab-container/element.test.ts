@@ -111,6 +111,21 @@ describe('TabContainerElement', () => {
 		expect(role === 'presentation' || el.shadowRoot !== null).toBe(true);
 	});
 
+	it('waits for tabs and panels when connected before its children are added [ai generated]', async () => {
+		const el = document.createElement('tab-container') as TabContainerElement;
+		document.body.appendChild(el);
+
+		el.innerHTML = `
+			<button role="tab" id="t1">One</button>
+			<section role="tabpanel" id="p1">Panel one</section>
+		`;
+		await new Promise(resolve => setTimeout(resolve, 0));
+
+		expect(el.selectedTabIndex).toBe(0);
+		expect(el.querySelector('#t1')?.getAttribute('aria-selected')).toBe('true');
+		expect((el.querySelector('#p1') as HTMLElement).hidden).toBe(false);
+	});
+
 	it('selects the first tab by default and reveals its panel [ai generated]', () => {
 		const el = makeTabContainer();
 		expect(el.selectedTabIndex).toBe(0);
