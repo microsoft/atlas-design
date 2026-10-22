@@ -1,5 +1,11 @@
 # @microsoft/atlas-js
 
+## 5.1.1
+
+### Patch Changes
+
+- 8673013: Wait to initialize tab containers until their tabs and panels are available.
+
 ## 5.1.0
 
 ### Minor Changes
