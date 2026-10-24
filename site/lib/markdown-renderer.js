@@ -116,7 +116,7 @@ const markedOptions = {
 	table(header, body) {
 		return `
 			<div class="markdown table-wrapper margin-top-sm inner-focus" data-focusable-if-scrollable>
-				<table class="table">
+				<table class="table table-cell-max-width">
 					<thead>${header}</thead>
 					<tbody>${body}</tbody>
 				</table>

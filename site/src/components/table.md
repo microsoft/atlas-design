@@ -300,6 +300,32 @@ _`table-sm`_/_`table-lg`_ makes table more or less condensed than the default.
 	</tbody>
 </table>
 
+### Cell max width
+
+_`table-cell-max-width`_ applies a 40rem max width to data cells so long values wrap instead of stretching the table.
+
+<table class="table table-cell-max-width margin-top-sm">
+	<thead>
+		<tr>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+			<th>Heading cell</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Cell</td>
+			<td>Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell/Cell</td>
+			<td>Cell</td>
+		</tr>
+		<tr>
+			<td>Cell</td>
+			<td>Cell/Cell/Cell/CellCell/Cell/Cell/CellCell/Cell/Cell/CellCell/Cell/Cell/CellCell/Cell/Cell/CellCell/Cell/Cell/CellCell/Ce</td>
+			<td>Cell</td>
+		</tr>
+	</tbody>
+</table>
+
 ### Stacked on mobile
 
 _`table-stacked-mobile`_ stacks table cells on mobile screen sizes. Please use it wisely due to its unusual appearance, it is not the default behavior for the tables.
