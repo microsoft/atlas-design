@@ -95,6 +95,6 @@
 	"author": "Microsoft Corporation",
 	"license": "MIT",
 	"overrides": {
-		"serialize-javascript": "^7.1.2"
+		"serialize-javascript": "^7.1.4"
 	}
 }
