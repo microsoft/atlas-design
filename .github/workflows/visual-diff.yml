@@ -1,87 +1,75 @@
-# This is a basic workflow to help you get started with Actions
-
-# env:
-# PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1 # Skip downloading during yarn install
-# PLAYWRIGHT_BROWSERS_PATH: 0 # Places binaries to node_modules/@playwright/test
-
 name: Visual diff
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
-  group: ${{ github.ref }}-visual-diff
+  group: visual-diff-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  visual-diff:
-    # The type of runner that the job will run on
-    runs-on: windows-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
+      - name: Check out proposed merge
+        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
+        with:
+          persist-credentials: false
+
+      - name: Check out exact base
+        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+          path: .visual-diff-base
+          persist-credentials: false
 
       - name: Use Node.js from .nvmrc
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
+          cache: npm
 
-      # Monorepo installation
-      - name: Npm install
-        run: npm ci;
+      - name: Install proposed-merge dependencies
+        run: npm ci
 
-      - name: Install Playwright Deps
-        run: npx playwright install-deps
+      - name: Install base dependencies
+        working-directory: .visual-diff-base
+        run: npm ci
 
-      - name: Install Playright
-        run: npx playwright install
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
 
-      # Take images
-      - name: Take screenshots for comparison [push|main]
-        if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
-        id: 'visual_diff_all'
-        run: npm run screenshots:all
+      - name: Test visual diff tooling
+        run: npm run test:visual-diff -w @microsoft/atlas-integration
 
-      # On pushes to main, upload images for comparison against pull_request runs
-      - name: Upload comparison screenshots [push|main]
-        if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+      - name: Build base site
+        working-directory: .visual-diff-base
+        run: |
+          npm run build:css
+          npm run build:site
+
+      - name: Build proposed-merge site
+        run: |
+          npm run build:css
+          npm run build:site
+
+      - name: Compare static sites
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+          MERGE_SHA: ${{ github.sha }}
+        run: node integration/tasks/visual-diff.mjs .visual-diff-base/site/dist site/dist "${{ runner.temp }}/visual-diff-report"
+
+      - name: Upload visual report data
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: visual_diff_comparison_shapshots
-          path: ./integration/visual-diff/screenshots/updated
-
-      # On pull requests into main, download images for comparison
-      - name: Take screenshots [pull_request]
-        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
-        id: 'visual_diff_light'
-        run: npm run screenshots:light
-
-      # Temporarily upload screenshots for pull requests, just to verify they are as we'd expect
-      - name: Upload screenshots [pull_request]
-        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: visual_diff_pull_request_shapshots-${{ github.sha }}
-          path: ./integration/visual-diff/screenshots/updated
-
-      - name: Download comparison screenshots [pull_request]
-        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: visual_diff_comparison_shapshots
-          path: ./integration/visual-diff/screenshots/comparison
+          name: visual-diff-report
+          path: ${{ runner.temp }}/visual-diff-report
+          if-no-files-found: error
+          retention-days: 30

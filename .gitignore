@@ -12,3 +12,4 @@ coverage/
 .netrc
 js/coverage
 extension/.vscode-test/
+.visual-diff-base/
