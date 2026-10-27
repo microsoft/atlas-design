@@ -5,3 +5,4 @@ export * from './elements/form-behavior';
 export * from './elements/tab-container/index';
 export * from './utilities/util';
 export * from './behaviors/layout';
+export * from './behaviors/theme';

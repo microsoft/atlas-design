@@ -14,6 +14,27 @@
 		/>
 		<link rel="stylesheet" href="~/src/scaffold/index.scss" />
 		<link rel="stylesheet" href="~/src/scaffold/styles/homepage.scss" />
+		<!-- Apply the persisted/system theme before first paint to prevent a wrong-theme flash. -->
+		<!-- Full theme resolution (?theme= overrides, controls) is handled by createThemeState on load. -->
+		<script id="theme-preference">
+			(function () {
+				try {
+					var themes = ['light', 'dark', 'high-contrast'];
+					var stored = localStorage.getItem('theme');
+					var theme =
+						themes.indexOf(stored) !== -1
+							? stored
+							: matchMedia('(prefers-color-scheme: dark)').matches
+								? 'dark'
+								: 'light';
+					var html = document.documentElement;
+					for (var i = 0; i < themes.length; i++) {
+						html.classList.remove('theme-' + themes[i]);
+					}
+					html.classList.add('theme-' + theme);
+				} catch (e) {}
+			})();
+		</script>
 		<script type="module" src="~/src/scaffold/index.ts"></script>
 		<link rel="icon" href="~/src/atlas-light.svg" type="image/svg+xml" />
 	</head>
