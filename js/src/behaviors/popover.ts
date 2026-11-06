@@ -20,6 +20,11 @@ export function initPopover(container: HTMLElement = document.body) {
 				return;
 			}
 
+			const summary = targetPopover.querySelector('summary') as HTMLElement;
+			if (!summary) {
+				return;
+			}
+
 			// If popover is being closed, hide content immediately
 			if (!targetPopover.open) {
 				content.style.visibility = 'hidden';
@@ -76,6 +81,7 @@ export function initPopover(container: HTMLElement = document.body) {
 					targetPopover.removeAttribute('open');
 					content.style.visibility = 'hidden';
 				}
+				summary.focus();
 			};
 
 			container.addEventListener('focus', checkTarget, true);
