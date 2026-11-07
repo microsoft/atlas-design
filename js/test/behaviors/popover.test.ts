@@ -187,6 +187,55 @@ describe('initPopover', () => {
 		expect(content.style.visibility).toBe('visible');
 	});
 
+	it('does nothing when the popover has no summary child [ai generated]', async () => {
+		initPopover(container);
+		const details = buildPopover();
+		details.querySelector('summary')?.remove();
+
+		await openDetails(details);
+
+		expect(rafCalls).toHaveLength(0);
+		expect(installedWindowListeners).toHaveLength(0);
+	});
+
+	it.each(['Escape', 'close button', 'outside click', 'outside touch', 'outside focus'])(
+		'restores focus to the summary after closing via %s [ai generated]',
+		async method => {
+			initPopover(container);
+			const details = buildPopover();
+			const summary = details.querySelector('summary') as HTMLElement;
+			const close = details.querySelector('[data-popover-close]') as HTMLElement;
+			const outside = document.createElement('button');
+			container.appendChild(outside);
+			await openDetails(details);
+			flushRAF();
+			close.focus();
+			expect(document.activeElement).toBe(close);
+
+			switch (method) {
+				case 'Escape':
+					close.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+					break;
+				case 'close button':
+					close.click();
+					break;
+				case 'outside click':
+					outside.click();
+					break;
+				case 'outside touch':
+					outside.dispatchEvent(new Event('touchstart', { bubbles: true }));
+					break;
+				case 'outside focus':
+					outside.focus();
+					break;
+			}
+
+			expect(details.open).toBe(false);
+			expect(document.activeElement).toBe(summary);
+			expect(installedWindowListeners).toHaveLength(0);
+		}
+	);
+
 	it('hides content immediately when the popover is closed via toggle [ai generated]', async () => {
 		initPopover(container);
 		const details = buildPopover();
